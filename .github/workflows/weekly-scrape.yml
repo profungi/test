@@ -1,0 +1,203 @@
+name: Weekly Bay Area Events Scraper
+
+on:
+  # 每周日 UTC 时间 16:00 (PST 时间 08:00) 运行
+  schedule:
+    - cron: '0 16 * * 0'
+  
+  # 允许手动触发
+  workflow_dispatch:
+    inputs:
+      debug_mode:
+        description: 'Enable debug output'
+        required: false
+        default: 'false'
+        type: boolean
+
+jobs:
+  scrape-events:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+        cache: 'npm'
+        
+    - name: Install dependencies
+      run: |
+        npm ci
+        # Install additional dependencies for Puppeteer
+        sudo apt-get update
+        sudo apt-get install -y \
+          libnss3-dev \
+          libatk-bridge2.0-dev \
+          libdrm2 \
+          libxcomposite1 \
+          libxdamage1 \
+          libxrandr2 \
+          libgbm1 \
+          libxss1 \
+          libasound2
+
+    - name: Create data directory
+      run: mkdir -p data output
+      
+    - name: Validate environment
+      env:
+        SHORTIO_API_KEY: ${{ secrets.SHORTIO_API_KEY }}
+        AI_PROVIDER: ${{ secrets.AI_PROVIDER || 'openai' }}
+        OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        CLAUDE_API_KEY: ${{ secrets.CLAUDE_API_KEY }}
+      run: npm run validate
+
+    - name: Run event scraper
+      env:
+        SHORTIO_API_KEY: ${{ secrets.SHORTIO_API_KEY }}
+        AI_PROVIDER: ${{ secrets.AI_PROVIDER || 'openai' }}
+        OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        CLAUDE_API_KEY: ${{ secrets.CLAUDE_API_KEY }}
+        NODE_ENV: production
+      run: |
+        if [ "${{ github.event.inputs.debug_mode }}" == "true" ]; then
+          DEBUG=* npm run scrape
+        else
+          npm run scrape
+        fi
+    
+    - name: Upload review files
+      uses: actions/upload-artifact@v4
+      if: always()
+      with:
+        name: event-review-files-${{ github.run_id }}
+        path: output/review_*.json
+        retention-days: 7
+        
+    - name: Upload database
+      uses: actions/upload-artifact@v4  
+      if: always()
+      with:
+        name: events-database-${{ github.run_id }}
+        path: data/events.db
+        retention-days: 30
+        
+    - name: Create issue on failure
+      if: failure()
+      uses: actions/github-script@v7
+      with:
+        script: |
+          const title = `Weekly scraper failed - ${new Date().toISOString().split('T')[0]}`;
+          const body = `
+          The weekly Bay Area events scraper failed to complete successfully.
+          
+          **Run Details:**
+          - Workflow: ${{ github.workflow }}
+          - Run ID: ${{ github.run_id }}
+          - Commit: ${{ github.sha }}
+          - Triggered by: ${{ github.event_name }}
+          
+          Please check the [workflow run logs](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}) for details.
+          
+          **Next Steps:**
+          1. Review the error logs
+          2. Check if any APIs are down or rate-limited  
+          3. Verify the scraping targets haven't changed their structure
+          4. Consider running the workflow manually to retry
+          
+          This issue was created automatically.
+          `;
+          
+          await github.rest.issues.create({
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            title: title,
+            body: body,
+            labels: ['bug', 'automated']
+          });
+
+    - name: Commit and push results
+      if: success()
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        
+        # Add generated files
+        git add output/ data/events.db -f || true
+        
+        # Check if there are changes to commit
+        if git diff --cached --quiet; then
+          echo "No changes to commit"
+        else
+          git commit -m "Weekly events scraping results - $(date -I)
+
+          🤖 Generated with Bay Area Events Scraper
+          
+          Co-Authored-By: Sculptor <sculptor@imbue.com>"
+          git push
+        fi
+        
+  notify-results:
+    needs: scrape-events  
+    runs-on: ubuntu-latest
+    if: always()
+    
+    steps:
+    - name: Download artifacts
+      uses: actions/download-artifact@v4
+      with:
+        name: event-review-files-${{ github.run_id }}
+        path: ./results
+        
+    - name: Read review file
+      id: report
+      run: |
+        # Find the review file
+        REVIEW_FILE=$(find ./results -name "review_*.json" -type f | head -n1)
+        
+        if [ -f "$REVIEW_FILE" ]; then
+          echo "review_exists=true" >> $GITHUB_OUTPUT
+          
+          # Extract key metrics from review file
+          TOTAL_CANDIDATES=$(jq -r '.stats.total_candidates' "$REVIEW_FILE")
+          TARGET_WEEK=$(jq -r '.target_week_readable' "$REVIEW_FILE")
+          BY_TYPE=$(jq -c '.stats.by_type' "$REVIEW_FILE")
+          
+          echo "total_candidates=$TOTAL_CANDIDATES" >> $GITHUB_OUTPUT
+          echo "target_week=$TARGET_WEEK" >> $GITHUB_OUTPUT
+          echo "by_type=$BY_TYPE" >> $GITHUB_OUTPUT
+        else
+          echo "review_exists=false" >> $GITHUB_OUTPUT
+        fi
+
+    - name: Create summary
+      run: |
+        echo "# 🎯 Weekly Bay Area Events Scraper Results" >> $GITHUB_STEP_SUMMARY
+        echo "" >> $GITHUB_STEP_SUMMARY
+        
+        if [ "${{ steps.report.outputs.review_exists }}" == "true" ]; then
+          echo "✅ **Event scraping completed successfully!**" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**Statistics:**" >> $GITHUB_STEP_SUMMARY
+          echo "- 📊 Total candidate events: ${{ steps.report.outputs.total_candidates }}" >> $GITHUB_STEP_SUMMARY
+          echo "- 📅 Target week: ${{ steps.report.outputs.target_week }}" >> $GITHUB_STEP_SUMMARY
+          echo "- 📋 Events by type: ${{ steps.report.outputs.by_type }}" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**Next Steps:**" >> $GITHUB_STEP_SUMMARY
+          echo "1. 📥 Download the review file from artifacts below" >> $GITHUB_STEP_SUMMARY
+          echo "2. ✏️ Edit the JSON file to select events (set selected: true)" >> $GITHUB_STEP_SUMMARY  
+          echo "3. 🏃 Run: npm run generate-post [review-file-path]" >> $GITHUB_STEP_SUMMARY
+          echo "4. 📱 Copy the generated content to Xiaohongshu" >> $GITHUB_STEP_SUMMARY
+        else
+          echo "❌ **Scraping failed or no review file generated**" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "Please check the workflow logs for error details." >> $GITHUB_STEP_SUMMARY
+        fi
+        
+        echo "" >> $GITHUB_STEP_SUMMARY
+        echo "📎 **Artifacts:** Download files from the 'Artifacts' section below." >> $GITHUB_STEP_SUMMARY
