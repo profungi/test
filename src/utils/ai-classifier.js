@@ -8,16 +8,24 @@ class AIEventClassifier {
     // 检查是否有可用的AI提供商
     const available = this.aiService.getAvailableProviders();
     if (available.length === 0) {
-      throw new Error('No AI provider is configured. Please set up at least one: OPENAI_API_KEY, GEMINI_API_KEY, or CLAUDE_API_KEY');
-    }
-    
-    console.log(`AI Classifier initialized with provider: ${this.aiService.provider}`);
-    if (available.length > 1) {
-      console.log(`Fallback providers available: ${available.filter(p => p !== this.aiService.provider).join(', ')}`);
+      console.warn('⚠️ No AI provider is configured. Using fallback classification only.');
+      console.warn('For better results, set up at least one: OPENAI_API_KEY, GEMINI_API_KEY, or CLAUDE_API_KEY');
+      this.aiAvailable = false;
+    } else {
+      this.aiAvailable = true;
+      console.log(`AI Classifier initialized with provider: ${this.aiService.provider}`);
+      if (available.length > 1) {
+        console.log(`Fallback providers available: ${available.filter(p => p !== this.aiService.provider).join(', ')}`);
+      }
     }
   }
 
   async classifyEvents(events) {
+    if (!this.aiAvailable) {
+      console.log(`Classifying ${events.length} events using fallback method (no AI available)...`);
+      return events.map(event => this.fallbackClassification(event));
+    }
+
     console.log(`Classifying ${events.length} events with AI...`);
     
     const classifiedEvents = [];

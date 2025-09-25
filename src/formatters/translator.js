@@ -8,15 +8,23 @@ class ContentTranslator {
     // 检查是否有可用的AI提供商
     const available = this.aiService.getAvailableProviders();
     if (available.length === 0) {
-      throw new Error('No AI provider is configured for translation. Please set up at least one: OPENAI_API_KEY, GEMINI_API_KEY, or CLAUDE_API_KEY');
+      console.warn('⚠️ No AI provider is configured for translation. Using fallback translation.');
+      console.warn('For better results, set up at least one: OPENAI_API_KEY, GEMINI_API_KEY, or CLAUDE_API_KEY');
+      this.aiAvailable = false;
+    } else {
+      this.aiAvailable = true;
+      console.log(`Content Translator initialized with provider: ${this.aiService.provider}`);
     }
-    
-    console.log(`Content Translator initialized with provider: ${this.aiService.provider}`);
   }
 
   // 翻译和优化事件内容
   async translateAndOptimizeEvents(events) {
     console.log(`🌐 翻译和优化 ${events.length} 个活动内容...`);
+    
+    if (!this.aiAvailable) {
+      console.log('使用基础翻译模式（无AI可用）');
+      return events.map(event => this.createFallbackTranslation(event));
+    }
     
     const translatedEvents = [];
     const batchSize = 3; // 每批处理3个事件
@@ -31,7 +39,7 @@ class ContentTranslator {
         console.error(`翻译批次 ${Math.floor(i / batchSize) + 1} 失败:`, error.message);
         
         // 失败时使用简单翻译
-        const fallbackResults = await this.fallbackTranslation(batch);
+        const fallbackResults = batch.map(event => this.fallbackTranslation(event));
         translatedEvents.push(...fallbackResults);
       }
       

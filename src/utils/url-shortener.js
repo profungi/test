@@ -4,20 +4,22 @@ const config = require('../config');
 class URLShortener {
   constructor() {
     if (!config.apis.shortio.key) {
-      throw new Error('Short.io API key is required');
+      console.warn('⚠️ Short.io API key not configured, will use original URLs');
+      this.apiAvailable = false;
+    } else {
+      this.apiAvailable = true;
+      this.apiKey = config.apis.shortio.key;
+      this.baseUrl = config.apis.shortio.baseUrl;
+      
+      this.axiosInstance = axios.create({
+        baseURL: this.baseUrl,
+        headers: {
+          'Authorization': this.apiKey,
+          'Content-Type': 'application/json'
+        },
+        timeout: 10000
+      });
     }
-    
-    this.apiKey = config.apis.shortio.key;
-    this.baseUrl = config.apis.shortio.baseUrl;
-    
-    this.axiosInstance = axios.create({
-      baseURL: this.baseUrl,
-      headers: {
-        'Authorization': this.apiKey,
-        'Content-Type': 'application/json'
-      },
-      timeout: 10000
-    });
   }
 
   // 为选中的事件生成短链接
@@ -89,6 +91,12 @@ class URLShortener {
   async shortenUrl(originalUrl, title = '') {
     if (!originalUrl) {
       throw new Error('URL is required');
+    }
+
+    // 如果API不可用，直接返回原始URL
+    if (!this.apiAvailable) {
+      console.log(`使用原始URL: ${originalUrl}`);
+      return originalUrl;
     }
 
     // 验证URL格式

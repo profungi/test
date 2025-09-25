@@ -5,8 +5,8 @@ const config = require('../config');
 
 class ContentFormatter {
   constructor() {
-    this.openai = config.apis.openai.key ? new OpenAI({
-      apiKey: config.apis.openai.key
+    this.openai = config.apis.ai.openai.key ? new OpenAI({
+      apiKey: config.apis.ai.openai.key
     }) : null;
     this.shortUrlService = new ShortUrlService();
   }
