@@ -9,23 +9,34 @@ class SFStationScraper extends BaseScraper {
   async scrapeEvents(weekRange) {
     const events = [];
     const baseUrl = this.sourceConfig.baseUrl;
-    
+
     try {
-      // SF Station 可能有不同的分类页面
-      const categories = ['', 'music/', 'food/', 'art/', 'festivals/'];
-      
-      for (const category of categories) {
-        const url = baseUrl + category;
-        const $ = await this.fetchPage(url);
-        
-        const categoryEvents = await this.parseSFStationPage($);
-        events.push(...categoryEvents);
-        
-        if (events.length >= 80) {
-          break;
+      // SF Station 的URL结构: /events/ 显示所有即将到来的活动
+      // 尝试抓取主活动页面和分类页面
+      const urls = [
+        baseUrl,  // 主页面
+        baseUrl + '?view=list',  // 列表视图
+        baseUrl + 'this-weekend',  // 本周末
+        baseUrl + 'next-7-days',  // 接下来7天
+      ];
+
+      for (const url of urls) {
+        try {
+          console.log(`Trying SF Station URL: ${url}`);
+          const $ = await this.fetchPage(url);
+
+          const pageEvents = await this.parseSFStationPage($);
+          events.push(...pageEvents);
+
+          if (events.length >= 60) {
+            break;
+          }
+        } catch (error) {
+          console.warn(`Failed to fetch ${url}: ${error.message}`);
+          // 继续尝试下一个URL
         }
       }
-      
+
     } catch (error) {
       console.error(`Error scraping SF Station: ${error.message}`);
     }
@@ -206,6 +217,7 @@ class SFStationScraper extends BaseScraper {
       '.price',
       '.cost',
       '.ticket-price',
+      '.admission',
       '[class*="price"]',
       '[class*="cost"]'
     ];
@@ -213,13 +225,17 @@ class SFStationScraper extends BaseScraper {
     for (const sel of selectors) {
       const text = $el.find(sel).first().text().trim();
       if (text) {
+        // 只有明确说Free才返回Free
+        if (/^(free|$0\.00|$0|no charge)$/i.test(text)) {
+          return 'Free';
+        }
         return text;
       }
     }
 
-    // 检查免费关键词
-    const fullText = $el.text().toLowerCase();
-    if (fullText.includes('free') || fullText.includes('no charge')) {
+    // 只在明确的上下文中检查免费关键词
+    const priceContext = $el.find('.price, .cost, .admission, [class*="price"]').text().toLowerCase();
+    if (priceContext && /\b(free admission|free entry|free event)\b/.test(priceContext)) {
       return 'Free';
     }
 
@@ -317,24 +333,52 @@ class SFStationScraper extends BaseScraper {
 
   parseGenericSFEvents($) {
     const events = [];
-    
-    // 通用方法：查找链接并尝试提取信息
-    $('a').each((i, element) => {
+    const seenUrls = new Set();
+
+    // 通用方法1：查找所有包含活动链接的<a>标签
+    $('a[href*="/event"], a[href*="/events/"]').each((i, element) => {
       try {
         const $link = $(element);
         const href = $link.attr('href');
-        const title = $link.text().trim();
-        
-        if (title && href && title.length > 10 && href.includes('/event')) {
+        if (!href || seenUrls.has(href)) return;
+
+        const title = $link.text().trim() || $link.attr('title') || '';
+
+        if (title.length > 5 && title.length < 200) {
+          seenUrls.add(href);
           const fullUrl = href.startsWith('http') ? href : `https://www.sfstation.com${href}`;
-          
+
           // 尝试从周围元素提取更多信息
-          const $container = $link.closest('div, li, article').first();
-          
+          const $container = $link.closest('div, li, article, [class*="event"], [class*="card"]').first();
+
+          // 尝试提取时间和地点
+          let location = 'San Francisco';
+          let timeText = '';
+
+          if ($container.length > 0) {
+            // 查找地点信息
+            const locationText = $container.find('.venue, .location, [class*="venue"], [class*="location"]').first().text().trim();
+            if (locationText && locationText.length > 2) {
+              location = locationText;
+            }
+
+            // 查找时间信息
+            timeText = $container.find('.date, .time, [class*="date"], [class*="time"], time').first().text().trim();
+          }
+
+          // 解析时间或使用默认值
+          let startTime;
+          if (timeText) {
+            const parsed = this.parseTimeText(timeText);
+            startTime = parsed.startTime || new Date(Date.now() + 7 * 24 * 60 * 60 * 1000).toISOString();
+          } else {
+            startTime = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000).toISOString();
+          }
+
           events.push({
             title,
-            startTime: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000).toISOString(),
-            location: 'San Francisco',
+            startTime,
+            location,
             originalUrl: fullUrl,
             price: null,
             description: null
@@ -345,7 +389,38 @@ class SFStationScraper extends BaseScraper {
       }
     });
 
-    return events.slice(0, 15);
+    // 通用方法2：如果没有找到活动，尝试查找包含活动信息的结构化元素
+    if (events.length === 0) {
+      $('article, .post, [class*="event"], [class*="listing"]').each((i, element) => {
+        try {
+          const $el = $(element);
+          const $link = $el.find('a').first();
+          const href = $link.attr('href');
+
+          if (href && !seenUrls.has(href) && (href.includes('event') || href.includes('listing'))) {
+            seenUrls.add(href);
+            const title = $link.text().trim() || $el.find('h1, h2, h3, h4').first().text().trim();
+
+            if (title && title.length > 5) {
+              const fullUrl = href.startsWith('http') ? href : `https://www.sfstation.com${href}`;
+
+              events.push({
+                title,
+                startTime: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000).toISOString(),
+                location: 'San Francisco',
+                originalUrl: fullUrl,
+                price: null,
+                description: null
+              });
+            }
+          }
+        } catch (e) {
+          // 忽略
+        }
+      });
+    }
+
+    return events.slice(0, 30);
   }
 }
 

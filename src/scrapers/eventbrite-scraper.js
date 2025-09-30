@@ -208,24 +208,36 @@ class EventbriteScraper extends BaseScraper {
       '.price',
       '.ticket-price',
       '[data-testid="price"]',
-      '.cost'
+      '.cost',
+      '[class*="price"]',
+      '[class*="ticket"]'
     ];
 
     for (const sel of selectors) {
       const text = $el.find(sel).first().text().trim();
       if (text) {
+        // 只有明确说Free才返回Free
+        if (/^(free|$0\.00|$0)$/i.test(text)) {
+          return 'Free';
+        }
         return text;
       }
     }
 
-    // 检查是否有免费标识
+    // 检查是否有免费标识 - 更严格
     const freeSelectors = ['.free', '[data-testid="free"]'];
     for (const sel of freeSelectors) {
-      if ($el.find(sel).length > 0) {
-        return 'Free';
+      const $freeEl = $el.find(sel);
+      if ($freeEl.length > 0) {
+        const freeText = $freeEl.text().trim().toLowerCase();
+        // 确保真的是说免费，而不是"free shipping"之类
+        if (freeText === 'free' || freeText === 'free admission' || freeText === 'free entry') {
+          return 'Free';
+        }
       }
     }
 
+    // 未找到价格信息
     return null;
   }
 

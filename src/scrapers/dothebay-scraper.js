@@ -9,27 +9,54 @@ class DoTheBayScraper extends BaseScraper {
   async scrapeEvents(weekRange) {
     const events = [];
     const baseUrl = this.sourceConfig.baseUrl;
-    
-    try {
-      // DoTheBay 可能有日期特定的页面
-      const $ = await this.fetchPage(baseUrl);
-      const mainEvents = await this.parseDoTheBayPage($);
-      events.push(...mainEvents);
 
-      // 尝试抓取特定日期的页面
-      const weekDates = this.getWeekDates(weekRange);
-      for (const dateStr of weekDates.slice(0, 3)) { // 只检查前3天避免过多请求
+    try {
+      // DoTheBay URL结构尝试
+      const urls = [
+        baseUrl,  // 主页面 https://dothebay.com/events
+        baseUrl + '/upcoming',  // 即将到来的活动
+        baseUrl + '?view=list',  // 列表视图
+        'https://dothebay.com/calendar',  // 日历页面
+      ];
+
+      for (const url of urls) {
         try {
-          const dateUrl = `${baseUrl}/${dateStr}`;
-          const $date = await this.fetchPage(dateUrl);
-          const dateEvents = await this.parseDoTheBayPage($date);
-          events.push(...dateEvents);
-        } catch (e) {
-          // 忽略日期特定页面的错误
-          console.log(`Date-specific page not available: ${dateStr}`);
+          console.log(`Trying DoTheBay URL: ${url}`);
+          const $ = await this.fetchPage(url);
+          const pageEvents = await this.parseDoTheBayPage($);
+
+          if (pageEvents.length > 0) {
+            console.log(`Found ${pageEvents.length} events from ${url}`);
+            events.push(...pageEvents);
+          }
+
+          if (events.length >= 60) {
+            break;
+          }
+        } catch (error) {
+          console.warn(`Failed to fetch ${url}: ${error.message}`);
+          // 继续尝试下一个URL
         }
       }
-      
+
+      // 如果主页面没有足够活动，尝试抓取特定日期的页面
+      if (events.length < 30) {
+        const weekDates = this.getWeekDates(weekRange);
+        for (const dateStr of weekDates.slice(0, 3)) {
+          try {
+            const dateUrl = `${baseUrl}/${dateStr}`;
+            console.log(`Trying date-specific URL: ${dateUrl}`);
+            const $date = await this.fetchPage(dateUrl);
+            const dateEvents = await this.parseDoTheBayPage($date);
+            events.push(...dateEvents);
+
+            if (events.length >= 60) break;
+          } catch (e) {
+            console.log(`Date-specific page not available: ${dateStr}`);
+          }
+        }
+      }
+
     } catch (error) {
       console.error(`Error scraping DoTheBay: ${error.message}`);
     }
@@ -246,22 +273,24 @@ class DoTheBayScraper extends BaseScraper {
       '.fee',
       '.admission',
       '[class*="price"]',
-      '[class*="cost"]'
+      '[class*="cost"]',
+      '[class*="admission"]'
     ];
 
     for (const sel of selectors) {
       const text = $el.find(sel).first().text().trim();
       if (text) {
+        // 只有明确说Free才返回Free
+        if (/^(free|$0\.00|$0|no cost|complimentary)$/i.test(text)) {
+          return 'Free';
+        }
         return text;
       }
     }
 
-    // 检查免费关键词
-    const fullText = $el.text().toLowerCase();
-    if (fullText.includes('free') || 
-        fullText.includes('no cost') || 
-        fullText.includes('complimentary') ||
-        fullText.includes('$0')) {
+    // 只在价格相关的上下文中检查免费关键词
+    const priceContext = $el.find('.price, .cost, .admission, .fee, [class*="price"]').text().toLowerCase();
+    if (priceContext && /\b(free admission|free entry|free event|admission.*free)\b/.test(priceContext)) {
       return 'Free';
     }
 
@@ -380,25 +409,60 @@ class DoTheBayScraper extends BaseScraper {
 
   parseGenericDoTheBayEvents($) {
     const events = [];
-    
-    // 通用方法：查找事件链接
-    $('a').each((i, element) => {
+    const seenUrls = new Set();
+
+    // 通用方法1：查找所有活动链接
+    $('a[href*="/event"], a[href*="/listing"], a[href*="events/"]').each((i, element) => {
       try {
         const $link = $(element);
         const href = $link.attr('href');
-        const title = $link.text().trim();
-        
-        if (title && href && title.length > 8 && 
-            (href.includes('/event') || href.includes('/listing'))) {
-          
+        if (!href || seenUrls.has(href)) return;
+
+        const title = $link.text().trim() || $link.attr('title') || $link.attr('aria-label') || '';
+
+        if (title.length > 5 && title.length < 250) {
+          seenUrls.add(href);
           const fullUrl = href.startsWith('http') ? href : `https://dothebay.com${href}`;
-          
+
+          // 尝试从周围元素提取信息
+          const $container = $link.closest('div, li, article, section, [class*="event"], [class*="card"], [class*="item"]').first();
+
+          let location = 'San Francisco Bay Area';
+          let timeText = '';
+          let priceText = null;
+
+          if ($container.length > 0) {
+            // 地点
+            const locationEl = $container.find('.venue, .location, .where, [class*="venue"], [class*="location"]').first().text().trim();
+            if (locationEl && locationEl.length > 2 && !locationEl.toLowerCase().includes('online')) {
+              location = locationEl;
+            }
+
+            // 时间
+            timeText = $container.find('.date, .time, .datetime, .when, [class*="date"], [class*="time"], time').first().text().trim();
+
+            // 价格
+            priceText = $container.find('.price, .cost, [class*="price"], [class*="cost"]').first().text().trim();
+            if (!priceText && $container.text().toLowerCase().includes('free')) {
+              priceText = 'Free';
+            }
+          }
+
+          // 解析时间
+          let startTime;
+          if (timeText) {
+            const parsed = this.parseTimeText(timeText);
+            startTime = parsed.startTime || new Date(Date.now() + 7 * 24 * 60 * 60 * 1000).toISOString();
+          } else {
+            startTime = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000).toISOString();
+          }
+
           events.push({
             title,
-            startTime: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000).toISOString(),
-            location: 'San Francisco Bay Area',
+            startTime,
+            location,
             originalUrl: fullUrl,
-            price: null,
+            price: priceText,
             description: null
           });
         }
@@ -407,7 +471,38 @@ class DoTheBayScraper extends BaseScraper {
       }
     });
 
-    return events.slice(0, 10);
+    // 通用方法2：结构化元素查找
+    if (events.length === 0) {
+      $('article, .post, [class*="event"], [class*="listing"], [class*="card"]').each((i, element) => {
+        try {
+          const $el = $(element);
+          const $link = $el.find('a').first();
+          const href = $link.attr('href');
+
+          if (href && !seenUrls.has(href)) {
+            seenUrls.add(href);
+            const title = $link.text().trim() || $el.find('h1, h2, h3, h4, .title, [class*="title"]').first().text().trim();
+
+            if (title && title.length > 5) {
+              const fullUrl = href.startsWith('http') ? href : `https://dothebay.com${href}`;
+
+              events.push({
+                title,
+                startTime: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000).toISOString(),
+                location: 'San Francisco Bay Area',
+                originalUrl: fullUrl,
+                price: null,
+                description: null
+              });
+            }
+          }
+        } catch (e) {
+          // 忽略
+        }
+      });
+    }
+
+    return events.slice(0, 30);
   }
 }
 

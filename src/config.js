@@ -66,39 +66,66 @@ const config = {
     market: 10,
     fair: 10,
     festival: 10,
+    free: 7,    // 免费活动优先级提高到7
     food: 7,
     music: 7,
-    free: 5,
     default: 3
   },
 
-  // 地理位置配置 - 重点：SF、南湾、半岛
+  // 地理位置配置 - 明确区分各个区域
   locations: {
-    // 最高优先级区域
-    primary: [
-      // 旧金山
+    // 旧金山 (San Francisco)
+    sanfrancisco: [
       'San Francisco', 'SF', 'SOMA', 'Mission', 'Castro', 'Chinatown', 'Union Square',
-      // 南湾核心
-      'San Jose', 'Santa Clara', 'Sunnyvale', 'Mountain View', 'Palo Alto', 'Cupertino',
-      // 半岛核心  
-      'Redwood City', 'Menlo Park', 'San Mateo', 'Foster City', 'Belmont'
+      'Financial District', 'North Beach', 'Haight', 'Richmond', 'Sunset', 'Noe Valley',
+      'Pacific Heights', 'Marina District', 'Presidio', 'Fisherman\'s Wharf', 'Embarcadero'
     ],
-    
-    // 次要优先级区域
-    secondary: [
-      // 南湾其他
-      'Fremont', 'Milpitas', 'Campbell', 'Los Gatos', 'Saratoga', 'Morgan Hill',
-      // 半岛其他
-      'Burlingame', 'San Carlos', 'Millbrae', 'Daly City', 'Pacifica',
-      // 东湾（较低优先级）
-      'Oakland', 'Berkeley', 'Alameda', 'Emeryville'
+
+    // 南湾 (South Bay) - San Jose及以南，包括Santa Clara县南部
+    southbay: [
+      'San Jose', 'Santa Clara', 'Sunnyvale', 'Milpitas', 'Campbell', 'Los Gatos',
+      'Saratoga', 'Morgan Hill', 'Gilroy', 'Cupertino', 'Los Altos'
     ],
-    
-    // 地区关键词
+
+    // 半岛 (Peninsula) - SF以南到Palo Alto，沿着280和101
+    peninsula: [
+      'Palo Alto', 'Menlo Park', 'Redwood City', 'San Mateo', 'Burlingame',
+      'Millbrae', 'San Bruno', 'South San Francisco', 'Daly City', 'Pacifica',
+      'Foster City', 'Belmont', 'San Carlos', 'Atherton', 'Woodside', 'Portola Valley',
+      'Half Moon Bay', 'Mountain View'
+    ],
+
+    // 东湾 (East Bay) - 海湾东侧
+    eastbay: [
+      'Oakland', 'Berkeley', 'Alameda', 'Emeryville', 'Richmond', 'Albany',
+      'Piedmont', 'San Leandro', 'Hayward', 'Fremont', 'Union City', 'Newark',
+      'Pleasanton', 'Livermore', 'Dublin', 'Walnut Creek', 'Concord', 'Pleasant Hill'
+    ],
+
+    // 北湾 (North Bay) - 金门大桥以北
+    northbay: [
+      'Marin', 'San Rafael', 'Sausalito', 'Mill Valley', 'Novato', 'Tiburon',
+      'Corte Madera', 'Larkspur', 'San Anselmo', 'Fairfax',
+      'Napa', 'Sonoma', 'Petaluma', 'Santa Rosa', 'Vallejo'
+    ],
+
+    // 通用关键词
     keywords: [
-      'Bay Area', 'San Francisco Bay Area', 'Silicon Valley', 
-      'Peninsula', 'South Bay', 'Mid-Peninsula',
-      'South Peninsula', 'North Peninsula'
+      'Bay Area', 'San Francisco Bay Area', 'Silicon Valley',
+      'Peninsula', 'South Bay', 'East Bay', 'North Bay',
+      'Mid-Peninsula', 'South Peninsula', 'North Peninsula'
+    ],
+
+    // 为了兼容旧代码，保留primary和secondary
+    primary: [
+      'San Francisco', 'SF', 'San Jose', 'Santa Clara', 'Sunnyvale', 'Mountain View',
+      'Palo Alto', 'Cupertino', 'Redwood City', 'Menlo Park', 'San Mateo', 'Oakland', 'Berkeley'
+    ],
+
+    secondary: [
+      'Fremont', 'Milpitas', 'Campbell', 'Los Gatos', 'Saratoga', 'Morgan Hill',
+      'Burlingame', 'San Carlos', 'Millbrae', 'Daly City', 'Pacifica',
+      'Alameda', 'Emeryville', 'Hayward', 'San Rafael', 'Sausalito'
     ]
   },
 
@@ -145,7 +172,7 @@ const config = {
   // 抓取限制
   scraping: {
     maxEventsPerSource: 50,
-    totalCandidatesForReview: 20,
+    totalCandidatesForReview: 30,  // 从20改为30
     requestDelay: 1000,
     timeout: 30000,
     userAgent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'

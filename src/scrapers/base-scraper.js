@@ -25,11 +25,21 @@ class BaseScraper {
   }
 
   // 获取下周的时间范围 (周一到周日)
+  // 基准时间为当前抓取时间
   getNextWeekRange() {
     const today = new Date();
-    const nextMonday = addDays(startOfWeek(today, { weekStartsOn: 1 }), 7);
+    console.log(`[Time Range] Today is: ${format(today, 'yyyy-MM-dd (EEEE)')}`);
+
+    // 找到本周的周一
+    const thisWeekMonday = startOfWeek(today, { weekStartsOn: 1 });
+    console.log(`[Time Range] This week Monday: ${format(thisWeekMonday, 'yyyy-MM-dd')}`);
+
+    // 加7天得到下周一
+    const nextMonday = addDays(thisWeekMonday, 7);
     const nextSunday = endOfWeek(nextMonday, { weekStartsOn: 1 });
-    
+
+    console.log(`[Time Range] Next week range: ${format(nextMonday, 'yyyy-MM-dd')} to ${format(nextSunday, 'yyyy-MM-dd')}`);
+
     return {
       start: nextMonday,
       end: nextSunday,
@@ -58,7 +68,7 @@ class BaseScraper {
       startTime: rawEvent.startTime,
       endTime: rawEvent.endTime || null,
       location: this.cleanText(rawEvent.location),
-      price: this.cleanText(rawEvent.price) || 'Free',
+      price: this.normalizePrice(rawEvent.price, rawEvent.title, rawEvent.description),
       description: this.cleanText(rawEvent.description) || '',
       originalUrl: rawEvent.originalUrl,
       source: this.sourceName,
@@ -78,6 +88,43 @@ class BaseScraper {
     }
 
     return normalized;
+  }
+
+  // 规范化价格信息 - 更严格的判断
+  normalizePrice(price, title, description) {
+    // 如果有明确的价格信息
+    if (price) {
+      const priceText = this.cleanText(price).toLowerCase();
+
+      // 明确的免费标识
+      if (/^(free|$0|no charge|complimentary|free admission|free entry)$/i.test(priceText)) {
+        return 'Free';
+      }
+
+      // 包含价格数字
+      if (/\$\d+|\d+\s*usd|price|ticket|admission/i.test(priceText)) {
+        return this.cleanText(price);
+      }
+
+      // 其他情况返回原始价格信息
+      return this.cleanText(price);
+    }
+
+    // 没有价格信息时，从标题和描述中推断
+    const combinedText = ((title || '') + ' ' + (description || '')).toLowerCase();
+
+    // 明确提到免费
+    if (/\bfree\s+(admission|entry|event|show|concert)\b/i.test(combinedText)) {
+      return 'Free';
+    }
+
+    // 明确提到价格或票
+    if (/ticket|admission|price|\$\d+|\d+\s*usd|pay|cost|donation/i.test(combinedText)) {
+      return 'See event page';  // 不确定价格，让用户查看活动页面
+    }
+
+    // 默认情况：价格未知
+    return 'Check event page';
   }
 
   // 清理文本内容
