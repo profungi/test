@@ -87,28 +87,28 @@ class EventScrapeOrchestrator {
     }
   }
 
-  // 并行抓取所有数据源
+  // 并行抓取所有数据源（使用 Promise.allSettled 确保所有爬虫都有机会完成）
   async scrapeAllSources() {
     console.log('🕷️  开始并行抓取数据源...\n');
-    
+
     const scrapePromises = this.scrapers.map(async (scraper) => {
       try {
         console.log(`开始抓取: ${scraper.sourceName}`);
         const events = await scraper.scrape();
-        
+
         // 记录抓取日志
         await this.database.logScrapingResult(
           scraper.sourceName,
           events.length,
           true
         );
-        
+
         console.log(`✅ ${scraper.sourceName}: ${events.length} 个活动`);
-        return events;
-        
+        return { success: true, events, source: scraper.sourceName };
+
       } catch (error) {
         console.error(`❌ ${scraper.sourceName} 抓取失败:`, error.message);
-        
+
         // 记录错误日志
         await this.database.logScrapingResult(
           scraper.sourceName,
@@ -116,43 +116,109 @@ class EventScrapeOrchestrator {
           false,
           error.message
         );
-        
-        return [];
+
+        return { success: false, events: [], source: scraper.sourceName, error: error.message };
       }
     });
-    
-    const results = await Promise.all(scrapePromises);
-    const allEvents = results.flat();
-    
-    console.log(`\n📈 抓取汇总: 总共 ${allEvents.length} 个活动`);
-    console.log(`   - Eventbrite: ${results[0]?.length || 0}`);
-    console.log(`   - SF Station: ${results[1]?.length || 0}`);
-    console.log(`   - DoTheBay: ${results[2]?.length || 0}\n`);
-    
+
+    // 使用 allSettled 确保即使某些爬虫失败，其他的也能继续
+    const results = await Promise.allSettled(scrapePromises);
+
+    // 处理结果
+    const allEvents = [];
+    const sourceStats = {};
+
+    results.forEach((result, index) => {
+      const scraperName = this.scrapers[index].sourceName;
+
+      if (result.status === 'fulfilled') {
+        const data = result.value;
+        allEvents.push(...data.events);
+        sourceStats[scraperName] = {
+          count: data.events.length,
+          success: data.success,
+          error: data.error || null
+        };
+      } else {
+        // Promise 本身被拒绝（极少见情况）
+        console.error(`⚠️  ${scraperName} Promise rejected:`, result.reason);
+        sourceStats[scraperName] = {
+          count: 0,
+          success: false,
+          error: result.reason?.message || 'Unknown error'
+        };
+      }
+    });
+
+    // 生成详细汇总报告
+    console.log(`\n📈 抓取汇总报告:`);
+    console.log(`   总计: ${allEvents.length} 个活动\n`);
+
+    Object.entries(sourceStats).forEach(([source, stats]) => {
+      const statusIcon = stats.success ? '✅' : '❌';
+      console.log(`   ${statusIcon} ${source}: ${stats.count} 个活动`);
+      if (!stats.success && stats.error) {
+        console.log(`      错误: ${stats.error}`);
+      }
+    });
+
+    const successCount = Object.values(sourceStats).filter(s => s.success).length;
+    const totalScrapers = this.scrapers.length;
+
+    console.log(`\n   成功率: ${successCount}/${totalScrapers} (${Math.round(successCount / totalScrapers * 100)}%)\n`);
+
     return allEvents;
   }
 
-  // 去重处理
+  // 去重处理（优化：内存预检查 + 数据库去重）
   async deduplicateEvents(events) {
     console.log('🔄 开始去重处理...');
-    
+
+    // 第一步：内存中快速去重（基于标题+时间+地点）
+    const seen = new Map();
+    const memoryDedupedEvents = [];
+
+    for (const event of events) {
+      // 创建唯一键：标题+开始时间+地点
+      const normalizedTitle = event.title.toLowerCase().trim();
+      const key = `${normalizedTitle}|${event.startTime}|${event.location}`;
+
+      if (!seen.has(key)) {
+        seen.set(key, true);
+        memoryDedupedEvents.push(event);
+      } else {
+        console.log(`  📝 内存去重: ${event.title}`);
+      }
+    }
+
+    console.log(`  ✅ 内存去重完成: ${events.length} → ${memoryDedupedEvents.length}`);
+
+    // 第二步：数据库去重（检查历史记录）
     const uniqueEvents = [];
     const weekRange = this.scrapers[0].getNextWeekRange();
-    
-    for (const event of events) {
+
+    for (const event of memoryDedupedEvents) {
       // 设置周标识
       event.weekIdentifier = weekRange.identifier;
-      
+
       try {
         const saveResult = await this.database.saveEvent(event);
         if (saveResult.saved) {
           uniqueEvents.push(event);
+        } else {
+          console.log(`  📝 数据库去重: ${event.title}`);
         }
       } catch (error) {
         console.warn(`保存活动时出错: ${event.title} - ${error.message}`);
       }
     }
-    
+
+    console.log(`  ✅ 数据库去重完成: ${memoryDedupedEvents.length} → ${uniqueEvents.length}`);
+    console.log(`\n📊 去重统计:`);
+    console.log(`   原始活动: ${events.length}`);
+    console.log(`   内存去重后: ${memoryDedupedEvents.length} (-${events.length - memoryDedupedEvents.length})`);
+    console.log(`   最终唯一活动: ${uniqueEvents.length} (-${memoryDedupedEvents.length - uniqueEvents.length})`);
+
     return uniqueEvents;
   }
 

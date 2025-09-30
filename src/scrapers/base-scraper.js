@@ -135,18 +135,31 @@ class BaseScraper {
     return new Promise(resolve => setTimeout(resolve, ms));
   }
 
-  // 发起HTTP请求
-  async fetchPage(url) {
-    try {
-      await this.delay();
-      console.log(`Fetching: ${url}`);
-      
-      const response = await this.axiosInstance.get(url);
-      return cheerio.load(response.data);
-    } catch (error) {
-      console.error(`Failed to fetch ${url}:`, error.message);
-      throw error;
+  // 发起HTTP请求（带重试机制）
+  async fetchPage(url, maxRetries = 3) {
+    let lastError;
+
+    for (let attempt = 1; attempt <= maxRetries; attempt++) {
+      try {
+        await this.delay();
+        console.log(`Fetching: ${url} (attempt ${attempt}/${maxRetries})`);
+
+        const response = await this.axiosInstance.get(url);
+        return cheerio.load(response.data);
+      } catch (error) {
+        lastError = error;
+        console.warn(`Attempt ${attempt} failed for ${url}: ${error.message}`);
+
+        if (attempt < maxRetries) {
+          const backoffDelay = config.scraping.requestDelay * Math.pow(2, attempt - 1);
+          console.log(`Retrying in ${backoffDelay}ms...`);
+          await this.delay(backoffDelay);
+        }
+      }
     }
+
+    console.error(`Failed to fetch ${url} after ${maxRetries} attempts`);
+    throw lastError;
   }
 
   // 主要的抓取方法，子类需要实现
