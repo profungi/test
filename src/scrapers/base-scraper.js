@@ -63,11 +63,15 @@ class BaseScraper {
 
   // 规范化活动数据
   normalizeEvent(rawEvent, weekRange) {
+    // 清理 location，移除 URL 和时间信息
+    let cleanedLocation = this.cleanText(rawEvent.location);
+    cleanedLocation = this.cleanLocationText(cleanedLocation);
+
     const normalized = {
       title: this.cleanText(rawEvent.title),
       startTime: rawEvent.startTime,
       endTime: rawEvent.endTime || null,
-      location: this.cleanText(rawEvent.location),
+      location: cleanedLocation,
       price: this.normalizePrice(rawEvent.price, rawEvent.title, rawEvent.description),
       description: this.cleanText(rawEvent.description) || '',
       originalUrl: rawEvent.originalUrl,
@@ -115,7 +119,15 @@ class BaseScraper {
       /^(all|music|art|food|sports|comedy|theater)$/i,  // 分类标签
     ];
 
-    const allPatterns = [...invalidPatterns, ...siteSpecificPatterns];
+    // 工作、职业和会议相关的活动（不感兴趣）
+    const workRelatedPatterns = [
+      /\b(job|jobs|career|careers|hiring|recruitment|recruiter)\b/i,
+      /\b(conference|summit|workshop|seminar|webinar|training)\b/i,
+      /\b(networking event|business|corporate|professional)\b/i,
+      /\b(interview|resume|cv|portfolio review)\b/i,
+    ];
+
+    const allPatterns = [...invalidPatterns, ...siteSpecificPatterns, ...workRelatedPatterns];
 
     return allPatterns.some(pattern => pattern.test(title));
   }
@@ -165,6 +177,66 @@ class BaseScraper {
       .replace(/\n/g, ' ')
       .trim()
       .substring(0, 500); // 防止过长
+  }
+
+  // 清理 location 文本，移除 URL 和时间信息
+  cleanLocationText(location) {
+    if (!location) return '';
+
+    // 移除 URL（http:// 或 https:// 开头的链接）
+    location = location.replace(/https?:\/\/[^\s]+/gi, '');
+
+    // 移除括号中的时间信息（如 "(8:30pm)" 或 "(7:00 PM - 10:00 PM)"）
+    location = location.replace(/\([^)]*\d{1,2}:\d{2}\s*(?:am|pm|AM|PM)[^)]*\)/gi, '');
+
+    // 移除开头的 "at " 或 "At "
+    location = location.replace(/^at\s+/i, '');
+
+    // 移除多余的空格
+    location = location.replace(/\s+/g, ' ').trim();
+
+    return location;
+  }
+
+  // 从元素中提取干净的 location，移除嵌套的链接和时间元素
+  extractCleanLocation($, $el, selectors, defaultLocation) {
+    for (const selector of selectors) {
+      const $locationEl = $el.find(selector).first();
+      if ($locationEl.length > 0) {
+        // 如果是属性，直接返回
+        if (selector.includes('attr:')) {
+          const attrName = selector.split(':')[1];
+          const attrValue = $locationEl.attr(attrName);
+          if (attrValue && attrValue.length > 3) {
+            return this.cleanLocationText(attrValue);
+          }
+          continue;
+        }
+
+        // Clone 元素以避免修改原始 DOM
+        const $clone = $locationEl.clone();
+
+        // 移除所有链接元素（<a> 标签）
+        $clone.find('a').remove();
+
+        // 移除时间相关的元素
+        $clone.find('.time, .event-time, .ds-event-time, [class*="time"]').remove();
+
+        // 获取清理后的文本
+        let location = $clone.text().trim();
+
+        if (location && location.length > 3) {
+          // 进一步清理
+          location = this.cleanLocationText(location);
+
+          if (location && location.length > 3) {
+            return location;
+          }
+        }
+      }
+    }
+
+    return defaultLocation || 'San Francisco';
   }
 
   // 检测活动类型

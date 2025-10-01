@@ -164,11 +164,15 @@ class DoTheBayScraper extends BaseScraper {
       if (!startTime) return null;
 
       // 地点 - 从 itemprop="location" 或 .ds-listing-venue 获取
-      const location = $el.find('[itemprop="location"]').attr('content') ||
-                      $el.find('[itemprop="location"]').text().trim() ||
-                      $el.find('.ds-listing-venue').text().trim() ||
-                      $el.find('.ds-venue-name').text().trim() ||
-                      'San Francisco Bay Area';
+      // 首先尝试 content 属性
+      const contentAttr = $el.find('[itemprop="location"]').attr('content');
+      let location;
+      if (contentAttr && contentAttr.length > 3) {
+        location = this.cleanLocationText(contentAttr);
+      } else {
+        const locationSelectors = ['[itemprop="location"]', '.ds-listing-venue', '.ds-venue-name', '.location', '.venue'];
+        location = this.extractCleanLocation($, $el, locationSelectors, 'San Francisco Bay Area');
+      }
 
       // 价格 - 从 .ds-event-price 或相关元素获取
       let price = null;
@@ -440,19 +444,20 @@ class DoTheBayScraper extends BaseScraper {
   convertTo24Hour(time12h) {
     const [time, modifier] = time12h.split(/\s*(AM|PM)/i);
     let [hours, minutes] = time.split(':');
-    
+
     if (!minutes) minutes = '00';
-    
+
     if (hours === '12') {
       hours = '00';
     }
-    
+
     if (modifier && modifier.toUpperCase() === 'PM') {
       hours = parseInt(hours, 10) + 12;
     }
-    
+
     return `${hours.toString().padStart(2, '0')}:${minutes}`;
   }
+
 
   parseGenericDoTheBayEvents($) {
     const events = [];

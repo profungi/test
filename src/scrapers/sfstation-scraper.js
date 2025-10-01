@@ -140,10 +140,8 @@ class SFStationScraper extends BaseScraper {
       }
 
       // 地点 - 从 itemprop="location" 或 .event_place 获取
-      const location = $el.find('[itemprop="location"]').text().trim() ||
-                      $el.find('.event_place').text().trim() ||
-                      $el.find('.location').text().trim() ||
-                      'San Francisco';
+      const locationSelectors = ['[itemprop="location"]', '.event_place', '.location', '.venue'];
+      let location = this.extractCleanLocation($, $el, locationSelectors, 'San Francisco');
 
       // 价格 - 从 itemprop="price" 获取
       const priceContent = $el.find('[itemprop="price"]').attr('content');
@@ -206,6 +204,7 @@ class SFStationScraper extends BaseScraper {
       return new Date(`${dateStr}T12:00:00`).toISOString();
     }
   }
+
 
   extractTitle($, $el) {
     const selectors = [
