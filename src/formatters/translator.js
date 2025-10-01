@@ -37,9 +37,9 @@ class ContentTranslator {
         translatedEvents.push(...batchResults);
       } catch (error) {
         console.error(`翻译批次 ${Math.floor(i / batchSize) + 1} 失败:`, error.message);
-        
+
         // 失败时使用简单翻译
-        const fallbackResults = batch.map(event => this.fallbackTranslation(event));
+        const fallbackResults = await this.fallbackTranslation(batch);
         translatedEvents.push(...fallbackResults);
       }
       
