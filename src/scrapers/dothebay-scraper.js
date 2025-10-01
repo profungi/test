@@ -79,24 +79,20 @@ class DoTheBayScraper extends BaseScraper {
 
   async parseDoTheBayPage($) {
     const events = [];
-    
-    // DoTheBay 常见的事件选择器
+
+    // DoTheBay 使用 ds-listing 和 event-card 类名
     const eventSelectors = [
-      '.event',
-      '.event-item',
-      '.event-card',
-      '.listing',
-      '[data-event-id]',
-      '.calendar-event',
-      '[class*="event"]'
+      '.ds-listing.event-card',
+      '.ds-listing',
+      '[itemprop="event"]'
     ];
 
     for (const selector of eventSelectors) {
       const eventElements = $(selector);
-      
+
       if (eventElements.length > 0) {
         console.log(`Found ${eventElements.length} events with selector: ${selector}`);
-        
+
         eventElements.each((i, element) => {
           try {
             const event = this.parseDoTheBayEvent($, element);
@@ -107,13 +103,14 @@ class DoTheBayScraper extends BaseScraper {
             console.warn(`Failed to parse DoTheBay event ${i}:`, error.message);
           }
         });
-        
+
         break;
       }
     }
 
     // 如果没有找到标准格式，尝试通用解析
     if (events.length === 0) {
+      console.log('No events found with standard selectors, trying generic parsing...');
       events.push(...this.parseGenericDoTheBayEvents($));
     }
 
@@ -122,36 +119,79 @@ class DoTheBayScraper extends BaseScraper {
 
   parseDoTheBayEvent($, element) {
     const $el = $(element);
-    
-    // 标题
-    const title = this.extractTitle($, $el);
-    if (!title) return null;
 
-    // 时间
-    const timeInfo = this.extractTime($, $el);
-    if (!timeInfo.startTime) return null;
+    try {
+      // DoTheBay 使用 schema.org 和自定义类
+      // 标题 - 从 itemprop="name" 或 .ds-listing-event-title-text 获取
+      const title = $el.find('[itemprop="name"]').text().trim() ||
+                    $el.find('.ds-listing-event-title-text').text().trim() ||
+                    $el.find('.ds-listing-event-title').text().trim();
+      if (!title || title.length < 3) return null;
 
-    // 地点
-    const location = this.extractLocation($, $el);
-    if (!location) return null;
+      // URL - 从 itemprop="url" 或第一个链接获取
+      let originalUrl = $el.find('a[itemprop="url"]').attr('href') ||
+                        $el.find('.ds-listing-event-title').attr('href') ||
+                        $el.find('a').first().attr('href');
+      if (!originalUrl) return null;
 
-    // URL
-    const originalUrl = this.extractUrl($, $el);
-    if (!originalUrl) return null;
+      // 确保 URL 是完整的
+      if (originalUrl.startsWith('/')) {
+        originalUrl = `https://dothebay.com${originalUrl}`;
+      }
 
-    // 价格和描述
-    const price = this.extractPrice($, $el);
-    const description = this.extractDescription($, $el);
+      // 时间 - 从 .ds-event-time 或 itemprop 获取
+      const startDateAttr = $el.find('[itemprop="startDate"]').attr('content');
+      const timeText = $el.find('.ds-event-time').text().trim() ||
+                      $el.find('.ds-listing-event-time').text().trim();
 
-    return {
-      title,
-      startTime: timeInfo.startTime,
-      endTime: timeInfo.endTime,
-      location,
-      price,
-      description,
-      originalUrl
-    };
+      let startTime;
+      if (startDateAttr) {
+        // 使用 ISO 格式的时间
+        startTime = new Date(startDateAttr).toISOString();
+      } else if (timeText) {
+        // 尝试解析时间文本
+        const parsed = this.parseTimeText(timeText);
+        startTime = parsed.startTime;
+      }
+
+      if (!startTime) return null;
+
+      // 地点 - 从 itemprop="location" 或 .ds-listing-venue 获取
+      const location = $el.find('[itemprop="location"]').attr('content') ||
+                      $el.find('[itemprop="location"]').text().trim() ||
+                      $el.find('.ds-listing-venue').text().trim() ||
+                      $el.find('.ds-venue-name').text().trim() ||
+                      'San Francisco Bay Area';
+
+      // 价格 - 从 .ds-event-price 或相关元素获取
+      let price = null;
+      const priceEl = $el.find('.ds-event-price').text().trim();
+      if (priceEl) {
+        if (priceEl.toLowerCase().includes('free') || priceEl === '$0') {
+          price = 'Free';
+        } else {
+          price = priceEl;
+        }
+      }
+
+      // 描述
+      const description = $el.find('.ds-listing-event-description').text().trim() ||
+                         $el.find('[itemprop="description"]').text().trim() ||
+                         null;
+
+      return {
+        title,
+        startTime,
+        endTime: null,
+        location,
+        price,
+        description,
+        originalUrl
+      };
+    } catch (error) {
+      console.warn('Error parsing DoTheBay event:', error.message);
+      return null;
+    }
   }
 
   extractTitle($, $el) {

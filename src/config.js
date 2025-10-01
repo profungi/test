@@ -46,8 +46,8 @@ const config = {
       enabled: true
     },
     {
-      name: 'sfstation', 
-      baseUrl: 'https://www.sfstation.com/events/',
+      name: 'sfstation',
+      baseUrl: 'https://www.sfstation.com/calendar',
       searchParams: '',
       priority: 1,
       enabled: true

@@ -11,13 +11,9 @@ class SFStationScraper extends BaseScraper {
     const baseUrl = this.sourceConfig.baseUrl;
 
     try {
-      // SF Station 的URL结构: /events/ 显示所有即将到来的活动
-      // 尝试抓取主活动页面和分类页面
+      // SF Station 现在使用 /calendar 页面
       const urls = [
-        baseUrl,  // 主页面
-        baseUrl + '?view=list',  // 列表视图
-        baseUrl + 'this-weekend',  // 本周末
-        baseUrl + 'next-7-days',  // 接下来7天
+        baseUrl,  // 主calendar页面
       ];
 
       for (const url of urls) {
@@ -46,23 +42,19 @@ class SFStationScraper extends BaseScraper {
 
   async parseSFStationPage($) {
     const events = [];
-    
-    // SF Station 常见的事件选择器
+
+    // SF Station 使用 event-wrapper 类名
     const eventSelectors = [
-      '.event-item',
-      '.event-listing',
-      '.event',
-      '[class*="event"]',
-      '.listing-item',
-      '.post'
+      '.event-wrapper',
+      '.events_cont .event-wrapper'
     ];
 
     for (const selector of eventSelectors) {
       const eventElements = $(selector);
-      
+
       if (eventElements.length > 0) {
         console.log(`Found ${eventElements.length} events with selector: ${selector}`);
-        
+
         eventElements.each((i, element) => {
           try {
             const event = this.parseSFStationEvent($, element);
@@ -73,13 +65,14 @@ class SFStationScraper extends BaseScraper {
             console.warn(`Failed to parse SF Station event ${i}:`, error.message);
           }
         });
-        
+
         break;
       }
     }
 
     // 如果没有找到标准格式的事件，尝试通用解析
     if (events.length === 0) {
+      console.log('No events found with standard selectors, trying generic parsing...');
       events.push(...this.parseGenericSFEvents($));
     }
 
@@ -88,36 +81,113 @@ class SFStationScraper extends BaseScraper {
 
   parseSFStationEvent($, element) {
     const $el = $(element);
-    
-    // 标题
-    const title = this.extractTitle($, $el);
-    if (!title) return null;
 
-    // 时间
-    const timeInfo = this.extractTime($, $el);
-    if (!timeInfo.startTime) return null;
+    try {
+      // SF Station 使用 schema.org 结构
+      // 标题 - 从 itemprop="name" 或链接中获取
+      const title = $el.find('[itemprop="name"]').text().trim() ||
+                    $el.find('a[itemprop="url"]').attr('title') ||
+                    $el.find('.event_title a').text().trim();
+      if (!title || title.length < 3) return null;
 
-    // 地点
-    const location = this.extractLocation($, $el);
-    if (!location) return null;
+      // URL - 从 itemprop="url" 或第一个链接获取
+      let originalUrl = $el.find('a[itemprop="url"]').attr('href') ||
+                        $el.find('a').first().attr('href');
+      if (!originalUrl) return null;
 
-    // URL
-    const originalUrl = this.extractUrl($, $el);
-    if (!originalUrl) return null;
+      // 确保 URL 是完整的
+      if (originalUrl.startsWith('/')) {
+        originalUrl = `https://www.sfstation.com${originalUrl}`;
+      } else if (!originalUrl.startsWith('http')) {
+        // 某些链接可能是外部的（如 eventbrite）
+        originalUrl = originalUrl.startsWith('http') ? originalUrl : `https://www.sfstation.com${originalUrl}`;
+      }
 
-    // 价格和描述
-    const price = this.extractPrice($, $el);
-    const description = this.extractDescription($, $el);
+      // 时间 - 从 itemprop="startDate" 和 .event-time 获取
+      const startDate = $el.find('[itemprop="startDate"]').attr('content') ||
+                       $el.find('.event-date').first().attr('content');
+      const timeText = $el.find('.event-time').text().trim() ||
+                      $el.find('.event_time').text().trim();
 
-    return {
-      title,
-      startTime: timeInfo.startTime,
-      endTime: timeInfo.endTime,
-      location,
-      price,
-      description,
-      originalUrl
-    };
+      let startTime;
+      if (startDate) {
+        // 如果有时间文本，合并日期和时间
+        if (timeText) {
+          startTime = this.parseDateTime(startDate, timeText);
+        } else {
+          // 只有日期，使用中午12点作为默认时间
+          startTime = new Date(`${startDate}T12:00:00`).toISOString();
+        }
+      } else {
+        return null; // 没有日期信息，跳过
+      }
+
+      // 地点 - 从 itemprop="location" 或 .event_place 获取
+      const location = $el.find('[itemprop="location"]').text().trim() ||
+                      $el.find('.event_place').text().trim() ||
+                      $el.find('.location').text().trim() ||
+                      'San Francisco';
+
+      // 价格 - 从 itemprop="price" 获取
+      const priceContent = $el.find('[itemprop="price"]').attr('content');
+      let price = null;
+      if (priceContent) {
+        if (priceContent === '0' || priceContent === '') {
+          price = 'Free';
+        } else {
+          price = `$${priceContent}`;
+        }
+      }
+
+      // 描述
+      const description = $el.find('.event_description').text().trim() ||
+                         $el.find('[itemprop="description"]').text().trim() ||
+                         null;
+
+      return {
+        title,
+        startTime,
+        endTime: null,
+        location,
+        price,
+        description,
+        originalUrl
+      };
+    } catch (error) {
+      console.warn('Error parsing SF Station event:', error.message);
+      return null;
+    }
+  }
+
+  parseDateTime(dateStr, timeStr) {
+    try {
+      // dateStr 格式: "2025-10-01"
+      // timeStr 格式: "7:30pm" 或 "12noon - 5pm" 等
+
+      // 提取第一个时间
+      const timeMatch = timeStr.match(/(\d{1,2}):?(\d{2})?\s*(am|pm|noon)?/i);
+      if (timeMatch) {
+        let hours = parseInt(timeMatch[1]);
+        const minutes = timeMatch[2] ? parseInt(timeMatch[2]) : 0;
+        const period = timeMatch[3] ? timeMatch[3].toLowerCase() : '';
+
+        if (period === 'pm' && hours !== 12) {
+          hours += 12;
+        } else if (period === 'am' && hours === 12) {
+          hours = 0;
+        } else if (period === 'noon') {
+          hours = 12;
+        }
+
+        const dateTime = new Date(`${dateStr}T${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:00`);
+        return dateTime.toISOString();
+      }
+
+      // 如果无法解析时间，使用中午12点
+      return new Date(`${dateStr}T12:00:00`).toISOString();
+    } catch (error) {
+      return new Date(`${dateStr}T12:00:00`).toISOString();
+    }
   }
 
   extractTitle($, $el) {
