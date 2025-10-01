@@ -11,25 +11,28 @@ class SFStationScraper extends BaseScraper {
     const baseUrl = this.sourceConfig.baseUrl;
 
     try {
-      // SF Station 现在使用 /calendar 页面
-      const urls = [
-        baseUrl,  // 主calendar页面
-      ];
+      // SF Station 使用日期参数来显示特定日期的活动
+      // 生成下周每一天的日期
+      const dates = this.getWeekDates(weekRange);
 
-      for (const url of urls) {
+      console.log(`Scraping SF Station for dates: ${dates.join(', ')}`);
+
+      for (const dateStr of dates) {
         try {
+          const url = `${baseUrl}?date=${dateStr}`;
           console.log(`Trying SF Station URL: ${url}`);
           const $ = await this.fetchPage(url);
 
           const pageEvents = await this.parseSFStationPage($);
+          console.log(`Found ${pageEvents.length} events for ${dateStr}`);
           events.push(...pageEvents);
 
           if (events.length >= 60) {
             break;
           }
         } catch (error) {
-          console.warn(`Failed to fetch ${url}: ${error.message}`);
-          // 继续尝试下一个URL
+          console.warn(`Failed to fetch ${dateStr}: ${error.message}`);
+          // 继续尝试下一个日期
         }
       }
 
@@ -38,6 +41,20 @@ class SFStationScraper extends BaseScraper {
     }
 
     return events;
+  }
+
+  getWeekDates(weekRange) {
+    const dates = [];
+    const { addDays, format } = require('date-fns');
+    let current = new Date(weekRange.start);
+    const end = new Date(weekRange.end);
+
+    while (current <= end) {
+      dates.push(format(current, 'yyyy-MM-dd'));
+      current = addDays(current, 1);
+    }
+
+    return dates;
   }
 
   async parseSFStationPage($) {

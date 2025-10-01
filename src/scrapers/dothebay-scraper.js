@@ -11,17 +11,16 @@ class DoTheBayScraper extends BaseScraper {
     const baseUrl = this.sourceConfig.baseUrl;
 
     try {
-      // DoTheBay URL结构尝试
-      const urls = [
-        baseUrl,  // 主页面 https://dothebay.com/events
-        baseUrl + '/upcoming',  // 即将到来的活动
-        baseUrl + '?view=list',  // 列表视图
-        'https://dothebay.com/calendar',  // 日历页面
-      ];
+      // DoTheBay 支持相对日期路径
+      // 抓取接下来7天的活动
+      const relativeDates = this.getRelativeDates(weekRange);
 
-      for (const url of urls) {
+      console.log(`Scraping DoTheBay for next ${relativeDates.length} days`);
+
+      for (const dateInfo of relativeDates) {
         try {
-          console.log(`Trying DoTheBay URL: ${url}`);
+          const url = `${baseUrl}/${dateInfo.path}`;
+          console.log(`Trying DoTheBay URL: ${url} (${dateInfo.label})`);
           const $ = await this.fetchPage(url);
           const pageEvents = await this.parseDoTheBayPage($);
 
@@ -34,26 +33,8 @@ class DoTheBayScraper extends BaseScraper {
             break;
           }
         } catch (error) {
-          console.warn(`Failed to fetch ${url}: ${error.message}`);
-          // 继续尝试下一个URL
-        }
-      }
-
-      // 如果主页面没有足够活动，尝试抓取特定日期的页面
-      if (events.length < 30) {
-        const weekDates = this.getWeekDates(weekRange);
-        for (const dateStr of weekDates.slice(0, 3)) {
-          try {
-            const dateUrl = `${baseUrl}/${dateStr}`;
-            console.log(`Trying date-specific URL: ${dateUrl}`);
-            const $date = await this.fetchPage(dateUrl);
-            const dateEvents = await this.parseDoTheBayPage($date);
-            events.push(...dateEvents);
-
-            if (events.length >= 60) break;
-          } catch (e) {
-            console.log(`Date-specific page not available: ${dateStr}`);
-          }
+          console.warn(`Failed to fetch ${dateInfo.path}: ${error.message}`);
+          // 继续尝试下一个日期
         }
       }
 
@@ -62,6 +43,32 @@ class DoTheBayScraper extends BaseScraper {
     }
 
     return events;
+  }
+
+  getRelativeDates(weekRange) {
+    // DoTheBay 支持 /events/YYYY/M/D 格式的日期路径
+    const { addDays, format } = require('date-fns');
+    const startDate = new Date(weekRange.start);
+    const endDate = new Date(weekRange.end);
+
+    const dates = [];
+    let currentDate = new Date(startDate);
+
+    while (currentDate <= endDate) {
+      const year = format(currentDate, 'yyyy');
+      const month = format(currentDate, 'M');
+      const day = format(currentDate, 'd');
+
+      dates.push({
+        path: `${year}/${month}/${day}`,
+        label: format(currentDate, 'yyyy-MM-dd'),
+        date: new Date(currentDate)
+      });
+
+      currentDate = addDays(currentDate, 1);
+    }
+
+    return dates;
   }
 
   getWeekDates(weekRange) {
