@@ -144,11 +144,11 @@ const config = {
 
 #湾区生活 #旧金山 #硅谷 #活动推荐 #周末去哪儿`,
     
-    eventTemplate: `📅 {title}
+    eventTemplate: `{title}
 🕒 {time}
 📍 {location}
 💰 {price}
-📝 {description}
+✨ {description}
 🔗 {link}
 `,
   },
