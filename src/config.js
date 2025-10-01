@@ -63,12 +63,14 @@ const config = {
 
   // 活动类型优先级
   eventTypePriority: {
-    market: 10,
-    fair: 10,
-    festival: 10,
-    free: 7,    // 免费活动优先级提高到7
-    food: 7,
-    music: 7,
+    market: 10,      // 市集类活动最高优先级
+    fair: 10,        // 集市/展会
+    festival: 10,    // 节日庆典
+    free: 9,         // 免费活动优先级提高到9
+    food: 6,         // 美食活动
+    music: 4,        // 音乐活动优先级降低到4
+    art: 5,          // 艺术活动
+    tech: 5,         // 科技活动
     default: 3
   },
 

@@ -61,13 +61,19 @@ class AIEventClassifier {
     const messages = [
       {
         role: 'system',
-        content: `You are an expert event classifier for Bay Area events. 
+        content: `You are an expert event classifier for Bay Area events.
         Classify events based on these priority categories (highest to lowest):
-        1. market/fair/festival (priority 10)
-        2. food/music (priority 7) 
-        3. free events (priority 5)
-        4. other events (priority 3)
-        
+        1. market/fair/festival - Large community events (priority 10)
+        2. free events - Any free admission events (priority 9)
+        3. food events - Dining, tastings, food festivals (priority 6)
+        4. art events - Galleries, exhibitions (priority 5)
+        5. tech events - Tech meetups, conferences (priority 5)
+        6. music events - Concerts, shows (priority 4)
+        7. other events (priority 3)
+
+        IMPORTANT: Prioritize large-scale public events (markets, fairs, festivals) and free events.
+        Music concerts should generally be lower priority unless they are major festivals.
+
         Also identify if events are relevant to Chinese-speaking community in Bay Area.
         Return valid JSON only.`
       },
@@ -126,7 +132,7 @@ Return JSON in this exact format:
   "events": [
     {
       "id": 0,
-      "category": "market|fair|festival|food|music|free|other",
+      "category": "market|fair|festival|food|music|free|art|tech|other",
       "confidence": 0.8,
       "chineseRelevant": true|false,
       "reasoning": "Brief explanation of classification"
@@ -134,42 +140,66 @@ Return JSON in this exact format:
   ]
 }
 
-Classification rules:
-- "market": farmers markets, artisan markets, craft fairs
-- "fair": trade fairs, expos, community fairs
-- "festival": cultural festivals, music festivals, food festivals
-- "food": restaurant events, food tastings, dining experiences
-- "music": concerts, live music, DJ events
-- "free": any free events regardless of category
-- "other": everything else
+Classification rules (in priority order):
+1. "market" (priority 10): farmers markets, artisan markets, craft fairs, vendor markets
+2. "fair" (priority 10): trade fairs, expos, community fairs, outdoor fairs
+3. "festival" (priority 10): cultural festivals, street festivals, celebration events, large public gatherings
+4. "free" (priority 9): ANY event with free admission - this is HIGH priority!
+5. "food" (priority 6): restaurant events, food tastings, wine/beer tastings, dining experiences
+6. "art" (priority 5): gallery openings, art exhibitions, museum events
+7. "tech" (priority 5): tech meetups, startup events, coding workshops
+8. "music" (priority 4): concerts, live music, DJ shows, club events (lower priority)
+9. "other" (priority 3): everything else
 
-Mark "chineseRelevant: true" if the event would likely appeal to Chinese-speaking residents (cultural events, popular venues, family-friendly activities, etc.)
+IMPORTANT NOTES:
+- If an event is FREE, classify it as "free" regardless of other categories
+- Large public events (markets/fairs/festivals) get highest priority
+- Regular music concerts are LOWER priority unless part of a major festival
+- Prioritize events with broad community appeal over niche performances
+
+Mark "chineseRelevant: true" if the event would likely appeal to Chinese-speaking residents (cultural events, popular venues, family-friendly activities, food events, etc.)
 `;
   }
 
   fallbackClassification(event) {
     // 基础分类逻辑作为AI失败时的后备
     const title = (event.title + ' ' + (event.description || '')).toLowerCase();
-    
+
     let eventType = 'other';
     let priority = config.eventTypePriority.default;
 
-    // 简单关键词匹配
-    if (/market|farmer|artisan|craft|vendor/i.test(title)) {
-      eventType = 'market';
-      priority = config.eventTypePriority.market;
-    } else if (/fair|expo|festival|fest|celebration/i.test(title)) {
-      eventType = 'festival';
-      priority = config.eventTypePriority.festival;
-    } else if (/food|dining|restaurant|culinary|taste|wine|beer/i.test(title)) {
-      eventType = 'food';
-      priority = config.eventTypePriority.food;
-    } else if (/music|concert|band|dj|performance|show/i.test(title)) {
-      eventType = 'music';
-      priority = config.eventTypePriority.music;
-    } else if (/free|complimentary|no cost/i.test(title) || (event.price && /free|$0/i.test(event.price))) {
+    // 简单关键词匹配 - 按优先级顺序检查
+    // 先检查是否免费（最高优先级之一）
+    if (/free|complimentary|no cost/i.test(title) || (event.price && /free|$0/i.test(event.price))) {
       eventType = 'free';
       priority = config.eventTypePriority.free;
+    }
+    // 检查大型活动（最高优先级）
+    else if (/market|farmer|artisan|craft|vendor/i.test(title)) {
+      eventType = 'market';
+      priority = config.eventTypePriority.market;
+    } else if (/fair|expo/i.test(title)) {
+      eventType = 'fair';
+      priority = config.eventTypePriority.fair;
+    } else if (/festival|fest|celebration|carnival/i.test(title)) {
+      eventType = 'festival';
+      priority = config.eventTypePriority.festival;
+    }
+    // 中等优先级
+    else if (/food|dining|restaurant|culinary|taste|wine|beer/i.test(title)) {
+      eventType = 'food';
+      priority = config.eventTypePriority.food;
+    } else if (/art|gallery|museum|exhibition/i.test(title)) {
+      eventType = 'art';
+      priority = config.eventTypePriority.art;
+    } else if (/tech|startup|coding|developer|hackathon/i.test(title)) {
+      eventType = 'tech';
+      priority = config.eventTypePriority.tech;
+    }
+    // 音乐活动优先级较低
+    else if (/music|concert|band|dj|performance|show/i.test(title)) {
+      eventType = 'music';
+      priority = config.eventTypePriority.music;
     }
 
     return {
