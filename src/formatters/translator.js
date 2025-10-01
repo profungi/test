@@ -66,12 +66,13 @@ class ContentTranslator {
 重要规则:
 1. 标题格式：emoji + 英文原标题 + 中文翻译
    示例："🥩 Meat Carnival 肉食嘉年华"
-2. 描述：小红书风格，自然活泼，避免机械感，每个活动要不同，18字以内
-   好的示例："烤肉爱好者的天堂！各种美味等你来"
-   避免："精彩活动不容错过"（太机械）
+2. 描述：必须基于活动的实际内容和描述，小红书风格，自然活泼，每个活动不同，18字以内
+   重要：仔细阅读活动标题和描述，提取具体信息（如活动特色、亮点、主题等）
+   好的示例："金银岛海景烤肉趴！现场live music超嗨"（基于实际内容）
+   避免："精彩活动不容错过"（太笼统机械）
 3. 地点：原样保留，不要翻译
-4. 时间格式：mm/dd(DayAbbr)HH:MMAM/PM
-   示例："10/10(Fri)6:30PM"
+4. 时间格式：mm/dd(DayAbbr),HH:MMAM/PM （注意星期括号后有逗号）
+   示例："10/10(Fri),6:30PM"
 5. 价格：免费写"免费"，有具体价格保留原价格，无信息写"查看链接"
 
 语言风格: 轻松、真实、像朋友推荐活动的感觉
@@ -167,22 +168,23 @@ ${eventsData.map(event => `
 格式要求:
 1. title_cn - 格式："emoji + English Title + 中文"
    示例："🥩 Meat Carnival 肉食嘉年华"
-2. description_cn - 小红书风格，自然轻松，每个不同，18字内
-   好："烤肉爱好者的天堂！现场超多美食"
-   差："精彩活动不容错过"（太机械）
+2. description_cn - 基于活动实际描述内容，小红书风格，18字内
+   关键：从活动描述中提取具体信息（如活动内容、特色、亮点）
+   好："海岛烤肉趴配live music！湾区最嗨周末"（基于实际描述）
+   差："精彩活动不容错过"（太笼统）
 3. location_cn - 原样保留地点，不翻译
    示例："Treasure Island San Francisco, CA"
-4. time_cn - 格式：mm/dd(DayAbbr)HH:MMAM/PM （注意没有逗号和空格）
-   示例："10/10(Fri)6:30PM"
+4. time_cn - 格式：mm/dd(DayAbbr),HH:MMAM/PM （星期括号后有逗号）
+   示例："10/10(Fri),6:30PM"
 5. price_cn - 免费写"免费"，有价格就写，无信息写"查看链接"
    示例："$25-50" 或 "免费" 或 "查看链接"
 
 示例:
-输入标题: "Meat Carnival at Treasure Island"
+输入: "Meat Carnival at Treasure Island - BBQ, music, bay views"
 输出 title_cn: "🥩 Meat Carnival 肉食嘉年华"
-输出 description_cn: "海岛烤肉趴！各种美味肉类等你来"
+输出 description_cn: "海景BBQ派对配live music！氛围绝了"
 输出 location_cn: "Treasure Island San Francisco, CA"
-输出 time_cn: "10/10(Fri)6:30PM"
+输出 time_cn: "10/10(Fri),6:30PM"
 输出 price_cn: "查看链接"`;
   }
 
@@ -361,11 +363,11 @@ ${eventsData.map(event => `
         formattedTime = `${timeMatch[1]}:${timeMatch[2]}${timeMatch[3].toUpperCase()}`;
       }
 
-      // 组合：mm/dd(Day)HH:MMAM/PM （无逗号无空格）
+      // 组合：mm/dd(Day),HH:MMAM/PM （星期括号后有逗号）
       if (formattedDate && day && formattedTime) {
-        return `${formattedDate}(${day})${formattedTime}`;
+        return `${formattedDate}(${day}),${formattedTime}`;
       } else if (formattedDate && formattedTime) {
-        return `${formattedDate}${formattedTime}`;
+        return `${formattedDate},${formattedTime}`;
       }
 
       // 如果解析失败，返回原始值
@@ -413,13 +415,38 @@ ${eventsData.map(event => `
   }
 
   generateSimpleDescription(event) {
-    // 小红书风格描述 - 自然轻松，避免机械感
+    // 小红书风格描述 - 尝试从标题和描述中提取具体信息
     const title = (event.title || '').toLowerCase();
+    const description = (event.description || event.description_preview || '').toLowerCase();
+    const location = (event.location || '').toLowerCase();
     const type = event.event_type;
 
-    // 根据标题关键词生成更具体、更自然的描述
+    // 组合多个关键词生成更贴近活动的描述
+    let keywords = [];
+
+    // 从标题和描述中提取关键信息
+    if (title.includes('meat') || description.includes('bbq')) keywords.push('烤肉');
+    if (title.includes('music') || description.includes('live') || description.includes('band')) keywords.push('现场音乐');
+    if (title.includes('carnival') || title.includes('festival')) keywords.push('嘉年华');
+    if (location.includes('island') || location.includes('beach')) keywords.push('海景');
+    if (title.includes('wine') || title.includes('beer')) keywords.push('美酒');
+    if (description.includes('food') || description.includes('dining')) keywords.push('美食');
+    if (title.includes('art') || description.includes('exhibition')) keywords.push('艺术');
+    if (title.includes('night') || title.includes('evening')) keywords.push('夜间');
+    if (title.includes('outdoor') || description.includes('outdoor')) keywords.push('户外');
+
+    // 根据关键词组合生成描述
+    if (keywords.length >= 2) {
+      const combo = keywords.slice(0, 2).join('+');
+      if (combo.includes('烤肉') && combo.includes('现场音乐')) return '烤肉派对配live music！氛围绝了';
+      if (combo.includes('海景') && combo.includes('烤肉')) return '海景烤肉趴！边吃边看海超惬意';
+      if (combo.includes('美食') && combo.includes('现场音乐')) return '美食配音乐！周末最佳选择';
+      if (combo.includes('户外') && combo.includes('嘉年华')) return '户外嘉年华！阳光美食一次满足';
+    }
+
+    // 单关键词具体描述
     if (title.includes('carnival')) return '超嗨嘉年华！美食游戏一站式体验';
-    if (title.includes('meat')) return '肉食爱好者天堂！各种烤肉管够';
+    if (title.includes('meat') || title.includes('bbq')) return '肉食爱好者天堂！各种烤肉管够';
     if (title.includes('festival')) return '节日氛围拉满！带上朋友一起来';
     if (title.includes('market')) return '周末逛市集！淘到好物心情好';
     if (title.includes('food')) return '吃货必打卡！美味多到选择困难';
