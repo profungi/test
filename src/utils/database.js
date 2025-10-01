@@ -129,40 +129,50 @@ class EventDatabase {
   async isDuplicate(event) {
     return new Promise((resolve, reject) => {
       const normalizedTitle = this.normalizeTitle(event.title);
-      
+
       const query = `
-        SELECT title, normalized_title, start_time, location 
-        FROM events 
-        WHERE week_identifier = ? 
+        SELECT title, normalized_title, start_time, location
+        FROM events
+        WHERE week_identifier = ?
         AND location = ?
         AND ABS(julianday(start_time) - julianday(?)) < ?
       `;
-      
+
       const timeWindowDays = config.deduplication.timeWindowHours / 24;
-      
+
       this.db.all(query, [
-        event.weekIdentifier, 
-        event.location, 
-        event.startTime, 
+        event.weekIdentifier,
+        event.location,
+        event.startTime,
         timeWindowDays
       ], (err, rows) => {
         if (err) {
           reject(err);
           return;
         }
-        
+
+        if (rows.length === 0) {
+          resolve(false);
+          return;
+        }
+
+        // console.log(`[DB Dedup] Checking "${event.title}" against ${rows.length} existing events`);
+
         for (const row of rows) {
           const similarity = this.calculateStringSimilarity(
-            normalizedTitle, 
+            normalizedTitle,
             row.normalized_title
           );
-          
+
+          // console.log(`  Similarity with "${row.title}": ${similarity.toFixed(2)}`);
+
           if (similarity >= config.deduplication.titleSimilarityThreshold) {
+            console.log(`[DB Dedup] Duplicate found: "${event.title}" matches "${row.title}" (similarity: ${similarity.toFixed(2)})`);
             resolve(true);
             return;
           }
         }
-        
+
         resolve(false);
       });
     });

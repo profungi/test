@@ -82,12 +82,42 @@ class BaseScraper {
       return null;
     }
 
+    // 过滤无效的标题（网站UI元素）
+    if (this.isInvalidTitle(normalized.title)) {
+      return null;
+    }
+
     // 验证时间范围
     if (!this.isValidEventTime(normalized.startTime, weekRange)) {
       return null;
     }
 
     return normalized;
+  }
+
+  // 检查是否是无效的标题（网站UI元素，而非真正的活动）
+  isInvalidTitle(title) {
+    const invalidPatterns = [
+      /^(buy tickets?|get tickets?|tickets?)$/i,
+      /^(add event|add to calendar|my events?)$/i,
+      /^(login|sign in|sign up|register)$/i,
+      /^(share|follow|subscribe)$/i,
+      /^(search|filter|view all|see all)$/i,
+      /^(home|about|contact|help)$/i,
+      /^(menu|navigation)$/i,
+      /^[a-z\s]{1,3}$/i,  // 太短的标题（1-3个字符）
+      /^\s*$/,  // 空白
+    ];
+
+    // 特定网站的UI元素
+    const siteSpecificPatterns = [
+      /oakland arena tix/i,
+      /^(all|music|art|food|sports|comedy|theater)$/i,  // 分类标签
+    ];
+
+    const allPatterns = [...invalidPatterns, ...siteSpecificPatterns];
+
+    return allPatterns.some(pattern => pattern.test(title));
   }
 
   // 规范化价格信息 - 更严格的判断
