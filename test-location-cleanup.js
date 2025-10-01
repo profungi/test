@@ -17,7 +17,7 @@ const testCases = [
   {
     name: 'SF Station format with URL and time',
     input: 'at The Midway https://www.sfstation.com/the-midway-b38984166 (8:30pm) 900 Marin Street San Francisco, CA',
-    expected: 'at The Midway 900 Marin Street San Francisco, CA'
+    expected: 'The Midway 900 Marin Street San Francisco, CA'
   },
   {
     name: 'Location with time range',
@@ -38,6 +38,16 @@ const testCases = [
     name: 'Multiple URLs',
     input: 'Venue Name http://url1.com https://url2.com (10:00AM)',
     expected: 'Venue Name'
+  },
+  {
+    name: 'Location with "at" prefix',
+    input: 'at Golden Gate Park San Francisco',
+    expected: 'Golden Gate Park San Francisco'
+  },
+  {
+    name: 'Location with "At" prefix (capitalized)',
+    input: 'At The Warfield Theater 982 Market St',
+    expected: 'The Warfield Theater 982 Market St'
   }
 ];
 
