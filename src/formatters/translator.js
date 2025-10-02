@@ -37,9 +37,9 @@ class ContentTranslator {
         translatedEvents.push(...batchResults);
       } catch (error) {
         console.error(`翻译批次 ${Math.floor(i / batchSize) + 1} 失败:`, error.message);
-        
+
         // 失败时使用简单翻译
-        const fallbackResults = batch.map(event => this.fallbackTranslation(event));
+        const fallbackResults = await this.fallbackTranslation(batch);
         translatedEvents.push(...fallbackResults);
       }
       
@@ -55,21 +55,29 @@ class ContentTranslator {
 
   async translateEventBatch(events) {
     const prompt = this.buildTranslationPrompt(events);
-    
+
     const messages = [
       {
         role: 'system',
         content: `你是专业的活动内容翻译和编辑专家，专门为小红书平台创作内容。
-        
-        翻译要求:
-        1. 标题: 吸引人，不超过50字符，适合小红书风格
-        2. 描述: 简洁有趣，18字以内，突出亮点
-        3. 地点: 翻译地名但保留英文原名便于查找
-        4. 时间: 使用中文表达，清晰明了
-        5. 价格: 保留美元符号，添加中文说明
-        
-        语言风格: 活泼、年轻化、适合湾区华人社区
-        返回有效的JSON格式。`
+
+你的任务是将英文活动信息处理成适合小红书发布的格式。
+
+重要规则:
+1. 标题格式：emoji + 英文原标题 + 中文翻译
+   示例："🥩 Meat Carnival 肉食嘉年华"
+2. 描述：必须基于活动的实际内容和描述，小红书风格，自然活泼，每个活动不同，18字以内
+   重要：仔细阅读活动标题和描述，提取具体信息（如活动特色、亮点、主题等）
+   好的示例："金银岛海景烤肉趴！现场live music超嗨"（基于实际内容）
+   避免："精彩活动不容错过"（太笼统机械）
+3. 地点：原样保留，不要翻译
+4. 时间格式：mm/dd(DayAbbr),HH:MMAM/PM （注意星期括号后有逗号）
+   示例："10/10(Fri),6:30PM"
+5. 价格：免费写"免费"，有具体价格保留原价格，无信息写"查看链接"
+
+语言风格: 轻松、真实、像朋友推荐活动的感觉
+
+CRITICAL: 返回纯JSON，不要markdown标记。`
       },
       {
         role: 'user',
@@ -87,7 +95,18 @@ class ContentTranslator {
       console.log(`⚠️  Fallback provider used. Original: ${response.originalProvider}`);
     }
 
-    const aiResult = JSON.parse(response.content);
+    // 清理可能的markdown代码块标记
+    let cleanedContent = response.content.trim();
+    if (cleanedContent.startsWith('```json')) {
+      cleanedContent = cleanedContent.replace(/^```json\s*/, '').replace(/```\s*$/, '');
+    } else if (cleanedContent.startsWith('```')) {
+      cleanedContent = cleanedContent.replace(/^```\s*/, '').replace(/```\s*$/, '');
+    }
+
+    // 调试日志
+    console.log('🔍 AI Response (first 500 chars):', cleanedContent.substring(0, 500));
+
+    const aiResult = JSON.parse(cleanedContent);
     
     // 将翻译结果映射回原始事件
     return events.map((event, index) => {
@@ -113,49 +132,60 @@ class ContentTranslator {
     const eventsData = events.map((event, index) => ({
       id: index,
       title: event.title,
-      description: event.description_preview || '',
+      description: event.description_preview || event.description || '',
       location: event.location,
       time_display: event.time_display,
       price: event.price,
       event_type: event.event_type
     }));
 
-    return `
-请翻译并优化以下湾区活动信息，适合小红书发布:
+    return `处理以下湾区活动信息为小红书格式。每个活动的描述必须独特且自然。
 
+活动列表:
 ${eventsData.map(event => `
-活动 ${event.id}:
+【活动 ${event.id}】
 标题: ${event.title}
-描述: ${event.description}
-地点: ${event.location} 
+描述: ${event.description || '(无)'}
+地点: ${event.location}
 时间: ${event.time_display}
-价格: ${event.price}
-类型: ${event.event_type}
-`).join('\n')}
+价格: ${event.price || '(无价格信息)'}
+`).join('\n---\n')}
 
-请返回以下JSON格式:
+返回JSON格式（不要markdown）:
 {
   "events": [
     {
       "id": 0,
-      "title_cn": "吸引人的中文标题（50字内）",
-      "description_cn": "简洁描述（18字内）",
-      "location_cn": "地点中文名 (English Name)",
-      "time_cn": "周六 12/25 下午7点",
-      "price_cn": "$45-85 (约¥315-595)",
-      "highlight": "活动亮点或特色"
+      "title_cn": "English Title + 中文翻译",
+      "description_cn": "小红书风格描述",
+      "location_cn": "原地点不翻译",
+      "time_cn": "mm/dd,(Day),HH:MMAM/PM",
+      "price_cn": "价格或免费或查看链接"
     }
   ]
 }
 
-翻译指南:
-1. 标题要有吸引力，符合小红书风格
-2. 描述突出最大亮点，控制在18字内
-3. 地点保留英文方便导航
-4. 时间用中文表达习惯
-5. 价格添加人民币参考(1美元≈7元)
-6. 突出对华人社区的吸引点
-`;
+格式要求:
+1. title_cn - 格式："emoji + English Title + 中文"
+   示例："🥩 Meat Carnival 肉食嘉年华"
+2. description_cn - 基于活动实际描述内容，小红书风格，18字内
+   关键：从活动描述中提取具体信息（如活动内容、特色、亮点）
+   好："海岛烤肉趴配live music！湾区最嗨周末"（基于实际描述）
+   差："精彩活动不容错过"（太笼统）
+3. location_cn - 原样保留地点，不翻译
+   示例："Treasure Island San Francisco, CA"
+4. time_cn - 格式：mm/dd(DayAbbr),HH:MMAM/PM （星期括号后有逗号）
+   示例："10/10(Fri),6:30PM"
+5. price_cn - 免费写"免费"，有价格就写，无信息写"查看链接"
+   示例："$25-50" 或 "免费" 或 "查看链接"
+
+示例:
+输入: "Meat Carnival at Treasure Island - BBQ, music, bay views"
+输出 title_cn: "🥩 Meat Carnival 肉食嘉年华"
+输出 description_cn: "海景BBQ派对配live music！氛围绝了"
+输出 location_cn: "Treasure Island San Francisco, CA"
+输出 time_cn: "10/10(Fri),6:30PM"
+输出 price_cn: "查看链接"`;
   }
 
   // 简单后备翻译方法
@@ -164,12 +194,12 @@ ${eventsData.map(event => `
   }
 
   createFallbackTranslation(event) {
-    // 基础翻译逻辑
-    const titleCn = this.translateTitle(event.title);
-    const locationCn = this.translateLocation(event.location);
-    const timeCn = this.translateTime(event.time_display);
-    const priceCn = this.translatePrice(event.price);
-    
+    // 基础翻译逻辑 - 新格式
+    const titleCn = this.translateTitleMixed(event.title);
+    const locationCn = event.location; // 保持原样
+    const timeCn = this.formatTimeNew(event.time_display);
+    const priceCn = this.formatPriceNew(event.price);
+
     return {
       ...event,
       title_cn: titleCn,
@@ -182,126 +212,263 @@ ${eventsData.map(event => `
     };
   }
 
-  translateTitle(title) {
-    if (!title) return '活动详情';
-    
-    // 简单的关键词翻译
+  translateTitleMixed(title) {
+    if (!title) return 'Event 活动';
+
+    // 保留英文原标题 + 添加中文翻译
     const translations = {
+      'carnival': '嘉年华',
       'market': '市集',
       'farmers market': '农夫市集',
-      'festival': '节庆',
+      'festival': '节日',
       'music festival': '音乐节',
       'food festival': '美食节',
-      'art festival': '艺术节',
       'fair': '博览会',
-      'expo': '展览会',
       'concert': '音乐会',
       'show': '演出',
-      'event': '活动'
+      'night': '之夜',
+      'party': '派对'
     };
-    
-    let translatedTitle = title;
-    Object.entries(translations).forEach(([en, cn]) => {
-      const regex = new RegExp(en, 'gi');
-      translatedTitle = translatedTitle.replace(regex, cn);
-    });
-    
-    return translatedTitle.substring(0, 50);
+
+    let chineseTranslation = '';
+    const lowerTitle = title.toLowerCase();
+
+    // 找匹配的翻译
+    for (const [en, cn] of Object.entries(translations)) {
+      if (lowerTitle.includes(en)) {
+        chineseTranslation = cn;
+        break;
+      }
+    }
+
+    // 添加emoji
+    let emoji = '';
+    if (lowerTitle.includes('meat') || lowerTitle.includes('food')) emoji = '🥩';
+    else if (lowerTitle.includes('music')) emoji = '🎵';
+    else if (lowerTitle.includes('art')) emoji = '🎨';
+    else if (lowerTitle.includes('market')) emoji = '🛒';
+
+    // 格式：emoji + 英文 + 中文
+    if (emoji && chineseTranslation) {
+      return `${emoji} ${title} ${chineseTranslation}`;
+    } else if (emoji) {
+      return `${emoji} ${title}`;
+    } else if (chineseTranslation) {
+      return `${title} ${chineseTranslation}`;
+    }
+    return title;
   }
 
   translateLocation(location) {
     if (!location) return '地点待定';
-    
-    // 常见地点翻译
-    const locationMap = {
+
+    // 如果地点信息很简略（只有城市名），保持原样但添加中文
+    const simpleCities = {
       'San Francisco': '旧金山',
-      'Oakland': '奥克兰', 
+      'Oakland': '奥克兰',
       'Berkeley': '伯克利',
       'San Jose': '圣何塞',
       'Palo Alto': '帕洛阿尔托',
-      'Mountain View': '山景城',
+      'Mountain View': '山景城'
+    };
+
+    // 如果只是一个城市名，直接翻译
+    if (simpleCities[location]) {
+      return `${simpleCities[location]} (${location})`;
+    }
+
+    // 如果包含更详细信息，尝试智能翻译
+    const venueTranslations = {
       'Ferry Building': '渡轮大厦',
       'Union Square': '联合广场',
-      'Golden Gate Park': '金门公园'
+      'Golden Gate Park': '金门公园',
+      'Treasure Island': '金银岛',
+      'Civic Center': '市政中心',
+      'Mission District': '教会区',
+      'Fisherman\'s Wharf': '渔人码头',
+      'Chinatown': '唐人街',
+      'Marina': '码头区',
+      'SOMA': 'SOMA区'
     };
-    
+
     let translatedLocation = location;
-    Object.entries(locationMap).forEach(([en, cn]) => {
+    let hasTranslation = false;
+
+    // 翻译特定场馆
+    Object.entries(venueTranslations).forEach(([en, cn]) => {
       if (location.includes(en)) {
-        translatedLocation = `${cn} (${en})`;
+        translatedLocation = location.replace(en, `${cn} (${en})`);
+        hasTranslation = true;
       }
     });
-    
+
+    // 翻译城市名
+    Object.entries(simpleCities).forEach(([en, cn]) => {
+      if (location.includes(en) && !hasTranslation) {
+        translatedLocation = location.replace(en, `${cn}`);
+      }
+    });
+
     return translatedLocation;
   }
 
-  translateTime(timeDisplay) {
-    if (!timeDisplay) return '时间待定';
-    
+  formatTimeNew(timeDisplay) {
+    // 新格式: mm/dd(DayAbbr)HH:MMAM/PM （无逗号无空格）
+    if (!timeDisplay) return 'TBD';
+
     try {
-      // 简单的时间翻译
-      const dayMap = {
-        'Monday': '周一',
-        'Tuesday': '周二', 
-        'Wednesday': '周三',
-        'Thursday': '周四',
-        'Friday': '周五',
-        'Saturday': '周六',
-        'Sunday': '周日'
+      // 尝试从现有时间字符串中提取信息
+      // 假设输入可能是 "Friday, Oct 10, 6:30 PM" 或类似格式
+
+      const dayAbbr = {
+        'Monday': 'Mon', 'Mon': 'Mon',
+        'Tuesday': 'Tue', 'Tue': 'Tue',
+        'Wednesday': 'Wed', 'Wed': 'Wed',
+        'Thursday': 'Thu', 'Thu': 'Thu',
+        'Friday': 'Fri', 'Fri': 'Fri',
+        'Saturday': 'Sat', 'Sat': 'Sat',
+        'Sunday': 'Sun', 'Sun': 'Sun'
       };
-      
-      let translated = timeDisplay;
-      Object.entries(dayMap).forEach(([en, cn]) => {
-        translated = translated.replace(en, cn);
-      });
-      
-      // 转换AM/PM
-      translated = translated.replace(/(\d{1,2}:\d{2})\s*AM/gi, '上午$1');
-      translated = translated.replace(/(\d{1,2}:\d{2})\s*PM/gi, '下午$1');
-      
-      return translated;
+
+      // 提取日期、星期、时间
+      let day = '';
+      for (const [full, abbr] of Object.entries(dayAbbr)) {
+        if (timeDisplay.includes(full)) {
+          day = abbr;
+          break;
+        }
+      }
+
+      // 提取月/日 (如 "Oct 10" 或 "10/10")
+      const dateMatch = timeDisplay.match(/(\d{1,2})\/(\d{1,2})/);
+      let formattedDate = '';
+      if (dateMatch) {
+        formattedDate = `${dateMatch[1]}/${dateMatch[2]}`;
+      } else {
+        const monthMatch = timeDisplay.match(/(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\s+(\d{1,2})/i);
+        if (monthMatch) {
+          const monthNum = {
+            'Jan': '01', 'Feb': '02', 'Mar': '03', 'Apr': '04',
+            'May': '05', 'Jun': '06', 'Jul': '07', 'Aug': '08',
+            'Sep': '09', 'Oct': '10', 'Nov': '11', 'Dec': '12'
+          };
+          formattedDate = `${monthNum[monthMatch[1]]}/${monthMatch[2]}`;
+        }
+      }
+
+      // 提取时间 (如 "6:30 PM")
+      const timeMatch = timeDisplay.match(/(\d{1,2}):(\d{2})\s*(AM|PM)/i);
+      let formattedTime = '';
+      if (timeMatch) {
+        formattedTime = `${timeMatch[1]}:${timeMatch[2]}${timeMatch[3].toUpperCase()}`;
+      }
+
+      // 组合：mm/dd(Day),HH:MMAM/PM （星期括号后有逗号）
+      if (formattedDate && day && formattedTime) {
+        return `${formattedDate}(${day}),${formattedTime}`;
+      } else if (formattedDate && formattedTime) {
+        return `${formattedDate},${formattedTime}`;
+      }
+
+      // 如果解析失败，返回原始值
+      return timeDisplay;
     } catch (error) {
       return timeDisplay;
     }
   }
 
-  translatePrice(price) {
-    if (!price) return '免费';
-    
-    if (price.toLowerCase().includes('free')) {
+  // 保留旧的翻译方法用于兼容
+  translateTime(timeDisplay) {
+    return this.formatTimeNew(timeDisplay);
+  }
+
+  formatPriceNew(price) {
+    // 新格式：免费/"具体价格"/"查看链接"
+    if (!price) return '查看链接';
+
+    const priceLower = price.toLowerCase();
+
+    // 检查是否免费
+    if (priceLower.includes('free') || priceLower === '$0' || priceLower === '0') {
       return '免费';
     }
-    
-    // 提取美元金额并转换
-    const dollarMatch = price.match(/\$(\d+(?:-\d+)?)/);
+
+    // 如果有具体价格，返回价格
+    const dollarMatch = price.match(/\$\d+/);
     if (dollarMatch) {
-      const dollarAmount = dollarMatch[1];
-      if (dollarAmount.includes('-')) {
-        const [min, max] = dollarAmount.split('-');
-        const minRmb = Math.round(parseInt(min) * 7);
-        const maxRmb = Math.round(parseInt(max) * 7);
-        return `$${dollarAmount} (约¥${minRmb}-${maxRmb})`;
-      } else {
-        const rmb = Math.round(parseInt(dollarAmount) * 7);
-        return `$${dollarAmount} (约¥${rmb})`;
-      }
+      return price; // 返回原始价格如 "$25" 或 "$25-50"
     }
-    
-    return price;
+
+    // 如果包含"check"、"see"等词，说明需要查看
+    if (priceLower.includes('check') || priceLower.includes('see') ||
+        priceLower.includes('visit') || priceLower.includes('page')) {
+      return '查看链接';
+    }
+
+    // 其他情况，如果有内容就返回，否则返回"查看链接"
+    return price.length > 0 ? price : '查看链接';
+  }
+
+  // 保留旧的翻译方法用于兼容
+  translatePrice(price) {
+    return this.formatPriceNew(price);
   }
 
   generateSimpleDescription(event) {
+    // 小红书风格描述 - 尝试从标题和描述中提取具体信息
+    const title = (event.title || '').toLowerCase();
+    const description = (event.description || event.description_preview || '').toLowerCase();
+    const location = (event.location || '').toLowerCase();
     const type = event.event_type;
+
+    // 组合多个关键词生成更贴近活动的描述
+    let keywords = [];
+
+    // 从标题和描述中提取关键信息
+    if (title.includes('meat') || description.includes('bbq')) keywords.push('烤肉');
+    if (title.includes('music') || description.includes('live') || description.includes('band')) keywords.push('现场音乐');
+    if (title.includes('carnival') || title.includes('festival')) keywords.push('嘉年华');
+    if (location.includes('island') || location.includes('beach')) keywords.push('海景');
+    if (title.includes('wine') || title.includes('beer')) keywords.push('美酒');
+    if (description.includes('food') || description.includes('dining')) keywords.push('美食');
+    if (title.includes('art') || description.includes('exhibition')) keywords.push('艺术');
+    if (title.includes('night') || title.includes('evening')) keywords.push('夜间');
+    if (title.includes('outdoor') || description.includes('outdoor')) keywords.push('户外');
+
+    // 根据关键词组合生成描述
+    if (keywords.length >= 2) {
+      const combo = keywords.slice(0, 2).join('+');
+      if (combo.includes('烤肉') && combo.includes('现场音乐')) return '烤肉派对配live music！氛围绝了';
+      if (combo.includes('海景') && combo.includes('烤肉')) return '海景烤肉趴！边吃边看海超惬意';
+      if (combo.includes('美食') && combo.includes('现场音乐')) return '美食配音乐！周末最佳选择';
+      if (combo.includes('户外') && combo.includes('嘉年华')) return '户外嘉年华！阳光美食一次满足';
+    }
+
+    // 单关键词具体描述
+    if (title.includes('carnival')) return '超嗨嘉年华！美食游戏一站式体验';
+    if (title.includes('meat') || title.includes('bbq')) return '肉食爱好者天堂！各种烤肉管够';
+    if (title.includes('festival')) return '节日氛围拉满！带上朋友一起来';
+    if (title.includes('market')) return '周末逛市集！淘到好物心情好';
+    if (title.includes('food')) return '吃货必打卡！美味多到选择困难';
+    if (title.includes('music') || title.includes('concert')) return '现场太燃了！音乐氛围绝绝子';
+    if (title.includes('art') || title.includes('gallery')) return '艺术熏陶来啦！拍照超出片';
+    if (title.includes('night')) return '夜生活开启！氛围感直接拉满';
+    if (title.includes('party')) return '派对时间到！和朋友嗨翻天';
+    if (title.includes('wine') || title.includes('beer')) return '小酌怡情！氛围感满满';
+    if (title.includes('free')) return '免费参加！这么好的机会别错过';
+
+    // 按类型提供自然的默认描述
     const typeDescriptions = {
-      'market': '新鲜好物等你来淘',
-      'festival': '精彩活动不容错过',
-      'food': '美食盛宴味蕾享受',
-      'music': '音乐盛会现场嗨翻',
-      'free': '免费参与快来体验',
-      'art': '艺术盛宴文化熏陶'
+      'market': '周末好去处！逛吃逛吃心情好',
+      'festival': '氛围感拉满！适合全家一起来',
+      'food': '美食天堂！好吃到停不下来',
+      'music': '现场感爆棚！音乐迷别错过',
+      'free': '免费哦！这种好事必须安排',
+      'art': '文艺青年集合！拍照很出片',
+      'fair': '有意思的活动！值得去看看'
     };
-    
-    return typeDescriptions[type] || '精彩活动等你参与';
+
+    return typeDescriptions[type] || '有趣的活动！周末可以安排上';
   }
 
   async delay(ms) {

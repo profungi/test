@@ -23,7 +23,7 @@ const config = {
       // Google Gemini配置
       gemini: {
         key: process.env.GEMINI_API_KEY,
-        model: 'gemini-1.5-flash',
+        model: 'gemini-2.0-flash-exp',
         maxTokens: 2048
       },
       
@@ -139,16 +139,13 @@ const config = {
 
 {events_list}
 
-📍 更多活动信息请点击链接
-🔖 记得提前购票哦！
-
 #湾区生活 #旧金山 #硅谷 #活动推荐 #周末去哪儿`,
     
-    eventTemplate: `📅 {title}
+    eventTemplate: `{title}
 🕒 {time}
 📍 {location}
 💰 {price}
-📝 {description}
+✨ {description}
 🔗 {link}
 `,
   },
