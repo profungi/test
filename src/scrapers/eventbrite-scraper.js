@@ -115,68 +115,94 @@ class EventbriteScraper extends BaseScraper {
   }
 
   extractTitle($, $el) {
+    // Eventbrite 使用 h3 或 h2 作为标题
     const selectors = [
+      'h3',
+      'h2',
+      'h1',
       '[data-testid="event-title"]',
       '.event-title',
-      'h3 a',
-      'h2 a',
-      '.card-title',
       '[aria-label*="title"]'
     ];
 
     for (const sel of selectors) {
       const text = $el.find(sel).first().text().trim();
-      if (text) return text;
+      if (text && text.length > 3) return text;
     }
 
     return null;
   }
 
   extractTime($, $el) {
-    const selectors = [
-      '[data-testid="event-datetime"]',
-      '.event-time',
-      '.date-time',
-      'time',
-      '[datetime]'
-    ];
+    // Eventbrite 的时间通常在文本中，如 "Tomorrow • 9:30 PM" 或 "Oct 10 • 8:00 PM"
 
-    for (const sel of selectors) {
-      const $timeEl = $el.find(sel).first();
-      
-      if ($timeEl.length > 0) {
-        // 尝试从datetime属性获取
-        const datetime = $timeEl.attr('datetime');
-        if (datetime) {
-          try {
-            return {
-              startTime: new Date(datetime).toISOString(),
-              endTime: null
-            };
-          } catch (e) {
-            // 继续尝试其他方法
-          }
-        }
-        
-        // 尝试解析文本内容
-        const timeText = $timeEl.text().trim();
-        const parsedTime = this.parseTimeText(timeText);
-        if (parsedTime.startTime) {
-          return parsedTime;
+    // 先尝试找 <time> 标签
+    const $timeEl = $el.find('time').first();
+    if ($timeEl.length > 0) {
+      const datetime = $timeEl.attr('datetime');
+      if (datetime) {
+        try {
+          return {
+            startTime: new Date(datetime).toISOString(),
+            endTime: null
+          };
+        } catch (e) {
+          // 继续
         }
       }
+    }
+
+    // 尝试从卡片的所有文本中找时间
+    const allText = $el.text();
+    const parsedTime = this.parseTimeText(allText);
+    if (parsedTime.startTime) {
+      return parsedTime;
     }
 
     return { startTime: null, endTime: null };
   }
 
   extractLocation($, $el) {
+    // Eventbrite 的地点通常紧跟在时间后面
+    // 从卡片文本中提取，通常格式是 "VENUE_NAME" 在时间下方
+
+    const allText = $el.text();
+
+    // 尝试找所有段落
+    const paragraphs = [];
+    $el.find('p, div').each((i, el) => {
+      const text = $(el).text().trim();
+      if (text && text.length > 2 && text.length < 100) {
+        paragraphs.push(text);
+      }
+    });
+
+    // 查找看起来像地点的文本（不包含时间、价格等）
+    for (const text of paragraphs) {
+      // 跳过包含时间、价格、followers等关键词的文本
+      if (text.match(/\d+:\d+|PM|AM|followers|From \$|Save|Share/i)) {
+        continue;
+      }
+      // 跳过太短或太长的
+      if (text.length < 3 || text.length > 80) {
+        continue;
+      }
+      // 跳过 "online"
+      if (text.toLowerCase() === 'online') {
+        continue;
+      }
+      // 如果包含常见地点词汇，可能是地点
+      if (text.length > 0) {
+        return text;
+      }
+    }
+
+    // 备用方案：尝试标准选择器
     const selectors = [
       '[data-testid="event-location"]',
       '.event-location',
       '.location',
-      '.venue',
-      '[aria-label*="location"]'
+      '.venue'
     ];
 
     for (const sel of selectors) {
@@ -204,19 +230,33 @@ class EventbriteScraper extends BaseScraper {
   }
 
   extractPrice($, $el) {
+    // Eventbrite 价格格式: "From $29.68" 或 "Free"
+
+    const allText = $el.text();
+
+    // 查找 "From $XX.XX" 或 "$XX.XX" 或 "Free"
+    const priceMatch = allText.match(/From \$[\d,]+\.?\d*/i) ||
+                      allText.match(/\$[\d,]+\.?\d+/);
+
+    if (priceMatch) {
+      return priceMatch[0];
+    }
+
+    // 查找 "Free"
+    if (/\bfree\b/i.test(allText)) {
+      return 'Free';
+    }
+
+    // 尝试标准选择器
     const selectors = [
       '.price',
-      '.ticket-price',
       '[data-testid="price"]',
-      '.cost',
-      '[class*="price"]',
-      '[class*="ticket"]'
+      '[class*="price"]'
     ];
 
     for (const sel of selectors) {
       const text = $el.find(sel).first().text().trim();
       if (text) {
-        // 只有明确说Free才返回Free
         if (/^(free|$0\.00|$0)$/i.test(text)) {
           return 'Free';
         }
@@ -224,20 +264,6 @@ class EventbriteScraper extends BaseScraper {
       }
     }
 
-    // 检查是否有免费标识 - 更严格
-    const freeSelectors = ['.free', '[data-testid="free"]'];
-    for (const sel of freeSelectors) {
-      const $freeEl = $el.find(sel);
-      if ($freeEl.length > 0) {
-        const freeText = $freeEl.text().trim().toLowerCase();
-        // 确保真的是说免费，而不是"free shipping"之类
-        if (freeText === 'free' || freeText === 'free admission' || freeText === 'free entry') {
-          return 'Free';
-        }
-      }
-    }
-
-    // 未找到价格信息
     return null;
   }
 
@@ -260,14 +286,90 @@ class EventbriteScraper extends BaseScraper {
   }
 
   parseTimeText(timeText) {
-    // 尝试解析各种时间格式
+    const { addDays } = require('date-fns');
+
+    // Eventbrite 常见格式：
+    // "Tomorrow • 9:30 PM"
+    // "Today • 7:00 PM"
+    // "Oct 10 • 8:00 PM"
+    // "Dec 25, 2024, 7:00 PM"
+
+    // 1. 处理相对日期
+    if (/tomorrow/i.test(timeText)) {
+      const timeMatch = timeText.match(/(\d{1,2}):(\d{2})\s*(AM|PM)/i);
+      if (timeMatch) {
+        const hours = parseInt(timeMatch[1]);
+        const minutes = parseInt(timeMatch[2]);
+        const isPM = timeMatch[3].toUpperCase() === 'PM';
+
+        const tomorrow = addDays(new Date(), 1);
+        let hour24 = hours;
+        if (isPM && hours !== 12) hour24 += 12;
+        if (!isPM && hours === 12) hour24 = 0;
+
+        tomorrow.setHours(hour24, minutes, 0, 0);
+        return {
+          startTime: tomorrow.toISOString(),
+          endTime: null
+        };
+      }
+    }
+
+    if (/today/i.test(timeText)) {
+      const timeMatch = timeText.match(/(\d{1,2}):(\d{2})\s*(AM|PM)/i);
+      if (timeMatch) {
+        const hours = parseInt(timeMatch[1]);
+        const minutes = parseInt(timeMatch[2]);
+        const isPM = timeMatch[3].toUpperCase() === 'PM';
+
+        const today = new Date();
+        let hour24 = hours;
+        if (isPM && hours !== 12) hour24 += 12;
+        if (!isPM && hours === 12) hour24 = 0;
+
+        today.setHours(hour24, minutes, 0, 0);
+        return {
+          startTime: today.toISOString(),
+          endTime: null
+        };
+      }
+    }
+
+    // 2. 处理 "Oct 10 • 8:00 PM" 格式
+    const monthDayTime = timeText.match(/(\w{3})\s+(\d{1,2})\s*[•·]\s*(\d{1,2}):(\d{2})\s*(AM|PM)/i);
+    if (monthDayTime) {
+      try {
+        const month = monthDayTime[1];
+        const day = monthDayTime[2];
+        const hours = parseInt(monthDayTime[3]);
+        const minutes = parseInt(monthDayTime[4]);
+        const isPM = monthDayTime[5].toUpperCase() === 'PM';
+
+        let hour24 = hours;
+        if (isPM && hours !== 12) hour24 += 12;
+        if (!isPM && hours === 12) hour24 = 0;
+
+        const currentYear = new Date().getFullYear();
+        const dateStr = `${month} ${day}, ${currentYear} ${hour24}:${minutes}:00`;
+        const date = new Date(dateStr);
+
+        if (!isNaN(date.getTime())) {
+          return {
+            startTime: date.toISOString(),
+            endTime: null
+          };
+        }
+      } catch (e) {
+        // 继续
+      }
+    }
+
+    // 3. 其他标准格式
     const patterns = [
       // "Dec 25, 2024, 7:00 PM"
       /(\w{3}\s+\d{1,2},\s+\d{4}),?\s+(\d{1,2}:\d{2}\s*(?:AM|PM))/i,
       // "December 25 at 7:00 PM"
       /(\w+\s+\d{1,2})\s+at\s+(\d{1,2}:\d{2}\s*(?:AM|PM))/i,
-      // "Mon, Dec 25 • 7:00 PM"
-      /\w+,\s*(\w{3}\s+\d{1,2})\s*•\s*(\d{1,2}:\d{2}\s*(?:AM|PM))/i
     ];
 
     for (const pattern of patterns) {

@@ -1,5 +1,6 @@
 const axios = require('axios');
 const cheerio = require('cheerio');
+const puppeteer = require('puppeteer');
 const { addDays, startOfWeek, endOfWeek, format, parseISO, isWithinInterval } = require('date-fns');
 const config = require('../config');
 
@@ -10,7 +11,7 @@ class BaseScraper {
     if (!this.sourceConfig) {
       throw new Error(`No configuration found for source: ${sourceName}`);
     }
-    
+
     this.axiosInstance = axios.create({
       timeout: config.scraping.timeout,
       headers: {
@@ -22,6 +23,9 @@ class BaseScraper {
         'Upgrade-Insecure-Requests': '1',
       }
     });
+
+    // Puppeteer browser instance (共享实例以提高性能)
+    this.browser = null;
   }
 
   // 获取下周的时间范围 (周一到周日)
@@ -284,20 +288,83 @@ class BaseScraper {
     return new Promise(resolve => setTimeout(resolve, ms));
   }
 
-  // 发起HTTP请求（带重试机制）
+  // 初始化 Puppeteer browser（如果还没有）
+  async initBrowser() {
+    if (!this.browser) {
+      console.log('Launching Puppeteer browser...');
+      this.browser = await puppeteer.launch({
+        headless: true,
+        args: [
+          '--no-sandbox',
+          '--disable-setuid-sandbox',
+          '--disable-dev-shm-usage',
+          '--disable-accelerated-2d-canvas',
+          '--disable-gpu'
+        ]
+      });
+      console.log('Browser launched successfully');
+    }
+    return this.browser;
+  }
+
+  // 关闭 Puppeteer browser
+  async closeBrowser() {
+    if (this.browser) {
+      console.log('Closing Puppeteer browser...');
+      await this.browser.close();
+      this.browser = null;
+    }
+  }
+
+  // 使用 Puppeteer 抓取页面（可以看到 JavaScript 渲染后的内容）
   async fetchPage(url, maxRetries = 3) {
     let lastError;
 
     for (let attempt = 1; attempt <= maxRetries; attempt++) {
+      let page = null;
       try {
         await this.delay();
-        console.log(`Fetching: ${url} (attempt ${attempt}/${maxRetries})`);
+        console.log(`Fetching with Puppeteer: ${url} (attempt ${attempt}/${maxRetries})`);
 
-        const response = await this.axiosInstance.get(url);
-        return cheerio.load(response.data);
+        const browser = await this.initBrowser();
+        page = await browser.newPage();
+
+        // 设置 User-Agent
+        await page.setUserAgent(config.scraping.userAgent);
+
+        // 设置视口大小
+        await page.setViewport({ width: 1920, height: 1080 });
+
+        // 导航到URL并等待网络空闲
+        await page.goto(url, {
+          waitUntil: 'networkidle2', // 等待网络请求完成
+          timeout: config.scraping.timeout
+        });
+
+        // 额外等待一下确保动态内容加载完成
+        await new Promise(resolve => setTimeout(resolve, 2000));
+
+        // 获取渲染后的HTML
+        const html = await page.content();
+
+        // 关闭页面
+        await page.close();
+
+        // 用 cheerio 解析 HTML
+        return cheerio.load(html);
+
       } catch (error) {
         lastError = error;
         console.warn(`Attempt ${attempt} failed for ${url}: ${error.message}`);
+
+        // 确保页面被关闭
+        if (page) {
+          try {
+            await page.close();
+          } catch (e) {
+            // 忽略关闭错误
+          }
+        }
 
         if (attempt < maxRetries) {
           const backoffDelay = config.scraping.requestDelay * Math.pow(2, attempt - 1);
@@ -319,11 +386,11 @@ class BaseScraper {
   // 公共的抓取入口
   async scrape() {
     console.log(`Starting to scrape ${this.sourceName}...`);
-    
+
     try {
       const weekRange = this.getNextWeekRange();
       console.log(`Target week: ${weekRange.identifier}`);
-      
+
       const rawEvents = await this.scrapeEvents(weekRange);
       const normalizedEvents = [];
 
@@ -336,10 +403,13 @@ class BaseScraper {
 
       console.log(`${this.sourceName}: Found ${normalizedEvents.length} valid events`);
       return normalizedEvents.slice(0, config.scraping.maxEventsPerSource);
-      
+
     } catch (error) {
       console.error(`Error scraping ${this.sourceName}:`, error.message);
       return [];
+    } finally {
+      // 确保关闭浏览器
+      await this.closeBrowser();
     }
   }
 }
