@@ -16,45 +16,44 @@ async function testSinglePage() {
     const weekRange = scraper.getNextWeekRange();
     console.log(`📅 Target week: ${weekRange.identifier}\n`);
 
-    // 只抓取第一页
-    const url = 'https://www.eventbrite.com/d/ca--san-francisco/events/?page=1';
-    console.log(`🌐 Fetching URL: ${url}\n`);
-
-    const $ = await scraper.fetchPage(url);
-
-    // 尝试解析页面
-    const pageEvents = await scraper.parseEventbritePage($);
+    // 使用 scraper.scrapeEvents 而不是直接调用 parseEventbritePage
+    // 这样会进入详情页获取完整信息
+    console.log('🕷️  Starting to scrape events (will fetch detail pages)...\n');
+    const allEvents = await scraper.scrapeEvents(weekRange);
 
     console.log(`\n📊 Results:`);
-    console.log(`   Total events found: ${pageEvents.length}`);
+    console.log(`   Total events scraped: ${allEvents.length}`);
 
-    // 显示前3个活动的详细信息
-    console.log(`\n📝 Sample events (first 3):\n`);
-    pageEvents.slice(0, 3).forEach((event, i) => {
+    // 显示前10个活动的详细信息
+    console.log(`\n📝 Sample events (first 10):\n`);
+    allEvents.slice(0, 10).forEach((event, i) => {
       console.log(`Event ${i + 1}:`);
       console.log(`   Title: ${event.title}`);
       console.log(`   Time: ${event.startTime}`);
       console.log(`   Location: ${event.location}`);
       console.log(`   Price: ${event.price || 'N/A'}`);
-      console.log(`   URL: ${event.originalUrl}`);
+      console.log(`   URL: ${event.originalUrl.substring(0, 80)}...`);
       console.log('');
     });
 
     // 检查问题
     console.log(`\n🔍 Quality Check:`);
-    const defaultLocations = pageEvents.filter(e =>
+    const defaultLocations = allEvents.filter(e =>
       e.location === 'San Francisco Bay Area' || e.location === 'San Francisco'
     );
-    const missingPrice = pageEvents.filter(e => !e.price);
-    const tempTime = pageEvents.filter(e => {
-      const time = new Date(e.startTime);
-      const sevenDaysLater = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000);
-      return Math.abs(time - sevenDaysLater) < 60000; // 1分钟内的差异
-    });
+    const missingPrice = allEvents.filter(e => !e.price);
+    const checkTicketPrice = allEvents.filter(e =>
+      e.price && e.price.includes('Check ticket')
+    );
+    const hasFullAddress = allEvents.filter(e =>
+      e.location && (e.location.match(/\d+\s+[A-Za-z\s]+(Street|St|Avenue|Ave|Boulevard|Blvd|Road|Rd)/i) ||
+                     e.location.includes(','))
+    );
 
-    console.log(`   Events with default location: ${defaultLocations.length}/${pageEvents.length}`);
-    console.log(`   Events without price info: ${missingPrice.length}/${pageEvents.length}`);
-    console.log(`   Events with temporary time: ${tempTime.length}/${pageEvents.length}`);
+    console.log(`   Events with default location: ${defaultLocations.length}/${allEvents.length}`);
+    console.log(`   Events without price info: ${missingPrice.length}/${allEvents.length}`);
+    console.log(`   Events with "Check ticket": ${checkTicketPrice.length}/${allEvents.length}`);
+    console.log(`   Events with full address: ${hasFullAddress.length}/${allEvents.length}`);
 
   } catch (error) {
     console.error('❌ Test failed:', error.message);
