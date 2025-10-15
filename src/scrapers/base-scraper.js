@@ -54,13 +54,39 @@ class BaseScraper {
   // 验证事件时间是否在下周范围内
   isValidEventTime(eventTime, weekRange) {
     try {
-      const eventDate = typeof eventTime === 'string' ? parseISO(eventTime) : eventTime;
-      return isWithinInterval(eventDate, {
-        start: weekRange.start,
-        end: weekRange.end
-      });
+      if (!eventTime) return false;
+
+      // 处理本地时间字符串（不含时区）
+      // 输入格式: "2025-10-06T18:00:00" 或 "2025-10-06T18:00:00.000Z"
+      let eventDate;
+
+      if (typeof eventTime === 'string') {
+        // 如果是本地时间格式（不含Z或时区偏移），直接解析
+        if (!eventTime.includes('Z') && !eventTime.match(/[+-]\d{2}:\d{2}$/)) {
+          // 本地时间，直接创建Date对象（会使用本地时区）
+          eventDate = new Date(eventTime);
+        } else {
+          // ISO格式（含时区），使用parseISO
+          eventDate = parseISO(eventTime);
+        }
+      } else {
+        eventDate = eventTime;
+      }
+
+      // 验证日期是否有效
+      if (isNaN(eventDate.getTime())) {
+        console.warn(`Invalid event time format: ${eventTime}`);
+        return false;
+      }
+
+      // 比较日期（只比较日期部分，不考虑具体时间）
+      const eventDateOnly = new Date(eventDate.getFullYear(), eventDate.getMonth(), eventDate.getDate());
+      const rangeStartOnly = new Date(weekRange.start.getFullYear(), weekRange.start.getMonth(), weekRange.start.getDate());
+      const rangeEndOnly = new Date(weekRange.end.getFullYear(), weekRange.end.getMonth(), weekRange.end.getDate());
+
+      return eventDateOnly >= rangeStartOnly && eventDateOnly <= rangeEndOnly;
     } catch (error) {
-      console.warn(`Invalid event time format: ${eventTime}`);
+      console.warn(`Error validating event time: ${eventTime} - ${error.message}`);
       return false;
     }
   }

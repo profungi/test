@@ -232,27 +232,33 @@ Mark "chineseRelevant: true" if the event would likely appeal to Chinese-speakin
 
   // 选择最佳候选事件
   selectTopCandidates(events, maxCount = config.scraping.totalCandidatesForReview) {
-    const sortedEvents = this.sortEventsByPriority(events);
-    
+    // 首先过滤掉music类型的活动
+    const filteredEvents = events.filter(event => event.eventType !== 'music');
+
+    console.log(`  Filtered out ${events.length - filteredEvents.length} music events`);
+    console.log(`  Remaining events: ${filteredEvents.length}`);
+
+    const sortedEvents = this.sortEventsByPriority(filteredEvents);
+
     // 确保类型多样性
     const selectedEvents = [];
     const typeCount = {};
-    
+
     for (const event of sortedEvents) {
       if (selectedEvents.length >= maxCount) break;
-      
+
       const eventType = event.eventType;
       const currentCount = typeCount[eventType] || 0;
-      
+
       // 限制每种类型的最大数量，确保多样性
       const maxPerType = Math.max(2, Math.floor(maxCount / 4));
-      
+
       if (currentCount < maxPerType || selectedEvents.length < maxCount * 0.8) {
         selectedEvents.push(event);
         typeCount[eventType] = currentCount + 1;
       }
     }
-    
+
     // 如果还没达到目标数量，添加剩余的高优先级事件
     if (selectedEvents.length < maxCount) {
       for (const event of sortedEvents) {
@@ -262,7 +268,9 @@ Mark "chineseRelevant: true" if the event would likely appeal to Chinese-speakin
         }
       }
     }
-    
+
+    console.log(`  Selected ${selectedEvents.length} candidates (excluding music)`);
+
     return selectedEvents.slice(0, maxCount);
   }
 

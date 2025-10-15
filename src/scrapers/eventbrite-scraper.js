@@ -8,45 +8,119 @@ class EventbriteScraper extends BaseScraper {
 
   async scrapeEvents(weekRange) {
     const events = [];
-    const baseUrl = this.sourceConfig.baseUrl + this.sourceConfig.searchParams;
+    const seenUrls = new Set(); // 用于去重
 
     try {
-      // Eventbrite 通常需要多页抓取
-      for (let page = 1; page <= 3; page++) {
-        const url = `${baseUrl}&page=${page}`;
-        const $ = await this.fetchPage(url);
+      // 1. 抓取旧金山的"下周活动"页面
+      console.log('  Scraping San Francisco next week events...');
+      const sfEvents = await this.scrapeEventsFromUrl(
+        this.sourceConfig.baseUrl + this.sourceConfig.searchParams,
+        weekRange,
+        seenUrls,
+        10 // 旧金山10个
+      );
+      events.push(...sfEvents);
 
-        const pageEvents = await this.parseEventbritePage($);
+      // 2. 抓取湾区其他城市的活动
+      const additionalCities = this.sourceConfig.additionalCities || [];
+      if (additionalCities.length > 0) {
+        console.log(`  Scraping other Bay Area cities...`);
 
-        // 对每个事件，访问详情页获取完整信息
-        console.log(`  Fetching details for ${pageEvents.length} events...`);
-        for (let i = 0; i < pageEvents.length && i < 20; i++) { // 限制每页最多20个，避免太慢
-          const event = pageEvents[i];
-          if (event.originalUrl) {
-            try {
-              const detailedEvent = await this.fetchEventDetails(event);
-              events.push(detailedEvent);
-            } catch (error) {
-              console.warn(`  Failed to fetch details for ${event.title}: ${error.message}`);
-              // 如果详情页失败，使用列表页的基本信息
-              events.push(event);
+        for (const city of additionalCities) {
+          if (events.length >= 80) break; // 总数限制增加到80
+
+          try {
+            const cityUrl = `${city.url}?start_date_keyword=next_week`;
+            const maxEvents = city.maxEvents || 8; // 使用配置的数量，默认8个
+            console.log(`    Scraping ${city.name} (max ${maxEvents})...`);
+
+            const cityEvents = await this.scrapeEventsFromUrl(
+              cityUrl,
+              weekRange,
+              seenUrls,
+              maxEvents
+            );
+
+            if (cityEvents.length > 0) {
+              console.log(`    Found ${cityEvents.length} events in ${city.name}`);
+              events.push(...cityEvents);
             }
+          } catch (error) {
+            console.warn(`    Failed to scrape ${city.name}: ${error.message}`);
           }
         }
+      }
 
-        // 如果当前页面没有事件，停止抓取
-        if (pageEvents.length === 0) {
-          break;
-        }
+      // 3. 抓取特定关键词的活动（festival, fair, market等）
+      const additionalSearches = this.sourceConfig.additionalSearches || [];
+      if (additionalSearches.length > 0 && events.length < 80) {
+        console.log(`  Scraping additional searches: ${additionalSearches.join(', ')}`);
 
-        // 达到最大数量限制时停止
-        if (events.length >= 50) {
-          break;
+        for (const keyword of additionalSearches) {
+          if (events.length >= 100) break; // 总数限制增加到100
+
+          try {
+            const searchUrl = `${this.sourceConfig.baseUrl}?q=${encodeURIComponent(keyword)}&start_date_keyword=next_week`;
+            console.log(`    Searching for: ${keyword}`);
+
+            const keywordEvents = await this.scrapeEventsFromUrl(
+              searchUrl,
+              weekRange,
+              seenUrls,
+              8 // 每个关键词最多8个
+            );
+
+            if (keywordEvents.length > 0) {
+              console.log(`    Found ${keywordEvents.length} ${keyword} events`);
+              events.push(...keywordEvents);
+            }
+          } catch (error) {
+            console.warn(`    Failed to search ${keyword}: ${error.message}`);
+          }
         }
       }
 
     } catch (error) {
       console.error(`Error scraping Eventbrite: ${error.message}`);
+    }
+
+    console.log(`  Total Eventbrite events: ${events.length}`);
+    return events;
+  }
+
+  // 从单个URL抓取活动
+  async scrapeEventsFromUrl(url, weekRange, seenUrls, maxEvents = 20) {
+    const events = [];
+
+    try {
+      // 只抓取第一页，避免太慢
+      const $ = await this.fetchPage(url);
+      const pageEvents = await this.parseEventbritePage($);
+
+      // 对每个事件，访问详情页获取完整信息
+      for (let i = 0; i < pageEvents.length && events.length < maxEvents; i++) {
+        const event = pageEvents[i];
+
+        // 检查URL去重
+        if (seenUrls.has(event.originalUrl)) {
+          continue;
+        }
+        seenUrls.add(event.originalUrl);
+
+        if (event.originalUrl) {
+          try {
+            const detailedEvent = await this.fetchEventDetails(event);
+            events.push(detailedEvent);
+          } catch (error) {
+            console.warn(`    Failed to fetch details: ${error.message}`);
+            // 如果详情页失败，使用列表页的基本信息
+            events.push(event);
+          }
+        }
+      }
+
+    } catch (error) {
+      console.warn(`Error scraping URL ${url}: ${error.message}`);
     }
 
     return events;
@@ -478,18 +552,14 @@ class EventbriteScraper extends BaseScraper {
     return null;
   }
 
-  // 从详情页提取精确时间
+  // 从详情页提取精确时间（使用旧金山本地时间）
   extractDetailedTime($) {
-    const { parseISO } = require('date-fns');
-
     // 1. 查找 <time> 标签的 datetime 属性
     const $time = $('time[datetime]').first();
     if ($time.length > 0) {
       const datetime = $time.attr('datetime');
       if (datetime) {
         try {
-          const startTime = parseISO(datetime);
-
           // 查找完整时间文本，如 "Sunday, October 26 · 12 - 5pm PDT"
           const timeText = $('[class*="time"], [class*="date"]').filter((i, el) => {
             return $(el).text().includes('·') && $(el).text().match(/\d+\s*-\s*\d+\s*[ap]m/i);
@@ -500,8 +570,10 @@ class EventbriteScraper extends BaseScraper {
             return timeRange;
           }
 
+          // 如果没有时间范围文本，直接使用datetime的本地时间
+          const localTime = datetime.replace(/([+-]\d{2}:\d{2}|Z)$/, '');
           return {
-            startTime: startTime.toISOString(),
+            startTime: localTime,
             endTime: null
           };
         } catch (e) {
@@ -513,10 +585,8 @@ class EventbriteScraper extends BaseScraper {
     return { startTime: null, endTime: null };
   }
 
-  // 解析时间范围，如 "Sunday, October 26 · 12 - 5pm PDT"
+  // 解析时间范围，如 "Sunday, October 26 · 12 - 5pm PDT"（使用本地时间）
   parseTimeRange(dateStr, timeText) {
-    const { parseISO } = require('date-fns');
-
     // 提取时间范围: "12 - 5pm" 或 "2pm - 8pm"
     const rangeMatch = timeText.match(/(\d{1,2})\s*(?::(\d{2}))?\s*([ap]m)?\s*-\s*(\d{1,2})\s*(?::(\d{2}))?\s*([ap]m)/i);
 
@@ -544,19 +614,26 @@ class EventbriteScraper extends BaseScraper {
       }
 
       try {
-        const baseDate = parseISO(dateStr);
-        const startTime = new Date(baseDate);
-        startTime.setHours(start24, startMin, 0, 0);
+        // 提取日期部分（不含时间和时区）
+        // dateStr 格式如: "2025-10-26T19:00:00-07:00"
+        const datePart = dateStr.split('T')[0]; // "2025-10-26"
 
-        const endTime = new Date(baseDate);
-        endTime.setHours(end24, endMin, 0, 0);
+        // 构建本地时间字符串（不含时区）
+        const startTimeStr = `${datePart}T${start24.toString().padStart(2, '0')}:${startMin.toString().padStart(2, '0')}:00`;
+        const endTimeStr = `${datePart}T${end24.toString().padStart(2, '0')}:${endMin.toString().padStart(2, '0')}:00`;
 
-        return {
-          startTime: startTime.toISOString(),
-          endTime: endTime.toISOString()
-        };
+        // 验证时间格式
+        const startTime = new Date(startTimeStr);
+        const endTime = new Date(endTimeStr);
+
+        if (!isNaN(startTime.getTime()) && !isNaN(endTime.getTime())) {
+          return {
+            startTime: startTimeStr,
+            endTime: endTimeStr
+          };
+        }
       } catch (e) {
-        // 继续
+        console.warn('Error parsing time range:', e.message);
       }
     }
 

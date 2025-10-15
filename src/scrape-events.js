@@ -174,20 +174,46 @@ class EventScrapeOrchestrator {
   async deduplicateEvents(events) {
     console.log('🔄 开始去重处理...');
 
-    // 第一步：内存中快速去重（基于标题+时间+地点）
+    // 第一步：内存中快速去重（基于URL + 标题+时间+地点）
+    const seenUrls = new Set();
     const seen = new Map();
     const memoryDedupedEvents = [];
 
     for (const event of events) {
-      // 创建唯一键：标题+开始时间+地点
+      // 首先检查URL去重
+      const eventUrl = event.originalUrl || event.url;
+      if (eventUrl && seenUrls.has(eventUrl)) {
+        console.log(`  📝 URL去重: ${event.title} (${eventUrl})`);
+        continue;
+      }
+
+      // 创建唯一键：标题+开始时间（只取日期和小时）+地点
       const normalizedTitle = event.title.toLowerCase().trim();
-      const key = `${normalizedTitle}|${event.startTime}|${event.location}`;
+
+      // 规范化时间（只取日期和小时，忽略分钟和秒的差异）
+      let normalizedTime = '';
+      try {
+        const timeStr = event.startTime || '';
+        // 提取 YYYY-MM-DD HH 部分
+        const match = timeStr.match(/^(\d{4}-\d{2}-\d{2}T\d{2})/);
+        normalizedTime = match ? match[1] : timeStr.substring(0, 13);
+      } catch (e) {
+        normalizedTime = event.startTime;
+      }
+
+      // 规范化地点（去除空格和标点）
+      const normalizedLocation = (event.location || '').toLowerCase().replace(/[,.\s]+/g, '');
+
+      const key = `${normalizedTitle}|${normalizedTime}|${normalizedLocation}`;
 
       if (!seen.has(key)) {
         seen.set(key, true);
+        if (eventUrl) {
+          seenUrls.add(eventUrl);
+        }
         memoryDedupedEvents.push(event);
       } else {
-        console.log(`  📝 内存去重: ${event.title}`);
+        console.log(`  📝 内容去重: ${event.title}`);
       }
     }
 
