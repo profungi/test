@@ -1,5 +1,6 @@
 const BaseScraper = require('./base-scraper');
 const { parseISO, format } = require('date-fns');
+const TimeHandler = require('../utils/time-handler');
 
 class EventbriteScraper extends BaseScraper {
   constructor() {
@@ -560,93 +561,36 @@ class EventbriteScraper extends BaseScraper {
   extractDetailedTime($) {
     // 1. 查找 <time> 标签的 datetime 属性
     const $time = $('time[datetime]').first();
+
     if ($time.length > 0) {
       const datetime = $time.attr('datetime');
+
       if (datetime) {
-        try {
-          // 查找完整时间文本，如 "Sunday, October 26 · 12 - 5pm PDT"
-          const timeText = $('[class*="time"], [class*="date"]').filter((i, el) => {
-            return $(el).text().includes('·') && $(el).text().match(/\d+\s*-\s*\d+\s*[ap]m/i);
-          }).first().text();
+        // 1a. 尝试从页面文本提取时间范围（优先）
+        const timeText = $('[class*="time"], [class*="date"]').filter((i, el) => {
+          const text = $(el).text();
+          return text.includes('·') && text.match(/\d+\s*[-–]\s*\d+\s*[ap]m/i);
+        }).first().text();
 
-          if (timeText) {
-            const timeRange = this.parseTimeRange(datetime, timeText);
-            return timeRange;
+        if (timeText) {
+          const dateStr = TimeHandler.extractDate(datetime);
+          if (dateStr) {
+            const timeRange = TimeHandler.parseTimeRange(dateStr, timeText);
+            if (timeRange) {
+              return timeRange;
+            }
           }
-
-          // 如果没有时间范围文本，直接使用datetime的本地时间
-          let localTime = datetime.replace(/([+-]\d{2}:\d{2}|Z)$/, '');
-
-          // 规范化格式：补充缺失的秒
-          if (localTime.match(/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}$/)) {
-            localTime = `${localTime}:00`;
-          } else if (!localTime.match(/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}$/)) {
-            console.warn(`  Invalid time format in Eventbrite: "${datetime}" -> "${localTime}"`);
-            return { startTime: null, endTime: null };
-          }
-
-          return {
-            startTime: localTime,
-            endTime: null
-          };
-        } catch (e) {
-          // 继续
         }
-      }
-    }
 
-    return { startTime: null, endTime: null };
-  }
+        // 1b. 使用datetime属性
+        const startTime = TimeHandler.normalize(datetime, {
+          source: 'Eventbrite',
+          allowTextParsing: false
+        });
 
-  // 解析时间范围，如 "Sunday, October 26 · 12 - 5pm PDT"（使用本地时间）
-  parseTimeRange(dateStr, timeText) {
-    // 提取时间范围: "12 - 5pm" 或 "2pm - 8pm"
-    const rangeMatch = timeText.match(/(\d{1,2})\s*(?::(\d{2}))?\s*([ap]m)?\s*-\s*(\d{1,2})\s*(?::(\d{2}))?\s*([ap]m)/i);
-
-    if (rangeMatch) {
-      const startHour = parseInt(rangeMatch[1]);
-      const startMin = rangeMatch[2] ? parseInt(rangeMatch[2]) : 0;
-      const startPeriod = rangeMatch[3] || rangeMatch[6]; // 如果前面没有am/pm，用后面的
-      const endHour = parseInt(rangeMatch[4]);
-      const endMin = rangeMatch[5] ? parseInt(rangeMatch[5]) : 0;
-      const endPeriod = rangeMatch[6];
-
-      // 转换为24小时制
-      let start24 = startHour;
-      if (startPeriod && startPeriod.toLowerCase() === 'pm' && startHour !== 12) {
-        start24 += 12;
-      } else if (startPeriod && startPeriod.toLowerCase() === 'am' && startHour === 12) {
-        start24 = 0;
-      }
-
-      let end24 = endHour;
-      if (endPeriod.toLowerCase() === 'pm' && endHour !== 12) {
-        end24 += 12;
-      } else if (endPeriod.toLowerCase() === 'am' && endHour === 12) {
-        end24 = 0;
-      }
-
-      try {
-        // 提取日期部分（不含时间和时区）
-        // dateStr 格式如: "2025-10-26T19:00:00-07:00"
-        const datePart = dateStr.split('T')[0]; // "2025-10-26"
-
-        // 构建本地时间字符串（不含时区）
-        const startTimeStr = `${datePart}T${start24.toString().padStart(2, '0')}:${startMin.toString().padStart(2, '0')}:00`;
-        const endTimeStr = `${datePart}T${end24.toString().padStart(2, '0')}:${endMin.toString().padStart(2, '0')}:00`;
-
-        // 验证时间格式
-        const startTime = new Date(startTimeStr);
-        const endTime = new Date(endTimeStr);
-
-        if (!isNaN(startTime.getTime()) && !isNaN(endTime.getTime())) {
-          return {
-            startTime: startTimeStr,
-            endTime: endTimeStr
-          };
+        if (startTime) {
+          return { startTime, endTime: null };
         }
-      } catch (e) {
-        console.warn('Error parsing time range:', e.message);
       }
     }
 

@@ -1,5 +1,6 @@
 const BaseScraper = require('./base-scraper');
 const { parseISO, addDays, format } = require('date-fns');
+const TimeHandler = require('../utils/time-handler');
 
 class DoTheBayScraper extends BaseScraper {
   constructor() {
@@ -231,58 +232,83 @@ class DoTheBayScraper extends BaseScraper {
   }
 
   extractDetailedTime($) {
-    // 辅助函数：规范化时间格式
-    const normalizeTime = (timeStr) => {
-      if (!timeStr) return null;
+    console.log(`  [DoTheBay DEBUG] Looking for time...`);
 
-      // 移除时区信息
-      let normalized = timeStr.replace(/([+-]\d{2}:\d{2}|Z)$/, '');
-
-      // 验证并规范化格式
-      if (normalized.match(/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}$/)) {
-        return normalized; // 格式正确
-      } else if (normalized.match(/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}$/)) {
-        return `${normalized}:00`; // 补充秒
-      } else {
-        console.warn(`  Invalid time format in DoTheBay: "${timeStr}" -> "${normalized}"`);
-        return null;
-      }
-    };
-
-    // 1. 优先使用 <time> 标签的 datetime 属性（使用本地时间）
+    // 1. 优先使用 <time> 标签的 datetime 属性
     const $time = $('time[datetime]').first();
+    console.log(`  [DoTheBay DEBUG] Found <time> tags: ${$('time[datetime]').length}`);
+
     if ($time.length > 0) {
       const datetime = $time.attr('datetime');
-      const startTime = normalizeTime(datetime);
+      console.log(`  [DoTheBay DEBUG] datetime attribute: "${datetime}"`);
+
+      // 1a. 尝试直接规范化
+      let startTime = TimeHandler.normalize(datetime, { source: 'DoTheBay' });
+
+      // 1b. 如果只有日期，尝试从<time>标签的文本内容提取时间
+      if (!startTime && datetime) {
+        const dateStr = TimeHandler.extractDate(datetime);
+        const timeText = $time.text().trim();
+        console.log(`  [DoTheBay DEBUG] <time> text content: "${timeText}"`);
+
+        if (dateStr) {
+          // 尝试解析时间范围
+          const timeRange = TimeHandler.parseTimeRange(dateStr, timeText);
+          if (timeRange) {
+            console.log(`  [DoTheBay DEBUG] Parsed time range: ${timeRange.startTime} - ${timeRange.endTime}`);
+            return timeRange;
+          }
+
+          // 尝试解析单个时间
+          startTime = TimeHandler.parseTimeText(dateStr, timeText);
+          if (startTime) {
+            console.log(`  [DoTheBay DEBUG] Parsed time from text: ${startTime}`);
+          }
+        }
+      }
 
       if (startTime) {
-        // 查找结束时间
         const $endTime = $('time[datetime]').eq(1);
         let endTime = null;
         if ($endTime.length > 0) {
           const endDatetime = $endTime.attr('datetime');
-          endTime = normalizeTime(endDatetime);
+          endTime = TimeHandler.normalize(endDatetime, { source: 'DoTheBay' });
         }
-
         return { startTime, endTime };
       }
     }
 
-    // 2. 查找 itemprop="startDate" 和 itemprop="endDate"
+    // 2. 查找 itemprop="startDate"
     const startDateAttr = $('[itemprop="startDate"]').attr('content') ||
                          $('[itemprop="startDate"]').attr('datetime');
-    const endDateAttr = $('[itemprop="endDate"]').attr('content') ||
-                       $('[itemprop="endDate"]').attr('datetime');
+    console.log(`  [DoTheBay DEBUG] itemprop startDate: "${startDateAttr}"`);
 
     if (startDateAttr) {
-      const startTime = normalizeTime(startDateAttr);
-      const endTime = endDateAttr ? normalizeTime(endDateAttr) : null;
+      let startTime = TimeHandler.normalize(startDateAttr, { source: 'DoTheBay' });
+
+      // 如果只有日期，尝试从周围文本提取时间
+      if (!startTime) {
+        const dateStr = TimeHandler.extractDate(startDateAttr);
+        if (dateStr) {
+          const timeText = $('.time, .event-time, [class*="time"]').first().text().trim();
+          console.log(`  [DoTheBay DEBUG] Time text from class: "${timeText}"`);
+
+          if (timeText) {
+            startTime = TimeHandler.parseTimeText(dateStr, timeText);
+          }
+        }
+      }
 
       if (startTime) {
+        const endDateAttr = $('[itemprop="endDate"]').attr('content') ||
+                           $('[itemprop="endDate"]').attr('datetime');
+        const endTime = endDateAttr ? TimeHandler.normalize(endDateAttr, { source: 'DoTheBay' }) : null;
         return { startTime, endTime };
       }
     }
 
+    // 3. 没有找到有效时间
+    console.log(`  [DoTheBay] No valid time found`);
     return { startTime: null, endTime: null };
   }
 

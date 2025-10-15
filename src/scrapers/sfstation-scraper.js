@@ -1,5 +1,6 @@
 const BaseScraper = require('./base-scraper');
 const { parseISO, addDays } = require('date-fns');
+const TimeHandler = require('../utils/time-handler');
 
 class SFStationScraper extends BaseScraper {
   constructor() {
@@ -350,49 +351,50 @@ class SFStationScraper extends BaseScraper {
         return null;
       }
 
-      // 时间 - 直接使用网页显示的本地时间（旧金山时间）
+      // 时间 - 使用TimeHandler规范化
       const startDateAttr = $el.find('[itemprop="startDate"]').attr('content');
+      console.log(`  [SFStation DEBUG] startDate attribute: "${startDateAttr}"`);
+
       let startTime = null;
 
       if (startDateAttr) {
-        // 直接去掉时区后缀，保留本地时间
-        // 输入: "2025-10-06T18:00:00-07:00" → 输出: "2025-10-06T18:00:00"
-        // 输入: "2025-10-06T18:00-07:00" → 输出: "2025-10-06T18:00"
-        // 这样保证时间与网页显示一致（旧金山本地时间）
-        startTime = startDateAttr.replace(/([+-]\d{2}:\d{2}|Z)$/, '');
+        // 尝试直接规范化
+        startTime = TimeHandler.normalize(startDateAttr, { source: 'SFStation' });
 
-        // 验证格式 - 支持两种格式：带秒和不带秒
-        // YYYY-MM-DDTHH:MM:SS 或 YYYY-MM-DDTHH:MM
-        if (startTime.match(/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}$/)) {
-          // 格式正确，不做处理
-        } else if (startTime.match(/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}$/)) {
-          // 缺少秒，补充 :00
-          startTime = `${startTime}:00`;
+        // 如果只有日期，尝试从文本中提取时间
+        if (!startTime) {
+          const dateStr = TimeHandler.extractDate(startDateAttr);
+          const timeText = $el.find('.event-time').text().trim() ||
+                          $el.find('.event_time').text().trim();
+          console.log(`  [SFStation DEBUG] Time text from .event-time: "${timeText}"`);
+
+          if (dateStr && timeText) {
+            startTime = TimeHandler.parseTimeText(dateStr, timeText);
+            if (startTime) {
+              console.log(`  [SFStation DEBUG] Parsed time from text: ${startTime}`);
+            }
+          }
         } else {
-          console.warn(`  Invalid time format from startDate: "${startDateAttr}" -> "${startTime}"`);
-          startTime = null;
+          console.log(`  [SFStation DEBUG] Normalized time: ${startTime}`);
         }
       }
 
-      // 如果 itemprop 没有或无效，尝试解析日期和时间文本
+      // 如果 itemprop 没有或无效，尝试从 .event-date 提取
       if (!startTime) {
         const startDate = $el.find('.event-date').first().attr('content');
         const timeText = $el.find('.event-time').text().trim() ||
                         $el.find('.event_time').text().trim();
+        console.log(`  [SFStation DEBUG] Fallback: startDate="${startDate}", timeText="${timeText}"`);
 
-
-        if (startDate) {
-          // 如果有时间文本，合并日期和时间
-          if (timeText) {
-            startTime = this.parseDateTime(startDate, timeText);
-          } else {
-            // 只有日期，使用中午12点作为默认时间
-            startTime = `${startDate}T12:00:00`;
-          }
+        if (startDate && timeText) {
+          startTime = TimeHandler.parseTimeText(startDate, timeText);
         }
       }
 
-      if (!startTime) return null; // 没有有效时间信息，跳过
+      if (!startTime) {
+        console.log(`  [SFStation] No valid time found, skipping event`);
+        return null; // 没有有效时间信息，跳过
+      }
 
       // 地点 - 改进提取逻辑
       let location = null;
