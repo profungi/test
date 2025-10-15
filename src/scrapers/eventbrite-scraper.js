@@ -475,6 +475,11 @@ class EventbriteScraper extends BaseScraper {
   }
 
   parseGenericEvents($) {
+    // 注意：这是最后的fallback方法
+    // 这些事件的时间信息不准确，但会在fetchEventDetails中获取准确时间
+    // 如果详情页也无法获取时间，这些事件会被过滤掉
+    console.log('  Using generic fallback - events will need detail page validation');
+
     const events = [];
 
     // 通用方法：寻找包含链接的元素
@@ -487,13 +492,11 @@ class EventbriteScraper extends BaseScraper {
         if (title && href && title.length > 5) {
           const fullUrl = href.startsWith('http') ? href : `https://www.eventbrite.com${href}`;
 
-          // 查找相关的时间和地点信息
-          const $parent = $link.closest('[class*="event"], [class*="card"]');
-
+          // 注意：这里使用临时时间，必须通过详情页获取准确时间
           events.push({
             title,
-            startTime: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000).toISOString(), // 临时时间
-            location: 'San Francisco Bay Area', // 默认位置
+            startTime: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000).toISOString(), // 临时 - 需要详情页验证
+            location: 'San Francisco Bay Area', // 默认 - 需要详情页验证
             originalUrl: fullUrl,
             price: null,
             description: null

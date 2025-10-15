@@ -232,15 +232,11 @@ class DoTheBayScraper extends BaseScraper {
   }
 
   extractDetailedTime($) {
-    console.log(`  [DoTheBay DEBUG] Looking for time...`);
-
     // 1. 优先使用 <time> 标签的 datetime 属性
     const $time = $('time[datetime]').first();
-    console.log(`  [DoTheBay DEBUG] Found <time> tags: ${$('time[datetime]').length}`);
 
     if ($time.length > 0) {
       const datetime = $time.attr('datetime');
-      console.log(`  [DoTheBay DEBUG] datetime attribute: "${datetime}"`);
 
       // 1a. 尝试直接规范化
       let startTime = TimeHandler.normalize(datetime, { source: 'DoTheBay' });
@@ -249,21 +245,16 @@ class DoTheBayScraper extends BaseScraper {
       if (!startTime && datetime) {
         const dateStr = TimeHandler.extractDate(datetime);
         const timeText = $time.text().trim();
-        console.log(`  [DoTheBay DEBUG] <time> text content: "${timeText}"`);
 
         if (dateStr) {
           // 尝试解析时间范围
           const timeRange = TimeHandler.parseTimeRange(dateStr, timeText);
           if (timeRange) {
-            console.log(`  [DoTheBay DEBUG] Parsed time range: ${timeRange.startTime} - ${timeRange.endTime}`);
             return timeRange;
           }
 
           // 尝试解析单个时间
           startTime = TimeHandler.parseTimeText(dateStr, timeText);
-          if (startTime) {
-            console.log(`  [DoTheBay DEBUG] Parsed time from text: ${startTime}`);
-          }
         }
       }
 
@@ -281,7 +272,6 @@ class DoTheBayScraper extends BaseScraper {
     // 2. 查找 itemprop="startDate"
     const startDateAttr = $('[itemprop="startDate"]').attr('content') ||
                          $('[itemprop="startDate"]').attr('datetime');
-    console.log(`  [DoTheBay DEBUG] itemprop startDate: "${startDateAttr}"`);
 
     if (startDateAttr) {
       let startTime = TimeHandler.normalize(startDateAttr, { source: 'DoTheBay' });
@@ -291,7 +281,6 @@ class DoTheBayScraper extends BaseScraper {
         const dateStr = TimeHandler.extractDate(startDateAttr);
         if (dateStr) {
           const timeText = $('.time, .event-time, [class*="time"]').first().text().trim();
-          console.log(`  [DoTheBay DEBUG] Time text from class: "${timeText}"`);
 
           if (timeText) {
             startTime = TimeHandler.parseTimeText(dateStr, timeText);
@@ -307,8 +296,6 @@ class DoTheBayScraper extends BaseScraper {
       }
     }
 
-    // 3. 没有找到有效时间
-    console.log(`  [DoTheBay] No valid time found`);
     return { startTime: null, endTime: null };
   }
 
@@ -384,28 +371,21 @@ class DoTheBayScraper extends BaseScraper {
         originalUrl = `https://dothebay.com${originalUrl}`;
       }
 
-      // 时间 - 直接使用本地时间（旧金山时间），不做时区转换
+      // 时间 - 使用TimeHandler规范化
       const startDateAttr = $el.find('[itemprop="startDate"]').attr('content');
       let startTime = null;
 
       if (startDateAttr) {
-        // 移除时区信息，直接使用本地时间
-        // 输入如: "2025-10-06T18:00:00-07:00"
-        // 输出: "2025-10-06T18:00:00"
-        const localTime = startDateAttr.replace(/([+-]\d{2}:\d{2}|Z)$/, '');
-        const parsedDate = new Date(localTime);
-        if (!isNaN(parsedDate.getTime())) {
-          startTime = localTime;
-        }
-      }
+        startTime = TimeHandler.normalize(startDateAttr, { source: 'DoTheBay' });
 
-      // 如果 itemprop 没有或无效，尝试解析文本
-      if (!startTime) {
-        const timeText = $el.find('.ds-event-time').text().trim() ||
-                        $el.find('.ds-listing-event-time').text().trim();
-        if (timeText) {
-          const parsed = this.parseTimeText(timeText);
-          startTime = parsed.startTime;
+        // 如果只有日期，尝试从文本中提取时间
+        if (!startTime) {
+          const dateStr = TimeHandler.extractDate(startDateAttr);
+          const timeText = $el.find('.ds-event-time').text().trim() ||
+                          $el.find('.ds-listing-event-time').text().trim();
+          if (dateStr && timeText) {
+            startTime = TimeHandler.parseTimeText(dateStr, timeText);
+          }
         }
       }
 
@@ -453,96 +433,6 @@ class DoTheBayScraper extends BaseScraper {
     }
   }
 
-  parseTimeText(timeText) {
-    if (!timeText) return { startTime: null, endTime: null };
-
-    // DoTheBay 常见的时间格式
-    const patterns = [
-      // "Saturday, December 25th at 7:00 PM"
-      /(\w+,\s*\w+\s+\d{1,2}(?:st|nd|rd|th)?)\s+at\s+(\d{1,2}:\d{2}\s*(?:AM|PM))/i,
-      // "Dec 25, 2024 • 7:00 PM"
-      /(\w{3}\s+\d{1,2},\s+\d{4})\s*[•·]\s*(\d{1,2}:\d{2}\s*(?:AM|PM))/i,
-      // "December 25 • 7:00 PM"
-      /(\w+\s+\d{1,2})\s*[•·]\s*(\d{1,2}:\d{2}\s*(?:AM|PM))/i,
-      // "Mon 12/25 7:00 PM"
-      /\w{3}\s+(\d{1,2}\/\d{1,2})\s+(\d{1,2}:\d{2}\s*(?:AM|PM))/i,
-      // "2024-12-25 19:00"
-      /(\d{4}-\d{2}-\d{2})\s+(\d{1,2}:\d{2})/,
-      // "Dec 25 7PM"
-      /(\w{3}\s+\d{1,2})\s+(\d{1,2}(?:AM|PM))/i
-    ];
-
-    for (const pattern of patterns) {
-      const match = timeText.match(pattern);
-      if (match) {
-        try {
-          let dateTimeStr;
-          const currentYear = new Date().getFullYear();
-          
-          if (pattern.source.includes('\\d{4}-\\d{2}-\\d{2}')) {
-            // ISO format
-            dateTimeStr = `${match[1]}T${match[2]}:00`;
-          } else if (match[1].includes('/')) {
-            // MM/DD format - add current year
-            const [month, day] = match[1].split('/');
-            dateTimeStr = `${currentYear}-${month.padStart(2, '0')}-${day.padStart(2, '0')}T${this.convertTo24Hour(match[2])}:00`;
-          } else {
-            // Text format
-            dateTimeStr = `${match[1]} ${currentYear} ${match[2]}`;
-          }
-          
-          const date = new Date(dateTimeStr);
-          if (!isNaN(date.getTime())) {
-            return {
-              startTime: date.toISOString(),
-              endTime: null
-            };
-          }
-        } catch (e) {
-          // 继续尝试下一个模式
-        }
-      }
-    }
-
-    // 尝试解析时间范围（如 "7:00 PM - 9:00 PM"）
-    const rangeMatch = timeText.match(/(\d{1,2}:\d{2}\s*(?:AM|PM))\s*[-–]\s*(\d{1,2}:\d{2}\s*(?:AM|PM))/i);
-    if (rangeMatch) {
-      try {
-        const today = addDays(new Date(), 7); // 假设是下周
-        const startTime = new Date(`${format(today, 'yyyy-MM-dd')} ${rangeMatch[1]}`);
-        const endTime = new Date(`${format(today, 'yyyy-MM-dd')} ${rangeMatch[2]}`);
-        
-        if (!isNaN(startTime.getTime()) && !isNaN(endTime.getTime())) {
-          return {
-            startTime: startTime.toISOString(),
-            endTime: endTime.toISOString()
-          };
-        }
-      } catch (e) {
-        // 忽略错误
-      }
-    }
-
-    return { startTime: null, endTime: null };
-  }
-
-  convertTo24Hour(time12h) {
-    const [time, modifier] = time12h.split(/\s*(AM|PM)/i);
-    let [hours, minutes] = time.split(':');
-
-    if (!minutes) minutes = '00';
-
-    if (hours === '12') {
-      hours = '00';
-    }
-
-    if (modifier && modifier.toUpperCase() === 'PM') {
-      hours = parseInt(hours, 10) + 12;
-    }
-
-    return `${hours.toString().padStart(2, '0')}:${minutes}`;
-  }
-
 
   parseGenericDoTheBayEvents($) {
     const events = [];
@@ -585,13 +475,20 @@ class DoTheBayScraper extends BaseScraper {
             }
           }
 
-          // 解析时间
+          // 解析时间 - 通用fallback不应该猜测时间，跳过没有明确时间的活动
+          if (!timeText) return;
+
+          // 尝试简单的日期解析，如果失败就跳过
           let startTime;
-          if (timeText) {
-            const parsed = this.parseTimeText(timeText);
-            startTime = parsed.startTime || new Date(Date.now() + 7 * 24 * 60 * 60 * 1000).toISOString();
-          } else {
-            startTime = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000).toISOString();
+          try {
+            const date = new Date(timeText);
+            if (!isNaN(date.getTime())) {
+              startTime = date.toISOString();
+            } else {
+              return; // 无效时间，跳过
+            }
+          } catch (e) {
+            return; // 解析失败，跳过
           }
 
           events.push({
@@ -609,34 +506,9 @@ class DoTheBayScraper extends BaseScraper {
     });
 
     // 通用方法2：结构化元素查找
+    // 注意：不添加没有明确时间的活动，遵循"时间必须精准"原则
     if (events.length === 0) {
-      $('article, .post, [class*="event"], [class*="listing"], [class*="card"]').each((i, element) => {
-        try {
-          const $el = $(element);
-          const $link = $el.find('a').first();
-          const href = $link.attr('href');
-
-          if (href && !seenUrls.has(href)) {
-            seenUrls.add(href);
-            const title = $link.text().trim() || $el.find('h1, h2, h3, h4, .title, [class*="title"]').first().text().trim();
-
-            if (title && title.length > 5) {
-              const fullUrl = href.startsWith('http') ? href : `https://dothebay.com${href}`;
-
-              events.push({
-                title,
-                startTime: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000).toISOString(),
-                location: 'San Francisco Bay Area',
-                originalUrl: fullUrl,
-                price: null,
-                description: null
-              });
-            }
-          }
-        } catch (e) {
-          // 忽略
-        }
-      });
+      console.log('  No events found with standard methods, generic fallback would not provide accurate times');
     }
 
     return events.slice(0, 30);

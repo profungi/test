@@ -214,30 +214,22 @@ class SFStationScraper extends BaseScraper {
   }
 
   extractDetailedTime($) {
-    // 1. 优先使用 <time> 标签的 datetime 属性（使用本地时间）
+    // 1. 优先使用 <time> 标签的 datetime 属性
     const $time = $('time[datetime]').first();
     if ($time.length > 0) {
       const datetime = $time.attr('datetime');
-      // 移除时区信息，使用本地时间
-      const localTime = datetime.replace(/([+-]\d{2}:\d{2}|Z)$/, '');
-      const parsedDate = new Date(localTime);
-      if (!isNaN(parsedDate.getTime())) {
+      const startTime = TimeHandler.normalize(datetime, { source: 'SFStation' });
+
+      if (startTime) {
         // 查找结束时间
         const $endTime = $('time[datetime]').eq(1);
         let endTime = null;
         if ($endTime.length > 0) {
           const endDatetime = $endTime.attr('datetime');
-          const localEndTime = endDatetime.replace(/([+-]\d{2}:\d{2}|Z)$/, '');
-          const parsedEndDate = new Date(localEndTime);
-          if (!isNaN(parsedEndDate.getTime())) {
-            endTime = localEndTime;
-          }
+          endTime = TimeHandler.normalize(endDatetime, { source: 'SFStation' });
         }
 
-        return {
-          startTime: localTime,
-          endTime: endTime
-        };
+        return { startTime, endTime };
       }
     }
 
@@ -248,23 +240,15 @@ class SFStationScraper extends BaseScraper {
                        $('[itemprop="endDate"]').attr('datetime');
 
     if (startDateAttr) {
-      const localStart = startDateAttr.replace(/([+-]\d{2}:\d{2}|Z)$/, '');
-      const parsedStart = new Date(localStart);
+      const startTime = TimeHandler.normalize(startDateAttr, { source: 'SFStation' });
       let endTime = null;
 
       if (endDateAttr) {
-        const localEnd = endDateAttr.replace(/([+-]\d{2}:\d{2}|Z)$/, '');
-        const parsedEnd = new Date(localEnd);
-        if (!isNaN(parsedEnd.getTime())) {
-          endTime = localEnd;
-        }
+        endTime = TimeHandler.normalize(endDateAttr, { source: 'SFStation' });
       }
 
-      if (!isNaN(parsedStart.getTime())) {
-        return {
-          startTime: localStart,
-          endTime: endTime
-        };
+      if (startTime) {
+        return { startTime, endTime };
       }
     }
 
@@ -353,8 +337,6 @@ class SFStationScraper extends BaseScraper {
 
       // 时间 - 使用TimeHandler规范化
       const startDateAttr = $el.find('[itemprop="startDate"]').attr('content');
-      console.log(`  [SFStation DEBUG] startDate attribute: "${startDateAttr}"`);
-
       let startTime = null;
 
       if (startDateAttr) {
@@ -366,16 +348,10 @@ class SFStationScraper extends BaseScraper {
           const dateStr = TimeHandler.extractDate(startDateAttr);
           const timeText = $el.find('.event-time').text().trim() ||
                           $el.find('.event_time').text().trim();
-          console.log(`  [SFStation DEBUG] Time text from .event-time: "${timeText}"`);
 
           if (dateStr && timeText) {
             startTime = TimeHandler.parseTimeText(dateStr, timeText);
-            if (startTime) {
-              console.log(`  [SFStation DEBUG] Parsed time from text: ${startTime}`);
-            }
           }
-        } else {
-          console.log(`  [SFStation DEBUG] Normalized time: ${startTime}`);
         }
       }
 
@@ -384,7 +360,6 @@ class SFStationScraper extends BaseScraper {
         const startDate = $el.find('.event-date').first().attr('content');
         const timeText = $el.find('.event-time').text().trim() ||
                         $el.find('.event_time').text().trim();
-        console.log(`  [SFStation DEBUG] Fallback: startDate="${startDate}", timeText="${timeText}"`);
 
         if (startDate && timeText) {
           startTime = TimeHandler.parseTimeText(startDate, timeText);
@@ -392,7 +367,6 @@ class SFStationScraper extends BaseScraper {
       }
 
       if (!startTime) {
-        console.log(`  [SFStation] No valid time found, skipping event`);
         return null; // 没有有效时间信息，跳过
       }
 
@@ -518,107 +492,6 @@ class SFStationScraper extends BaseScraper {
     }
   }
 
-  parseDateTime(dateStr, timeStr) {
-    try {
-      // dateStr 格式: "2025-10-01"
-      // timeStr 格式: "7:30pm" 或 "12noon - 5pm" 等
-      // 返回本地时间字符串（不含时区）
-
-      // 提取第一个时间
-      const timeMatch = timeStr.match(/(\d{1,2}):?(\d{2})?\s*(am|pm|noon)?/i);
-      if (timeMatch) {
-        let hours = parseInt(timeMatch[1]);
-        const minutes = timeMatch[2] ? parseInt(timeMatch[2]) : 0;
-        const period = timeMatch[3] ? timeMatch[3].toLowerCase() : '';
-
-        if (period === 'pm' && hours !== 12) {
-          hours += 12;
-        } else if (period === 'am' && hours === 12) {
-          hours = 0;
-        } else if (period === 'noon') {
-          hours = 12;
-        }
-
-        // 返回本地时间字符串（旧金山时间）
-        return `${dateStr}T${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:00`;
-      }
-
-      // 如果无法解析时间，使用中午12点
-      return `${dateStr}T12:00:00`;
-    } catch (error) {
-      return `${dateStr}T12:00:00`;
-    }
-  }
-
-  parseTimeText(timeText) {
-    if (!timeText) return { startTime: null, endTime: null };
-
-    // SF Station 常见的时间格式
-    const patterns = [
-      // "December 25, 2024 at 7:00 PM"
-      /(\w+\s+\d{1,2},\s+\d{4})\s+at\s+(\d{1,2}:\d{2}\s*(?:AM|PM))/i,
-      // "Dec 25 • 7:00 PM"
-      /(\w{3}\s+\d{1,2})\s*•\s*(\d{1,2}:\d{2}\s*(?:AM|PM))/i,
-      // "Monday, Dec 25 7:00 PM"
-      /\w+,\s*(\w{3}\s+\d{1,2})\s+(\d{1,2}:\d{2}\s*(?:AM|PM))/i,
-      // "25/12/2024 19:00"
-      /(\d{1,2}\/\d{1,2}\/\d{4})\s+(\d{1,2}:\d{2})/,
-      // "2024-12-25 19:00"
-      /(\d{4}-\d{2}-\d{2})\s+(\d{1,2}:\d{2})/
-    ];
-
-    for (const pattern of patterns) {
-      const match = timeText.match(pattern);
-      if (match) {
-        try {
-          let dateTimeStr;
-          
-          if (pattern.source.includes('\\d{4}-\\d{2}-\\d{2}')) {
-            // ISO format
-            dateTimeStr = `${match[1]}T${match[2]}:00`;
-          } else {
-            // Other formats
-            dateTimeStr = `${match[1]} ${match[2]}`;
-          }
-          
-          const date = new Date(dateTimeStr);
-          if (!isNaN(date.getTime())) {
-            return {
-              startTime: date.toISOString(),
-              endTime: null
-            };
-          }
-        } catch (e) {
-          // 继续尝试下一个模式
-        }
-      }
-    }
-
-    // 尝试解析相对日期（如"next Monday"）
-    const relativeDateMatch = timeText.toLowerCase().match(/(next|this)\s+(monday|tuesday|wednesday|thursday|friday|saturday|sunday)/);
-    if (relativeDateMatch) {
-      try {
-        const dayOfWeek = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
-        const targetDayIndex = dayOfWeek.indexOf(relativeDateMatch[2].toLowerCase());
-        
-        if (targetDayIndex !== -1) {
-          const today = new Date();
-          const currentDayIndex = today.getDay();
-          const daysUntilTarget = (targetDayIndex - currentDayIndex + 7) % 7 || 7;
-          const targetDate = addDays(today, daysUntilTarget);
-          
-          return {
-            startTime: targetDate.toISOString(),
-            endTime: null
-          };
-        }
-      } catch (e) {
-        // 忽略错误
-      }
-    }
-
-    return { startTime: null, endTime: null };
-  }
 
   parseGenericSFEvents($) {
     const events = [];
@@ -655,13 +528,20 @@ class SFStationScraper extends BaseScraper {
             timeText = $container.find('.date, .time, [class*="date"], [class*="time"], time').first().text().trim();
           }
 
-          // 解析时间或使用默认值
+          // 解析时间 - 通用fallback不应该猜测时间，跳过没有明确时间的活动
+          if (!timeText) return;
+
+          // 尝试简单的日期解析，如果失败就跳过
           let startTime;
-          if (timeText) {
-            const parsed = this.parseTimeText(timeText);
-            startTime = parsed.startTime || new Date(Date.now() + 7 * 24 * 60 * 60 * 1000).toISOString();
-          } else {
-            startTime = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000).toISOString();
+          try {
+            const date = new Date(timeText);
+            if (!isNaN(date.getTime())) {
+              startTime = date.toISOString();
+            } else {
+              return; // 无效时间，跳过
+            }
+          } catch (e) {
+            return; // 解析失败，跳过
           }
 
           events.push({
@@ -678,35 +558,10 @@ class SFStationScraper extends BaseScraper {
       }
     });
 
-    // 通用方法2：如果没有找到活动，尝试查找包含活动信息的结构化元素
+    // 通用方法2：如果没有找到活动，不添加没有明确时间的活动
+    // 遵循"时间必须精准"原则
     if (events.length === 0) {
-      $('article, .post, [class*="event"], [class*="listing"]').each((i, element) => {
-        try {
-          const $el = $(element);
-          const $link = $el.find('a').first();
-          const href = $link.attr('href');
-
-          if (href && !seenUrls.has(href) && (href.includes('event') || href.includes('listing'))) {
-            seenUrls.add(href);
-            const title = $link.text().trim() || $el.find('h1, h2, h3, h4').first().text().trim();
-
-            if (title && title.length > 5) {
-              const fullUrl = href.startsWith('http') ? href : `https://www.sfstation.com${href}`;
-
-              events.push({
-                title,
-                startTime: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000).toISOString(),
-                location: 'San Francisco',
-                originalUrl: fullUrl,
-                price: null,
-                description: null
-              });
-            }
-          }
-        } catch (e) {
-          // 忽略
-        }
-      });
+      console.log('  No events found with standard methods, generic fallback would not provide accurate times');
     }
 
     return events.slice(0, 30);
