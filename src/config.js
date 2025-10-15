@@ -42,6 +42,23 @@ const config = {
       name: 'eventbrite',
       baseUrl: 'https://www.eventbrite.com/d/ca--san-francisco/events/',
       searchParams: '?page=1&start_date_keyword=next_week',
+      // 额外搜索关键词，用于抓取特定类型活动
+      additionalSearches: [
+        'festival',
+        'fair',
+        'market',
+        'farmers-market',
+        'street-fair',
+        'free-events'
+      ],
+      // 湾区其他城市的搜索URL
+      additionalCities: [
+        { name: 'Oakland', url: 'https://www.eventbrite.com/d/ca--oakland/events/' },
+        { name: 'San Jose', url: 'https://www.eventbrite.com/d/ca--san-jose/events/' },
+        { name: 'Berkeley', url: 'https://www.eventbrite.com/d/ca--berkeley/events/' },
+        { name: 'Palo Alto', url: 'https://www.eventbrite.com/d/ca--palo-alto/events/' },
+        { name: 'Mountain View', url: 'https://www.eventbrite.com/d/ca--mountain-view/events/' }
+      ],
       priority: 1,
       enabled: true
     },
@@ -170,8 +187,8 @@ const config = {
 
   // 抓取限制
   scraping: {
-    maxEventsPerSource: 50,
-    totalCandidatesForReview: 30,  // 从20改为30
+    maxEventsPerSource: 100,  // 增加到100以支持多城市抓取
+    totalCandidatesForReview: 40,  // 增加到40以包含更多城市的活动
     requestDelay: 1000,
     timeout: 30000,
     userAgent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'

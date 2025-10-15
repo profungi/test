@@ -25,7 +25,28 @@ class SFStationScraper extends BaseScraper {
 
           const pageEvents = await this.parseSFStationPage($);
           console.log(`Found ${pageEvents.length} events for ${dateStr}`);
-          events.push(...pageEvents);
+
+          if (pageEvents.length > 0) {
+            // 对每个事件，尝试访问详情页获取完整信息
+            console.log(`  Fetching details for ${pageEvents.length} events...`);
+            for (let i = 0; i < pageEvents.length && i < 20; i++) { // 限制每页最多20个
+              const event = pageEvents[i];
+              if (event.originalUrl && event.originalUrl.includes('sfstation.com')) {
+                // 只访问 sfstation.com 的详情页，跳过外部链接
+                try {
+                  const detailedEvent = await this.fetchEventDetails(event);
+                  events.push(detailedEvent);
+                } catch (error) {
+                  console.warn(`  Failed to fetch details for ${event.title}: ${error.message}`);
+                  // 如果详情页失败，使用列表页的基本信息
+                  events.push(event);
+                }
+              } else {
+                // 外部链接：使用列表页信息
+                events.push(event);
+              }
+            }
+          }
 
           if (events.length >= 60) {
             break;
@@ -96,6 +117,209 @@ class SFStationScraper extends BaseScraper {
     return events;
   }
 
+  async fetchEventDetails(basicEvent) {
+    try {
+      console.log(`    Fetching detail page: ${basicEvent.originalUrl}`);
+      const $ = await this.fetchPage(basicEvent.originalUrl);
+
+      // 从详情页提取完整信息
+      const fullAddress = this.extractFullAddress($);
+      const timeInfo = this.extractDetailedTime($);
+      const accuratePrice = this.extractDetailedPrice($);
+      const fullTitle = this.extractFullTitle($);
+
+      return {
+        ...basicEvent,
+        title: fullTitle || basicEvent.title,
+        location: fullAddress || basicEvent.location,
+        startTime: timeInfo.startTime || basicEvent.startTime,
+        endTime: timeInfo.endTime || basicEvent.endTime,
+        price: accuratePrice !== null ? accuratePrice : basicEvent.price
+      };
+    } catch (error) {
+      console.warn(`    Error fetching detail page: ${error.message}`);
+      return basicEvent;
+    }
+  }
+
+  extractFullTitle($) {
+    // 详情页的标题通常更完整
+    const titleSelectors = [
+      'h1[itemprop="name"]',
+      'h1.event-title',
+      'h1',
+      '[itemprop="name"]'
+    ];
+
+    for (const selector of titleSelectors) {
+      const title = $(selector).first().text().trim();
+      if (title && title.length > 3) {
+        return title;
+      }
+    }
+    return null;
+  }
+
+  extractFullAddress($) {
+    // 尝试多种方式提取完整地址
+    // 1. 查找 itemprop="location" 的详细地址
+    const $location = $('[itemprop="location"]').first();
+    if ($location.length > 0) {
+      // 尝试获取完整地址（街道 + 城市 + 州 + 邮编）
+      const $address = $location.find('[itemprop="address"]').first();
+      if ($address.length > 0) {
+        const street = $address.find('[itemprop="streetAddress"]').text().trim();
+        const city = $address.find('[itemprop="addressLocality"]').text().trim();
+        const state = $address.find('[itemprop="addressRegion"]').text().trim();
+        const zip = $address.find('[itemprop="postalCode"]').text().trim();
+
+        if (street || city) {
+          const parts = [street, city, state, zip].filter(p => p);
+          return parts.join(', ');
+        }
+      }
+
+      // 如果没有结构化地址，尝试获取纯文本
+      let locationText = $location.text().trim();
+      // 清理：移除时间信息和其他干扰文本
+      locationText = locationText.replace(/\(\d{1,2}(?::\d{2})?\s*(?:am|pm|noon).*?\)/gi, '').trim();
+      locationText = locationText.replace(/\d{1,2}(?::\d{2})?\s*(?:am|pm|noon).*/gi, '').trim();
+      locationText = locationText.replace(/\s*\/\s*.*$/, '').trim();
+      locationText = locationText.replace(/Get directions?/gi, '').trim();
+      locationText = locationText.replace(/View map/gi, '').trim();
+
+      if (locationText && locationText.length > 5 && locationText.length < 200) {
+        return locationText;
+      }
+    }
+
+    // 2. 查找 .venue-address 或类似的类
+    const addressSelectors = [
+      '.venue-address',
+      '.event-venue-address',
+      '.address',
+      '.event_place',
+      '[class*="address"]'
+    ];
+
+    for (const selector of addressSelectors) {
+      const address = $(selector).first().text().trim();
+      if (address && address.length > 5 && address.length < 200) {
+        return address.replace(/Get directions?/gi, '').trim();
+      }
+    }
+
+    return null;
+  }
+
+  extractDetailedTime($) {
+    // 1. 优先使用 <time> 标签的 datetime 属性（使用本地时间）
+    const $time = $('time[datetime]').first();
+    if ($time.length > 0) {
+      const datetime = $time.attr('datetime');
+      // 移除时区信息，使用本地时间
+      const localTime = datetime.replace(/([+-]\d{2}:\d{2}|Z)$/, '');
+      const parsedDate = new Date(localTime);
+      if (!isNaN(parsedDate.getTime())) {
+        // 查找结束时间
+        const $endTime = $('time[datetime]').eq(1);
+        let endTime = null;
+        if ($endTime.length > 0) {
+          const endDatetime = $endTime.attr('datetime');
+          const localEndTime = endDatetime.replace(/([+-]\d{2}:\d{2}|Z)$/, '');
+          const parsedEndDate = new Date(localEndTime);
+          if (!isNaN(parsedEndDate.getTime())) {
+            endTime = localEndTime;
+          }
+        }
+
+        return {
+          startTime: localTime,
+          endTime: endTime
+        };
+      }
+    }
+
+    // 2. 查找 itemprop="startDate" 和 itemprop="endDate"
+    const startDateAttr = $('[itemprop="startDate"]').attr('content') ||
+                         $('[itemprop="startDate"]').attr('datetime');
+    const endDateAttr = $('[itemprop="endDate"]').attr('content') ||
+                       $('[itemprop="endDate"]').attr('datetime');
+
+    if (startDateAttr) {
+      const localStart = startDateAttr.replace(/([+-]\d{2}:\d{2}|Z)$/, '');
+      const parsedStart = new Date(localStart);
+      let endTime = null;
+
+      if (endDateAttr) {
+        const localEnd = endDateAttr.replace(/([+-]\d{2}:\d{2}|Z)$/, '');
+        const parsedEnd = new Date(localEnd);
+        if (!isNaN(parsedEnd.getTime())) {
+          endTime = localEnd;
+        }
+      }
+
+      if (!isNaN(parsedStart.getTime())) {
+        return {
+          startTime: localStart,
+          endTime: endTime
+        };
+      }
+    }
+
+    return { startTime: null, endTime: null };
+  }
+
+  extractDetailedPrice($) {
+    // 1. 查找明确的 "Free" 文本
+    const pageText = $('body').text().toLowerCase();
+
+    // 查找价格相关的元素
+    const priceSelectors = [
+      '[itemprop="price"]',
+      '.price',
+      '.event-price',
+      '.ticket-price',
+      '[class*="price"]'
+    ];
+
+    for (const selector of priceSelectors) {
+      const $priceEl = $(selector).first();
+      if ($priceEl.length > 0) {
+        const priceText = $priceEl.text().trim().toLowerCase();
+
+        // 检查是否免费
+        if (priceText === 'free' || priceText === '$0' || priceText === 'free admission') {
+          return 'Free';
+        }
+
+        // 查找价格数字
+        const priceMatch = priceText.match(/\$[\d,]+\.?\d*/);
+        if (priceMatch) {
+          return priceMatch[0];
+        }
+
+        // 查找 content 属性
+        const priceContent = $priceEl.attr('content');
+        if (priceContent) {
+          if (priceContent === '0') {
+            return 'Free';
+          }
+          return `$${priceContent}`;
+        }
+      }
+    }
+
+    // 2. 在整个页面中搜索免费指示
+    if (pageText.includes('free admission') ||
+        pageText.includes('free event') ||
+        pageText.includes('no charge')) {
+      return 'Free';
+    }
+
+    return null;
+  }
+
   parseSFStationEvent($, element) {
     const $el = $(element);
 
@@ -120,37 +344,140 @@ class SFStationScraper extends BaseScraper {
         originalUrl = originalUrl.startsWith('http') ? originalUrl : `https://www.sfstation.com${originalUrl}`;
       }
 
-      // 时间 - 从 itemprop="startDate" 和 .event-time 获取
-      const startDate = $el.find('[itemprop="startDate"]').attr('content') ||
-                       $el.find('.event-date').first().attr('content');
-      const timeText = $el.find('.event-time').text().trim() ||
-                      $el.find('.event_time').text().trim();
+      // 时间 - 直接使用 itemprop="startDate" 的本地时间（不做时区转换）
+      const startDateAttr = $el.find('[itemprop="startDate"]').attr('content');
+      let startTime = null;
 
-      let startTime;
-      if (startDate) {
-        // 如果有时间文本，合并日期和时间
-        if (timeText) {
-          startTime = this.parseDateTime(startDate, timeText);
-        } else {
-          // 只有日期，使用中午12点作为默认时间
-          startTime = new Date(`${startDate}T12:00:00`).toISOString();
+      if (startDateAttr) {
+        // 提取日期和时间，但保存为本地时间字符串（旧金山时间）
+        // 输入如: "2025-10-06T18:00:00-07:00"
+        // 输出: "2025-10-06T18:00:00" (去掉时区，直接使用本地时间)
+        const localTime = startDateAttr.replace(/([+-]\d{2}:\d{2}|Z)$/, '');
+        const parsedDate = new Date(localTime);
+        if (!isNaN(parsedDate.getTime())) {
+          // 格式化为 ISO 字符串但不带时区信息
+          startTime = localTime;
         }
-      } else {
-        return null; // 没有日期信息，跳过
       }
 
-      // 地点 - 从 itemprop="location" 或 .event_place 获取
-      const locationSelectors = ['[itemprop="location"]', '.event_place', '.location', '.venue'];
-      let location = this.extractCleanLocation($, $el, locationSelectors, 'San Francisco');
+      // 如果 itemprop 没有或无效，尝试解析日期和时间文本
+      if (!startTime) {
+        const startDate = $el.find('.event-date').first().attr('content');
+        const timeText = $el.find('.event-time').text().trim() ||
+                        $el.find('.event_time').text().trim();
 
-      // 价格 - 从 itemprop="price" 获取
-      const priceContent = $el.find('[itemprop="price"]').attr('content');
+        if (startDate) {
+          // 如果有时间文本，合并日期和时间
+          if (timeText) {
+            startTime = this.parseDateTime(startDate, timeText);
+          } else {
+            // 只有日期，使用中午12点作为默认时间
+            startTime = `${startDate}T12:00:00`;
+          }
+        }
+      }
+
+      if (!startTime) return null; // 没有有效时间信息，跳过
+
+      // 地点 - 改进提取逻辑
+      let location = null;
+
+      // 1. 尝试 itemprop="location" 的嵌套地址结构
+      const $location = $el.find('[itemprop="location"]').first();
+      if ($location.length > 0) {
+        // 尝试获取结构化地址
+        const $address = $location.find('[itemprop="address"]');
+        if ($address.length > 0) {
+          const street = $address.find('[itemprop="streetAddress"]').text().trim();
+          const city = $address.find('[itemprop="addressLocality"]').text().trim();
+          const state = $address.find('[itemprop="addressRegion"]').text().trim();
+          const zip = $address.find('[itemprop="postalCode"]').text().trim();
+
+          if (street) {
+            const parts = [street, city, state, zip].filter(p => p);
+            location = parts.join(', ');
+          }
+        }
+
+        // 如果没有结构化地址，尝试 name 属性（场馆名）
+        if (!location) {
+          const venueName = $location.find('[itemprop="name"]').text().trim();
+          if (venueName && venueName.length > 2) {
+            location = venueName;
+          }
+        }
+
+        // 最后尝试纯文本，但要清理
+        if (!location) {
+          let locationText = $location.text().trim();
+          // 移除时间模式和多余信息
+          locationText = locationText.replace(/\(\d{1,2}(?::\d{2})?\s*(?:am|pm|noon).*?\)/gi, '').trim();
+          locationText = locationText.replace(/\d{1,2}(?::\d{2})?\s*(?:am|pm|noon).*/gi, '').trim();
+          locationText = locationText.replace(/\s*\/\s*.*$/, '').trim();
+
+          if (locationText && locationText.length > 2 && locationText.length < 200) {
+            location = locationText;
+          }
+        }
+      }
+
+      // 2. 如果还没找到，尝试其他选择器
+      if (!location) {
+        const locationSelectors = ['.event_place', '.venue', '.location'];
+        for (const sel of locationSelectors) {
+          const loc = $el.find(sel).first().text().trim();
+          if (loc && loc.length > 2 && loc.length < 200) {
+            location = loc;
+            break;
+          }
+        }
+      }
+
+      // 默认地点
+      if (!location || location.length < 2) {
+        location = 'San Francisco';
+      }
+
+      // 价格 - 改进提取逻辑
       let price = null;
-      if (priceContent) {
+
+      // 1. 尝试 itemprop="price"
+      const priceContent = $el.find('[itemprop="price"]').attr('content');
+      if (priceContent !== undefined && priceContent !== null) {
         if (priceContent === '0' || priceContent === '') {
           price = 'Free';
         } else {
           price = `$${priceContent}`;
+        }
+      }
+
+      // 2. 尝试 itemprop="offers" 下的价格
+      if (!price) {
+        const $offers = $el.find('[itemprop="offers"]');
+        if ($offers.length > 0) {
+          const offerPrice = $offers.find('[itemprop="price"]').attr('content');
+          if (offerPrice !== undefined) {
+            if (offerPrice === '0' || offerPrice === '') {
+              price = 'Free';
+            } else {
+              price = `$${offerPrice}`;
+            }
+          }
+
+          // 检查 price validity
+          const priceValid = $offers.find('[itemprop="priceCurrency"]').attr('content');
+          if (priceValid === 'USD' && offerPrice) {
+            price = offerPrice === '0' ? 'Free' : `$${offerPrice}`;
+          }
+        }
+      }
+
+      // 3. 在文本中查找 "Free" 关键词
+      if (!price) {
+        const allText = $el.text().toLowerCase();
+        if (allText.includes('free admission') || allText.includes('free event') ||
+            (allText.includes('free') && !allText.includes('free shipping'))) {
+          price = 'Free';
         }
       }
 
@@ -178,6 +505,7 @@ class SFStationScraper extends BaseScraper {
     try {
       // dateStr 格式: "2025-10-01"
       // timeStr 格式: "7:30pm" 或 "12noon - 5pm" 等
+      // 返回本地时间字符串（不含时区）
 
       // 提取第一个时间
       const timeMatch = timeStr.match(/(\d{1,2}):?(\d{2})?\s*(am|pm|noon)?/i);
@@ -194,14 +522,14 @@ class SFStationScraper extends BaseScraper {
           hours = 12;
         }
 
-        const dateTime = new Date(`${dateStr}T${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:00`);
-        return dateTime.toISOString();
+        // 返回本地时间字符串（旧金山时间）
+        return `${dateStr}T${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:00`;
       }
 
       // 如果无法解析时间，使用中午12点
-      return new Date(`${dateStr}T12:00:00`).toISOString();
+      return `${dateStr}T12:00:00`;
     } catch (error) {
-      return new Date(`${dateStr}T12:00:00`).toISOString();
+      return `${dateStr}T12:00:00`;
     }
   }
 
