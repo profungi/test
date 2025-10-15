@@ -180,7 +180,6 @@ class EventScrapeOrchestrator {
     const memoryDedupedEvents = [];
 
     for (const event of events) {
-<<<<<<< HEAD
       // 首先检查URL去重
       const eventUrl = event.originalUrl || event.url;
       if (eventUrl && seenUrls.has(eventUrl)) {
@@ -188,8 +187,6 @@ class EventScrapeOrchestrator {
         continue;
       }
 
-=======
->>>>>>> refs/tags/sculptor-merge-source-2a1baf4ebf96ba7d326079130a835b8f5e3aaff9
       // 创建唯一键：标题+开始时间（只取日期和小时）+地点
       const normalizedTitle = event.title.toLowerCase().trim();
 
