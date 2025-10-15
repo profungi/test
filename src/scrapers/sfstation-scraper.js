@@ -344,7 +344,6 @@ class SFStationScraper extends BaseScraper {
         originalUrl = originalUrl.startsWith('http') ? originalUrl : `https://www.sfstation.com${originalUrl}`;
       }
 
-<<<<<<< HEAD
       // 过滤掉列表页URL（calendar页面）
       if (originalUrl.includes('/calendar') || originalUrl.includes('sfstation.com/?') || originalUrl.includes('sfstation.com?')) {
         console.log(`  Skipping list page URL: ${originalUrl}`);
@@ -358,12 +357,19 @@ class SFStationScraper extends BaseScraper {
       if (startDateAttr) {
         // 直接去掉时区后缀，保留本地时间
         // 输入: "2025-10-06T18:00:00-07:00" → 输出: "2025-10-06T18:00:00"
+        // 输入: "2025-10-06T18:00-07:00" → 输出: "2025-10-06T18:00"
         // 这样保证时间与网页显示一致（旧金山本地时间）
         startTime = startDateAttr.replace(/([+-]\d{2}:\d{2}|Z)$/, '');
 
-        // 验证格式
-        if (!startTime.match(/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}$/)) {
-          console.warn(`  Invalid time format: ${startTime}`);
+        // 验证格式 - 支持两种格式：带秒和不带秒
+        // YYYY-MM-DDTHH:MM:SS 或 YYYY-MM-DDTHH:MM
+        if (startTime.match(/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}$/)) {
+          // 格式正确，不做处理
+        } else if (startTime.match(/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}$/)) {
+          // 缺少秒，补充 :00
+          startTime = `${startTime}:00`;
+        } else {
+          console.warn(`  Invalid time format from startDate: "${startDateAttr}" -> "${startTime}"`);
           startTime = null;
         }
       }
@@ -374,30 +380,7 @@ class SFStationScraper extends BaseScraper {
         const timeText = $el.find('.event-time').text().trim() ||
                         $el.find('.event_time').text().trim();
 
-=======
-      // 时间 - 直接使用 itemprop="startDate" 的本地时间（不做时区转换）
-      const startDateAttr = $el.find('[itemprop="startDate"]').attr('content');
-      let startTime = null;
 
-      if (startDateAttr) {
-        // 提取日期和时间，但保存为本地时间字符串（旧金山时间）
-        // 输入如: "2025-10-06T18:00:00-07:00"
-        // 输出: "2025-10-06T18:00:00" (去掉时区，直接使用本地时间)
-        const localTime = startDateAttr.replace(/([+-]\d{2}:\d{2}|Z)$/, '');
-        const parsedDate = new Date(localTime);
-        if (!isNaN(parsedDate.getTime())) {
-          // 格式化为 ISO 字符串但不带时区信息
-          startTime = localTime;
-        }
-      }
-
-      // 如果 itemprop 没有或无效，尝试解析日期和时间文本
-      if (!startTime) {
-        const startDate = $el.find('.event-date').first().attr('content');
-        const timeText = $el.find('.event-time').text().trim() ||
-                        $el.find('.event_time').text().trim();
-
->>>>>>> refs/tags/sculptor-merge-source-2a1baf4ebf96ba7d326079130a835b8f5e3aaff9
         if (startDate) {
           // 如果有时间文本，合并日期和时间
           if (timeText) {

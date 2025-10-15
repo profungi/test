@@ -21,30 +21,110 @@ class AIEventClassifier {
   }
 
   async classifyEvents(events) {
-    if (!this.aiAvailable) {
-      console.log(`Classifying ${events.length} events using fallback method (no AI available)...`);
-      return events.map(event => this.fallbackClassification(event));
+    console.log(`Classifying ${events.length} events with hybrid approach...`);
+
+    // 混合方案：区分Eventbrite和其他来源
+    const eventbriteEvents = events.filter(e => e.pageCategory); // 有pageCategory的是Eventbrite
+    const otherEvents = events.filter(e => !e.pageCategory);
+
+    console.log(`  - ${eventbriteEvents.length} events from Eventbrite (using page categories)`);
+    console.log(`  - ${otherEvents.length} events from other sources (using AI classification)`);
+
+    const classifiedEvents = [];
+
+    // 1. Eventbrite活动：使用页面分类
+    if (eventbriteEvents.length > 0) {
+      const eventbriteClassified = eventbriteEvents.map(event =>
+        this.classifyFromPageCategory(event)
+      );
+      classifiedEvents.push(...eventbriteClassified);
     }
 
-    console.log(`Classifying ${events.length} events with AI...`);
-    
-    const classifiedEvents = [];
-    const batchSize = 5; // 每批处理5个事件，避免token超限
-    
-    for (let i = 0; i < events.length; i += batchSize) {
-      const batch = events.slice(i, i + batchSize);
-      try {
-        const batchResults = await this.classifyEventBatch(batch);
-        classifiedEvents.push(...batchResults);
-      } catch (error) {
-        console.error(`Failed to classify batch ${i / batchSize + 1}:`, error.message);
-        // 如果AI分类失败，使用fallback分类
-        const fallbackResults = batch.map(event => this.fallbackClassification(event));
-        classifiedEvents.push(...fallbackResults);
+    // 2. 其他来源活动：使用AI分类
+    if (otherEvents.length > 0) {
+      if (!this.aiAvailable) {
+        console.log(`  Using fallback method for non-Eventbrite events (no AI available)...`);
+        const fallbackClassified = otherEvents.map(event => this.fallbackClassification(event));
+        classifiedEvents.push(...fallbackClassified);
+      } else {
+        const batchSize = 5;
+        for (let i = 0; i < otherEvents.length; i += batchSize) {
+          const batch = otherEvents.slice(i, i + batchSize);
+          try {
+            const batchResults = await this.classifyEventBatch(batch);
+            classifiedEvents.push(...batchResults);
+          } catch (error) {
+            console.error(`Failed to classify batch ${i / batchSize + 1}:`, error.message);
+            const fallbackResults = batch.map(event => this.fallbackClassification(event));
+            classifiedEvents.push(...fallbackResults);
+          }
+        }
       }
     }
-    
+
     return classifiedEvents;
+  }
+
+  // 根据Eventbrite页面分类映射到我们的分类系统
+  classifyFromPageCategory(event) {
+    const pageCategory = (event.pageCategory || '').toLowerCase();
+    const title = event.title.toLowerCase();
+    const description = (event.description || '').toLowerCase();
+    const price = (event.price || '').toLowerCase();
+
+    // 映射Eventbrite分类到我们的系统
+    // Eventbrite常见分类: Music, Food & Drink, Arts, Business, Health, Sports, etc.
+
+    let eventType = 'other';
+    let priority = 3;
+
+    // 优先级1: market/fair/festival (priority 10)
+    if (title.match(/market|fair|festival/i) ||
+        description.match(/market|fair|festival/i)) {
+      eventType = pageCategory.includes('food') ? 'market' : 'festival';
+      priority = 10;
+    }
+    // 优先级2: free events (priority 9)
+    else if (price === 'free' || price.includes('free')) {
+      eventType = 'free';
+      priority = 9;
+    }
+    // 优先级3: food events (priority 6)
+    else if (pageCategory.includes('food') || pageCategory.includes('drink')) {
+      eventType = 'food';
+      priority = 6;
+    }
+    // 优先级4: art events (priority 5)
+    else if (pageCategory.includes('art') || pageCategory.includes('culture') ||
+             pageCategory.includes('film') || pageCategory.includes('visual')) {
+      eventType = 'art';
+      priority = 5;
+    }
+    // 优先级5: tech events (priority 5)
+    else if (pageCategory.includes('tech') || pageCategory.includes('business') ||
+             pageCategory.includes('science')) {
+      eventType = 'tech';
+      priority = 5;
+    }
+    // 优先级6: music events (priority 4)
+    else if (pageCategory.includes('music') || pageCategory.includes('concert') ||
+             pageCategory.includes('performing')) {
+      eventType = 'music';
+      priority = 4;
+    }
+    // 其他
+    else {
+      eventType = 'other';
+      priority = 3;
+    }
+
+    return {
+      ...event,
+      eventType,
+      priority,
+      classificationMethod: 'page_category', // 标记分类方法
+      originalPageCategory: event.pageCategory
+    };
   }
 
   async classifyEventBatch(events) {
@@ -105,7 +185,8 @@ class AIEventClassifier {
           priority: config.eventTypePriority[classification.category] || config.eventTypePriority.default,
           aiConfidence: classification.confidence || 0.5,
           chineseRelevant: classification.chineseRelevant || false,
-          aiReasoning: classification.reasoning || ''
+          aiReasoning: classification.reasoning || '',
+          classificationMethod: 'ai' // 标记为AI分类
         };
       } else {
         return this.fallbackClassification(event);
@@ -208,7 +289,8 @@ Mark "chineseRelevant: true" if the event would likely appeal to Chinese-speakin
       priority,
       aiConfidence: 0.3, // 低置信度表示这是fallback分类
       chineseRelevant: false,
-      aiReasoning: 'Fallback keyword-based classification'
+      aiReasoning: 'Fallback keyword-based classification',
+      classificationMethod: 'fallback' // 标记为fallback分类
     };
   }
 

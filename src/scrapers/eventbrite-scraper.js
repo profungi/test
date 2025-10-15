@@ -17,11 +17,7 @@ class EventbriteScraper extends BaseScraper {
         this.sourceConfig.baseUrl + this.sourceConfig.searchParams,
         weekRange,
         seenUrls,
-<<<<<<< HEAD
         10 // 旧金山10个
-=======
-        15 // 旧金山15个
->>>>>>> refs/tags/sculptor-merge-source-2a1baf4ebf96ba7d326079130a835b8f5e3aaff9
       );
       events.push(...sfEvents);
 
@@ -35,22 +31,14 @@ class EventbriteScraper extends BaseScraper {
 
           try {
             const cityUrl = `${city.url}?start_date_keyword=next_week`;
-<<<<<<< HEAD
             const maxEvents = city.maxEvents || 8; // 使用配置的数量，默认8个
             console.log(`    Scraping ${city.name} (max ${maxEvents})...`);
-=======
-            console.log(`    Scraping ${city.name}...`);
->>>>>>> refs/tags/sculptor-merge-source-2a1baf4ebf96ba7d326079130a835b8f5e3aaff9
 
             const cityEvents = await this.scrapeEventsFromUrl(
               cityUrl,
               weekRange,
               seenUrls,
-<<<<<<< HEAD
               maxEvents
-=======
-              8 // 每个城市最多8个
->>>>>>> refs/tags/sculptor-merge-source-2a1baf4ebf96ba7d326079130a835b8f5e3aaff9
             );
 
             if (cityEvents.length > 0) {
@@ -531,12 +519,16 @@ class EventbriteScraper extends BaseScraper {
     // 提取准确价格
     const accuratePrice = this.extractDetailedPrice($);
 
+    // 提取页面分类（Eventbrite原生分类）
+    const pageCategory = this.extractCategory($);
+
     return {
       ...basicEvent,
       location: fullAddress || basicEvent.location,
       startTime: timeInfo.startTime || basicEvent.startTime,
       endTime: timeInfo.endTime || basicEvent.endTime,
-      price: accuratePrice || basicEvent.price
+      price: accuratePrice || basicEvent.price,
+      pageCategory: pageCategory // 添加页面分类
     };
   }
 
@@ -583,7 +575,16 @@ class EventbriteScraper extends BaseScraper {
           }
 
           // 如果没有时间范围文本，直接使用datetime的本地时间
-          const localTime = datetime.replace(/([+-]\d{2}:\d{2}|Z)$/, '');
+          let localTime = datetime.replace(/([+-]\d{2}:\d{2}|Z)$/, '');
+
+          // 规范化格式：补充缺失的秒
+          if (localTime.match(/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}$/)) {
+            localTime = `${localTime}:00`;
+          } else if (!localTime.match(/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}$/)) {
+            console.warn(`  Invalid time format in Eventbrite: "${datetime}" -> "${localTime}"`);
+            return { startTime: null, endTime: null };
+          }
+
           return {
             startTime: localTime,
             endTime: null
@@ -693,6 +694,53 @@ class EventbriteScraper extends BaseScraper {
 
     if (priceMatch) {
       return priceMatch[0];
+    }
+
+    return null;
+  }
+
+  // 从详情页提取Eventbrite的原生分类
+  extractCategory($) {
+    // Eventbrite的分类通常在以下位置：
+    // 1. Schema.org标记: <meta property="event:category" content="Music">
+    // 2. 面包屑导航: <a>Music</a>
+    // 3. 类别标签: <span class="category">Music</span>
+
+    // 尝试1: meta标签
+    const metaCategory = $('meta[property="event:category"]').attr('content') ||
+                        $('meta[name="category"]').attr('content');
+    if (metaCategory) {
+      return metaCategory.trim();
+    }
+
+    // 尝试2: 查找包含"Category"的文本附近的内容
+    const categorySelectors = [
+      '[class*="category"]',
+      '[data-testid*="category"]',
+      'a[href*="/d/"][href*="/events"]', // Eventbrite分类链接格式
+    ];
+
+    for (const selector of categorySelectors) {
+      const $el = $(selector).first();
+      if ($el.length > 0) {
+        const text = $el.text().trim();
+        // 过滤掉明显不是分类的文本（如太长、包含数字等）
+        if (text && text.length < 30 && !text.match(/\d{2,}/)) {
+          return text;
+        }
+      }
+    }
+
+    // 尝试3: 从URL中提取分类（如果有的话）
+    // Eventbrite URL格式: /e/category-name-tickets-xxxxx
+    const url = $('link[rel="canonical"]').attr('href') || '';
+    const urlMatch = url.match(/\/([^\/]+)-tickets-\d+/);
+    if (urlMatch) {
+      // 将URL中的连字符转换为空格，并转为标题格式
+      const category = urlMatch[1].split('-').map(word =>
+        word.charAt(0).toUpperCase() + word.slice(1)
+      ).join(' ');
+      return category;
     }
 
     return null;

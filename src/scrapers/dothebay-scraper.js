@@ -231,30 +231,40 @@ class DoTheBayScraper extends BaseScraper {
   }
 
   extractDetailedTime($) {
+    // 辅助函数：规范化时间格式
+    const normalizeTime = (timeStr) => {
+      if (!timeStr) return null;
+
+      // 移除时区信息
+      let normalized = timeStr.replace(/([+-]\d{2}:\d{2}|Z)$/, '');
+
+      // 验证并规范化格式
+      if (normalized.match(/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}$/)) {
+        return normalized; // 格式正确
+      } else if (normalized.match(/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}$/)) {
+        return `${normalized}:00`; // 补充秒
+      } else {
+        console.warn(`  Invalid time format in DoTheBay: "${timeStr}" -> "${normalized}"`);
+        return null;
+      }
+    };
+
     // 1. 优先使用 <time> 标签的 datetime 属性（使用本地时间）
     const $time = $('time[datetime]').first();
     if ($time.length > 0) {
       const datetime = $time.attr('datetime');
-      // 移除时区信息，使用本地时间
-      const localTime = datetime.replace(/([+-]\d{2}:\d{2}|Z)$/, '');
-      const parsedDate = new Date(localTime);
-      if (!isNaN(parsedDate.getTime())) {
+      const startTime = normalizeTime(datetime);
+
+      if (startTime) {
         // 查找结束时间
         const $endTime = $('time[datetime]').eq(1);
         let endTime = null;
         if ($endTime.length > 0) {
           const endDatetime = $endTime.attr('datetime');
-          const localEndTime = endDatetime.replace(/([+-]\d{2}:\d{2}|Z)$/, '');
-          const parsedEndDate = new Date(localEndTime);
-          if (!isNaN(parsedEndDate.getTime())) {
-            endTime = localEndTime;
-          }
+          endTime = normalizeTime(endDatetime);
         }
 
-        return {
-          startTime: localTime,
-          endTime: endTime
-        };
+        return { startTime, endTime };
       }
     }
 
@@ -265,23 +275,11 @@ class DoTheBayScraper extends BaseScraper {
                        $('[itemprop="endDate"]').attr('datetime');
 
     if (startDateAttr) {
-      const localStart = startDateAttr.replace(/([+-]\d{2}:\d{2}|Z)$/, '');
-      const parsedStart = new Date(localStart);
-      let endTime = null;
+      const startTime = normalizeTime(startDateAttr);
+      const endTime = endDateAttr ? normalizeTime(endDateAttr) : null;
 
-      if (endDateAttr) {
-        const localEnd = endDateAttr.replace(/([+-]\d{2}:\d{2}|Z)$/, '');
-        const parsedEnd = new Date(localEnd);
-        if (!isNaN(parsedEnd.getTime())) {
-          endTime = localEnd;
-        }
-      }
-
-      if (!isNaN(parsedStart.getTime())) {
-        return {
-          startTime: localStart,
-          endTime: endTime
-        };
+      if (startTime) {
+        return { startTime, endTime };
       }
     }
 
