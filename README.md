@@ -246,6 +246,78 @@ npm run generate-post "./output/review_2024-09-19_1430.json"
 3. **下载文件**: 从 Artifacts 下载审核文件
 4. **本地处理**: 审核后本地运行生成命令
 
+## 📝 命令参考
+
+### 主要命令
+
+#### 1. 抓取活动（主要功能）
+```bash
+npm run scrape
+```
+- 从三个网站抓取活动（Eventbrite, SFStation, DoTheBay）
+- AI分类和去重
+- 生成 review JSON 文件在 `output/` 目录
+
+#### 2. 使用不同AI提供商
+```bash
+npm run scrape -- --ai-provider openai   # 使用OpenAI (默认)
+npm run scrape -- --ai-provider gemini   # 使用Google Gemini
+npm run scrape -- --ai-provider claude   # 使用Claude
+```
+
+#### 3. 生成文章（在审核后）
+```bash
+npm run generate-post output/review_YYYY-MM-DD_HHMM.json
+```
+- 根据审核后的JSON生成最终文章
+- 输出Markdown格式
+
+#### 4. 查看帮助
+```bash
+npm run scrape -- --help
+```
+
+### 调试命令
+
+#### 查看抓取错误
+```bash
+npm run scrape 2>&1 | grep -i "error\|invalid\|failed"
+```
+
+#### 查看特定网站的日志
+```bash
+npm run scrape 2>&1 | grep "DoTheBay"
+npm run scrape 2>&1 | grep "SFStation"
+npm run scrape 2>&1 | grep "Eventbrite"
+```
+
+#### 查看时间处理日志
+```bash
+npm run scrape 2>&1 | grep -E "Invalid time|normalize|parseTime"
+```
+
+### 数据流程
+
+```
+npm run scrape
+  ↓
+1. 抓取 (Eventbrite + SFStation + DoTheBay) → ~83 events
+  ↓
+2. URL去重 + 内容去重 → ~23 events
+  ↓
+3. AI分类 (混合策略) → 23 classified events
+  ↓
+4. 过滤音乐活动 + 选择top候选 → ~22 candidates
+  ↓
+5. 生成 review_*.json 文件
+  ↓
+手工审核 (修改 "selected": true)
+  ↓
+npm run generate-post review_*.json
+  ↓
+生成最终文章
+```
+
 ## 📄 输出文件
 
 ### 第一步输出（抓取阶段）
