@@ -53,6 +53,7 @@ const config = {
       ],
       // 湾区其他城市的搜索URL
       additionalCities: [
+<<<<<<< HEAD
         // 东湾（只抓5个）
         { name: 'Oakland', url: 'https://www.eventbrite.com/d/ca--oakland/events/', maxEvents: 5 },
 
@@ -63,6 +64,13 @@ const config = {
         // 半岛（每个城市各抓取）
         { name: 'Palo Alto', url: 'https://www.eventbrite.com/d/ca--palo-alto/events/', maxEvents: 8 },
         { name: 'Mountain View', url: 'https://www.eventbrite.com/d/ca--mountain-view/events/', maxEvents: 8 }
+=======
+        { name: 'Oakland', url: 'https://www.eventbrite.com/d/ca--oakland/events/' },
+        { name: 'San Jose', url: 'https://www.eventbrite.com/d/ca--san-jose/events/' },
+        { name: 'Berkeley', url: 'https://www.eventbrite.com/d/ca--berkeley/events/' },
+        { name: 'Palo Alto', url: 'https://www.eventbrite.com/d/ca--palo-alto/events/' },
+        { name: 'Mountain View', url: 'https://www.eventbrite.com/d/ca--mountain-view/events/' }
+>>>>>>> refs/tags/sculptor-merge-source-2a1baf4ebf96ba7d326079130a835b8f5e3aaff9
       ],
       priority: 1,
       enabled: true

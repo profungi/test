@@ -17,7 +17,11 @@ class EventbriteScraper extends BaseScraper {
         this.sourceConfig.baseUrl + this.sourceConfig.searchParams,
         weekRange,
         seenUrls,
+<<<<<<< HEAD
         10 // 旧金山10个
+=======
+        15 // 旧金山15个
+>>>>>>> refs/tags/sculptor-merge-source-2a1baf4ebf96ba7d326079130a835b8f5e3aaff9
       );
       events.push(...sfEvents);
 
@@ -31,14 +35,22 @@ class EventbriteScraper extends BaseScraper {
 
           try {
             const cityUrl = `${city.url}?start_date_keyword=next_week`;
+<<<<<<< HEAD
             const maxEvents = city.maxEvents || 8; // 使用配置的数量，默认8个
             console.log(`    Scraping ${city.name} (max ${maxEvents})...`);
+=======
+            console.log(`    Scraping ${city.name}...`);
+>>>>>>> refs/tags/sculptor-merge-source-2a1baf4ebf96ba7d326079130a835b8f5e3aaff9
 
             const cityEvents = await this.scrapeEventsFromUrl(
               cityUrl,
               weekRange,
               seenUrls,
+<<<<<<< HEAD
               maxEvents
+=======
+              8 // 每个城市最多8个
+>>>>>>> refs/tags/sculptor-merge-source-2a1baf4ebf96ba7d326079130a835b8f5e3aaff9
             );
 
             if (cityEvents.length > 0) {
