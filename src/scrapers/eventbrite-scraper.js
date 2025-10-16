@@ -349,26 +349,21 @@ class EventbriteScraper extends BaseScraper {
   }
 
   extractDescription($, $el) {
-    // 注意：列表页通常没有详细描述，只有标题/时间/地点
-    // 避免提取到时间、地点等无关信息
-    const selectors = [
-      '[class*="event-card__description"]',
-      '[class*="event-description"]',
-      '[data-testid="event-summary"]'
-    ];
+    // 注意：Eventbrite 列表页通常没有真正的活动描述
+    // 只有票务状态（Almost full）、时间等元数据
+    // 我们直接跳过列表页的description提取，完全依赖详情页的 description_detail
 
-    for (const sel of selectors) {
-      const text = $el.find(sel).first().text().trim();
-      if (text && text.length > 20) {
-        // 简单过滤：如果文本主要是日期/时间格式，跳过
-        const hasDatePattern = /\d{1,2}:\d{2}\s*(AM|PM)|Mon|Tue|Wed|Thu|Fri|Sat|Sun|\d{1,2}\/\d{1,2}/i.test(text);
-        if (!hasDatePattern) {
-          return text.substring(0, 200);
-        }
-      }
-    }
+    // 如果将来需要从列表页提取，可以使用以下选择器：
+    // '[class*="event-card__description"]'
+    // '[class*="event-description"]'
+    // '[data-testid="event-summary"]'
 
-    // 列表页没有合适的描述就返回null，依赖详情页的 description_detail
+    // 但需要严格过滤掉：
+    // - 票务状态：Almost full, Sold out, Only X tickets left
+    // - 时间信息：包含时间格式的文本
+    // - 地点信息：地址格式的文本
+
+    // 目前策略：列表页返回null，只使用详情页的 description_detail
     return null;
   }
 

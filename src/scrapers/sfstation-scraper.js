@@ -474,15 +474,21 @@ class SFStationScraper extends BaseScraper {
         }
       }
 
-      // 描述（避免提取到时间/地点信息）
+      // 描述（避免提取到时间/地点等元数据）
       let description = $el.find('.event_description').text().trim() ||
                        $el.find('[itemprop="description"]').text().trim() ||
                        null;
 
-      // 过滤掉主要是时间/日期的文本
+      // 过滤掉无效内容
       if (description) {
-        const hasDatePattern = /^\d{1,2}:\d{2}\s*(AM|PM)|^Mon|^Tue|^Wed|^Thu|^Fri|^Sat|^Sun|\d{1,2}\/\d{1,2}\/\d{2,4}/i.test(description);
-        if (hasDatePattern || description.length < 20) {
+        // 过滤条件：
+        // 1. 太短（< 30字符）
+        // 2. 主要是时间/日期格式
+        // 3. 票务状态信息
+        const hasDatePattern = /(Mon|Tue|Wed|Thu|Fri|Sat|Sun).*\d{1,2}:\d{2}\s*(AM|PM)|^\d{1,2}:\d{2}\s*(AM|PM)|\d{1,2}\/\d{1,2}\/\d{2,4}/i.test(description);
+        const isTicketStatus = /almost full|sold out|only \d+ tickets|tickets? (left|remaining)/i.test(description);
+
+        if (description.length < 30 || hasDatePattern || isTicketStatus) {
           description = null;
         }
       }
