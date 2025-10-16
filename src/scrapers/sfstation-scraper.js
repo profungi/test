@@ -474,10 +474,18 @@ class SFStationScraper extends BaseScraper {
         }
       }
 
-      // 描述
-      const description = $el.find('.event_description').text().trim() ||
-                         $el.find('[itemprop="description"]').text().trim() ||
-                         null;
+      // 描述（避免提取到时间/地点信息）
+      let description = $el.find('.event_description').text().trim() ||
+                       $el.find('[itemprop="description"]').text().trim() ||
+                       null;
+
+      // 过滤掉主要是时间/日期的文本
+      if (description) {
+        const hasDatePattern = /^\d{1,2}:\d{2}\s*(AM|PM)|^Mon|^Tue|^Wed|^Thu|^Fri|^Sat|^Sun|\d{1,2}\/\d{1,2}\/\d{2,4}/i.test(description);
+        if (hasDatePattern || description.length < 20) {
+          description = null;
+        }
+      }
 
       return {
         title,

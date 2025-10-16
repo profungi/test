@@ -349,20 +349,26 @@ class EventbriteScraper extends BaseScraper {
   }
 
   extractDescription($, $el) {
+    // 注意：列表页通常没有详细描述，只有标题/时间/地点
+    // 避免提取到时间、地点等无关信息
     const selectors = [
-      '.event-description',
-      '.description',
-      '.summary',
-      'p'
+      '[class*="event-card__description"]',
+      '[class*="event-description"]',
+      '[data-testid="event-summary"]'
     ];
 
     for (const sel of selectors) {
       const text = $el.find(sel).first().text().trim();
-      if (text && text.length > 10) {
-        return text.substring(0, 200);
+      if (text && text.length > 20) {
+        // 简单过滤：如果文本主要是日期/时间格式，跳过
+        const hasDatePattern = /\d{1,2}:\d{2}\s*(AM|PM)|Mon|Tue|Wed|Thu|Fri|Sat|Sun|\d{1,2}\/\d{1,2}/i.test(text);
+        if (!hasDatePattern) {
+          return text.substring(0, 200);
+        }
       }
     }
 
+    // 列表页没有合适的描述就返回null，依赖详情页的 description_detail
     return null;
   }
 
