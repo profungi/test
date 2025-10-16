@@ -66,3 +66,9 @@ coverage/
 # Misc
 .cache/
 .parcel-cache/
+# Diagnostic/debug scripts
+check-empty-descriptions.js
+clear-all-events.js
+clear-next-week-events.js
+debug-ai-prompt.js
+diagnose-descriptions.js

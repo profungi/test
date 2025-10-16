@@ -150,6 +150,7 @@ class DoTheBayScraper extends BaseScraper {
       const timeInfo = this.extractDetailedTime($);
       const accuratePrice = this.extractDetailedPrice($);
       const fullTitle = this.extractFullTitle($);
+      const detailedDescription = this.extractDetailedDescription($);
 
       return {
         ...basicEvent,
@@ -157,7 +158,8 @@ class DoTheBayScraper extends BaseScraper {
         location: fullAddress || basicEvent.location,
         startTime: timeInfo.startTime || basicEvent.startTime,
         endTime: timeInfo.endTime || basicEvent.endTime,
-        price: accuratePrice !== null ? accuratePrice : basicEvent.price
+        price: accuratePrice !== null ? accuratePrice : basicEvent.price,
+        description_detail: detailedDescription || basicEvent.description
       };
     } catch (error) {
       console.warn(`    Error fetching detail page: ${error.message}`);
@@ -512,6 +514,59 @@ class DoTheBayScraper extends BaseScraper {
     }
 
     return events.slice(0, 30);
+  }
+
+  // 从详情页提取详细描述
+  extractDetailedDescription($) {
+    // DoTheBay的活动描述通常在以下位置：
+    // 1. .event-description
+    // 2. [itemprop="description"]
+    // 3. .description
+    // 4. article p
+
+    const descriptionSelectors = [
+      '.event-description',
+      '.event-detail-description',
+      '[itemprop="description"]',
+      '.description',
+      '.event-details-description'
+    ];
+
+    for (const selector of descriptionSelectors) {
+      const $desc = $(selector).first();
+      if ($desc.length > 0) {
+        let text = $desc.text().trim();
+
+        // 清理文本
+        text = text
+          .replace(/\s+/g, ' ')  // 多个空格变成一个
+          .replace(/\n+/g, '\n') // 多个换行变成一个
+          .trim();
+
+        // 如果描述足够长，返回
+        if (text && text.length > 50) {
+          return text.substring(0, 2000); // 限制在2000字符
+        }
+      }
+    }
+
+    // 如果找不到专门的描述区域，尝试从main/article提取段落
+    const $main = $('main, article').first();
+    if ($main.length > 0) {
+      const paragraphs = [];
+      $main.find('p').each((i, el) => {
+        const text = $(el).text().trim();
+        if (text.length > 20) {
+          paragraphs.push(text);
+        }
+      });
+
+      if (paragraphs.length > 0) {
+        return paragraphs.join('\n').substring(0, 2000);
+      }
+    }
+
+    return null;
   }
 }
 

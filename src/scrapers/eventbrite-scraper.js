@@ -526,13 +526,17 @@ class EventbriteScraper extends BaseScraper {
     // 提取页面分类（Eventbrite原生分类）
     const pageCategory = this.extractCategory($);
 
+    // 提取详细描述（新增）
+    const detailedDescription = this.extractDetailedDescription($);
+
     return {
       ...basicEvent,
       location: fullAddress || basicEvent.location,
       startTime: timeInfo.startTime || basicEvent.startTime,
       endTime: timeInfo.endTime || basicEvent.endTime,
       price: accuratePrice || basicEvent.price,
-      pageCategory: pageCategory // 添加页面分类
+      pageCategory: pageCategory, // 添加页面分类
+      description_detail: detailedDescription || basicEvent.description // 添加详细描述
     };
   }
 
@@ -688,6 +692,61 @@ class EventbriteScraper extends BaseScraper {
         word.charAt(0).toUpperCase() + word.slice(1)
       ).join(' ');
       return category;
+    }
+
+    return null;
+  }
+
+  // 从详情页提取详细描述
+  extractDetailedDescription($) {
+    // Eventbrite的活动描述通常在以下位置：
+    // 1. <div class="structured-content-rich-text">
+    // 2. [data-testid="description"]
+    // 3. .event-details__main
+    // 4. [class*="description"]
+
+    const descriptionSelectors = [
+      '[class*="structured-content"]',
+      '[data-testid="description"]',
+      '[class*="event-details__main"]',
+      '[class*="description-content"]',
+      '[class*="event-description"]',
+      '.event-details'
+    ];
+
+    for (const selector of descriptionSelectors) {
+      const $desc = $(selector).first();
+      if ($desc.length > 0) {
+        let text = $desc.text().trim();
+
+        // 清理文本
+        text = text
+          .replace(/\s+/g, ' ')  // 多个空格变成一个
+          .replace(/\n+/g, '\n') // 多个换行变成一个
+          .trim();
+
+        // 如果描述足够长，返回（不限制长度，让AI处理）
+        if (text && text.length > 50) {
+          return text;
+        }
+      }
+    }
+
+    // 如果找不到专门的描述区域，尝试从main content提取
+    const $main = $('main').first();
+    if ($main.length > 0) {
+      // 查找所有段落
+      const paragraphs = [];
+      $main.find('p').each((i, el) => {
+        const text = $(el).text().trim();
+        if (text.length > 20) {
+          paragraphs.push(text);
+        }
+      });
+
+      if (paragraphs.length > 0) {
+        return paragraphs.join('\n').substring(0, 2000); // 限制在2000字符
+      }
     }
 
     return null;
