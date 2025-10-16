@@ -66,16 +66,39 @@ class ContentTranslator {
 重要规则:
 1. 标题格式：emoji + 英文原标题 + 中文翻译
    示例："🥩 Meat Carnival 肉食嘉年华"
-2. 描述：必须基于活动的实际内容和描述，小红书风格，自然活泼，每个活动不同，18字以内
-   重要：仔细阅读活动标题和描述，提取具体信息（如活动特色、亮点、主题等）
-   好的示例："金银岛海景烤肉趴！现场live music超嗨"（基于实际内容）
-   避免："精彩活动不容错过"（太笼统机械）
+2. 描述：这是最重要的部分！必须精心打造每一条描述：
+
+   【描述创作要求】
+   - 字数：15-25字（可适当突破18字限制以确保质量）
+   - 内容来源：仔细阅读活动的标题和描述，提取真实、具体的信息
+   - 必须包含：至少1-2个活动的具体特色、亮点或独特之处
+   - 语言风格：小红书风格，热情、真实、有感染力，像朋友推荐
+   - 使用技巧：善用感叹号、适当的网络用语（绝了/yyds/拉满等）
+
+   【优秀示例】
+   ✅ "金银岛海景BBQ派对！现场live band演出氛围绝了"（提取了地点特色、活动形式、音乐元素）
+   ✅ "米其林大厨坐镇！20+美食摊位，吃货天堂来了"（突出主厨背景、规模、目标人群）
+   ✅ "日落时分开启！湾区最美观景台配美酒美食"（时间特色、地点优势、体验感受）
+   ✅ "免费入场！手工艺品+农场鲜货，周末遛娃首选"（价格优势、活动内容、适合人群）
+
+   【避免的写法】
+   ❌ "探索旧金山，发现城市新趣事！"（太空泛，没有具体信息）
+   ❌ "免费咖啡，高效办公，氛围拉满！"（太笼统，缺乏独特性）
+   ❌ "精彩活动不容错过"（毫无信息量）
+   ❌ "有趣的周末活动"（模板化，不够吸引人）
+
+   【创作流程】
+   第一步：仔细阅读活动的英文标题和描述
+   第二步：找出3-5个关键信息点（如：特色、亮点、场地、时间、价格、适合人群等）
+   第三步：选取最吸引人的2-3个点组合成描述
+   第四步：用小红书语言风格润色，增强感染力
+
 3. 地点：原样保留，不要翻译
 4. 时间格式：mm/dd(DayAbbr),HH:MMAM/PM （注意星期括号后有逗号）
    示例："10/10(Fri),6:30PM"
 5. 价格：免费写"免费"，有具体价格保留原价格，无信息写"查看链接"
 
-语言风格: 轻松、真实、像朋友推荐活动的感觉
+语言风格: 热情、真实、有感染力，像朋友在真诚推荐一个他觉得很棒的活动
 
 CRITICAL: 返回纯JSON，不要markdown标记。`
       },
@@ -139,17 +162,25 @@ CRITICAL: 返回纯JSON，不要markdown标记。`
       event_type: event.event_type
     }));
 
-    return `处理以下湾区活动信息为小红书格式。每个活动的描述必须独特且自然。
+    return `处理以下湾区活动信息为小红书格式。每个活动的描述必须独特、具体、有吸引力。
 
 活动列表:
 ${eventsData.map(event => `
 【活动 ${event.id}】
 标题: ${event.title}
-描述: ${event.description || '(无)'}
+详细描述: ${event.description || '(无详细描述)'}
 地点: ${event.location}
 时间: ${event.time_display}
 价格: ${event.price || '(无价格信息)'}
+分类: ${event.event_type || '(无分类)'}
 `).join('\n---\n')}
+
+⚠️ 特别注意描述的创作：
+- 必须仔细阅读每个活动的标题和详细描述
+- 提取具体信息：如活动特色、亮点、规模、嘉宾、场地优势、适合人群等
+- 不要使用模板化的通用描述
+- 每个活动的描述必须不同，反映其独特之处
+- 描述应该让读者马上想去参加
 
 返回JSON格式（不要markdown）:
 {
@@ -157,9 +188,9 @@ ${eventsData.map(event => `
     {
       "id": 0,
       "title_cn": "English Title + 中文翻译",
-      "description_cn": "小红书风格描述",
+      "description_cn": "具体、吸引人的小红书风格描述",
       "location_cn": "原地点不翻译",
-      "time_cn": "mm/dd,(Day),HH:MMAM/PM",
+      "time_cn": "mm/dd(DayAbbr),HH:MMAM/PM",
       "price_cn": "价格或免费或查看链接"
     }
   ]
@@ -168,24 +199,41 @@ ${eventsData.map(event => `
 格式要求:
 1. title_cn - 格式："emoji + English Title + 中文"
    示例："🥩 Meat Carnival 肉食嘉年华"
-2. description_cn - 基于活动实际描述内容，小红书风格，18字内
-   关键：从活动描述中提取具体信息（如活动内容、特色、亮点）
-   好："海岛烤肉趴配live music！湾区最嗨周末"（基于实际描述）
-   差："精彩活动不容错过"（太笼统）
+2. description_cn - 15-25字，基于活动实际内容，必须具体且有吸引力
+   创作技巧：
+   a) 找出活动最吸引人的2-3个点（如：明星嘉宾、独特体验、场地优势、价格优势等）
+   b) 用小红书语言风格表达，增强感染力
+   c) 善用感叹号和网络用语（绝了/yyds/拉满等）
+
+   好的示例：
+   - "米其林大厨现场烹饪！30+美食摊位吃货天堂"（具体数字+特色+目标人群）
+   - "金门大桥脚下！日落瑜伽+冥想放松身心"（地点特色+活动内容+体验感受）
+   - "免费品酒会！纳帕谷20款精选红酒等你来"（价格+产地+品种数量）
+
+   避免的写法：
+   - "探索旧金山，发现城市新趣事！"（空泛无物）
+   - "精彩活动不容错过"（模板化）
+   - "有趣的周末活动"（无信息量）
+
 3. location_cn - 原样保留地点，不翻译
-   示例："Treasure Island San Francisco, CA"
+   示例："Treasure Island, San Francisco, CA"
 4. time_cn - 格式：mm/dd(DayAbbr),HH:MMAM/PM （星期括号后有逗号）
    示例："10/10(Fri),6:30PM"
 5. price_cn - 免费写"免费"，有价格就写，无信息写"查看链接"
    示例："$25-50" 或 "免费" 或 "查看链接"
 
-示例:
-输入: "Meat Carnival at Treasure Island - BBQ, music, bay views"
-输出 title_cn: "🥩 Meat Carnival 肉食嘉年华"
-输出 description_cn: "海景BBQ派对配live music！氛围绝了"
-输出 location_cn: "Treasure Island San Francisco, CA"
-输出 time_cn: "10/10(Fri),6:30PM"
-输出 price_cn: "查看链接"`;
+完整示例:
+输入活动:
+  标题: "Treasure Island BBQ & Music Festival"
+  描述: "Annual barbecue festival featuring local BBQ vendors, live bands, and stunning bay views. Over 20 food trucks and craft beer selection."
+  地点: "Treasure Island, San Francisco, CA"
+
+输出:
+  title_cn: "🥩 Treasure Island BBQ & Music Festival 金银岛烧烤音乐节"
+  description_cn: "20+美食卡车集结！现场乐队+海景BBQ派对"
+  location_cn: "Treasure Island, San Francisco, CA"
+  time_cn: "10/10(Fri),6:30PM"
+  price_cn: "查看链接"`;
   }
 
   // 简单后备翻译方法
@@ -415,60 +463,136 @@ ${eventsData.map(event => `
   }
 
   generateSimpleDescription(event) {
-    // 小红书风格描述 - 尝试从标题和描述中提取具体信息
+    // 改进的小红书风格描述 - 更细致地提取具体信息
     const title = (event.title || '').toLowerCase();
     const description = (event.description || event.description_preview || '').toLowerCase();
     const location = (event.location || '').toLowerCase();
+    const price = (event.price || '').toLowerCase();
     const type = event.event_type;
 
-    // 组合多个关键词生成更贴近活动的描述
-    let keywords = [];
+    // 提取数量信息（如"20+ vendors", "50 artists"等）
+    const numberMatch = description.match(/(\d+)\+?\s*(vendors|artists|food trucks|booths|performers|bands)/i);
+    const hasNumber = numberMatch ? `${numberMatch[1]}+${this.translateWord(numberMatch[2])}` : '';
 
-    // 从标题和描述中提取关键信息
-    if (title.includes('meat') || description.includes('bbq')) keywords.push('烤肉');
-    if (title.includes('music') || description.includes('live') || description.includes('band')) keywords.push('现场音乐');
-    if (title.includes('carnival') || title.includes('festival')) keywords.push('嘉年华');
-    if (location.includes('island') || location.includes('beach')) keywords.push('海景');
-    if (title.includes('wine') || title.includes('beer')) keywords.push('美酒');
-    if (description.includes('food') || description.includes('dining')) keywords.push('美食');
-    if (title.includes('art') || description.includes('exhibition')) keywords.push('艺术');
-    if (title.includes('night') || title.includes('evening')) keywords.push('夜间');
-    if (title.includes('outdoor') || description.includes('outdoor')) keywords.push('户外');
+    // 提取关键词及其组合
+    let features = [];
+    let venue = '';
+    let priceFeature = '';
 
-    // 根据关键词组合生成描述
-    if (keywords.length >= 2) {
-      const combo = keywords.slice(0, 2).join('+');
-      if (combo.includes('烤肉') && combo.includes('现场音乐')) return '烤肉派对配live music！氛围绝了';
-      if (combo.includes('海景') && combo.includes('烤肉')) return '海景烤肉趴！边吃边看海超惬意';
-      if (combo.includes('美食') && combo.includes('现场音乐')) return '美食配音乐！周末最佳选择';
-      if (combo.includes('户外') && combo.includes('嘉年华')) return '户外嘉年华！阳光美食一次满足';
+    // 价格优势
+    if (price.includes('free') || price === '$0') {
+      priceFeature = '免费入场';
     }
 
-    // 单关键词具体描述
-    if (title.includes('carnival')) return '超嗨嘉年华！美食游戏一站式体验';
-    if (title.includes('meat') || title.includes('bbq')) return '肉食爱好者天堂！各种烤肉管够';
-    if (title.includes('festival')) return '节日氛围拉满！带上朋友一起来';
-    if (title.includes('market')) return '周末逛市集！淘到好物心情好';
-    if (title.includes('food')) return '吃货必打卡！美味多到选择困难';
-    if (title.includes('music') || title.includes('concert')) return '现场太燃了！音乐氛围绝绝子';
-    if (title.includes('art') || title.includes('gallery')) return '艺术熏陶来啦！拍照超出片';
-    if (title.includes('night')) return '夜生活开启！氛围感直接拉满';
-    if (title.includes('party')) return '派对时间到！和朋友嗨翻天';
-    if (title.includes('wine') || title.includes('beer')) return '小酌怡情！氛围感满满';
-    if (title.includes('free')) return '免费参加！这么好的机会别错过';
+    // 场地特色
+    if (location.includes('treasure island') || location.includes('island')) venue = '海岛美景';
+    else if (location.includes('park')) venue = '公园户外';
+    else if (location.includes('beach')) venue = '海滩';
+    else if (location.includes('rooftop')) venue = '天台';
+    else if (location.includes('downtown')) venue = '市中心';
 
-    // 按类型提供自然的默认描述
-    const typeDescriptions = {
-      'market': '周末好去处！逛吃逛吃心情好',
-      'festival': '氛围感拉满！适合全家一起来',
-      'food': '美食天堂！好吃到停不下来',
-      'music': '现场感爆棚！音乐迷别错过',
-      'free': '免费哦！这种好事必须安排',
-      'art': '文艺青年集合！拍照很出片',
-      'fair': '有意思的活动！值得去看看'
+    // 活动特色（更具体的匹配）
+    if (title.includes('bbq') || description.includes('barbecue')) features.push('烧烤盛宴');
+    else if (title.includes('food') || description.includes('dining') || description.includes('culinary')) features.push('美食');
+
+    if (title.includes('music') || description.includes('live music') || description.includes('band')) features.push('现场音乐');
+    if (title.includes('wine') || description.includes('wine tasting')) features.push('品酒');
+    else if (title.includes('beer') || description.includes('craft beer')) features.push('精酿啤酒');
+
+    if (title.includes('art') || description.includes('exhibition') || description.includes('gallery')) features.push('艺术展');
+    if (description.includes('sunset') || description.includes('evening')) features.push('日落时分');
+    if (description.includes('family') || description.includes('kids')) features.push('适合全家');
+    if (description.includes('outdoor')) features.push('户外');
+    if (title.includes('yoga') || title.includes('meditation')) features.push('瑜伽冥想');
+    if (title.includes('market')) features.push('市集');
+    if (title.includes('carnival') || title.includes('festival')) features.push('嘉年华');
+    if (description.includes('dance') || description.includes('dancing')) features.push('舞蹈');
+
+    // 活动亮点组合（优先级从高到低）
+    const buildDescription = () => {
+      // 优先：数量 + 特色 + 场地
+      if (hasNumber && features.length > 0 && venue) {
+        return `${hasNumber}集结！${features[0]}+${venue}享受`;
+      }
+
+      // 数量 + 特色
+      if (hasNumber && features.length > 0) {
+        return `${hasNumber}${features[0]}摊位！${features[1] || '吃喝玩乐'}一站式`;
+      }
+
+      // 价格 + 特色 + 场地
+      if (priceFeature && features.length > 0 && venue) {
+        return `${priceFeature}！${venue}${features[0]}体验`;
+      }
+
+      // 价格 + 特色组合
+      if (priceFeature && features.length >= 2) {
+        return `${priceFeature}！${features[0]}+${features[1]}双重享受`;
+      }
+
+      // 场地 + 特色组合
+      if (venue && features.length >= 2) {
+        return `${venue}${features[0]}！还有${features[1]}超赞`;
+      }
+
+      // 场地 + 单特色
+      if (venue && features.length > 0) {
+        return `${venue}${features[0]}！氛围感拉满`;
+      }
+
+      // 双特色组合
+      if (features.length >= 2) {
+        return `${features[0]}+${features[1]}！湾区周末新选择`;
+      }
+
+      // 单特色加强版
+      if (features.length > 0) {
+        const feature = features[0];
+        if (feature.includes('音乐')) return '现场乐队演出！音乐氛围绝绝子';
+        if (feature.includes('美食')) return '美食摊位超多！吃货天堂来了';
+        if (feature.includes('烧烤')) return '户外BBQ派对！肉食爱好者必来';
+        if (feature.includes('品酒')) return '精选佳酿品鉴！微醺周末时光';
+        if (feature.includes('艺术')) return '艺术作品展览！文艺青年打卡地';
+        if (feature.includes('市集')) return '创意市集淘宝！周末遛弯好去处';
+        return `${feature}活动！值得一去`;
+      }
+
+      // 仅价格优势
+      if (priceFeature) {
+        return `${priceFeature}！这么好的机会别错过`;
+      }
+
+      // 基于类型的描述（最后备选）
+      const typeDescriptions = {
+        'market': '创意手工市集！周末淘宝好去处',
+        'festival': '社区嘉年华！美食音乐娱乐全有',
+        'food': '美食节来袭！各种美味等你品尝',
+        'music': '音乐现场！感受live音乐魅力',
+        'free': '免费活动！周末出门好选择',
+        'art': '艺术展览！提升审美拍照打卡',
+        'fair': '主题博览会！有趣又涨知识',
+        'nightlife': '夜生活开启！氛围感直接拉满',
+        'sports': '运动健身活动！活力满满',
+        'community': '社区聚会！认识新朋友好机会'
+      };
+
+      return typeDescriptions[type] || '湾区特色活动！周末可以安排';
     };
 
-    return typeDescriptions[type] || '有趣的活动！周末可以安排上';
+    return buildDescription();
+  }
+
+  // 辅助方法：翻译单词
+  translateWord(word) {
+    const translations = {
+      'vendors': '摊位',
+      'artists': '艺术家',
+      'food trucks': '美食卡车',
+      'booths': '展位',
+      'performers': '表演者',
+      'bands': '乐队'
+    };
+    return translations[word.toLowerCase()] || word;
   }
 
   async delay(ms) {
