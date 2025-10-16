@@ -108,9 +108,12 @@ class ManualReviewManager {
       },
       
       // 原始描述 (供参考)
-      description_preview: event.description ? 
-        event.description.substring(0, 100) + (event.description.length > 100 ? '...' : '') : 
+      description_preview: event.description ?
+        event.description.substring(0, 100) + (event.description.length > 100 ? '...' : '') :
         null,
+
+      // 详细描述 (从detail页提取的完整描述)
+      description_detail: event.description_detail || null,
       
       // 源信息
       source: event.source,

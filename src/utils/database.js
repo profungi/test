@@ -42,6 +42,7 @@ class EventDatabase {
           location TEXT NOT NULL,
           price TEXT,
           description TEXT,
+          description_detail TEXT,
           original_url TEXT NOT NULL,
           short_url TEXT,
           source TEXT NOT NULL,
@@ -190,10 +191,10 @@ class EventDatabase {
 
         const query = `
           INSERT INTO events (
-            title, normalized_title, start_time, end_time, location, 
-            price, description, original_url, source, event_type, 
+            title, normalized_title, start_time, end_time, location,
+            price, description, description_detail, original_url, source, event_type,
             priority, scraped_at, week_identifier
-          ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+          ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
         `;
 
         const values = [
@@ -204,6 +205,7 @@ class EventDatabase {
           event.location,
           event.price || 'Free',
           event.description || '',
+          event.description_detail || null,
           event.originalUrl,
           event.source,
           event.eventType || 'other',
