@@ -71,14 +71,45 @@ class EventDatabase {
           reject(err);
           return;
         }
-        
+
         this.db.run(createScrapingLogsTable, (err) => {
           if (err) {
             reject(err);
-          } else {
-            resolve();
+            return;
           }
+
+          // 迁移：为现有表添加 description_detail 列（如果不存在）
+          this.migrateAddDescriptionDetail().then(resolve).catch(reject);
         });
+      });
+    });
+  }
+
+  async migrateAddDescriptionDetail() {
+    return new Promise((resolve, reject) => {
+      // 检查列是否已存在
+      this.db.all("PRAGMA table_info(events)", (err, rows) => {
+        if (err) {
+          reject(err);
+          return;
+        }
+
+        const hasDescriptionDetail = rows.some(row => row.name === 'description_detail');
+
+        if (!hasDescriptionDetail) {
+          console.log('🔄 Migrating database: adding description_detail column...');
+          this.db.run("ALTER TABLE events ADD COLUMN description_detail TEXT", (err) => {
+            if (err) {
+              reject(err);
+            } else {
+              console.log('✅ Migration complete: description_detail column added');
+              resolve();
+            }
+          });
+        } else {
+          // 列已存在，无需迁移
+          resolve();
+        }
       });
     });
   }
