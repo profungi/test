@@ -5,7 +5,8 @@ const config = {
   apis: {
     shortio: {
       key: process.env.SHORTIO_API_KEY,
-      baseUrl: 'https://api.short.io/links'
+      baseUrl: 'https://api.short.io/links',
+      domain: process.env.SHORTIO_DOMAIN || 'short.io'
     },
     
     // AI服务配置

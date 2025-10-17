@@ -66,39 +66,44 @@ class ContentTranslator {
 重要规则:
 1. 标题格式：emoji + 英文原标题 + 中文翻译
    示例："🥩 Meat Carnival 肉食嘉年华"
-2. 描述：这是最重要的部分！必须精心打造每一条描述：
+
+2. 描述：这是最重要的部分！
 
    【描述创作要求】
-   - 字数：15-25字（可适当突破18字限制以确保质量）
-   - 内容来源：仔细阅读活动的标题和描述，提取真实、具体的信息
-   - 必须包含：至少1-2个活动的具体特色、亮点或独特之处
-   - 语言风格：小红书风格，热情、真实、有感染力，像朋友推荐
-   - 使用技巧：善用感叹号、适当的网络用语（绝了/yyds/拉满等）
+   - 字数：必须20-35字，不能太短
+   - 内容来源：从活动详细描述中提炼活动内容本身的特色和亮点
+   - 严禁重复：不要提时间（几点）、地点名称（哪里）、价格（多少钱/免费）
+   - 专注描述：活动具体内容、有什么摊位/表演/展品、怎么体验、特色是什么
+   - 语言风格：真诚、务实、朴实，像朋友在客观介绍活动内容
+   - 表达方式：陈述活动实际内容，少用夸张词汇，避免煽动性语言
 
-   【优秀示例】
-   ✅ "金银岛海景BBQ派对！现场live band演出氛围绝了"（提取了地点特色、活动形式、音乐元素）
-   ✅ "米其林大厨坐镇！20+美食摊位，吃货天堂来了"（突出主厨背景、规模、目标人群）
-   ✅ "日落时分开启！湾区最美观景台配美酒美食"（时间特色、地点优势、体验感受）
-   ✅ "免费入场！手工艺品+农场鲜货，周末遛娃首选"（价格优势、活动内容、适合人群）
+   【优秀示例 - 专注活动内容】
+   ✅ "20多个本地BBQ餐厅摊位，有现场乐队表演"（活动规模+内容形式）
+   ✅ "手工艺品、有机农产品、现烤面包，可以试吃"（商品类型+体验）
+   ✅ "本地艺术家的绘画和雕塑作品，可以和创作者交流"（展览内容+互动）
+   ✅ "瑜伽课程配冥想引导，提供瑜伽垫，适合初学者"（活动形式+提供物品+适合人群）
+   ✅ "精酿啤酒试饮，10多个本地酒厂，有小食搭配"（主要内容+规模+配套）
 
    【避免的写法】
-   ❌ "探索旧金山，发现城市新趣事！"（太空泛，没有具体信息）
-   ❌ "免费咖啡，高效办公，氛围拉满！"（太笼统，缺乏独特性）
-   ❌ "精彩活动不容错过"（毫无信息量）
-   ❌ "有趣的周末活动"（模板化，不够吸引人）
+   ❌ "在Mission District体验" "在Grant Avenue举办" "日落时分" "免费入场"（重复地点时间价格）
+   ❌ "品尝各种威士忌" "聚集各种艺术作品"（太笼统，没说具体有什么）
+   ❌ "来参加万圣节派对吧"（字数太少，无实质内容）
+   ❌ "氛围绝了" "超嗨" "拉满" "天堂" "必打卡"（夸张煽动词汇）
+   ❌ "精彩活动不容错过"（模板化无信息量）
 
    【创作流程】
-   第一步：仔细阅读活动的英文标题和描述
-   第二步：找出3-5个关键信息点（如：特色、亮点、场地、时间、价格、适合人群等）
-   第三步：选取最吸引人的2-3个点组合成描述
-   第四步：用小红书语言风格润色，增强感染力
+   第一步：仔细阅读活动的详细描述（description字段）
+   第二步：从描述中提取活动内容相关信息：有什么、做什么、看什么、特色是什么
+   第三步：排除时间、地点、价格等信息（这些已有独立字段）
+   第四步：用2-3句话客观陈述活动的实际内容
+   第五步：检查是否有夸张词语，替换为平实表述
 
 3. 地点：原样保留，不要翻译
 4. 时间格式：mm/dd(DayAbbr),HH:MMAM/PM （注意星期括号后有逗号）
    示例："10/10(Fri),6:30PM"
 5. 价格：免费写"免费"，有具体价格保留原价格，无信息写"查看链接"
 
-语言风格: 热情、真实、有感染力，像朋友在真诚推荐一个他觉得很棒的活动
+语言风格: 真诚、务实、客观，专注于介绍活动内容本身
 
 CRITICAL: 返回纯JSON，不要markdown标记。`
       },
@@ -162,7 +167,7 @@ CRITICAL: 返回纯JSON，不要markdown标记。`
       event_type: event.event_type
     }));
 
-    return `处理以下湾区活动信息为小红书格式。每个活动的描述必须独特、具体、有吸引力。
+    return `处理以下湾区活动信息为小红书格式。描述要从活动详细内容中提炼，专注活动本身。
 
 活动列表:
 ${eventsData.map(event => `
@@ -176,11 +181,11 @@ ${eventsData.map(event => `
 `).join('\n---\n')}
 
 ⚠️ 特别注意描述的创作：
-- 必须仔细阅读每个活动的标题和详细描述
-- 提取具体信息：如活动特色、亮点、规模、嘉宾、场地优势、适合人群等
-- 不要使用模板化的通用描述
-- 每个活动的描述必须不同，反映其独特之处
-- 描述应该让读者马上想去参加
+- 仔细阅读"详细描述"字段，从中提炼活动内容
+- 描述要专注于活动内容本身：有什么、做什么、看什么、体验什么
+- 不要重复时间、地点、价格信息（这些已有独立字段显示）
+- 用平实语言陈述活动实际内容，避免夸张煽动词汇
+- 每个活动根据其详细描述提炼独特内容
 
 返回JSON格式（不要markdown）:
 {
@@ -188,7 +193,7 @@ ${eventsData.map(event => `
     {
       "id": 0,
       "title_cn": "English Title + 中文翻译",
-      "description_cn": "具体、吸引人的小红书风格描述",
+      "description_cn": "从详细描述中提炼的活动内容，20-35字",
       "location_cn": "原地点不翻译",
       "time_cn": "mm/dd(DayAbbr),HH:MMAM/PM",
       "price_cn": "价格或免费或查看链接"
@@ -199,40 +204,50 @@ ${eventsData.map(event => `
 格式要求:
 1. title_cn - 格式："emoji + English Title + 中文"
    示例："🥩 Meat Carnival 肉食嘉年华"
-2. description_cn - 15-25字，基于活动实际内容，必须具体且有吸引力
-   创作技巧：
-   a) 找出活动最吸引人的2-3个点（如：明星嘉宾、独特体验、场地优势、价格优势等）
-   b) 用小红书语言风格表达，增强感染力
-   c) 善用感叹号和网络用语（绝了/yyds/拉满等）
 
-   好的示例：
-   - "米其林大厨现场烹饪！30+美食摊位吃货天堂"（具体数字+特色+目标人群）
-   - "金门大桥脚下！日落瑜伽+冥想放松身心"（地点特色+活动内容+体验感受）
-   - "免费品酒会！纳帕谷20款精选红酒等你来"（价格+产地+品种数量）
+2. description_cn - 必须20-35字，从详细描述中提炼活动具体内容
+   创作原则：
+   a) 从"详细描述"中提取活动的实际内容和特色（不能太笼统）
+   b) 具体描述：有哪些摊位/表演者/展品/课程，什么体验，有什么特色
+   c) 严禁提及：时间（几点）、地点名称（哪里）、价格（免费/多少钱）
+   d) 避免笼统表述（如"各种""一些"），要具体
+   e) 避免夸张词汇和煽动性语言
+
+   好的示例（具体且不重复信息）：
+   - "精选苏格兰麦芽威士忌品鉴，专业讲解威士忌历史和制作工艺"（具体内容+体验）
+   - "本地艺术家的绘画雕塑和手工艺品，可以和创作者面对面交流"（具体类型+互动）
+   - "万圣节主题服装比赛，有DJ现场，提供特调鸡尾酒和小吃"（活动项目+提供内容）
+   - "户外瑜伽课程配冥想引导，提供瑜伽垫，适合初学者参加"（课程内容+提供物+适合人群）
 
    避免的写法：
-   - "探索旧金山，发现城市新趣事！"（空泛无物）
-   - "精彩活动不容错过"（模板化）
-   - "有趣的周末活动"（无信息量）
+   - "在Mission District体验威士忌节，品尝各种威士忌"（提到地点+太笼统）
+   - "社区艺术市集，聚集各种艺术作品"（太笼统，没说具体有什么）
+   - "来参加万圣节派对吧"（字数太少，无实质内容）
+   - "氛围绝了" "超嗨" "拉满"（夸张煽动）
 
 3. location_cn - 原样保留地点，不翻译
    示例："Treasure Island, San Francisco, CA"
+
 4. time_cn - 格式：mm/dd(DayAbbr),HH:MMAM/PM （星期括号后有逗号）
    示例："10/10(Fri),6:30PM"
+
 5. price_cn - 免费写"免费"，有价格就写，无信息写"查看链接"
    示例："$25-50" 或 "免费" 或 "查看链接"
 
 完整示例:
 输入活动:
   标题: "Treasure Island BBQ & Music Festival"
-  描述: "Annual barbecue festival featuring local BBQ vendors, live bands, and stunning bay views. Over 20 food trucks and craft beer selection."
+  详细描述: "Annual barbecue festival featuring local BBQ vendors, live bands, and stunning bay views. Over 20 food trucks and craft beer selection."
   地点: "Treasure Island, San Francisco, CA"
+  时间: "10/10(Sat), 6:00 PM"
+  价格: "See event page"
 
 输出:
   title_cn: "🥩 Treasure Island BBQ & Music Festival 金银岛烧烤音乐节"
-  description_cn: "20+美食卡车集结！现场乐队+海景BBQ派对"
+  description_cn: "20多个本地BBQ餐厅的美食卡车，有现场乐队表演，提供精酿啤酒"
+  （注意：没有提"在Treasure Island" "6:00PM开始" "查看价格"等已有信息）
   location_cn: "Treasure Island, San Francisco, CA"
-  time_cn: "10/10(Fri),6:30PM"
+  time_cn: "10/10(Sat),6:00PM"
   price_cn: "查看链接"`;
   }
 
@@ -463,120 +478,86 @@ ${eventsData.map(event => `
   }
 
   generateSimpleDescription(event) {
-    // 改进的小红书风格描述 - 更细致地提取具体信息
+    // 专注活动内容的描述 - 不重复时间地点价格
     const title = (event.title || '').toLowerCase();
     const description = (event.description || event.description_preview || '').toLowerCase();
-    const location = (event.location || '').toLowerCase();
-    const price = (event.price || '').toLowerCase();
     const type = event.event_type;
 
     // 提取数量信息（如"20+ vendors", "50 artists"等）
     const numberMatch = description.match(/(\d+)\+?\s*(vendors|artists|food trucks|booths|performers|bands)/i);
-    const hasNumber = numberMatch ? `${numberMatch[1]}+${this.translateWord(numberMatch[2])}` : '';
+    const hasNumber = numberMatch ? `${numberMatch[1]}多个${this.translateWord(numberMatch[2])}` : '';
 
-    // 提取关键词及其组合
-    let features = [];
-    let venue = '';
-    let priceFeature = '';
+    // 提取活动内容特色
+    let contentFeatures = [];
 
-    // 价格优势
-    if (price.includes('free') || price === '$0') {
-      priceFeature = '免费入场';
-    }
+    // 活动内容（不是地点或时间）
+    if (title.includes('bbq') || description.includes('barbecue')) contentFeatures.push('BBQ烧烤摊位');
+    else if (title.includes('food') || description.includes('dining') || description.includes('culinary')) contentFeatures.push('美食摊位');
 
-    // 场地特色
-    if (location.includes('treasure island') || location.includes('island')) venue = '海岛美景';
-    else if (location.includes('park')) venue = '公园户外';
-    else if (location.includes('beach')) venue = '海滩';
-    else if (location.includes('rooftop')) venue = '天台';
-    else if (location.includes('downtown')) venue = '市中心';
+    if (title.includes('music') || description.includes('live music') || description.includes('band')) contentFeatures.push('现场乐队');
+    if (title.includes('wine') || description.includes('wine tasting')) contentFeatures.push('葡萄酒品鉴');
+    else if (title.includes('beer') || description.includes('craft beer')) contentFeatures.push('精酿啤酒');
 
-    // 活动特色（更具体的匹配）
-    if (title.includes('bbq') || description.includes('barbecue')) features.push('烧烤盛宴');
-    else if (title.includes('food') || description.includes('dining') || description.includes('culinary')) features.push('美食');
+    if (title.includes('art') || description.includes('exhibition') || description.includes('gallery')) contentFeatures.push('艺术作品展');
+    if (description.includes('craft') || description.includes('handmade')) contentFeatures.push('手工艺品');
+    if (description.includes('family') || description.includes('kids')) contentFeatures.push('适合家庭参与');
+    if (title.includes('yoga') || title.includes('meditation')) contentFeatures.push('瑜伽冥想课程');
+    if (title.includes('market')) contentFeatures.push('市集摊位');
+    if (description.includes('dance') || description.includes('dancing')) contentFeatures.push('舞蹈表演');
+    if (description.includes('food truck')) contentFeatures.push('美食卡车');
+    if (description.includes('local vendor')) contentFeatures.push('本地商家');
 
-    if (title.includes('music') || description.includes('live music') || description.includes('band')) features.push('现场音乐');
-    if (title.includes('wine') || description.includes('wine tasting')) features.push('品酒');
-    else if (title.includes('beer') || description.includes('craft beer')) features.push('精酿啤酒');
-
-    if (title.includes('art') || description.includes('exhibition') || description.includes('gallery')) features.push('艺术展');
-    if (description.includes('sunset') || description.includes('evening')) features.push('日落时分');
-    if (description.includes('family') || description.includes('kids')) features.push('适合全家');
-    if (description.includes('outdoor')) features.push('户外');
-    if (title.includes('yoga') || title.includes('meditation')) features.push('瑜伽冥想');
-    if (title.includes('market')) features.push('市集');
-    if (title.includes('carnival') || title.includes('festival')) features.push('嘉年华');
-    if (description.includes('dance') || description.includes('dancing')) features.push('舞蹈');
-
-    // 活动亮点组合（优先级从高到低）
+    // 构建描述（只描述活动内容，不提地点时间价格）
     const buildDescription = () => {
-      // 优先：数量 + 特色 + 场地
-      if (hasNumber && features.length > 0 && venue) {
-        return `${hasNumber}集结！${features[0]}+${venue}享受`;
+      // 数量 + 双特色
+      if (hasNumber && contentFeatures.length >= 2) {
+        return `${hasNumber}，有${contentFeatures[0]}和${contentFeatures[1]}`;
       }
 
-      // 数量 + 特色
-      if (hasNumber && features.length > 0) {
-        return `${hasNumber}${features[0]}摊位！${features[1] || '吃喝玩乐'}一站式`;
+      // 数量 + 单特色
+      if (hasNumber && contentFeatures.length > 0) {
+        return `${hasNumber}，主要是${contentFeatures[0]}`;
       }
 
-      // 价格 + 特色 + 场地
-      if (priceFeature && features.length > 0 && venue) {
-        return `${priceFeature}！${venue}${features[0]}体验`;
+      // 三个特色
+      if (contentFeatures.length >= 3) {
+        return `有${contentFeatures[0]}、${contentFeatures[1]}和${contentFeatures[2]}`;
       }
 
-      // 价格 + 特色组合
-      if (priceFeature && features.length >= 2) {
-        return `${priceFeature}！${features[0]}+${features[1]}双重享受`;
+      // 双特色
+      if (contentFeatures.length >= 2) {
+        return `有${contentFeatures[0]}和${contentFeatures[1]}`;
       }
 
-      // 场地 + 特色组合
-      if (venue && features.length >= 2) {
-        return `${venue}${features[0]}！还有${features[1]}超赞`;
+      // 单特色展开描述
+      if (contentFeatures.length > 0) {
+        const feature = contentFeatures[0];
+        if (feature.includes('乐队')) return '有现场乐队演出';
+        if (feature.includes('美食')) return '本地餐厅和小吃摊位';
+        if (feature.includes('BBQ')) return '各种烧烤美食';
+        if (feature.includes('品鉴')) return '多款葡萄酒试饮';
+        if (feature.includes('艺术')) return '本地艺术家的绘画雕塑作品';
+        if (feature.includes('市集')) return '手工艺品和农场新鲜产品';
+        if (feature.includes('瑜伽')) return '户外瑜伽和冥想练习';
+        if (feature.includes('舞蹈')) return '舞蹈演出和互动';
+        return feature;
       }
 
-      // 场地 + 单特色
-      if (venue && features.length > 0) {
-        return `${venue}${features[0]}！氛围感拉满`;
-      }
-
-      // 双特色组合
-      if (features.length >= 2) {
-        return `${features[0]}+${features[1]}！湾区周末新选择`;
-      }
-
-      // 单特色加强版
-      if (features.length > 0) {
-        const feature = features[0];
-        if (feature.includes('音乐')) return '现场乐队演出！音乐氛围绝绝子';
-        if (feature.includes('美食')) return '美食摊位超多！吃货天堂来了';
-        if (feature.includes('烧烤')) return '户外BBQ派对！肉食爱好者必来';
-        if (feature.includes('品酒')) return '精选佳酿品鉴！微醺周末时光';
-        if (feature.includes('艺术')) return '艺术作品展览！文艺青年打卡地';
-        if (feature.includes('市集')) return '创意市集淘宝！周末遛弯好去处';
-        return `${feature}活动！值得一去`;
-      }
-
-      // 仅价格优势
-      if (priceFeature) {
-        return `${priceFeature}！这么好的机会别错过`;
-      }
-
-      // 基于类型的描述（最后备选）
+      // 基于类型的内容描述（避免提地点时间）
       const typeDescriptions = {
-        'market': '创意手工市集！周末淘宝好去处',
-        'festival': '社区嘉年华！美食音乐娱乐全有',
-        'food': '美食节来袭！各种美味等你品尝',
-        'music': '音乐现场！感受live音乐魅力',
-        'free': '免费活动！周末出门好选择',
-        'art': '艺术展览！提升审美拍照打卡',
-        'fair': '主题博览会！有趣又涨知识',
-        'nightlife': '夜生活开启！氛围感直接拉满',
-        'sports': '运动健身活动！活力满满',
-        'community': '社区聚会！认识新朋友好机会'
+        'market': '各类手工艺品、农产品摊位',
+        'festival': '美食、音乐和娱乐活动',
+        'food': '多家餐厅的特色美食',
+        'music': '音乐演出和表演',
+        'art': '艺术作品展览',
+        'fair': '主题展览和互动体验',
+        'nightlife': '夜间娱乐活动',
+        'sports': '运动和健身项目',
+        'community': '社区交流活动',
+        'free': '社区活动'
       };
 
-      return typeDescriptions[type] || '湾区特色活动！周末可以安排';
+      return typeDescriptions[type] || '本地社区活动';
     };
 
     return buildDescription();
