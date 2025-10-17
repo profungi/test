@@ -159,7 +159,8 @@ class DoTheBayScraper extends BaseScraper {
         startTime: timeInfo.startTime || basicEvent.startTime,
         endTime: timeInfo.endTime || basicEvent.endTime,
         price: accuratePrice !== null ? accuratePrice : basicEvent.price,
-        description_detail: detailedDescription || basicEvent.description
+        description: detailedDescription || basicEvent.description, // 使用详情页描述
+        description_detail: detailedDescription // 详细描述
       };
     } catch (error) {
       console.warn(`    Error fetching detail page: ${error.message}`);

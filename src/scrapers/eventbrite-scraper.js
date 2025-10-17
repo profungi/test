@@ -527,7 +527,7 @@ class EventbriteScraper extends BaseScraper {
     // 提取页面分类（Eventbrite原生分类）
     const pageCategory = this.extractCategory($);
 
-    // 提取详细描述（新增）
+    // 提取详细描述
     const detailedDescription = this.extractDetailedDescription($);
 
     return {
@@ -536,8 +536,9 @@ class EventbriteScraper extends BaseScraper {
       startTime: timeInfo.startTime || basicEvent.startTime,
       endTime: timeInfo.endTime || basicEvent.endTime,
       price: accuratePrice || basicEvent.price,
-      pageCategory: pageCategory, // 添加页面分类
-      description_detail: detailedDescription || basicEvent.description // 添加详细描述
+      pageCategory: pageCategory,
+      description: detailedDescription || basicEvent.description, // 使用详情页描述替换列表页的错误内容
+      description_detail: detailedDescription // 详细描述
     };
   }
 
