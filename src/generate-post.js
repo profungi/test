@@ -117,10 +117,10 @@ class PostGenerationOrchestrator {
 
 示例:
   npm run generate-post "./output/review_2024-09-19_1430.json"
-  npm run generate-post "./output/review_2024-09-19_1430.json" --ai-provider claude
+  npm run generate-post "./output/review_2024-09-19_1430.json" --ai-provider mistral
 
 参数:
-  --ai-provider <provider>  指定AI提供商 (openai, gemini, claude)
+  --ai-provider <provider>  指定AI提供商 (openai, gemini, claude, mistral)
 
 功能:
 1. 读取人工审核后的活动选择
@@ -132,9 +132,10 @@ class PostGenerationOrchestrator {
 - SHORTIO_API_KEY: Short.io API 密钥
 - 至少一个AI API密钥:
   * OPENAI_API_KEY: OpenAI API 密钥
-  * GEMINI_API_KEY: Google Gemini API 密钥  
+  * GEMINI_API_KEY: Google Gemini API 密钥
   * CLAUDE_API_KEY: Anthropic Claude API 密钥
-- AI_PROVIDER: 指定默认AI提供商 (openai, gemini, claude)
+  * MISTRAL_API_KEY: Mistral AI API 密钥
+- AI_PROVIDER: 指定默认AI提供商 (openai, gemini, claude, mistral)
 
 输出文件: ${require('./config').output.directory}/weekly_events_*.txt
 `);
@@ -154,14 +155,14 @@ async function main() {
   const aiProviderIndex = args.indexOf('--ai-provider');
   if (aiProviderIndex !== -1 && args[aiProviderIndex + 1]) {
     const provider = args[aiProviderIndex + 1];
-    if (['openai', 'gemini', 'claude'].includes(provider)) {
+    if (['openai', 'gemini', 'claude', 'mistral'].includes(provider)) {
       process.env.AI_PROVIDER = provider;
       console.log(`🤖 Using AI provider: ${provider}`);
       // 移除这个参数，以免被当作文件路径
       args.splice(aiProviderIndex, 2);
     } else {
       console.error(`❌ Invalid AI provider: ${provider}`);
-      console.error('Valid options: openai, gemini, claude');
+      console.error('Valid options: openai, gemini, claude, mistral');
       process.exit(1);
     }
   }

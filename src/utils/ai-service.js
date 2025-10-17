@@ -1,6 +1,7 @@
 const OpenAI = require('openai');
 const { GoogleGenerativeAI } = require('@google/generative-ai');
 const Anthropic = require('@anthropic-ai/sdk');
+const { Mistral } = require('@mistralai/mistralai');
 const config = require('../config');
 
 class AIService {
@@ -11,23 +12,30 @@ class AIService {
 
   initializeClients() {
     const aiConfig = config.apis.ai;
-    
+
     // 初始化OpenAI客户端
     if (aiConfig.openai.key) {
       this.openaiClient = new OpenAI({
         apiKey: aiConfig.openai.key
       });
     }
-    
+
     // 初始化Gemini客户端
     if (aiConfig.gemini.key) {
       this.geminiClient = new GoogleGenerativeAI(aiConfig.gemini.key);
     }
-    
+
     // 初始化Claude客户端
     if (aiConfig.claude.key) {
       this.claudeClient = new Anthropic({
         apiKey: aiConfig.claude.key
+      });
+    }
+
+    // 初始化Mistral客户端
+    if (aiConfig.mistral.key) {
+      this.mistralClient = new Mistral({
+        apiKey: aiConfig.mistral.key
       });
     }
   }
@@ -49,6 +57,7 @@ class AIService {
     if (config.apis.ai.openai.key) available.push('openai');
     if (config.apis.ai.gemini.key) available.push('gemini');
     if (config.apis.ai.claude.key) available.push('claude');
+    if (config.apis.ai.mistral.key) available.push('mistral');
     return available;
   }
 
@@ -82,6 +91,9 @@ class AIService {
 
         case 'claude':
           return await this.claudeChatCompletion(messages, options);
+
+        case 'mistral':
+          return await this.mistralChatCompletion(messages, options);
 
         default:
           throw new Error(`Unsupported AI provider: ${this.provider}`);
@@ -149,10 +161,10 @@ class AIService {
   // Claude聊天完成
   async claudeChatCompletion(messages, options) {
     const config = this.getCurrentConfig();
-    
+
     // 将messages格式转换为Claude格式
     const { system, messages: claudeMessages } = this.convertMessagesToClaudeFormat(messages);
-    
+
     const response = await this.claudeClient.messages.create({
       model: options.model || config.model,
       max_tokens: options.maxTokens || config.maxTokens,
@@ -160,10 +172,29 @@ class AIService {
       system: system,
       messages: claudeMessages
     });
-    
+
     return {
       content: response.content[0].text,
       provider: 'claude',
+      model: response.model,
+      usage: response.usage
+    };
+  }
+
+  // Mistral聊天完成
+  async mistralChatCompletion(messages, options) {
+    const config = this.getCurrentConfig();
+
+    const response = await this.mistralClient.chat.complete({
+      model: options.model || config.model,
+      messages: messages,
+      temperature: options.temperature || 0.1,
+      maxTokens: options.maxTokens || config.maxTokens
+    });
+
+    return {
+      content: response.choices[0].message.content,
+      provider: 'mistral',
       model: response.model,
       usage: response.usage
     };

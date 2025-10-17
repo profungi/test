@@ -10,27 +10,34 @@ const config = {
     
     // AI服务配置
     ai: {
-      // 当前使用的AI提供商 (openai, gemini, claude)
+      // 当前使用的AI提供商 (openai, gemini, claude, mistral)
       provider: process.env.AI_PROVIDER || 'openai',
-      
+
       // OpenAI配置
       openai: {
         key: process.env.OPENAI_API_KEY,
         model: 'gpt-3.5-turbo',
         maxTokens: 2000
       },
-      
+
       // Google Gemini配置
       gemini: {
         key: process.env.GEMINI_API_KEY,
         model: 'gemini-2.0-flash-exp',
         maxTokens: 2048
       },
-      
+
       // Anthropic Claude配置
       claude: {
         key: process.env.CLAUDE_API_KEY,
         model: 'claude-3-haiku-20240307',
+        maxTokens: 2000
+      },
+
+      // Mistral AI配置
+      mistral: {
+        key: process.env.MISTRAL_API_KEY,
+        model: 'mistral-small-latest',
         maxTokens: 2000
       }
     }
@@ -156,7 +163,7 @@ const config = {
   // 内容生成配置
   content: {
     maxTitleLength: 50,
-    maxDescriptionLength: 18,
+    maxDescriptionLength: 80,  // 从18字增加到80字，提供更丰富的活动描述
     postTemplate: `🎉 本周湾区精彩活动 {date_range}
 
 {events_list}
