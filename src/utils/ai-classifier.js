@@ -173,7 +173,15 @@ class AIEventClassifier {
       console.log(`⚠️  Fallback provider used. Original: ${response.originalProvider}`);
     }
 
-    const aiResult = JSON.parse(response.content);
+    // 清理可能的markdown代码块标记
+    let cleanedContent = response.content.trim();
+    if (cleanedContent.startsWith('```json')) {
+      cleanedContent = cleanedContent.replace(/^```json\s*/, '').replace(/```\s*$/, '');
+    } else if (cleanedContent.startsWith('```')) {
+      cleanedContent = cleanedContent.replace(/^```\s*/, '').replace(/```\s*$/, '');
+    }
+
+    const aiResult = JSON.parse(cleanedContent);
     
     // 将AI分类结果映射回原始事件
     const classifiedEvents = events.map((event, index) => {

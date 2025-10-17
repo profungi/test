@@ -106,11 +106,18 @@ class ContentTranslator {
 • Diwali → "印度舞蹈和音乐表演，南亚美食，点灯仪式"
 • 万圣节 → "服装比赛、恐怖电影、互动游戏"
 
-【其他格式】
-• 标题: emoji + 英文 + 中文（如 "🥩 Meat Carnival 肉食嘉年华"）
-• 时间: mm/dd(Day),HH:MMAM/PM
-• 价格: 免费/原价格/查看链接
-• 地点: 原样保留
+【格式要求】
+1. 标题格式：emoji + 英文原标题 + 空格 + 中文翻译
+   示例：
+   - "🥩 Meat Carnival 肉食嘉年华"
+   - "🎨 Arts Festival 艺术节"
+   - "🛒 Farmers Market 农夫市集"
+
+2. 时间格式：mm/dd(Day),HH:MMAM/PM
+3. 价格格式：免费/原价格/查看链接
+4. 地点：原样保留
+
+⚠️ 重要：标题必须包含中文翻译！不能只有英文！
 
 返回纯JSON，不要markdown。`
       },
@@ -200,20 +207,23 @@ ${event.description || '(无详细描述 - 需从标题推断)'}
 3. 只有详细描述为空时，才从标题推断
 4. 禁止输出："社区活动"、"本地活动"、"美食音乐娱乐"等空泛词汇
 5. 不要在描述中重复价格（价格已单独显示）
+6. 标题必须翻译成中文！格式：emoji + 原英文标题 + 中文翻译
 
 返回JSON（不要markdown）:
 {
   "events": [
     {
       "id": 0,
-      "title_cn": "emoji + English Title + 中文",
+      "title_cn": "🛒 Ferry Plaza Farmers Market 渡轮广场农夫市集",
       "description_cn": "从详细描述提取的40-80字丰富内容",
       "location_cn": "原地点",
-      "time_cn": "mm/dd(Day),HH:MMAM/PM",
-      "price_cn": "免费/价格/查看链接"
+      "time_cn": "10/25(Fri),8:00AM",
+      "price_cn": "免费"
     }
   ]
-}`;
+}
+
+注意：title_cn 必须是完整的格式，包含emoji、原英文和中文翻译！`;
   }
 
   // 简单后备翻译方法
@@ -245,17 +255,36 @@ ${event.description || '(无详细描述 - 需从标题推断)'}
 
     // 保留英文原标题 + 添加中文翻译
     const translations = {
+      'farmers market': '农夫市集',
+      'flea market': '跳蚤市集',
+      'night market': '夜市',
+      'art market': '艺术市集',
+      'food festival': '美食节',
+      'music festival': '音乐节',
+      'art festival': '艺术节',
+      'film festival': '电影节',
+      'street fair': '街头博览会',
+      'wedding fair': '婚礼博览会',
       'carnival': '嘉年华',
       'market': '市集',
-      'farmers market': '农夫市集',
       'festival': '节日',
-      'music festival': '音乐节',
-      'food festival': '美食节',
       'fair': '博览会',
       'concert': '音乐会',
       'show': '演出',
+      'performance': '演出',
+      'exhibition': '展览',
+      'workshop': '工作坊',
+      'class': '课程',
+      'tour': '巡演',
       'night': '之夜',
-      'party': '派对'
+      'party': '派对',
+      'celebration': '庆典',
+      'gathering': '聚会',
+      'meetup': '见面会',
+      'tasting': '品鉴会',
+      'dinner': '晚宴',
+      'brunch': '早午餐',
+      'gala': '晚会'
     };
 
     let chineseTranslation = '';
@@ -269,12 +298,19 @@ ${event.description || '(无详细描述 - 需从标题推断)'}
       }
     }
 
-    // 添加emoji
+    // 添加emoji（按优先级匹配）
     let emoji = '';
-    if (lowerTitle.includes('meat') || lowerTitle.includes('food')) emoji = '🥩';
-    else if (lowerTitle.includes('music')) emoji = '🎵';
-    else if (lowerTitle.includes('art')) emoji = '🎨';
-    else if (lowerTitle.includes('market')) emoji = '🛒';
+    if (lowerTitle.includes('market') || lowerTitle.includes('fair')) emoji = '🛒';
+    else if (lowerTitle.includes('festival') || lowerTitle.includes('carnival')) emoji = '🎉';
+    else if (lowerTitle.includes('food') || lowerTitle.includes('dining') || lowerTitle.includes('taste')) emoji = '🍽️';
+    else if (lowerTitle.includes('music') || lowerTitle.includes('concert')) emoji = '🎵';
+    else if (lowerTitle.includes('art') || lowerTitle.includes('exhibition')) emoji = '🎨';
+    else if (lowerTitle.includes('workshop') || lowerTitle.includes('class')) emoji = '📚';
+    else if (lowerTitle.includes('party') || lowerTitle.includes('night')) emoji = '🎊';
+    else if (lowerTitle.includes('tour') || lowerTitle.includes('walk')) emoji = '🚶';
+    else if (lowerTitle.includes('wine') || lowerTitle.includes('beer')) emoji = '🍷';
+    else if (lowerTitle.includes('halloween')) emoji = '🎃';
+    else if (lowerTitle.includes('christmas') || lowerTitle.includes('holiday')) emoji = '🎄';
 
     // 格式：emoji + 英文 + 中文
     if (emoji && chineseTranslation) {
