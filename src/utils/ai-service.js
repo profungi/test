@@ -70,71 +70,46 @@ class AIService {
     console.log(`Switched to AI provider: ${provider}`);
   }
 
-  // 统一的聊天完成接口（带自动故障转移）
+  // 统一的聊天完成接口
   async chatCompletion(messages, options = {}) {
-    const providers = this.getProvidersToTry();
+    const currentConfig = this.getCurrentConfig();
 
-    for (const provider of providers) {
-      try {
-        console.log(`🤖 Trying AI provider: ${provider}`);
-        const result = await this.callProvider(provider, messages, options);
-
-        // 标记是否使用了fallback
-        if (provider !== this.provider) {
-          result.fallbackUsed = true;
-          result.originalProvider = this.provider;
-        }
-
-        return result;
-
-      } catch (error) {
-        console.error(`❌ ${provider} failed:`, error.message);
-
-        // 如果还有其他提供商，继续尝试
-        if (provider === providers[providers.length - 1]) {
-          // 最后一个也失败了
-          throw new Error(`All AI providers failed. Last error: ${error.message}`);
-        }
-
-        continue;
-      }
-    }
-  }
-
-  // 获取要尝试的提供商列表（当前优先，然后其他）
-  getProvidersToTry() {
-    const available = this.getAvailableProviders();
-
-    // 当前provider优先
-    const ordered = [this.provider];
-
-    // 添加其他可用的provider
-    available.forEach(p => {
-      if (p !== this.provider) {
-        ordered.push(p);
-      }
-    });
-
-    return ordered;
-  }
-
-  // 调用具体的provider（不修改实例状态）
-  async callProvider(provider, messages, options) {
-    if (!this.isProviderAvailable(provider)) {
-      throw new Error(`Provider '${provider}' is not available`);
+    if (!this.isProviderAvailable()) {
+      throw new Error(`Current AI provider '${this.provider}' is not available`);
     }
 
-    switch (provider) {
-      case 'openai':
-        return await this.openaiChatCompletion(messages, options);
-      case 'gemini':
-        return await this.geminiChatCompletion(messages, options);
-      case 'claude':
-        return await this.claudeChatCompletion(messages, options);
-      case 'mistral':
-        return await this.mistralChatCompletion(messages, options);
-      default:
-        throw new Error(`Unsupported provider: ${provider}`);
+    // 防止递归故障转移
+    const skipFallback = options._skipFallback || false;
+
+    try {
+      switch (this.provider) {
+        case 'openai':
+          return await this.openaiChatCompletion(messages, options);
+
+        case 'gemini':
+          return await this.geminiChatCompletion(messages, options);
+
+        case 'claude':
+          return await this.claudeChatCompletion(messages, options);
+
+        case 'mistral':
+          return await this.mistralChatCompletion(messages, options);
+
+        default:
+          throw new Error(`Unsupported AI provider: ${this.provider}`);
+      }
+    } catch (error) {
+      console.error(`❌ ${this.provider} API error:`, error.message);
+
+      // 如果当前提供商失败且没有禁用故障转移，尝试切换到备用提供商
+      if (!skipFallback) {
+        const fallbackResult = await this.tryFallbackProvider(messages, options);
+        if (fallbackResult) {
+          return fallbackResult;
+        }
+      }
+
+      throw error;
     }
   }
 
@@ -225,6 +200,48 @@ class AIService {
     };
   }
 
+  // 尝试备用提供商
+  async tryFallbackProvider(messages, options) {
+    const availableProviders = this.getAvailableProviders();
+    const otherProviders = availableProviders.filter(p => p !== this.provider);
+
+    if (otherProviders.length === 0) {
+      console.warn('⚠️  No fallback providers available');
+      return null;
+    }
+
+    console.log(`🔄 Attempting fallback to alternative providers: ${otherProviders.join(', ')}`);
+
+    for (const fallbackProvider of otherProviders) {
+      try {
+        console.log(`🔄 Trying fallback provider: ${fallbackProvider}`);
+        const originalProvider = this.provider;
+        this.switchProvider(fallbackProvider);
+
+        // 防止递归故障转移
+        const result = await this.chatCompletion(messages, { ...options, _skipFallback: true });
+
+        // 恢复原始提供商设置
+        this.provider = originalProvider;
+
+        console.log(`✅ Fallback successful using ${fallbackProvider}`);
+        return {
+          ...result,
+          fallbackUsed: true,
+          originalProvider: originalProvider
+        };
+
+      } catch (fallbackError) {
+        console.warn(`❌ Fallback provider ${fallbackProvider} also failed:`, fallbackError.message);
+        // 恢复原始提供商
+        this.provider = this.provider; // 确保不会停留在失败的提供商上
+        continue;
+      }
+    }
+
+    console.error('❌ All fallback providers exhausted');
+    return null;
+  }
 
   // 将messages转换为Gemini格式
   convertMessagesToGeminiFormat(messages) {

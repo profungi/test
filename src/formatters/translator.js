@@ -1,81 +1,6 @@
 const AIService = require('../utils/ai-service');
 const config = require('../config');
 
-// 活动模式配置
-const EVENT_PATTERNS = {
-  diwali: {
-    priority: 1,
-    keywords: ['diwali'],
-    fixedDescription: '印度舞蹈和音乐表演，南亚美食摊位，Diwali点灯仪式'
-  },
-  halloween: {
-    priority: 1,
-    keywords: ['halloween', 'thrill-o-ween'],
-    features: {
-      'costume': '服装比赛',
-      'movie|film': '恐怖电影',
-      'trick|treat': '不给糖就捣蛋',
-      'pumpkin': '南瓜雕刻'
-    },
-    fallbackDescription: '万圣节主题活动，服装打扮和互动游戏',
-    template: '{features}，万圣节主题活动'
-  },
-  wedding_fair: {
-    priority: 2,
-    keywords: ['wedding'],
-    requiredKeywords: ['fair', 'expo'],
-    fixedDescription: '婚纱礼服展示、婚礼策划咨询、摄影化妆摊位'
-  },
-  pet_event: {
-    priority: 2,
-    keywords: ['barks', 'dog', 'pet'],
-    fixedDescription: '宠物服装秀、狗狗互动游戏、拍照打卡'
-  },
-  concert: {
-    priority: 3,
-    keywords: [' - ', ' tour', ' concert'],
-    extractArtist: true,
-    subTypes: {
-      'jazz': '爵士音乐现场演出',
-      'classical|symphony': '古典音乐现场演奏会',
-      'rock': '摇滚音乐现场'
-    },
-    defaultTemplate: '{artist}现场音乐演出'
-  },
-  theater: {
-    priority: 3,
-    keywords: ['theatre', 'theater', 'play', 'opera'],
-    template: '话剧作品《{playName}》舞台演出'
-  },
-  photography_workshop: {
-    priority: 3,
-    keywords: ['photo', 'camera'],
-    requiredKeywords: ['workshop', 'class'],
-    fixedDescription: '摄影技巧教学、实地拍摄练习、构图技巧指导'
-  }
-};
-
-// 通用特征配置
-const GENERIC_FEATURES = {
-  drinks: {
-    'whisky|whiskey': '威士忌品鉴会',
-    'wine': '葡萄酒品鉴',
-    'beer': '精酿啤酒试饮'
-  },
-  food: {
-    'bbq|barbecue': 'BBQ烧烤',
-    'food': '美食摊位'
-  },
-  entertainment: {
-    'live music|band': '现场乐队',
-    'dance|dancing': '舞蹈表演',
-    'craft|handmade': '手工艺品',
-    'art.*exhibition': '艺术作品展',
-    'family|kids': '家庭友好',
-    'yoga': '瑜伽课程'
-  }
-};
-
 class ContentTranslator {
   constructor() {
     this.aiService = new AIService();
@@ -557,120 +482,98 @@ ${event.description || '(无详细描述 - 需从标题推断)'}
     const title = (event.title || '').toLowerCase();
     const description = (event.description_detail || event.description_preview || event.description || '').toLowerCase();
 
-    // 1. 按优先级尝试匹配特殊模式
-    const patterns = Object.entries(EVENT_PATTERNS).sort((a, b) => a[1].priority - b[1].priority);
+    // 特殊类型优先处理
 
-    for (const [type, pattern] of patterns) {
-      if (this.matchesPattern(title, description, pattern)) {
-        return this.buildDescriptionFromPattern(event, pattern, title, description);
+    // Diwali/排灯节
+    if (title.includes('diwali') || description.includes('diwali')) {
+      return '印度舞蹈和音乐表演，南亚美食摊位，Diwali点灯仪式';
+    }
+
+    // 万圣节活动
+    if (title.includes('halloween') || title.includes('thrill-o-ween')) {
+      let features = [];
+      if (description.includes('costume') || title.includes('costume')) features.push('服装比赛');
+      if (description.includes('movie') || description.includes('film')) features.push('恐怖电影');
+      if (description.includes('trick') || description.includes('treat')) features.push('不给糖就捣蛋');
+      if (description.includes('pumpkin')) features.push('南瓜雕刻');
+
+      if (features.length > 0) {
+        return features.join('、') + '，万圣节主题活动';
       }
+      return '万圣节主题活动，服装打扮和互动游戏';
     }
 
-    // 2. 没有匹配特殊模式，使用通用特征提取
-    return this.buildGenericDescription(title, description);
-  }
-
-  // 模式匹配
-  matchesPattern(title, description, pattern) {
-    // 检查关键词
-    const hasKeyword = pattern.keywords.some(kw => title.includes(kw) || description.includes(kw));
-    if (!hasKeyword) return false;
-
-    // 检查必需关键词（如果有）
-    if (pattern.requiredKeywords) {
-      return pattern.requiredKeywords.some(kw => title.includes(kw) || description.includes(kw));
+    // Wedding Fair
+    if (title.includes('wedding') && (title.includes('fair') || title.includes('expo'))) {
+      return '婚纱礼服展示、婚礼策划咨询、摄影化妆摊位';
     }
 
-    return true;
-  }
-
-  // 根据模式构建描述
-  buildDescriptionFromPattern(event, pattern, title, description) {
-    // 固定描述（最简单）
-    if (pattern.fixedDescription) {
-      return pattern.fixedDescription;
+    // 宠物活动
+    if (title.includes('barks') || title.includes('dog') || title.includes('pet')) {
+      return '宠物服装秀、狗狗互动游戏、拍照打卡';
     }
 
-    // 特征提取（如Halloween）
-    if (pattern.features) {
-      const extractedFeatures = [];
-
-      for (const [keyword, feature] of Object.entries(pattern.features)) {
-        const regex = new RegExp(keyword, 'i');
-        if (regex.test(title) || regex.test(description)) {
-          extractedFeatures.push(feature);
-        }
-      }
-
-      if (extractedFeatures.length > 0 && pattern.template) {
-        return pattern.template.replace('{features}', extractedFeatures.join('、'));
-      }
-
-      return pattern.fallbackDescription || '查看活动详情';
-    }
-
-    // 艺术家提取（如Concert）
-    if (pattern.extractArtist) {
+    // 音乐会/演出（有艺术家名）
+    if (title.includes(' - ') || title.includes(' tour') || title.includes(' concert')) {
       const artistMatch = title.match(/^([^-]+)/);
       if (artistMatch) {
         const artist = artistMatch[1].trim();
-
-        // 检查子类型
-        if (pattern.subTypes) {
-          for (const [keyword, desc] of Object.entries(pattern.subTypes)) {
-            if (new RegExp(keyword, 'i').test(title)) {
-              return `${artist}${desc}`;
-            }
-          }
-        }
-
-        return pattern.defaultTemplate ? pattern.defaultTemplate.replace('{artist}', artist) : '现场演出';
+        if (title.includes('jazz')) return `${artist}爵士音乐现场演出`;
+        if (title.includes('classical') || title.includes('symphony')) return `${artist}古典音乐现场演奏会`;
+        if (title.includes('rock')) return `${artist}摇滚音乐现场`;
+        return `${artist}现场音乐演出`;
       }
     }
 
-    // 模板替换（如Theater）
-    if (pattern.template) {
+    // 话剧/戏剧
+    if (title.includes('theatre') || title.includes('theater') || title.includes('play') ||
+        title.includes('doll\'s house') || title.includes('opera')) {
       const playName = title.split(/\s*-\s*/)[0].trim();
-      return pattern.template.replace('{playName}', playName);
+      return `话剧作品《${playName}》舞台演出`;
     }
 
-    return '查看活动详情';
-  }
+    // 摄影/相机工作坊
+    if ((title.includes('photo') || title.includes('camera')) &&
+        (title.includes('workshop') || title.includes('class'))) {
+      return '摄影技巧教学、实地拍摄练习、构图技巧指导';
+    }
 
-  // 通用描述构建
-  buildGenericDescription(title, description) {
     // 提取数量信息
     const numberMatch = description.match(/(\d+)\+?\s*(vendors|artists|food trucks|booths|performers|bands|exhibitors)/i);
     const hasNumber = numberMatch ? `${numberMatch[1]}多个${this.translateWord(numberMatch[2])}` : '';
 
-    // 提取特征
-    const features = [];
+    // 提取具体内容特色
+    let contentFeatures = [];
 
-    for (const [category, patterns] of Object.entries(GENERIC_FEATURES)) {
-      for (const [keyword, feature] of Object.entries(patterns)) {
-        const regex = new RegExp(keyword, 'i');
-        if (regex.test(title) || regex.test(description)) {
-          features.push(feature);
-          break; // 每个类别只取一个
-        }
-      }
-    }
+    if (title.includes('whisky') || title.includes('whiskey')) contentFeatures.push('威士忌品鉴会');
+    else if (title.includes('wine')) contentFeatures.push('葡萄酒品鉴');
+    else if (title.includes('beer')) contentFeatures.push('精酿啤酒试饮');
 
-    // 组合描述
-    if (hasNumber && features.length >= 2) {
-      return `${hasNumber}，${features[0]}和${features[1]}`;
+    if (title.includes('bbq') || description.includes('barbecue')) contentFeatures.push('BBQ烧烤');
+    else if (title.includes('food')) contentFeatures.push('美食摊位');
+
+    if (description.includes('live music') || description.includes('band')) contentFeatures.push('现场乐队');
+    if (description.includes('dance') || description.includes('dancing')) contentFeatures.push('舞蹈表演');
+    if (description.includes('craft') || description.includes('handmade')) contentFeatures.push('手工艺品');
+    if (description.includes('art') && description.includes('exhibition')) contentFeatures.push('艺术作品展');
+    if (description.includes('family') || description.includes('kids')) contentFeatures.push('家庭友好');
+    if (description.includes('yoga') || title.includes('yoga')) contentFeatures.push('瑜伽课程');
+
+    // 构建描述
+    if (hasNumber && contentFeatures.length >= 2) {
+      return `${hasNumber}，${contentFeatures[0]}和${contentFeatures[1]}`;
     }
-    if (hasNumber && features.length > 0) {
-      return `${hasNumber}，主要是${features[0]}`;
+    if (hasNumber && contentFeatures.length > 0) {
+      return `${hasNumber}，主要是${contentFeatures[0]}`;
     }
-    if (features.length >= 3) {
-      return `${features[0]}、${features[1]}和${features[2]}`;
+    if (contentFeatures.length >= 3) {
+      return `${contentFeatures[0]}、${contentFeatures[1]}和${contentFeatures[2]}`;
     }
-    if (features.length >= 2) {
-      return `${features[0]}和${features[1]}`;
+    if (contentFeatures.length >= 2) {
+      return `${contentFeatures[0]}和${contentFeatures[1]}`;
     }
-    if (features.length > 0) {
-      return features[0];
+    if (contentFeatures.length > 0) {
+      return contentFeatures[0];
     }
 
     // 最后的备选（基于标题关键词）
@@ -679,7 +582,9 @@ ${event.description || '(无详细描述 - 需从标题推断)'}
     if (title.includes('fair')) return '主题展览和互动体验';
     if (title.includes('art')) return '艺术作品展览';
     if (title.includes('music')) return '现场音乐演出';
+    if (title.includes('night') && title.includes('market')) return '夜市摊位，美食和手工艺品';
 
+    // 实在没信息时的通用描述
     return '查看活动详情';
   }
 

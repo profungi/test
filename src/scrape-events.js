@@ -170,91 +170,81 @@ class EventScrapeOrchestrator {
     return allEvents;
   }
 
-  // 去重处理（优化：统一key生成 + 数据库去重）
+  // 去重处理（优化：内存预检查 + 数据库去重）
   async deduplicateEvents(events) {
     console.log('🔄 开始去重处理...');
 
-    // 第一步：内存快速去重
-    const uniqueMap = new Map();
+    // 第一步：内存中快速去重（基于URL + 标题+时间+地点）
+    const seenUrls = new Set();
+    const seen = new Map();
+    const memoryDedupedEvents = [];
 
     for (const event of events) {
-      const key = this.generateEventKey(event);
+      // 首先检查URL去重
+      const eventUrl = event.originalUrl || event.url;
+      if (eventUrl && seenUrls.has(eventUrl)) {
+        console.log(`  📝 URL去重: ${event.title} (${eventUrl})`);
+        continue;
+      }
 
-      if (!uniqueMap.has(key)) {
-        uniqueMap.set(key, event);
+      // 创建唯一键：标题+开始时间（只取日期和小时）+地点
+      const normalizedTitle = event.title.toLowerCase().trim();
+
+      // 规范化时间（只取日期和小时，忽略分钟和秒的差异）
+      let normalizedTime = '';
+      try {
+        const timeStr = event.startTime || '';
+        // 提取 YYYY-MM-DD HH 部分
+        const match = timeStr.match(/^(\d{4}-\d{2}-\d{2}T\d{2})/);
+        normalizedTime = match ? match[1] : timeStr.substring(0, 13);
+      } catch (e) {
+        normalizedTime = event.startTime;
+      }
+
+      // 规范化地点（去除空格和标点）
+      const normalizedLocation = (event.location || '').toLowerCase().replace(/[,.\s]+/g, '');
+
+      const key = `${normalizedTitle}|${normalizedTime}|${normalizedLocation}`;
+
+      if (!seen.has(key)) {
+        seen.set(key, true);
+        if (eventUrl) {
+          seenUrls.add(eventUrl);
+        }
+        memoryDedupedEvents.push(event);
       } else {
-        console.log(`  📝 去重: ${event.title}`);
+        console.log(`  📝 内容去重: ${event.title}`);
       }
     }
 
-    const memoryDedupedEvents = Array.from(uniqueMap.values());
-    console.log(`  ✅ 内存去重: ${events.length} → ${memoryDedupedEvents.length}`);
+    console.log(`  ✅ 内存去重完成: ${events.length} → ${memoryDedupedEvents.length}`);
 
-    // 第二步：数据库历史去重
-    const uniqueEvents = await this.filterByDatabase(memoryDedupedEvents);
-
-    console.log(`\n📊 去重统计:`);
-    console.log(`   原始活动: ${events.length}`);
-    console.log(`   内存去重后: ${memoryDedupedEvents.length} (-${events.length - memoryDedupedEvents.length})`);
-    console.log(`   最终唯一活动: ${uniqueEvents.length} (-${memoryDedupedEvents.length - uniqueEvents.length})`);
-
-    return uniqueEvents;
-  }
-
-  // 生成活动唯一键
-  generateEventKey(event) {
-    // URL优先（URL相同必定是同一个活动）
-    const url = event.originalUrl || event.url;
-    if (url) return `url:${url}`;
-
-    // 否则使用内容特征
-    const title = (event.title || '').toLowerCase().trim();
-    const time = this.normalizeTime(event.startTime);
-    const location = this.normalizeLocation(event.location);
-
-    return `content:${title}|${time}|${location}`;
-  }
-
-  // 时间标准化（只保留到小时）
-  normalizeTime(timeStr) {
-    if (!timeStr) return '';
-
-    try {
-      // 提取 YYYY-MM-DDTHH 部分
-      const match = timeStr.match(/^(\d{4}-\d{2}-\d{2}T\d{2})/);
-      return match ? match[1] : timeStr.substring(0, 13);
-    } catch (e) {
-      return timeStr;
-    }
-  }
-
-  // 地点标准化（统一小写，去除标点和空格）
-  normalizeLocation(location) {
-    if (!location) return '';
-    return location.toLowerCase().replace(/[,.\s]+/g, '');
-  }
-
-  // 数据库去重逻辑
-  async filterByDatabase(events) {
+    // 第二步：数据库去重（检查历史记录）
     const uniqueEvents = [];
     const weekRange = this.scrapers[0].getNextWeekRange();
 
-    for (const event of events) {
+    for (const event of memoryDedupedEvents) {
+      // 设置周标识
       event.weekIdentifier = weekRange.identifier;
 
       try {
-        const result = await this.database.saveEvent(event);
-        if (result.saved) {
+        const saveResult = await this.database.saveEvent(event);
+        if (saveResult.saved) {
           uniqueEvents.push(event);
         } else {
           console.log(`  📝 数据库去重: ${event.title}`);
         }
       } catch (error) {
-        console.warn(`保存失败: ${event.title} - ${error.message}`);
+        console.warn(`保存活动时出错: ${event.title} - ${error.message}`);
       }
     }
 
-    console.log(`  ✅ 数据库去重: ${events.length} → ${uniqueEvents.length}`);
+    console.log(`  ✅ 数据库去重完成: ${memoryDedupedEvents.length} → ${uniqueEvents.length}`);
+    console.log(`\n📊 去重统计:`);
+    console.log(`   原始活动: ${events.length}`);
+    console.log(`   内存去重后: ${memoryDedupedEvents.length} (-${events.length - memoryDedupedEvents.length})`);
+    console.log(`   最终唯一活动: ${uniqueEvents.length} (-${memoryDedupedEvents.length - uniqueEvents.length})`);
+
     return uniqueEvents;
   }
 
