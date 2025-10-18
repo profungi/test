@@ -1,6 +1,15 @@
 const axios = require('axios');
 const config = require('../config');
 
+// 可重试错误类
+class RetryableError extends Error {
+  constructor(message) {
+    super(message);
+    this.name = 'RetryableError';
+    this.retryable = true;
+  }
+}
+
 class URLShortener {
   constructor() {
     if (!config.apis.shortio.key) {
@@ -94,91 +103,107 @@ class URLShortener {
 
   // 使用 Short.io API 缩短单个URL
   async shortenUrl(originalUrl, title = '', tags = [], maxRetries = 5) {
-    if (!originalUrl) {
-      throw new Error('URL is required');
-    }
-
-    // 如果API不可用，直接返回原始URL
+    // 前置检查
+    if (!originalUrl) throw new Error('URL is required');
     if (!this.apiAvailable) {
       console.log(`使用原始URL: ${originalUrl}`);
       return originalUrl;
     }
-
-    // 验证URL格式
     if (!this.isValidUrl(originalUrl)) {
       throw new Error(`Invalid URL format: ${originalUrl}`);
     }
 
-    // 尝试多次生成不重复的短链接
+    // 重试循环
     for (let attempt = 0; attempt < maxRetries; attempt++) {
-      const customPath = this.generate4CharCode();
-
-      const payload = {
-        originalURL: originalUrl,
-        domain: this.domain,
-        path: customPath,
-        allowDuplicates: false
-      };
-
-      // 如果提供了标题，添加到payload (可选)
-      if (title) {
-        payload.title = title;
-      }
-
-      // 如果提供了标签，直接在创建时添加
-      if (tags && tags.length > 0) {
-        payload.tags = tags;
-      }
-
       try {
-        const response = await this.axiosInstance.post('', payload);
-
-        if (response.data && response.data.shortURL) {
-          const shortUrl = response.data.shortURL;
-
-          // 显示标签信息
-          if (tags && tags.length > 0) {
-            console.log(`   生成短链接: ${shortUrl} (代码: ${customPath}, 标签: ${tags.join(', ')})`);
-          } else {
-            console.log(`   生成短链接: ${shortUrl} (代码: ${customPath})`);
-          }
-
-          return shortUrl;
-        } else {
-          throw new Error('Invalid response from Short.io API');
-        }
+        const result = await this.tryCreateShortLink(originalUrl, title, tags);
+        return result.shortURL;
 
       } catch (error) {
-        if (error.response) {
-          const status = error.response.status;
-          const data = error.response.data;
+        // 判断是否可以重试
+        if (this.isRetryableError(error)) {
+          console.log(`   重试 ${attempt + 1}/${maxRetries}: ${error.message}`);
 
-          if (status === 400 && data.error) {
-            // 如果是路径已存在的错误，重试生成新代码
-            if (data.error.includes('path') || data.error.includes('exist')) {
-              console.log(`   代码 ${customPath} 已存在，重试... (${attempt + 1}/${maxRetries})`);
-              continue; // 重试下一次
-            }
-            throw new Error(`Short.io API error: ${data.error}`);
-          } else if (status === 401) {
-            throw new Error('Short.io API key is invalid or expired');
-          } else if (status === 403) {
-            throw new Error('Short.io API quota exceeded or forbidden');
-          } else if (status === 409) {
-            // 路径冲突，重试生成新代码
-            console.log(`   代码 ${customPath} 已存在，重试... (${attempt + 1}/${maxRetries})`);
-            continue;
-          } else {
-            throw new Error(`Short.io API error (${status}): ${data.message || 'Unknown error'}`);
+          // 最后一次也失败了
+          if (attempt === maxRetries - 1) {
+            throw new Error(`Failed after ${maxRetries} attempts: ${error.message}`);
           }
+
+          continue;
         } else {
-          throw new Error(`Network error: ${error.message}`);
+          // 不可重试的错误，直接抛出
+          throw error;
         }
       }
     }
+  }
 
-    // 所有重试都失败
-    throw new Error(`Failed to generate unique short code after ${maxRetries} attempts`);
+  // 尝试创建短链接
+  async tryCreateShortLink(originalUrl, title, tags) {
+    const customPath = this.generate4CharCode();
+
+    const payload = {
+      originalURL: originalUrl,
+      domain: this.domain,
+      path: customPath,
+      allowDuplicates: false
+    };
+
+    if (title) payload.title = title;
+    if (tags && tags.length > 0) payload.tags = tags;
+
+    try {
+      const response = await this.axiosInstance.post('', payload);
+
+      if (!response.data || !response.data.shortURL) {
+        throw new Error('Invalid API response');
+      }
+
+      // 成功日志
+      const tagInfo = tags && tags.length > 0 ? `, 标签: ${tags.join(', ')}` : '';
+      console.log(`   生成短链接: ${response.data.shortURL} (代码: ${customPath}${tagInfo})`);
+
+      return response.data;
+
+    } catch (error) {
+      // 转换为标准化错误
+      throw this.normalizeApiError(error, customPath);
+    }
+  }
+
+  // 错误标准化
+  normalizeApiError(error, customPath) {
+    if (!error.response) {
+      return new RetryableError(`Network error: ${error.message}`);
+    }
+
+    const status = error.response.status;
+    const data = error.response.data;
+
+    switch (status) {
+      case 400:
+        if (data.error && (data.error.includes('path') || data.error.includes('exist'))) {
+          return new RetryableError(`Path ${customPath} already exists`);
+        }
+        return new Error(`Bad request: ${data.error}`);
+
+      case 401:
+        return new Error('API key is invalid or expired');
+
+      case 403:
+        return new Error('API quota exceeded or forbidden');
+
+      case 409:
+        return new RetryableError(`Path ${customPath} conflict`);
+
+      default:
+        return new Error(`API error (${status}): ${data.message || 'Unknown error'}`);
+    }
+  }
+
+  // 判断是否可重试
+  isRetryableError(error) {
+    return error instanceof RetryableError;
   }
 
   // 根据活动信息生成标签
