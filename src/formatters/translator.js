@@ -1,96 +1,80 @@
 const AIService = require('../utils/ai-service');
 const config = require('../config');
 
-// 活动模式配置
-const EVENT_PATTERNS = {
-  diwali: {
-    priority: 1,
-    keywords: ['diwali'],
-    fixedDescription: '印度舞蹈和音乐表演，南亚美食摊位，Diwali点灯仪式'
+// 通用特征配置（针对fair/market/festival优化）
+const GENERIC_FEATURES = {
+  // 活动类型识别（fair/market/festival优先）
+  eventTypes: {
+    'fair': '集市',
+    'festival': '节日庆典',
+    'market': '市集',
+    'expo': '博览会',
+    'show': '展会'
   },
-  halloween: {
-    priority: 1,
-    keywords: ['halloween', 'thrill-o-ween'],
-    features: {
-      'costume': '服装比赛',
-      'movie|film': '恐怖电影',
-      'trick|treat': '不给糖就捣蛋',
-      'pumpkin': '南瓜雕刻'
-    },
-    fallbackDescription: '万圣节主题活动，服装打扮和互动游戏',
-    template: '{features}，万圣节主题活动'
+
+  // 食物饮品
+  food: {
+    'food': '美食',
+    'bbq|barbecue': 'BBQ烧烤',
+    'wine': '葡萄酒',
+    'beer': '精酿啤酒',
+    'whisky|whiskey': '威士忌',
+    'cooking|cook': '烹饪',
+    'chef': '大厨料理',
+    'tasting': '品鉴',
+    'cafe|coffee': '咖啡文化'
   },
-  jazzConcert: {
-    priority: 2,
-    keywords: ['jazz'],
-    requiredKeywords: ['concert', 'performance', 'show', 'music'],
-    features: {
-      'grammy|award': '获奖音乐家',
-      'quartet|ensemble': '爵士乐团',
-      'trumpet|saxophone|piano': '现场乐器演奏'
-    },
-    fallbackDescription: '爵士乐现场演出',
-    template: '{features}，爵士乐现场'
+
+  // 娱乐表演
+  entertainment: {
+    'live music|band': '现场音乐',
+    'dance|dancing': '舞蹈表演',
+    'performance': '精彩演出',
+    'concert': '音乐会',
+    'dj': 'DJ打碟',
+    'theater|theatre': '戏剧表演',
+    'comedy': '喜剧相声'
   },
-  petEvent: {
-    priority: 3,
-    keywords: ['pet', 'dog', 'cat', 'animal'],
-    features: {
-      'adoption': '宠物领养',
-      'costume': '宠物服装比赛',
-      'parade': '宠物游行',
-      'vendor': '宠物用品摊位'
-    },
-    fallbackDescription: '宠物友好活动，带上你的毛孩子',
-    template: '{features}，宠物友好活动'
+
+  // 艺术文化
+  arts: {
+    'art': '艺术',
+    'craft|handmade': '手工艺品',
+    'artist': '艺术家作品',
+    'gallery': '艺术展览',
+    'exhibition': '展览',
+    'painting': '绘画作品'
   },
-  farmersMarket: {
-    priority: 4,
-    keywords: ['farmers market', 'farm market'],
-    features: {
-      'organic': '有机农产品',
-      'local': '本地农场',
-      'vendor': '摊位众多',
-      'food': '新鲜食材'
-    },
-    fallbackDescription: '新鲜农产品和本地美食',
-    template: '农夫市集，{features}'
+
+  // 家庭友好
+  family: {
+    'family': '家庭友好',
+    'kids|children': '适合儿童',
+    'pet': '宠物友好'
   },
-  weddingExpo: {
-    priority: 5,
-    keywords: ['wedding'],
-    requiredKeywords: ['expo', 'show', 'showcase'],
-    features: {
-      'vendor': '婚礼供应商展示',
-      'fashion': '婚纱展示',
-      'planner': '婚礼策划师',
-      'cake': '蛋糕试吃'
-    },
-    fallbackDescription: '婚礼策划展会，婚礼供应商展示',
-    template: '{features}，婚礼策划展会'
+
+  // 购物相关
+  shopping: {
+    'vendor': '摊位众多',
+    'shop|shopping': '购物',
+    'local': '本地商家',
+    'handmade': '手工制品'
   }
 };
 
-// 通用特征配置
-const GENERIC_FEATURES = {
-  drinks: {
-    'whisky|whiskey': '威士忌品鉴会',
-    'wine': '葡萄酒品鉴',
-    'beer': '精酿啤酒试饮'
-  },
-  food: {
-    'bbq|barbecue': 'BBQ烧烤',
-    'food': '美食摊位'
-  },
-  entertainment: {
-    'live music|band': '现场乐队',
-    'dance|dancing': '舞蹈表演',
-    'craft|handmade': '手工艺品',
-    'art.*exhibition': '艺术作品展',
-    'family|kids': '家庭友好',
-    'yoga': '瑜伽课程'
-  }
-};
+// 种草话术库
+const ENGAGEMENT_PHRASES = [
+  '值得一去',
+  '不容错过',
+  '周末好去处',
+  '精彩活动',
+  '湾区必打卡',
+  '来逛逛',
+  '别错过',
+  '超赞活动',
+  '一定要去',
+  '人气爆棚'
+];
 
 class ContentTranslator {
   constructor() {
@@ -573,63 +557,30 @@ ${event.description || '(无详细描述 - 需从标题推断)'}
     const title = (event.title || '').toLowerCase();
     const description = (event.description_detail || event.description_preview || event.description || '').toLowerCase();
 
-    // 1. 按优先级尝试匹配特殊模式
-    const patterns = Object.entries(EVENT_PATTERNS).sort((a, b) => a[1].priority - b[1].priority);
+    // 第1层：通用特征提取（增强版）
+    const features = this.extractEnhancedFeatures(title, description);
 
-    for (const [type, pattern] of patterns) {
-      if (this.matchesPattern(title, description, pattern)) {
-        return this.buildDescriptionFromPattern(event, pattern, title, description);
-      }
+    if (features.length >= 2) {
+      // 有足够特征，生成描述
+      const phrase = this.getRandomEngagementPhrase();
+      return features.slice(0, 3).join('、') + '，' + phrase;
     }
 
-    // 2. 没有匹配特殊模式，使用通用特征提取
-    return this.buildGenericDescription(title, description);
+    // 第2层：智能兜底（从标题提取关键词）
+    const smartFallback = this.buildSmartFallback(title, description);
+    if (smartFallback) {
+      return smartFallback;
+    }
+
+    // 第3层：最终兜底
+    return '社区活动，欢迎参加';
   }
 
-  // 模式匹配
-  matchesPattern(title, description, pattern) {
-    const hasKeyword = pattern.keywords.some(kw => title.includes(kw) || description.includes(kw));
-    if (!hasKeyword) return false;
-
-    if (pattern.requiredKeywords) {
-      return pattern.requiredKeywords.some(kw => title.includes(kw) || description.includes(kw));
-    }
-
-    return true;
-  }
-
-  // 从模式构建描述
-  buildDescriptionFromPattern(event, pattern, title, description) {
-    // 如果有固定描述，直接返回
-    if (pattern.fixedDescription) {
-      return pattern.fixedDescription;
-    }
-
-    // 提取特征
-    const features = [];
-    if (pattern.features) {
-      for (const [regex, label] of Object.entries(pattern.features)) {
-        const regexPattern = new RegExp(regex, 'i');
-        if (regexPattern.test(title) || regexPattern.test(description)) {
-          features.push(label);
-        }
-      }
-    }
-
-    // 如果找到特征，使用模板
-    if (features.length > 0 && pattern.template) {
-      return pattern.template.replace('{features}', features.join('、'));
-    }
-
-    // 否则使用fallback描述
-    return pattern.fallbackDescription || this.buildGenericDescription(title, description);
-  }
-
-  // 构建通用描述
-  buildGenericDescription(title, description) {
+  // 提取增强的特征（fair/market/festival优先）
+  extractEnhancedFeatures(title, description) {
     const features = [];
 
-    // 提取通用特征
+    // 提取所有特征
     for (const category of Object.values(GENERIC_FEATURES)) {
       for (const [regex, label] of Object.entries(category)) {
         const regexPattern = new RegExp(regex, 'i');
@@ -641,11 +592,62 @@ ${event.description || '(无详细描述 - 需从标题推断)'}
       }
     }
 
-    if (features.length > 0) {
-      return features.slice(0, 3).join('、') + '，精彩活动等你来';
+    return features;
+  }
+
+  // 从标题提取关键词构建智能描述
+  buildSmartFallback(title, description) {
+    // 尝试从标题和描述中提取关键名词
+    // 例如："Tech Startup Networking Event" → "科技社交活动，行业交流"
+
+    const keywords = [];
+
+    // 提取常见的活动类型关键词（中英对应）
+    const keywordMap = {
+      'tech|technology|startup': '科技',
+      'networking|meetup': '社交交流',
+      'workshop|training': '工作坊培训',
+      'seminar|conference': '研讨会',
+      'yoga|fitness|workout': '瑜伽健身',
+      'dance|ballet|contemporary': '舞蹈表演',
+      'comedy|stand.?up': '相声喜剧',
+      'theater|drama|play': '话剧演出',
+      'painting|drawing|art class': '绘画课',
+      'cooking|chef|culinary': '烹饪美食',
+      'wine|beer|tasting': '品酒美酒',
+      'book|reading|literature': '读书会',
+      'movie|film|cinema': '电影放映',
+      'photography|photo': '摄影展',
+      'design|fashion': '设计时尚',
+      'nature|hiking|outdoor': '户外活动',
+      'sports|run|race': '运动竞技',
+      'charity|volunteer': '慈善志愿',
+      'family|kids|children': '家庭亲子',
+      'game|gaming|esports': '游戏电竞',
+      'car|auto|motorcycle': '汽车摩托',
+      'gardening|plants': '园艺种植'
+    };
+
+    for (const [regex, label] of Object.entries(keywordMap)) {
+      const pattern = new RegExp(regex, 'i');
+      if (pattern.test(title) || pattern.test(description)) {
+        keywords.push(label);
+      }
     }
 
-    return '社区活动，欢迎参加';
+    // 如果找到关键词，返回组合描述
+    if (keywords.length >= 1) {
+      const uniqueKeywords = [...new Set(keywords)];
+      const phrase = this.getRandomEngagementPhrase();
+      return uniqueKeywords.slice(0, 2).join('、') + '活动，' + phrase;
+    }
+
+    return null;
+  }
+
+  // 获取随机种草话术
+  getRandomEngagementPhrase() {
+    return ENGAGEMENT_PHRASES[Math.floor(Math.random() * ENGAGEMENT_PHRASES.length)];
   }
 
   // 辅助方法：翻译单词
