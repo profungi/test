@@ -24,14 +24,14 @@ const testEvents = [
     location: 'San Francisco, CA'
   },
   {
-    title: 'Test Event 2',
-    originalUrl: 'https://example.com/event2',
+    title: 'Test Event 2',  // 测试内容去重：相同标题+时间+地点
+    // 无URL，使用内容特征
     startTime: '2024-10-20T19:00:00',
     location: 'Oakland, CA'
   },
   {
     title: 'Test Event 2',  // 相同标题+时间+地点
-    url: 'https://example.com/event2-different',  // URL不同
+    // 无URL，应该和事件3去重
     startTime: '2024-10-20T19:15:00',  // 在同一小时内
     location: 'Oakland, CA'
   },
