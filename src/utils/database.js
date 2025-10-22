@@ -78,8 +78,69 @@ class EventDatabase {
             return;
           }
 
-          // 迁移：为现有表添加 description_detail 列（如果不存在）
-          this.migrateAddDescriptionDetail().then(resolve).catch(reject);
+          // 创建索引以优化查询性能
+          this.createIndexes().then(() => {
+            // 迁移：为现有表添加 description_detail 列（如果不存在）
+            this.migrateAddDescriptionDetail().then(resolve).catch(reject);
+          }).catch(reject);
+        });
+      });
+    });
+  }
+
+  async createIndexes() {
+    const indexQueries = [
+      // 主要去重查询的复合索引
+      `CREATE INDEX IF NOT EXISTS idx_events_dedup
+       ON events(week_identifier, location, date(start_time))`,
+
+      // 加速 week_identifier 查询
+      `CREATE INDEX IF NOT EXISTS idx_events_week
+       ON events(week_identifier)`,
+
+      // 加速 location 查询
+      `CREATE INDEX IF NOT EXISTS idx_events_location
+       ON events(location)`,
+
+      // 加速标题查询（用于相似度匹配）
+      `CREATE INDEX IF NOT EXISTS idx_events_normalized_title
+       ON events(normalized_title)`,
+
+      // 加速来源查询
+      `CREATE INDEX IF NOT EXISTS idx_events_source
+       ON events(source)`
+    ];
+
+    return new Promise((resolve, reject) => {
+      let completed = 0;
+      let errors = [];
+
+      if (indexQueries.length === 0) {
+        resolve();
+        return;
+      }
+
+      indexQueries.forEach((query, index) => {
+        this.db.run(query, (err) => {
+          if (err) {
+            // "index already exists" 错误是可以接受的，其他错误需要报告
+            if (!err.message.includes('already exists')) {
+              errors.push({ query, error: err.message });
+            } else {
+              console.log(`  ℹ️  ${query.split('\n')[0].substring(0, 40)}... (already exists)`);
+            }
+          }
+          completed++;
+          if (completed === indexQueries.length) {
+            if (errors.length > 0) {
+              console.warn(`⚠️  Some indexes could not be created:`, errors);
+              // 索引失败不是致命错误，仍然继续
+              resolve();
+            } else {
+              console.log('✅ Database indexes created/verified');
+              resolve();
+            }
+          }
         });
       });
     });

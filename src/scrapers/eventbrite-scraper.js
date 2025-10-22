@@ -53,8 +53,12 @@ class EventbriteScraper extends BaseScraper {
       }
 
       // 3. 抓取特定关键词的活动（festival, fair, market等）
+      // 优化：只在没有足够活动时才进行关键词搜索，节省时间
       const additionalSearches = this.sourceConfig.additionalSearches || [];
-      if (additionalSearches.length > 0 && events.length < 80) {
+      const keywordSearchThreshold = 50; // 如果已有超过50个事件，跳过关键词搜索
+
+      if (additionalSearches.length > 0 && events.length < keywordSearchThreshold) {
+        console.log(`  📊 Current events: ${events.length}/${keywordSearchThreshold} (keyword search threshold)`);
         console.log(`  Scraping additional searches: ${additionalSearches.join(', ')}`);
 
         for (const keyword of additionalSearches) {
@@ -79,6 +83,8 @@ class EventbriteScraper extends BaseScraper {
             console.warn(`    Failed to search ${keyword}: ${error.message}`);
           }
         }
+      } else if (events.length >= keywordSearchThreshold) {
+        console.log(`  ⏭️  Skipping keyword searches (already have ${events.length} events, threshold: ${keywordSearchThreshold})`);
       }
 
     } catch (error) {
