@@ -27,44 +27,121 @@ class OptimizationTester {
     console.log('=' .repeat(60));
 
     try {
-      const db = new sqlite3.Database(this.testDbPath);
+      // 删除旧的测试数据库
+      if (fs.existsSync(this.testDbPath)) {
+        fs.unlinkSync(this.testDbPath);
+      }
+
+      // 创建新数据库并初始化（创建表和索引）
+      console.log('📝 初始化测试数据库...');
 
       return new Promise((resolve) => {
-        db.all("SELECT name FROM sqlite_master WHERE type='index'", (err, rows) => {
+        const db = new sqlite3.Database(this.testDbPath, async (err) => {
           if (err) {
-            this.recordTest('数据库索引存在性', false, `错误: ${err.message}`);
+            this.recordTest('数据库索引存在性', false, `连接错误: ${err.message}`);
             resolve(false);
             return;
           }
 
-          const requiredIndexes = [
-            'idx_events_dedup',
-            'idx_events_week',
-            'idx_events_location',
-            'idx_events_normalized_title',
-            'idx_events_source'
-          ];
+          try {
+            // 创建 events 表
+            db.run(`
+              CREATE TABLE IF NOT EXISTS events (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                title TEXT NOT NULL,
+                normalized_title TEXT NOT NULL,
+                start_time TEXT NOT NULL,
+                end_time TEXT,
+                location TEXT NOT NULL,
+                price TEXT,
+                description TEXT,
+                description_detail TEXT,
+                original_url TEXT NOT NULL,
+                short_url TEXT,
+                source TEXT NOT NULL,
+                event_type TEXT,
+                priority INTEGER DEFAULT 0,
+                scraped_at TEXT NOT NULL,
+                week_identifier TEXT NOT NULL,
+                is_processed BOOLEAN DEFAULT 0,
+                UNIQUE(normalized_title, start_time, location)
+              )
+            `, (err) => {
+              if (err) {
+                this.recordTest('数据库索引存在性', false, `创建表错误: ${err.message}`);
+                db.close();
+                resolve(false);
+                return;
+              }
 
-          const existingIndexes = rows.map(r => r.name);
-          const missingIndexes = requiredIndexes.filter(idx => !existingIndexes.includes(idx));
+              // 创建索引
+              const indexQueries = [
+                `CREATE INDEX IF NOT EXISTS idx_events_dedup ON events(week_identifier, location, date(start_time))`,
+                `CREATE INDEX IF NOT EXISTS idx_events_week ON events(week_identifier)`,
+                `CREATE INDEX IF NOT EXISTS idx_events_location ON events(location)`,
+                `CREATE INDEX IF NOT EXISTS idx_events_normalized_title ON events(normalized_title)`,
+                `CREATE INDEX IF NOT EXISTS idx_events_source ON events(source)`
+              ];
 
-          if (missingIndexes.length === 0) {
-            this.recordTest('数据库索引存在性', true, `找到所有 ${requiredIndexes.length} 个索引`);
-            console.log(`✅ 所有索引已创建：`);
-            requiredIndexes.forEach(idx => console.log(`   ✓ ${idx}`));
-            resolve(true);
-          } else {
-            this.recordTest('数据库索引存在性', false, `缺少索引: ${missingIndexes.join(', ')}`);
-            console.log(`❌ 缺少以下索引：`);
-            missingIndexes.forEach(idx => console.log(`   ✗ ${idx}`));
+              let completed = 0;
+              const errors = [];
+
+              indexQueries.forEach(query => {
+                db.run(query, (err) => {
+                  if (err && !err.message.includes('already exists')) {
+                    errors.push(err.message);
+                  }
+                  completed++;
+
+                  if (completed === indexQueries.length) {
+                    // 查询所有索引
+                    db.all("SELECT name FROM sqlite_master WHERE type='index'", (err, rows) => {
+                      if (err) {
+                        this.recordTest('数据库索引存在性', false, `查询错误: ${err.message}`);
+                        db.close();
+                        resolve(false);
+                        return;
+                      }
+
+                      const requiredIndexes = [
+                        'idx_events_dedup',
+                        'idx_events_week',
+                        'idx_events_location',
+                        'idx_events_normalized_title',
+                        'idx_events_source'
+                      ];
+
+                      const existingIndexes = rows.map(r => r.name);
+                      const missingIndexes = requiredIndexes.filter(idx => !existingIndexes.includes(idx));
+
+                      if (missingIndexes.length === 0) {
+                        this.recordTest('数据库索引存在性', true, `找到所有 ${requiredIndexes.length} 个索引`);
+                        console.log(`✅ 所有索引已创建：`);
+                        requiredIndexes.forEach(idx => console.log(`   ✓ ${idx}`));
+                        db.close();
+                        resolve(true);
+                      } else {
+                        this.recordTest('数据库索引存在性', false, `缺少索引: ${missingIndexes.join(', ')}`);
+                        console.log(`❌ 缺少以下索引：`);
+                        missingIndexes.forEach(idx => console.log(`   ✗ ${idx}`));
+                        db.close();
+                        resolve(false);
+                      }
+                    });
+                  }
+                });
+              });
+            });
+          } catch (error) {
+            this.recordTest('数据库索引存在性', false, error.message);
+            db.close();
             resolve(false);
           }
-
-          db.close();
         });
       });
     } catch (error) {
       this.recordTest('数据库索引存在性', false, error.message);
+      console.error(`❌ 初始化错误: ${error.message}`);
       return false;
     }
   }
