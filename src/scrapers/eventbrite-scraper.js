@@ -722,9 +722,14 @@ class EventbriteScraper extends BaseScraper {
       '.event-details'
     ];
 
+    // 🔧 FIX: 改进的选择器遍历逻辑
+    // 不仅检查元素是否存在，还要找到真正有内容的元素
     for (const selector of descriptionSelectors) {
-      const $desc = $(selector).first();
-      if ($desc.length > 0) {
+      // 查找所有匹配的元素，不仅仅是第一个
+      const elements = $(selector);
+
+      for (let i = 0; i < elements.length; i++) {
+        const $desc = $(elements[i]);
         let text = $desc.text().trim();
 
         // 清理文本
