@@ -12,7 +12,7 @@ const ManualReviewManager = require('./utils/manual-review');
 // 导入所有爬虫
 const EventbriteScraper = require('./scrapers/eventbrite-scraper');
 const SFStationScraper = require('./scrapers/sfstation-scraper');
-const DoTheBayScraper = require('./scrapers/dothebay-scraper');
+const FuncheapWeekendScraper = require('./scrapers/funcheap-weekend-scraper');
 
 const config = require('./config');
 
@@ -25,7 +25,7 @@ class EventScrapeOrchestrator {
     this.scrapers = [
       new EventbriteScraper(),
       new SFStationScraper(),
-      new DoTheBayScraper()
+      new FuncheapWeekendScraper()
     ];
   }
 
@@ -273,7 +273,7 @@ class EventScrapeOrchestrator {
                            默认使用环境变量 AI_PROVIDER 或 openai
 
 功能:
-1. 并行抓取 Eventbrite, SF Station, DoTheBay 的活动信息
+1. 并行抓取 Eventbrite, SF Station, Funcheap 的活动信息
 2. AI分类和优先级排序 (market > food/music > free > other)
 3. 智能去重 (标题相似度 + 时间 + 地点)
 4. 生成 JSON 格式的审核文件供人工选择
