@@ -56,7 +56,10 @@ async function main() {
         if (event.description) {
           const desc = event.description.trim();
           if (desc) {
-            console.log(`   📝 描述: ${desc.substring(0, 150)}${desc.length > 150 ? '...' : ''}`);
+            console.log(`   📝 描述: ${desc.substring(0, 200)}${desc.length > 200 ? '...' : ''}`);
+            if (desc.length > 200) {
+              console.log(`      (完整描述长度: ${desc.length} 字符)`);
+            }
           } else {
             console.log(`   📝 描述: (空)`);
           }

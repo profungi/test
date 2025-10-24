@@ -345,12 +345,12 @@ class FuncheapWeekendScraper extends BaseScraper {
         // 移除过多的空格
         description = description.replace(/\s+/g, ' ');
 
-        // 限制描述长度
-        if (description.length > 300) {
+        // 限制描述长度 - 允许更长的描述（500字符）
+        if (description.length > 500) {
           // 尝试在词边界处截断
-          const truncated = description.substring(0, 300);
+          const truncated = description.substring(0, 500);
           const lastSpace = truncated.lastIndexOf(' ');
-          if (lastSpace > 200) {
+          if (lastSpace > 300) {
             description = truncated.substring(0, lastSpace) + '...';
           } else {
             description = truncated + '...';
