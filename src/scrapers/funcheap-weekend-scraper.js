@@ -404,19 +404,25 @@ class FuncheapWeekendScraper extends BaseScraper {
   }
 
   /**
-   * URL 去重
+   * 去重 - 用活动名称和地点而不是 URL
+   * 因为同一个活动可能跨多天发布，导致 URL 不同
    */
   deduplicateByUrl(events) {
     const seen = new Map();
 
     return events.filter(event => {
-      const url = event.originalUrl;
+      // 使用 title + location 作为去重 key
+      // 原因：Funcheap 可能把跨多天的活动分成多个条目，但标题和地点相同
+      const title = (event.title || '').toLowerCase().trim();
+      const location = (event.location || '').toLowerCase().trim();
+      const key = `${title}|${location}`;
 
-      if (seen.has(url)) {
+      if (seen.has(key)) {
+        console.log(`  📝 Funcheap内部去重: ${event.title} (地点: ${event.location})`);
         return false;
       }
 
-      seen.set(url, true);
+      seen.set(key, true);
       return true;
     });
   }
