@@ -127,15 +127,29 @@ class ManualReviewManager {
       const dayOfWeek = format(startDate, 'EEEE'); // Monday, Tuesday, etc.
       const date = format(startDate, 'MM/dd');
       const time = format(startDate, 'h:mm a');
-      
+
       let timeDisplay = `${dayOfWeek} ${date} ${time}`;
-      
+
       if (event.endTime) {
         const endDate = new Date(event.endTime);
-        const endTime = format(endDate, 'h:mm a');
-        timeDisplay += ` - ${endTime}`;
+
+        // 检查是否是同一天
+        const startDateOnly = format(startDate, 'yyyy-MM-dd');
+        const endDateOnly = format(endDate, 'yyyy-MM-dd');
+
+        if (startDateOnly === endDateOnly) {
+          // 同一天：只显示结束时间（不重复日期）
+          const endTime = format(endDate, 'h:mm a');
+          timeDisplay += ` - ${endTime}`;
+        } else {
+          // 不同天：显示完整的日期和时间
+          const endDayOfWeek = format(endDate, 'EEEE');
+          const endDateStr = format(endDate, 'MM/dd');
+          const endTime = format(endDate, 'h:mm a');
+          timeDisplay += ` - ${endDayOfWeek} ${endDateStr} ${endTime}`;
+        }
       }
-      
+
       return timeDisplay;
     } catch (error) {
       return event.startTime; // 返回原始时间如果格式化失败

@@ -30,7 +30,26 @@ async function main() {
       console.log('📋 前 5 个活动（完整详情）：\n');
       events.slice(0, 5).forEach((event, index) => {
         console.log(`${index + 1}. ${event.title}`);
-        console.log(`   🕒 时间: ${event.startTime}${event.endTime ? ` - ${event.endTime}` : '(无结束时间)'}`);
+
+        // 格式化时间显示
+        let timeDisplay = event.startTime;
+        if (event.endTime) {
+          // 检查开始和结束时间是否是同一天
+          const startDate = event.startTime.split('T')[0]; // YYYY-MM-DD
+          const endDate = event.endTime.split('T')[0];     // YYYY-MM-DD
+
+          if (startDate === endDate) {
+            // 同一天：只显示时间部分
+            const startTimeOnly = event.startTime.split('T')[1]; // HH:MM
+            const endTimeOnly = event.endTime.split('T')[1];     // HH:MM
+            timeDisplay = `${startDate} ${startTimeOnly} - ${endTimeOnly}`;
+          } else {
+            // 不同天：显示完整日期时间
+            timeDisplay = `${event.startTime} - ${event.endTime}`;
+          }
+        }
+
+        console.log(`   🕒 时间: ${timeDisplay}`);
         console.log(`   📍 地点: ${event.location}`);
         console.log(`   💰 价格: ${event.price || '(未获取到)'}`);
         console.log(`   🔗 链接: ${event.originalUrl}`);
