@@ -86,15 +86,19 @@ class FuncheapWeekendScraper extends BaseScraper {
   /**
    * 构建所有要抓取的 URL
    * URL 格式: /category/event/event-types/{category}/YYYY/MM/DD/
+   * 注意：月份和日期需要零填充（01, 02, 等）
    */
   buildUrls(weekendDates, categories) {
     const urls = [];
 
     for (const date of weekendDates) {
       const [year, month, day] = date.split('-');
+      // 确保月份和日期是零填充的
+      const paddedMonth = month.padStart(2, '0');
+      const paddedDay = day.padStart(2, '0');
 
       for (const category of categories) {
-        const url = `https://sf.funcheap.com/category/event/event-types/${category}/${year}/${month}/${day}/`;
+        const url = `https://sf.funcheap.com/category/event/event-types/${category}/${year}/${paddedMonth}/${paddedDay}/`;
 
         urls.push({
           url,
@@ -109,15 +113,16 @@ class FuncheapWeekendScraper extends BaseScraper {
 
   /**
    * 解析 Funcheap 页面
-   * Funcheap 使用 article.tanbox 作为事件容器
+   * Funcheap 使用 div.tanbox 作为事件容器（有 id="post-{ID}" 属性）
    */
   async parseFuncheapPage($) {
     const events = [];
 
     // 使用 CSS 选择器找到所有事件
+    // div.tanbox[id^="post-"] 会排除广告和其他非事件元素
     const eventSelectors = [
-      'article.tanbox',
-      'article.post'
+      'div.tanbox[id^="post-"]',  // 最精确的选择器（只返回真实事件）
+      'div.tanbox'                // 备选选择器（可能包含一些非事件元素）
     ];
 
     let eventElements = $();
@@ -152,28 +157,37 @@ class FuncheapWeekendScraper extends BaseScraper {
 
   /**
    * 解析单个 Funcheap 事件
+   * HTML 结构:
+   * div.tanbox
+   *   span.title.entry-title > a[href] → 标题和链接
+   *   div.meta.archive-meta.date-time[data-event-date][data-event-date-end]
+   *     span.cost → "Cost: $9" 或 "Cost: FREE"
+   *     span (no class) → 地点
+   *   div.thumbnail-wrapper
+   *   text node → 描述
    */
   parseFuncheapEvent($, $article) {
     try {
-      // 标题 - 从 h2 a 获取
-      const title = $article.find('h2 a').text().trim();
+      // 标题 - 从 span.title.entry-title > a 获取
+      const titleLink = $article.find('span.title.entry-title a');
+      const title = titleLink.text().trim();
       if (!title || title.length < 3) return null;
 
-      // URL - 从 h2 a href 获取
-      const originalUrl = $article.find('h2 a').attr('href');
+      // URL - 从 a href 获取
+      const originalUrl = titleLink.attr('href');
       if (!originalUrl) return null;
 
-      // 时间信息 - 从 .date-time 或 .meta 获取
+      // 时间信息 - 从 div.meta data-event-date 属性获取
       let startTime = null;
       let endTime = null;
 
-      // 尝试从 data-event-date 属性获取
-      const metaEl = $article.find('.meta.archive-meta.date-time');
+      const metaEl = $article.find('div.meta.archive-meta.date-time');
       if (metaEl.length > 0) {
         const eventDate = metaEl.attr('data-event-date');
         const eventDateEnd = metaEl.attr('data-event-date-end');
 
         if (eventDate) {
+          // eventDate 格式: "2025-10-24 10:00"
           startTime = TimeHandler.normalize(eventDate, { source: 'Funcheap' });
         }
         if (eventDateEnd) {
@@ -181,44 +195,60 @@ class FuncheapWeekendScraper extends BaseScraper {
         }
       }
 
-      // 如果没有从属性获取，尝试从文本获取
-      if (!startTime) {
-        const timeText = $article.find('.date-time, .fc-event-start-time').text().trim();
-        if (timeText) {
-          // 从文本中提取时间
-          // 例如: "Saturday, October 25 – 5:00 pm"
-          startTime = this.parseTimeText(timeText);
+      if (!startTime) return null;
+
+      // 地点 - 从 div.meta 中的 span（没有 class 属性）获取，通常是最后一个 span
+      let location = null;
+      const metaSpans = metaEl.find('span');
+      if (metaSpans.length > 0) {
+        // 找到最后一个 span（通常是位置信息）
+        const locationSpan = metaSpans.last();
+        // 只有在不是 cost span 时才使用
+        if (!locationSpan.hasClass('cost')) {
+          location = locationSpan.text().trim();
         }
       }
 
-      if (!startTime) return null;
-
-      // 地点
-      let location = $article.find('.location').text().trim();
       if (!location) {
         location = 'San Francisco Bay Area';
       }
 
-      // 价格 - 从 .cost_details 获取
+      // 价格 - 从 span.cost 获取
       let price = null;
-      const costText = $article.find('.cost_details').text().trim();
-      if (costText) {
+      const costSpan = $article.find('span.cost');
+      if (costSpan.length > 0) {
+        const costText = costSpan.text().trim();
         // 移除 "Cost: " 前缀
         price = costText.replace(/^Cost:\s*/i, '').trim();
 
-        // 如果是 "Free" 或类似
-        if (price.toLowerCase() === 'free' || price === '$0') {
+        // 规范化为 'Free' 或保留原价格
+        if (price.toLowerCase() === 'free' || price === '$0' || price === '0') {
           price = 'Free';
         }
+      } else {
+        price = 'TBD'; // 如果没有找到价格
       }
 
-      // 描述 - 从 .entry 获取
-      let description = $article.find('.entry').text().trim();
+      // 描述 - 从 div.thumbnail-wrapper 后的文本获取
+      let description = null;
+      const thumbnailWrapper = $article.find('div.thumbnail-wrapper');
+      if (thumbnailWrapper.length > 0) {
+        // 获取 thumbnail-wrapper 之后的所有文本
+        let text = '';
+        let node = thumbnailWrapper[0].nextSibling;
+        while (node) {
+          if (node.nodeType === 3) { // 文本节点
+            text += node.textContent;
+          }
+          node = node.nextSibling;
+        }
+        description = text.trim();
+      }
 
-      // 限制描述长度和清理
-      if (description && description.length > 30) {
+      // 限制描述长度
+      if (description && description.length > 500) {
         description = description.substring(0, 500);
-      } else {
+      } else if (!description || description.length < 10) {
         description = null;
       }
 
