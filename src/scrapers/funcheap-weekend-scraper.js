@@ -30,9 +30,9 @@ class FuncheapWeekendScraper extends BaseScraper {
       // 逐个抓取
       for (const urlInfo of urls) {
         try {
-          console.log(`Fetching: ${urlInfo.url} (${urlInfo.category} - ${urlInfo.date})`);
+          console.log(`Fetching: ${urlInfo.url} (${urlInfo.category})`);
           const $ = await this.fetchPage(urlInfo.url);
-          const pageEvents = await this.parseFuncheapPage($);
+          const pageEvents = await this.parseFuncheapPage($, urlInfo.dateFilter);
 
           console.log(`  Found ${pageEvents.length} events`);
           events.push(...pageEvents);
@@ -85,27 +85,21 @@ class FuncheapWeekendScraper extends BaseScraper {
 
   /**
    * 构建所有要抓取的 URL
-   * URL 格式: /category/event/event-types/{category}/YYYY/MM/DD/
-   * 注意：月份和日期需要零填充（01, 02, 等）
+   * Funcheap 的日期 URL 过滤可能不稳定，所以我们抓取基础分类页面
+   * 然后在代码中根据事件的实际时间过滤周末事件
    */
   buildUrls(weekendDates, categories) {
     const urls = [];
 
-    for (const date of weekendDates) {
-      const [year, month, day] = date.split('-');
-      // 确保月份和日期是零填充的
-      const paddedMonth = month.padStart(2, '0');
-      const paddedDay = day.padStart(2, '0');
+    // 只构建基础分类 URL，不添加日期过滤
+    for (const category of categories) {
+      const url = `https://sf.funcheap.com/category/event/event-types/${category}/`;
 
-      for (const category of categories) {
-        const url = `https://sf.funcheap.com/category/event/event-types/${category}/${year}/${paddedMonth}/${paddedDay}/`;
-
-        urls.push({
-          url,
-          category,
-          date
-        });
-      }
+      urls.push({
+        url,
+        category,
+        dateFilter: weekendDates  // 在解析时使用这些日期进行过滤
+      });
     }
 
     return urls;
@@ -115,7 +109,7 @@ class FuncheapWeekendScraper extends BaseScraper {
    * 解析 Funcheap 页面
    * Funcheap 使用 div.tanbox 作为事件容器（有 id="post-{ID}" 属性）
    */
-  async parseFuncheapPage($) {
+  async parseFuncheapPage($, dateFilter = null) {
     const events = [];
 
     // 使用 CSS 选择器找到所有事件
@@ -130,7 +124,7 @@ class FuncheapWeekendScraper extends BaseScraper {
     for (const selector of eventSelectors) {
       eventElements = $(selector);
       if (eventElements.length > 0) {
-        console.log(`  Found ${eventElements.length} events with selector: ${selector}`);
+        console.log(`  Found ${eventElements.length} total events with selector: ${selector}`);
         break;
       }
     }
@@ -145,6 +139,10 @@ class FuncheapWeekendScraper extends BaseScraper {
       try {
         const event = this.parseFuncheapEvent($, $(element));
         if (event) {
+          // 如果提供了 dateFilter，则只保留符合日期的事件
+          if (dateFilter && !this.isEventOnWeekend(event.startTime, dateFilter)) {
+            return; // 跳过不符合日期的事件
+          }
           events.push(event);
         }
       } catch (error) {
@@ -152,7 +150,28 @@ class FuncheapWeekendScraper extends BaseScraper {
       }
     });
 
+    console.log(`  After date filtering: ${events.length} events`);
     return events;
+  }
+
+  /**
+   * 检查事件是否在指定的周末日期
+   */
+  isEventOnWeekend(eventStartTime, weekendDates) {
+    if (!eventStartTime || !weekendDates || weekendDates.length === 0) {
+      return true; // 如果无法判断，保留事件
+    }
+
+    try {
+      // eventStartTime 格式: "2025-10-24T10:00:00" 或类似
+      const eventDateStr = eventStartTime.split('T')[0]; // 提取 YYYY-MM-DD 部分
+
+      // 检查事件日期是否在周末日期列表中
+      return weekendDates.includes(eventDateStr);
+    } catch (error) {
+      console.warn(`Error checking event date: ${error.message}`);
+      return true; // 出错时保留事件
+    }
   }
 
   /**
