@@ -66,6 +66,17 @@ async function main() {
         } else {
           console.log(`   📝 描述: (无)`);
         }
+        if (event.description_detail) {
+          const detailDesc = event.description_detail.trim();
+          if (detailDesc) {
+            console.log(`   📖 详细描述: ${detailDesc.substring(0, 200)}${detailDesc.length > 200 ? '...' : ''}`);
+            if (detailDesc.length > 200) {
+              console.log(`      (完整详细描述长度: ${detailDesc.length} 字符)`);
+            }
+          }
+        } else {
+          console.log(`   📖 详细描述: (无)`);
+        }
         console.log('');
       });
 
@@ -74,8 +85,10 @@ async function main() {
       console.log('📊 数据统计：\n');
       const hasPrice = events.filter(e => e.price && e.price.trim()).length;
       const hasDesc = events.filter(e => e.description && e.description.trim()).length;
+      const hasDetailDesc = events.filter(e => e.description_detail && e.description_detail.trim()).length;
       console.log(`✅ 有价格信息: ${hasPrice}/${events.length}`);
       console.log(`✅ 有描述信息: ${hasDesc}/${events.length}`);
+      console.log(`✅ 有详细描述信息: ${hasDetailDesc}/${events.length}`);
     } else {
       console.log('❌ 没有找到任何活动');
     }
