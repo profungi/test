@@ -259,15 +259,27 @@ class FuncheapWeekendScraper extends BaseScraper {
 
       if (!startTime) return null;
 
-      // 地点 - 从 div.meta 中的 span（没有 class 属性）获取，通常是最后一个 span
+      // 地点 - 从 div.meta 中获取，在所有 span 之后
       let location = null;
-      const metaSpans = metaEl.find('span');
-      if (metaSpans.length > 0) {
-        // 找到最后一个 span（通常是位置信息）
-        const locationSpan = metaSpans.last();
-        // 只有在不是 cost span 时才使用
-        if (!locationSpan.hasClass('cost')) {
-          location = locationSpan.text().trim();
+
+      // 获取 meta 元素的所有文本，然后找到最后的地点信息
+      // 地点通常在最后一个 span.cost 或其他 span 之后的文本
+      const metaText = metaEl.text();
+
+      // 尝试从最后一个没有 class 的 span 获取
+      const allMetaSpans = metaEl.find('span');
+      if (allMetaSpans.length > 0) {
+        // 遍历所有 span，找到最后一个没有特定 class 的（通常是地点）
+        for (let i = allMetaSpans.length - 1; i >= 0; i--) {
+          const span = $(allMetaSpans[i]);
+          const spanClass = span.attr('class');
+          // 跳过时间和成本相关的 span
+          if (!spanClass || (!spanClass.includes('fc-event') && !spanClass.includes('cost'))) {
+            location = span.text().trim();
+            if (location && location.length > 0) {
+              break;
+            }
+          }
         }
       }
 
@@ -275,42 +287,76 @@ class FuncheapWeekendScraper extends BaseScraper {
         location = 'San Francisco Bay Area';
       }
 
-      // 价格 - 从 span.cost 获取
+      // 价格 - 从 div.meta 的文本内容中提取 "Cost: XXX" 部分
       let price = null;
-      const costSpan = $article.find('span.cost');
-      if (costSpan.length > 0) {
-        const costText = costSpan.text().trim();
-        // 移除 "Cost: " 前缀
-        price = costText.replace(/^Cost:\s*/i, '').trim();
 
-        // 规范化为 'Free' 或保留原价格
-        if (price.toLowerCase() === 'free' || price === '$0' || price === '0') {
+      // 方法1：尝试从 span.cost 后面的文本获取价格
+      const costMatch = metaText.match(/Cost:\s*([^\|]*)/i);
+      if (costMatch) {
+        price = costMatch[1].trim();
+
+        // 清理价格字符串（移除 RSVP 等额外信息）
+        price = price.split('\n')[0].trim(); // 只取第一行
+
+        // 规范化为 'Free'
+        if (price.toLowerCase().includes('free')) {
           price = 'Free';
+        } else if (!price || price.length === 0) {
+          price = null;
         }
-      } else {
-        price = 'TBD'; // 如果没有找到价格
+      }
+
+      if (!price) {
+        price = null; // 如果没有找到价格，保留为 null
       }
 
       // 描述 - 从 div.thumbnail-wrapper 后的文本获取
       let description = null;
       const thumbnailWrapper = $article.find('div.thumbnail-wrapper');
       if (thumbnailWrapper.length > 0) {
-        // 获取 thumbnail-wrapper 之后的所有文本
+        // 获取 thumbnail-wrapper 之后的所有文本内容
+        // 包括文本节点和可能的 HTML 元素（如 <p> 标签）
         let text = '';
         let node = thumbnailWrapper[0].nextSibling;
+
         while (node) {
-          if (node.nodeType === 3) { // 文本节点
-            text += node.textContent;
+          if (node.nodeType === 3) {
+            // 文本节点
+            const nodeText = node.textContent.trim();
+            if (nodeText) {
+              text += nodeText + ' ';
+            }
+          } else if (node.nodeType === 1) {
+            // 元素节点 - 获取其文本内容
+            const $node = $(node);
+            const nodeText = $node.text().trim();
+            if (nodeText && nodeText.length > 0) {
+              text += nodeText + ' ';
+            }
           }
           node = node.nextSibling;
         }
+
         description = text.trim();
       }
 
-      // 限制描述长度
-      if (description && description.length > 500) {
-        description = description.substring(0, 500);
-      } else if (!description || description.length < 10) {
+      // 清理描述 - 移除重复的空格和过长的字符串
+      if (description && description.length > 0) {
+        // 移除过多的空格
+        description = description.replace(/\s+/g, ' ');
+
+        // 限制描述长度
+        if (description.length > 300) {
+          // 尝试在词边界处截断
+          const truncated = description.substring(0, 300);
+          const lastSpace = truncated.lastIndexOf(' ');
+          if (lastSpace > 200) {
+            description = truncated.substring(0, lastSpace) + '...';
+          } else {
+            description = truncated + '...';
+          }
+        }
+      } else {
         description = null;
       }
 
