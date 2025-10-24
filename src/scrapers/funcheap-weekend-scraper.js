@@ -63,6 +63,21 @@ class FuncheapWeekendScraper extends BaseScraper {
       const uniqueEvents = this.deduplicateByUrl(events);
       console.log(`After deduplication: ${uniqueEvents.length} unique events`);
 
+      // 获取详情页信息以填充 description_detail
+      console.log(`Fetching details for ${uniqueEvents.length} events...`);
+      for (let i = 0; i < uniqueEvents.length; i++) {
+        const event = uniqueEvents[i];
+        if (event.originalUrl && event.originalUrl.includes('funcheap.com')) {
+          try {
+            const detailedEvent = await this.fetchEventDetails(event);
+            uniqueEvents[i] = detailedEvent;
+          } catch (error) {
+            console.warn(`  Failed to fetch details for ${event.title}: ${error.message}`);
+            // 如果详情页失败，保持使用列表页信息
+          }
+        }
+      }
+
       return uniqueEvents;
 
     } catch (error) {
@@ -368,6 +383,7 @@ class FuncheapWeekendScraper extends BaseScraper {
         location,
         price,
         description,
+        description_detail: null, // 详细描述，需要从详情页获取
         originalUrl
       };
 
@@ -398,6 +414,83 @@ class FuncheapWeekendScraper extends BaseScraper {
       }
     } catch (error) {
       console.warn('Error parsing time text:', error.message);
+    }
+
+    return null;
+  }
+
+  /**
+   * 从详情页获取完整事件信息
+   */
+  async fetchEventDetails(basicEvent) {
+    try {
+      console.log(`    Fetching detail page: ${basicEvent.originalUrl}`);
+      const $ = await this.fetchPage(basicEvent.originalUrl);
+
+      // 从详情页提取详细描述
+      const detailedDescription = this.extractDetailedDescription($);
+
+      return {
+        ...basicEvent,
+        description_detail: detailedDescription // 详细描述
+      };
+    } catch (error) {
+      console.warn(`    Error fetching detail page: ${error.message}`);
+      return basicEvent;
+    }
+  }
+
+  /**
+   * 从详情页提取详细描述
+   * Funcheap 的活动描述通常在以下位置：
+   * 1. .entry-content
+   * 2. .post-content
+   * 3. article 内的 p 标签
+   * 4. main 内的段落
+   */
+  extractDetailedDescription($) {
+    const descriptionSelectors = [
+      '.entry-content',
+      '.post-content',
+      '.entry-body',
+      '.content-area main article',
+      'article',
+      'main'
+    ];
+
+    // 遍历选择器寻找真正有内容的元素
+    for (const selector of descriptionSelectors) {
+      const elements = $(selector);
+
+      for (let i = 0; i < elements.length; i++) {
+        const $desc = $(elements[i]);
+        let text = $desc.text().trim();
+
+        // 清理文本
+        text = text
+          .replace(/\s+/g, ' ')  // 多个空格变成一个
+          .replace(/\n+/g, '\n') // 多个换行变成一个
+          .trim();
+
+        // 如果描述足够长，返回（至少50字符）
+        if (text && text.length > 50) {
+          // 限制描述长度
+          return text.substring(0, 2000);
+        }
+      }
+    }
+
+    // 如果找不到专门的描述区域，尝试从所有段落提取
+    const paragraphs = [];
+    $('p').each((i, el) => {
+      const text = $(el).text().trim();
+      if (text.length > 20 && text.length < 500) {
+        paragraphs.push(text);
+      }
+    });
+
+    if (paragraphs.length > 0) {
+      return paragraphs.slice(0, 3).join('\n').substring(0, 2000);
     }
 
     return null;
