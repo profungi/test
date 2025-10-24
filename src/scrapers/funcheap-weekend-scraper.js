@@ -37,6 +37,20 @@ class FuncheapWeekendScraper extends BaseScraper {
           console.log(`  Found ${pageEvents.length} events`);
           events.push(...pageEvents);
 
+          // 尝试获取下一页
+          const nextPageUrl = this.getNextPageUrl($, urlInfo.url);
+          if (nextPageUrl && events.length < 50) { // 防止无限循环
+            console.log(`  Found next page: ${nextPageUrl}`);
+            try {
+              const $next = await this.fetchPage(nextPageUrl);
+              const nextPageEvents = await this.parseFuncheapPage($next, urlInfo.dateFilter);
+              console.log(`  Found ${nextPageEvents.length} events on next page`);
+              events.push(...nextPageEvents);
+            } catch (error) {
+              console.warn(`  Failed to fetch next page: ${error.message}`);
+            }
+          }
+
         } catch (error) {
           console.warn(`Failed to fetch ${urlInfo.url}: ${error.message}`);
           // 继续尝试下一个URL
@@ -175,6 +189,31 @@ class FuncheapWeekendScraper extends BaseScraper {
   }
 
   /**
+   * 获取下一页 URL
+   * Funcheap 使用分页，下一页 URL 通常在 a.next-posts-link 或类似的地方
+   */
+  getNextPageUrl($, currentUrl) {
+    // 寻找"下一页"链接
+    const nextLink = $('a.next-posts-link, a[rel="next"], .pagination a.next, a[title*="next" i]').attr('href');
+    if (nextLink) {
+      return nextLink;
+    }
+
+    // 如果没有找到"下一页"链接，尝试生成下一页 URL
+    // 支持两种方式：?paged=2 或 /page/2/
+    if (currentUrl.includes('?')) {
+      // URL 已有参数，用 & 添加分页参数
+      return `${currentUrl}&paged=2`;
+    } else if (currentUrl.endsWith('/')) {
+      // URL 以 / 结尾，用 page/2/ 添加
+      return `${currentUrl}page/2/`;
+    } else {
+      // 尝试添加分页参数
+      return `${currentUrl}?paged=2`;
+    }
+  }
+
+  /**
    * 解析单个 Funcheap 事件
    * HTML 结构:
    * div.tanbox
@@ -206,11 +245,15 @@ class FuncheapWeekendScraper extends BaseScraper {
         const eventDateEnd = metaEl.attr('data-event-date-end');
 
         if (eventDate) {
-          // eventDate 格式: "2025-10-24 10:00"
-          startTime = TimeHandler.normalize(eventDate, { source: 'Funcheap' });
+          // eventDate 格式: "2025-10-24 10:00"（用空格而不是 T）
+          // 需要转换为 TimeHandler 期望的格式: "2025-10-24T10:00"
+          const isoFormatDate = eventDate.replace(' ', 'T');
+          startTime = TimeHandler.normalize(isoFormatDate, { source: 'Funcheap' });
         }
         if (eventDateEnd) {
-          endTime = TimeHandler.normalize(eventDateEnd, { source: 'Funcheap' });
+          // 同样处理结束时间
+          const isoFormatDateEnd = eventDateEnd.replace(' ', 'T');
+          endTime = TimeHandler.normalize(isoFormatDateEnd, { source: 'Funcheap' });
         }
       }
 

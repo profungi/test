@@ -9,6 +9,7 @@
     "generate-post": "node src/generate-post.js",
     "dev": "node --watch src/index.js",
     "test": "node test.js",
+    "test:funcheap": "node test-funcheap.js",
     "validate": "node validate.js"
   },
   "dependencies": {
