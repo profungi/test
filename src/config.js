@@ -83,8 +83,8 @@ const config = {
       enabled: true
     },
     {
-      name: 'dothebay',
-      baseUrl: 'https://dothebay.com/events',
+      name: 'funcheap',
+      baseUrl: 'https://sf.funcheap.com',
       searchParams: '',
       priority: 1,
       enabled: true
