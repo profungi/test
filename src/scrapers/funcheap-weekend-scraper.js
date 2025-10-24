@@ -228,7 +228,7 @@ class FuncheapWeekendScraper extends BaseScraper {
     try {
       // 标题 - 从 span.title.entry-title > a 获取
       const titleLink = $article.find('span.title.entry-title a');
-      const title = titleLink.text().trim();
+      const title = (titleLink.text() || '').trim();
       if (!title || title.length < 3) return null;
 
       // URL - 从 a href 获取
@@ -264,7 +264,7 @@ class FuncheapWeekendScraper extends BaseScraper {
 
       // 获取 meta 元素的所有文本，然后找到最后的地点信息
       // 地点通常在最后一个 span.cost 或其他 span 之后的文本
-      const metaText = metaEl.text();
+      const metaText = (metaEl.text() || '');
 
       // 尝试从最后一个没有 class 的 span 获取
       const allMetaSpans = metaEl.find('span');
@@ -275,8 +275,9 @@ class FuncheapWeekendScraper extends BaseScraper {
           const spanClass = span.attr('class');
           // 跳过时间和成本相关的 span
           if (!spanClass || (!spanClass.includes('fc-event') && !spanClass.includes('cost'))) {
-            location = span.text().trim();
-            if (location && location.length > 0) {
+            const spanText = (span.text() || '').trim();
+            if (spanText && spanText.length > 0) {
+              location = spanText;
               break;
             }
           }
@@ -292,11 +293,11 @@ class FuncheapWeekendScraper extends BaseScraper {
 
       // 方法1：尝试从 span.cost 后面的文本获取价格
       const costMatch = metaText.match(/Cost:\s*([^\|]*)/i);
-      if (costMatch) {
-        price = costMatch[1].trim();
+      if (costMatch && costMatch[1]) {
+        price = (costMatch[1] || '').trim();
 
         // 清理价格字符串（移除 RSVP 等额外信息）
-        price = price.split('\n')[0].trim(); // 只取第一行
+        price = (price.split('\n')[0] || '').trim(); // 只取第一行
 
         // 规范化为 'Free'
         if (price.toLowerCase().includes('free')) {
@@ -322,14 +323,14 @@ class FuncheapWeekendScraper extends BaseScraper {
         while (node) {
           if (node.nodeType === 3) {
             // 文本节点
-            const nodeText = node.textContent.trim();
+            const nodeText = (node.textContent || '').trim();
             if (nodeText) {
               text += nodeText + ' ';
             }
           } else if (node.nodeType === 1) {
             // 元素节点 - 获取其文本内容
             const $node = $(node);
-            const nodeText = $node.text().trim();
+            const nodeText = ($node.text() || '').trim();
             if (nodeText && nodeText.length > 0) {
               text += nodeText + ' ';
             }
@@ -337,7 +338,7 @@ class FuncheapWeekendScraper extends BaseScraper {
           node = node.nextSibling;
         }
 
-        description = text.trim();
+        description = (text || '').trim();
       }
 
       // 清理描述 - 移除重复的空格和过长的字符串
