@@ -26,6 +26,11 @@ class BaseScraper {
 
     // Puppeteer browser instance (共享实例以提高性能)
     this.browser = null;
+
+    // Puppeteer 并发控制 - 限制同时打开的页面数量
+    this.activePagesCount = 0;
+    this.maxConcurrentPages = 3; // 最多同时3个页面，避免连接过多
+    this.pageQueue = [];
   }
 
   // 获取下周的时间范围 (周一到周日)
@@ -314,6 +319,13 @@ class BaseScraper {
     return new Promise(resolve => setTimeout(resolve, ms));
   }
 
+  // 等待页面任务槽位变可用
+  async waitForPageSlot() {
+    while (this.activePagesCount >= this.maxConcurrentPages) {
+      await new Promise(resolve => setTimeout(resolve, 100));
+    }
+  }
+
   // 初始化 Puppeteer browser（如果还没有）
   async initBrowser() {
     if (!this.browser) {
@@ -348,9 +360,17 @@ class BaseScraper {
 
     for (let attempt = 1; attempt <= maxRetries; attempt++) {
       let page = null;
+      let pageSlotAcquired = false;
+
       try {
         await this.delay();
-        console.log(`Fetching with Puppeteer: ${url} (attempt ${attempt}/${maxRetries})`);
+
+        // 等待可用的页面槽位
+        await this.waitForPageSlot();
+        pageSlotAcquired = true;
+        this.activePagesCount++;
+
+        console.log(`Fetching with Puppeteer: ${url} (attempt ${attempt}/${maxRetries}, active: ${this.activePagesCount}/${this.maxConcurrentPages})`);
 
         const browser = await this.initBrowser();
         page = await browser.newPage();
@@ -361,20 +381,31 @@ class BaseScraper {
         // 设置视口大小
         await page.setViewport({ width: 1920, height: 1080 });
 
-        // 导航到URL并等待网络空闲
-        await page.goto(url, {
-          waitUntil: 'networkidle2', // 等待网络请求完成
-          timeout: config.scraping.timeout
-        });
+        // 设置更短的超时时间，防止卡住
+        page.setDefaultTimeout(20000);
+        page.setDefaultNavigationTimeout(20000);
 
-        // 额外等待一下确保动态内容加载完成
-        await new Promise(resolve => setTimeout(resolve, 2000));
+        // 导航到URL，使用更激进的超时策略
+        try {
+          await page.goto(url, {
+            waitUntil: 'domcontentloaded', // 改为只等待 DOM 加载，不等待所有网络请求
+            timeout: 15000
+          });
+        } catch (navigationError) {
+          // 即使导航超时，也尝试继续获取已加载的内容
+          console.warn(`Navigation timeout, proceeding with current content: ${navigationError.message}`);
+        }
+
+        // 等待一会儿让动态内容加载（更短的等待时间）
+        await new Promise(resolve => setTimeout(resolve, 1000));
 
         // 获取渲染后的HTML
         const html = await page.content();
 
         // 关闭页面
         await page.close();
+        page = null;
+        this.activePagesCount--;
 
         // 用 cheerio 解析 HTML
         return cheerio.load(html);
@@ -390,6 +421,11 @@ class BaseScraper {
           } catch (e) {
             // 忽略关闭错误
           }
+        }
+
+        // 只在成功获取槽位时才递减计数器
+        if (pageSlotAcquired) {
+          this.activePagesCount--;
         }
 
         if (attempt < maxRetries) {
