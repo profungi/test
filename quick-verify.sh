@@ -37,43 +37,43 @@ echo ""
 
 # Eventbrite
 echo "🔵 Eventbrite 爬虫:"
-check_item "包含 description_detail" "grep -q 'description_detail' /code/src/scrapers/eventbrite-scraper.js"
-check_item "有 fetchEventDetails() 方法" "grep -q 'async fetchEventDetails' /code/src/scrapers/eventbrite-scraper.js"
-check_item "有 extractDetailedDescription() 方法" "grep -q 'extractDetailedDescription' /code/src/scrapers/eventbrite-scraper.js"
-check_item "返回对象包含 description_detail" "grep -A 20 'return {' /code/src/scrapers/eventbrite-scraper.js | grep -q 'description_detail'"
+check_item "包含 description_detail" "grep -q 'description_detail' ./src/scrapers/eventbrite-scraper.js"
+check_item "有 fetchEventDetails() 方法" "grep -q 'async fetchEventDetails' ./src/scrapers/eventbrite-scraper.js"
+check_item "有 extractDetailedDescription() 方法" "grep -q 'extractDetailedDescription' ./src/scrapers/eventbrite-scraper.js"
+check_item "返回对象包含 description_detail" "grep -A 20 'return {' ./src/scrapers/eventbrite-scraper.js | grep -q 'description_detail'"
 echo ""
 
 # SF Station
 echo "🔵 SF Station 爬虫:"
-check_item "包含 description_detail" "grep -q 'description_detail' /code/src/scrapers/sfstation-scraper.js"
-check_item "有 fetchEventDetails() 方法" "grep -q 'async fetchEventDetails' /code/src/scrapers/sfstation-scraper.js"
-check_item "有 extractDetailedDescription() 方法" "grep -q 'extractDetailedDescription' /code/src/scrapers/sfstation-scraper.js"
-check_item "返回对象包含 description_detail" "grep -A 20 'return {' /code/src/scrapers/sfstation-scraper.js | grep -q 'description_detail'"
+check_item "包含 description_detail" "grep -q 'description_detail' ./src/scrapers/sfstation-scraper.js"
+check_item "有 fetchEventDetails() 方法" "grep -q 'async fetchEventDetails' ./src/scrapers/sfstation-scraper.js"
+check_item "有 extractDetailedDescription() 方法" "grep -q 'extractDetailedDescription' ./src/scrapers/sfstation-scraper.js"
+check_item "返回对象包含 description_detail" "grep -A 20 'return {' ./src/scrapers/sfstation-scraper.js | grep -q 'description_detail'"
 echo ""
 
 # Funcheap
 echo "🔵 Funcheap 爬虫 (新增):"
-check_item "包含 description_detail" "grep -q 'description_detail' /code/src/scrapers/funcheap-weekend-scraper.js"
-check_item "有 fetchEventDetails() 方法" "grep -q 'async fetchEventDetails' /code/src/scrapers/funcheap-weekend-scraper.js"
-check_item "有 extractDetailedDescription() 方法" "grep -q 'extractDetailedDescription' /code/src/scrapers/funcheap-weekend-scraper.js"
-check_item "返回对象包含 description_detail" "grep -A 10 'return {' /code/src/scrapers/funcheap-weekend-scraper.js | grep -q 'description_detail'"
+check_item "包含 description_detail" "grep -q 'description_detail' ./src/scrapers/funcheap-weekend-scraper.js"
+check_item "有 fetchEventDetails() 方法" "grep -q 'async fetchEventDetails' ./src/scrapers/funcheap-weekend-scraper.js"
+check_item "有 extractDetailedDescription() 方法" "grep -q 'extractDetailedDescription' ./src/scrapers/funcheap-weekend-scraper.js"
+check_item "返回对象包含 description_detail" "grep -A 10 'return {' ./src/scrapers/funcheap-weekend-scraper.js | grep -q 'description_detail'"
 echo ""
 
 # 数据库
 echo "💾 数据库检查:"
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-check_item "数据库初始化代码中有 description_detail 列" "grep -q 'description_detail TEXT' /code/src/utils/database.js"
-check_item "INSERT 语句包含 description_detail" "grep -A 5 'INSERT INTO events' /code/src/utils/database.js | grep -q 'description_detail'"
+check_item "数据库初始化代码中有 description_detail 列" "grep -q 'description_detail TEXT' ./src/utils/database.js"
+check_item "INSERT 语句包含 description_detail" "grep -A 5 'INSERT INTO events' ./src/utils/database.js | grep -q 'description_detail'"
 echo ""
 
 # 验证文件
 echo "📋 验证文件检查:"
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-check_item "快速验证脚本存在" "[ -f /code/test-description-detail.js ]"
-check_item "数据库验证脚本存在" "[ -f /code/verify-description-detail.js ]"
-check_item "代码验证脚本存在" "[ -f /code/verify-scrapers-code.js ]"
-check_item "验证文档存在" "[ -f /code/DESCRIPTION_DETAIL_VERIFICATION.md ]"
-check_item "快速开始指南存在" "[ -f /code/VERIFICATION_QUICK_START.md ]"
+check_item "快速验证脚本存在" "[ -f ./test-description-detail.js ]"
+check_item "数据库验证脚本存在" "[ -f ./verify-description-detail.js ]"
+check_item "代码验证脚本存在" "[ -f ./verify-scrapers-code.js ]"
+check_item "验证文档存在" "[ -f ./DESCRIPTION_DETAIL_VERIFICATION.md ]"
+check_item "快速开始指南存在" "[ -f ./VERIFICATION_QUICK_START.md ]"
 echo ""
 
 # 总结
