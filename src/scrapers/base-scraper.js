@@ -109,6 +109,7 @@ class BaseScraper {
       location: cleanedLocation,
       price: this.normalizePrice(rawEvent.price, rawEvent.title, rawEvent.description),
       description: this.cleanText(rawEvent.description) || '',
+      description_detail: rawEvent.description_detail || null, // ✨ 保留详细描述
       originalUrl: rawEvent.originalUrl,
       source: this.sourceName,
       eventType: this.detectEventType(rawEvent.title, rawEvent.description),
@@ -386,14 +387,36 @@ class BaseScraper {
         page.setDefaultNavigationTimeout(20000);
 
         // 导航到URL，使用更激进的超时策略
+        let response = null;
         try {
-          await page.goto(url, {
+          response = await page.goto(url, {
             waitUntil: 'domcontentloaded', // 改为只等待 DOM 加载，不等待所有网络请求
             timeout: 15000
           });
         } catch (navigationError) {
           // 即使导航超时，也尝试继续获取已加载的内容
           console.warn(`Navigation timeout, proceeding with current content: ${navigationError.message}`);
+        }
+
+        // 检查HTTP状态码
+        if (response) {
+          const statusCode = response.status();
+          if (statusCode === 404) {
+            // 关闭页面
+            await page.close();
+            page = null;
+            this.activePagesCount--;
+
+            // 返回特殊标记表示404
+            const $ = cheerio.load('<html><body>__404_PAGE__</body></html>');
+            $.is404 = true; // 添加404标记
+            return $;
+          }
+
+          // 其他非200状态码也记录日志
+          if (statusCode !== 200) {
+            console.warn(`HTTP ${statusCode} for ${url}`);
+          }
         }
 
         // 等待一会儿让动态内容加载（更短的等待时间）
@@ -408,7 +431,9 @@ class BaseScraper {
         this.activePagesCount--;
 
         // 用 cheerio 解析 HTML
-        return cheerio.load(html);
+        const $ = cheerio.load(html);
+        $.is404 = false; // 明确标记不是404
+        return $;
 
       } catch (error) {
         lastError = error;

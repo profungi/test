@@ -65,20 +65,34 @@ class FuncheapWeekendScraper extends BaseScraper {
 
       // 获取详情页信息以填充 description_detail
       console.log(`Fetching details for ${uniqueEvents.length} events...`);
+      const validEvents = [];
+
       for (let i = 0; i < uniqueEvents.length; i++) {
         const event = uniqueEvents[i];
         if (event.originalUrl && event.originalUrl.includes('funcheap.com')) {
           try {
             const detailedEvent = await this.fetchEventDetails(event);
-            uniqueEvents[i] = detailedEvent;
+
+            // 检查是否是404或无效页面
+            if (detailedEvent === null) {
+              console.log(`  ❌ Discarding event (404 or invalid): ${event.title}`);
+              continue; // 跳过这个活动，不添加到最终列表
+            }
+
+            validEvents.push(detailedEvent);
           } catch (error) {
-            console.warn(`  Failed to fetch details for ${event.title}: ${error.message}`);
-            // 如果详情页失败，保持使用列表页信息
+            console.warn(`  ❌ Failed to fetch details for ${event.title}: ${error.message}`);
+            console.warn(`  ❌ Discarding this event`);
+            // 不添加到 validEvents，即放弃这个活动
           }
+        } else {
+          // 非 funcheap URL，直接保留
+          validEvents.push(event);
         }
       }
 
-      return uniqueEvents;
+      console.log(`After detail page validation: ${validEvents.length} valid events (discarded ${uniqueEvents.length - validEvents.length})`);
+      return validEvents;
 
     } catch (error) {
       console.error(`Error scraping Funcheap: ${error.message}`);
@@ -421,11 +435,18 @@ class FuncheapWeekendScraper extends BaseScraper {
 
   /**
    * 从详情页获取完整事件信息
+   * @returns {Object|null} 返回事件对象，如果是404页面则返回 null
    */
   async fetchEventDetails(basicEvent) {
     try {
       console.log(`    Fetching detail page: ${basicEvent.originalUrl}`);
       const $ = await this.fetchPage(basicEvent.originalUrl);
+
+      // 检测404或错误页面
+      if (this.is404Page($)) {
+        console.log(`    ⚠️  Page is 404 or error page`);
+        return null; // 返回 null 表示应该丢弃这个活动
+      }
 
       // 从详情页提取详细描述
       const detailedDescription = this.extractDetailedDescription($);
@@ -436,8 +457,44 @@ class FuncheapWeekendScraper extends BaseScraper {
       };
     } catch (error) {
       console.warn(`    Error fetching detail page: ${error.message}`);
-      return basicEvent;
+      throw error; // 抛出错误，让调用方决定如何处理
     }
+  }
+
+  /**
+   * 检测页面是否是404或错误页面
+   * 主要依赖HTTP状态码（由 fetchPage 设置的 $.is404 标记）
+   */
+  is404Page($) {
+    // 首先检查HTTP状态码标记（最可靠）
+    if ($.is404 === true) {
+      return true;
+    }
+
+    // 如果没有标记，回退到内容检测（备用方案）
+    const pageText = $('body').text().toLowerCase();
+
+    // 检查是否是特殊的404标记
+    if (pageText.includes('__404_page__')) {
+      return true;
+    }
+
+    // 404 页面的特征文本（必须是完整短语，避免误判）
+    const errorPatterns = [
+      'page you attempted to access does not exist',
+      'the page you are looking for doesn\'t exist',
+      'sorry, we couldn\'t find that page',
+      'page could not be found'
+    ];
+
+    // 检查是否包含任何错误模式
+    for (const pattern of errorPatterns) {
+      if (pageText.includes(pattern)) {
+        return true;
+      }
+    }
+
+    return false;
   }
 
   /**
