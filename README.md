@@ -116,10 +116,7 @@ CLAUDE_API_KEY=your_claude_api_key_here
 ### 快速开始
 
 ```bash
-# 1. 验证环境配置
-npm run validate
-
-# 2. 第一步：抓取活动并生成审核文件
+# 1. 第一步：抓取活动并生成审核文件
 npm run scrape
 # 或指定AI提供商：
 npm run scrape -- --ai-provider gemini
@@ -171,7 +168,7 @@ npm run scrape
 ```
 
 这个命令会：
-- 🕷️ 并行抓取 Eventbrite, SF Station, DoTheBay
+- 🕷️ 并行抓取 Eventbrite, SF Station, Funcheap
 - 🤖 AI分类活动类型和设置优先级
 - 🔄 智能去重处理
 - 📄 生成审核文件 `output/review_YYYY-MM-DD_HHMM.json`
@@ -303,21 +300,25 @@ npm run scrape 2>&1 | grep -E "Invalid time|normalize|parseTime"
 ```
 npm run scrape
   ↓
-1. 抓取 (Eventbrite + SFStation + DoTheBay) → ~83 events
+1. 抓取 (Eventbrite + SFStation + Funcheap) → ~100+ events
   ↓
-2. URL去重 + 内容去重 → ~23 events
+2. 时间验证 + 地理位置过滤 → ~50-60 events
   ↓
-3. AI分类 (混合策略) → 23 classified events
+3. URL去重 + 内容特征去重 → ~25-30 events
   ↓
-4. 过滤音乐活动 + 选择top候选 → ~22 candidates
+4. AI分类和优先级评分 → classified events
   ↓
-5. 生成 review_*.json 文件
+5. 选择top候选 (15-20个) → final candidates
+  ↓
+6. 生成 review_*.json 文件
   ↓
 手工审核 (修改 "selected": true)
   ↓
 npm run generate-post review_*.json
   ↓
-生成最终文章
+生成短链接 + 翻译 + 格式化
+  ↓
+生成小红书发布文本
 ```
 
 ## 📄 输出文件
@@ -453,32 +454,29 @@ scraping: {
 7. **短链接生成**: 支持自动重试，遇到路径冲突自动重新生成
 8. **输出阶段**: 生成最终的小红书格式文本
 
-## 🏗️ 核心架构改进 (Oct 2024)
+## 🏗️ 核心设计特点 (Oct 2024)
 
-最近一次重构优化了4个核心模块，显著提升代码质量和功能：
+项目采用了多项设计最佳实践：
 
-### 1. 去重逻辑优化
-- **改进**: 统一使用 `generateEventKey()` 生成唯一键
-- **策略**: URL优先，否则使用 title+time(小时)+location
-- **效果**: 嵌套层级 5层 → 2-3层，可测试性提升 ⭐⭐⭐⭐⭐
+### 1. 智能去重策略
+- **URL优先**: 优先使用originalUrl去重
+- **内容特征兜底**: title(标准化) + time(小时精度) + location(小写)
+- **两层去重**: 数据库级UNIQUE约束 + 应用层哈希去重
 
-### 2. AI Provider自动切换
-- **改进**: 从递归切换改为迭代，删除42行复杂代码
-- **特点**: 不修改实例状态，更清晰的优先级管理
-- **效果**: 避免无限递归风险，安全性提升 ⭐⭐⭐⭐⭐
+### 2. AI Provider自动故障转移
+- **顺序**: OpenAI → Gemini → Claude → Mistral
+- **机制**: 迭代切换，避免递归风险
+- **透明**: 用户不感知，自动选择可用提供商
 
-### 3. URL短链接重试
-- **改进**: 自定义错误分类 (RetryableError)，提取错误处理逻辑
-- **特点**: 路径冲突自动重试，认证错误直接失败
-- **效果**: 嵌套层级 5层 → 2-3层，代码行数 -10%
+### 3. 短链接生成智能处理
+- **路径冲突**: 自动重试生成新路径
+- **认证失败**: 降级使用原始URL
+- **不阻塞**: 短链接失败不影响整体流程
 
-### 4. 活动描述生成 (核心改进)
-- **改进**: 从6个特殊节日→40+通用特征+23关键词智能兜底
-- **架构**: 三层兜底 + 自动种草话术
-- **覆盖**: 6种特殊活动 → 40+通用+23关键词 (覆盖面10倍提升)
-- **效果**: 代码 109行→16行 (-85%), 可维护性大幅提升
-
-更多详细信息见 `REFACTORING_SUMMARY.md`
+### 4. 40+ 特征提取 + 23类关键词兜底
+- **动态特征**: 节庆、地点、活动类型等40+特征
+- **智能兜底**: 科技、瑜伽、喜剧、烹饪等23类关键词
+- **自动种草**: 为每个活动添加吸引力话术
 
 ## 故障排除
 
@@ -510,34 +508,16 @@ sqlite3 data/events.db ".tables"
 sqlite3 data/events.db "SELECT * FROM events LIMIT 10;"
 ```
 
-## 🧪 测试
+## 🏗️ 架构
 
-项目提供了两个关键的单元测试：
+项目采用**分层架构**和**编排模式**:
 
-### 1. 去重逻辑测试
-```bash
-node test-deduplication.js
-```
-验证：
-- ✅ URL去重（相同URL识别）
-- ✅ 内容特征去重（标题+时间+地点）
-- ✅ 时间标准化（提取到小时）
-- ✅ 地点标准化（统一小写和符号）
+- **采集层**: 3个数据源并行爬取，统一规范化
+- **处理层**: 去重、验证、分类、优先级评分
+- **生成层**: 翻译、特征提取、小红书格式化
+- **编排层**: 两个Orchestrator协调整个工作流
 
-**测试用例**: 5个输入 → 3个唯一输出
-
-### 2. 翻译器模式匹配测试
-```bash
-node test-translator-patterns.js
-```
-验证：
-- ✅ Fair/Market/Festival类特征提取（4个用例）
-- ✅ 智能兜底逻辑（科技、瑜伽、喜剧、烹饪、读书、摄影等）
-- ✅ 自动种草话术（值得一去、不容错过等）
-
-**测试覆盖**: 10个不同类型的活动
-
-详细说明见 `HOW_TO_TEST.md`
+详细架构说明见 `ARCHITECTURE.md`
 
 ## 开发指南
 
@@ -582,9 +562,8 @@ MIT License
 
 ## 📚 相关文档
 
-- **REFACTORING_SUMMARY.md**: 最近重构的详细说明（4个核心模块优化）
-- **HOW_TO_TEST.md**: 测试运行指南
-- **README.md**: 本文件（主要说明）
+- **ARCHITECTURE.md**: 项目架构详解（分层设计、数据流、模块职责）
+- **README.md**: 本文件（主要说明和快速开始）
 
 ## 📊 更新日志
 
