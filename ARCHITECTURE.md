@@ -92,7 +92,7 @@ bay-area-events-scraper/
 │    AI分类和优先级排序 (ai-classifier.js)               ││
 │    - Eventbrite: 页面分类                             ││
 │    - 其他: AI分类 + 混合优先级评分                     ││
-│    - 选择top 15-20个候选                              ││
+│    - 选择top 40个候选                              ││
 └─────────────────────────────────────────────────────────┘│
                            │                               │
                            ▼                               │
@@ -195,15 +195,15 @@ new AIService()
 ```
 
 支持的提供商:
-- OpenAI (gpt-3.5-turbo)
-- Google Gemini (gemini-1.5-flash)
-- Anthropic Claude (claude-3-haiku)
-- Mistral (mistral-small)
+- **OpenAI** (gpt-3.5-turbo) - 默认，稳定可靠
+- **Google Gemini** (gemini-2.0-flash-exp) - 最新模型，速度快
+- **Anthropic Claude** (claude-3-haiku-20240307) - 理解能力强
+- **Mistral AI** (mistral-small-latest) - 轻量级，响应快
 
 #### ai-classifier.js - 事件分类
 ```javascript
 new AIEventClassifier()
-  .selectTopCandidates(events)  // 选择最优的15-20个事件
+  .selectTopCandidates(events)  // 选择最优的40个事件
 
 // 混合分类策略:
 // - Eventbrite: 使用页面分类
@@ -345,7 +345,7 @@ AI分类和优先级
   ├─ 其他源: AI分类
   └─ 计算优先级评分
   ↓
-选择top候选 (15-20个)
+选择top候选 (40个)
   └─ 按优先级排序
   ↓
 生成审核JSON

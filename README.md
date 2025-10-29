@@ -4,8 +4,8 @@
 
 ## ✨ 功能特点
 
-- 🕷️ **多源抓取**: Eventbrite, SF Station, DoTheBay 三大平台
-- 🤖 **AI智能分类**: 自动识别活动类型和优先级排序
+- 🕷️ **多源抓取**: Eventbrite, SF Station, Funcheap 三大平台
+- 🤖 **AI智能分类**: 自动识别活动类型和优先级排序（支持 OpenAI, Gemini, Claude, Mistral）
 - 👁️ **人工审核**: 生成候选列表供手动选择，确保内容质量
 - 🔗 **智能短链**: 仅为选中活动生成 Short.io 短链接，支持自动重试
 - 🌐 **AI翻译优化**: 专业的中文内容翻译和小红书格式适配
@@ -28,7 +28,7 @@ bay-area-events-scraper/
 │   │   ├── base-scraper.js       # 基础爬虫类
 │   │   ├── eventbrite-scraper.js # Eventbrite爬虫
 │   │   ├── sfstation-scraper.js  # SF Station爬虫
-│   │   └── dothebay-scraper.js   # DoTheBay爬虫
+│   │   └── funcheap-weekend-scraper.js  # Funcheap爬虫
 │   ├── utils/                    # 核心工具
 │   │   ├── database.js           # SQLite数据库管理
 │   │   ├── ai-classifier.js      # AI活动分类器
@@ -91,13 +91,14 @@ cp .env.example .env
 # Short.io API (用于生成短链接)
 SHORTIO_API_KEY=your_shortio_api_key_here
 
-# AI提供商选择 (openai, gemini, claude)
+# AI提供商选择 (openai, gemini, claude, mistral)
 AI_PROVIDER=openai
 
 # AI API密钥 (至少配置一个)
 OPENAI_API_KEY=your_openai_api_key_here
-GEMINI_API_KEY=your_gemini_api_key_here  
+GEMINI_API_KEY=your_gemini_api_key_here
 CLAUDE_API_KEY=your_claude_api_key_here
+MISTRAL_API_KEY=your_mistral_api_key_here
 ```
 
 ### 4. 配置 GitHub Secrets (用于自动化)
@@ -105,11 +106,12 @@ CLAUDE_API_KEY=your_claude_api_key_here
 在 GitHub 仓库设置中添加以下 Secrets：
 
 - `SHORTIO_API_KEY`: Short.io API 密钥
-- `AI_PROVIDER`: AI提供商选择 (openai, gemini, claude)
+- `AI_PROVIDER`: AI提供商选择 (openai, gemini, claude, mistral)
 - 至少一个AI API密钥：
   - `OPENAI_API_KEY`: OpenAI API 密钥
   - `GEMINI_API_KEY`: Google Gemini API 密钥
   - `CLAUDE_API_KEY`: Anthropic Claude API 密钥
+  - `MISTRAL_API_KEY`: Mistral AI API 密钥
 
 ## 🚀 使用方法
 
@@ -124,7 +126,7 @@ npm run scrape -- --ai-provider gemini
 
 # 3. 人工审核：编辑JSON文件
 # 🔧 打开审核文件，将要发布的活动的 "selected" 改为 true
-# 💡 提示：系统会提供15-20个候选活动供你选择
+# 💡 提示：系统会提供40个候选活动供你选择
 
 # 4. 第二步：生成最终发布内容（使用实际文件路径）
 npm run generate-post "./output/review_2024-09-19_1430.json"
@@ -137,16 +139,16 @@ npm run generate-post "./output/review_2024-09-19_1430.json" --ai-provider claud
 
 ### 🤖 AI提供商选择
 
-系统支持三种AI服务，提供智能分类和翻译功能：
+系统支持四种AI服务，提供智能分类和翻译功能：
 
 #### **OpenAI GPT** (默认)
-- **模型**: gpt-3.5-turbo  
+- **模型**: gpt-3.5-turbo
 - **优势**: 稳定可靠，中文支持好
 - **API**: 需要 `OPENAI_API_KEY`
 
 #### **Google Gemini**
-- **模型**: gemini-1.5-flash
-- **优势**: 速度快，成本低  
+- **模型**: gemini-2.0-flash-exp
+- **优势**: 速度快，成本低，最新模型
 - **API**: 需要 `GEMINI_API_KEY`
 
 #### **Anthropic Claude**
@@ -154,10 +156,16 @@ npm run generate-post "./output/review_2024-09-19_1430.json" --ai-provider claud
 - **优势**: 理解能力强，输出质量高
 - **API**: 需要 `CLAUDE_API_KEY`
 
+#### **Mistral AI**
+- **模型**: mistral-small-latest
+- **优势**: 轻量级，响应快速
+- **API**: 需要 `MISTRAL_API_KEY`
+
 #### **选择方式**:
 1. **环境变量**: 设置 `AI_PROVIDER=gemini`
 2. **命令行参数**: `--ai-provider claude`
-3. **自动故障转移**: 当前提供商失败时自动切换到备用提供商
+3. **自动故障转移**: 当前提供商失败时自动按顺序切换到备用提供商
+   - 优先级: OpenAI → Gemini → Claude → Mistral
 
 ### 详细步骤
 
@@ -168,8 +176,8 @@ npm run scrape
 ```
 
 这个命令会：
-- 🕷️ 并行抓取 Eventbrite, SF Station, Funcheap
-- 🤖 AI分类活动类型和设置优先级
+- 🕷️ 并行抓取 Eventbrite, SF Station, Funcheap （包括多个城市）
+- 🤖 AI分类活动类型和设置优先级（自动选择可用的AI提供商）
 - 🔄 智能去重处理
 - 📄 生成审核文件 `output/review_YYYY-MM-DD_HHMM.json`
 
@@ -253,7 +261,8 @@ npm run generate-post "./output/review_2024-09-19_1430.json"
 ```bash
 npm run scrape
 ```
-- 从三个网站抓取活动（Eventbrite, SFStation, DoTheBay）
+- 从三个网站抓取活动（Eventbrite, SF Station, Funcheap）
+- 包括湾区多个城市的活动
 - AI分类和去重
 - 生成 review JSON 文件在 `output/` 目录
 
@@ -285,7 +294,7 @@ npm run scrape 2>&1 | grep -i "error\|invalid\|failed"
 
 #### 查看特定网站的日志
 ```bash
-npm run scrape 2>&1 | grep "DoTheBay"
+npm run scrape 2>&1 | grep "Funcheap"
 npm run scrape 2>&1 | grep "SFStation"
 npm run scrape 2>&1 | grep "Eventbrite"
 ```
@@ -300,15 +309,15 @@ npm run scrape 2>&1 | grep -E "Invalid time|normalize|parseTime"
 ```
 npm run scrape
   ↓
-1. 抓取 (Eventbrite + SFStation + Funcheap) → ~100+ events
+1. 抓取 (Eventbrite 多城市 + SFStation + Funcheap) → ~300+ events
   ↓
-2. 时间验证 + 地理位置过滤 → ~50-60 events
+2. 时间验证 + 地理位置过滤 (湾区范围) → ~150-200 events
   ↓
-3. URL去重 + 内容特征去重 → ~25-30 events
+3. URL去重 + 内容特征去重 → ~80-100 events
   ↓
 4. AI分类和优先级评分 → classified events
   ↓
-5. 选择top候选 (15-20个) → final candidates
+5. 选择top候选 (40个) → final candidates
   ↓
 6. 生成 review_*.json 文件
   ↓
@@ -395,9 +404,9 @@ output/
 ```javascript
 // 事件源（当前3个）
 eventSources: [
-  { name: 'eventbrite', baseUrl: '...', priority: 1 },
-  { name: 'sfstation', baseUrl: '...', priority: 1 },  
-  { name: 'dothebay', baseUrl: '...', priority: 1 }
+  { name: 'eventbrite', baseUrl: '...', priority: 1, additionalCities: [...] },
+  { name: 'sfstation', baseUrl: '...', priority: 1 },
+  { name: 'funcheap', baseUrl: '...', priority: 1 }
 ]
 
 // 活动类型优先级
@@ -405,9 +414,11 @@ eventTypePriority: {
   market: 10,     // 市集 - 最高优先级
   fair: 10,       // 博览会
   festival: 10,   // 节庆
-  food: 7,        // 美食
-  music: 7,       // 音乐
-  free: 5,        // 免费活动
+  free: 9,        // 免费活动
+  art: 5,         // 艺术活动
+  tech: 5,        // 科技活动
+  food: 6,        // 美食活动
+  music: 4,       // 音乐活动
   default: 3      // 其他
 }
 
@@ -433,8 +444,8 @@ locations: {
 
 // 抓取限制
 scraping: {
-  maxEventsPerSource: 50,          // 每个源最多抓取数量
-  totalCandidatesForReview: 20,    // 最终候选数量（你的要求15-20个）
+  maxEventsPerSource: 100,         // 每个源最多抓取数量（支持多城市）
+  totalCandidatesForReview: 40,    // 最终候选数量
   requestDelay: 1000               // 请求间隔（毫秒）
 }
 ```
