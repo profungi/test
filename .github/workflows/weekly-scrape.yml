@@ -4,7 +4,7 @@ on:
   # 每周日 UTC 时间 16:00 (PST 时间 08:00) 运行
   schedule:
     - cron: '0 16 * * 0'
-  
+
   # 允许手动触发
   workflow_dispatch:
     inputs:
@@ -13,6 +13,13 @@ on:
         required: false
         default: 'false'
         type: boolean
+
+  # 只在push到master时触发（用于测试）
+  push:
+    branches:
+      - master
+    paths:
+      - '.github/workflows/weekly-scrape.yml'
 
 jobs:
   scrape-events:
@@ -25,8 +32,7 @@ jobs:
     - name: Setup Node.js
       uses: actions/setup-node@v4
       with:
-        node-version: '20'
-        cache: 'npm'
+        node-version: '20.18.1'
         
     - name: Install dependencies
       run: |
