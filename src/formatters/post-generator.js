@@ -2,10 +2,12 @@ const fs = require('fs').promises;
 const path = require('path');
 const { format } = require('date-fns');
 const config = require('../config');
+const CoverGenerator = require('../utils/cover-generator');
 
 class PostGenerator {
   constructor() {
     this.outputDir = config.output.directory;
+    this.coverGenerator = new CoverGenerator();
   }
 
   // 生成最终的小红书发布内容
@@ -14,30 +16,36 @@ class PostGenerator {
 
     const postContent = this.buildPostContent(translatedEvents, weekRange);
     const metadata = this.generatePostMetadata(translatedEvents, weekRange, reviewSummary);
-    
+
     // 保存到文件
     const filename = config.output.finalFilename.replace('{date}', format(new Date(), 'yyyy-MM-dd_HHmm'));
     const filepath = path.join(this.outputDir, filename);
-    
+
     await this.ensureOutputDirectory();
     await fs.writeFile(filepath, postContent, 'utf8');
-    
+
     // 同时保存元数据
     const metadataFilepath = filepath.replace('.txt', '_metadata.json');
     await fs.writeFile(metadataFilepath, JSON.stringify(metadata, null, 2), 'utf8');
-    
+
+    // 生成封面图片
+    console.log('');
+    const coverResult = await this.coverGenerator.generateCover(weekRange);
+
     console.log(`✅ 发布内容已生成:`);
     console.log(`   📄 内容文件: ${filepath}`);
     console.log(`   📊 元数据文件: ${metadataFilepath}`);
+    console.log(`   🎨 封面图片: ${coverResult.filepath}`);
     console.log(`   📏 内容长度: ${postContent.length} 字符`);
-    
+
     // 显示内容预览
     this.displayPreview(postContent);
-    
+
     return {
       content: postContent,
       filepath,
       metadata,
+      coverImage: coverResult,
       stats: {
         totalEvents: translatedEvents.length,
         contentLength: postContent.length,
