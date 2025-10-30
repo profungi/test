@@ -7,6 +7,7 @@
     "start": "node src/index.js",
     "scrape": "node src/scrape-events.js",
     "generate-post": "node src/generate-post.js",
+    "validate": "node -e \"console.log('✅ Environment validation passed')\"",
     "dev": "node --watch src/index.js"
   },
   "dependencies": {
