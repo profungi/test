@@ -14,13 +14,6 @@ on:
         default: 'false'
         type: boolean
 
-  # 只在push到master时触发（用于测试）
-  push:
-    branches:
-      - master
-    paths:
-      - '.github/workflows/weekly-scrape.yml'
-
 jobs:
   scrape-events:
     runs-on: ubuntu-latest
