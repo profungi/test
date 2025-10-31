@@ -28,12 +28,16 @@ class CoverGenerator {
 
       // 保存文件
       await this.ensureOutputDirectory();
-      const filename = `cover_${format(new Date(), 'yyyy-MM-dd_HHmm')}.png`;
+
+      // 使用微秒级时间戳确保文件名唯一
+      const timestamp = format(new Date(), 'yyyy-MM-dd_HHmmss');
+      const uniqueId = Date.now() % 1000; // 添加毫秒级唯一性
+      const filename = `cover_${timestamp}_${uniqueId}.png`;
       const filepath = path.join(this.outputDir, filename);
 
-      // 使用 sharp 将 SVG 转换为 PNG
-      await sharp(Buffer.from(svgString))
-        .png()
+      // 使用 sharp 将 SVG 转换为 PNG，设置密度以提高清晰度
+      await sharp(Buffer.from(svgString), { density: 150 })
+        .png({ quality: 90 })
         .toFile(filepath);
 
       console.log(`✅ 封面图片已生成: ${filepath}`);
@@ -57,41 +61,56 @@ class CoverGenerator {
 <svg width="${this.width}" height="${this.height}" xmlns="http://www.w3.org/2000/svg">
   <defs>
     <linearGradient id="bgGradient" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" style="stop-color:#E8F4F8;stop-opacity:1" />
-      <stop offset="100%" style="stop-color:#FFE8F0;stop-opacity:1" />
+      <stop offset="0%" style="stop-color:#FFF5F7;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#FFE8F0;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#F0E8FF;stop-opacity:1" />
     </linearGradient>
+    <filter id="shadow" x="-50%" y="-50%" width="200%" height="200%">
+      <feDropShadow dx="2" dy="2" stdDeviation="3" flood-opacity="0.15"/>
+    </filter>
   </defs>
 
   <!-- 背景 -->
   <rect width="${this.width}" height="${this.height}" fill="url(#bgGradient)"/>
 
-  <!-- 左上角葡萄 -->
-  ${this.generateGrapeSvg(120, 150, 60, '#9B59B6')}
+  <!-- 装饰圆形背景 -->
+  <circle cx="150" cy="200" r="120" fill="#D8B4FF" opacity="0.3"/>
+  <circle cx="${this.width - 150}" cy="${this.height - 200}" r="140" fill="#B8E0FF" opacity="0.25"/>
 
-  <!-- 右下角葡萄 -->
-  ${this.generateGrapeSvg(this.width - 120, this.height - 180, 70, '#8E44AD')}
+  <!-- 左上角葡萄（更大） -->
+  ${this.generateGrapeSvg(140, 180, 80, '#9D4EDD')}
 
-  <!-- 右上角小葡萄 -->
-  ${this.generateGrapeSvg(this.width - 100, 180, 40, '#A569BD')}
+  <!-- 右下角葡萄（更大） -->
+  ${this.generateGrapeSvg(this.width - 140, this.height - 220, 95, '#7B2CBF')}
 
-  <!-- 左下角小葡萄 -->
-  ${this.generateGrapeSvg(100, this.height - 220, 45, '#9D4EDD')}
+  <!-- 右上角葡萄 -->
+  ${this.generateGrapeSvg(this.width - 120, 220, 60, '#C77DFF')}
+
+  <!-- 左下角葡萄 -->
+  ${this.generateGrapeSvg(120, this.height - 240, 70, '#A569BD')}
+
+  <!-- 标题背景 -->
+  <rect x="100" y="350" width="${this.width - 200}" height="280" fill="white" opacity="0.4" rx="20"/>
 
   <!-- 标题 -->
-  <text x="${this.width / 2}" y="420" font-size="64" font-weight="bold" font-family="Arial, Helvetica" text-anchor="middle" fill="#2C3E50">
+  <text x="${this.width / 2}" y="420" font-size="72" font-weight="900" font-family="Arial, sans-serif" text-anchor="middle" fill="#6A0DAD" letter-spacing="2">
     BAY AREA
   </text>
-  <text x="${this.width / 2}" y="500" font-size="64" font-weight="bold" font-family="Arial, Helvetica" text-anchor="middle" fill="#2C3E50">
+  <text x="${this.width / 2}" y="510" font-size="62" font-weight="900" font-family="Arial, sans-serif" text-anchor="middle" fill="#6A0DAD" letter-spacing="1">
     SELECTED EVENTS
   </text>
 
-  <!-- 日期范围 -->
-  <text x="${this.width / 2}" y="1100" font-size="72" font-weight="bold" font-family="Arial, Helvetica" text-anchor="middle" fill="#E74C3C">
+  <!-- 日期范围背景 -->
+  <rect x="150" y="1050" width="${this.width - 300}" height="140" fill="#FF6B9D" rx="15" opacity="0.95" filter="url(#shadow)"/>
+
+  <!-- 日期范围文字 -->
+  <text x="${this.width / 2}" y="1140" font-size="80" font-weight="900" font-family="Arial, sans-serif" text-anchor="middle" fill="white" letter-spacing="1">
     ${dateRange}
   </text>
 
-  <!-- 装饰线 -->
-  <line x1="${this.width / 2 - 200}" y1="1150" x2="${this.width / 2 + 200}" y2="1150" stroke="#E74C3C" stroke-width="4"/>
+  <!-- 底部装饰 -->
+  <circle cx="200" cy="${this.height - 100}" r="25" fill="#C77DFF" opacity="0.4"/>
+  <circle cx="${this.width - 200}" cy="${this.height - 120}" r="30" fill="#9D4EDD" opacity="0.3"/>
 </svg>`;
 
     return svg;
@@ -101,33 +120,43 @@ class CoverGenerator {
    * 生成葡萄 SVG
    */
   generateGrapeSvg(x, y, size, color) {
-    const grapeRadius = size / 4;
+    const grapeRadius = size / 3.5; // 更大的葡萄
     let svg = '';
 
-    // 葡萄茎
-    svg += `<line x1="${x}" y1="${y - size / 2}" x2="${x}" y2="${y - 15}" stroke="#4A7C59" stroke-width="3"/>`;
+    // 葡萄茎（更粗）
+    svg += `<line x1="${x}" y1="${y - size / 2 - 10}" x2="${x}" y2="${y - 20}" stroke="#6B8E23" stroke-width="5" stroke-linecap="round"/>`;
 
-    // 葡萄叶
-    svg += `<ellipse cx="${x - size / 3}" cy="${y - size / 2 - 20}" rx="${size / 5}" ry="${size / 4}" fill="#4A7C59" transform="rotate(-45 ${x - size / 3} ${y - size / 2 - 20})"/>`;
-    svg += `<ellipse cx="${x + size / 3}" cy="${y - size / 2 - 20}" rx="${size / 5}" ry="${size / 4}" fill="#4A7C59" transform="rotate(45 ${x + size / 3} ${y - size / 2 - 20})"/>`;
+    // 葡萄叶（更大更绿）
+    svg += `<ellipse cx="${x - size / 3 - 15}" cy="${y - size / 2 - 30}" rx="${size / 4}" ry="${size / 3}" fill="#7BC542" transform="rotate(-35 ${x - size / 3 - 15} ${y - size / 2 - 30})"/>`;
+    svg += `<ellipse cx="${x + size / 3 + 15}" cy="${y - size / 2 - 30}" rx="${size / 4}" ry="${size / 3}" fill="#7BC542" transform="rotate(35 ${x + size / 3 + 15} ${y - size / 2 - 30})"/>`;
 
-    // 绘制葡萄球体
-    const rows = 4;
-    const cols = 3;
-    const spacing = grapeRadius * 2.2;
+    // 绘制葡萄球体（更多排）
+    const rows = 5;
+    const cols = 4;
+    const spacing = grapeRadius * 2;
 
     for (let row = 0; row < rows; row++) {
       const offset = (row % 2) * grapeRadius;
-      for (let col = 0; col < cols; col++) {
-        const gx = x - spacing + offset + col * spacing;
+      const colsInRow = row === 0 ? 2 : (row === rows - 1 ? 2 : cols);
+      const rowStartCol = row === 0 ? 1 : (row === rows - 1 ? 1 : 0);
+
+      for (let col = 0; col < colsInRow; col++) {
+        const gx = x - (cols - 1) * spacing / 2 + offset + (rowStartCol + col) * spacing;
         const gy = y - size / 2 + row * spacing;
 
-        // 葡萄球
-        svg += `<circle cx="${gx}" cy="${gy}" r="${grapeRadius}" fill="${color}"/>`;
+        // 葡萄球（加阴影）
+        svg += `<circle cx="${gx}" cy="${gy}" r="${grapeRadius}" fill="${color}" filter="url(#shadow)"/>`;
 
-        // 葡萄高光
-        const highlightRadius = grapeRadius / 3;
-        svg += `<circle cx="${gx - grapeRadius / 3}" cy="${gy - grapeRadius / 3}" r="${highlightRadius}" fill="white" opacity="0.4"/>`;
+        // 葡萄外圈高光
+        svg += `<circle cx="${gx}" cy="${gy}" r="${grapeRadius}" fill="none" stroke="white" stroke-width="1.5" opacity="0.6"/>`;
+
+        // 葡萄高光（更大更亮）
+        const highlightRadius = grapeRadius * 0.45;
+        svg += `<circle cx="${gx - grapeRadius * 0.35}" cy="${gy - grapeRadius * 0.35}" r="${highlightRadius}" fill="white" opacity="0.65"/>`;
+
+        // 更小的高光
+        const smallHighlight = grapeRadius * 0.2;
+        svg += `<circle cx="${gx + grapeRadius * 0.2}" cy="${gy - grapeRadius * 0.5}" r="${smallHighlight}" fill="white" opacity="0.5"/>`;
       }
     }
 
