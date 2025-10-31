@@ -135,7 +135,7 @@ class CoverGenerator {
     /* 日期文字覆盖层 */
     .date-overlay {
       position: absolute;
-      top: 495px;
+      top: 550px;
       left: 0;
       right: 0;
       text-align: center;
@@ -143,7 +143,7 @@ class CoverGenerator {
     }
 
     .date {
-      font-size: 75px;
+      font-size: 95px;
       font-weight: 900;
       color: #2D2416;
       letter-spacing: -1px;
