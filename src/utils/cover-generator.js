@@ -165,42 +165,40 @@ class CoverGenerator {
     /* 葡萄主体 */
     .grape-body {
       position: relative;
-      width: 280px;
-      height: 320px;
+      width: 300px;
+      height: 400px;
     }
 
     /* 叶子和茎 */
     .leaf {
       position: absolute;
-      width: 80px;
-      height: 100px;
+      width: 90px;
+      height: 110px;
       background: #8BAF6E;
       border: 5px solid #2D2416;
       border-radius: 50% 0;
-      top: -30px;
+      top: -35px;
       left: 50%;
-      transform: translateX(-50%) rotate(-20deg);
-      z-index: 2;
+      transform: translateX(-50%) rotate(-25deg);
+      z-index: 20;
     }
 
     .stem {
       position: absolute;
-      width: 12px;
-      height: 40px;
+      width: 15px;
+      height: 45px;
       background: #6B5330;
       border: 4px solid #2D2416;
-      border-radius: 6px;
-      top: -35px;
+      border-radius: 8px;
+      top: -40px;
       left: 50%;
       transform: translateX(-50%);
-      z-index: 1;
+      z-index: 19;
     }
 
-    /* 葡萄球（组成葡萄串） */
+    /* 葡萄球（组成葡萄串身体） */
     .grape-ball {
       position: absolute;
-      width: 90px;
-      height: 90px;
       background: #9B7FB8;
       border: 5px solid #2D2416;
       border-radius: 50%;
@@ -209,85 +207,139 @@ class CoverGenerator {
     .grape-ball::before {
       content: '';
       position: absolute;
-      width: 25px;
-      height: 30px;
-      background: rgba(255, 255, 255, 0.4);
+      width: 28px;
+      height: 35px;
+      background: rgba(255, 255, 255, 0.45);
       border-radius: 50%;
-      top: 12px;
-      left: 15px;
+      top: 15%;
+      left: 20%;
     }
 
-    /* 葡萄球位置 */
-    .ball-1 { top: 0; left: 50%; transform: translateX(-50%); }
-    .ball-2 { top: 50px; left: 20px; }
-    .ball-3 { top: 50px; right: 20px; }
-    .ball-4 { top: 110px; left: 50%; transform: translateX(-50%); }
-    .ball-5 { top: 160px; left: 35px; }
-    .ball-6 { top: 160px; right: 35px; }
-    .ball-7 { bottom: 30px; left: 50%; transform: translateX(-50%); width: 95px; height: 95px; }
+    /* 葡萄球位置 - 紧密排列形成葡萄串人物 */
+    .ball-1 {
+      width: 95px;
+      height: 95px;
+      top: 15px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 12;
+    }
+
+    .ball-2 {
+      width: 100px;
+      height: 100px;
+      top: 40px;
+      left: 15px;
+      z-index: 11;
+    }
+
+    .ball-3 {
+      width: 100px;
+      height: 100px;
+      top: 40px;
+      right: 15px;
+      z-index: 11;
+    }
+
+    .ball-4 {
+      width: 110px;
+      height: 110px;
+      top: 100px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 13;
+    }
+
+    .ball-5 {
+      width: 95px;
+      height: 95px;
+      top: 155px;
+      left: 25px;
+      z-index: 10;
+    }
+
+    .ball-6 {
+      width: 95px;
+      height: 95px;
+      top: 155px;
+      right: 25px;
+      z-index: 10;
+    }
+
+    .ball-7 {
+      width: 105px;
+      height: 105px;
+      top: 195px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 12;
+    }
 
     /* 脸部特征 */
     .face {
       position: absolute;
-      top: 110px;
+      top: 160px;
       left: 50%;
       transform: translateX(-50%);
-      z-index: 10;
+      z-index: 15;
+      width: 80px;
     }
 
     .eye {
       position: absolute;
-      width: 14px;
-      height: 14px;
+      width: 16px;
+      height: 16px;
       background: #2D2416;
       border-radius: 50%;
+      top: 0;
     }
 
-    .eye-left { left: -18px; top: 0; }
-    .eye-right { right: -18px; top: 0; }
+    .eye-left { left: 10px; }
+    .eye-right { right: 10px; }
 
     .smile {
-      width: 45px;
-      height: 22px;
-      border: 4px solid #2D2416;
+      width: 50px;
+      height: 25px;
+      border: 5px solid #2D2416;
       border-top: none;
-      border-radius: 0 0 45px 45px;
-      margin-top: 15px;
-      margin-left: -22px;
+      border-radius: 0 0 50px 50px;
+      margin-top: 18px;
+      margin-left: 15px;
     }
 
     /* 手臂 */
     .arm {
       position: absolute;
-      width: 50px;
-      height: 110px;
+      width: 55px;
+      height: 120px;
       background: #9B7FB8;
       border: 5px solid #2D2416;
-      border-radius: 25px;
-      z-index: 5;
+      border-radius: 30px;
+      z-index: 8;
     }
 
     .arm-left {
-      top: 130px;
-      left: -30px;
-      transform: rotate(-15deg);
+      top: 140px;
+      left: -25px;
+      transform: rotate(-20deg);
     }
 
     .arm-right {
-      top: 120px;
-      right: -40px;
-      transform: rotate(25deg);
+      top: 135px;
+      right: -30px;
+      transform: rotate(30deg);
     }
 
     /* 腿 */
     .leg {
       position: absolute;
-      width: 40px;
-      height: 80px;
+      width: 45px;
+      height: 85px;
       background: #9B7FB8;
       border: 5px solid #2D2416;
-      border-radius: 20px;
-      bottom: -70px;
+      border-radius: 25px;
+      bottom: -80px;
+      z-index: 8;
     }
 
     .leg-left { left: 75px; }
@@ -296,68 +348,82 @@ class CoverGenerator {
     /* 香槟杯 */
     .champagne {
       position: absolute;
-      top: 90px;
-      right: -140px;
-      z-index: 15;
+      top: 110px;
+      right: -110px;
+      z-index: 16;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
 
-    .glass-base {
-      width: 15px;
-      height: 40px;
-      background: #2D2416;
-      border-radius: 8px;
-      margin: 0 auto;
-    }
-
-    .glass-stem {
-      width: 8px;
-      height: 60px;
-      background: #2D2416;
-      border-radius: 4px;
-      margin: 0 auto;
+    .champagne-container {
       position: relative;
-      top: -5px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
 
     .glass-bowl {
-      width: 50px;
-      height: 80px;
+      width: 55px;
+      height: 85px;
       background: transparent;
       border: 5px solid #2D2416;
-      border-radius: 10px 10px 25px 25px;
+      border-radius: 12px 12px 28px 28px;
       position: relative;
-      top: -10px;
-      left: 50%;
-      transform: translateX(-50%);
       overflow: hidden;
+      margin-bottom: -3px;
     }
 
     .champagne-liquid {
       position: absolute;
       bottom: 0;
       width: 100%;
-      height: 50%;
+      height: 55%;
       background: #F5C842;
-      border-radius: 0 0 20px 20px;
+      border-radius: 0 0 23px 23px;
     }
 
     .bubble {
       position: absolute;
-      width: 8px;
-      height: 8px;
       background: white;
       border-radius: 50%;
     }
 
-    .bubble-1 { bottom: 15px; left: 15px; }
-    .bubble-2 { bottom: 25px; left: 25px; width: 6px; height: 6px; }
+    .bubble-1 {
+      width: 9px;
+      height: 9px;
+      bottom: 18px;
+      left: 18px;
+    }
+
+    .bubble-2 {
+      width: 7px;
+      height: 7px;
+      bottom: 28px;
+      left: 28px;
+    }
+
+    .glass-stem {
+      width: 9px;
+      height: 65px;
+      background: #2D2416;
+      border-radius: 5px;
+      margin-bottom: -2px;
+    }
+
+    .glass-base {
+      width: 18px;
+      height: 42px;
+      background: #2D2416;
+      border-radius: 9px;
+    }
 
     .sparkle {
       position: absolute;
-      width: 12px;
-      height: 12px;
-      top: -25px;
-      right: -10px;
+      width: 14px;
+      height: 14px;
+      top: -30px;
+      right: -8px;
     }
 
     .sparkle::before,
@@ -368,32 +434,34 @@ class CoverGenerator {
     }
 
     .sparkle::before {
-      width: 3px;
-      height: 12px;
+      width: 4px;
+      height: 14px;
       left: 50%;
       transform: translateX(-50%);
     }
 
     .sparkle::after {
-      width: 12px;
-      height: 3px;
+      width: 14px;
+      height: 4px;
       top: 50%;
       transform: translateY(-50%);
     }
 
     .sparkle-2 {
-      top: -15px;
-      right: 5px;
-      width: 8px;
-      height: 8px;
+      top: -18px;
+      right: 8px;
+      width: 10px;
+      height: 10px;
     }
 
     .sparkle-2::before {
-      height: 8px;
+      height: 10px;
+      width: 3px;
     }
 
     .sparkle-2::after {
-      width: 8px;
+      width: 10px;
+      height: 3px;
     }
   </style>
 </head>
@@ -441,16 +509,18 @@ class CoverGenerator {
 
       <!-- 香槟杯 -->
       <div class="champagne">
-        <div class="sparkle"></div>
-        <div class="sparkle sparkle-2"></div>
-        <div class="glass-bowl">
-          <div class="champagne-liquid">
-            <div class="bubble bubble-1"></div>
-            <div class="bubble bubble-2"></div>
+        <div class="champagne-container">
+          <div class="sparkle"></div>
+          <div class="sparkle sparkle-2"></div>
+          <div class="glass-bowl">
+            <div class="champagne-liquid">
+              <div class="bubble bubble-1"></div>
+              <div class="bubble bubble-2"></div>
+            </div>
           </div>
+          <div class="glass-stem"></div>
+          <div class="glass-base"></div>
         </div>
-        <div class="glass-stem"></div>
-        <div class="glass-base"></div>
       </div>
     </div>
   </div>
