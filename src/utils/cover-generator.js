@@ -110,358 +110,349 @@ class CoverGenerator {
     body {
       width: ${this.width}px;
       height: ${this.height}px;
-      font-family: 'Arial', 'Helvetica', sans-serif;
-      background: linear-gradient(135deg, #FFF5F7 0%, #FFE8F0 50%, #F0E8FF 100%);
+      font-family: 'Arial Black', 'Arial', sans-serif;
+      background: #EDE8DB;
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
+      justify-content: center;
       align-items: center;
-      padding: 40px;
       position: relative;
       overflow: hidden;
     }
 
-    /* 背景装饰 */
-    .bg-decoration {
-      position: absolute;
-      border-radius: 50%;
-      opacity: 0.3;
+    /* 标题文字 */
+    .title {
+      font-size: 90px;
+      font-weight: 900;
+      color: #2D2416;
+      letter-spacing: -2px;
+      text-align: center;
+      line-height: 1;
+      margin-bottom: 20px;
+      text-transform: uppercase;
     }
 
-    .decoration-1 {
-      width: 240px;
-      height: 240px;
-      background: linear-gradient(135deg, #D8B4FF, #C77DFF);
-      top: 80px;
-      left: 40px;
-      box-shadow: 0 10px 30px rgba(157, 78, 221, 0.2);
+    .date {
+      font-size: 75px;
+      font-weight: 900;
+      color: #2D2416;
+      text-align: center;
+      margin-bottom: 80px;
+      letter-spacing: -1px;
     }
 
-    .decoration-2 {
-      width: 280px;
-      height: 280px;
-      background: linear-gradient(135deg, #B8E0FF, #7BC542);
-      bottom: 120px;
-      right: 30px;
-      box-shadow: 0 10px 30px rgba(123, 197, 66, 0.2);
-    }
-
-    /* 葡萄容器 */
-    .grape-container {
-      position: absolute;
+    /* 葡萄角色容器 */
+    .grape-character {
+      position: relative;
+      width: 450px;
+      height: 550px;
       display: flex;
       justify-content: center;
       align-items: center;
+    }
+
+    /* 阴影 */
+    .shadow {
+      position: absolute;
+      bottom: 0;
+      width: 200px;
+      height: 40px;
+      background: rgba(0, 0, 0, 0.1);
+      border-radius: 50%;
+      filter: blur(10px);
+    }
+
+    /* 葡萄主体 */
+    .grape-body {
+      position: relative;
+      width: 280px;
+      height: 320px;
+    }
+
+    /* 叶子和茎 */
+    .leaf {
+      position: absolute;
+      width: 80px;
+      height: 100px;
+      background: #8BAF6E;
+      border: 5px solid #2D2416;
+      border-radius: 50% 0;
+      top: -30px;
+      left: 50%;
+      transform: translateX(-50%) rotate(-20deg);
+      z-index: 2;
+    }
+
+    .stem {
+      position: absolute;
+      width: 12px;
+      height: 40px;
+      background: #6B5330;
+      border: 4px solid #2D2416;
+      border-radius: 6px;
+      top: -35px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 1;
+    }
+
+    /* 葡萄球（组成葡萄串） */
+    .grape-ball {
+      position: absolute;
+      width: 90px;
+      height: 90px;
+      background: #9B7FB8;
+      border: 5px solid #2D2416;
+      border-radius: 50%;
+    }
+
+    .grape-ball::before {
+      content: '';
+      position: absolute;
+      width: 25px;
+      height: 30px;
+      background: rgba(255, 255, 255, 0.4);
+      border-radius: 50%;
+      top: 12px;
+      left: 15px;
+    }
+
+    /* 葡萄球位置 */
+    .ball-1 { top: 0; left: 50%; transform: translateX(-50%); }
+    .ball-2 { top: 50px; left: 20px; }
+    .ball-3 { top: 50px; right: 20px; }
+    .ball-4 { top: 110px; left: 50%; transform: translateX(-50%); }
+    .ball-5 { top: 160px; left: 35px; }
+    .ball-6 { top: 160px; right: 35px; }
+    .ball-7 { bottom: 30px; left: 50%; transform: translateX(-50%); width: 95px; height: 95px; }
+
+    /* 脸部特征 */
+    .face {
+      position: absolute;
+      top: 110px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 10;
+    }
+
+    .eye {
+      position: absolute;
+      width: 14px;
+      height: 14px;
+      background: #2D2416;
+      border-radius: 50%;
+    }
+
+    .eye-left { left: -18px; top: 0; }
+    .eye-right { right: -18px; top: 0; }
+
+    .smile {
+      width: 45px;
+      height: 22px;
+      border: 4px solid #2D2416;
+      border-top: none;
+      border-radius: 0 0 45px 45px;
+      margin-top: 15px;
+      margin-left: -22px;
+    }
+
+    /* 手臂 */
+    .arm {
+      position: absolute;
+      width: 50px;
+      height: 110px;
+      background: #9B7FB8;
+      border: 5px solid #2D2416;
+      border-radius: 25px;
       z-index: 5;
     }
 
-    .grape-left-top {
-      width: 180px;
-      height: 240px;
-      top: 80px;
-      left: 20px;
+    .arm-left {
+      top: 130px;
+      left: -30px;
+      transform: rotate(-15deg);
     }
 
-    .grape-right-top {
-      width: 140px;
-      height: 180px;
-      top: 140px;
-      right: 40px;
+    .arm-right {
+      top: 120px;
+      right: -40px;
+      transform: rotate(25deg);
     }
 
-    .grape-left-bottom {
-      width: 160px;
-      height: 220px;
-      bottom: 100px;
-      left: 40px;
+    /* 腿 */
+    .leg {
+      position: absolute;
+      width: 40px;
+      height: 80px;
+      background: #9B7FB8;
+      border: 5px solid #2D2416;
+      border-radius: 20px;
+      bottom: -70px;
     }
 
-    .grape-right-bottom {
-      width: 190px;
-      height: 260px;
-      bottom: 80px;
-      right: 20px;
+    .leg-left { left: 75px; }
+    .leg-right { right: 75px; }
+
+    /* 香槟杯 */
+    .champagne {
+      position: absolute;
+      top: 90px;
+      right: -140px;
+      z-index: 15;
     }
 
-    /* 单个葡萄 */
-    .grape {
-      width: 28px;
-      height: 28px;
-      border-radius: 50%;
+    .glass-base {
+      width: 15px;
+      height: 40px;
+      background: #2D2416;
+      border-radius: 8px;
+      margin: 0 auto;
+    }
+
+    .glass-stem {
+      width: 8px;
+      height: 60px;
+      background: #2D2416;
+      border-radius: 4px;
+      margin: 0 auto;
       position: relative;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.1);
-      margin: 4px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
+      top: -5px;
     }
 
-    .grape::before {
-      content: '';
-      position: absolute;
-      width: 10px;
-      height: 10px;
-      background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.8), transparent);
-      border-radius: 50%;
-      top: 4px;
-      left: 4px;
-    }
-
-    .grape.purple {
-      background: linear-gradient(135deg, #9D4EDD 0%, #6A0DAD 100%);
-    }
-
-    .grape.dark-purple {
-      background: linear-gradient(135deg, #7B2CBF 0%, #5A1B8C 100%);
-    }
-
-    .grape.light-purple {
-      background: linear-gradient(135deg, #C77DFF 0%, #A569BD 100%);
-    }
-
-    /* 葡萄束 */
-    .grape-cluster {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 2px;
-      padding: 10px;
-    }
-
-    .grape-cluster.large {
-      grid-template-columns: repeat(4, 1fr);
-    }
-
-    /* 葡萄茎和叶子 */
-    .grape-stem {
-      position: absolute;
-      width: 3px;
-      height: 25px;
-      background: #6B8E23;
-      top: -8px;
+    .glass-bowl {
+      width: 50px;
+      height: 80px;
+      background: transparent;
+      border: 5px solid #2D2416;
+      border-radius: 10px 10px 25px 25px;
+      position: relative;
+      top: -10px;
       left: 50%;
       transform: translateX(-50%);
-      border-radius: 2px;
+      overflow: hidden;
     }
 
-    .grape-leaf {
+    .champagne-liquid {
       position: absolute;
-      width: 35px;
-      height: 45px;
-      background: #7BC542;
-      border-radius: 50% 0;
-      top: -30px;
-    }
-
-    .leaf-left {
-      left: 10px;
-      transform: rotate(-45deg);
-    }
-
-    .leaf-right {
-      right: 10px;
-      transform: rotate(45deg);
-    }
-
-    /* 内容容器 */
-    .content {
-      position: relative;
-      z-index: 10;
-      text-align: center;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      flex: 1;
-    }
-
-    /* 标题部分 */
-    .title-box {
-      background: rgba(255, 255, 255, 0.5);
-      backdrop-filter: blur(10px);
-      border-radius: 30px;
-      padding: 40px 50px;
-      margin-bottom: 100px;
-      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-    }
-
-    .title {
-      font-size: 72px;
-      font-weight: 900;
-      color: #6A0DAD;
-      letter-spacing: 3px;
-      margin: 0;
-      line-height: 1.1;
-    }
-
-    .subtitle {
-      font-size: 52px;
-      font-weight: 900;
-      color: #6A0DAD;
-      letter-spacing: 2px;
-      margin: 15px 0 0 0;
-      line-height: 1.1;
-    }
-
-    /* 日期范围 */
-    .date-box {
-      background: linear-gradient(135deg, #FF6B9D 0%, #FF4757 100%);
-      border-radius: 20px;
-      padding: 25px 60px;
-      box-shadow: 0 10px 40px rgba(255, 107, 157, 0.3);
-      margin-top: 60px;
-    }
-
-    .date-range {
-      font-size: 80px;
-      font-weight: 900;
-      color: white;
-      letter-spacing: 2px;
-      text-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-      margin: 0;
-    }
-
-    /* 底部装饰 */
-    .bottom-decoration {
-      position: absolute;
-      bottom: 30px;
-      display: flex;
-      gap: 300px;
+      bottom: 0;
       width: 100%;
-      justify-content: center;
+      height: 50%;
+      background: #F5C842;
+      border-radius: 0 0 20px 20px;
     }
 
-    .dot {
-      width: 50px;
-      height: 50px;
+    .bubble {
+      position: absolute;
+      width: 8px;
+      height: 8px;
+      background: white;
       border-radius: 50%;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
     }
 
-    .dot-1 {
-      background: linear-gradient(135deg, #C77DFF, #A569BD);
-      opacity: 0.6;
+    .bubble-1 { bottom: 15px; left: 15px; }
+    .bubble-2 { bottom: 25px; left: 25px; width: 6px; height: 6px; }
+
+    .sparkle {
+      position: absolute;
+      width: 12px;
+      height: 12px;
+      top: -25px;
+      right: -10px;
     }
 
-    .dot-2 {
-      background: linear-gradient(135deg, #9D4EDD, #7B2CBF);
-      opacity: 0.5;
+    .sparkle::before,
+    .sparkle::after {
+      content: '';
+      position: absolute;
+      background: #2D2416;
+    }
+
+    .sparkle::before {
+      width: 3px;
+      height: 12px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .sparkle::after {
+      width: 12px;
+      height: 3px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    .sparkle-2 {
+      top: -15px;
+      right: 5px;
+      width: 8px;
+      height: 8px;
+    }
+
+    .sparkle-2::before {
+      height: 8px;
+    }
+
+    .sparkle-2::after {
+      width: 8px;
     }
   </style>
 </head>
 <body>
-  <!-- 背景装饰 -->
-  <div class="bg-decoration decoration-1"></div>
-  <div class="bg-decoration decoration-2"></div>
+  <!-- 标题 -->
+  <div class="title">BAY AREA<br>SELECTED<br>EVENTS</div>
 
-  <!-- 左上角葡萄 -->
-  <div class="grape-container grape-left-top">
-    <div style="position: relative; width: 100%; height: 100%;">
-      <div class="grape-stem"></div>
-      <div class="grape-leaf leaf-left"></div>
-      <div class="grape-leaf leaf-right"></div>
-      <div class="grape-cluster">
-        <div class="grape purple"></div>
-        <div class="grape purple"></div>
-        <div class="grape purple"></div>
-        <div class="grape dark-purple"></div>
-        <div class="grape dark-purple"></div>
-        <div class="grape dark-purple"></div>
-        <div class="grape light-purple"></div>
-        <div class="grape light-purple"></div>
-        <div class="grape light-purple"></div>
-        <div class="grape light-purple"></div>
-        <div class="grape dark-purple"></div>
-        <div class="grape dark-purple"></div>
+  <!-- 日期 -->
+  <div class="date">${dateRange}</div>
+
+  <!-- 葡萄角色 -->
+  <div class="grape-character">
+    <!-- 阴影 -->
+    <div class="shadow"></div>
+
+    <!-- 葡萄主体 -->
+    <div class="grape-body">
+      <!-- 叶子和茎 -->
+      <div class="leaf"></div>
+      <div class="stem"></div>
+
+      <!-- 葡萄球（组成身体） -->
+      <div class="grape-ball ball-1"></div>
+      <div class="grape-ball ball-2"></div>
+      <div class="grape-ball ball-3"></div>
+      <div class="grape-ball ball-4"></div>
+      <div class="grape-ball ball-5"></div>
+      <div class="grape-ball ball-6"></div>
+      <div class="grape-ball ball-7"></div>
+
+      <!-- 脸 -->
+      <div class="face">
+        <div class="eye eye-left"></div>
+        <div class="eye eye-right"></div>
+        <div class="smile"></div>
+      </div>
+
+      <!-- 手臂 -->
+      <div class="arm arm-left"></div>
+      <div class="arm arm-right"></div>
+
+      <!-- 腿 -->
+      <div class="leg leg-left"></div>
+      <div class="leg leg-right"></div>
+
+      <!-- 香槟杯 -->
+      <div class="champagne">
+        <div class="sparkle"></div>
+        <div class="sparkle sparkle-2"></div>
+        <div class="glass-bowl">
+          <div class="champagne-liquid">
+            <div class="bubble bubble-1"></div>
+            <div class="bubble bubble-2"></div>
+          </div>
+        </div>
+        <div class="glass-stem"></div>
+        <div class="glass-base"></div>
       </div>
     </div>
-  </div>
-
-  <!-- 右上角葡萄 -->
-  <div class="grape-container grape-right-top">
-    <div style="position: relative; width: 100%; height: 100%;">
-      <div class="grape-stem"></div>
-      <div class="grape-leaf leaf-left"></div>
-      <div class="grape-leaf leaf-right"></div>
-      <div class="grape-cluster">
-        <div class="grape purple"></div>
-        <div class="grape purple"></div>
-        <div class="grape dark-purple"></div>
-        <div class="grape dark-purple"></div>
-        <div class="grape light-purple"></div>
-        <div class="grape light-purple"></div>
-        <div class="grape light-purple"></div>
-        <div class="grape dark-purple"></div>
-        <div class="grape dark-purple"></div>
-      </div>
-    </div>
-  </div>
-
-  <!-- 左下角葡萄 -->
-  <div class="grape-container grape-left-bottom">
-    <div style="position: relative; width: 100%; height: 100%;">
-      <div class="grape-stem"></div>
-      <div class="grape-leaf leaf-left"></div>
-      <div class="grape-leaf leaf-right"></div>
-      <div class="grape-cluster">
-        <div class="grape purple"></div>
-        <div class="grape purple"></div>
-        <div class="grape dark-purple"></div>
-        <div class="grape dark-purple"></div>
-        <div class="grape light-purple"></div>
-        <div class="grape light-purple"></div>
-        <div class="grape dark-purple"></div>
-        <div class="grape purple"></div>
-        <div class="grape purple"></div>
-        <div class="grape dark-purple"></div>
-        <div class="grape dark-purple"></div>
-        <div class="grape light-purple"></div>
-      </div>
-    </div>
-  </div>
-
-  <!-- 右下角葡萄 -->
-  <div class="grape-container grape-right-bottom">
-    <div style="position: relative; width: 100%; height: 100%;">
-      <div class="grape-stem"></div>
-      <div class="grape-leaf leaf-left"></div>
-      <div class="grape-leaf leaf-right"></div>
-      <div class="grape-cluster large">
-        <div class="grape purple"></div>
-        <div class="grape purple"></div>
-        <div class="grape dark-purple"></div>
-        <div class="grape dark-purple"></div>
-        <div class="grape purple"></div>
-        <div class="grape light-purple"></div>
-        <div class="grape light-purple"></div>
-        <div class="grape dark-purple"></div>
-        <div class="grape dark-purple"></div>
-        <div class="grape purple"></div>
-        <div class="grape dark-purple"></div>
-        <div class="grape light-purple"></div>
-        <div class="grape light-purple"></div>
-        <div class="grape dark-purple"></div>
-        <div class="grape dark-purple"></div>
-        <div class="grape light-purple"></div>
-      </div>
-    </div>
-  </div>
-
-  <!-- 主内容 -->
-  <div class="content">
-    <div class="title-box">
-      <h1 class="title">BAY AREA</h1>
-      <h2 class="subtitle">SELECTED EVENTS</h2>
-    </div>
-
-    <div class="date-box">
-      <p class="date-range">${dateRange}</p>
-    </div>
-  </div>
-
-  <!-- 底部装饰 -->
-  <div class="bottom-decoration">
-    <div class="dot dot-1"></div>
-    <div class="dot dot-2"></div>
   </div>
 </body>
 </html>`;
