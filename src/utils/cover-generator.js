@@ -1,7 +1,7 @@
-const { createCanvas } = require('canvas');
+const sharp = require('sharp');
 const fs = require('fs').promises;
 const path = require('path');
-const { format, parse } = require('date-fns');
+const { format } = require('date-fns');
 
 class CoverGenerator {
   constructor() {
@@ -23,23 +23,18 @@ class CoverGenerator {
       // 计算日期范围
       const dateRange = this.extractWeekDates(weekRange.identifier);
 
-      // 创建canvas
-      const canvas = createCanvas(this.width, this.height);
-      const ctx = canvas.getContext('2d');
-
-      // 绘制背景和装饰
-      this.drawBackground(ctx);
-      this.drawGrapeDecorations(ctx);
-      this.drawTitle(ctx);
-      this.drawDateRange(ctx, dateRange);
+      // 生成 SVG
+      const svgString = this.generateSvg(dateRange);
 
       // 保存文件
       await this.ensureOutputDirectory();
       const filename = `cover_${format(new Date(), 'yyyy-MM-dd_HHmm')}.png`;
       const filepath = path.join(this.outputDir, filename);
 
-      const buffer = canvas.toBuffer('image/png');
-      await fs.writeFile(filepath, buffer);
+      // 使用 sharp 将 SVG 转换为 PNG
+      await sharp(Buffer.from(svgString))
+        .png()
+        .toFile(filepath);
 
       console.log(`✅ 封面图片已生成: ${filepath}`);
 
@@ -52,6 +47,91 @@ class CoverGenerator {
       console.error('❌ 生成封面图片失败:', error.message);
       throw error;
     }
+  }
+
+  /**
+   * 生成 SVG 字符串
+   */
+  generateSvg(dateRange) {
+    const svg = `<?xml version="1.0" encoding="UTF-8"?>
+<svg width="${this.width}" height="${this.height}" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#E8F4F8;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#FFE8F0;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+
+  <!-- 背景 -->
+  <rect width="${this.width}" height="${this.height}" fill="url(#bgGradient)"/>
+
+  <!-- 左上角葡萄 -->
+  ${this.generateGrapeSvg(120, 150, 60, '#9B59B6')}
+
+  <!-- 右下角葡萄 -->
+  ${this.generateGrapeSvg(this.width - 120, this.height - 180, 70, '#8E44AD')}
+
+  <!-- 右上角小葡萄 -->
+  ${this.generateGrapeSvg(this.width - 100, 180, 40, '#A569BD')}
+
+  <!-- 左下角小葡萄 -->
+  ${this.generateGrapeSvg(100, this.height - 220, 45, '#9D4EDD')}
+
+  <!-- 标题 -->
+  <text x="${this.width / 2}" y="420" font-size="64" font-weight="bold" font-family="Arial, Helvetica" text-anchor="middle" fill="#2C3E50">
+    BAY AREA
+  </text>
+  <text x="${this.width / 2}" y="500" font-size="64" font-weight="bold" font-family="Arial, Helvetica" text-anchor="middle" fill="#2C3E50">
+    SELECTED EVENTS
+  </text>
+
+  <!-- 日期范围 -->
+  <text x="${this.width / 2}" y="1100" font-size="72" font-weight="bold" font-family="Arial, Helvetica" text-anchor="middle" fill="#E74C3C">
+    ${dateRange}
+  </text>
+
+  <!-- 装饰线 -->
+  <line x1="${this.width / 2 - 200}" y1="1150" x2="${this.width / 2 + 200}" y2="1150" stroke="#E74C3C" stroke-width="4"/>
+</svg>`;
+
+    return svg;
+  }
+
+  /**
+   * 生成葡萄 SVG
+   */
+  generateGrapeSvg(x, y, size, color) {
+    const grapeRadius = size / 4;
+    let svg = '';
+
+    // 葡萄茎
+    svg += `<line x1="${x}" y1="${y - size / 2}" x2="${x}" y2="${y - 15}" stroke="#4A7C59" stroke-width="3"/>`;
+
+    // 葡萄叶
+    svg += `<ellipse cx="${x - size / 3}" cy="${y - size / 2 - 20}" rx="${size / 5}" ry="${size / 4}" fill="#4A7C59" transform="rotate(-45 ${x - size / 3} ${y - size / 2 - 20})"/>`;
+    svg += `<ellipse cx="${x + size / 3}" cy="${y - size / 2 - 20}" rx="${size / 5}" ry="${size / 4}" fill="#4A7C59" transform="rotate(45 ${x + size / 3} ${y - size / 2 - 20})"/>`;
+
+    // 绘制葡萄球体
+    const rows = 4;
+    const cols = 3;
+    const spacing = grapeRadius * 2.2;
+
+    for (let row = 0; row < rows; row++) {
+      const offset = (row % 2) * grapeRadius;
+      for (let col = 0; col < cols; col++) {
+        const gx = x - spacing + offset + col * spacing;
+        const gy = y - size / 2 + row * spacing;
+
+        // 葡萄球
+        svg += `<circle cx="${gx}" cy="${gy}" r="${grapeRadius}" fill="${color}"/>`;
+
+        // 葡萄高光
+        const highlightRadius = grapeRadius / 3;
+        svg += `<circle cx="${gx - grapeRadius / 3}" cy="${gy - grapeRadius / 3}" r="${highlightRadius}" fill="white" opacity="0.4"/>`;
+      }
+    }
+
+    return svg;
   }
 
   /**
@@ -89,131 +169,6 @@ class CoverGenerator {
     const sundayFormatted = format(sundayDate, 'M/d');
 
     return `${wednesdayFormatted} - ${sundayFormatted}`;
-  }
-
-  /**
-   * 绘制背景（渐变色）
-   */
-  drawBackground(ctx) {
-    // 创建渐变背景：浅蓝到浅粉
-    const gradient = ctx.createLinearGradient(0, 0, 0, this.height);
-    gradient.addColorStop(0, '#E8F4F8');    // 浅蓝
-    gradient.addColorStop(1, '#FFE8F0');    // 浅粉
-
-    ctx.fillStyle = gradient;
-    ctx.fillRect(0, 0, this.width, this.height);
-  }
-
-  /**
-   * 绘制葡萄装饰元素
-   */
-  drawGrapeDecorations(ctx) {
-    // 左上角葡萄
-    this.drawGrapeCluster(ctx, 120, 150, 60, '#9B59B6');
-
-    // 右下角葡萄
-    this.drawGrapeCluster(ctx, this.width - 120, this.height - 180, 70, '#8E44AD');
-
-    // 右上角小葡萄
-    this.drawGrapeCluster(ctx, this.width - 100, 180, 40, '#A569BD');
-
-    // 左下角小葡萄
-    this.drawGrapeCluster(ctx, 100, this.height - 220, 45, '#9D4EDD');
-  }
-
-  /**
-   * 绘制葡萄串
-   * @param {CanvasRenderingContext2D} ctx
-   * @param {number} x - 中心X坐标
-   * @param {number} y - 中心Y坐标
-   * @param {number} size - 葡萄串大小
-   * @param {string} color - 葡萄颜色
-   */
-  drawGrapeCluster(ctx, x, y, size, color) {
-    const grapeRadius = size / 4;
-
-    // 葡萄茎
-    ctx.strokeStyle = '#4A7C59';
-    ctx.lineWidth = 3;
-    ctx.beginPath();
-    ctx.moveTo(x, y - size / 2);
-    ctx.lineTo(x, y - 15);
-    ctx.stroke();
-
-    // 葡萄叶（简化的叶子）
-    ctx.fillStyle = '#4A7C59';
-    ctx.beginPath();
-    ctx.ellipse(x - size / 3, y - size / 2 - 20, size / 5, size / 4, -Math.PI / 4, 0, Math.PI * 2);
-    ctx.fill();
-
-    ctx.beginPath();
-    ctx.ellipse(x + size / 3, y - size / 2 - 20, size / 5, size / 4, Math.PI / 4, 0, Math.PI * 2);
-    ctx.fill();
-
-    // 绘制葡萄球体
-    const rows = 4;
-    const cols = 3;
-    const spacing = grapeRadius * 2.2;
-
-    for (let row = 0; row < rows; row++) {
-      const offset = (row % 2) * grapeRadius;
-      for (let col = 0; col < cols; col++) {
-        const gx = x - spacing + offset + col * spacing;
-        const gy = y - size / 2 + row * spacing;
-
-        // 葡萄球
-        ctx.fillStyle = color;
-        ctx.beginPath();
-        ctx.arc(gx, gy, grapeRadius, 0, Math.PI * 2);
-        ctx.fill();
-
-        // 葡萄高光
-        ctx.fillStyle = 'rgba(255, 255, 255, 0.4)';
-        ctx.beginPath();
-        ctx.arc(gx - grapeRadius / 3, gy - grapeRadius / 3, grapeRadius / 3, 0, Math.PI * 2);
-        ctx.fill();
-      }
-    }
-  }
-
-  /**
-   * 绘制标题
-   */
-  drawTitle(ctx) {
-    ctx.fillStyle = '#2C3E50';
-    ctx.font = 'bold 64px Arial, Helvetica';
-    ctx.textAlign = 'center';
-    ctx.textBaseline = 'top';
-
-    const titleY = 400;
-    const lineHeight = 80;
-
-    // 绘制标题，分两行
-    ctx.fillText('BAY AREA', this.width / 2, titleY);
-    ctx.fillText('SELECTED EVENTS', this.width / 2, titleY + lineHeight);
-  }
-
-  /**
-   * 绘制日期范围
-   */
-  drawDateRange(ctx, dateRange) {
-    ctx.fillStyle = '#E74C3C';
-    ctx.font = 'bold 72px Arial, Helvetica';
-    ctx.textAlign = 'center';
-    ctx.textBaseline = 'middle';
-
-    ctx.fillText(dateRange, this.width / 2, 1100);
-
-    // 添加装饰线
-    const lineY = 1150;
-    const lineWidth = 200;
-    ctx.strokeStyle = '#E74C3C';
-    ctx.lineWidth = 4;
-
-    ctx.beginPath();
-    ctx.moveTo(this.width / 2 - lineWidth, lineY);
-    ctx.lineTo(this.width / 2 + lineWidth, lineY);
-    ctx.stroke();
   }
 
   /**
