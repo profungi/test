@@ -33,6 +33,9 @@ images/
 dist/
 build/
 
+# Assets (template images)
+# assets/
+
 # OS files
 .DS_Store
 .DS_Store?
