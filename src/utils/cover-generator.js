@@ -48,16 +48,21 @@ class CoverGenerator {
       // 计算日期范围
       const dateRange = this.extractWeekDates(weekRange.identifier);
 
+      // 读取模板图片并转换为 base64
+      const templatePath = path.join(__dirname, '../../assets/cover-template.jpg');
+      const imageBuffer = await fs.readFile(templatePath);
+      const base64Image = imageBuffer.toString('base64');
+
       // 初始化浏览器
       browser = await this.initBrowser();
 
       // 生成 HTML
-      const html = this.generateHtml(dateRange);
+      const html = this.generateHtml(dateRange, base64Image);
 
       // 创建页面
       const page = await browser.newPage();
       await page.setViewport({ width: this.width, height: this.height });
-      await page.setContent(html);
+      await page.setContent(html, { waitUntil: 'networkidle0' });
 
       // 保存文件
       await this.ensureOutputDirectory();
@@ -93,9 +98,7 @@ class CoverGenerator {
   /**
    * 生成 HTML 模板 - 使用固定模板图片，只替换日期
    */
-  generateHtml(dateRange) {
-    const templatePath = path.join(__dirname, '../../assets/cover-template.jpg');
-
+  generateHtml(dateRange, base64Image) {
     return `<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -151,8 +154,8 @@ class CoverGenerator {
   </style>
 </head>
 <body>
-  <!-- 模板背景图片 -->
-  <img src="file://${templatePath}" class="template-image" alt="Cover Template">
+  <!-- 模板背景图片 (base64 embedded) -->
+  <img src="data:image/jpeg;base64,${base64Image}" class="template-image" alt="Cover Template">
 
   <!-- 日期覆盖层 -->
   <div class="date-overlay">
