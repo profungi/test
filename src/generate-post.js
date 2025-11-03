@@ -9,6 +9,7 @@ const URLShortener = require('./utils/url-shortener');
 const ContentTranslator = require('./formatters/translator');
 const PostGenerator = require('./formatters/post-generator');
 const ManualReviewManager = require('./utils/manual-review');
+const PerformanceDatabase = require('./feedback/performance-database');
 
 class PostGenerationOrchestrator {
   constructor() {
@@ -16,6 +17,7 @@ class PostGenerationOrchestrator {
     this.translator = new ContentTranslator();
     this.postGenerator = new PostGenerator();
     this.reviewManager = new ManualReviewManager();
+    this.performanceDB = new PerformanceDatabase();
   }
 
   async run(reviewFilePath) {
@@ -60,11 +62,31 @@ class PostGenerationOrchestrator {
       // 7. 验证内容质量
       const contentSummary = this.postGenerator.generateContentSummary(postResult.content);
       this.displayGenerationSummary(postResult, contentSummary, urlResult.summary);
-      
+
+      // 8. 保存发布记录到数据库 (反馈系统)
+      try {
+        const postId = await this.savePublicationRecord(
+          translatedEvents,
+          weekRange,
+          reviewFilePath,
+          postResult
+        );
+
+        console.log('\n📊 发布记录已创建:');
+        console.log(`   Post ID: ${postId}`);
+        console.log(`   包含 ${translatedEvents.length} 个活动`);
+      } catch (dbError) {
+        console.warn('⚠️  保存发布记录失败:', dbError.message);
+        console.warn('   这不影响内容生成，但无法记录反馈数据');
+      }
+
       console.log('\n✨ 内容生成完成！');
       console.log(`📄 发布内容: ${postResult.filepath}`);
       console.log('📱 现在可以复制内容到小红书发布了！');
-      
+
+      // 9. 提示下一步操作
+      this.displayNextSteps(postResult);
+
     } catch (error) {
       console.error('❌ 生成过程中发生错误:', error.message);
       
@@ -79,20 +101,148 @@ class PostGenerationOrchestrator {
     }
   }
 
+  /**
+   * 保存发布记录到性能数据库
+   */
+  async savePublicationRecord(events, weekRange, reviewFilePath, postResult) {
+    await this.performanceDB.connect();
+
+    // 确保反馈系统表已初始化
+    await this.performanceDB.initializeFeedbackTables();
+
+    // 生成 post_id
+    const timestamp = new Date().toISOString().replace(/[:.]/g, '-').substring(0, 16);
+    const postId = `post_${timestamp}`;
+
+    // 1. 创建发布记录
+    await this.performanceDB.createPost({
+      post_id: postId,
+      published_at: new Date().toISOString(),
+      week_identifier: weekRange.identifier,
+      platform: 'xiaohongshu',
+      total_events: events.length,
+      review_file_path: reviewFilePath,
+      output_file_path: postResult.filepath,
+      cover_image_path: postResult.coverImage ? postResult.coverImage.filepath : null
+    });
+
+    // 2. 为每个活动创建表现记录
+    for (const event of events) {
+      await this.performanceDB.createEventPerformance({
+        post_id: postId,
+        event_id: event.id || null,
+        event_title: event.title,
+        event_type: event.event_type,
+        event_url: event.short_url || event.original_url,
+        location: event.location,
+        location_category: this.detectLocationCategory(event.location),
+        price: event.price,
+        price_category: this.categorizePriceAuto(event.price),
+        start_time: event.start_time,
+        is_weekend: this.isWeekend(event.start_time),
+        is_free: this.isFree(event.price),
+        is_outdoor: event.tags?.includes('outdoor') || false,
+        is_chinese_relevant: event.chinese_relevant || false,
+        engagement_score: 0
+      });
+    }
+
+    await this.performanceDB.close();
+    return postId;
+  }
+
+  /**
+   * 检测地理位置类别
+   */
+  detectLocationCategory(location) {
+    if (!location) return null;
+
+    const locationLower = location.toLowerCase();
+    const config = require('./config');
+
+    if (config.locations.sanfrancisco.some(loc => locationLower.includes(loc.toLowerCase()))) {
+      return 'sanfrancisco';
+    } else if (config.locations.southbay.some(loc => locationLower.includes(loc.toLowerCase()))) {
+      return 'southbay';
+    } else if (config.locations.peninsula.some(loc => locationLower.includes(loc.toLowerCase()))) {
+      return 'peninsula';
+    } else if (config.locations.eastbay.some(loc => locationLower.includes(loc.toLowerCase()))) {
+      return 'eastbay';
+    } else if (config.locations.northbay.some(loc => locationLower.includes(loc.toLowerCase()))) {
+      return 'northbay';
+    }
+
+    return 'other';
+  }
+
+  /**
+   * 自动分类价格
+   */
+  categorizePriceAuto(price) {
+    if (!price || price.toLowerCase().includes('free')) {
+      return 'free';
+    }
+
+    const dollarMatch = price.match(/\$(\d+)/);
+    if (dollarMatch) {
+      const amount = parseInt(dollarMatch[1]);
+      if (amount <= 50) {
+        return 'paid';
+      } else {
+        return 'expensive';
+      }
+    }
+
+    return 'unknown';
+  }
+
+  /**
+   * 判断是否为周末
+   */
+  isWeekend(timeStr) {
+    if (!timeStr) return false;
+    const weekendPattern = /(saturday|sunday)/i;
+    return weekendPattern.test(timeStr);
+  }
+
+  /**
+   * 判断是否免费
+   */
+  isFree(price) {
+    if (!price) return true;
+    return price.toLowerCase().includes('free');
+  }
+
+  /**
+   * 显示下一步操作提示
+   */
+  displayNextSteps(postResult) {
+    const postIdMatch = postResult.filepath.match(/weekly_events_(\d{4}-\d{2}-\d{2}_\d{4})/);
+    const postId = postIdMatch ? `post_${postIdMatch[1]}` : 'post_XXXX';
+
+    console.log('\n' + '━'.repeat(60));
+    console.log('💡 下一步操作');
+    console.log('━'.repeat(60));
+    console.log('1. 📱 将内容发布到小红书');
+    console.log('2. ⏰ 等待 2-3 天收集用户反馈');
+    console.log(`3. 📊 运行反馈收集: npm run collect-feedback ${postId}`);
+    console.log('━'.repeat(60));
+  }
+
   displayGenerationSummary(postResult, contentSummary, urlSummary) {
     console.log('\n' + '='.repeat(60));
     console.log('📊 内容生成总结');
     console.log('='.repeat(60));
-    
+
     console.log(`📝 活动数量: ${postResult.stats.totalEvents}`);
     console.log(`📏 内容长度: ${contentSummary.character_count} 字符`);
     console.log(`🔗 链接数量: ${contentSummary.link_count}`);
     console.log(`#️⃣ 标签数量: ${contentSummary.hashtag_count}`);
-    
+
     console.log(`\n🔗 短链接生成:`);
     console.log(`   ✅ 成功: ${urlSummary.successful}/${urlSummary.total}`);
     console.log(`   ❌ 失败: ${urlSummary.failed}/${urlSummary.total}`);
-    
+
     console.log(`\n📱 内容验证:`);
     if (contentSummary.validation.valid) {
       console.log('   ✅ 内容格式符合要求');
@@ -102,7 +252,7 @@ class PostGenerationOrchestrator {
         console.log(`      - ${issue}`);
       });
     }
-    
+
     console.log('='.repeat(60));
   }
 
