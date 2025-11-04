@@ -259,8 +259,18 @@ class FuncheapWeekendScraper extends BaseScraper {
         }
       }
 
+      // 如果没有找到地点，使用默认值
       if (!location) {
         location = 'San Francisco Bay Area';
+      } else {
+        // Funcheap 是 SF 网站，但地点字符串通常只有场地名称
+        // 如果地点中不包含城市名称，添加 "San Francisco" 以便通过地点过滤
+        const hasCity = /san francisco|sf|oakland|berkeley|san jose|palo alto|mountain view|alameda|fremont|hayward|richmond|vallejo|napa|sonoma|marin|san rafael|sausalito|redwood city|san mateo|burlingame|millbrae|daly city|pacifica|sunnyvale|santa clara|cupertino|milpitas|campbell|los gatos|menlo park|atherton/i.test(location.toLowerCase());
+
+        if (!hasCity) {
+          // 地点只有场地名称，添加 San Francisco
+          location = `${location}, San Francisco`;
+        }
       }
 
       // 价格 - 从 div.meta 的文本内容中提取 "Cost: XXX" 部分
