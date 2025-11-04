@@ -61,46 +61,20 @@ class FuncheapWeekendScraper extends BaseScraper {
       const uniqueEvents = this.deduplicateByUrl(events);
       console.log(`After deduplication: ${uniqueEvents.length} unique events`);
 
-      // 获取详情页信息以填充 description_detail
-      console.log(`Fetching details for ${uniqueEvents.length} events...`);
-      const validEvents = [];
+      // 不再强制获取详情页，直接返回基本信息
+      // 详情页获取太慢且容易失败，会导致丢失大量有效活动
+      console.log(`Returning ${uniqueEvents.length} events with basic information`);
 
-      for (let i = 0; i < uniqueEvents.length; i++) {
-        const event = uniqueEvents[i];
-        if (event.originalUrl && event.originalUrl.includes('funcheap.com')) {
-          try {
-            const detailedEvent = await this.fetchEventDetails(event);
-
-            // 检查是否是404或无效页面
-            if (detailedEvent === null) {
-              console.log(`  ❌ Discarding event (404 or invalid): ${event.title}`);
-              continue; // 跳过这个活动，不添加到最终列表
-            }
-
-            validEvents.push(detailedEvent);
-          } catch (error) {
-            console.warn(`  ❌ Failed to fetch details for ${event.title}: ${error.message}`);
-            console.warn(`  ❌ Discarding this event`);
-            // 不添加到 validEvents，即放弃这个活动
-          }
-        } else {
-          // 非 funcheap URL，直接保留
-          validEvents.push(event);
-        }
-      }
-
-      console.log(`After detail page validation: ${validEvents.length} valid events (discarded ${uniqueEvents.length - validEvents.length})`);
-
-      // 调试：输出前5个活动的日期信息
+      // 调试：输出前10个活动的日期信息
       console.log('\n🔍 Debug: Sample events from Funcheap:');
-      validEvents.slice(0, 5).forEach((event, i) => {
+      uniqueEvents.slice(0, 10).forEach((event, i) => {
         console.log(`  ${i + 1}. ${event.title}`);
         console.log(`     Date: ${event.startTime}`);
         console.log(`     Location: ${event.location}`);
       });
       console.log('');
 
-      return validEvents;
+      return uniqueEvents;
 
     } catch (error) {
       console.error(`Error scraping Funcheap: ${error.message}`);
