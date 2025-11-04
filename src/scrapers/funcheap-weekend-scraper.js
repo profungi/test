@@ -57,6 +57,17 @@ class FuncheapWeekendScraper extends BaseScraper {
 
       console.log(`Total raw events collected: ${events.length}`);
 
+      // 调试：显示原始活动的日期分布
+      const dateCounts = {};
+      events.forEach(e => {
+        const date = e.startTime ? e.startTime.split('T')[0] : 'unknown';
+        dateCounts[date] = (dateCounts[date] || 0) + 1;
+      });
+      console.log('📅 Date distribution of raw events:');
+      Object.keys(dateCounts).sort().forEach(date => {
+        console.log(`   ${date}: ${dateCounts[date]} events`);
+      });
+
       // URL 去重
       const uniqueEvents = this.deduplicateByUrl(events);
       console.log(`After deduplication: ${uniqueEvents.length} unique events`);
