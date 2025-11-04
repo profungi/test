@@ -210,6 +210,23 @@ class FuncheapWeekendScraper extends BaseScraper {
       const originalUrl = titleLink.attr('href');
       if (!originalUrl) return null;
 
+      // 提取 region 信息（从 HTML class）
+      const articleClass = $article.attr('class') || '';
+      const regionMatch = articleClass.match(/region-([a-z-]+)/);
+      let regionName = null;
+      if (regionMatch) {
+        // 将 region class 转换为可读的区域名称
+        const regionMap = {
+          'san-francisco': 'San Francisco',
+          'south-bay': 'South Bay',
+          'east-bay': 'East Bay',
+          'north-bay': 'North Bay',
+          'peninsula': 'Peninsula',
+          'greater-sacramento': 'Sacramento'
+        };
+        regionName = regionMap[regionMatch[1]] || regionMatch[1];
+      }
+
       // 时间信息 - 从 div.meta data-event-date 属性获取
       let startTime = null;
       let endTime = null;
@@ -259,17 +276,19 @@ class FuncheapWeekendScraper extends BaseScraper {
         }
       }
 
-      // 如果没有找到地点，使用默认值
+      // 如果没有找到地点，使用 region 信息或默认值
       if (!location) {
-        location = 'San Francisco Bay Area';
+        location = regionName || 'San Francisco Bay Area';
       } else {
-        // Funcheap 是 SF 网站，但地点字符串通常只有场地名称
-        // 如果地点中不包含城市名称，添加 "San Francisco" 以便通过地点过滤
-        const hasCity = /san francisco|sf|oakland|berkeley|san jose|palo alto|mountain view|alameda|fremont|hayward|richmond|vallejo|napa|sonoma|marin|san rafael|sausalito|redwood city|san mateo|burlingame|millbrae|daly city|pacifica|sunnyvale|santa clara|cupertino|milpitas|campbell|los gatos|menlo park|atherton/i.test(location.toLowerCase());
+        // 检查地点字符串中是否已包含城市/区域名称
+        const hasCity = /san francisco|sf|oakland|berkeley|san jose|palo alto|mountain view|alameda|fremont|hayward|richmond|vallejo|napa|sonoma|marin|san rafael|sausalito|redwood city|san mateo|burlingame|millbrae|daly city|pacifica|sunnyvale|santa clara|cupertino|milpitas|campbell|los gatos|menlo park|atherton|sacramento|bay area/i.test(location.toLowerCase());
 
-        if (!hasCity) {
-          // 地点只有场地名称，添加 San Francisco
-          location = `${location}, San Francisco`;
+        if (!hasCity && regionName) {
+          // 地点只有场地名称，添加 region 信息
+          location = `${location}, ${regionName}`;
+        } else if (!hasCity) {
+          // 如果没有 region 信息，使用默认值
+          location = `${location}, San Francisco Bay Area`;
         }
       }
 
