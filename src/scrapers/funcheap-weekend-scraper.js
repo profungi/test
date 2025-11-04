@@ -11,10 +11,8 @@ class FuncheapWeekendScraper extends BaseScraper {
     const events = [];
 
     try {
-      // 获取下周的周五、周六、周日
-      const weekendDates = this.getNextWeekendDates(weekRange);
-
-      console.log(`Scraping Funcheap weekend events for dates: ${weekendDates.join(', ')}`);
+      // 记录目标周范围（base-scraper 会自动过滤日期）
+      console.log(`Scraping Funcheap events for target week: ${weekRange.identifier}`);
 
       // 定义要抓取的分类
       const categories = [
@@ -22,8 +20,8 @@ class FuncheapWeekendScraper extends BaseScraper {
         'free-stuff'
       ];
 
-      // 构建所有 URL
-      const urls = this.buildUrls(weekendDates, categories);
+      // 构建所有 URL（不传递 dateFilter，让 base-scraper 做日期过滤）
+      const urls = this.buildUrls(categories);
 
       console.log(`Total URLs to fetch: ${urls.length}`);
 
@@ -32,7 +30,7 @@ class FuncheapWeekendScraper extends BaseScraper {
         try {
           console.log(`Fetching: ${urlInfo.url} (${urlInfo.category})`);
           const $ = await this.fetchPage(urlInfo.url);
-          const pageEvents = await this.parseFuncheapPage($, urlInfo.dateFilter);
+          const pageEvents = await this.parseFuncheapPage($);
 
           console.log(`  Found ${pageEvents.length} events`);
           events.push(...pageEvents);
@@ -43,7 +41,7 @@ class FuncheapWeekendScraper extends BaseScraper {
             console.log(`  Found next page: ${nextPageUrl}`);
             try {
               const $next = await this.fetchPage(nextPageUrl);
-              const nextPageEvents = await this.parseFuncheapPage($next, urlInfo.dateFilter);
+              const nextPageEvents = await this.parseFuncheapPage($next);
               console.log(`  Found ${nextPageEvents.length} events on next page`);
               events.push(...nextPageEvents);
             } catch (error) {
@@ -101,47 +99,22 @@ class FuncheapWeekendScraper extends BaseScraper {
     return events;
   }
 
-  /**
-   * 获取下周的周五、周六、周日
-   * 当前周定义为 周一-周日，weekRange.start 是下周一
-   * 所以下周的周五 = weekRange.start + 4天
-   * 下周的周六 = weekRange.start + 5天
-   * 下周的周日 = weekRange.start + 6天
-   */
-  getNextWeekendDates(weekRange) {
-    const nextMonday = new Date(weekRange.start);
-
-    const friday = addDays(nextMonday, 4);
-    const saturday = addDays(nextMonday, 5);
-    const sunday = addDays(nextMonday, 6);
-
-    const dates = [
-      format(friday, 'yyyy-MM-dd'),
-      format(saturday, 'yyyy-MM-dd'),
-      format(sunday, 'yyyy-MM-dd')
-    ];
-
-    console.log(`Weekend dates: ${dates.join(', ')}`);
-
-    return dates;
-  }
 
   /**
    * 构建所有要抓取的 URL
-   * Funcheap 的日期 URL 过滤可能不稳定，所以我们抓取基础分类页面
-   * 然后在代码中根据事件的实际时间过滤周末事件
+   * 抓取基础分类页面，获取所有活动
+   * 日期过滤由 base-scraper 的 isValidEventTime() 完成
    */
-  buildUrls(weekendDates, categories) {
+  buildUrls(categories) {
     const urls = [];
 
-    // 只构建基础分类 URL，不添加日期过滤
+    // 只构建基础分类 URL
     for (const category of categories) {
       const url = `https://sf.funcheap.com/category/event/event-types/${category}/`;
 
       urls.push({
         url,
-        category,
-        dateFilter: weekendDates  // 在解析时使用这些日期进行过滤
+        category
       });
     }
 
@@ -151,8 +124,9 @@ class FuncheapWeekendScraper extends BaseScraper {
   /**
    * 解析 Funcheap 页面
    * Funcheap 使用 div.tanbox 作为事件容器（有 id="post-{ID}" 属性）
+   * 日期过滤由 base-scraper 完成，这里只负责解析所有活动
    */
-  async parseFuncheapPage($, dateFilter = null) {
+  async parseFuncheapPage($) {
     const events = [];
 
     // 使用 CSS 选择器找到所有事件
@@ -177,15 +151,11 @@ class FuncheapWeekendScraper extends BaseScraper {
       return events;
     }
 
-    // 解析每个事件
+    // 解析每个事件（不做日期过滤，由 base-scraper 负责）
     eventElements.each((i, element) => {
       try {
         const event = this.parseFuncheapEvent($, $(element));
         if (event) {
-          // 如果提供了 dateFilter，则只保留符合日期的事件
-          if (dateFilter && !this.isEventOnWeekend(event.startTime, dateFilter)) {
-            return; // 跳过不符合日期的事件
-          }
           events.push(event);
         }
       } catch (error) {
@@ -193,29 +163,10 @@ class FuncheapWeekendScraper extends BaseScraper {
       }
     });
 
-    console.log(`  After date filtering: ${events.length} events`);
+    console.log(`  Parsed ${events.length} events from page`);
     return events;
   }
 
-  /**
-   * 检查事件是否在指定的周末日期
-   */
-  isEventOnWeekend(eventStartTime, weekendDates) {
-    if (!eventStartTime || !weekendDates || weekendDates.length === 0) {
-      return true; // 如果无法判断，保留事件
-    }
-
-    try {
-      // eventStartTime 格式: "2025-10-24T10:00:00" 或类似
-      const eventDateStr = eventStartTime.split('T')[0]; // 提取 YYYY-MM-DD 部分
-
-      // 检查事件日期是否在周末日期列表中
-      return weekendDates.includes(eventDateStr);
-    } catch (error) {
-      console.warn(`Error checking event date: ${error.message}`);
-      return true; // 出错时保留事件
-    }
-  }
 
   /**
    * 获取下一页 URL
@@ -407,31 +358,6 @@ class FuncheapWeekendScraper extends BaseScraper {
     }
   }
 
-  /**
-   * 从文本中解析时间
-   * 例如: "Saturday, October 25 – 5:00 pm" 或 "Saturday, October 25 – 5:00 pm - Ends at 9:00 pm"
-   */
-  parseTimeText(timeText) {
-    // 这是一个简化的解析，可能需要更复杂的逻辑
-    // 对于 Funcheap，时间通常在页面的 meta 属性中，这是备选方案
-
-    try {
-      // 查找时间模式 HH:MM (am|pm)
-      const timePattern = /(\d{1,2}):(\d{2})\s*(am|pm|AM|PM)/i;
-      const match = timeText.match(timePattern);
-
-      if (match) {
-        // 时间找到了，但我们需要日期
-        // 由于我们已经知道是特定的日期（从URL），这里返回 null，
-        // 让 normalizeEvent 使用 meta 属性中的日期
-        return null;
-      }
-    } catch (error) {
-      console.warn('Error parsing time text:', error.message);
-    }
-
-    return null;
-  }
 
   /**
    * 从详情页获取完整事件信息
