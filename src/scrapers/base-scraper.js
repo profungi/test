@@ -497,8 +497,12 @@ class BaseScraper {
 
       for (const rawEvent of rawEvents) {
         const normalized = this.normalizeEvent(rawEvent, weekRange);
-        if (normalized && this.isRelevantLocation(normalized.location)) {
-          normalizedEvents.push(normalized);
+        if (normalized) {
+          if (this.isRelevantLocation(normalized.location)) {
+            normalizedEvents.push(normalized);
+          } else {
+            console.log(`  📍 [${this.sourceName}] Event filtered by location: "${normalized.title}" (location: "${normalized.location}")`);
+          }
         }
       }
 
