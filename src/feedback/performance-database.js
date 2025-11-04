@@ -69,6 +69,63 @@ class PerformanceDatabase {
     }
 
     console.log('✅ 反馈系统表结构初始化完成');
+
+    // 运行迁移到 v1.5
+    await this.migrateToV15();
+  }
+
+  /**
+   * 迁移到 v1.5 - 添加多review合并支持
+   */
+  async migrateToV15() {
+    try {
+      // 检查是否已经迁移过
+      const version = await this.get(
+        "SELECT * FROM schema_version WHERE version = '1.5.0'"
+      );
+
+      if (version) {
+        // console.log('✅ Schema v1.5 已应用');
+        return;
+      }
+
+      console.log('🔄 开始迁移到 Schema v1.5...');
+
+      const schemaPath = path.join(__dirname, 'schema-v1.5.sql');
+      const schemaSql = fs.readFileSync(schemaPath, 'utf8');
+
+      // 移除注释行
+      const cleanedSql = schemaSql
+        .split('\n')
+        .filter(line => {
+          const trimmed = line.trim();
+          return trimmed.length > 0 && !trimmed.startsWith('--');
+        })
+        .join('\n');
+
+      // 分割SQL语句并逐个执行
+      const statements = cleanedSql
+        .split(';')
+        .map(s => s.trim())
+        .filter(s => s.length > 0);
+
+      for (const statement of statements) {
+        try {
+          await this.run(statement);
+        } catch (err) {
+          // 忽略 "already exists" 或 "duplicate column" 错误
+          if (!err.message.includes('already exists') &&
+              !err.message.includes('duplicate column')) {
+            throw err;
+          }
+        }
+      }
+
+      console.log('✅ Schema v1.5 迁移完成');
+    } catch (err) {
+      console.warn('⚠️  Schema v1.5 迁移警告:', err.message);
+      // 不抛出错误，允许继续使用
+    }
   }
 
   /**
@@ -136,15 +193,19 @@ class PerformanceDatabase {
       output_file_path,
       cover_image_path,
       xiaohongshu_url = null,
-      xiaohongshu_post_id = null
+      xiaohongshu_post_id = null,
+      source_reviews = null,  // v1.5: 新增字段
+      is_merged_post = 0      // v1.5: 新增字段
     } = postData;
 
     const sql = `
       INSERT INTO posts (
         post_id, published_at, week_identifier, platform, total_events,
         review_file_path, output_file_path, cover_image_path,
-        xiaohongshu_url, xiaohongshu_post_id, created_at
-      ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+        xiaohongshu_url, xiaohongshu_post_id,
+        source_reviews, is_merged_post,
+        created_at
+      ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
     `;
 
     const params = [
@@ -158,6 +219,8 @@ class PerformanceDatabase {
       cover_image_path,
       xiaohongshu_url,
       xiaohongshu_post_id,
+      source_reviews ? JSON.stringify(source_reviews) : null,
+      is_merged_post ? 1 : 0,
       new Date().toISOString()
     ];
 
@@ -257,7 +320,9 @@ class PerformanceDatabase {
       is_free = 0,
       is_outdoor = 0,
       is_chinese_relevant = 0,
-      engagement_score = 0
+      engagement_score = 0,
+      source_review = null,   // v1.5: 新增字段
+      source_website = null   // v1.5: 新增字段
     } = eventData;
 
     const sql = `
@@ -265,8 +330,9 @@ class PerformanceDatabase {
         post_id, event_id, event_title, event_type, event_url,
         location, location_category, price, price_category, start_time,
         is_weekend, is_free, is_outdoor, is_chinese_relevant,
-        engagement_score
-      ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+        engagement_score,
+        source_review, source_website
+      ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
     `;
 
     const params = [
@@ -284,7 +350,9 @@ class PerformanceDatabase {
       is_free ? 1 : 0,
       is_outdoor ? 1 : 0,
       is_chinese_relevant ? 1 : 0,
-      engagement_score
+      engagement_score,
+      source_review,
+      source_website
     ];
 
     const result = await this.run(sql, params);

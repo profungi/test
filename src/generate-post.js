@@ -10,6 +10,7 @@ const ContentTranslator = require('./formatters/translator');
 const PostGenerator = require('./formatters/post-generator');
 const ManualReviewManager = require('./utils/manual-review');
 const PerformanceDatabase = require('./feedback/performance-database');
+const ReviewMerger = require('./utils/review-merger');
 
 class PostGenerationOrchestrator {
   constructor() {
@@ -18,26 +19,71 @@ class PostGenerationOrchestrator {
     this.postGenerator = new PostGenerator();
     this.reviewManager = new ManualReviewManager();
     this.performanceDB = new PerformanceDatabase();
+    this.reviewMerger = new ReviewMerger();
   }
 
   async run(reviewFilePath) {
     console.log('📝 开始生成小红书发布内容...\n');
-    
+
     try {
-      // 1. 读取审核文件
-      const { reviewData, selectedEvents, weekRange } = await this.reviewManager.readReviewFile(reviewFilePath);
-      
-      // 2. 验证审核文件
-      this.reviewManager.validateReviewFile(reviewData);
-      
-      if (selectedEvents.length === 0) {
-        throw new Error('没有选中任何活动，请在审核文件中将要发布的活动的 "selected" 设为 true');
+      let selectedEvents;
+      let weekRange;
+      let sourceReviews = null;  // v1.5: 多review来源信息
+      let isMergedPost = false;   // v1.5: 是否为合并帖子
+
+      // v1.5: 如果没有提供reviewFilePath，启用交互式选择模式
+      if (!reviewFilePath) {
+        console.log('🔍 扫描output目录的review文件...\n');
+
+        // 1. 扫描review文件
+        const reviewFiles = this.reviewMerger.scanReviewFiles();
+
+        // 2. 按target_week分组
+        const groups = this.reviewMerger.groupByTargetWeek(reviewFiles);
+
+        // 3. 交互式选择
+        const selectedGroup = await this.reviewMerger.selectReviewGroup(groups);
+
+        // 4. 合并review文件
+        const mergeResult = this.reviewMerger.mergeReviewFiles(selectedGroup.files);
+
+        // 5. 去重
+        const dedupResult = this.reviewMerger.deduplicateEvents(mergeResult.allEvents);
+
+        // 6. 显示结果
+        this.reviewMerger.displayMergeResults(mergeResult, dedupResult);
+
+        // 使用合并后的活动
+        selectedEvents = dedupResult.uniqueEvents;
+        weekRange = {
+          identifier: selectedGroup.target_week,
+          readable: selectedGroup.target_week_readable
+        };
+        sourceReviews = mergeResult.sourceReviews;
+        isMergedPost = selectedGroup.files.length > 1;
+
+        console.log(`\n✅ 准备生成帖子，共 ${selectedEvents.length} 个活动\n`);
+      } else {
+        // 传统模式：读取单个review文件
+        const { reviewData, selectedEvents: events, weekRange: range } =
+          await this.reviewManager.readReviewFile(reviewFilePath);
+
+        this.reviewManager.validateReviewFile(reviewData);
+
+        if (events.length === 0) {
+          throw new Error('没有选中任何活动，请在审核文件中将要发布的活动的 "selected" 设为 true');
+        }
+
+        selectedEvents = events;
+        weekRange = range;
+
+        console.log(`✅ 读取审核文件成功，共选择了 ${selectedEvents.length} 个活动\n`);
       }
       
-      console.log(`✅ 读取审核文件成功，共选择了 ${selectedEvents.length} 个活动\n`);
-      
-      // 3. 生成审核总结
-      const reviewSummary = this.reviewManager.generateReviewSummary(reviewData, selectedEvents);
+      // 3. 生成审核总结 (如果有reviewData)
+      const reviewSummary = reviewFilePath
+        ? this.reviewManager.generateReviewSummary(reviewData, selectedEvents)
+        : { totalReviewed: selectedEvents.length, selectedCount: selectedEvents.length };
       
       // 4. 为选中的活动生成短链接
       console.log('🔗 开始生成短链接...');
@@ -69,12 +115,17 @@ class PostGenerationOrchestrator {
           translatedEvents,
           weekRange,
           reviewFilePath,
-          postResult
+          postResult,
+          sourceReviews,   // v1.5: 传递来源信息
+          isMergedPost     // v1.5: 传递是否为合并帖子
         );
 
         console.log('\n📊 发布记录已创建:');
         console.log(`   Post ID: ${postId}`);
         console.log(`   包含 ${translatedEvents.length} 个活动`);
+        if (isMergedPost) {
+          console.log(`   来源: ${sourceReviews.length} 个review文件 (合并帖子)`);
+        }
       } catch (dbError) {
         console.warn('⚠️  保存发布记录失败:', dbError.message);
         console.warn('   这不影响内容生成，但无法记录反馈数据');
@@ -103,8 +154,9 @@ class PostGenerationOrchestrator {
 
   /**
    * 保存发布记录到性能数据库
+   * v1.5: 支持多review来源记录
    */
-  async savePublicationRecord(events, weekRange, reviewFilePath, postResult) {
+  async savePublicationRecord(events, weekRange, reviewFilePath, postResult, sourceReviews = null, isMergedPost = false) {
     await this.performanceDB.connect();
 
     // 确保反馈系统表已初始化
@@ -123,7 +175,9 @@ class PostGenerationOrchestrator {
       total_events: events.length,
       review_file_path: reviewFilePath,
       output_file_path: postResult.filepath,
-      cover_image_path: postResult.coverImage ? postResult.coverImage.filepath : null
+      cover_image_path: postResult.coverImage ? postResult.coverImage.filepath : null,
+      source_reviews: sourceReviews,      // v1.5: 新增字段
+      is_merged_post: isMergedPost        // v1.5: 新增字段
     });
 
     // 2. 为每个活动创建表现记录
@@ -143,7 +197,9 @@ class PostGenerationOrchestrator {
         is_free: this.isFree(event.price),
         is_outdoor: event.tags?.includes('outdoor') || false,
         is_chinese_relevant: event.chinese_relevant || false,
-        engagement_score: 0
+        engagement_score: 0,
+        source_review: event._source_review || null,       // v1.5: 新增字段
+        source_website: event._source_website || event.source || null  // v1.5: 新增字段
       });
     }
 
@@ -317,15 +373,13 @@ async function main() {
     }
   }
   
-  if (args.length === 0) {
-    console.error('❌ 请提供审核文件路径');
-    console.error('用法: npm run generate-post <审核文件路径>');
-    console.error('运行 npm run generate-post -- --help 查看详细帮助');
-    process.exit(1);
+  // v1.5: 如果没有提供参数，启用交互式选择模式
+  const reviewFilePath = args.length > 0 ? args[0] : null;
+
+  if (reviewFilePath === null) {
+    console.log('💡 未指定review文件，启用交互式选择模式\n');
   }
-  
-  const reviewFilePath = args[0];
-  
+
   const orchestrator = new PostGenerationOrchestrator();
   await orchestrator.run(reviewFilePath);
 }
