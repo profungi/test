@@ -129,6 +129,7 @@ class BaseScraper {
 
     // 验证时间范围
     if (!this.isValidEventTime(normalized.startTime, weekRange)) {
+      console.log(`  ⏰ [${this.sourceName}] Event filtered by date: "${normalized.title}" (${normalized.startTime} not in ${weekRange.identifier})`);
       return null;
     }
 

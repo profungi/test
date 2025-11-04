@@ -90,6 +90,16 @@ class FuncheapWeekendScraper extends BaseScraper {
       }
 
       console.log(`After detail page validation: ${validEvents.length} valid events (discarded ${uniqueEvents.length - validEvents.length})`);
+
+      // 调试：输出前5个活动的日期信息
+      console.log('\n🔍 Debug: Sample events from Funcheap:');
+      validEvents.slice(0, 5).forEach((event, i) => {
+        console.log(`  ${i + 1}. ${event.title}`);
+        console.log(`     Date: ${event.startTime}`);
+        console.log(`     Location: ${event.location}`);
+      });
+      console.log('');
+
       return validEvents;
 
     } catch (error) {
