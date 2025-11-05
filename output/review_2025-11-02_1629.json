@@ -1,0 +1,153 @@
+{
+  "review_id": "review_2025-11-02_1629_5w5",
+  "generated_at": "2025-11-02T16:29:35.748Z",
+  "scrape_date": "2025-11-02",
+  "target_week": "2025-11-03_to_2025-11-09",
+  "target_week_readable": "11/03 - 11/09",
+  "scraping_report": {
+    "total_scraped": 65,
+    "after_deduplication": 5,
+    "after_classification": 5,
+    "classification_report": {
+      "totalEvents": 5,
+      "eventTypes": {
+        "free": 4,
+        "other": 1
+      },
+      "priorityLevels": {
+        "3": 1,
+        "9": 4
+      },
+      "chineseRelevant": 0,
+      "topPriorityEvents": 4
+    }
+  },
+  "instructions": {
+    "how_to_review": "将你想要发布的活动的 'selected' 字段改为 true",
+    "next_step": "保存文件后运行: npm run generate-post [此文件路径]",
+    "fields_explanation": {
+      "title": "活动标题",
+      "time_display": "显示用的时间格式",
+      "location": "活动地点",
+      "price": "票价信息",
+      "event_type": "AI识别的活动类型",
+      "priority": "优先级分数 (越高越重要)",
+      "chinese_relevant": "是否与中文社区相关",
+      "original_url": "原始活动链接"
+    }
+  },
+  "stats": {
+    "total_candidates": 5,
+    "by_type": {
+      "free": 4,
+      "other": 1
+    },
+    "by_priority": {
+      "3": 1,
+      "9": 4
+    },
+    "chinese_relevant": 0
+  },
+  "events": [
+    {
+      "id": 1,
+      "selected": false,
+      "title": "NAS with SymphonyBill Graham Civic Auditorium",
+      "time_display": "Wednesday 11/05 8:00 PM",
+      "location": "99 Grove Street, San Francisco, CA",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://ticketmaster.evyy.net/c/253558/264167/4272?u=https%3A%2F%2Fwww.ticketmaster.com%2Fnas-tickets%2Fartist%2F766597",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "sfstation",
+      "scraped_at": "2025-11-02T16:28:54.036Z"
+    },
+    {
+      "id": 2,
+      "selected": false,
+      "title": "Loteria Game Night (Mexican Bingo) at TacoliciousTacolicious - Mission",
+      "time_display": "Thursday 11/06 6:00 PM",
+      "location": "741 Valencia Street, San Francisco, CA",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/game-night-at-tacolicious-valencia-tickets-1645436678399",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "sfstation",
+      "scraped_at": "2025-11-02T16:28:54.037Z"
+    },
+    {
+      "id": 3,
+      "selected": false,
+      "title": "Shane GillisChase Center",
+      "time_display": "Friday 11/07 8:00 PM",
+      "location": "1 Warriors Way, San Francisco, CA",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://ticketmaster.evyy.net/c/253558/264167/4272?u=https%3A%2F%2Fwww.ticketmaster.com%2Fshane-gillis-tickets%2Fartist%2F2300002",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "sfstation",
+      "scraped_at": "2025-11-02T16:28:54.037Z"
+    },
+    {
+      "id": 4,
+      "selected": false,
+      "title": "Step Into Stamps: A Discovery Event For Future CreativesDogpatch Studios",
+      "time_display": "Saturday 11/08 4:30 PM",
+      "location": "991 Tennessee Street, San Francisco, CA",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://umforms.tfaforms.net/219252",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "sfstation",
+      "scraped_at": "2025-11-02T16:28:54.037Z"
+    },
+    {
+      "id": 5,
+      "selected": false,
+      "title": "The Oh Hellos - Yours TrulyThe Fillmore",
+      "time_display": "Thursday 11/06 7:30 PM",
+      "location": "1805 Geary Blvd, San Francisco, CA",
+      "price": "$22.50",
+      "event_type": "other",
+      "priority": 3,
+      "chinese_relevant": false,
+      "original_url": "https://ticketmaster.evyy.net/c/253558/264167/4272?u=https%3A%2F%2Fwww.ticketmaster.com%2Fthe-oh-hellos-tickets%2Fartist%2F1876047",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "sfstation",
+      "scraped_at": "2025-11-02T16:28:54.037Z"
+    }
+  ]
+}

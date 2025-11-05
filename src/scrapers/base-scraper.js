@@ -89,7 +89,20 @@ class BaseScraper {
       const rangeStartOnly = new Date(weekRange.start.getFullYear(), weekRange.start.getMonth(), weekRange.start.getDate());
       const rangeEndOnly = new Date(weekRange.end.getFullYear(), weekRange.end.getMonth(), weekRange.end.getDate());
 
-      return eventDateOnly >= rangeStartOnly && eventDateOnly <= rangeEndOnly;
+      const isValid = eventDateOnly >= rangeStartOnly && eventDateOnly <= rangeEndOnly;
+
+      // 调试：对于 11-13 到 11-16 的活动，输出详细信息
+      if (eventTime.startsWith('2025-11-1')) {
+        console.log(`\n🔍 Date validation debug for: ${eventTime}`);
+        console.log(`   Event date object: ${eventDate.toISOString()}`);
+        console.log(`   Event date only: ${eventDateOnly.toISOString().split('T')[0]}`);
+        console.log(`   Range start: ${rangeStartOnly.toISOString().split('T')[0]}`);
+        console.log(`   Range end: ${rangeEndOnly.toISOString().split('T')[0]}`);
+        console.log(`   Is valid: ${isValid}`);
+        console.log(`   Comparison: ${eventDateOnly.getTime()} >= ${rangeStartOnly.getTime()} && ${eventDateOnly.getTime()} <= ${rangeEndOnly.getTime()}`);
+      }
+
+      return isValid;
     } catch (error) {
       console.warn(`Error validating event time: ${eventTime} - ${error.message}`);
       return false;
@@ -129,6 +142,7 @@ class BaseScraper {
 
     // 验证时间范围
     if (!this.isValidEventTime(normalized.startTime, weekRange)) {
+      console.log(`  ⏰ [${this.sourceName}] Event filtered by date: "${normalized.title}" (${normalized.startTime} not in ${weekRange.identifier})`);
       return null;
     }
 
@@ -483,8 +497,12 @@ class BaseScraper {
 
       for (const rawEvent of rawEvents) {
         const normalized = this.normalizeEvent(rawEvent, weekRange);
-        if (normalized && this.isRelevantLocation(normalized.location)) {
-          normalizedEvents.push(normalized);
+        if (normalized) {
+          if (this.isRelevantLocation(normalized.location)) {
+            normalizedEvents.push(normalized);
+          } else {
+            console.log(`  📍 [${this.sourceName}] Event filtered by location: "${normalized.title}" (location: "${normalized.location}")`);
+          }
         }
       }
 
