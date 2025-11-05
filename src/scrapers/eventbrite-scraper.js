@@ -52,7 +52,62 @@ class EventbriteScraper extends BaseScraper {
         }
       }
 
-      // 3. 抓取特定关键词的活动（festival, fair, market等）
+      // 3. 【新增】第二层：类型定向抓取（food-and-drink, festivals-fairs, holiday）
+      const categorySearches = this.sourceConfig.categorySearches || [];
+      if (categorySearches.length > 0) {
+        console.log(`\n  🎯 Layer 2: Category-targeted scraping (${categorySearches.length} categories)...`);
+
+        // 只对小城市进行类型搜索（maxEvents <= 5 的城市）
+        // 大城市（SF, San Jose, Palo Alto）第一层已经抓了足够多，跳过
+        const smallCities = additionalCities.filter(city => city.maxEvents <= 5);
+
+        console.log(`  📍 Targeting small cities only (${smallCities.length} cities): ${smallCities.map(c => c.name).join(', ')}`);
+        console.log(`  ⏭️  Skipping large cities (already covered in Layer 1)\n`);
+
+        const citiesToSearch = smallCities.map(city => ({
+          name: city.name,
+          baseUrl: city.url.replace('/events/', '').replace(/\/$/, '')
+        }));
+
+        for (const city of citiesToSearch) {
+          if (events.length >= 150) break; // 总数限制
+
+          for (const category of categorySearches) {
+            if (!category.enabled) continue;
+
+            try {
+              // 构建类型搜索URL: /d/ca--saratoga/food-and-drink--events/?start_date_keyword=next_week
+              const categoryUrl = `${city.baseUrl}/${category.name}--events/?start_date_keyword=next_week`;
+              console.log(`    ${city.name} > ${category.displayName} (max ${category.maxPerCity})...`);
+
+              const categoryEvents = await this.scrapeEventsFromUrl(
+                categoryUrl,
+                weekRange,
+                seenUrls,
+                category.maxPerCity
+              );
+
+              if (categoryEvents.length > 0) {
+                console.log(`      ✅ Found ${categoryEvents.length} events`);
+                // 标记来源
+                categoryEvents.forEach(e => {
+                  e.scrapeSource = `category:${category.name}`;
+                  e.scrapeCity = city.name;
+                });
+                events.push(...categoryEvents);
+              } else {
+                console.log(`      (no events found)`);
+              }
+            } catch (error) {
+              console.warn(`      ❌ Failed: ${error.message}`);
+            }
+          }
+        }
+
+        console.log(`  🎯 Layer 2 complete. Total events now: ${events.length}\n`);
+      }
+
+      // 4. 抓取特定关键词的活动（festival, fair, market等）
       // 优化：只在没有足够活动时才进行关键词搜索，节省时间
       const additionalSearches = this.sourceConfig.additionalSearches || [];
       const keywordSearchThreshold = 50; // 如果已有超过50个事件，跳过关键词搜索
@@ -62,7 +117,7 @@ class EventbriteScraper extends BaseScraper {
         console.log(`  Scraping additional searches: ${additionalSearches.join(', ')}`);
 
         for (const keyword of additionalSearches) {
-          if (events.length >= 100) break; // 总数限制增加到100
+          if (events.length >= 150) break; // 总数限制增加到150
 
           try {
             const searchUrl = `${this.sourceConfig.baseUrl}?q=${encodeURIComponent(keyword)}&start_date_keyword=next_week`;

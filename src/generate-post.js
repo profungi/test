@@ -44,17 +44,23 @@ class PostGenerationOrchestrator {
         // 3. 交互式选择
         const selectedGroup = await this.reviewMerger.selectReviewGroup(groups);
 
-        // 4. 合并review文件
+        // 4. 合并review文件（包括未选择的活动）
         const mergeResult = this.reviewMerger.mergeReviewFiles(selectedGroup.files);
 
-        // 5. 去重
+        // 5. 去重已选择的活动
         const dedupResult = this.reviewMerger.deduplicateEvents(mergeResult.allEvents);
 
         // 6. 显示结果
         this.reviewMerger.displayMergeResults(mergeResult, dedupResult);
 
+        // 7. 最终确认 - 允许用户微调选择（传入未选择的备选活动）
+        const finalEvents = await this.reviewMerger.finalSelectionReview(
+          dedupResult.uniqueEvents,
+          mergeResult.unselectedEvents  // 传递备选活动列表
+        );
+
         // 使用合并后的活动
-        selectedEvents = dedupResult.uniqueEvents;
+        selectedEvents = finalEvents;
         weekRange = {
           identifier: selectedGroup.target_week,
           readable: selectedGroup.target_week_readable

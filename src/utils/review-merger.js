@@ -151,26 +151,36 @@ class ReviewMerger {
    * @returns {Object} 合并后的结果
    */
   mergeReviewFiles(reviewFiles) {
-    const allEvents = [];
+    const selectedEvents = [];
+    const unselectedEvents = [];
     const sourceReviews = [];
+    let totalCandidates = 0;
 
     for (const file of reviewFiles) {
       try {
         const content = JSON.parse(fs.readFileSync(file.filepath, 'utf8'));
         const events = content.events || [];
+        totalCandidates += events.length;
 
-        // 为每个活动添加来源信息
-        events.forEach(event => {
+        // 分离已选择和未选择的活动
+        for (const event of events) {
+          // 为每个活动添加来源信息
           event._source_review = file.filename;
           event._source_website = event.source || 'unknown';
-        });
 
-        allEvents.push(...events);
+          if (event.selected === true) {
+            selectedEvents.push(event);
+          } else {
+            unselectedEvents.push(event);
+          }
+        }
 
         // 记录来源review信息
         sourceReviews.push({
           file: file.filename,
-          event_count: events.length,
+          total_candidates: events.length,
+          selected_count: events.filter(e => e.selected === true).length,
+          event_count: events.filter(e => e.selected === true).length,  // 保留向后兼容
           scraped_at: file.scraped_at
         });
       } catch (err) {
@@ -178,10 +188,24 @@ class ReviewMerger {
       }
     }
 
+    // 如果没有选中任何活动，抛出错误
+    if (selectedEvents.length === 0) {
+      throw new Error(
+        `没有找到任何选中的活动！\n` +
+        `   总候选活动: ${totalCandidates} 个\n` +
+        `   请在 review 文件中将要发布的活动的 "selected" 改为 true`
+      );
+    }
+
+    // 按优先级排序未选择的活动
+    unselectedEvents.sort((a, b) => (b.priority || 0) - (a.priority || 0));
+
     return {
-      allEvents,
+      allEvents: selectedEvents,
+      unselectedEvents,
       sourceReviews,
-      totalBeforeDedup: allEvents.length
+      totalBeforeDedup: selectedEvents.length,
+      totalCandidates
     };
   }
 
@@ -287,12 +311,21 @@ class ReviewMerger {
     console.log('📊 合并和去重结果');
     console.log('━'.repeat(70));
     console.log(`📁 来源review文件数: ${mergeResult.sourceReviews.length}`);
-    console.log(`📝 合并前活动总数: ${mergeResult.totalBeforeDedup}`);
-    console.log(`🔄 去重后活动总数: ${dedupResult.totalAfterDedup}`);
-    console.log(`❌ 移除重复活动数: ${dedupResult.removedCount}`);
+
+    // 显示每个文件的选择统计
+    mergeResult.sourceReviews.forEach(review => {
+      const selectionRate = review.total_candidates > 0
+        ? ((review.selected_count / review.total_candidates) * 100).toFixed(1)
+        : '0.0';
+      console.log(`   - ${review.file}: ${review.selected_count}/${review.total_candidates} 个活动 (${selectionRate}%)`);
+    });
+
+    console.log(`\n📝 选中活动总数: ${mergeResult.totalBeforeDedup}`);
+    console.log(`🔄 去重后活动数: ${dedupResult.totalAfterDedup}`);
+    console.log(`❌ 移除重复数: ${dedupResult.removedCount}`);
 
     if (dedupResult.removedCount > 0) {
-      console.log('\n移除的重复活动:');
+      console.log('\n🔍 移除的重复活动:');
       dedupResult.duplicates.slice(0, 5).forEach((dup, i) => {
         console.log(`  ${i + 1}. ${dup.duplicate}`);
         console.log(`     (与 "${dup.original}" 重复)`);
@@ -303,6 +336,270 @@ class ReviewMerger {
     }
 
     console.log('━'.repeat(70));
+  }
+
+  /**
+   * 显示最终活动列表供用户确认（支持移除和添加备选）
+   * @param {Array} selectedEvents - 已选择的活动列表
+   * @param {Array} candidateEvents - 备选活动列表
+   * @returns {Promise<Array>} 用户确认后的活动列表
+   */
+  async finalSelectionReview(selectedEvents, candidateEvents = []) {
+    let currentEvents = [...selectedEvents];
+
+    while (true) {
+      // 第一步：显示已选择的活动
+      console.log('\n' + '━'.repeat(70));
+      console.log(`📋 已选择的活动 (${currentEvents.length} 个)`);
+      console.log('━'.repeat(70));
+
+      currentEvents.forEach((event, index) => {
+        const num = String(index + 1).padStart(2, ' ');
+        const type = event.event_type || 'unknown';
+        const title = event.title || 'Untitled';
+        const location = this.truncateString(event.location || 'Unknown', 40);
+        const price = event.price || 'Free';
+        const time = this.extractTimeDisplay(event.time_display || event.start_time || '');
+
+        console.log(`\n${num}. ✓ [${type}] ${title}`);
+        console.log(`    📍 ${location} | 💰 ${price} | 📅 ${time}`);
+      });
+
+      console.log('\n' + '━'.repeat(70));
+      console.log('💡 操作:');
+      console.log('  • 继续: Enter  • 移除: 输入序号 (如: 2)  • 取消: n');
+      console.log('━'.repeat(70));
+
+      const rl1 = readline.createInterface({
+        input: process.stdin,
+        output: process.stdout
+      });
+
+      const answer1 = await new Promise(resolve => {
+        rl1.question('\n请选择: ', resolve);
+      });
+      rl1.close();
+
+      const input = answer1.trim().toLowerCase();
+
+      // 取消操作
+      if (input === 'n' || input === 'no') {
+        throw new Error('用户取消操作');
+      }
+
+      // 直接继续
+      if (input === '' || input === 'y' || input === 'yes') {
+        console.log(`\n✅ 确认生成，共 ${currentEvents.length} 个活动`);
+        return currentEvents;
+      }
+
+      // 解析要移除的序号
+      const toRemove = this.parseRemovalInput(input, currentEvents.length);
+      if (toRemove.length === 0) {
+        console.log('\n⚠️  无效的输入');
+        continue;
+      }
+
+      // 移除指定的活动
+      const removedEvents = [];
+      toRemove.forEach(num => {
+        removedEvents.push(currentEvents[num - 1]);
+      });
+
+      currentEvents = currentEvents.filter((event, index) => !toRemove.includes(index + 1));
+
+      console.log(`\n✅ 已移除 ${toRemove.length} 个活动:`);
+      removedEvents.forEach(event => {
+        console.log(`  - ${event.title}`);
+      });
+
+      // 第二步：询问是否添加备选活动
+      if (candidateEvents.length > 0) {
+        const added = await this.showCandidatesAndAdd(currentEvents, candidateEvents);
+        if (added) {
+          currentEvents.push(...added);
+        }
+      } else {
+        console.log('\n💡 没有可用的备选活动');
+        const continueAnyway = await this.askYesNo('是否继续生成? [Y/n]');
+        if (!continueAnyway) {
+          throw new Error('用户取消操作');
+        }
+        return currentEvents;
+      }
+    }
+  }
+
+  /**
+   * 显示备选活动并询问是否添加
+   * @param {Array} currentEvents - 当前已选活动
+   * @param {Array} candidateEvents - 备选活动列表
+   * @returns {Promise<Array|null>} 添加的活动数组，或 null
+   */
+  async showCandidatesAndAdd(currentEvents, candidateEvents) {
+    console.log('\n' + '━'.repeat(70));
+    console.log(`📦 可添加的备选活动 (${candidateEvents.length} 个，按优先级排序)`);
+    console.log('━'.repeat(70));
+
+    // 只显示前10个备选
+    const displayCount = Math.min(10, candidateEvents.length);
+    candidateEvents.slice(0, displayCount).forEach((event, index) => {
+      const num = String(index + 1).padStart(2, ' ');
+      const type = event.event_type || 'unknown';
+      const title = event.title || 'Untitled';
+      const location = this.truncateString(event.location || 'Unknown', 35);
+      const price = event.price || 'Free';
+      const time = this.extractTimeDisplay(event.time_display || event.start_time || '');
+      const priority = event.priority ? `⭐ ${event.priority.toFixed(1)}` : '';
+
+      console.log(`\n${num}. [${type}] ${title}`);
+      console.log(`    📍 ${location} | 💰 ${price} | 📅 ${time} ${priority}`);
+    });
+
+    if (candidateEvents.length > displayCount) {
+      console.log(`\n... 还有 ${candidateEvents.length - displayCount} 个备选活动未显示`);
+    }
+
+    console.log('\n' + '━'.repeat(70));
+
+    const rl = readline.createInterface({
+      input: process.stdin,
+      output: process.stdout
+    });
+
+    const answer = await new Promise(resolve => {
+      rl.question('\n添加备选活动? [序号/n/scrape]: ', resolve);
+    });
+    rl.close();
+
+    const input = answer.trim().toLowerCase();
+
+    // 取消添加
+    if (input === 'n' || input === 'no' || input === '') {
+      console.log(`\n📊 当前活动数: ${currentEvents.length} 个`);
+      return null;
+    }
+
+    // 显示抓取提示
+    if (input === 'scrape') {
+      this.showScrapeHint();
+      const continueAnyway = await this.askYesNo('\n是否继续当前流程（不添加新活动）? [y/N]', false);
+      if (!continueAnyway) {
+        throw new Error('用户选择重新抓取');
+      }
+      return null;
+    }
+
+    // 解析要添加的序号
+    const toAdd = this.parseRemovalInput(input, candidateEvents.length);
+    if (toAdd.length === 0) {
+      console.log('\n⚠️  无效的输入');
+      return null;
+    }
+
+    // 获取要添加的活动
+    const addedEvents = toAdd.map(num => candidateEvents[num - 1]);
+
+    console.log(`\n✅ 已添加 ${addedEvents.length} 个活动:`);
+    addedEvents.forEach(event => {
+      console.log(`  + ${event.title}`);
+    });
+    console.log(`📊 当前活动数: ${currentEvents.length + addedEvents.length} 个`);
+
+    return addedEvents;
+  }
+
+  /**
+   * 显示抓取提示
+   */
+  showScrapeHint() {
+    console.log('\n' + '━'.repeat(70));
+    console.log('💡 需要抓取更多活动');
+    console.log('━'.repeat(70));
+    console.log('\n快速抓取命令:');
+    console.log('  npm run scrape-eventbrite  (推荐，活动质量高)');
+    console.log('  npm run scrape-funcheap    (免费活动多)');
+    console.log('  npm run scrape-all-sites   (全面但耗时)');
+    console.log('\n抓取后:');
+    console.log('  1. 在新的 review 文件中标记 selected: true');
+    console.log('  2. 重新运行 npm run generate-post');
+    console.log('  3. 系统会自动合并本周的所有 review');
+    console.log('━'.repeat(70));
+  }
+
+  /**
+   * 询问是非问题
+   * @param {String} question - 问题
+   * @param {Boolean} defaultYes - 默认是否为 Yes
+   * @returns {Promise<Boolean>}
+   */
+  async askYesNo(question, defaultYes = true) {
+    const rl = readline.createInterface({
+      input: process.stdin,
+      output: process.stdout
+    });
+
+    const answer = await new Promise(resolve => {
+      rl.question(question + ' ', resolve);
+    });
+    rl.close();
+
+    const input = answer.trim().toLowerCase();
+
+    if (input === '') {
+      return defaultYes;
+    }
+
+    return input === 'y' || input === 'yes';
+  }
+
+  /**
+   * 解析用户输入的移除序号
+   * @param {String} input - 用户输入，如 "1,3,5" 或 "1 3 5"
+   * @param {Number} maxNum - 最大序号
+   * @returns {Array} 要移除的序号数组
+   */
+  parseRemovalInput(input, maxNum) {
+    try {
+      // 支持逗号或空格分隔
+      const numbers = input.split(/[,\s]+/)
+        .map(s => parseInt(s.trim()))
+        .filter(n => !isNaN(n) && n >= 1 && n <= maxNum);
+
+      // 去重并排序
+      return [...new Set(numbers)].sort((a, b) => a - b);
+    } catch (err) {
+      return [];
+    }
+  }
+
+  /**
+   * 截断字符串
+   * @param {String} str
+   * @param {Number} maxLength
+   * @returns {String}
+   */
+  truncateString(str, maxLength) {
+    if (!str || str.length <= maxLength) return str;
+    return str.substring(0, maxLength - 3) + '...';
+  }
+
+  /**
+   * 提取简化的时间显示
+   * @param {String} timeStr
+   * @returns {String}
+   */
+  extractTimeDisplay(timeStr) {
+    if (!timeStr) return 'TBD';
+
+    // 尝试提取 "Saturday 11/10" 这样的格式
+    const match = timeStr.match(/(Monday|Tuesday|Wednesday|Thursday|Friday|Saturday|Sunday)\s+(\d{1,2}\/\d{1,2})/i);
+    if (match) {
+      return match[0]; // "Saturday 11/10"
+    }
+
+    // 如果没匹配到，截断到前30个字符
+    return this.truncateString(timeStr, 30);
   }
 }
 
