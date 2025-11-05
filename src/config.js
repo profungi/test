@@ -61,16 +61,49 @@ const config = {
       ],
       // 湾区其他城市的搜索URL
       additionalCities: [
-        // 东湾（只抓5个）
+        // 东湾
         { name: 'Oakland', url: 'https://www.eventbrite.com/d/ca--oakland/events/', maxEvents: 5 },
+        { name: 'Berkeley', url: 'https://www.eventbrite.com/d/ca--berkeley/events/', maxEvents: 5 },
 
-        // 南湾（每个城市各抓取）
+        // 南湾主要城市
         { name: 'San Jose', url: 'https://www.eventbrite.com/d/ca--san-jose/events/', maxEvents: 8 },
-        { name: 'Sunnyvale', url: 'https://www.eventbrite.com/d/ca--sunnyvale/events/', maxEvents: 8 },
+        { name: 'Sunnyvale', url: 'https://www.eventbrite.com/d/ca--sunnyvale/events/', maxEvents: 5 },
+        { name: 'Santa Clara', url: 'https://www.eventbrite.com/d/ca--santa-clara/events/', maxEvents: 5 },
+        { name: 'Cupertino', url: 'https://www.eventbrite.com/d/ca--cupertino/events/', maxEvents: 5 },
 
-        // 半岛（每个城市各抓取）
+        // 南湾小城市（精品活动多）
+        { name: 'Saratoga', url: 'https://www.eventbrite.com/d/ca--saratoga/events/', maxEvents: 5 },
+        { name: 'Los Gatos', url: 'https://www.eventbrite.com/d/ca--los-gatos/events/', maxEvents: 5 },
+        { name: 'Campbell', url: 'https://www.eventbrite.com/d/ca--campbell/events/', maxEvents: 5 },
+        { name: 'Los Altos', url: 'https://www.eventbrite.com/d/ca--los-altos/events/', maxEvents: 5 },
+
+        // 半岛主要城市
         { name: 'Palo Alto', url: 'https://www.eventbrite.com/d/ca--palo-alto/events/', maxEvents: 8 },
-        { name: 'Mountain View', url: 'https://www.eventbrite.com/d/ca--mountain-view/events/', maxEvents: 8 }
+        { name: 'Mountain View', url: 'https://www.eventbrite.com/d/ca--mountain-view/events/', maxEvents: 5 },
+        { name: 'Redwood City', url: 'https://www.eventbrite.com/d/ca--redwood-city/events/', maxEvents: 5 },
+        { name: 'San Mateo', url: 'https://www.eventbrite.com/d/ca--san-mateo/events/', maxEvents: 5 },
+        { name: 'Menlo Park', url: 'https://www.eventbrite.com/d/ca--menlo-park/events/', maxEvents: 5 }
+      ],
+      // 类型定向搜索配置（第二层抓取）
+      categorySearches: [
+        {
+          name: 'food-and-drink',
+          displayName: 'Food & Drink',
+          maxPerCity: 8,
+          enabled: true
+        },
+        {
+          name: 'festivals-fairs',
+          displayName: 'Festivals & Fairs',
+          maxPerCity: 8,
+          enabled: true
+        },
+        {
+          name: 'holiday',
+          displayName: 'Holiday Events',
+          maxPerCity: 8,
+          enabled: true
+        }
       ],
       priority: 1,
       enabled: true

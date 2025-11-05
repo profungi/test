@@ -6,6 +6,10 @@
   "scripts": {
     "start": "node src/index.js",
     "scrape": "node src/scrape-events.js",
+    "scrape-eventbrite": "node scrape-single-source.js eventbrite",
+    "scrape-funcheap": "node scrape-single-source.js funcheap",
+    "scrape-sfstation": "node scrape-single-source.js sfstation",
+    "scrape-all-sites": "node src/scrape-events.js",
     "generate-post": "node src/generate-post.js",
     "test-cover": "node test-cover-generator.js",
     "validate": "node -e \"console.log('✅ Environment validation passed')\"",
