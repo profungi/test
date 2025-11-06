@@ -367,7 +367,8 @@ class ReviewMerger {
 
       console.log('\n' + '━'.repeat(70));
       console.log('💡 操作:');
-      console.log('  • 继续: Enter  • 移除: 输入序号 (如: 2)  • 取消: n');
+      console.log('  • 继续: Enter  • 移除: 输入序号 (如: 2)');
+      console.log('  • 手动添加URL: add  • 取消: n');
       console.log('━'.repeat(70));
 
       const rl1 = readline.createInterface({
@@ -391,6 +392,17 @@ class ReviewMerger {
       if (input === '' || input === 'y' || input === 'yes') {
         console.log(`\n✅ 确认生成，共 ${currentEvents.length} 个活动`);
         return currentEvents;
+      }
+
+      // 手动添加活动
+      if (input === 'add') {
+        const newEvent = await this.addCustomEventFromUrl();
+        if (newEvent) {
+          currentEvents.push(newEvent);
+          console.log(`\n✅ 活动已添加: ${newEvent.title}`);
+          console.log(`📊 当前活动数: ${currentEvents.length} 个`);
+        }
+        continue;
       }
 
       // 解析要移除的序号
@@ -582,6 +594,149 @@ class ReviewMerger {
   truncateString(str, maxLength) {
     if (!str || str.length <= maxLength) return str;
     return str.substring(0, maxLength - 3) + '...';
+  }
+
+  /**
+   * 手动添加活动from URL
+   * @returns {Promise<Object|null>} 提取的活动对象或null
+   */
+  async addCustomEventFromUrl() {
+    console.log('\n' + '━'.repeat(70));
+    console.log('🔗 手动添加活动from URL');
+    console.log('━'.repeat(70));
+
+    // 获取URL
+    const rl1 = readline.createInterface({
+      input: process.stdin,
+      output: process.stdout
+    });
+
+    const url = await new Promise(resolve => {
+      rl1.question('\n请输入活动URL (或输入 n 取消): ', resolve);
+    });
+    rl1.close();
+
+    const urlInput = url.trim();
+
+    if (urlInput === 'n' || urlInput === '') {
+      console.log('❌ 已取消');
+      return null;
+    }
+
+    try {
+      // 使用UniversalScraper抓取活动
+      const UniversalScraper = require('./universal-scraper');
+      const scraper = new UniversalScraper();
+
+      console.log('\n🔍 检测URL来源...');
+      const source = scraper.detectSource(urlInput);
+      console.log(`✅ 检测到: ${source}`);
+
+      console.log('📥 正在获取活动详情...');
+      const event = await scraper.scrapeEventFromUrl(urlInput);
+
+      // 显示提取的活动信息
+      console.log('\n' + '━'.repeat(70));
+      console.log('📋 提取的活动信息');
+      console.log('━'.repeat(70));
+      console.log(`标题: ${event.title}`);
+      console.log(`时间: ${this.formatDateTime(event.startTime)}`);
+      if (event.endTime) {
+        console.log(`结束时间: ${this.formatDateTime(event.endTime)}`);
+      }
+      console.log(`地点: ${event.location}`);
+      console.log(`价格: ${event.price || 'N/A'}`);
+      if (event.description) {
+        const desc = event.description.substring(0, 150);
+        console.log(`描述: ${desc}${event.description.length > 150 ? '...' : ''}`);
+      }
+      console.log(`URL: ${event.originalUrl}`);
+      console.log('━'.repeat(70));
+
+      // 确认添加
+      const confirmed = await this.askYesNo('\n确认添加这个活动? [Y/n]');
+      if (!confirmed) {
+        console.log('❌ 已取消');
+        return null;
+      }
+
+      // 转换为review格式
+      const reviewEvent = this.convertToReviewFormat(event);
+      return reviewEvent;
+
+    } catch (error) {
+      console.error(`\n❌ 抓取失败: ${error.message}`);
+      console.log('💡 提示: 请检查URL是否正确，或者网站是否可访问');
+      return null;
+    }
+  }
+
+  /**
+   * 将scraper返回的活动转换为review格式
+   * @param {Object} event - scraper返回的活动
+   * @returns {Object} review格式的活动
+   */
+  convertToReviewFormat(event) {
+    return {
+      title: event.title,
+      location: event.location,
+      start_time: event.startTime,
+      end_time: event.endTime || null,
+      time_display: this.formatDateTime(event.startTime),
+      price: event.price || 'Free',
+      description: event.description || '',
+      original_url: event.originalUrl,
+      event_type: this.guessEventType(event.title, event.description),
+      priority: 5.0,  // 默认优先级
+      selected: true,  // 手动添加的默认选中
+      _source_website: event._source_website,
+      _manually_added: true,
+      _extraction_method: event._extraction_method || 'scraper'
+    };
+  }
+
+  /**
+   * 格式化日期时间
+   * @param {String} isoString - ISO 8601时间字符串
+   * @returns {String}
+   */
+  formatDateTime(isoString) {
+    if (!isoString) return 'TBD';
+
+    try {
+      const date = new Date(isoString);
+      const options = {
+        weekday: 'short',
+        month: 'numeric',
+        day: 'numeric',
+        hour: 'numeric',
+        minute: '2-digit',
+        timeZone: 'America/Los_Angeles'
+      };
+      return date.toLocaleString('en-US', options);
+    } catch (e) {
+      return isoString;
+    }
+  }
+
+  /**
+   * 猜测活动类型
+   * @param {String} title - 活动标题
+   * @param {String} description - 活动描述
+   * @returns {String}
+   */
+  guessEventType(title, description = '') {
+    const text = (title + ' ' + description).toLowerCase();
+
+    if (text.match(/\b(market|fair|bazaar|farmers)\b/i)) return 'market';
+    if (text.match(/\b(festival|celebration|parade)\b/i)) return 'festival';
+    if (text.match(/\b(food|dinner|lunch|brunch|tasting|culinary)\b/i)) return 'food';
+    if (text.match(/\b(music|concert|band|jazz|orchestra)\b/i)) return 'music';
+    if (text.match(/\b(art|gallery|exhibit|museum|paint)\b/i)) return 'art';
+    if (text.match(/\b(tech|startup|developer|coding|hackathon)\b/i)) return 'tech';
+    if (text.match(/\b(free|no cost|complimentary)\b/i)) return 'free';
+
+    return 'other';
   }
 
   /**
