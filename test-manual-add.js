@@ -22,19 +22,27 @@ async function testManualAdd() {
   const testUrls = [
     {
       name: 'Eventbrite - French Holiday Market',
-      url: 'https://www.eventbrite.com/e/french-holiday-market-tickets-1902205561039'
+      url: 'https://www.eventbrite.com/e/french-holiday-market-tickets-1902205561039',
+      skip: false
     },
     {
-      name: 'Funcheap - 示例活动',
-      url: 'https://funcheap.com/event/fillmore-jazz-festival-san-francisco-2024-07-06/'
+      name: 'Funcheap - 示例活动（可能过期）',
+      url: 'https://funcheap.com/event/fillmore-jazz-festival-san-francisco-2024-07-06/',
+      skip: true // 跳过2024年的活动
     },
     {
-      name: 'SFStation - 示例活动',
-      url: 'https://sfstation.com/2024/07/01/fillmore-jazz-festival/'
+      name: 'SFStation - 示例活动（可能过期）',
+      url: 'https://sfstation.com/2024/07/01/fillmore-jazz-festival/',
+      skip: true // 跳过2024年的活动
     }
   ];
 
   for (const test of testUrls) {
+    if (test.skip) {
+      console.log(`\n⏭️  跳过: ${test.name} (${test.url})`);
+      continue;
+    }
+
     console.log(`\n📝 测试: ${test.name}`);
     console.log(`URL: ${test.url}`);
     console.log('━'.repeat(70));

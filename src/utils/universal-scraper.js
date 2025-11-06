@@ -71,21 +71,31 @@ class UniversalScraper {
    */
   async scrapeEventbriteEvent(url) {
     try {
-      // 使用 fetchEventDetails 方法，需要提供一个基本的 event 对象
-      const basicEvent = {
-        title: 'Loading...',
-        originalUrl: url,
-        startTime: null,
-        location: null,
-        price: null,
-        description: null
-      };
+      // 直接访问详情页
+      const $ = await this.eventbriteScraper.fetchPage(url);
 
-      const event = await this.eventbriteScraper.fetchEventDetails(basicEvent);
+      // 使用 parseEventbritePage 解析列表
+      const events = await this.eventbriteScraper.parseEventbritePage($);
+
+      if (events.length === 0) {
+        throw new Error('No event found on this page');
+      }
+
+      // 取第一个事件
+      let event = events[0];
+
+      // 如果有originalUrl且不是当前URL，说明这是列表页，需要访问详情页
+      if (event.originalUrl && event.originalUrl !== url) {
+        event = await this.eventbriteScraper.fetchEventDetails(event);
+      } else {
+        // 直接从当前页面提取详情
+        event.originalUrl = url;
+      }
 
       // 添加手动添加标记
       return {
         ...event,
+        originalUrl: url,
         _source_website: url,
         _manually_added: true
       };
@@ -102,7 +112,20 @@ class UniversalScraper {
       // Funcheap使用 fetchPage 和解析逻辑
       const $ = await this.funcheapScraper.fetchPage(url);
 
-      // 从详情页提取信息
+      // 尝试使用 Funcheap scraper 的解析方法
+      const events = await this.funcheapScraper.parseFuncheapPage($, url);
+
+      if (events.length > 0) {
+        const event = events[0];
+        return {
+          ...event,
+          originalUrl: url,
+          _source_website: url,
+          _manually_added: true
+        };
+      }
+
+      // 如果scraper解析失败，尝试手动提取
       const title = this.extractFuncheapTitle($);
       const timeInfo = this.extractFuncheapTime($);
       const location = this.extractFuncheapLocation($);
@@ -134,23 +157,35 @@ class UniversalScraper {
    */
   async scrapeSFStationEvent(url) {
     try {
-      // 使用 fetchEventDetails 方法
-      const basicEvent = {
-        title: 'Loading...',
-        originalUrl: url,
-        startTime: null,
-        location: null,
-        price: null,
-        description: null
-      };
+      // 直接访问详情页
+      const $ = await this.sfstationScraper.fetchPage(url);
 
-      const event = await this.sfstationScraper.fetchEventDetails(basicEvent);
+      // 尝试使用 SFStation scraper 的解析方法
+      const events = await this.sfstationScraper.parseSFStationPage($);
 
-      return {
-        ...event,
-        _source_website: url,
-        _manually_added: true
-      };
+      if (events.length > 0) {
+        // 取第一个事件
+        let event = events[0];
+
+        // 如果originalUrl是sfstation.com，尝试获取详情
+        if (event.originalUrl && event.originalUrl.includes('sfstation.com')) {
+          try {
+            event = await this.sfstationScraper.fetchEventDetails(event);
+          } catch (e) {
+            // 如果详情页失败，使用基本信息
+            console.warn(`Failed to fetch SFStation details: ${e.message}`);
+          }
+        }
+
+        return {
+          ...event,
+          originalUrl: url,
+          _source_website: url,
+          _manually_added: true
+        };
+      }
+
+      throw new Error('No event found on this page');
     } catch (error) {
       throw new Error(`Failed to scrape SFStation event: ${error.message}`);
     }
@@ -185,7 +220,10 @@ class UniversalScraper {
         .substring(0, 4000); // 限制在4000字符
 
       // 3. 使用AI提取结构化信息
-      const prompt = `Extract event information from this web page content.
+      const messages = [
+        {
+          role: 'user',
+          content: `Extract event information from this web page content.
 
 Web page URL: ${url}
 
@@ -208,10 +246,17 @@ Important:
 - If the event is free, use "Free" for price
 - If price is not mentioned, set it to null
 - Location should include city name
-- Keep description concise`;
+- Keep description concise`
+        }
+      ];
 
-      // 使用 ContentTranslator 的 AI provider
-      const result = await this.translator.translateWithAI(prompt);
+      // 使用 ContentTranslator 的 AI service
+      const response = await this.translator.aiService.chatCompletion(messages, {
+        temperature: 0.1,
+        maxTokens: 500
+      });
+
+      const result = response.content;
 
       // 解析AI返回的JSON
       let eventData;
