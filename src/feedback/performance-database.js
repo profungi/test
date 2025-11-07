@@ -331,6 +331,32 @@ class PerformanceDatabase {
   }
 
   /**
+   * 根据周标识获取发布记录
+   * @param {string} weekIdentifier - 如 "2025-11-09_to_2025-11-15"
+   * @returns {Promise<Array>} 该周的所有发布记录
+   */
+  async getPostsByWeek(weekIdentifier) {
+    const sql = `
+      SELECT * FROM posts
+      WHERE week_identifier = ?
+      ORDER BY published_at DESC
+    `;
+    return await this.all(sql, [weekIdentifier]);
+  }
+
+  /**
+   * 删除发布记录及相关的活动表现记录
+   * @param {string} postId - 发布ID
+   */
+  async deletePost(postId) {
+    // 先删除活动表现记录
+    await this.run('DELETE FROM event_performance WHERE post_id = ?', [postId]);
+
+    // 再删除发布记录
+    await this.run('DELETE FROM posts WHERE post_id = ?', [postId]);
+  }
+
+  /**
    * 更新发布记录
    */
   async updatePost(postId, updates) {
