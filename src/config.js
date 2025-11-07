@@ -200,9 +200,7 @@ const config = {
     maxDescriptionLength: 80,  // 从18字增加到80字，提供更丰富的活动描述
     postTemplate: `🎉 本周湾区精彩活动 {date_range}
 
-{events_list}
-
-#湾区生活 #旧金山 #硅谷 #活动推荐 #周末去哪儿`,
+{events_list}`,
     
     eventTemplate: `{title}
 🕒 {time}

@@ -123,9 +123,8 @@ class PostGenerator {
     const fixedHashtags = [
       '#湾区生活',
       '#湾区周末',
-      '#湾区活动',
       '#香槟小葡萄',
-      '#美食市集'
+      '#湾区活动'
     ];
 
     return fixedHashtags.join(' ');
