@@ -451,18 +451,30 @@ class PublicationConfirmer {
           continue;
         }
 
-        // 生成短链接
+        // 生成短链接（允许失败）
         console.log('🔗 正在生成短链接...');
-        const shortUrlResult = await this.urlShortener.shortenUrl(
-          event.originalUrl,
-          `${event.title.substring(0, 30)} - Week ${weekRange.identifier}`
-        );
+        try {
+          const shortUrlResult = await this.urlShortener.shortenUrl(
+            event.originalUrl,
+            `${event.title.substring(0, 30)} - Week ${weekRange.identifier}`
+          );
 
-        if (shortUrlResult.success) {
-          event.short_url = shortUrlResult.shortUrl;
-          console.log(`✅ 短链接: ${shortUrlResult.shortUrl}`);
-        } else {
-          console.log(`⚠️  短链接生成失败，将使用原始链接`);
+          // shortenUrl 返回的是字符串（短链接）或原始链接
+          if (shortUrlResult && typeof shortUrlResult === 'string') {
+            event.short_url = shortUrlResult;
+            // 检查是否真的生成了短链接（不是原始链接）
+            if (shortUrlResult !== event.originalUrl && shortUrlResult.includes('short.')) {
+              console.log(`✅ 短链接: ${shortUrlResult}`);
+            } else {
+              console.log(`⚠️  使用原始链接: ${shortUrlResult}`);
+            }
+          } else {
+            console.log(`⚠️  短链接返回值异常，将使用原始链接`);
+            event.short_url = event.originalUrl;
+          }
+        } catch (shortUrlError) {
+          console.log(`⚠️  短链接生成出错: ${shortUrlError.message}`);
+          console.log(`   将使用原始链接`);
           event.short_url = event.originalUrl;
         }
 
@@ -472,6 +484,7 @@ class PublicationConfirmer {
 
         newEvents.push(event);
         console.log('✅ 已添加');
+        console.log(`   链接: ${event.short_url}`);
 
         eventIndex++;
 

@@ -143,7 +143,56 @@ class PostGenerationOrchestrator {
         finalEvents = [...translatedEvents, ...translatedNewEvents];
       }
 
-      // 9. 保存发布记录到数据库 (反馈系统)
+      // 9. 检查是否已有该周的发布记录并选择覆盖或创建新版本
+      await this.performanceDB.connect();
+      await this.performanceDB.initializeFeedbackTables();
+
+      const existingPosts = await this.performanceDB.getPostsByWeek(weekRange.identifier);
+
+      if (existingPosts.length > 0) {
+        console.log('\n' + '⚠️ '.repeat(35));
+        console.log(`检测到该周 (${weekRange.identifier}) 已有 ${existingPosts.length} 条发布记录:`);
+        existingPosts.forEach((post, index) => {
+          console.log(`  ${index + 1}. ${post.post_id} (发布于 ${new Date(post.published_at).toLocaleString('zh-CN')})`);
+          console.log(`     活动数: ${post.total_events}, 编辑: ${post.content_modified ? '是' : '否'}`);
+        });
+        console.log('⚠️ '.repeat(35));
+
+        const readline = require('readline');
+        const rl = readline.createInterface({
+          input: process.stdin,
+          output: process.stdout
+        });
+
+        console.log('\n请选择操作:');
+        console.log('  [1] 覆盖最新的记录（删除旧记录，保存新记录）');
+        console.log('  [2] 创建新版本（保留旧记录，添加新记录）');
+        console.log('  [3] 取消，不保存');
+
+        const choice = await new Promise(resolve => {
+          rl.question('\n请选择 [1/2/3]: ', resolve);
+        });
+        rl.close();
+
+        if (choice.trim() === '3') {
+          console.log('\n❌ 已取消，未保存发布记录');
+          console.log(`📄 发布内容文件仍然已生成: ${postResult.filepath}`);
+          await this.performanceDB.close();
+          return;
+        } else if (choice.trim() === '1') {
+          // 删除最新的记录
+          const latestPost = existingPosts[0];
+          console.log(`\n🗑️  删除旧记录: ${latestPost.post_id}`);
+          await this.performanceDB.deletePost(latestPost.post_id);
+          console.log('✅ 旧记录已删除');
+        } else if (choice.trim() === '2') {
+          console.log('\n📝 创建新版本（保留旧记录）');
+        } else {
+          console.log('\n⚠️  无效的选择，默认创建新版本');
+        }
+      }
+
+      // 10. 保存发布记录到数据库 (反馈系统)
       try {
         const postId = await this.savePublicationRecord(
           finalEvents,          // 使用最终的活动列表（包含新添加的）
@@ -216,10 +265,8 @@ class PostGenerationOrchestrator {
     contentModified = false,
     manualEventsAdded = 0
   ) {
-    await this.performanceDB.connect();
-
-    // 确保反馈系统表已初始化
-    await this.performanceDB.initializeFeedbackTables();
+    // 注意: 调用前应已经 connect() 和 initializeFeedbackTables()
+    // 这里不再重复调用，避免重复连接
 
     // 生成 post_id
     const timestamp = new Date().toISOString().replace(/[:.]/g, '-').substring(0, 16);
