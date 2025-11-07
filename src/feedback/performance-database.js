@@ -72,6 +72,9 @@ class PerformanceDatabase {
 
     // 运行迁移到 v1.5
     await this.migrateToV15();
+
+    // 运行迁移到 v1.6
+    await this.migrateToV16();
   }
 
   /**
@@ -124,6 +127,60 @@ class PerformanceDatabase {
       console.log('✅ Schema v1.5 迁移完成');
     } catch (err) {
       console.warn('⚠️  Schema v1.5 迁移警告:', err.message);
+      // 不抛出错误，允许继续使用
+    }
+  }
+
+  /**
+   * 迁移到 v1.6 - 添加发布内容追踪支持
+   */
+  async migrateToV16() {
+    try {
+      // 检查是否已经迁移过
+      const version = await this.get(
+        "SELECT * FROM schema_version WHERE version = '1.6.0'"
+      );
+
+      if (version) {
+        // console.log('✅ Schema v1.6 已应用');
+        return;
+      }
+
+      console.log('🔄 开始迁移到 Schema v1.6...');
+
+      const schemaPath = path.join(__dirname, 'schema-v1.6.sql');
+      const schemaSql = fs.readFileSync(schemaPath, 'utf8');
+
+      // 移除注释行
+      const cleanedSql = schemaSql
+        .split('\n')
+        .filter(line => {
+          const trimmed = line.trim();
+          return trimmed.length > 0 && !trimmed.startsWith('--');
+        })
+        .join('\n');
+
+      // 分割SQL语句并逐个执行
+      const statements = cleanedSql
+        .split(';')
+        .map(s => s.trim())
+        .filter(s => s.length > 0);
+
+      for (const statement of statements) {
+        try {
+          await this.run(statement);
+        } catch (err) {
+          // 忽略 "already exists" 或 "duplicate column" 错误
+          if (!err.message.includes('already exists') &&
+              !err.message.includes('duplicate column')) {
+            throw err;
+          }
+        }
+      }
+
+      console.log('✅ Schema v1.6 迁移完成');
+    } catch (err) {
+      console.warn('⚠️  Schema v1.6 迁移警告:', err.message);
       // 不抛出错误，允许继续使用
     }
   }
@@ -195,7 +252,11 @@ class PerformanceDatabase {
       xiaohongshu_url = null,
       xiaohongshu_post_id = null,
       source_reviews = null,  // v1.5: 新增字段
-      is_merged_post = 0      // v1.5: 新增字段
+      is_merged_post = 0,     // v1.5: 新增字段
+      generated_content = null,  // v1.6: 生成的原始内容
+      published_content = null,  // v1.6: 实际发布的内容
+      content_modified = 0,      // v1.6: 是否被编辑过
+      manual_events_added = 0    // v1.6: 手动添加的活动数量
     } = postData;
 
     const sql = `
@@ -204,8 +265,9 @@ class PerformanceDatabase {
         review_file_path, output_file_path, cover_image_path,
         xiaohongshu_url, xiaohongshu_post_id,
         source_reviews, is_merged_post,
+        generated_content, published_content, content_modified, manual_events_added,
         created_at
-      ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+      ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
     `;
 
     const params = [
@@ -221,6 +283,10 @@ class PerformanceDatabase {
       xiaohongshu_post_id,
       source_reviews ? JSON.stringify(source_reviews) : null,
       is_merged_post ? 1 : 0,
+      generated_content,
+      published_content,
+      content_modified ? 1 : 0,
+      manual_events_added,
       new Date().toISOString()
     ];
 
@@ -322,7 +388,8 @@ class PerformanceDatabase {
       is_chinese_relevant = 0,
       engagement_score = 0,
       source_review = null,   // v1.5: 新增字段
-      source_website = null   // v1.5: 新增字段
+      source_website = null,  // v1.5: 新增字段
+      manually_added_at_publish = 0  // v1.6: 发布时手动添加
     } = eventData;
 
     const sql = `
@@ -331,8 +398,8 @@ class PerformanceDatabase {
         location, location_category, price, price_category, start_time,
         is_weekend, is_free, is_outdoor, is_chinese_relevant,
         engagement_score,
-        source_review, source_website
-      ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+        source_review, source_website, manually_added_at_publish
+      ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
     `;
 
     const params = [
@@ -352,7 +419,8 @@ class PerformanceDatabase {
       is_chinese_relevant ? 1 : 0,
       engagement_score,
       source_review,
-      source_website
+      source_website,
+      manually_added_at_publish ? 1 : 0
     ];
 
     const result = await this.run(sql, params);

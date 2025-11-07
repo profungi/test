@@ -11,6 +11,7 @@ const PostGenerator = require('./formatters/post-generator');
 const ManualReviewManager = require('./utils/manual-review');
 const PerformanceDatabase = require('./feedback/performance-database');
 const ReviewMerger = require('./utils/review-merger');
+const PublicationConfirmer = require('./utils/publication-confirmer');
 
 class PostGenerationOrchestrator {
   constructor() {
@@ -20,6 +21,7 @@ class PostGenerationOrchestrator {
     this.reviewManager = new ManualReviewManager();
     this.performanceDB = new PerformanceDatabase();
     this.reviewMerger = new ReviewMerger();
+    this.publicationConfirmer = new PublicationConfirmer();
   }
 
   async run(reviewFilePath) {
@@ -110,25 +112,64 @@ class PostGenerationOrchestrator {
         weekRange,
         reviewSummary
       );
-      
+
       // 7. 验证内容质量
       const contentSummary = this.postGenerator.generateContentSummary(postResult.content);
       this.displayGenerationSummary(postResult, contentSummary, urlResult.summary);
 
-      // 8. 保存发布记录到数据库 (反馈系统)
+      // 8. 发布前确认和编辑 (v1.6: 新增)
+      console.log('\n' + '='.repeat(70));
+      console.log('📋 发布前确认');
+      console.log('='.repeat(70));
+
+      const confirmResult = await this.publicationConfirmer.confirmPublication(
+        postResult.content,
+        translatedEvents,
+        weekRange
+      );
+
+      if (!confirmResult) {
+        console.log('\n❌ 操作已取消，未保存任何记录');
+        return;
+      }
+
+      const { publishedContent, contentModified, newEvents } = confirmResult;
+
+      // 如果有新活动，需要翻译并合并
+      let finalEvents = translatedEvents;
+      if (newEvents.length > 0) {
+        console.log(`\n🌐 正在翻译新添加的 ${newEvents.length} 个活动...`);
+        const translatedNewEvents = await this.translator.translateAndOptimizeEvents(newEvents);
+        finalEvents = [...translatedEvents, ...translatedNewEvents];
+      }
+
+      // 9. 保存发布记录到数据库 (反馈系统)
       try {
         const postId = await this.savePublicationRecord(
-          translatedEvents,
+          finalEvents,          // 使用最终的活动列表（包含新添加的）
           weekRange,
           reviewFilePath,
           postResult,
-          sourceReviews,   // v1.5: 传递来源信息
-          isMergedPost     // v1.5: 传递是否为合并帖子
+          sourceReviews,        // v1.5: 传递来源信息
+          isMergedPost,         // v1.5: 传递是否为合并帖子
+          postResult.content,   // v1.6: 生成的原始内容
+          publishedContent,     // v1.6: 实际发布的内容
+          contentModified,      // v1.6: 是否被编辑过
+          newEvents.length      // v1.6: 手动添加的活动数量
         );
 
         console.log('\n📊 发布记录已创建:');
         console.log(`   Post ID: ${postId}`);
-        console.log(`   包含 ${translatedEvents.length} 个活动`);
+        console.log(`   原有活动: ${translatedEvents.length} 个`);
+        if (newEvents.length > 0) {
+          console.log(`   新增活动: ${newEvents.length} 个`);
+        }
+        console.log(`   总计: ${finalEvents.length} 个活动`);
+        if (contentModified) {
+          console.log(`   内容状态: 已编辑`);
+        } else {
+          console.log(`   内容状态: 未修改`);
+        }
         if (isMergedPost) {
           console.log(`   来源: ${sourceReviews.length} 个review文件 (合并帖子)`);
         }
@@ -141,7 +182,7 @@ class PostGenerationOrchestrator {
       console.log(`📄 发布内容: ${postResult.filepath}`);
       console.log('📱 现在可以复制内容到小红书发布了！');
 
-      // 9. 提示下一步操作
+      // 10. 提示下一步操作
       this.displayNextSteps(postResult);
 
     } catch (error) {
@@ -161,8 +202,20 @@ class PostGenerationOrchestrator {
   /**
    * 保存发布记录到性能数据库
    * v1.5: 支持多review来源记录
+   * v1.6: 支持保存生成内容和发布内容
    */
-  async savePublicationRecord(events, weekRange, reviewFilePath, postResult, sourceReviews = null, isMergedPost = false) {
+  async savePublicationRecord(
+    events,
+    weekRange,
+    reviewFilePath,
+    postResult,
+    sourceReviews = null,
+    isMergedPost = false,
+    generatedContent = null,
+    publishedContent = null,
+    contentModified = false,
+    manualEventsAdded = 0
+  ) {
     await this.performanceDB.connect();
 
     // 确保反馈系统表已初始化
@@ -183,7 +236,11 @@ class PostGenerationOrchestrator {
       output_file_path: postResult.filepath,
       cover_image_path: postResult.coverImage ? postResult.coverImage.filepath : null,
       source_reviews: sourceReviews,      // v1.5: 新增字段
-      is_merged_post: isMergedPost        // v1.5: 新增字段
+      is_merged_post: isMergedPost,       // v1.5: 新增字段
+      generated_content: generatedContent,    // v1.6: 生成的原始内容
+      published_content: publishedContent,    // v1.6: 实际发布的内容
+      content_modified: contentModified,      // v1.6: 是否被编辑过
+      manual_events_added: manualEventsAdded  // v1.6: 手动添加的活动数量
     });
 
     // 2. 为每个活动创建表现记录
@@ -205,7 +262,8 @@ class PostGenerationOrchestrator {
         is_chinese_relevant: event.chinese_relevant || false,
         engagement_score: 0,
         source_review: event._source_review || null,       // v1.5: 新增字段
-        source_website: event._source_website || event.source || null  // v1.5: 新增字段
+        source_website: event._source_website || event.source || null,  // v1.5: 新增字段
+        manually_added_at_publish: event._manually_added_at_publish || 0  // v1.6: 发布时手动添加
       });
     }
 
