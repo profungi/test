@@ -366,9 +366,11 @@ class ReviewMerger {
       });
 
       console.log('\n' + '━'.repeat(70));
-      console.log('💡 操作:');
-      console.log('  • 继续: Enter  • 移除: 输入序号 (如: 2)');
-      console.log('  • 手动添加URL: add  • 取消: n');
+      console.log('💡 操作选项:');
+      console.log('  [Enter]    - 继续生成帖子');
+      console.log('  [add]      - 手动添加活动URL');
+      console.log('  [1,2,3...] - 移除指定序号的活动');
+      console.log('  [n]        - 取消操作');
       console.log('━'.repeat(70));
 
       const rl1 = readline.createInterface({
@@ -377,7 +379,7 @@ class ReviewMerger {
       });
 
       const answer1 = await new Promise(resolve => {
-        rl1.question('\n请选择: ', resolve);
+        rl1.question('\n请选择 (输入 add 添加URL): ', resolve);
       });
       rl1.close();
 

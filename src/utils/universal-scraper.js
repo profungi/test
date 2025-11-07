@@ -74,27 +74,148 @@ class UniversalScraper {
       // 直接访问详情页
       const $ = await this.eventbriteScraper.fetchPage(url);
 
-      // 使用 parseEventbritePage 解析列表
-      const events = await this.eventbriteScraper.parseEventbritePage($);
-
-      if (events.length === 0) {
-        throw new Error('No event found on this page');
+      // Eventbrite详情页的提取逻辑
+      // 标题
+      const titleSelectors = [
+        'h1[class*="event-title"]',
+        'h1[data-testid*="title"]',
+        'h1',
+        '[class*="EventTitle"]',
+        'meta[property="og:title"]'
+      ];
+      let title = null;
+      for (const sel of titleSelectors) {
+        if (sel.startsWith('meta')) {
+          title = $(sel).attr('content');
+        } else {
+          title = $(sel).first().text().trim();
+        }
+        if (title && title.length > 3) break;
       }
 
-      // 取第一个事件
-      let event = events[0];
+      // 时间
+      const timeSelectors = [
+        'time[datetime]',
+        '[class*="event-time"]',
+        '[class*="start-date"]',
+        'meta[property="event:start_time"]'
+      ];
+      let startTime = null;
+      for (const sel of timeSelectors) {
+        if (sel.startsWith('meta')) {
+          const datetime = $(sel).attr('content');
+          if (datetime) {
+            startTime = new Date(datetime).toISOString();
+            break;
+          }
+        } else {
+          const $time = $(sel).first();
+          const datetime = $time.attr('datetime');
+          if (datetime) {
+            startTime = new Date(datetime).toISOString();
+            break;
+          }
+        }
+      }
 
-      // 如果有originalUrl且不是当前URL，说明这是列表页，需要访问详情页
-      if (event.originalUrl && event.originalUrl !== url) {
-        event = await this.eventbriteScraper.fetchEventDetails(event);
+      // 地点
+      const locationSelectors = [
+        '[class*="location-info"]',
+        '[class*="event-location"]',
+        '[data-testid*="location"]',
+        'address',
+        'meta[property="event:location"]'
+      ];
+      let location = null;
+      for (const sel of locationSelectors) {
+        if (sel.startsWith('meta')) {
+          location = $(sel).attr('content');
+        } else {
+          const $loc = $(sel).first();
+          // 尝试只获取地址部分，避免获取整个地图容器
+          const addressText = $loc.find('p').first().text().trim();
+          if (addressText && addressText.length > 3) {
+            location = addressText;
+          } else {
+            location = $loc.text().trim();
+          }
+        }
+        if (location && location.length > 3) break;
+      }
+
+      // 清理地点文本，移除多余信息
+      if (location) {
+        // 移除 "Location" 前缀
+        location = location.replace(/^Location\s*/i, '');
+
+        // 只保留到邮编为止的内容（CA 95070 格式）
+        const addressMatch = location.match(/^(.*?[A-Z]{2}\s+\d{5})/);
+        if (addressMatch) {
+          location = addressMatch[1];
+        }
+
+        // 移除重复的地址（如 "12850 Saratoga Ave12850 Saratoga Avenue"）
+        location = location.replace(/(\d+\s+\w+\s+\w+).*?\1/, '$1');
+
+        // 移除 "Show map" 等UI文本
+        location = location.replace(/Show map.*$/i, '');
+        location = location.replace(/How do you want to get there.*$/i, '');
+
+        // 清理空白
+        location = location.trim();
+      }
+
+      // 价格
+      let price = null;
+      const priceText = $('body').text();
+      if (/\bfree\b/i.test(priceText)) {
+        price = 'Free';
       } else {
-        // 直接从当前页面提取详情
-        event.originalUrl = url;
+        const priceMatch = priceText.match(/\$[\d,]+\.?\d*/);
+        if (priceMatch) {
+          price = priceMatch[0];
+        }
+      }
+
+      // 描述
+      const descriptionSelectors = [
+        'meta[property="og:description"]',
+        'meta[name="description"]',
+        '[class*="event-description"]',
+        '[class*="summary"]'
+      ];
+      let description = null;
+      for (const sel of descriptionSelectors) {
+        if (sel.startsWith('meta')) {
+          description = $(sel).attr('content');
+        } else {
+          description = $(sel).first().text().trim();
+        }
+        if (description && description.length > 20) break;
+      }
+
+      // 验证必需字段
+      if (!title || !startTime || !location) {
+        console.error('Failed to extract required fields:');
+        console.error(`  Title: ${title || 'NOT FOUND'}`);
+        console.error(`  Start Time: ${startTime || 'NOT FOUND'}`);
+        console.error(`  Location: ${location || 'NOT FOUND'}`);
+
+        // 尝试输出页面的一些关键HTML来帮助调试
+        console.error('\nPage structure (first 500 chars):');
+        console.error($('body').text().substring(0, 500));
+
+        throw new Error(`Missing required fields: title=${!!title}, startTime=${!!startTime}, location=${!!location}`);
       }
 
       // 添加手动添加标记
       return {
-        ...event,
+        title,
+        startTime,
+        endTime: null,
+        location,
+        price: price || 'Free',
+        description: description || '',
         originalUrl: url,
         _source_website: url,
         _manually_added: true
@@ -199,14 +320,14 @@ class UniversalScraper {
       console.log('🤖 Using AI to extract event information...');
 
       // 1. 获取网页HTML
-      const response = await axios.get(url, {
+      const httpResponse = await axios.get(url, {
         headers: {
           'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
         },
         timeout: 15000
       });
 
-      const html = response.data;
+      const html = httpResponse.data;
       const $ = cheerio.load(html);
 
       // 2. 清理HTML，只保留主要内容
