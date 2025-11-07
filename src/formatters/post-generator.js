@@ -119,37 +119,16 @@ class PostGenerator {
   }
 
   generateHashtags(events) {
-    const baseHashtags = ['#湾区生活', '#旧金山', '#硅谷', '#活动推荐', '#周末去哪儿'];
-    const dynamicHashtags = [];
-    
-    // 根据活动类型添加特定标签
-    const eventTypes = [...new Set(events.map(e => e.event_type))];
-    
-    eventTypes.forEach(type => {
-      const typeHashtags = {
-        'market': '#农夫市集',
-        'festival': '#节庆活动',
-        'food': '#美食探店',
-        'music': '#音乐现场',
-        'art': '#艺术文化',
-        'free': '#免费活动'
-      };
-      
-      if (typeHashtags[type]) {
-        dynamicHashtags.push(typeHashtags[type]);
-      }
-    });
-    
-    // 检查是否有中文社区相关活动
-    const chineseRelevantEvents = events.filter(e => e.chinese_relevant);
-    if (chineseRelevantEvents.length > 0) {
-      dynamicHashtags.push('#华人社区');
-    }
-    
-    // 合并并去重
-    const allHashtags = [...baseHashtags, ...dynamicHashtags.slice(0, 3)]; // 限制动态标签数量
-    
-    return allHashtags.join(' ');
+    // 固定标签
+    const fixedHashtags = [
+      '#湾区生活',
+      '#湾区周末',
+      '#湾区活动',
+      '#香槟小葡萄',
+      '#美食市集'
+    ];
+
+    return fixedHashtags.join(' ');
   }
 
   generatePostMetadata(events, weekRange, reviewSummary) {
