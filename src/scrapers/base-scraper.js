@@ -3,6 +3,7 @@ const cheerio = require('cheerio');
 const puppeteer = require('puppeteer');
 const { addDays, startOfWeek, endOfWeek, format, parseISO, isWithinInterval } = require('date-fns');
 const config = require('../config');
+const CommonHelpers = require('../utils/common-helpers');
 
 class BaseScraper {
   constructor(sourceName) {
@@ -329,9 +330,9 @@ class BaseScraper {
     );
   }
 
-  // 添加延迟以避免过于频繁的请求
+  // 添加延迟以避免过于频繁的请求 (使用共享helpers)
   async delay(ms = config.scraping.requestDelay) {
-    return new Promise(resolve => setTimeout(resolve, ms));
+    return CommonHelpers.delay(ms);
   }
 
   // 等待页面任务槽位变可用

@@ -4,7 +4,7 @@
  * 测试最终选择确认功能（支持移除和添加备选）
  */
 
-const ReviewMerger = require('./src/utils/review-merger');
+const ReviewMerger = require('../src/utils/review-merger');
 
 async function testFinalSelection() {
   const merger = new ReviewMerger();

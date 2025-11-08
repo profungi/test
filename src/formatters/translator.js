@@ -1,4 +1,5 @@
 const AIService = require('../utils/ai-service');
+const CommonHelpers = require('../utils/common-helpers');
 const config = require('../config');
 
 // 通用特征配置（针对fair/market/festival优化）
@@ -664,7 +665,7 @@ ${event.description || '(无详细描述 - 需从标题推断)'}
   }
 
   async delay(ms) {
-    return new Promise(resolve => setTimeout(resolve, ms));
+    return CommonHelpers.delay(ms);
   }
 }
 

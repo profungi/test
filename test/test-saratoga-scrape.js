@@ -5,7 +5,7 @@
  * 用于调试为什么特定活动没有被抓到
  */
 
-const EventbriteScraper = require('./src/scrapers/eventbrite-scraper');
+const EventbriteScraper = require('../src/scrapers/eventbrite-scraper');
 const { addWeeks, startOfWeek, endOfWeek, format } = require('date-fns');
 
 async function testSaratogaScrape() {

@@ -5,7 +5,7 @@
  * 测试3个scraper网站 + AI提取未知网站
  */
 
-const UniversalScraper = require('./src/utils/universal-scraper');
+const UniversalScraper = require('../src/utils/universal-scraper');
 
 async function testManualAdd() {
   console.log('🧪 测试手动添加活动功能\n');

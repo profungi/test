@@ -1,5 +1,6 @@
 const axios = require('axios');
 const config = require('../config');
+const CommonHelpers = require('./common-helpers');
 
 // 可重试错误类
 class RetryableError extends Error {
@@ -227,41 +228,15 @@ class URLShortener {
            priceStr === '$0.00';
   }
 
-  // 根据地点获取区域标签
+  // 根据地点获取区域标签 (使用共享helpers)
   getLocationTag(location) {
-    if (!location) return null;
-
-    const locationStr = location.toString().toLowerCase();
-
-    // San Francisco
-    if (locationStr.includes('san francisco') || locationStr.includes('sf')) {
-      return 'SF';
-    }
-
-    // South Bay
-    const southBayCities = ['san jose', 'santa clara', 'los gatos', 'campbell'];
-    if (southBayCities.some(city => locationStr.includes(city))) {
-      return 'South bay';
-    }
-
-    // Peninsula
-    const peninsulaCities = ['palo alto', 'mountain view', 'san mateo', 'redwood city', 'san carlos'];
-    if (peninsulaCities.some(city => locationStr.includes(city))) {
-      return 'Peninsula';
-    }
-
-    // East Bay
-    const eastBayCities = ['oakland', 'fremont', 'berkeley', 'concord'];
-    if (eastBayCities.some(city => locationStr.includes(city))) {
-      return 'East bay';
-    }
-
-    // North Bay
-    const northBayCities = ['santa rosa', 'san rafael', 'napa', 'mill valley'];
-    if (northBayCities.some(city => locationStr.includes(city))) {
-      return 'North bay';
-    }
-
+    const tag = CommonHelpers.getLocationTag(location);
+    // 格式化标签以匹配现有格式
+    if (tag === 'sf') return 'SF';
+    if (tag === 'southbay') return 'South bay';
+    if (tag === 'peninsula') return 'Peninsula';
+    if (tag === 'eastbay') return 'East bay';
+    if (tag === 'northbay') return 'North bay';
     return null;
   }
 
@@ -293,19 +268,14 @@ class URLShortener {
       .substring(0, 30); // 限制长度
   }
 
-  // 验证URL格式
+  // 验证URL格式 (使用共享helpers)
   isValidUrl(url) {
-    try {
-      const urlObj = new URL(url);
-      return ['http:', 'https:'].includes(urlObj.protocol);
-    } catch {
-      return false;
-    }
+    return CommonHelpers.isValidUrl(url);
   }
 
-  // 延迟函数
+  // 延迟函数 (使用共享helpers)
   async delay(ms) {
-    return new Promise(resolve => setTimeout(resolve, ms));
+    return CommonHelpers.delay(ms);
   }
 
   // 测试API连接

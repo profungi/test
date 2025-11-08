@@ -2,8 +2,8 @@
  * 测试类型定向抓取 - 专门测试 Saratoga 的 food-and-drink 分类
  */
 
-const EventbriteScraper = require('./src/scrapers/eventbrite-scraper');
-const TimeHandler = require('./src/utils/time-handler');
+const EventbriteScraper = require('../src/scrapers/eventbrite-scraper');
+const TimeHandler = require('../src/utils/time-handler');
 
 async function testCategorySearch() {
   console.log('🧪 测试 Saratoga 类型定向抓取\n');

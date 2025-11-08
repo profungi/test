@@ -3,6 +3,7 @@ const path = require('path');
 const { format } = require('date-fns');
 const config = require('../config');
 const CoverGenerator = require('../utils/cover-generator');
+const CommonHelpers = require('../utils/common-helpers');
 
 class PostGenerator {
   constructor() {
@@ -158,12 +159,7 @@ class PostGenerator {
   }
 
   getEventTypeCount(events) {
-    const count = {};
-    events.forEach(event => {
-      const type = event.event_type || 'unknown';
-      count[type] = (count[type] || 0) + 1;
-    });
-    return count;
+    return CommonHelpers.getEventTypeStats(events);
   }
 
   getEventsByDay(events) {
@@ -184,18 +180,20 @@ class PostGenerator {
   }
 
   getPriceDistribution(events) {
+    // 使用 CommonHelpers 的价格分布,但扩展更细致的分类
+    const basicDist = CommonHelpers.getPriceDistribution(events);
     const distribution = {
-      free: 0,
+      free: basicDist.free,
       low: 0,    // $1-20
       medium: 0, // $21-50
       high: 0    // $51+
     };
-    
+
     events.forEach(event => {
       const price = event.price || '';
-      
+
       if (!price || price.toLowerCase().includes('free')) {
-        distribution.free++;
+        // Already counted in free
       } else {
         const dollarMatch = price.match(/\$(\d+)/);
         if (dollarMatch) {
@@ -210,7 +208,7 @@ class PostGenerator {
         }
       }
     });
-    
+
     return distribution;
   }
 

@@ -2,6 +2,7 @@ const fs = require('fs').promises;
 const path = require('path');
 const { format } = require('date-fns');
 const config = require('../config');
+const CommonHelpers = require('./common-helpers');
 
 class ManualReviewManager {
   constructor() {
@@ -167,21 +168,11 @@ class ManualReviewManager {
   }
 
   getEventTypeStats(events) {
-    const stats = {};
-    events.forEach(event => {
-      const type = event.eventType || 'unknown';
-      stats[type] = (stats[type] || 0) + 1;
-    });
-    return stats;
+    return CommonHelpers.getEventTypeStats(events);
   }
 
   getPriorityStats(events) {
-    const stats = {};
-    events.forEach(event => {
-      const priority = event.priority || 0;
-      stats[priority] = (stats[priority] || 0) + 1;
-    });
-    return stats;
+    return CommonHelpers.getPriorityStats(events);
   }
 
   // 读取用户审核后的文件

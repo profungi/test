@@ -5,7 +5,7 @@
  * 快速调试，不运行其他 scrapers
  */
 
-const FuncheapWeekendScraper = require('./src/scrapers/funcheap-weekend-scraper');
+const FuncheapWeekendScraper = require('../src/scrapers/funcheap-weekend-scraper');
 
 async function testFuncheap() {
   console.log('🧪 Testing Funcheap Scraper (standalone)...\n');

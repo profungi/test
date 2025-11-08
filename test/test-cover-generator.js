@@ -5,7 +5,7 @@
  * 独立测试脚本，无需完整的活动数据
  */
 
-const CoverGenerator = require('./src/utils/cover-generator');
+const CoverGenerator = require('../src/utils/cover-generator');
 
 async function testCoverGenerator() {
   console.log('🧪 开始测试封面图片生成器...\n');

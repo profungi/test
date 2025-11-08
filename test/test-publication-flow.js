@@ -5,7 +5,7 @@
  * 测试 v1.6 新增的发布前编辑和确认功能
  */
 
-const PerformanceDatabase = require('./src/feedback/performance-database');
+const PerformanceDatabase = require('../src/feedback/performance-database');
 
 async function testDatabaseMigration() {
   console.log('🧪 测试数据库迁移到 v1.6\n');

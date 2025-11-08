@@ -12,6 +12,7 @@ const ManualReviewManager = require('./utils/manual-review');
 const PerformanceDatabase = require('./feedback/performance-database');
 const ReviewMerger = require('./utils/review-merger');
 const PublicationConfirmer = require('./utils/publication-confirmer');
+const CommonHelpers = require('./utils/common-helpers');
 
 class PostGenerationOrchestrator {
   constructor() {
@@ -319,65 +320,31 @@ class PostGenerationOrchestrator {
   }
 
   /**
-   * 检测地理位置类别
+   * 检测地理位置类别 (使用共享helpers)
    */
   detectLocationCategory(location) {
-    if (!location) return null;
-
-    const locationLower = location.toLowerCase();
-    const config = require('./config');
-
-    if (config.locations.sanfrancisco.some(loc => locationLower.includes(loc.toLowerCase()))) {
-      return 'sanfrancisco';
-    } else if (config.locations.southbay.some(loc => locationLower.includes(loc.toLowerCase()))) {
-      return 'southbay';
-    } else if (config.locations.peninsula.some(loc => locationLower.includes(loc.toLowerCase()))) {
-      return 'peninsula';
-    } else if (config.locations.eastbay.some(loc => locationLower.includes(loc.toLowerCase()))) {
-      return 'eastbay';
-    } else if (config.locations.northbay.some(loc => locationLower.includes(loc.toLowerCase()))) {
-      return 'northbay';
-    }
-
-    return 'other';
+    return CommonHelpers.detectLocationCategory(location);
   }
 
   /**
-   * 自动分类价格
+   * 自动分类价格 (使用共享helpers)
    */
   categorizePriceAuto(price) {
-    if (!price || price.toLowerCase().includes('free')) {
-      return 'free';
-    }
-
-    const dollarMatch = price.match(/\$(\d+)/);
-    if (dollarMatch) {
-      const amount = parseInt(dollarMatch[1]);
-      if (amount <= 50) {
-        return 'paid';
-      } else {
-        return 'expensive';
-      }
-    }
-
-    return 'unknown';
+    return CommonHelpers.categorizePriceAuto(price);
   }
 
   /**
-   * 判断是否为周末
+   * 判断是否为周末 (使用共享helpers)
    */
   isWeekend(timeStr) {
-    if (!timeStr) return false;
-    const weekendPattern = /(saturday|sunday)/i;
-    return weekendPattern.test(timeStr);
+    return CommonHelpers.isWeekend(timeStr);
   }
 
   /**
-   * 判断是否免费
+   * 判断是否免费 (使用共享helpers)
    */
   isFree(price) {
-    if (!price) return true;
-    return price.toLowerCase().includes('free');
+    return CommonHelpers.isFree(price);
   }
 
   /**
