@@ -1,0 +1,133 @@
+{
+  "review_id": "review_2025-11-09_1630_0qi",
+  "generated_at": "2025-11-09T16:30:22.503Z",
+  "scrape_date": "2025-11-09",
+  "target_week": "2025-11-10_to_2025-11-16",
+  "target_week_readable": "11/10 - 11/16",
+  "scraping_report": {
+    "total_scraped": 31,
+    "after_deduplication": 4,
+    "after_classification": 4,
+    "classification_report": {
+      "totalEvents": 4,
+      "eventTypes": {
+        "other": 1,
+        "free": 3
+      },
+      "priorityLevels": {
+        "3": 1,
+        "9": 3
+      },
+      "chineseRelevant": 0,
+      "topPriorityEvents": 3
+    }
+  },
+  "instructions": {
+    "how_to_review": "将你想要发布的活动的 'selected' 字段改为 true",
+    "next_step": "保存文件后运行: npm run generate-post [此文件路径]",
+    "fields_explanation": {
+      "title": "活动标题",
+      "time_display": "显示用的时间格式",
+      "location": "活动地点",
+      "price": "票价信息",
+      "event_type": "AI识别的活动类型",
+      "priority": "优先级分数 (越高越重要)",
+      "chinese_relevant": "是否与中文社区相关",
+      "original_url": "原始活动链接"
+    }
+  },
+  "stats": {
+    "total_candidates": 4,
+    "by_type": {
+      "free": 3,
+      "other": 1
+    },
+    "by_priority": {
+      "3": 1,
+      "9": 3
+    },
+    "chinese_relevant": 0
+  },
+  "events": [
+    {
+      "id": 1,
+      "selected": false,
+      "title": "www.sfstation.com",
+      "time_display": "Saturday 11/15 10:00 AM",
+      "location": "37th Avenue @ Ortega, San Francisco, CA",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.sfstation.com/secondhand-saturdays-season-finale-e2478849",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "sfstation",
+      "scraped_at": "2025-11-09T16:28:32.956Z"
+    },
+    {
+      "id": 2,
+      "selected": false,
+      "title": "SF’s “ARTasting” Art + Food Indoor Night Market (Nov. 14-Dec. 31)",
+      "time_display": "Friday 11/14 5:00 PM - 9:00 PM",
+      "location": "Twitter HQ, San Francisco",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/sfs-artasting-art-food-indoor-night-market-nov-14dec-31/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2025-11-09T16:28:21.345Z"
+    },
+    {
+      "id": 3,
+      "selected": false,
+      "title": "“Holy Smokes” Weird Krampus-Themed Holiday Art Bazaar (SF)",
+      "time_display": "Sunday 11/16 12:00 PM - 5:00 PM",
+      "location": "Saint Joseph's Arts Society, San Francisco",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/holy-smokes-weird-krampusthemed-holiday-art-bazaar-sf/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2025-11-09T16:28:21.347Z"
+    },
+    {
+      "id": 4,
+      "selected": false,
+      "title": "www.sfstation.com",
+      "time_display": "Tuesday 11/11 5:00 PM",
+      "location": "1855 Haight Street, San Francisco, CA",
+      "price": "Check event page",
+      "event_type": "other",
+      "priority": 3,
+      "chinese_relevant": false,
+      "original_url": "https://www.sfstation.com/simon-raymonde-book-signing-e15767347",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "sfstation",
+      "scraped_at": "2025-11-09T16:28:32.953Z"
+    }
+  ]
+}
