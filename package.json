@@ -11,6 +11,8 @@
     "scrape-sfstation": "node scrape-single-source.js sfstation",
     "scrape-all-sites": "node src/scrape-events.js",
     "generate-post": "node src/generate-post.js",
+    "generate-english": "node generate-english-posts.js",
+    "test-english": "node test-english-generator.js",
     "test-cover": "node test-cover-generator.js",
     "validate": "node -e \"console.log('✅ Environment validation passed')\"",
     "dev": "node --watch src/index.js",

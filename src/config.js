@@ -201,7 +201,7 @@ const config = {
     postTemplate: `🎉 本周湾区精彩活动 {date_range}
 
 {events_list}`,
-    
+
     eventTemplate: `{title}
 🕒 {time}
 📍 {location}
@@ -209,6 +209,40 @@ const config = {
 ✨ {description}
 🔗 {link}
 `,
+  },
+
+  // 英文平台配置
+  englishPlatforms: {
+    reddit: {
+      headerTemplate: `# Bay Area Events This Week ({date_range})
+
+Compiled a list of local events for the week. Hope you find something fun!
+`,
+      eventTemplate: `**{title}**
+{time} | {location} | {price}
+{description}
+{link}
+`,
+      footerTemplate: `
+---
+*Sources: Eventbrite, SFStation, Funcheap. Events listed for informational purposes.*`,
+      groupByCategory: true
+    },
+    nextdoor: {
+      headerTemplate: `This Week's Local Events ({date_range}) 🌟
+
+Hi neighbors! I put together a list of events happening around the Bay Area this week. Thought some of you might be interested:
+`,
+      eventTemplate: `{emoji} {day_date} | {title}
+🕒 {time}
+📍 {location} | {price}
+{description}
+→ {link}
+`,
+      footerTemplate: `
+Let me know if you're planning to check any of these out! 😊`,
+      groupByCategory: false
+    }
   },
 
   // 去重配置
