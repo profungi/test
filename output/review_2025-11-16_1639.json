@@ -1,0 +1,871 @@
+{
+  "review_id": "review_2025-11-16_1639_m3w",
+  "generated_at": "2025-11-16T16:39:58.295Z",
+  "scrape_date": "2025-11-16",
+  "target_week": "2025-11-17_to_2025-11-23",
+  "target_week_readable": "11/17 - 11/23",
+  "scraping_report": {
+    "total_scraped": 54,
+    "after_deduplication": 47,
+    "after_classification": 47,
+    "classification_report": {
+      "totalEvents": 47,
+      "eventTypes": {
+        "free": 27,
+        "market": 4,
+        "art": 4,
+        "music": 1,
+        "festival": 5,
+        "food": 2,
+        "other": 3,
+        "fair": 1
+      },
+      "priorityLevels": {
+        "3": 3,
+        "4": 1,
+        "5": 4,
+        "6": 2,
+        "9": 27,
+        "10": 10
+      },
+      "chineseRelevant": 0,
+      "topPriorityEvents": 37
+    }
+  },
+  "instructions": {
+    "how_to_review": "将你想要发布的活动的 'selected' 字段改为 true",
+    "next_step": "保存文件后运行: npm run generate-post [此文件路径]",
+    "fields_explanation": {
+      "title": "活动标题",
+      "time_display": "显示用的时间格式",
+      "location": "活动地点",
+      "price": "票价信息",
+      "event_type": "AI识别的活动类型",
+      "priority": "优先级分数 (越高越重要)",
+      "chinese_relevant": "是否与中文社区相关",
+      "original_url": "原始活动链接"
+    }
+  },
+  "stats": {
+    "total_candidates": 40,
+    "by_type": {
+      "market": 4,
+      "festival": 5,
+      "fair": 1,
+      "free": 22,
+      "food": 2,
+      "art": 4,
+      "other": 2
+    },
+    "by_priority": {
+      "3": 2,
+      "5": 4,
+      "6": 2,
+      "9": 22,
+      "10": 10
+    },
+    "chinese_relevant": 0
+  },
+  "events": [
+    {
+      "id": 1,
+      "selected": false,
+      "title": "Pickwick Vintage Show in San Francisco | November 2025",
+      "time_display": "Sunday 11/23 10:00 AM",
+      "location": "San Francisco Ferry Building1 Ferry BuildingSan Francisco, CA 94111",
+      "price": "$11.54",
+      "event_type": "market",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/pickwick-vintage-show-in-san-francisco-november-2025-tickets-1696272710339?aff=ebdssbneighborhoodbrowse",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "OverviewPickwick Vintage Show in the Ferry Building on November 23rd, featuring vintage clothing, je...",
+      "description_detail": "OverviewPickwick Vintage Show in the Ferry Building on November 23rd, featuring vintage clothing, jewelry, and accessories from 40+ local vendorsPickwick Vintage Show is back in San Francisco! Visit us on the mezzanine at the iconic Ferry Building for an assortment of vintage clothing, jewelry, accessories, and inspiration from over 40 local vendors. We are releasing a limited number of tickets ahead of the show and will sell tickets at the door as capacity allows. Even with a confirmed ticket you may have to wait to enter as we strive to create a safe and pleasant shopping experience for everyone.Sign up for our mailing list at PickwickVintage.com to keep up to date on upcoming events and special offers, and follow us on Instagram and TikTok at @PickwickVintage and use #PickwickPreview for a taste of what you'll find at the show.Join us on the mezzanine at the landmark Ferry Building - gateway to the bay and home of iconic restaurants and food purveyors. We're open 10am-4pm and feature a rotating mix of local sellers that celebrate style and sustainability.Read moreCategory: Fashion, Fashion",
+      "source": "eventbrite",
+      "scraped_at": "2025-11-16T16:39:56.603Z"
+    },
+    {
+      "id": 2,
+      "selected": false,
+      "title": "SSDP 27th Anniversary Dance Party Fundraiser",
+      "time_display": "Saturday 11/22 8:00 PM",
+      "location": "3049 Adeline St3049 Adeline StreetBerkeley, CA 94703",
+      "price": "From $29.34",
+      "event_type": "festival",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/ssdp-27th-anniversary-dance-party-fundraiser-tickets-1936490167219?aff=ebdssbcitybrowsenightlife",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "OverviewJoin Students for Sensible Drug Policy for a legendary night as we mark 27 years of youth-le...",
+      "description_detail": "OverviewJoin Students for Sensible Drug Policy for a legendary night as we mark 27 years of youth-led drug policy reform!Dance. Celebrate. Make History.For 27 years, SSDP has been at the forefront of drug policy reform, empowering young people to create real change in their communities. This anniversary celebration is more than just a party—it's a gathering of changemakers, allies, and visionaries who believe in evidence-based policy and human dignity.Dance in the breathtaking historic Church of Flowers while supporting the next generation of drug policy leaders. Enjoy a Dab Bar provided by Cannabis Bar Services, sponsored by Emerald Farm Tours, live music, and more. This is your chance to celebrate progress, connect with fellow advocates, and fuel the movement forward.Special thanks to our venue sponsor CBCB Dispensary.About This Special Night📅 When: Saturday, November 22, 2025 | 8pm - Midnight📍 Where: 3049 Adeline St, Berkeley, CA 94703 (walkable from Ashby BART!)🎵 Music: DJ Dick Steves (SSDP Alumni Victor Pinho); more to be announced soon!More incredible acts to be announced!🔞 18+ EventTicket InformationThis is a fundraiser with sliding scale, pay-what-you-can pricing:Suggested Donation: $27 - $270Every contribution supports SSDP's campus organizing, student leadership programs, and advocacy efforts across North America and beyond. Choose the amount that works for you—everyone is welcome!If you can not afford the ticket price, please contact us at ssdp@ssdp.org as we'd love to have you and don't want pricing to be a concern.Sponsorship Opportunities AvailableLooking to make a bigger impact? We're seeking event sponsors and product donations:Benefactor: $500+Business: $1,500+Corporate: $2,500+All sponsorships are 501(c)(3) tax-deductibleEmail ssdp@ssdp.org for sponsorship details.Why SSDP MattersStudents for Sensible Drug Policy is the largest international student organization dedicated to ending the war on drugs. We empower young people to participate in the political process, pushing for policies that prioritize health, justice, and human rights over punishment and prohibition.Come dance with purpose. Come celebrate change. Come make history.Read moreCategory: Charity & Causes, Human Rights",
+      "source": "eventbrite",
+      "scraped_at": "2025-11-16T16:39:56.605Z"
+    },
+    {
+      "id": 3,
+      "selected": false,
+      "title": "Black on Black Party",
+      "time_display": "Saturday 11/22 5:00 PM",
+      "location": "Lucy Blue468 19th StreetOakland, CA 94612",
+      "price": "$92.55",
+      "event_type": "market",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/black-on-black-party-tickets-1971502590319?aff=ebdssbcitybrowse",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "OverviewA signature tequila event like no other featuring the luxury brand tequila Casa Obsidiana.Jo...",
+      "description_detail": "OverviewA signature tequila event like no other featuring the luxury brand tequila Casa Obsidiana.Join Lucy Blue and Casa Obsidiana for an exclusive evening with the remowned luxury tequila brand. Forged from the earth's elements, Casa Obsidiana is the world's most beautiful tequila. Crafted at the base of el Volcán de Tequila, it honors the true culture of Mexico and connects us through the rare power of the volcano's ancient stone, the obsidian.Enjoy a welcome cocktail, tequla tasting flight, signature cocktails, salutation coocktail, bites from the Chef at Lucy Blue There are only 40 seats avalable for this special occassion. Read moreCategory: Community, Other",
+      "source": "eventbrite",
+      "scraped_at": "2025-11-16T16:39:56.605Z"
+    },
+    {
+      "id": 4,
+      "selected": false,
+      "title": "The Kirtan Experience in Cupertino - Music, Mantras & Dance",
+      "time_display": "Saturday 11/22 6:30 PM",
+      "location": "St Jude's Episcopal Church20920 McClellan RoadCupertino, CA 95014",
+      "price": "$0.99",
+      "event_type": "festival",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/the-kirtan-experience-in-cupertino-music-mantras-dance-tickets-1966220326927?aff=ebdssbcitybrowse",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "OverviewExperience what happens when sacred sound touches your heart. Worries fly away. The weight l...",
+      "description_detail": "OverviewExperience what happens when sacred sound touches your heart. Worries fly away. The weight lifts. Joy awakens.We had so much fun last month, we just had to come back to Cupertino for more Kirtan before we wrap up our California coastal tour! We can’t wait to see you again and if you missed it the first time, we’d love to meet you.Step into another worldWhere meditation meets celebration.We begin with a mantra and a melody, an invitation to let Yoga Sound do its work. Instead of battling your mind, you feel lighter, as if your whole being can breathe freely. Gradually, the kirtan carries you from deep calm to pure joy.Ride the wave of transcendental soundAs the kirtan builds, the energy swells like a rising wave. Some sit back and let it wash over them, others dive right in—singing and dancing freely. Time seems to stand still and you feel fully present, knowing this is exactly where you’re meant to be.Why we share thisFor thousands of years, people have sung these mantras to uncover inner peace and fulfillment. The yoga sages call kirtan the easiest and most effective form of meditation. Why? Because these sacred sounds awaken the love and joy already there in our heart.Kirtan has changed our lives—that’s why we share it. And in sharing, we’ve seen how it brings people together across backgrounds and beliefs, creating a sense of unity the world needs now more than ever.What People Tell UsWe see it all the time—people who come as strangers leave as friends, those who arrive anxious leave calm, and hearts open.\"I didn't know I could feel this peaceful.\"\"I've been meditating for years, but this was different.\"\"Although I'd never heard the mantras before, they felt very familiar and comforting.\"Everyone is welcomeWhether you’ve been to kirtan a hundred times or this is your first, just come as you are. Bring friends or make new ones here. This isn’t a performance—it’s something we create together, and every voice belongs.Don’t just hear about it—be part of it.Read moreCategory: Spirituality, Unaffiliated",
+      "source": "eventbrite",
+      "scraped_at": "2025-11-16T16:39:56.607Z"
+    },
+    {
+      "id": 5,
+      "selected": false,
+      "title": "All you can eat - Puerto Rican Street Cuisine",
+      "time_display": "Sunday 11/23 10:00 AM",
+      "location": "Puerto Rican Street Cuisine1430 23rd AvenueOakland, CA 94606",
+      "price": "From $55.09",
+      "event_type": "festival",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/all-you-can-eat-puerto-rican-street-cuisine-tickets-1849167011309?aff=ebdssbcitybrowse",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "OverviewGet ready for an authentic taste of Puerto Rico! Join us for our All-You-Can-Eat Puerto Rica...",
+      "description_detail": "OverviewGet ready for an authentic taste of Puerto Rico! Join us for our All-You-Can-Eat Puerto Rican Street Cuisine BrunchAll-You-Can-Eat Puerto Rican BrunchGet ready for an authentic taste of Puerto Rico! Join us for our All-You-Can-Eat Puerto Rican Street Cuisine Brunch — a full celebration of island flavor, family, and culture.Indulge in 90 minutes of unlimited Puerto Rican food, served fresh and full of flavor. Once your ticket time begins, you’ll have 90 minutes to eat as much as you like, so be sure to arrive on time (or early!) to enjoy every bite.Food service stops right at the 90-minute mark.If you arrive late, your dining time will not be extended.No to-go boxes — this brunch is meant to be enjoyed in person, fresh and hot.Drinks will be available for purchase.Families are welcome — it’s an all-ages event! Please note that there are no discounted tickets for children or guests of any age.⸻What’s on the MenuAn incredible lineup of traditional Puerto Rican dishes — freshly made and full of flavor:Main Dishes / Platos Principales• Garlic & Onion Chicken / Pollo con Ajo y Cebolla• Beef Stew / Carne Guisada• Slow Roasted Pork Shoulder / Pernil Asado Lento• White Rice / Arroz Blanco• Puerto Rican Rice / Arroz Puertorriqueño• Stewed Beans / Habichuelas Guisadas• Sweet Plantains / Plátanos Maduros• Crispy Garlic Plantains / Tostones con Ajo• Cucumber, Tomato & Avocado Salad / Ensalada de Pepino, Tomate y Aguacate• Stewed Beans / Habichuelas GuisadasDesserts / Postres• Guava Pastelillos / Pastelitos de Guayaba⸻Ticket OptionsWe’re offering a limited number of tickets to ensure everyone can sit comfortably and enjoy the full brunch experience together:• Individuals: 6 tickets available• Pairs: 9 tickets available• Groups of 4: 3 tickets available• Groups of 5: 2 tickets available• Group of 6: 1 ticket available for large partiesOnce group tickets are sold out, they’re gone — so grab yours early if you plan to come as a group!⸻Come hungry. Come early. Come ready to celebrate Puerto Rican flavor and culture.Questions? Email us at info@ourlatincity.comRead moreCategory: Food & Drink, Food",
+      "source": "eventbrite",
+      "scraped_at": "2025-11-16T16:39:56.611Z"
+    },
+    {
+      "id": 6,
+      "selected": false,
+      "title": "Fall Holiday CHOCOLATE SALON and FESTIVAL 2025",
+      "time_display": "Sunday 11/23 11:00 AM",
+      "location": "San Francisco County Fair Building / Hall of Flowers1199 9th Avenue at Lincoln WaySan Francisco, CA 94122",
+      "price": "From $13.07",
+      "event_type": "market",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/fall-holiday-chocolate-salon-and-festival-2025-tickets-1382908389219?aff=ebdssbdestsearch",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "OverviewDiscover, taste and savor the finest in artisan, gourmet and premium chocolates & confection...",
+      "description_detail": "OverviewDiscover, taste and savor the finest in artisan, gourmet and premium chocolates & confections for the Season and the Holidays.DO YOU LOVE CHOCOLATE? Discover, taste and savor the finest in artisan, gourmet and premium chocolates & confections for the Season and the Holidays at the FALL HOLIDAY CHOCOLATE SALON & FESTIVALChocolate lovers, en garde! The Holiday and Seasonal chocolate show for the San Francisco Bay Area takes place at the Fall Holiday CHOCOLATE SALON & FESTIVAL. Chocolate aficionados, fanatics, lovers and addicts can taste & experience the finest in artisan, gourmet & premium chocolate in one of the world's great culinary regions.The Fall Holiday CHOCOLATE SALON participants include over 30 chocolatiers, confectioners, and other culinary artisans. An intimate setting, the Fall Chocolate Salon is the perfect place to find the perfect gift, while tasting and savoring the chocolate lovers experience.Previous articipants have included aL chocoLat Boutique, Amano Chocolate, Brigadeiro Sprinkles, By three bears, Charlotte Truffles, CHOCOLATIER EVE, Chocolite Healthy Sweets, Coba Coffee + Chocolate, CocoTutti Chocolates, Fabula Tea, Farm Fresh To You, flying noir, Formosa Chocolates, Goufrais Southern California, Kids Cooking for Life, Kindred Caramels, Kokak Chocolates, Michael's Chocolates, p.o.p. candy co., Rainy Day Chocolate, Socola Chocolatier, Sonoma Chocolatiers, The Good Chocolate, The Xocolate Bar, VB Fine Chocolates, Z. Cioccolato, Volo Chocolate, tinyB chocolate, That Batch, Sam’s Gourmet Jams, R&J Toffee, Godavari Chocolate, Gems and silver Jewelry, and more.Salon Entry includes all chocolate & confection tastings, etc.MORE INFORMATION AT http://www.FallChocolateSalon.comRead moreCategory: Holiday, Fall events",
+      "source": "eventbrite",
+      "scraped_at": "2025-11-16T16:39:56.613Z"
+    },
+    {
+      "id": 7,
+      "selected": false,
+      "title": "Liquid Lessons @ The Cedar Room",
+      "time_display": "Sunday 11/23 3:00 PM",
+      "location": "Cedar Room, South Bascom Avenue, Campbell, CA, USA1875 South Bascom Avenue##100 Campbell, CA 95008",
+      "price": "$75",
+      "event_type": "market",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/liquid-lessons-the-cedar-room-tickets-1847540386029?aff=ebdssbdestsearch",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "OverviewMix, Mingle & Master the Art of Cocktails! Join us at The Cedar Room for a fun, hands-on mix...",
+      "description_detail": "OverviewMix, Mingle & Master the Art of Cocktails! Join us at The Cedar Room for a fun, hands-on mixology class.Mixology Class at The Cedar RoomJoin us at The Cedar Room for an unforgettable hands-on mixology experience! Our talented bartenders will guide you through the art of crafting three to four signature cocktails — from shaking and stirring to perfect garnishes and presentation.We provide all the ingredients, tools, and equipment you’ll need — plus light bites and drinks to keep the creativity flowing. Whether you're a cocktail enthusiast or just looking for a fun group activity, this class is the perfect blend of learning, laughter, and libations.Come ready to sip, shake, and stir — and leave with a few bartender tricks up your sleeve!Read moreCategory: Food & Drink, Spirits",
+      "source": "eventbrite",
+      "scraped_at": "2025-11-16T16:39:56.616Z"
+    },
+    {
+      "id": 8,
+      "selected": false,
+      "title": "The 2025 Great Dickens Christmas Fair & Victorian Holiday Party (Nov. 22-Dec. 21)",
+      "time_display": "Saturday 11/22 10:00 AM - 6:00 PM",
+      "location": "The Cow Palace, San Francisco",
+      "price": "$35*",
+      "event_type": "fair",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/2025-great-dickens-christmas-fair-victorian-holiday-party-nov-22dec-21/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2025-11-16T16:27:52.991Z"
+    },
+    {
+      "id": 9,
+      "selected": false,
+      "title": "$2 Off: San Francisco Fall Holiday Chocolate Salon and Festival (2025)",
+      "time_display": "Sunday 11/23 11:00 AM - 4:30 PM",
+      "location": "San Francisco County Fair Building",
+      "price": "$19.89*",
+      "event_type": "festival",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/fall-holiday-chocolate-festival/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2025-11-16T16:27:52.992Z"
+    },
+    {
+      "id": 10,
+      "selected": false,
+      "title": "SF’s Fall Holiday Chocolate Salon and Festival (2025) in Golden Gate Park",
+      "time_display": "Sunday 11/23 11:00 AM - 4:30 PM",
+      "location": "San Francisco County Fair Building",
+      "price": "$19.89*",
+      "event_type": "festival",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/sfs-fall-holiday-chocolate-salon-festival-2025/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2025-11-16T16:27:52.992Z"
+    },
+    {
+      "id": 11,
+      "selected": false,
+      "title": "Mommy Moments Winter Fest",
+      "time_display": "Sunday 11/23 2:00 PM",
+      "location": "Bayview Opera House (BVOH)4705 3rd StreetSan Francisco, CA 94124",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/mommy-moments-winter-fest-tickets-1800893233139?aff=ebdssbneighborhoodbrowse",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "OverviewMother & Child Evening of Dreams A heartfelt night filled with love, laughter, dinner, games...",
+      "description_detail": "OverviewMother & Child Evening of Dreams A heartfelt night filled with love, laughter, dinner, games, and special awards.Mother & Child Evening of DreamsEvent OverviewThe Mother & Child Evening of Dreams is a community celebration honoring the bond between mothers and their children. Families will enjoy an evening of dinner, live entertainment, games, and special awards recognizing love, resilience, and unity.The event features a beautifully designed setting, games, family photo opportunities, and performances that highlight the joy of togetherness. Our goal is to uplift families and create lasting memories that inspire hope and connection.Accessibility & Support Services:To ensure all families can participate, @HollyRockAllStars on Instagram offers free support with clothing, hairstyles, haircuts, makeup touch-ups, and transportation for those in need.Dress Code:Semi-formal to formal attire.Every guest will leave with a warm meal, shared laughter, and memories to cherish.Read moreCategory: Holiday, Christmas",
+      "source": "eventbrite",
+      "scraped_at": "2025-11-16T16:39:56.602Z"
+    },
+    {
+      "id": 12,
+      "selected": false,
+      "title": "Lectures on Tap - Psychologist Explains: The Evolutionary Need to Feel Free",
+      "time_display": "Monday 11/17 6:30 PM",
+      "location": "Berkeley",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/lectures-on-tap-psychologist-explains-the-evolutionary-need-to-feel-free-tickets-1798368030189?aff=ebdssbcitybrowse",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Lectures on Tap - Psychologist Explains: The Evolutionary Need to Feel Free",
+      "description_detail": "Lectures on Tap - Psychologist Explains: The Evolutionary Need to Feel Free",
+      "source": "eventbrite",
+      "scraped_at": "2025-11-16T16:39:56.605Z"
+    },
+    {
+      "id": 13,
+      "selected": false,
+      "title": "Jingle & Mingle",
+      "time_display": "Sunday 11/23 12:00 PM",
+      "location": "Cityline Sunnyvale, 241 South Taaffe Street, Sunnyvale, CA, USA241 South Taaffe StreetSunnyvale, CA 94086",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/jingle-mingle-tickets-1874991914289?aff=ebdssbcitybrowse",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "OverviewJoin us Sunday, November 23rd in welcoming back South Bay Makers back to Cityline for their ...",
+      "description_detail": "OverviewJoin us Sunday, November 23rd in welcoming back South Bay Makers back to Cityline for their annual winter community event!Don’t Miss the Holiday Event of the Season — Jingle & Mingle at Cityline Sunnyvale! 🎄✨Step into the magic of the holidays at Jingle & Mingle — a one-of-a-kind celebration where creativity, community, and cheer come together!This is more than just a holiday market, it’s an immersive experience designed to spark joy, connection, and inspiration. Wander through a festive wonderland filled with 60+ local makers and artists, delicious bites, and heartwarming holiday moments.🎁 Event Highlights🧸 Donation Toy Drive in partnership with Vibes & Smiles🍜 Food Trucks & Pre-Packaged Treats🎶 Live Performances & Entertainment🖌️ Live Face Painting🐾 Dog-Only Holiday Portraits with James Guirao Visuals🌟 Exclusive Workshops🎟️ Please note: Workshops and Dog Portraits require separate paid tickets.Event Details📅 Date: Sunday, November 23rd🕐 Time: 12:00 PM - 5:00 PM📍 Location: Redwood Square at Cityline🅿️ Free parking in the Orange Garage, 221 TaaffeMeet me at Cityline.Read moreCategory: Food & Drink, Food",
+      "source": "eventbrite",
+      "scraped_at": "2025-11-16T16:39:56.606Z"
+    },
+    {
+      "id": 14,
+      "selected": false,
+      "title": "Meet New People! Saturday Night Networking",
+      "time_display": "Saturday 11/22 7:00 PM",
+      "location": "Panera Bread20807 Stevens Creek Blvd. #100Cupertino, CA 95014",
+      "price": "$50",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.ca/e/meet-new-people-saturday-night-networking-tickets-1444087477519?aff=ebdssbcitybrowse",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "OverviewMeet new people! Network, socialize and connect -- in person!This event is organized in coll...",
+      "description_detail": "OverviewMeet new people! Network, socialize and connect -- in person!This event is organized in collaboration with many groups!Look for the MEETUP sign!Network, socialize and connect!This event is free to attend.Attendees must purchase their own liquid refreshments and food.There's no content or speaker at this event -- just business and social networking.Build your business and social network - face to face!Come out and enjoy a great evening of good food, liquid refreshments, and connecting.You may meet your next business collaborator, client, employer, employee, friend, or tennis partner!Getting away from a screen for a few hours will do you some good!: -)Meet Silicon Valley movers and shakers - Internet entrepreneurs, developers, engineers, mobile app coders, attorneys, bloggers, academics, financiers, marketing professionals, community organizers, and investors!For more info on Idea to IPO events, visit:idea-to-ipo.com (our main meetup group among 160 meetup groups globally)www.youtube.com/ideatoipo (videos of in-person events)https://www.youtube.com/@ideatoipo2 (videos of online events)@ideatoipoOrganizational Sponsor:Startup HouseNeed a place to stay short term in Silicon Valley?Stay at Startup House in Palo Alto - the heart of Silicon Valley - for as low as $50 a night!-Network, socialize and connect with entrepreneurs all over the world!-Enjoy social events and startup and venture capital-related programming!- Have access to world class amenities, iconic tech companies, top tier venture capital firms, Stanford University, etc. - all within walking or biking distance!For more info, visit:https://startuphouse.carrd.co/Read moreCategory: Business, Other",
+      "source": "eventbrite",
+      "scraped_at": "2025-11-16T16:39:56.607Z"
+    },
+    {
+      "id": 15,
+      "selected": false,
+      "title": "Seasonal Wreath Making: Holiday Style, Expert Tips - Campbell",
+      "time_display": "Sunday 11/23 10:30 AM",
+      "location": "SummerWinds Nursery2460 South Winchester BoulevardCampbell, CA 95008",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/seasonal-wreath-making-holiday-style-expert-tips-campbell-tickets-1903311849979?aff=ebdssbcitybrowse",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "OverviewWatch and learn how to design gorgeous seasonal wreaths with expert tips for creating your o...",
+      "description_detail": "OverviewWatch and learn how to design gorgeous seasonal wreaths with expert tips for creating your own at home.Join us for a festive wreath-making demonstration where you’ll learn the techniques behind crafting beautiful seasonal wreaths. Our expert will guide you through greenery selection, design principles, and styling ideas, so you can confidently create your own at home. Get inspired and bring fresh holiday spirit to your décor!Read moreCategory: Holiday, Christmas",
+      "source": "eventbrite",
+      "scraped_at": "2025-11-16T16:39:56.608Z"
+    },
+    {
+      "id": 16,
+      "selected": false,
+      "title": "Oro Sólido en Concierto • Entrada Gratis @ Maya Nighclub",
+      "time_display": "Saturday 11/22 9:00 PM",
+      "location": "MAYA NIGHTCLUB1776 BroadwayRedwood City, CA 94063",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/oro-solido-en-concierto-entrada-gratis-maya-nighclub-tickets-1963639045244?aff=ebdssbcitybrowse",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "OverviewPor primera vez llega a Club Maya una de las bandas más emblemáticas del Merengue • Oro Sóli...",
+      "description_detail": "OverviewPor primera vez llega a Club Maya una de las bandas más emblemáticas del Merengue • Oro Sólido • Entrada GratisPor primera vez llega a Club Maya una de las bandas más emblemáticas del Merengue con un show que no te puedes perder!Oro Solido tocando todos sus exitos como La tanga, abusadora, María se fue, Ta Encendido y muchos más!Entrada gratis antes de las 10:00pm con su ticket (Recomendamos llegar temprano para evitar largas líneas) Unica presentación en el Area de la bahiaDj Sabor and Dj MGD tocando lo mejor de la cumbia salsa merengue y másSabado, 22 de Noviembre • Puertas abren 9:00pmMaya Nightclub - 1776 Broadway • Redwood City • CA 94063Info: (650) 315-590021 and overRead moreCategory: Music, Latin",
+      "source": "eventbrite",
+      "scraped_at": "2025-11-16T16:39:56.611Z"
+    },
+    {
+      "id": 17,
+      "selected": false,
+      "title": "SnowFest 2025 at Sports Basement Redwood City",
+      "time_display": "Sunday 11/23 10:00 AM",
+      "location": "Sports Basement Redwood City202 Walnut StreetRedwood City, CA 94063",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/snowfest-2025-at-sports-basement-redwood-city-tickets-1770909440809?aff=ebdssbcitybrowse",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "OverviewOur biggest, most exciting, and most snow-tastic event of the year is back - introducing Sno...",
+      "description_detail": "OverviewOur biggest, most exciting, and most snow-tastic event of the year is back - introducing SnowFest 2025 presented by Palisades Tahoe!We're back with all the things you love & more:❆ ‎‏‏‎ Basementeers get 20% off everything* in-store‎❆‎‏‏‎ ‎‏‏‎ Chance to win some of this season's hottest (coldest?) snow gear❆ ‎‏‏‎ Basementeers get 2-for-1 lift ticket vouchers to Palisades Tahoe**❆ ‎‏‏‎ Access to reps from over 50 snow industry brands❆ ‎‏‏‎ Beer for good - donate, drink, and make a differenceRide for Less at Palisades TahoeBasementeers get a Palisades Tahoe 2-for-1 lift ticket voucher for every $100 they spend (limit 3). Plus, you can save an extra $40 on your Palisades Tahoe 4-Day Lift Pack. Winter is approaching fast, so get prepped for your days on the slopes at SnowFest!Must be a Basementeer member to qualify for the 2-for 1 vouchers. Limit 3 vouchers per Basementeer account. Transaction value is based on total after taxes, fees, & discounts. 2-for-1 vouchers are valid Monday-Friday for the 2025/2026 season - other exclusions apply.Win the Gear of Your DreamsOur snow brands are coming in full force with the lowdown on this season's hottest (coldest?) gear and they're giving away a ton of it! Join us at SnowFest to chat 'em up and get a chance to win skis, snowboards, helmets, goggles, apparel, & so much more!Get Tips From Your Favorite BrandsOur snow brands are coming in full force with the lowdown on this season's hottest (coldest?) gear and they're giving away a ton of it! Join us at SnowFest to chat 'em up and get a chance to win this season's skis, boards, boots, bindings, apparel, and so much more.Beer for GoodBeer is good. Helping your local communities is even better - that's why we're offering tastings from our partnering breweries for a donation. 100% of proceeds benefit Girls on the Run Bay Area so join us to donate, drink, and make a difference at SnowFest!*Basementeer members get 20% off. Non-Basementeers get 11% off. Valid in-store only. Not combinable with other discounts. Not valid on bikes, gift cards, rentals, services, or trips. Other exclusions apply - see our site for details.Palisades Tahoe 2-for-1 Voucher Exclusions**The promo code is one-time-use only for one 2 for 1 lift ticket to Palisades Tahoe. Buy one (1) adult lift ticket online with your promo code and receive a second lift ticket for FREE. Complimentary ticket must be used on the same date as the purchased ticket. Offer valid Monday through Friday from Opening Day 2025 through Closing Day 2026, EXCEPT FOR Saturdays and Sundays and the following blackout dates. Not valid with any other offers. No cash value. No refunds. Tickets are NOT redeemable at the Ticket Window, tickets must be purchased in advance using the link provided.Read moreCategory: Sports & Fitness, Snow Sports",
+      "source": "eventbrite",
+      "scraped_at": "2025-11-16T16:39:56.611Z"
+    },
+    {
+      "id": 18,
+      "selected": false,
+      "title": "Grizzly Bear - Live 2025The Warfield",
+      "time_display": "Tuesday 11/18 8:00 PM",
+      "location": "982 Market Street, San Francisco, CA",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.axs.com/events/983667/grizzly-bear-tickets",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "sfstation",
+      "scraped_at": "2025-11-16T16:28:09.178Z"
+    },
+    {
+      "id": 19,
+      "selected": false,
+      "title": "Noontime Concerts presents Dan Glover, piano & Karen Pollick, violinOld St. Mary's Cathedral + Chinese Mission",
+      "time_display": "Tuesday 11/18 12:30 PM",
+      "location": "660 California Street, San Francisco, CA",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "http://www.noontimeconcerts.org",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "sfstation",
+      "scraped_at": "2025-11-16T16:28:09.178Z"
+    },
+    {
+      "id": 20,
+      "selected": false,
+      "title": "www.sfstation.com",
+      "time_display": "Wednesday 11/19 11:30 AM",
+      "location": "741 Valencia Street, San Francisco, CA",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.sfstation.com/tacolicious-cantina-club-weber-ranch-takeover-e15767643",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "sfstation",
+      "scraped_at": "2025-11-16T16:28:09.182Z"
+    },
+    {
+      "id": 21,
+      "selected": false,
+      "title": "Loteria Game Night (Mexican Bingo) at TacoliciousTacolicious - Mission",
+      "time_display": "Thursday 11/20 6:00 PM",
+      "location": "741 Valencia Street, San Francisco, CA",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/game-night-at-tacolicious-valencia-tickets-1645436678399",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "sfstation",
+      "scraped_at": "2025-11-16T16:28:09.183Z"
+    },
+    {
+      "id": 22,
+      "selected": false,
+      "title": "Cirque du Soleil ECHOLot A at Mission Rock",
+      "time_display": "Thursday 11/20 7:30 PM",
+      "location": "3rd St at Channel St, San Francisco, CA",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://tickets.cirquedusoleil.com/shop/#/e4568e04-f349-44e5-b71d-c6d60df94f6f/shop/select?locale=en&skin=echo_v2",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "sfstation",
+      "scraped_at": "2025-11-16T16:28:09.183Z"
+    },
+    {
+      "id": 23,
+      "selected": false,
+      "title": "Sumo + SushiPalace of Fine Arts",
+      "time_display": "Thursday 11/20 7:00 PM",
+      "location": "3301 Lyon Street, San Francisco, CA",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://ticketmaster.evyy.net/c/253558/264167/4272?u=https%3A%2F%2Fwww.universe.com%2Fevents%2Fsumo-sushi-san-francisco-tickets-SF8T64",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "sfstation",
+      "scraped_at": "2025-11-16T16:28:09.183Z"
+    },
+    {
+      "id": 24,
+      "selected": false,
+      "title": "Golden State Warriors 2025/2026 SeasonChase Center",
+      "time_display": "Friday 11/21 7:00 PM",
+      "location": "1 Warriors Way, San Francisco, CA",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://ticketmaster.evyy.net/c/253558/264167/4272?u=https%3A%2F%2Fwww.ticketmaster.com%2Fartist%2F805946",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "sfstation",
+      "scraped_at": "2025-11-16T16:28:09.183Z"
+    },
+    {
+      "id": 25,
+      "selected": false,
+      "title": "Beyond My Family’s Reach – A Stage Play by BADD (Brothers Against Drug Deaths)Ruth Williams Bayview Opera House",
+      "time_display": "Saturday 11/22 7:00 PM",
+      "location": "4705 3rd Street, San Francisco, CA",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://tinyurl.com/BeyondMyFamilysReach7",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "sfstation",
+      "scraped_at": "2025-11-16T16:28:09.183Z"
+    },
+    {
+      "id": 26,
+      "selected": false,
+      "title": "Anti-Fascist Zine FairYerba Buena Center for the Arts (YBCA)",
+      "time_display": "Saturday 11/22 11:00 AM",
+      "location": "701 Mission Street, San Francisco, CA",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://ybca.org/event/anti-fascist-zine-fair/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "sfstation",
+      "scraped_at": "2025-11-16T16:28:09.183Z"
+    },
+    {
+      "id": 27,
+      "selected": false,
+      "title": "www.sfstation.com",
+      "time_display": "Saturday 11/22 10:00 AM",
+      "location": "Fort Mason, San Francisco, CA",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.sfstation.com#",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "sfstation",
+      "scraped_at": "2025-11-16T16:28:09.183Z"
+    },
+    {
+      "id": 28,
+      "selected": false,
+      "title": "“Catch the Spirit” 1930s Xmas at Los Altos History Museum",
+      "time_display": "Wednesday 11/19 12:00 PM - 4:00 PM",
+      "location": "Los Altos History Museum, South Bay",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/catch-spirit-1930s-xmas-los-altos-history-museum/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2025-11-16T16:27:52.990Z"
+    },
+    {
+      "id": 29,
+      "selected": false,
+      "title": "SF’s Embarcadero Center Annual Lighting Ceremony & Holiday Market (2025)",
+      "time_display": "Wednesday 11/19 4:00 PM - 6:00 PM",
+      "location": "Embarcadero Center, San Francisco Bay Area",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/embarcadero-center-lighting-ceremony/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2025-11-16T16:27:52.990Z"
+    },
+    {
+      "id": 30,
+      "selected": false,
+      "title": "“Cole Valley Nights” Street Fair (SF)",
+      "time_display": "Thursday 11/20 4:00 PM - 9:00 PM",
+      "location": "Cole Valley, San Francisco Bay Area",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/sfs-cole-valley-night-market/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2025-11-16T16:27:52.991Z"
+    },
+    {
+      "id": 31,
+      "selected": false,
+      "title": "Cole Valley Nights",
+      "time_display": "Thursday 11/20 4:00 PM - 9:00 PM",
+      "location": "Cole Street, San Francisco",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/cole-valley-nights/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2025-11-16T16:27:52.991Z"
+    },
+    {
+      "id": 32,
+      "selected": false,
+      "title": "SF SPCA “Holiday Windows” w/ Adoptable Dogs & Cats (2025)",
+      "time_display": "Friday 11/21 12:00 PM - 5:00 PM",
+      "location": "Macy's Union Square, San Francisco",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/sf-spca-holiday-windows-adoptable-dogs-cats-2025/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2025-11-16T16:27:52.991Z"
+    },
+    {
+      "id": 33,
+      "selected": false,
+      "title": "A Night Out with New Friends: San Jose | Dinner with Strangers 2025",
+      "time_display": "Saturday 11/22 7:00 PM",
+      "location": "San Jose · Restaurant of the Week",
+      "price": "From $22.53",
+      "event_type": "food",
+      "priority": 6,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/a-night-out-with-new-friends-san-jose-dinner-with-strangers-2025-tickets-1613739380929?aff=ebdssbdestsearch",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "OverviewSo you're in the big city looking to expand your social circles. Join us for a night out wit...",
+      "description_detail": "OverviewSo you're in the big city looking to expand your social circles. Join us for a night out with new friends! Register for 2025 membership.Category: Food & Drink, Food",
+      "source": "eventbrite",
+      "scraped_at": "2025-11-16T16:39:56.617Z"
+    },
+    {
+      "id": 34,
+      "selected": false,
+      "title": "Table 4 Tonight: San Jose | Dinner with Strangers",
+      "time_display": "Saturday 11/22 7:00 PM",
+      "location": "San Jose · Restaurant of the Week",
+      "price": "From $17.85",
+      "event_type": "food",
+      "priority": 6,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/table-4-tonight-san-jose-dinner-with-strangers-tickets-1613399052999?aff=ebdssbdestsearch",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "OverviewLife can be so busy with no time to make new connections on your own. Start off as strangers...",
+      "description_detail": "OverviewLife can be so busy with no time to make new connections on your own. Start off as strangers, then become friends over dinner!Everyone has something to bring to the table...literally.Our series groups together complete strangers for a fun night out over dinner. That's right, you sign up, and we book the restaurant. We know life can get busy. Don't do life alone and build your community with us, all the while supporting local businesses. We coordinate dinners in over 200 cities.This gathering isn't an official event with the restaurant but rather an outing based on a table reservation. The pin on the map is not the location, but a placeholder on Eventbrite as each week is held at a different location.Our feature on Fox 11 Los Angeles.Please see here for our coverage in Nashville Fox 17's Growing Nashville segment.Each evening is intended to be for 4-6 people maximum. Check out our feature in Eventbrite's 2025 TRNDS report about embracing the micro-event trend.How does it work?After you register, you'll be emailed an introduction message. If you don't get an email after five minutes of signing up, contact us with your registration at ermantourageimpact@gmail.com.*Your registration does not include your individual food and drink purchases. A paid ticket simply makes you more committed to actually showing up.*These outings are intended to help people make friends. These are not singles gatherings.*If we don't meet our minimum number of registrants for the evening you sign up, please be open to joining us on another evening! We will complete table reservations after we hit our minimum signups, so you may reach out to us before signing up for or after you sign up to see our progress with registrations for the evening.*If you sign up the day of the gathering and do not get a message from us in time, simply email ermantourageimpact@gmail.com, request a refund, or please be open to joining us on another evening.Our vision is simple: we take the no gimmicks approach to networking. No need for yet another app to take up space on your phone - just four walls and a roof and good food for people to connect :) We coordinate with you directly, human-to-human.If you have any more questions, please contact ermantourageimpact@gmail.com! Follow us on Instagram!Read moreCategory: Food & Drink, Food",
+      "source": "eventbrite",
+      "scraped_at": "2025-11-16T16:39:56.617Z"
+    },
+    {
+      "id": 35,
+      "selected": false,
+      "title": "The Saturday Roller Disco - 3rd Session - Adults - 7 P.M. to 11 P.M.",
+      "time_display": "Saturday 11/22 7:00 PM",
+      "location": "Church Of 8 Wheels554 Fillmore StreetSan Francisco, CA 94117",
+      "price": "From $24.13",
+      "event_type": "art",
+      "priority": 5,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/the-saturday-roller-disco-3rd-session-adults-7-pm-to-11-pm-tickets-153936412955?aff=ebdssbcitybrowse",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "OverviewWe're extending the session time, not the price, giving you more funky good times for the mo...",
+      "description_detail": "OverviewWe're extending the session time, not the price, giving you more funky good times for the money!!!This is how you start a great weekend!!! Saturdays are always a great time to go roller skating. This is the 3rd session where anyone 18 and up can come in and get their skate groove on!!! We're extending the session time, not the price, giving you more funky good times for the money!!! Please skate safely. All participants must please follow the direction of the rink personnel.Skate Rental are available for $5.00, but not included with the purchase of your ticket.NO REFUNDS!!! Attendees are NOT allowed to transfer their registration between this event and another event. Be sure you are selecting the proper date and time you want to skate.Thank you for registering!!! To speed up the process at the door please have your scan codes ready to scan. Ticket scan codes can be found at the bottom of your confirmation email with tickets attached. Thank you everyone for being patient and understanding while we try to adapt to our new system.Read moreCategory: Hobbies",
+      "source": "eventbrite",
+      "scraped_at": "2025-11-16T16:39:56.604Z"
+    },
+    {
+      "id": 36,
+      "selected": false,
+      "title": "The Big Effin' Presents: Lauren Arrow & Rena Branson",
+      "time_display": "Sunday 11/23 3:00 PM",
+      "location": "Chochmat HaLev2215 Prince StreetBerkeley, CA 94705",
+      "price": "$0 – $108.55",
+      "event_type": "art",
+      "priority": 5,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/the-big-effin-presents-lauren-arrow-rena-branson-tickets-1957292758329?aff=ebdssbcitybrowse",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "OverviewA transformative afternoon of singing, soul, and spiritYou are invited to join Lauren Arrow ...",
+      "description_detail": "OverviewA transformative afternoon of singing, soul, and spiritYou are invited to join Lauren Arrow and special guest Rena Branson as they come together to create a magickal musical ritual that is sure to be soul stirring and spirit lifting. Backed by the Big Effin' Band, this will be a collaborative performance featuring you!In classic Big Effin' Style…..you are an important part of this show! Lauren and Rena will teach easy-to-harmonize songs and let spirit do the rest. This is for anyone who feels the deep ecstatic joy of singing, to the deep and terrifying fear of singing…. and everyone in between! Singing with all y'all is the point, despite whatever judgement you've placed on your voice (good/bad/etc)! We just want to sing with you. (Aaaaaaand if you feel abject terror around singing but just want to listen you are welcome too ❤)Enjoy an afternoon of original music by Lauren and Rena, soulful covers, and heart melting wordless melodies to lose yourself in. All ages and abilities welcome! Lauren and Rena will be supported by an all-star line-up of musicians: Ram Dass (guitar), Callie Millington (bass), Matt Takiff (saxophone and fiddle), Michael Arrow (drums), Michelle Rybka (harmonies) with some special guests.Donation:10% of this evenings donation will go towards Sogrea-Te Land Trust and MECA (Middle East Children's Alliance). Tickets are a sliding scale with a handful of low-income tickets available. Thank you for giving so we can give abundantly.Location:We will be gathering at an amazing space in Berkeley with easy parking and accessibility. We will be inside welcoming the autumnal magick.Tickets:There are 10 work-trade tickets available, and we would LOVE your help setting up/breaking down. Please reach out to bigeffinsing@gmail.com if you are interested in a work-trade ticket.We are offering the following sliding scale ticket options based on equity and accessibility:$20 low-income$40 general admission$60 supporter$100 VIP with swag & saved seatsNOTAFLOF Donation-based Zoom ticketsWhen you buy tickets, please check the option to allow us to contact you so we can send you messages!Accessibility:Please refrain from wearing strongly scented perfumes/ etc. Please take a COVID test day of and choose community safety if you are experiencing any symptoms or live with someone who does. There are several steps up the main entrance, please let us know if you need to access the ramp entrance on the side of the building.We can’t wait to sing with you!Lauren Arrow (she/her) is a queer, Jewitch Songtender whose life work is helping people reclaim their voices through trauma-informed singing, creativity, and messy group expression. Lauren is an experienced facilitator holding a variety of spaces space from intimate singing retreats to festivals, creating and performing absurdist political ritual theater, and more. She lives for the magic of group singing and knows her job is done when people cry, dance - or both (simultaneously?). Learn more at laurenarrow.comRena Branson (she/they) is a Jewish composer, ritual leader, and educator who uplifts personal and collective healing through song. Rena offers heart-opening ritual and music events in diverse Jewish communities across the US, supporting people to move through feelings of grief, rage, and alienation into greater connection and hope. In addition to recording dozens of Hasidic melodies, Rena has independently produced two original albums, Love Is the Ground and In Doing & In Dreaming. Learn more at renabranson.comRead moreCategory: Music, Spiritual & Religious",
+      "source": "eventbrite",
+      "scraped_at": "2025-11-16T16:39:56.605Z"
+    },
+    {
+      "id": 37,
+      "selected": false,
+      "title": "CHARITY BOXING EVENT: POLICE VS. FIREFIGHTERS 2025",
+      "time_display": "Saturday 11/22 5:00 PM",
+      "location": "United Irish Cultural Center2700 45th AvenueSan Francisco, CA 94116",
+      "price": "$161.90",
+      "event_type": "art",
+      "priority": 5,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/charity-boxing-event-police-vs-firefighters-2025-tickets-1721351942999?aff=ebdssbcitybrowse",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "OverviewIn partnership with Fire in the Ring, get ready for an epic showdown between our local heroe...",
+      "description_detail": "OverviewIn partnership with Fire in the Ring, get ready for an epic showdown between our local heroes as they duke it out in the ring for charity!Category: Community, Other",
+      "source": "eventbrite",
+      "scraped_at": "2025-11-16T16:39:56.610Z"
+    },
+    {
+      "id": 38,
+      "selected": false,
+      "title": "Day Fade: Friendsgiving",
+      "time_display": "Sunday 11/23 4:00 PM",
+      "location": "Hello Stranger1724 BroadwayOakland, CA 94612",
+      "price": "$0 – $20",
+      "event_type": "art",
+      "priority": 5,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/day-fade-friendsgiving-tickets-1772889443049?aff=ebdssbdestsearch",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "OverviewSunday, Nov 23 — Day Fade: FRIENDSGIVING Day Party at Hello Stranger Oakland! Sounds by Lexx...",
+      "description_detail": "OverviewSunday, Nov 23 — Day Fade: FRIENDSGIVING Day Party at Hello Stranger Oakland! Sounds by Lexx Jonez & Sean G, hosted by Jojo. RSVP now!Sunday, November 23rdDay FadeFRIENDSGIVING day PartyMusic byLexx JonezSean GHosted by JojoReservationsRSVP day-friends.eventbrite.comHello Stranger 1724 Broadway OaklandCategory: Holiday, Thanksgiving",
+      "source": "eventbrite",
+      "scraped_at": "2025-11-16T16:39:56.613Z"
+    },
+    {
+      "id": 39,
+      "selected": false,
+      "title": "David Byrne - Who is the Sky TourBill Graham Civic Auditorium",
+      "time_display": "Tuesday 11/18 8:00 PM",
+      "location": "99 Grove Street, San Francisco, CA",
+      "price": "$65",
+      "event_type": "other",
+      "priority": 3,
+      "chinese_relevant": false,
+      "original_url": "https://ticketmaster.evyy.net/c/253558/264167/4272?u=https%3A%2F%2Fwww.ticketmaster.com%2Fdavid-byrne-tickets%2Fartist%2F734679",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "sfstation",
+      "scraped_at": "2025-11-16T16:28:09.178Z"
+    },
+    {
+      "id": 40,
+      "selected": false,
+      "title": "King Princess - The Girl Violence TourThe Regency Ballroom",
+      "time_display": "Wednesday 11/19 8:00 PM",
+      "location": "1290 Sutter Street, San Francisco, CA",
+      "price": "$39.5",
+      "event_type": "other",
+      "priority": 3,
+      "chinese_relevant": false,
+      "original_url": "https://www.axs.com/events/1005950/king-princess-tickets",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "sfstation",
+      "scraped_at": "2025-11-16T16:28:09.182Z"
+    }
+  ]
+}
