@@ -71,37 +71,47 @@ console.log('━'.repeat(70));
 console.log('📱 REDDIT FORMAT (.md file)');
 console.log('━'.repeat(70) + '\n');
 
-const redditPost = `# Bay Area Events This Week (Nov 10-16)
+const redditPost = `# 🎉 Bay Area Events This Week (Nov 10-16)
 
 Compiled a list of local events for the week. Hope you find something fun!
 
+---
+
 ## Markets & Fairs
 
-**Ferry Plaza Farmers Market**
-Sat 11/15, 10:00 AM - 2:00 PM | San Francisco, CA | Free
-Fresh produce, artisan goods, and live music. Over 100 vendors featuring local farms and food artisans. Pet-friendly event.
-https://eventbrite.com/e/ferry-plaza-farmers-market-12345
+**🛒 Ferry Plaza Farmers Market**
+🕒 Sat 11/15, 10:00 AM - 2:00 PM
+📍 San Francisco, CA
+💰 Free
+✨ Fresh produce, artisan goods, and live music. Over 100 vendors featuring local farms and food artisans. Pet-friendly event.
+🔗 https://eventbrite.com/e/ferry-plaza-farmers-market-12345
 
 ## Festivals
 
-**Half Moon Bay Pumpkin Festival**
-Sun 11/16, 9:00 AM - 6:00 PM | Half Moon Bay, CA | $15
-Giant pumpkin weigh-off, costume contest, pumpkin carving, pie eating contest, and live entertainment. Over 200 vendors and food booths.
-https://pumpkinfest.com
+**🎉 Half Moon Bay Pumpkin Festival**
+🕒 Sun 11/16, 9:00 AM - 6:00 PM
+📍 Half Moon Bay, CA
+💰 $15
+✨ Giant pumpkin weigh-off, costume contest, pumpkin carving, pie eating contest, and live entertainment. Over 200 vendors and food booths.
+🔗 https://pumpkinfest.com
 
 ## Food & Drink
 
-**San Jose Food Truck Festival**
-Sun 11/16, 11:00 AM - 5:00 PM | Santana Row, San Jose, CA | $5
-Over 30 gourmet food trucks, live music, and craft beer garden. Features cuisine from around the world. Kids activities area included.
-https://eventbrite.com/e/sj-food-truck-fest-67890
+**🍽️ San Jose Food Truck Festival**
+🕒 Sun 11/16, 11:00 AM - 5:00 PM
+📍 Santana Row, San Jose, CA
+💰 $5
+✨ Over 30 gourmet food trucks, live music, and craft beer garden. Features cuisine from around the world. Kids activities area included.
+🔗 https://eventbrite.com/e/sj-food-truck-fest-67890
 
 ## Arts & Culture
 
-**Downtown Oakland Art Walk**
-Sat 11/15, 6:00 PM - 9:00 PM | Downtown Oakland, CA | Free
-Explore local galleries, street art, and live performances. Food trucks and pop-up vendors. Family-friendly event featuring over 20 participating galleries.
-https://sfstation.com/oakland-art-walk
+**🎨 Downtown Oakland Art Walk**
+🕒 Sat 11/15, 6:00 PM - 9:00 PM
+📍 Downtown Oakland, CA
+💰 Free
+✨ Explore local galleries, street art, and live performances. Food trucks and pop-up vendors. Family-friendly event featuring over 20 participating galleries.
+🔗 https://sfstation.com/oakland-art-walk
 
 ---
 *Sources: Eventbrite, SFStation, Funcheap. Events listed for informational purposes.*`;
@@ -150,13 +160,14 @@ console.log('\n' + '━'.repeat(70) + '\n');
 console.log('💡 Key Differences:\n');
 console.log('   Reddit:');
 console.log('   • Grouped by category (Markets, Festivals, Food, Arts)');
-console.log('   • Markdown formatting (## headers, **bold**)');
-console.log('   • Information-dense, neutral tone');
-console.log('   • Source attribution footer\n');
+console.log('   • 小红书-style format with emojis (🕒 📍 💰 ✨)');
+console.log('   • Each field on a new line for clarity');
+console.log('   • Full descriptions (no truncation)');
+console.log('   • Clean, easy to read\n');
 console.log('   Nextdoor:');
 console.log('   • Chronological order (sorted by date/time)');
 console.log('   • Friendly, conversational tone');
-console.log('   • Emoji-enhanced for visual appeal');
+console.log('   • Compact format with emojis');
 console.log('   • Personal touch ("Hi neighbors!")\n');
 
 console.log('📁 To generate real posts from your database:\n');

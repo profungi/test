@@ -245,13 +245,9 @@ class EnglishPostGenerator {
   }
 
   formatDescription(event) {
+    // 优先使用详细描述，显示完整内容不截断
     if (event.description_detail && event.description_detail.length > 10) {
-      // 截取详细描述的前150个字符
-      let desc = event.description_detail.substring(0, 150);
-      if (event.description_detail.length > 150) {
-        desc += '...';
-      }
-      return desc;
+      return event.description_detail;
     } else if (event.description) {
       return event.description;
     }

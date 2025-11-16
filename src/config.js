@@ -214,17 +214,21 @@ const config = {
   // 英文平台配置
   englishPlatforms: {
     reddit: {
-      headerTemplate: `# Bay Area Events This Week ({date_range})
+      headerTemplate: `# 🎉 Bay Area Events This Week ({date_range})
 
 Compiled a list of local events for the week. Hope you find something fun!
-`,
-      eventTemplate: `**{title}**
-{time} | {location} | {price}
-{description}
-{link}
-`,
-      footerTemplate: `
+
 ---
+`,
+      eventTemplate: `**{emoji} {title}**
+🕒 {time}
+📍 {location}
+💰 {price}
+✨ {description}
+🔗 {link}
+
+`,
+      footerTemplate: `---
 *Sources: Eventbrite, SFStation, Funcheap. Events listed for informational purposes.*`,
       groupByCategory: true
     },
