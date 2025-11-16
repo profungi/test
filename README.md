@@ -168,7 +168,7 @@ npm run generate-english
 - ✅ 两种格式 - Reddit (Markdown) 和 Nextdoor (文本)
 - ✅ 无字数限制 - 可以包含很多活动
 
-**详细文档**: 查看 `QUICK_START_ENGLISH.md` 或 `ENGLISH_POSTS_GUIDE.md`
+**详细文档**: 查看 `ENGLISH_POSTS_README.md`
 
 ### 🤖 AI提供商选择
 
