@@ -229,29 +229,62 @@ class EnglishPostGenerator {
   }
 
   formatLocation(location) {
-    // 简化地址，只保留主要部分
     if (!location) return 'TBA';
 
-    // 如果地址太长，尝试提取城市
-    if (location.length > 60) {
-      const parts = location.split(',');
+    // 清理地址格式：
+    // 1. 替换多个空格为单个空格
+    // 2. 如果没有逗号分隔，在街道号码后添加逗号
+    // 3. 在城市前添加空格（如果缺失）
+
+    let cleanLocation = location
+      .replace(/\s+/g, ' ')  // 多个空格变成单个空格
+      .trim();
+
+    // 检测是否是连在一起的地址（没有逗号分隔）
+    // 例如: "St Jude's Episcopal Church20920 McClellan RoadCupertino, CA 95014"
+    // 匹配模式：建筑名 + 数字开头的街道 + 城市
+    const noCommaPattern = /^(.+?)(\d+\s+[^,]+?)(([A-Z][a-z]+(?:\s+[A-Z][a-z]+)*),?\s*[A-Z]{2}\s*\d{5})$/;
+    const match = cleanLocation.match(noCommaPattern);
+
+    if (match) {
+      // match[1] = 建筑名, match[2] = 街道, match[3] = 城市+州+邮编
+      const building = match[1].trim();
+      const street = match[2].trim();
+      const cityStateZip = match[3].trim();
+      cleanLocation = `${building}, ${street}, ${cityStateZip}`;
+    }
+
+    // 如果地址太长（超过60字符），只保留主要部分
+    if (cleanLocation.length > 60) {
+      const parts = cleanLocation.split(',').map(p => p.trim());
       if (parts.length >= 2) {
         // 取最后两部分（通常是城市和州）
-        return parts.slice(-2).join(',').trim();
+        return parts.slice(-2).join(', ');
       }
     }
 
-    return location;
+    return cleanLocation;
   }
 
   formatDescription(event) {
     // 优先使用详细描述，显示完整内容不截断
+    let description = '';
+
     if (event.description_detail && event.description_detail.length > 10) {
-      return event.description_detail;
+      description = event.description_detail;
     } else if (event.description) {
-      return event.description;
+      description = event.description;
     }
-    return '';
+
+    // 去掉 "Overview" 前缀
+    if (description) {
+      description = description
+        .replace(/^Overview\s*:?\s*/i, '')  // 去掉开头的 "Overview:" 或 "Overview "
+        .replace(/^Overview$/i, '')          // 去掉单独的 "Overview"
+        .trim();
+    }
+
+    return description;
   }
 
   isFreeEvent(price) {
