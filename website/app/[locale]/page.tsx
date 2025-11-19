@@ -55,6 +55,9 @@ export default async function HomePage({
   // 周标题
   const weekTitle = filters.week === 'current' ? t('thisWeekEvents') : t('nextWeekEvents');
 
+  // 格式化当前日期（服务器端渲染）
+  const currentDate = new Date().toLocaleDateString(locale === 'zh' ? 'zh-CN' : 'en-US');
+
   return (
     <div className="min-h-screen bg-gray-50">
       {/* 顶部导航栏 */}
@@ -110,7 +113,7 @@ export default async function HomePage({
             </p>
             <p className="mt-2">
               {t('updateInfo', {
-                date: new Date().toLocaleDateString(locale === 'zh' ? 'zh-CN' : 'en-US')
+                date: currentDate
               })}
             </p>
           </div>
