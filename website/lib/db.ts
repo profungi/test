@@ -15,8 +15,7 @@ function getDatabase() {
       fileMustExist: true  // 数据库必须存在
     });
 
-    // 启用 WAL 模式以提高并发性能
-    db.pragma('journal_mode = WAL');
+    // 注意：只读模式下不能设置 pragma，WAL 模式由 scraper 在写入时设置
 
     console.log('✅ Connected to database:', DB_PATH);
   }
