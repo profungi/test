@@ -1,0 +1,66 @@
+{
+  "metadata": {
+    "title": "Bay Area Events",
+    "description": "Discover the best events in the Bay Area! Markets, festivals, food, and art activities. Covering San Francisco, South Bay, East Bay, and more.",
+    "thisWeek": "This Week",
+    "nextWeek": "Next Week"
+  },
+  "home": {
+    "siteTitle": "Bay Area Events",
+    "siteSubtitle": "Discover the best events in the Bay Area · Updated weekly",
+    "thisWeekEvents": "This Week's Events",
+    "nextWeekEvents": "Next Week's Events",
+    "eventsCount": "{count} events total",
+    "noEvents": "No events found",
+    "noEventsHint": "Please try adjusting your filters or check events for other weeks",
+    "dataSource": "Data sources: Eventbrite, SF Station, Funcheap",
+    "updateInfo": "Updated every Wednesday · Last updated: {date}"
+  },
+  "filter": {
+    "filterByWeek": "Filter by Week",
+    "thisWeek": "This Week",
+    "nextWeek": "Next Week",
+    "filterByLocation": "Filter by Location",
+    "allLocations": "All Locations",
+    "sanFrancisco": "San Francisco",
+    "southBay": "South Bay",
+    "eastBay": "East Bay",
+    "northBay": "North Bay",
+    "peninsula": "Peninsula",
+    "filterByType": "Filter by Type",
+    "allTypes": "All Types",
+    "market": "Market",
+    "festival": "Festival",
+    "food": "Food & Drink",
+    "art": "Art & Culture",
+    "music": "Music",
+    "sports": "Sports",
+    "outdoor": "Outdoor",
+    "family": "Family",
+    "tech": "Tech",
+    "other": "Other",
+    "filterByPrice": "Filter by Price",
+    "allPrices": "All Prices",
+    "free": "Free",
+    "paid": "Paid"
+  },
+  "event": {
+    "viewDetails": "View Details",
+    "free": "Free",
+    "priority": "Priority",
+    "market": "Market",
+    "festival": "Festival",
+    "food": "Food & Drink",
+    "art": "Art & Culture",
+    "music": "Music",
+    "sports": "Sports",
+    "outdoor": "Outdoor",
+    "family": "Family",
+    "tech": "Tech",
+    "other": "Other"
+  },
+  "languageSwitcher": {
+    "english": "English",
+    "chinese": "中文"
+  }
+}

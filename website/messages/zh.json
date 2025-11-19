@@ -1,0 +1,66 @@
+{
+  "metadata": {
+    "title": "湾区活动",
+    "description": "发现湾区最精彩的活动！市集、节日、美食、艺术活动一网打尽。涵盖旧金山、南湾、东湾等地区。",
+    "thisWeek": "本周",
+    "nextWeek": "下周"
+  },
+  "home": {
+    "siteTitle": "湾区活动 Bay Area Events",
+    "siteSubtitle": "发现湾区最精彩的活动 · 每周更新",
+    "thisWeekEvents": "本周活动",
+    "nextWeekEvents": "下周活动",
+    "eventsCount": "共 {count} 个活动",
+    "noEvents": "暂无活动",
+    "noEventsHint": "请尝试调整筛选条件或查看其他周的活动",
+    "dataSource": "数据来源: Eventbrite, SF Station, Funcheap",
+    "updateInfo": "每周三自动更新 · 最后更新时间: {date}"
+  },
+  "filter": {
+    "filterByWeek": "按周筛选",
+    "thisWeek": "本周",
+    "nextWeek": "下周",
+    "filterByLocation": "按地区筛选",
+    "allLocations": "全部地区",
+    "sanFrancisco": "旧金山",
+    "southBay": "南湾",
+    "eastBay": "东湾",
+    "northBay": "北湾",
+    "peninsula": "半岛",
+    "filterByType": "按类型筛选",
+    "allTypes": "全部类型",
+    "market": "市集",
+    "festival": "节日",
+    "food": "美食",
+    "art": "艺术",
+    "music": "音乐",
+    "sports": "体育",
+    "outdoor": "户外",
+    "family": "亲子",
+    "tech": "科技",
+    "other": "其他",
+    "filterByPrice": "按价格筛选",
+    "allPrices": "全部价格",
+    "free": "免费",
+    "paid": "付费"
+  },
+  "event": {
+    "viewDetails": "查看详情",
+    "free": "免费",
+    "priority": "优先级",
+    "market": "市集",
+    "festival": "节日",
+    "food": "美食",
+    "art": "艺术",
+    "music": "音乐",
+    "sports": "体育",
+    "outdoor": "户外",
+    "family": "亲子",
+    "tech": "科技",
+    "other": "其他"
+  },
+  "languageSwitcher": {
+    "english": "English",
+    "chinese": "中文"
+  }
+}

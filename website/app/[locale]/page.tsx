@@ -1,0 +1,121 @@
+import { getEvents, getStats } from '@/lib/db';
+import { EventFilters } from '@/lib/types';
+import FilterBar from '../components/FilterBar';
+import EventCard from '../components/EventCard';
+import { useTranslations } from 'next-intl';
+import { getTranslations } from 'next-intl/server';
+
+// ISR 配置：1小时重新验证
+export const revalidate = 3600;
+
+// 生成页面元数据
+export async function generateMetadata({
+  params,
+  searchParams,
+}: {
+  params: Promise<{ locale: string }>;
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+}) {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: 'metadata' });
+  const sp = await searchParams;
+  const week = (sp.week as string) || 'next';
+
+  const weekText = week === 'current' ? t('thisWeek') : t('nextWeek');
+
+  return {
+    title: `${t('title')} - ${weekText}`,
+    description: t('description'),
+  };
+}
+
+export default async function HomePage({
+  params,
+  searchParams,
+}: {
+  params: Promise<{ locale: string }>;
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+}) {
+  const { locale } = await params;
+  const sp = await searchParams;
+  const t = await getTranslations({ locale, namespace: 'home' });
+
+  // 构建筛选器
+  const filters: EventFilters = {
+    week: (sp.week as string) || 'next',
+    location: (sp.location as any) || 'all',
+    type: (sp.type as any) || 'all',
+    price: (sp.price as any) || 'all',
+  };
+
+  // 获取活动数据
+  const events = getEvents(filters);
+  const stats = getStats();
+
+  // 周标题
+  const weekTitle = filters.week === 'current' ? t('thisWeekEvents') : t('nextWeekEvents');
+
+  return (
+    <div className="min-h-screen bg-gray-50">
+      {/* 顶部导航栏 */}
+      <header className="bg-white shadow-sm">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+          <h1 className="text-3xl font-bold text-gray-900">
+            🎯 {t('siteTitle')}
+          </h1>
+          <p className="mt-2 text-sm text-gray-600">
+            {t('siteSubtitle')}
+          </p>
+        </div>
+      </header>
+
+      {/* 筛选栏 */}
+      <FilterBar />
+
+      {/* 主内容区 */}
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        {/* 统计信息 */}
+        <div className="mb-6 flex items-center justify-between">
+          <h2 className="text-2xl font-semibold text-gray-900">
+            {weekTitle}
+            <span className="ml-3 text-lg font-normal text-gray-600">
+              {t('eventsCount', { count: events.length })}
+            </span>
+          </h2>
+        </div>
+
+        {/* 活动列表 */}
+        {events.length === 0 ? (
+          <div className="text-center py-12">
+            <p className="text-gray-500 text-lg">{t('noEvents')}</p>
+            <p className="text-gray-400 text-sm mt-2">
+              {t('noEventsHint')}
+            </p>
+          </div>
+        ) : (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {events.map((event) => (
+              <EventCard key={event.id} event={event} />
+            ))}
+          </div>
+        )}
+      </main>
+
+      {/* 页脚 */}
+      <footer className="bg-white border-t border-gray-200 mt-12">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+          <div className="text-center text-sm text-gray-600">
+            <p>
+              {t('dataSource')}
+            </p>
+            <p className="mt-2">
+              {t('updateInfo', {
+                date: new Date().toLocaleDateString(locale === 'zh' ? 'zh-CN' : 'en-US')
+              })}
+            </p>
+          </div>
+        </div>
+      </footer>
+    </div>
+  );
+}

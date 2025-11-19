@@ -1,14 +1,22 @@
+'use client';
+
 import { Event, EVENT_TYPE_EMOJIS, EVENT_TYPE_LABELS, EVENT_TYPE_COLORS } from '@/lib/types';
+import { useLocale, useTranslations } from 'next-intl';
 
 interface EventCardProps {
   event: Event;
 }
 
 export default function EventCard({ event }: EventCardProps) {
+  const locale = useLocale();
+  const t = useTranslations('event');
+
   // 格式化时间
   const formatTime = (timeStr: string) => {
     const date = new Date(timeStr);
-    const days = ['周日', '周一', '周二', '周三', '周四', '周五', '周六'];
+    const days = locale === 'zh'
+      ? ['周日', '周一', '周二', '周三', '周四', '周五', '周六']
+      : ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
     const dayName = days[date.getDay()];
     const month = date.getMonth() + 1;
     const day = date.getDate();
@@ -30,7 +38,7 @@ export default function EventCard({ event }: EventCardProps) {
   // 获取活动类型样式
   const eventType = event.event_type || 'other';
   const emoji = EVENT_TYPE_EMOJIS[eventType] || '📌';
-  const label = EVENT_TYPE_LABELS[eventType] || '其他';
+  const label = t(eventType as any);
   const colorClass = EVENT_TYPE_COLORS[eventType] || EVENT_TYPE_COLORS.other;
 
   // 获取活动链接
@@ -94,13 +102,13 @@ export default function EventCard({ event }: EventCardProps) {
           rel="noopener noreferrer"
           className="flex-1 bg-blue-600 hover:bg-blue-700 text-white text-center py-2 px-4 rounded-md text-sm font-medium transition-colors"
         >
-          查看详情
+          {t('viewDetails')}
         </a>
       </div>
 
       {/* 来源标签 */}
       <div className="mt-3 text-xs text-gray-400 text-right">
-        来源: {event.source}
+        {locale === 'zh' ? '来源' : 'Source'}: {event.source}
       </div>
     </div>
   );
