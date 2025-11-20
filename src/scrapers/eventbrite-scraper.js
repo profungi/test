@@ -605,98 +605,106 @@ class EventbriteScraper extends BaseScraper {
 
   // 从详情页提取完整地址
   extractFullAddress($) {
-    // 地址通常在 [class*="address"] 中
+    // 🔧 方案 A：分别提取地址的各个部分，然后用正确的分隔符组合
+    // Eventbrite 的地址结构（在不同的子元素中）：
+    // - 元素1：场馆名称 (Venue Name)
+    // - 元素2：街道地址 (Street Address)
+    // - 元素3：城市, 州 邮编 (City, State ZIP)
+    //
+    // 组合规则：
+    // 元素1 + 空格 + 元素2 + ", " + 元素3
+    // 例如：Thrive City 1 Warriors Way, San Francisco, CA 94158
+
     const $address = $('[class*="address"]').first();
     if ($address.length > 0) {
-      let addressText = $address.text().trim();
+      // 方法1：尝试获取所有直接子元素
+      const children = $address.children();
 
-      // 移除 "Get directions" 等干扰文本
-      addressText = addressText.replace(/Get directions.*$/i, '').trim();
+      if (children.length >= 2) {
+        const parts = [];
 
-      // 🔧 完全重写地址格式修复逻辑
-      // 原始格式示例：
-      // "SAP Center525, West Santa Clara StreetSan Jose, CA 95113"
-      // "Santa Clara Convention Center5001, Great America ParkwaySanta Clara, CA 95054"
-      // "Wildseed855 El Camino Real#Building 4, Palo Alto, CA 94301"
+        children.each((i, elem) => {
+          const text = $(elem).text().trim();
+          // 过滤掉 "Get directions" 等非地址文本
+          if (text && !text.match(/get directions|view map|map/i) && text.length > 1) {
+            parts.push(text);
+          }
+        });
 
-      // 目标格式：
-      // "SAP Center 525 West Santa Clara Street, San Jose, CA 95113"
-      // "Santa Clara Convention Center 5001 Great America Parkway, Santa Clara, CA 95054"
-      // "Wildseed 855 El Camino Real #Building 4, Palo Alto, CA 94301"
+        // 如果成功提取到2-3个部分
+        if (parts.length >= 2) {
+          const lastPart = parts[parts.length - 1];
 
-      // 步骤1：移除所有不必要的逗号（门牌号后的逗号、#后的逗号等）
-      // 保留城市和州之间的逗号
-      let cleaned = addressText;
-
-      // 移除门牌号后的逗号：将 "525," 改为 "525"
-      cleaned = cleaned.replace(/(\d+),\s+/g, '$1 ');
-
-      // 移除 # 后的逗号：将 "#Building 4," 改为 "#Building 4"
-      cleaned = cleaned.replace(/#([^,]+),\s+/g, '#$1 ');
-
-      // 步骤2：在场馆名和门牌号之间添加空格（如果缺失）
-      // "SAP Center525" -> "SAP Center 525"
-      cleaned = cleaned.replace(/([a-zA-Z])(\d+)/g, '$1 $2');
-
-      // 步骤3：确保城市名前有逗号和空格
-      // 已知的湾区城市名列表（包括多词城市名）
-      const cities = [
-        'San Francisco',
-        'San Jose',
-        'Oakland',
-        'Berkeley',
-        'Palo Alto',
-        'East Palo Alto',
-        'Santa Clara',
-        'Sunnyvale',
-        'Mountain View',
-        'Redwood City',
-        'San Mateo',
-        'Fremont',
-        'Hayward',
-        'San Leandro',
-        'Alameda',
-        'Richmond',
-        'Concord',
-        'Walnut Creek',
-        'Saratoga',
-        'Los Gatos',
-        'Cupertino',
-        'Milpitas',
-        'San Carlos',
-        'Menlo Park',
-        'Burlingame',
-        'San Bruno',
-        'South San Francisco',
-        'Daly City',
-        'Pacifica',
-        'Half Moon Bay'
-      ];
-
-      // 尝试匹配已知城市
-      for (const city of cities) {
-        // 匹配格式：(前面的地址部分)(城市名), (州) (邮编)
-        const regex = new RegExp(`^(.+?)(${city}),\\s*([A-Z]{2})\\s+(\\d{5})$`);
-        const match = cleaned.match(regex);
-
-        if (match) {
-          let addressPart = match[1].trim();
-          const cityName = match[2].trim();
-          const state = match[3].trim();
-          const zip = match[4].trim();
-
-          // 返回标准格式
-          return `${addressPart}, ${cityName}, ${state} ${zip}`;
+          // 检查最后一部分是否包含州和邮编
+          if (lastPart.match(/,?\s*[A-Z]{2}\s+\d{5}/)) {
+            if (parts.length === 2) {
+              // 两部分：街道地址 + 城市州邮编
+              return `${parts[0]}, ${parts[1]}`;
+            } else if (parts.length === 3) {
+              // 三部分：场馆名 + 街道地址 + 城市州邮编
+              return `${parts[0]} ${parts[1]}, ${parts[2]}`;
+            } else if (parts.length > 3) {
+              // 超过三部分：前面的用空格连接，最后一个用 ", " 连接
+              const addressPart = parts.slice(0, -1).join(' ');
+              return `${addressPart}, ${lastPart}`;
+            }
+          }
         }
       }
 
-      // 备用：如果已经是正确格式（有两个逗号），直接返回
-      if (cleaned.match(/^.+?,\s*.+?,\s*[A-Z]{2}\s+\d{5}$/)) {
-        return cleaned;
+      // 方法2：如果直接子元素提取失败，尝试查找所有可能的地址元素
+      // 寻找包含地址信息的 div/span/p 标签
+      const addressElements = $address.find('div, span, p').filter((i, elem) => {
+        const $elem = $(elem);
+        const text = $elem.text().trim();
+
+        // 过滤条件：
+        // 1. 有文本内容
+        // 2. 不是 "Get directions" 等
+        // 3. 不是父元素（避免重复）
+        const hasChildren = $elem.children().length > 0;
+        const isValidText = text &&
+                           !text.match(/get directions|view map|^map$/i) &&
+                           text.length > 1 &&
+                           text.length < 200; // 避免包含整个页面的元素
+
+        return isValidText && !hasChildren;
+      });
+
+      if (addressElements.length >= 2) {
+        const parts = [];
+        const seenTexts = new Set();
+
+        addressElements.each((i, elem) => {
+          const text = $(elem).text().trim();
+          // 避免重复（子元素可能包含父元素的文本）
+          if (!seenTexts.has(text) && !Array.from(seenTexts).some(seen => seen.includes(text) || text.includes(seen))) {
+            parts.push(text);
+            seenTexts.add(text);
+          }
+        });
+
+        if (parts.length >= 2) {
+          const lastPart = parts[parts.length - 1];
+
+          if (lastPart.match(/,?\s*[A-Z]{2}\s+\d{5}/)) {
+            if (parts.length === 2) {
+              return `${parts[0]}, ${parts[1]}`;
+            } else if (parts.length >= 3) {
+              const addressPart = parts.slice(0, -1).join(' ');
+              return `${addressPart}, ${lastPart}`;
+            }
+          }
+        }
       }
 
-      // 如果无法识别，返回清理后的版本
-      return cleaned || addressText;
+      // 方法3：后备方案 - 如果前两种方法都失败，返回基本清理后的文本
+      let addressText = $address.text().trim();
+      addressText = addressText.replace(/Get directions.*$/i, '').trim();
+
+      if (addressText) {
+        return addressText;
+      }
     }
 
     return null;
