@@ -610,17 +610,37 @@ class EventbriteScraper extends BaseScraper {
     if ($address.length > 0) {
       let addressText = $address.text().trim();
 
-      // 清理地址文本，提取 "场馆名 + 街道地址 + 城市, 州 邮编" 格式
-      // 例如: "Thrive City 1 Warriors Way San Francisco, CA 94158"
-      const match = addressText.match(/(.*?\d+\s+[^,]+,\s*[A-Z]{2}\s+\d{5})/);
+      // 移除 "Get directions" 等干扰文本
+      addressText = addressText.replace(/Get directions.*$/i, '').trim();
+
+      // 修复：匹配格式 "场馆名/街道地址 城市, 州 邮编"
+      // 目标：在城市前添加逗号，改为 "场馆名/街道地址, 城市, 州 邮编"
+      // 处理各种格式：
+      // 1. "473 Valencia StreetSan Francisco, CA 94103" -> "473 Valencia Street, San Francisco, CA 94103"
+      // 2. "Thrive City 1 Warriors Way San Francisco, CA 94158" -> "Thrive City 1 Warriors Way, San Francisco, CA 94158"
+      // 3. "119 Utah St.San Francisco, CA 94103" -> "119 Utah St., San Francisco, CA 94103"
+
+      // 匹配模式：(街道地址部分)(城市名), (州) (邮编)
+      // 街道地址部分必须包含数字，城市名必须以大写字母开头
+      const match = addressText.match(/^(.*?\d+\s*[^,]*?)([A-Z][a-zA-Z\s]+),\s*([A-Z]{2})\s+(\d{5})$/);
+
       if (match) {
-        return match[1].replace(/Get directions.*$/i, '').trim();
+        let streetAddress = match[1].trim();
+        const city = match[2].trim();
+        const state = match[3].trim();
+        const zip = match[4].trim();
+
+        // 如果街道地址以句点结尾但没有空格，添加空格
+        streetAddress = streetAddress.replace(/\.([A-Z])/, '. $1');
+
+        return `${streetAddress}, ${city}, ${state} ${zip}`;
       }
 
-      // 如果找不到完整格式，尝试提取包含街道地址的部分
-      const streetMatch = addressText.match(/([^,]*\d+\s+[A-Za-z\s]+(?:Street|St|Avenue|Ave|Boulevard|Blvd|Road|Rd|Drive|Dr|Way|Lane|Ln)[^,]*,\s*[A-Z]{2}\s+\d{5})/i);
-      if (streetMatch) {
-        return streetMatch[1].trim();
+      // 备用方案：如果已经有逗号格式，检查是否需要调整
+      const commaMatch = addressText.match(/^(.*?),\s*([A-Z][a-zA-Z\s]+),\s*([A-Z]{2})\s+(\d{5})$/);
+      if (commaMatch) {
+        // 已经是正确格式，直接返回
+        return addressText;
       }
     }
 
@@ -793,6 +813,9 @@ class EventbriteScraper extends BaseScraper {
           .replace(/\n+/g, '\n') // 多个换行变成一个
           .trim();
 
+        // 修复：去掉开头的 "Overview"（不区分大小写）
+        text = text.replace(/^overview\s*/i, '');
+
         // 如果描述足够长，返回（不限制长度，让AI处理）
         if (text && text.length > 50) {
           return text;
@@ -813,7 +836,10 @@ class EventbriteScraper extends BaseScraper {
       });
 
       if (paragraphs.length > 0) {
-        return paragraphs.join('\n').substring(0, 2000); // 限制在2000字符
+        let result = paragraphs.join('\n').substring(0, 2000); // 限制在2000字符
+        // 修复：去掉开头的 "Overview"（不区分大小写）
+        result = result.replace(/^overview\s*/i, '');
+        return result;
       }
     }
 
