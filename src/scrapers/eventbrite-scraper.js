@@ -613,33 +613,50 @@ class EventbriteScraper extends BaseScraper {
       // 移除 "Get directions" 等干扰文本
       addressText = addressText.replace(/Get directions.*$/i, '').trim();
 
-      // 修复：匹配格式 "场馆名/街道地址 城市, 州 邮编"
-      // 目标：在城市前添加逗号，改为 "场馆名/街道地址, 城市, 州 邮编"
-      // 处理各种格式：
-      // 1. "473 Valencia StreetSan Francisco, CA 94103" -> "473 Valencia Street, San Francisco, CA 94103"
-      // 2. "Thrive City 1 Warriors Way San Francisco, CA 94158" -> "Thrive City 1 Warriors Way, San Francisco, CA 94158"
-      // 3. "119 Utah St.San Francisco, CA 94103" -> "119 Utah St., San Francisco, CA 94103"
+      // 🔧 修复地址格式问题：
+      // 问题1: 重复的街道地址 "266 14th St266 14th, StreetOakland"
+      // 问题2: 逗号位置错误 "473, Valencia StreetSan Francisco"
+      // 问题3: 城市前缺少逗号 "473 Valencia StreetSan Francisco"
 
-      // 匹配模式：(街道地址部分)(城市名), (州) (邮编)
-      // 街道地址部分必须包含数字，城市名必须以大写字母开头
-      const match = addressText.match(/^(.*?\d+\s*[^,]*?)([A-Z][a-zA-Z\s]+),\s*([A-Z]{2})\s+(\d{5})$/);
+      // 第一步：处理重复的街道地址
+      // 匹配模式：场馆名/街道号 街道名1 街道号, 街道名2城市
+      // 例如：266 14th St266 14th, StreetOakland -> 取第二部分
+      addressText = addressText.replace(/^(.*?)(\d+)\s+([^,]+)\2\s*,?\s*(.*)$/, '$1$2 $4');
+
+      // 第二步：移除街道号后的错误逗号
+      // "1355, Market Street" -> "1355 Market Street"
+      addressText = addressText.replace(/(\d+),\s+([A-Z])/g, '$1 $2');
+
+      // 第三步：移除 #楼层 后的逗号
+      // "#6th, Floor" -> "#6th Floor"
+      addressText = addressText.replace(/#(\w+),\s+/g, '#$1 ');
+
+      // 第四步：标准化格式为 "场馆/街道地址, 城市, 州 邮编"
+      // 匹配：(前面部分包含街道号)(城市名大写开头), (州缩写) (邮编)
+      const match = addressText.match(/^(.*?)([A-Z][a-z]+(?:\s+[A-Z][a-z]+)*),\s*([A-Z]{2})\s+(\d{5})$/);
 
       if (match) {
-        let streetAddress = match[1].trim();
+        let streetPart = match[1].trim();
         const city = match[2].trim();
         const state = match[3].trim();
         const zip = match[4].trim();
 
-        // 如果街道地址以句点结尾但没有空格，添加空格
-        streetAddress = streetAddress.replace(/\.([A-Z])/, '. $1');
+        // 如果街道部分以句点结尾但后面没有空格，添加空格
+        streetPart = streetPart.replace(/\.([A-Z])/, '. $1');
 
-        return `${streetAddress}, ${city}, ${state} ${zip}`;
+        // 确保街道部分末尾有逗号（如果还没有）
+        if (!streetPart.endsWith(',')) {
+          streetPart = streetPart.trim();
+        } else {
+          streetPart = streetPart.slice(0, -1).trim();
+        }
+
+        return `${streetPart}, ${city}, ${state} ${zip}`;
       }
 
-      // 备用方案：如果已经有逗号格式，检查是否需要调整
-      const commaMatch = addressText.match(/^(.*?),\s*([A-Z][a-zA-Z\s]+),\s*([A-Z]{2})\s+(\d{5})$/);
-      if (commaMatch) {
-        // 已经是正确格式，直接返回
+      // 备用：如果已经是正确格式（两个逗号），直接返回
+      const correctFormat = addressText.match(/^(.*?),\s*([A-Z][a-z]+(?:\s+[A-Z][a-z]+)*),\s*([A-Z]{2})\s+(\d{5})$/);
+      if (correctFormat) {
         return addressText;
       }
     }
