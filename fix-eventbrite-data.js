@@ -17,53 +17,90 @@ function fixAddress(address) {
   // 移除 "Get directions" 等干扰文本
   let addressText = address.replace(/Get directions.*$/i, '').trim();
 
-  // 🔧 修复地址格式问题：
-  // 问题1: 重复的街道地址 "266 14th St266 14th, StreetOakland"
-  // 问题2: 逗号位置错误 "473, Valencia StreetSan Francisco"
-  // 问题3: 城市前缺少逗号 "473 Valencia StreetSan Francisco"
+  // 🔧 完全重写地址格式修复逻辑
+  // 原始格式示例：
+  // "SAP Center525, West Santa Clara StreetSan Jose, CA 95113"
+  // "Santa Clara Convention Center5001, Great America ParkwaySanta Clara, CA 95054"
+  // "Wildseed855 El Camino Real#Building 4, Palo Alto, CA 94301"
 
-  // 第一步：处理重复的街道地址
-  // 匹配模式：场馆名/街道号 街道名1 街道号, 街道名2城市
-  // 例如：266 14th St266 14th, StreetOakland -> 取第二部分
-  addressText = addressText.replace(/^(.*?)(\d+)\s+([^,]+)\2\s*,?\s*(.*)$/, '$1$2 $4');
+  // 目标格式：
+  // "SAP Center 525 West Santa Clara Street, San Jose, CA 95113"
+  // "Santa Clara Convention Center 5001 Great America Parkway, Santa Clara, CA 95054"
+  // "Wildseed 855 El Camino Real #Building 4, Palo Alto, CA 94301"
 
-  // 第二步：移除街道号后的错误逗号
-  // "1355, Market Street" -> "1355 Market Street"
-  addressText = addressText.replace(/(\d+),\s+([A-Z])/g, '$1 $2');
+  // 步骤1：移除所有不必要的逗号（门牌号后的逗号、#后的逗号等）
+  // 保留城市和州之间的逗号
+  let cleaned = addressText;
 
-  // 第三步：移除 #楼层 后的逗号
-  // "#6th, Floor" -> "#6th Floor"
-  addressText = addressText.replace(/#(\w+),\s+/g, '#$1 ');
+  // 移除门牌号后的逗号：将 "525," 改为 "525"
+  cleaned = cleaned.replace(/(\d+),\s+/g, '$1 ');
 
-  // 第四步：标准化格式为 "场馆/街道地址, 城市, 州 邮编"
-  // 匹配：(前面部分包含街道号)(城市名大写开头), (州缩写) (邮编)
-  const match = addressText.match(/^(.*?)([A-Z][a-z]+(?:\s+[A-Z][a-z]+)*),\s*([A-Z]{2})\s+(\d{5})$/);
+  // 移除 # 后的逗号：将 "#Building 4," 改为 "#Building 4"
+  cleaned = cleaned.replace(/#([^,]+),\s+/g, '#$1 ');
 
-  if (match) {
-    let streetPart = match[1].trim();
-    const city = match[2].trim();
-    const state = match[3].trim();
-    const zip = match[4].trim();
+  // 步骤2：在场馆名和门牌号之间添加空格（如果缺失）
+  // "SAP Center525" -> "SAP Center 525"
+  cleaned = cleaned.replace(/([a-zA-Z])(\d+)/g, '$1 $2');
 
-    // 如果街道部分以句点结尾但后面没有空格，添加空格
-    streetPart = streetPart.replace(/\.([A-Z])/, '. $1');
+  // 步骤3：确保城市名前有逗号和空格
+  // 已知的湾区城市名列表（包括多词城市名）
+  const cities = [
+    'San Francisco',
+    'San Jose',
+    'Oakland',
+    'Berkeley',
+    'Palo Alto',
+    'East Palo Alto',
+    'Santa Clara',
+    'Sunnyvale',
+    'Mountain View',
+    'Redwood City',
+    'San Mateo',
+    'Fremont',
+    'Hayward',
+    'San Leandro',
+    'Alameda',
+    'Richmond',
+    'Concord',
+    'Walnut Creek',
+    'Saratoga',
+    'Los Gatos',
+    'Cupertino',
+    'Milpitas',
+    'San Carlos',
+    'Menlo Park',
+    'Burlingame',
+    'San Bruno',
+    'South San Francisco',
+    'Daly City',
+    'Pacifica',
+    'Half Moon Bay'
+  ];
 
-    // 确保街道部分末尾没有逗号
-    if (streetPart.endsWith(',')) {
-      streetPart = streetPart.slice(0, -1).trim();
+  // 尝试匹配已知城市
+  for (const city of cities) {
+    // 匹配格式：(前面的地址部分)(城市名), (州) (邮编)
+    const regex = new RegExp(`^(.+?)(${city}),\\s*([A-Z]{2})\\s+(\\d{5})$`);
+    const match = cleaned.match(regex);
+
+    if (match) {
+      let addressPart = match[1].trim();
+      const cityName = match[2].trim();
+      const state = match[3].trim();
+      const zip = match[4].trim();
+
+      // 返回标准格式
+      return `${addressPart}, ${cityName}, ${state} ${zip}`;
     }
-
-    return `${streetPart}, ${city}, ${state} ${zip}`;
   }
 
-  // 备用：如果已经是正确格式（两个逗号），直接返回
-  const correctFormat = addressText.match(/^(.*?),\s*([A-Z][a-z]+(?:\s+[A-Z][a-z]+)*),\s*([A-Z]{2})\s+(\d{5})$/);
-  if (correctFormat) {
-    return addressText;
+  // 备用：如果已经是正确格式（有两个逗号），直接返回
+  if (cleaned.match(/^.+?,\s*.+?,\s*[A-Z]{2}\s+\d{5}$/)) {
+    return cleaned;
   }
 
-  // 无法识别格式，返回原值
-  return address;
+  // 如果无法识别，返回清理后的版本
+  return cleaned || address;
 }
 
 function fixDescription(description) {
