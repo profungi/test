@@ -2,6 +2,7 @@
 
 import { Event, EVENT_TYPE_EMOJIS, EVENT_TYPE_LABELS, EVENT_TYPE_COLORS } from '@/lib/types';
 import { useLocale, useTranslations } from 'next-intl';
+import EventDescriptionPopover from './EventDescriptionPopover';
 
 interface EventCardProps {
   event: Event;
@@ -87,10 +88,12 @@ export default function EventCard({ event }: EventCardProps) {
 
         {/* 描述 */}
         {event.description && (
-          <div className="flex items-start text-sm text-gray-600">
-            <span className="mr-2">✨</span>
-            <span className="line-clamp-2">{event.description}</span>
-          </div>
+          <EventDescriptionPopover description={event.description}>
+            <div className="flex items-start text-sm text-gray-600">
+              <span className="mr-2">✨</span>
+              <span className="line-clamp-2">{event.description}</span>
+            </div>
+          </EventDescriptionPopover>
         )}
       </div>
 
