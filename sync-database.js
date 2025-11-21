@@ -11,19 +11,12 @@ const path = require('path');
 
 const DB_PATH = path.join(__dirname, 'data', 'events.db');
 
-// 简化的地址修复函数 - 从 Eventbrite 源的数据修复
+// 地址修复函数 - 使用与爬虫相同的逻辑
 function fixEventbriteAddress(address) {
   if (!address) return address;
 
-  // 对于 Eventbrite 的数据，尝试简单的修复
-  // 主要处理：场馆名+门牌号 -> 场馆名, 门牌号
-
-  // 1. 移除 "Get directions" 等干扰文本
+  // 移除 "Get directions" 等干扰文本
   let cleaned = address.replace(/Get directions.*$/i, '').trim();
-
-  // 2. 在字母和数字之间添加逗号+空格（如果中间没有逗号的话）
-  // "Thrive City1 Warriors Way" -> "Thrive City, 1 Warriors Way"
-  // 但保留已有的逗号格式
 
   // 如果地址已经有2个或更多逗号，可能已经是正确格式
   const commaCount = (cleaned.match(/,/g) || []).length;
@@ -31,12 +24,11 @@ function fixEventbriteAddress(address) {
     return cleaned;
   }
 
-  // 如果只有1个逗号，尝试在场馆名和门牌号之间添加逗号
-  // 模式：场馆名(字母结尾) + 门牌号(数字开头)
+  // 在字母和数字之间添加逗号+空格
+  // "AC Kitchen at AC Hotel San Jose350" -> "AC Kitchen at AC Hotel San Jose, 350"
   cleaned = cleaned.replace(/([a-zA-Z])(\d+)/g, '$1, $2');
 
-  // 3. 移除门牌号后错误的逗号："525, West" -> "525 West"
-  // 但保留城市前的逗号
+  // 移除门牌号后错误的逗号："350, West" -> "350 West"
   cleaned = cleaned.replace(/(\d+),\s+([A-Z][a-z])/g, '$1 $2');
 
   return cleaned;
@@ -67,7 +59,7 @@ async function syncDatabase() {
         console.log('📊 更新 events 表...\n');
 
         db.all(
-          'SELECT id, location, description, source FROM events WHERE source = ?',
+          'SELECT id, location, description, description_detail, source FROM events WHERE source = ?',
           ['eventbrite'],
           (err, rows) => {
             if (err) {
@@ -81,11 +73,13 @@ async function syncDatabase() {
 
             let eventsLocationFixed = 0;
             let eventsDescFixed = 0;
+            let eventsDescDetailFixed = 0;
             let eventsProcessed = 0;
 
             rows.forEach((row, index) => {
               const newLocation = fixEventbriteAddress(row.location);
               const newDescription = fixDescription(row.description);
+              const newDescriptionDetail = fixDescription(row.description_detail);
 
               let needsUpdate = false;
               const updates = [];
@@ -110,11 +104,18 @@ async function syncDatabase() {
                 params.push(newDescription);
                 eventsDescFixed++;
                 needsUpdate = true;
+              }
 
-                if (index < 3 && newDescription) {
-                  console.log(`   📝 描述修复示例 #${index + 1}:`);
-                  console.log(`      旧: ${row.description ? row.description.substring(0, 60) : 'null'}...`);
-                  console.log(`      新: ${newDescription.substring(0, 60)}...`);
+              if (newDescriptionDetail !== row.description_detail) {
+                updates.push('description_detail = ?');
+                params.push(newDescriptionDetail);
+                eventsDescDetailFixed++;
+                needsUpdate = true;
+
+                if (index < 3 && newDescriptionDetail) {
+                  console.log(`   📝 描述详情修复示例 #${index + 1}:`);
+                  console.log(`      旧: ${row.description_detail ? row.description_detail.substring(0, 60) : 'null'}...`);
+                  console.log(`      新: ${newDescriptionDetail.substring(0, 60)}...`);
                   console.log('');
                 }
               }
@@ -136,7 +137,8 @@ async function syncDatabase() {
             console.log(`   ✅ events 表处理完成`);
             console.log(`      处理记录: ${eventsProcessed}`);
             console.log(`      地址修复: ${eventsLocationFixed}`);
-            console.log(`      描述修复: ${eventsDescFixed}\n`);
+            console.log(`      description 修复: ${eventsDescFixed}`);
+            console.log(`      description_detail 修复: ${eventsDescDetailFixed}\n`);
 
             // ========== 更新 event_performance 表 ==========
             console.log('📊 更新 event_performance 表...\n');
@@ -205,7 +207,8 @@ async function syncDatabase() {
                   console.log(`   events 表:`);
                   console.log(`     - 处理: ${eventsProcessed} 条`);
                   console.log(`     - 地址修复: ${eventsLocationFixed} 条`);
-                  console.log(`     - 描述修复: ${eventsDescFixed} 条`);
+                  console.log(`     - description 修复: ${eventsDescFixed} 条`);
+                  console.log(`     - description_detail 修复: ${eventsDescDetailFixed} 条`);
                   console.log('');
                   console.log(`   event_performance 表:`);
                   console.log(`     - 处理: ${perfProcessed} 条`);
@@ -220,7 +223,8 @@ async function syncDatabase() {
                         events: {
                           processed: eventsProcessed,
                           locationFixed: eventsLocationFixed,
-                          descFixed: eventsDescFixed
+                          descFixed: eventsDescFixed,
+                          descDetailFixed: eventsDescDetailFixed
                         },
                         performance: {
                           processed: perfProcessed,
