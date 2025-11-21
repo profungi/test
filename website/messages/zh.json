@@ -63,5 +63,16 @@
   "languageSwitcher": {
     "english": "English",
     "chinese": "中文"
+  },
+  "feedback": {
+    "question": "这些活动对你有帮助吗？",
+    "helpful": "有帮助",
+    "notHelpful": "没帮助",
+    "commentPrompt": "有 10 秒想法的话，告诉我们你还想看什么类型的活动。",
+    "commentPlaceholder": "例如：更多户外活动、更多亲子活动、更多科技聚会...",
+    "submit": "提交",
+    "submitting": "提交中...",
+    "cancel": "取消",
+    "thankYou": "✨ 感谢你的反馈！"
   }
 }

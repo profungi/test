@@ -63,5 +63,16 @@
   "languageSwitcher": {
     "english": "English",
     "chinese": "中文"
+  },
+  "feedback": {
+    "question": "Are these events helpful to you?",
+    "helpful": "Yes, helpful",
+    "notHelpful": "Not helpful",
+    "commentPrompt": "Got 10 seconds? Tell us what types of events you'd like to see.",
+    "commentPlaceholder": "e.g., More outdoor events, more family activities, more tech meetups...",
+    "submit": "Submit",
+    "submitting": "Submitting...",
+    "cancel": "Cancel",
+    "thankYou": "✨ Thank you for your feedback!"
   }
 }

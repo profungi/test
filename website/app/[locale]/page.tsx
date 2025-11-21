@@ -2,6 +2,7 @@ import { getEvents, getStats } from '@/lib/db';
 import { EventFilters } from '@/lib/types';
 import FilterBar from '../components/FilterBar';
 import EventCard from '../components/EventCard';
+import FeedbackSection from '../components/FeedbackSection';
 import { useTranslations } from 'next-intl';
 import { getTranslations } from 'next-intl/server';
 
@@ -96,11 +97,16 @@ export default async function HomePage({
             </p>
           </div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {events.map((event) => (
-              <EventCard key={event.id} event={event} />
-            ))}
-          </div>
+          <>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {events.map((event) => (
+                <EventCard key={event.id} event={event} />
+              ))}
+            </div>
+
+            {/* 用户反馈组件 */}
+            <FeedbackSection eventsCount={events.length} />
+          </>
         )}
       </main>
 
