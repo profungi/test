@@ -35,28 +35,23 @@ export function useUserPreferences() {
       const savedPrefs = localStorage.getItem(STORAGE_KEY);
       const savedReferrer = localStorage.getItem(REFERRER_KEY);
 
+      // Parse saved preferences or start with empty object
+      let parsed: UserPreferences = {};
       if (savedPrefs) {
-        const parsed = JSON.parse(savedPrefs);
-        setPreferences(parsed);
+        parsed = JSON.parse(savedPrefs);
       }
 
       // Save referrer on first visit
       if (!savedReferrer && document.referrer) {
         localStorage.setItem(REFERRER_KEY, document.referrer);
-        setPreferences((prev) => ({
-          ...prev,
-          referrer: document.referrer,
-        }));
+        parsed.referrer = document.referrer;
       } else if (savedReferrer) {
-        setPreferences((prev) => ({
-          ...prev,
-          referrer: savedReferrer,
-        }));
+        parsed.referrer = savedReferrer;
       }
 
       // Update visit count
       const visitCount = (parsed?.visitCount || 0) + 1;
-      const updatedPrefs = {
+      const updatedPrefs: UserPreferences = {
         ...parsed,
         lastVisit: new Date().toISOString(),
         visitCount,
@@ -102,6 +97,7 @@ export function useUserPreferences() {
     if (location || type || week || price) {
       savePreferences({ location, type, week, price });
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [searchParams, isLoaded]);
 
   // Apply saved preferences to URL (only on first load if no params exist)

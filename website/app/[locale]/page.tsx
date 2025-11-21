@@ -5,6 +5,7 @@ import EventCard from '../components/EventCard';
 import FeedbackSection from '../components/FeedbackSection';
 import { useTranslations } from 'next-intl';
 import { getTranslations } from 'next-intl/server';
+import { Suspense } from 'react';
 
 // ISR 配置：1小时重新验证
 export const revalidate = 3600;
@@ -105,7 +106,9 @@ export default async function HomePage({
             </div>
 
             {/* 用户反馈组件 */}
-            <FeedbackSection eventsCount={events.length} />
+            <Suspense fallback={<div className="mt-8 text-center text-gray-500">Loading...</div>}>
+              <FeedbackSection eventsCount={events.length} />
+            </Suspense>
           </>
         )}
       </main>
