@@ -4,6 +4,7 @@
 
 ## ✨ 功能特点
 
+### 爬虫和数据处理
 - 🕷️ **多源抓取**: Eventbrite, SF Station, Funcheap 三大平台
 - 🤖 **AI智能分类**: 自动识别活动类型和优先级排序（支持 OpenAI, Gemini, Claude, Mistral）
 - 👁️ **人工审核**: 生成候选列表供手动选择，确保内容质量
@@ -16,39 +17,57 @@
 - 🎨 **自动生成封面**: 为每周活动自动生成小红书封面图片（1024×1536）
 - ⏰ **GitHub Actions**: 每周三自动抓取，生成待审核文件
 - 📊 **反馈闭环系统**: 收集用户反馈，自动优化活动推荐权重
-- 🌍 **英文平台支持** ⭐ 新增: 一键生成 Reddit 和 Nextdoor 帖子（无需翻译）
+- 🌍 **英文平台支持**: 一键生成 Reddit 和 Nextdoor 帖子（无需翻译）
+
+### 网站功能 ⭐ 新增
+- 🌐 **双语网站**: Next.js 15 驱动的活动浏览网站（中文/英文）
+- 👍 **用户反馈**: 收集用户对活动的反馈（👍 👎）和建议
+- 💾 **偏好记忆**: 自动记住用户的筛选偏好（地区、类型、价格等）
+- 🔍 **智能筛选**: 按地区、类型、周、价格筛选活动
+- 📱 **响应式设计**: 完美支持手机、平板、桌面
+- 🔒 **隐私保护**: 匿名反馈收集，IP 哈希处理
 
 ## 📁 项目结构
 
 ```
 bay-area-events-scraper/
-├── src/
+├── src/                          # 爬虫和内容生成
 │   ├── index.js                  # 主入口和命令路由
 │   ├── scrape-events.js          # 第一步：抓取和分类
 │   ├── generate-post.js          # 第二步：生成发布内容
 │   ├── config.js                 # 全局配置
 │   ├── scrapers/                 # 爬虫模块
-│   │   ├── base-scraper.js       # 基础爬虫类
-│   │   ├── eventbrite-scraper.js # Eventbrite爬虫
-│   │   ├── sfstation-scraper.js  # SF Station爬虫
-│   │   └── funcheap-weekend-scraper.js  # Funcheap爬虫
 │   ├── utils/                    # 核心工具
-│   │   ├── database.js           # SQLite数据库管理
-│   │   ├── ai-classifier.js      # AI活动分类器
-│   │   ├── manual-review.js      # 人工审核管理
-│   │   ├── url-shortener.js      # Short.io短链接
-│   │   └── cover-generator.js    # 小红书封面生成器
 │   └── formatters/               # 内容生成
-│       ├── translator.js         # AI翻译器
-│       ├── post-generator.js     # 小红书内容生成
-│       └── english-post-generator.js  # 英文帖子生成（Reddit/Nextdoor）⭐
-├── assets/                       # 资源文件
-│   └── cover-template.jpg        # 小红书封面模板
-├── data/                         # 数据存储
+│
+├── website/                      # ⭐ Next.js 网站
+│   ├── app/
+│   │   ├── [locale]/             # 多语言页面
+│   │   ├── api/                  # API 路由
+│   │   │   ├── feedback/         # 用户反馈 API
+│   │   │   └── debug/            # 调试 API
+│   │   ├── components/           # React 组件
+│   │   │   ├── FeedbackWidget.tsx     # 反馈组件
+│   │   │   ├── FeedbackSection.tsx    # 反馈区域
+│   │   │   ├── FilterBar.tsx          # 筛选栏
+│   │   │   └── EventCard.tsx          # 活动卡片
+│   │   └── hooks/                # React Hooks
+│   │       └── useUserPreferences.ts  # 用户偏好
+│   ├── lib/                      # 数据库和类型
+│   ├── messages/                 # 翻译文件
+│   └── public/                   # 静态资源
+│
+├── data/                         # SQLite 数据库
+│   └── events.db                 # 活动 + 反馈数据
+│
 ├── output/                       # 输出文件
 │   └── covers/                   # 生成的封面图片
-├── .github/workflows/            # 自动化
-└── validate.js                   # 环境验证
+│
+├── docs/                         # 📚 文档
+│   ├── feedback-feature/         # 用户反馈功能文档
+│   └── archive/                  # 归档文档
+│
+└── .github/workflows/            # CI/CD 自动化
 ```
 
 ## 🔄 工作流程
@@ -81,7 +100,14 @@ cd bay-area-events-scraper
 
 ### 2. 安装依赖
 
+**爬虫部分**:
 ```bash
+npm install
+```
+
+**网站部分** ⭐:
+```bash
+cd website
 npm install
 ```
 
@@ -123,7 +149,31 @@ MISTRAL_API_KEY=your_mistral_api_key_here
 
 ## 🚀 使用方法
 
-### 快速开始
+### 🌐 运行网站 ⭐ 新增
+
+```bash
+# 进入网站目录
+cd website
+
+# 启动开发服务器
+npm run dev
+
+# 访问网站
+# 中文版: http://localhost:3000/zh
+# 英文版: http://localhost:3000/en
+```
+
+**网站功能**:
+- 📱 浏览所有活动（按周、地区、类型、价格筛选）
+- 👍 提交反馈（👍 👎 + 可选评论）
+- 💾 自动记住用户筛选偏好
+- 🌐 双语支持（中文/英文）
+
+**详细文档**: 查看 `USER_FEEDBACK_DOCUMENTATION.md`
+
+### 📝 生成小红书内容
+
+#### 快速开始
 
 ```bash
 # 1. 第一步：抓取活动并生成审核文件
@@ -551,6 +601,21 @@ scraping: {
 - 检查API配额
 - 系统会自动降级使用原始链接
 
+### 4. 数据库重复问题
+
+**运行去重脚本**:
+```bash
+./remove-duplicates.sh
+```
+
+这会：
+- 自动备份数据库
+- 删除重复活动
+- 删除无效活动（标题是网站域名等）
+- 显示详细报告
+
+**查看去重报告**: 查看 `docs/feedback-feature/DEDUPLICATION_REPORT.md`
+
 ### 日志查看
 
 ```bash
@@ -560,6 +625,9 @@ DEBUG=* npm start
 # 查看数据库内容
 sqlite3 data/events.db ".tables"
 sqlite3 data/events.db "SELECT * FROM events LIMIT 10;"
+
+# 查看用户反馈
+sqlite3 data/events.db "SELECT * FROM user_feedback ORDER BY created_at DESC LIMIT 10;"
 ```
 
 ## 🏗️ 架构
@@ -671,13 +739,40 @@ npm run adjust-weights
 
 ## 📚 相关文档
 
+### 核心文档
 - **README.md**: 本文件（主要说明和快速开始）
 - **ARCHITECTURE.md**: 项目架构详解（分层设计、数据流、模块职责）
-- **FEEDBACK_LOOP_DESIGN.md**: 反馈闭环系统设计文档 ⭐ 新增
-- **FEEDBACK_LOOP_USAGE.md**: 反馈系统使用指南 ⭐ 新增
-- **TESTING_COVER_GENERATOR.md**: 封面生成器测试文档
+- **COMMANDS_REFERENCE.md**: 命令参考手册
+- **SETUP_GUIDE.md**: 设置指南
+- **WEBSITE_DESIGN.md**: 网站设计文档
+
+### 网站和反馈功能 ⭐
+- **USER_FEEDBACK_DOCUMENTATION.md**: 用户反馈功能完整文档（综合文档）
+- **docs/feedback-feature/**  : 详细的功能文档和修复指南
+  - `QUICK_START.md`: 快速开始
+  - `TROUBLESHOOTING.md`: 故障排查
+  - `DEDUPLICATION_REPORT.md`: 去重报告
+
+### 爬虫反馈系统
+- **docs/archive/FEEDBACK_LOOP_DESIGN.md**: 反馈闭环系统设计文档
+- **docs/archive/FEEDBACK_LOOP_USAGE.md**: 反馈系统使用指南
+
+### 其他文档
+- **I18N_STRATEGY.md**: 国际化策略
+- **docs/archive/**: 历史文档和归档
 
 ## 📊 更新日志
+
+### 2025年11月21日 - 用户反馈和偏好记忆功能 ⭐
+- ✅ Next.js 15 双语网站（中文/英文）
+- ✅ 用户反馈组件（👍 👎 + 评论）
+- ✅ 用户偏好记忆（localStorage）
+- ✅ 智能筛选（地区、类型、周、价格）
+- ✅ 用户反馈 API（POST/GET /api/feedback）
+- ✅ 数据库去重工具（删除 43 个重复/无效活动）
+- ✅ 隐私保护（匿名会话、IP 哈希）
+- ✅ 响应式设计（手机、平板、桌面）
+- ✅ 完整文档（USER_FEEDBACK_DOCUMENTATION.md）
 
 ### 2025年11月 - 反馈闭环系统 (Sprint 1)
 - ✅ 反馈系统数据库设计和实现
@@ -685,9 +780,6 @@ npm run adjust-weights
 - ✅ Engagement Score 计算引擎
 - ✅ performance-database.js 核心API (20+方法)
 - ✅ 完整的文档和使用指南
-- 🚧 反馈收集工具 (开发中)
-- 🚧 反馈分析引擎 (开发中)
-- 🚧 权重调整系统 (开发中)
 
 ### 2024年10月 - 核心架构优化
 - ✅ 去重逻辑重构：统一key生成策略
