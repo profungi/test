@@ -611,9 +611,9 @@ class EventbriteScraper extends BaseScraper {
     // - 元素2：街道地址 (Street Address)
     // - 元素3：城市, 州 邮编 (City, State ZIP)
     //
-    // 组合规则：
-    // 元素1 + 空格 + 元素2 + ", " + 元素3
-    // 例如：Thrive City 1 Warriors Way, San Francisco, CA 94158
+    // 组合规则：所有部分都用 ", " 分隔
+    // 元素1 + ", " + 元素2 + ", " + 元素3
+    // 例如：Thrive City, 1 Warriors Way, San Francisco, CA 94158
 
     const $address = $('[class*="address"]').first();
     if ($address.length > 0) {
@@ -641,12 +641,11 @@ class EventbriteScraper extends BaseScraper {
               // 两部分：街道地址 + 城市州邮编
               return `${parts[0]}, ${parts[1]}`;
             } else if (parts.length === 3) {
-              // 三部分：场馆名 + 街道地址 + 城市州邮编
-              return `${parts[0]} ${parts[1]}, ${parts[2]}`;
+              // 三部分：场馆名 + 街道地址 + 城市州邮编 - 都用逗号分隔
+              return `${parts[0]}, ${parts[1]}, ${parts[2]}`;
             } else if (parts.length > 3) {
-              // 超过三部分：前面的用空格连接，最后一个用 ", " 连接
-              const addressPart = parts.slice(0, -1).join(' ');
-              return `${addressPart}, ${lastPart}`;
+              // 超过三部分：所有部分都用 ", " 连接
+              return parts.join(', ');
             }
           }
         }
@@ -691,8 +690,8 @@ class EventbriteScraper extends BaseScraper {
             if (parts.length === 2) {
               return `${parts[0]}, ${parts[1]}`;
             } else if (parts.length >= 3) {
-              const addressPart = parts.slice(0, -1).join(' ');
-              return `${addressPart}, ${lastPart}`;
+              // 所有部分都用 ", " 连接
+              return parts.join(', ');
             }
           }
         }
