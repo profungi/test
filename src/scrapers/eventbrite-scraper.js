@@ -605,41 +605,104 @@ class EventbriteScraper extends BaseScraper {
 
   // 从详情页提取完整地址
   extractFullAddress($) {
-    // 地址通常在 [class*="address"] 中
+    // 🔧 方案 A：分别提取地址的各个部分，然后用正确的分隔符组合
+    // Eventbrite 的地址结构（在不同的子元素中）：
+    // - 元素1：场馆名称 (Venue Name)
+    // - 元素2：街道地址 (Street Address)
+    // - 元素3：城市, 州 邮编 (City, State ZIP)
+    //
+    // 组合规则：
+    // 元素1 + 空格 + 元素2 + ", " + 元素3
+    // 例如：Thrive City 1 Warriors Way, San Francisco, CA 94158
+
     const $address = $('[class*="address"]').first();
     if ($address.length > 0) {
-      let addressText = $address.text().trim();
+      // 方法1：尝试获取所有直接子元素
+      const children = $address.children();
 
-      // 移除 "Get directions" 等干扰文本
-      addressText = addressText.replace(/Get directions.*$/i, '').trim();
+      if (children.length >= 2) {
+        const parts = [];
 
-      // 修复：匹配格式 "场馆名/街道地址 城市, 州 邮编"
-      // 目标：在城市前添加逗号，改为 "场馆名/街道地址, 城市, 州 邮编"
-      // 处理各种格式：
-      // 1. "473 Valencia StreetSan Francisco, CA 94103" -> "473 Valencia Street, San Francisco, CA 94103"
-      // 2. "Thrive City 1 Warriors Way San Francisco, CA 94158" -> "Thrive City 1 Warriors Way, San Francisco, CA 94158"
-      // 3. "119 Utah St.San Francisco, CA 94103" -> "119 Utah St., San Francisco, CA 94103"
+        children.each((i, elem) => {
+          const text = $(elem).text().trim();
+          // 过滤掉 "Get directions" 等非地址文本
+          if (text && !text.match(/get directions|view map|map/i) && text.length > 1) {
+            parts.push(text);
+          }
+        });
 
-      // 匹配模式：(街道地址部分)(城市名), (州) (邮编)
-      // 街道地址部分必须包含数字，城市名必须以大写字母开头
-      const match = addressText.match(/^(.*?\d+\s*[^,]*?)([A-Z][a-zA-Z\s]+),\s*([A-Z]{2})\s+(\d{5})$/);
+        // 如果成功提取到2-3个部分
+        if (parts.length >= 2) {
+          const lastPart = parts[parts.length - 1];
 
-      if (match) {
-        let streetAddress = match[1].trim();
-        const city = match[2].trim();
-        const state = match[3].trim();
-        const zip = match[4].trim();
-
-        // 如果街道地址以句点结尾但没有空格，添加空格
-        streetAddress = streetAddress.replace(/\.([A-Z])/, '. $1');
-
-        return `${streetAddress}, ${city}, ${state} ${zip}`;
+          // 检查最后一部分是否包含州和邮编
+          if (lastPart.match(/,?\s*[A-Z]{2}\s+\d{5}/)) {
+            if (parts.length === 2) {
+              // 两部分：街道地址 + 城市州邮编
+              return `${parts[0]}, ${parts[1]}`;
+            } else if (parts.length === 3) {
+              // 三部分：场馆名 + 街道地址 + 城市州邮编
+              return `${parts[0]} ${parts[1]}, ${parts[2]}`;
+            } else if (parts.length > 3) {
+              // 超过三部分：前面的用空格连接，最后一个用 ", " 连接
+              const addressPart = parts.slice(0, -1).join(' ');
+              return `${addressPart}, ${lastPart}`;
+            }
+          }
+        }
       }
 
-      // 备用方案：如果已经有逗号格式，检查是否需要调整
-      const commaMatch = addressText.match(/^(.*?),\s*([A-Z][a-zA-Z\s]+),\s*([A-Z]{2})\s+(\d{5})$/);
-      if (commaMatch) {
-        // 已经是正确格式，直接返回
+      // 方法2：如果直接子元素提取失败，尝试查找所有可能的地址元素
+      // 寻找包含地址信息的 div/span/p 标签
+      const addressElements = $address.find('div, span, p').filter((i, elem) => {
+        const $elem = $(elem);
+        const text = $elem.text().trim();
+
+        // 过滤条件：
+        // 1. 有文本内容
+        // 2. 不是 "Get directions" 等
+        // 3. 不是父元素（避免重复）
+        const hasChildren = $elem.children().length > 0;
+        const isValidText = text &&
+                           !text.match(/get directions|view map|^map$/i) &&
+                           text.length > 1 &&
+                           text.length < 200; // 避免包含整个页面的元素
+
+        return isValidText && !hasChildren;
+      });
+
+      if (addressElements.length >= 2) {
+        const parts = [];
+        const seenTexts = new Set();
+
+        addressElements.each((i, elem) => {
+          const text = $(elem).text().trim();
+          // 避免重复（子元素可能包含父元素的文本）
+          if (!seenTexts.has(text) && !Array.from(seenTexts).some(seen => seen.includes(text) || text.includes(seen))) {
+            parts.push(text);
+            seenTexts.add(text);
+          }
+        });
+
+        if (parts.length >= 2) {
+          const lastPart = parts[parts.length - 1];
+
+          if (lastPart.match(/,?\s*[A-Z]{2}\s+\d{5}/)) {
+            if (parts.length === 2) {
+              return `${parts[0]}, ${parts[1]}`;
+            } else if (parts.length >= 3) {
+              const addressPart = parts.slice(0, -1).join(' ');
+              return `${addressPart}, ${lastPart}`;
+            }
+          }
+        }
+      }
+
+      // 方法3：后备方案 - 如果前两种方法都失败，返回基本清理后的文本
+      let addressText = $address.text().trim();
+      addressText = addressText.replace(/Get directions.*$/i, '').trim();
+
+      if (addressText) {
         return addressText;
       }
     }
