@@ -11,10 +11,7 @@ export default function EventDescriptionPopover({ description, children }: Event
   const [isOpen, setIsOpen] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
   const [isTouchDevice, setIsTouchDevice] = useState(false);
-<<<<<<< HEAD
-=======
   const [popoverPosition, setPopoverPosition] = useState<'left' | 'right'>('left');
->>>>>>> 3b0c132c7578b1ce7d9fcf28089d9a989d01209e
   const popoverRef = useRef<HTMLDivElement>(null);
   const triggerRef = useRef<HTMLDivElement>(null);
   const hoverTimeoutRef = useRef<NodeJS.Timeout | null>(null);
@@ -48,8 +45,6 @@ export default function EventDescriptionPopover({ description, children }: Event
 
   const handleMouseEnter = () => {
     if (!isTouchDevice) {
-<<<<<<< HEAD
-=======
       // 计算 popover 应该显示在左边还是右边
       if (triggerRef.current) {
         const rect = triggerRef.current.getBoundingClientRect();
@@ -64,7 +59,6 @@ export default function EventDescriptionPopover({ description, children }: Event
         }
       }
 
->>>>>>> 3b0c132c7578b1ce7d9fcf28089d9a989d01209e
       // 桌面端：延迟显示，避免误触
       hoverTimeoutRef.current = setTimeout(() => {
         setIsHovered(true);
@@ -112,19 +106,11 @@ export default function EventDescriptionPopover({ description, children }: Event
 
         {/* 桌面端悬停显示的 popover */}
         {!isTouchDevice && isHovered && (
-<<<<<<< HEAD
-          <div className="absolute z-50 w-[65ch] max-w-[90vw] bg-white/95 backdrop-blur-sm border border-gray-300 rounded-lg shadow-xl p-4 mt-2 left-0">
-            <div className="text-sm text-gray-700 whitespace-pre-wrap break-words max-h-60 overflow-y-auto">
-              {description}
-            </div>
-            <div className="absolute -top-2 left-4 w-4 h-4 bg-white/95 border-l border-t border-gray-300 transform rotate-45"></div>
-=======
           <div className={`absolute z-50 w-[65ch] max-w-[90vw] bg-white/95 backdrop-blur-sm border border-gray-300 rounded-lg shadow-xl p-4 mt-2 ${popoverPosition === 'right' ? 'right-0' : 'left-0'}`}>
             <div className="text-sm text-gray-700 whitespace-pre-wrap break-words max-h-60 overflow-y-auto">
               {description}
             </div>
             <div className={`absolute -top-2 w-4 h-4 bg-white/95 border-l border-t border-gray-300 transform rotate-45 ${popoverPosition === 'right' ? 'right-4' : 'left-4'}`}></div>
->>>>>>> 3b0c132c7578b1ce7d9fcf28089d9a989d01209e
           </div>
         )}
       </div>
