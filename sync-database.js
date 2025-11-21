@@ -1,0 +1,259 @@
+#!/usr/bin/env node
+
+/**
+ * 同步数据库：更新 events 和 event_performance 表的数据格式
+ * 1. 更新地址格式：所有部分用逗号分隔
+ * 2. 去掉 description 开头的 "Overview"
+ */
+
+const sqlite3 = require('sqlite3').verbose();
+const path = require('path');
+
+const DB_PATH = path.join(__dirname, 'data', 'events.db');
+
+// 简化的地址修复函数 - 从 Eventbrite 源的数据修复
+function fixEventbriteAddress(address) {
+  if (!address) return address;
+
+  // 对于 Eventbrite 的数据，尝试简单的修复
+  // 主要处理：场馆名+门牌号 -> 场馆名, 门牌号
+
+  // 1. 移除 "Get directions" 等干扰文本
+  let cleaned = address.replace(/Get directions.*$/i, '').trim();
+
+  // 2. 在字母和数字之间添加逗号+空格（如果中间没有逗号的话）
+  // "Thrive City1 Warriors Way" -> "Thrive City, 1 Warriors Way"
+  // 但保留已有的逗号格式
+
+  // 如果地址已经有2个或更多逗号，可能已经是正确格式
+  const commaCount = (cleaned.match(/,/g) || []).length;
+  if (commaCount >= 2) {
+    return cleaned;
+  }
+
+  // 如果只有1个逗号，尝试在场馆名和门牌号之间添加逗号
+  // 模式：场馆名(字母结尾) + 门牌号(数字开头)
+  cleaned = cleaned.replace(/([a-zA-Z])(\d+)/g, '$1, $2');
+
+  // 3. 移除门牌号后错误的逗号："525, West" -> "525 West"
+  // 但保留城市前的逗号
+  cleaned = cleaned.replace(/(\d+),\s+([A-Z][a-z])/g, '$1 $2');
+
+  return cleaned;
+}
+
+function fixDescription(description) {
+  if (!description) return description;
+
+  // 去掉开头的 "Overview"（不区分大小写）
+  return description.replace(/^overview\s*/i, '');
+}
+
+async function syncDatabase() {
+  return new Promise((resolve, reject) => {
+    const db = new sqlite3.Database(DB_PATH, (err) => {
+      if (err) {
+        reject(err);
+        return;
+      }
+
+      console.log('🔗 已连接到数据库:', DB_PATH);
+      console.log('');
+
+      db.serialize(() => {
+        db.run('BEGIN TRANSACTION');
+
+        // ========== 更新 events 表 ==========
+        console.log('📊 更新 events 表...\n');
+
+        db.all(
+          'SELECT id, location, description, source FROM events WHERE source = ?',
+          ['eventbrite'],
+          (err, rows) => {
+            if (err) {
+              console.error('❌ 查询 events 失败:', err);
+              db.run('ROLLBACK');
+              reject(err);
+              return;
+            }
+
+            console.log(`   找到 ${rows.length} 条 Eventbrite 记录\n`);
+
+            let eventsLocationFixed = 0;
+            let eventsDescFixed = 0;
+            let eventsProcessed = 0;
+
+            rows.forEach((row, index) => {
+              const newLocation = fixEventbriteAddress(row.location);
+              const newDescription = fixDescription(row.description);
+
+              let needsUpdate = false;
+              const updates = [];
+              const params = [];
+
+              if (newLocation !== row.location) {
+                updates.push('location = ?');
+                params.push(newLocation);
+                eventsLocationFixed++;
+                needsUpdate = true;
+
+                if (index < 3) {
+                  console.log(`   📍 地址修复示例 #${index + 1}:`);
+                  console.log(`      旧: ${row.location.substring(0, 80)}...`);
+                  console.log(`      新: ${newLocation.substring(0, 80)}...`);
+                  console.log('');
+                }
+              }
+
+              if (newDescription !== row.description) {
+                updates.push('description = ?');
+                params.push(newDescription);
+                eventsDescFixed++;
+                needsUpdate = true;
+
+                if (index < 3 && newDescription) {
+                  console.log(`   📝 描述修复示例 #${index + 1}:`);
+                  console.log(`      旧: ${row.description ? row.description.substring(0, 60) : 'null'}...`);
+                  console.log(`      新: ${newDescription.substring(0, 60)}...`);
+                  console.log('');
+                }
+              }
+
+              if (needsUpdate) {
+                params.push(row.id);
+                const sql = `UPDATE events SET ${updates.join(', ')} WHERE id = ?`;
+
+                db.run(sql, params, (err) => {
+                  if (err) {
+                    console.error(`   ❌ 更新失败 (ID: ${row.id}):`, err.message);
+                  }
+                });
+              }
+
+              eventsProcessed++;
+            });
+
+            console.log(`   ✅ events 表处理完成`);
+            console.log(`      处理记录: ${eventsProcessed}`);
+            console.log(`      地址修复: ${eventsLocationFixed}`);
+            console.log(`      描述修复: ${eventsDescFixed}\n`);
+
+            // ========== 更新 event_performance 表 ==========
+            console.log('📊 更新 event_performance 表...\n');
+
+            db.all(
+              'SELECT id, location, source_website FROM event_performance WHERE source_website LIKE ?',
+              ['%eventbrite%'],
+              (err, perfRows) => {
+                if (err) {
+                  console.error('❌ 查询 event_performance 失败:', err);
+                  db.run('ROLLBACK');
+                  reject(err);
+                  return;
+                }
+
+                console.log(`   找到 ${perfRows.length} 条 Eventbrite 记录\n`);
+
+                let perfLocationFixed = 0;
+                let perfProcessed = 0;
+
+                perfRows.forEach((row, index) => {
+                  const newLocation = fixEventbriteAddress(row.location);
+
+                  if (newLocation !== row.location) {
+                    db.run(
+                      'UPDATE event_performance SET location = ? WHERE id = ?',
+                      [newLocation, row.id],
+                      (err) => {
+                        if (err) {
+                          console.error(`   ❌ 更新失败 (ID: ${row.id}):`, err.message);
+                        }
+                      }
+                    );
+
+                    perfLocationFixed++;
+
+                    if (index < 3) {
+                      console.log(`   📍 地址修复示例 #${index + 1}:`);
+                      console.log(`      旧: ${row.location ? row.location.substring(0, 80) : 'null'}...`);
+                      console.log(`      新: ${newLocation.substring(0, 80)}...`);
+                      console.log('');
+                    }
+                  }
+
+                  perfProcessed++;
+                });
+
+                console.log(`   ✅ event_performance 表处理完成`);
+                console.log(`      处理记录: ${perfProcessed}`);
+                console.log(`      地址修复: ${perfLocationFixed}\n`);
+
+                // ========== 提交事务 ==========
+                db.run('COMMIT', (err) => {
+                  if (err) {
+                    console.error('❌ 提交事务失败:', err.message);
+                    db.run('ROLLBACK');
+                    reject(err);
+                    return;
+                  }
+
+                  console.log('═'.repeat(60));
+                  console.log('✅ 数据库同步完成！');
+                  console.log('═'.repeat(60));
+                  console.log('');
+                  console.log('📊 总计：');
+                  console.log(`   events 表:`);
+                  console.log(`     - 处理: ${eventsProcessed} 条`);
+                  console.log(`     - 地址修复: ${eventsLocationFixed} 条`);
+                  console.log(`     - 描述修复: ${eventsDescFixed} 条`);
+                  console.log('');
+                  console.log(`   event_performance 表:`);
+                  console.log(`     - 处理: ${perfProcessed} 条`);
+                  console.log(`     - 地址修复: ${perfLocationFixed} 条`);
+                  console.log('');
+
+                  db.close((err) => {
+                    if (err) {
+                      reject(err);
+                    } else {
+                      resolve({
+                        events: {
+                          processed: eventsProcessed,
+                          locationFixed: eventsLocationFixed,
+                          descFixed: eventsDescFixed
+                        },
+                        performance: {
+                          processed: perfProcessed,
+                          locationFixed: perfLocationFixed
+                        }
+                      });
+                    }
+                  });
+                });
+              }
+            );
+          }
+        );
+      });
+    });
+  });
+}
+
+// 运行同步
+if (require.main === module) {
+  console.log('🔧 开始同步数据库...');
+  console.log('');
+
+  syncDatabase()
+    .then((result) => {
+      console.log('✨ 所有操作已完成！');
+      process.exit(0);
+    })
+    .catch((error) => {
+      console.error('❌ 同步失败:', error.message);
+      console.error(error.stack);
+      process.exit(1);
+    });
+}
+
+module.exports = syncDatabase;
