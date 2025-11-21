@@ -72,7 +72,7 @@ export default function FilterBar() {
               className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
             >
               <option value="all">{t('allLocations')}</option>
-              <option value="sf">{t('sanFrancisco')}</option>
+              <option value="sanfrancisco">{t('sanFrancisco')}</option>
               <option value="southbay">{t('southBay')}</option>
               <option value="eastbay">{t('eastBay')}</option>
               <option value="northbay">{t('northBay')}</option>
