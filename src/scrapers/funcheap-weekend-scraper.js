@@ -350,17 +350,8 @@ class FuncheapWeekendScraper extends BaseScraper {
         // 移除过多的空格
         description = description.replace(/\s+/g, ' ');
 
-        // 限制描述长度 - 允许更长的描述（500字符）
-        if (description.length > 500) {
-          // 尝试在词边界处截断
-          const truncated = description.substring(0, 500);
-          const lastSpace = truncated.lastIndexOf(' ');
-          if (lastSpace > 300) {
-            description = truncated.substring(0, lastSpace) + '...';
-          } else {
-            description = truncated + '...';
-          }
-        }
+        // 使用智能截断保留完整句子（500字符限制）
+        description = this.smartTruncate(description, 500);
       } else {
         description = null;
       }
@@ -479,10 +470,9 @@ class FuncheapWeekendScraper extends BaseScraper {
           .replace(/\n+/g, '\n') // 多个换行变成一个
           .trim();
 
-        // 如果描述足够长，返回（至少50字符）
+        // 如果描述足够长，返回（至少50字符，使用智能截断）
         if (text && text.length > 50) {
-          // 限制描述长度
-          return text.substring(0, 2000);
+          return this.smartTruncate(text, 2000);
         }
       }
     }
@@ -497,7 +487,7 @@ class FuncheapWeekendScraper extends BaseScraper {
     });
 
     if (paragraphs.length > 0) {
-      return paragraphs.slice(0, 3).join('\n').substring(0, 2000);
+      return this.smartTruncate(paragraphs.slice(0, 3).join('\n'), 2000);
     }
 
     return null;

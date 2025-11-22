@@ -898,10 +898,11 @@ class EventbriteScraper extends BaseScraper {
       });
 
       if (paragraphs.length > 0) {
-        let result = paragraphs.join('\n').substring(0, 2000); // 限制在2000字符
+        let result = paragraphs.join('\n');
         // 修复：去掉开头的 "Overview"（不区分大小写）
         result = result.replace(/^overview\s*/i, '');
-        return result;
+        // 使用智能截断保留完整句子
+        return this.smartTruncate(result, 2000);
       }
     }
 

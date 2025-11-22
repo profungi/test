@@ -8,6 +8,7 @@
 const EventbriteScraper = require('../scrapers/eventbrite-scraper');
 const FuncheapScraper = require('../scrapers/funcheap-weekend-scraper');
 const SFStationScraper = require('../scrapers/sfstation-scraper');
+const BaseScraper = require('../scrapers/base-scraper');
 const ContentTranslator = require('../formatters/translator');
 const cheerio = require('cheerio');
 const axios = require('axios');
@@ -18,6 +19,8 @@ class UniversalScraper {
     this.funcheapScraper = new FuncheapScraper();
     this.sfstationScraper = new SFStationScraper();
     this.translator = new ContentTranslator();
+    // 创建一个 BaseScraper 实例来访问 smartTruncate 方法
+    this.baseScraper = new BaseScraper('universal');
   }
 
   /**
@@ -524,7 +527,7 @@ Important:
     for (const selector of selectors) {
       const text = $(selector).first().text().trim();
       if (text && text.length > 50) {
-        return text.substring(0, 500); // 限制长度
+        return this.baseScraper.smartTruncate(text, 500); // 使用智能截断
       }
     }
 
