@@ -69,7 +69,7 @@ export default function FilterBar() {
             <select
               value={currentLocation}
               onChange={(e) => updateFilter('location', e.target.value)}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
+              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-white text-gray-900 font-medium shadow-sm hover:border-gray-400 transition-colors cursor-pointer"
             >
               <option value="all">{t('allLocations')}</option>
               <option value="sf">{t('sanFrancisco')}</option>
@@ -88,7 +88,7 @@ export default function FilterBar() {
             <select
               value={currentType}
               onChange={(e) => updateFilter('type', e.target.value)}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
+              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-white text-gray-900 font-medium shadow-sm hover:border-gray-400 transition-colors cursor-pointer"
             >
               <option value="all">{t('allTypes')}</option>
               <option value="market">{t('market')}</option>
@@ -112,7 +112,7 @@ export default function FilterBar() {
             <select
               value={currentPrice}
               onChange={(e) => updateFilter('price', e.target.value)}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
+              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-white text-gray-900 font-medium shadow-sm hover:border-gray-400 transition-colors cursor-pointer"
             >
               <option value="all">{t('allPrices')}</option>
               <option value="free">{t('free')}</option>
