@@ -737,29 +737,40 @@ npm run adjust-weights
 
 ---
 
-## 📚 相关文档
+## 📚 文档目录
 
-### 核心文档
-- **README.md**: 本文件（主要说明和快速开始）
+### 📖 核心文档
+- **README.md**: 项目概述和快速开始（本文件）
 - **ARCHITECTURE.md**: 项目架构详解（分层设计、数据流、模块职责）
-- **COMMANDS_REFERENCE.md**: 命令参考手册
-- **SETUP_GUIDE.md**: 设置指南
-- **WEBSITE_DESIGN.md**: 网站设计文档
 
-### 网站和反馈功能 ⭐
-- **USER_FEEDBACK_DOCUMENTATION.md**: 用户反馈功能完整文档（综合文档）
-- **docs/feedback-feature/**  : 详细的功能文档和修复指南
+### 🛠️ 设置和使用
+- **docs/setup/SETUP_GUIDE.md**: 详细设置指南
+- **docs/setup/COMMANDS_REFERENCE.md**: 完整命令参考手册
+
+### ✨ 功能文档
+- **docs/features/WEBSITE_DESIGN.md**: 网站设计文档
+- **docs/features/USER_FEEDBACK_DOCUMENTATION.md**: 用户反馈功能完整文档
+- **docs/features/I18N_STRATEGY.md**: 国际化策略
+
+### 🔧 详细功能指南
+- **docs/feedback-feature/**: 反馈功能详细文档
   - `QUICK_START.md`: 快速开始
   - `TROUBLESHOOTING.md`: 故障排查
-  - `DEDUPLICATION_REPORT.md`: 去重报告
+  - `IMPLEMENTATION_SUMMARY.md`: 实现总结
+  - `LOCAL_SETUP_INSTRUCTIONS.md`: 本地设置指南
 
-### 爬虫反馈系统
-- **docs/archive/FEEDBACK_LOOP_DESIGN.md**: 反馈闭环系统设计文档
-- **docs/archive/FEEDBACK_LOOP_USAGE.md**: 反馈系统使用指南
+### 📦 归档文档
+- **docs/archive/**: 历史文档和旧版设计
+  - `FEEDBACK_LOOP_DESIGN.md`: 爬虫反馈闭环系统设计
+  - `CLEANUP_SUMMARY.md`: 项目清理总结
+  - `SHORTURL_FALLBACK.md`: 短链接降级策略
 
-### 其他文档
-- **I18N_STRATEGY.md**: 国际化策略
-- **docs/archive/**: 历史文档和归档
+### 🛠️ 调试工具
+- **scripts/debug/**: 调试和诊断脚本
+  - `debug-website.sh`: 网站调试工具
+  - `diagnose-website.sh`: 连接诊断工具
+  - `test-feedback-api.sh`: 反馈API测试
+- **cleanup.sh**: 项目清理脚本
 
 ## 📊 更新日志
 
