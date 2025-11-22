@@ -616,9 +616,9 @@ class SFStationScraper extends BaseScraper {
           .replace(/\n+/g, '\n') // 多个换行变成一个
           .trim();
 
-        // 如果描述足够长，返回
+        // 如果描述足够长，返回（使用智能截断）
         if (text && text.length > 50) {
-          return text.substring(0, 2000); // 限制在2000字符
+          return this.smartTruncate(text, 2000);
         }
       }
     }
@@ -635,7 +635,7 @@ class SFStationScraper extends BaseScraper {
       });
 
       if (paragraphs.length > 0) {
-        return paragraphs.join('\n').substring(0, 2000);
+        return this.smartTruncate(paragraphs.join('\n'), 2000);
       }
     }
 

@@ -220,14 +220,84 @@ class BaseScraper {
     return 'Check event page';
   }
 
+  // 智能截断文本 - 在句子或段落边界截断，提升阅读体验
+  smartTruncate(text, maxLength) {
+    if (!text || text.length <= maxLength) return text;
+
+    // 定义搜索范围：在 70%-100% 范围内寻找截断点
+    const minSearchPos = Math.floor(maxLength * 0.7);
+    const searchText = text.substring(0, maxLength);
+
+    // 1. 优先寻找段落边界（双换行符）
+    const paragraphMatch = searchText.substring(minSearchPos).match(/\n\n/);
+    if (paragraphMatch) {
+      const pos = minSearchPos + paragraphMatch.index;
+      return text.substring(0, pos).trim();
+    }
+
+    // 2. 寻找句子边界（中英文句号、问号、感叹号）
+    // 匹配句号后面可能跟着的空格或换行，但排除：
+    // - 数字中的点（如 3.14）
+    // - URL 中的点（如 example.com）
+    // - 缩写中的点（如 Dr. 或 U.S.）
+    const sentenceEndings = /[。！？.!?]+[\s\n]+/g;
+    let lastSentenceEnd = -1;
+    let match;
+
+    // 从 minSearchPos 开始往后找所有句子结尾
+    while ((match = sentenceEndings.exec(searchText)) !== null) {
+      if (match.index >= minSearchPos) {
+        const endPos = match.index + match[0].length;
+
+        // 检查是否是数字中的点（前后都是数字）
+        const beforeChar = searchText.charAt(match.index - 1);
+        const afterPos = match.index + match[0].trimEnd().length;
+        const afterChar = searchText.charAt(afterPos);
+
+        if (/\d/.test(beforeChar) && /\d/.test(afterChar)) {
+          continue; // 跳过数字中的点
+        }
+
+        // 检查是否是 URL 中的点
+        const surroundingText = searchText.substring(Math.max(0, match.index - 10), Math.min(searchText.length, match.index + 10));
+        if (/https?:\/\/|www\.|\.com|\.org|\.net/i.test(surroundingText)) {
+          continue; // 跳过 URL 中的点
+        }
+
+        lastSentenceEnd = endPos;
+      }
+    }
+
+    if (lastSentenceEnd > minSearchPos) {
+      return text.substring(0, lastSentenceEnd).trim();
+    }
+
+    // 3. 寻找单个换行符（段落内的换行）
+    const singleNewlinePos = searchText.lastIndexOf('\n', maxLength);
+    if (singleNewlinePos > minSearchPos) {
+      return text.substring(0, singleNewlinePos).trim();
+    }
+
+    // 4. 保底方案：在词语边界截断（最后一个空格）
+    const lastSpacePos = searchText.lastIndexOf(' ', maxLength);
+    if (lastSpacePos > minSearchPos) {
+      return text.substring(0, lastSpacePos).trim();
+    }
+
+    // 5. 实在找不到合适的边界，直接按字符截断
+    return text.substring(0, maxLength).trim();
+  }
+
   // 清理文本内容
   cleanText(text) {
     if (!text) return '';
-    return text
+    const cleaned = text
       .replace(/\s+/g, ' ')
       .replace(/\n/g, ' ')
-      .trim()
-      .substring(0, 500); // 防止过长
+      .trim();
+
+    // 使用智能截断而非硬截断
+    return this.smartTruncate(cleaned, 500);
   }
 
   // 清理 location 文本，移除 URL 和时间信息
