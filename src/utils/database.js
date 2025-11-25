@@ -81,7 +81,10 @@ class EventDatabase {
           // 创建索引以优化查询性能
           this.createIndexes().then(() => {
             // 迁移：为现有表添加 description_detail 列（如果不存在）
-            this.migrateAddDescriptionDetail().then(resolve).catch(reject);
+            this.migrateAddDescriptionDetail()
+              .then(() => this.migrateAddTitleZh())
+              .then(resolve)
+              .catch(reject);
           }).catch(reject);
         });
       });
@@ -164,6 +167,35 @@ class EventDatabase {
               reject(err);
             } else {
               console.log('✅ Migration complete: description_detail column added');
+              resolve();
+            }
+          });
+        } else {
+          // 列已存在，无需迁移
+          resolve();
+        }
+      });
+    });
+  }
+
+  async migrateAddTitleZh() {
+    return new Promise((resolve, reject) => {
+      // 检查列是否已存在
+      this.db.all("PRAGMA table_info(events)", (err, rows) => {
+        if (err) {
+          reject(err);
+          return;
+        }
+
+        const hasTitleZh = rows.some(row => row.name === 'title_zh');
+
+        if (!hasTitleZh) {
+          console.log('🔄 Migrating database: adding title_zh column...');
+          this.db.run("ALTER TABLE events ADD COLUMN title_zh TEXT", (err) => {
+            if (err) {
+              reject(err);
+            } else {
+              console.log('✅ Migration complete: title_zh column added');
               resolve();
             }
           });
