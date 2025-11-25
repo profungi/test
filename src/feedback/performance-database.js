@@ -75,6 +75,9 @@ class PerformanceDatabase {
 
     // 运行迁移到 v1.6
     await this.migrateToV16();
+
+    // 运行迁移到 v1.7
+    await this.migrateToV17();
   }
 
   /**
@@ -181,6 +184,60 @@ class PerformanceDatabase {
       console.log('✅ Schema v1.6 迁移完成');
     } catch (err) {
       console.warn('⚠️  Schema v1.6 迁移警告:', err.message);
+      // 不抛出错误，允许继续使用
+    }
+  }
+
+  /**
+   * 迁移到 v1.7 - 添加posts表的小红书整体互动数据字段
+   */
+  async migrateToV17() {
+    try {
+      // 检查是否已经迁移过
+      const version = await this.get(
+        "SELECT * FROM schema_version WHERE version = '1.7.0'"
+      );
+
+      if (version) {
+        // console.log('✅ Schema v1.7 已应用');
+        return;
+      }
+
+      console.log('🔄 开始迁移到 Schema v1.7...');
+
+      const schemaPath = path.join(__dirname, 'schema-v1.7.sql');
+      const schemaSql = fs.readFileSync(schemaPath, 'utf8');
+
+      // 移除注释行
+      const cleanedSql = schemaSql
+        .split('\n')
+        .filter(line => {
+          const trimmed = line.trim();
+          return trimmed.length > 0 && !trimmed.startsWith('--');
+        })
+        .join('\n');
+
+      // 分割SQL语句并逐个执行
+      const statements = cleanedSql
+        .split(';')
+        .map(s => s.trim())
+        .filter(s => s.length > 0);
+
+      for (const statement of statements) {
+        try {
+          await this.run(statement);
+        } catch (err) {
+          // 忽略 "already exists" 或 "duplicate column" 错误
+          if (!err.message.includes('already exists') &&
+              !err.message.includes('duplicate column')) {
+            throw err;
+          }
+        }
+      }
+
+      console.log('✅ Schema v1.7 迁移完成');
+    } catch (err) {
+      console.warn('⚠️  Schema v1.7 迁移警告:', err.message);
       // 不抛出错误，允许继续使用
     }
   }
@@ -360,7 +417,17 @@ class PerformanceDatabase {
    * 更新发布记录
    */
   async updatePost(postId, updates) {
-    const allowedFields = ['xiaohongshu_url', 'xiaohongshu_post_id', 'updated_at'];
+    const allowedFields = [
+      'xiaohongshu_url',
+      'xiaohongshu_post_id',
+      'xiaohongshu_total_likes',
+      'xiaohongshu_total_favorites',
+      'xiaohongshu_total_comments',
+      'xiaohongshu_total_shares',
+      'xiaohongshu_total_views',
+      'feedback_collected_at',
+      'updated_at'
+    ];
     const fields = [];
     const values = [];
 
@@ -385,6 +452,48 @@ class PerformanceDatabase {
     values.splice(values.length - 1, 0, new Date().toISOString());
 
     await this.run(sql, values);
+  }
+
+  /**
+   * 更新发布记录的小红书整体数据
+   * v1.7: 新增方法，专门用于保存小红书帖子级别的互动数据
+   */
+  async updatePostXiaohongshuData(postId, xiaohongshuData) {
+    const {
+      total_likes = 0,
+      total_favorites = 0,
+      total_comments = 0,
+      total_shares = 0,
+      total_views = 0
+    } = xiaohongshuData;
+
+    const now = new Date().toISOString();
+
+    const sql = `
+      UPDATE posts
+      SET
+        xiaohongshu_total_likes = ?,
+        xiaohongshu_total_favorites = ?,
+        xiaohongshu_total_comments = ?,
+        xiaohongshu_total_shares = ?,
+        xiaohongshu_total_views = ?,
+        feedback_collected_at = COALESCE(feedback_collected_at, ?),
+        updated_at = ?
+      WHERE post_id = ?
+    `;
+
+    const params = [
+      total_likes,
+      total_favorites,
+      total_comments,
+      total_shares,
+      total_views,
+      now,
+      now,
+      postId
+    ];
+
+    await this.run(sql, params);
   }
 
   // ============================================================================
