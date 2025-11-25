@@ -144,6 +144,22 @@ class PostGenerationOrchestrator {
         finalEvents = [...translatedEvents, ...translatedNewEvents];
       }
 
+      // 8.5. 保存最终发布内容到文件（覆盖原文件或创建新文件）
+      if (contentModified || newEvents.length > 0) {
+        console.log('\n💾 保存最终发布内容到文件...');
+        const fs = require('fs').promises;
+        await fs.writeFile(postResult.filepath, publishedContent, 'utf8');
+        console.log(`✅ 已保存最终内容到: ${postResult.filepath}`);
+
+        // 更新元数据
+        const metadataFilepath = postResult.filepath.replace('.txt', '_metadata.json');
+        const existingMetadata = JSON.parse(await fs.readFile(metadataFilepath, 'utf8'));
+        existingMetadata.content_modified = contentModified;
+        existingMetadata.manual_events_added = newEvents.length;
+        existingMetadata.final_content_saved_at = new Date().toISOString();
+        await fs.writeFile(metadataFilepath, JSON.stringify(existingMetadata, null, 2), 'utf8');
+      }
+
       // 9. 检查是否已有该周的发布记录并选择覆盖或创建新版本
       await this.performanceDB.connect();
       await this.performanceDB.initializeFeedbackTables();
@@ -233,7 +249,7 @@ class PostGenerationOrchestrator {
       console.log('📱 现在可以复制内容到小红书发布了！');
 
       // 10. 提示下一步操作
-      this.displayNextSteps(postResult);
+      this.displayNextSteps(postResult, postId);
 
     } catch (error) {
       console.error('❌ 生成过程中发生错误:', error.message);
@@ -350,16 +366,13 @@ class PostGenerationOrchestrator {
   /**
    * 显示下一步操作提示
    */
-  displayNextSteps(postResult) {
-    const postIdMatch = postResult.filepath.match(/weekly_events_(\d{4}-\d{2}-\d{2}_\d{4})/);
-    const postId = postIdMatch ? `post_${postIdMatch[1]}` : 'post_XXXX';
-
+  displayNextSteps(postResult, actualPostId) {
     console.log('\n' + '━'.repeat(60));
     console.log('💡 下一步操作');
     console.log('━'.repeat(60));
     console.log('1. 📱 将内容发布到小红书');
     console.log('2. ⏰ 等待 2-3 天收集用户反馈');
-    console.log(`3. 📊 运行反馈收集: npm run collect-feedback ${postId}`);
+    console.log(`3. 📊 运行反馈收集: npm run collect-feedback ${actualPostId}`);
     console.log('━'.repeat(60));
   }
 
