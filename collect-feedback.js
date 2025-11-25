@@ -65,9 +65,21 @@ async function collectFeedbackForPost(postId) {
     const postFavorites = await question('总收藏数 (favorites): ');
     const postComments = await question('总评论数 (comments): ');
     const postShares = await question('总分享数 (shares, 默认0): ') || '0';
+    const postViews = await question('总浏览数 (views, 默认0): ') || '0';
 
-    console.log('\n=== 单个活动数据 ===');
-    console.log('提示: 如果无法获取单个活动的具体数据，可以按回车跳过\n');
+    // 保存小红书整体数据到posts表
+    await db.updatePostXiaohongshuData(postId, {
+      total_likes: parseInt(postLikes) || 0,
+      total_favorites: parseInt(postFavorites) || 0,
+      total_comments: parseInt(postComments) || 0,
+      total_shares: parseInt(postShares) || 0,
+      total_views: parseInt(postViews) || 0
+    });
+
+    console.log('✅ 小红书整体数据已保存到posts表\n');
+
+    console.log('=== 单个活动数据 ===');
+    console.log('提示: 为每个活动输入Short.io点击量\n');
 
     // 为每个活动收集数据
     let updatedCount = 0;
@@ -77,49 +89,46 @@ async function collectFeedbackForPost(postId) {
       console.log(`\n[${i + 1}/${events.length}] ${event.event_title}`);
       console.log(`    类型: ${event.event_type} | 地点: ${event.location}`);
 
-      // Short.io 点击量
+      // Short.io 点击量（这是唯一可以获取的单个活动数据）
       const clicks = await question('  Short.io 点击量 (默认0): ') || '0';
 
-      // 如果有点击数据，询问是否单独记录其他指标
-      let likes = '0', favorites = '0', comments = '0', shares = '0';
-
-      if (parseInt(clicks) > 0 || events.length === 1) {
-        const hasDetail = await question('  是否有该活动的详细互动数据? (y/n, 默认n): ');
-        if (hasDetail.toLowerCase() === 'y') {
-          likes = await question('    点赞数: ') || '0';
-          favorites = await question('    收藏数: ') || '0';
-          comments = await question('    评论数: ') || '0';
-          shares = await question('    分享数: ') || '0';
-        }
-      }
-
-      // 更新数据库
+      // 更新数据库 - 只保存点击量
+      // 小红书的互动数据（点赞、收藏、评论）已保存在posts表，不在这里重复
       const feedbackData = {
         shortio_clicks: parseInt(clicks),
-        xiaohongshu_likes: parseInt(likes),
-        xiaohongshu_favorites: parseInt(favorites),
-        xiaohongshu_comments: parseInt(comments),
-        xiaohongshu_shares: parseInt(shares),
+        xiaohongshu_likes: 0,  // 活动级别没有单独的点赞数
+        xiaohongshu_favorites: 0,  // 活动级别没有单独的收藏数
+        xiaohongshu_comments: 0,  // 活动级别没有单独的评论数
+        xiaohongshu_shares: 0,  // 活动级别没有单独的分享数
         data_source: 'manual'
       };
 
       await db.updateEventPerformance(event.id, feedbackData);
       updatedCount++;
 
-      console.log(`  ✅ 已更新 (Engagement Score: ${db.calculateEngagementScore(feedbackData)})`);
+      console.log(`  ✅ 已更新 (点击量: ${clicks})`);
     }
 
     console.log(`\n✅ 成功更新 ${updatedCount} 个活动的反馈数据`);
 
     // 显示统计
     const stats = await db.getEventsByPost(postId);
-    const totalEngagement = stats.reduce((sum, e) => sum + (e.engagement_score || 0), 0);
     const totalClicks = stats.reduce((sum, e) => sum + (e.shortio_clicks || 0), 0);
 
-    console.log('\n📊 统计摘要:');
-    console.log(`   总 Engagement Score: ${totalEngagement.toFixed(1)}`);
+    // 重新获取posts表数据以显示完整信息
+    const updatedPost = await db.getPost(postId);
+
+    console.log('\n📊 数据收集统计:');
+    console.log('\n小红书帖子整体数据:');
+    console.log(`   点赞数: ${updatedPost.xiaohongshu_total_likes || 0}`);
+    console.log(`   收藏数: ${updatedPost.xiaohongshu_total_favorites || 0}`);
+    console.log(`   评论数: ${updatedPost.xiaohongshu_total_comments || 0}`);
+    console.log(`   分享数: ${updatedPost.xiaohongshu_total_shares || 0}`);
+    console.log(`   浏览数: ${updatedPost.xiaohongshu_total_views || 0}`);
+
+    console.log('\n单个活动点击数据:');
     console.log(`   总点击量: ${totalClicks}`);
-    console.log(`   平均 Engagement: ${(totalEngagement / stats.length).toFixed(1)}`);
+    console.log(`   平均点击: ${(totalClicks / stats.length).toFixed(1)}`);
 
   } catch (error) {
     console.error('❌ 错误:', error.message);
