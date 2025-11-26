@@ -8,6 +8,7 @@
 const EventDatabase = require('./utils/database');
 const AIEventClassifier = require('./utils/ai-classifier');
 const ManualReviewManager = require('./utils/manual-review');
+const Translator = require('./utils/translator');
 
 // 导入所有爬虫
 const EventbriteScraper = require('./scrapers/eventbrite-scraper');
@@ -21,7 +22,11 @@ class EventScrapeOrchestrator {
     this.database = new EventDatabase();
     this.aiClassifier = new AIEventClassifier();
     this.reviewManager = new ManualReviewManager();
-    
+
+    // 初始化翻译器（默认使用 auto 模式：Gemini → OpenAI → Mistral → Google）
+    const translatorProvider = process.env.TRANSLATOR_PROVIDER || 'auto';
+    this.translator = new Translator(translatorProvider);
+
     this.scrapers = [
       new EventbriteScraper(),
       new SFStationScraper(),
@@ -50,10 +55,18 @@ class EventScrapeOrchestrator {
       
       // 4. AI分类和优先级排序
       const classifiedEvents = await this.aiClassifier.classifyEvents(uniqueEvents);
-      
+
+      // 4.5 翻译活动标题（新增）
+      console.log('\n🌐 开始翻译活动标题...');
+      const translatedEvents = await this.translator.translateEvents(
+        classifiedEvents,
+        10,  // 每批翻译 10 个
+        1000 // 每批间隔 1 秒
+      );
+
       // 5. 选择最佳候选活动
       const topCandidates = this.aiClassifier.selectTopCandidates(
-        classifiedEvents, 
+        translatedEvents,
         config.scraping.totalCandidatesForReview
       );
       
