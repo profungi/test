@@ -23,8 +23,8 @@ class EventScrapeOrchestrator {
     this.aiClassifier = new AIEventClassifier();
     this.reviewManager = new ManualReviewManager();
 
-    // 初始化翻译器（默认使用 Google Translate，可通过环境变量切换）
-    const translatorProvider = process.env.TRANSLATOR_PROVIDER || 'google';
+    // 初始化翻译器（默认使用 auto 模式：Gemini → OpenAI → Mistral → Google）
+    const translatorProvider = process.env.TRANSLATOR_PROVIDER || 'auto';
     this.translator = new Translator(translatorProvider);
 
     this.scrapers = [
