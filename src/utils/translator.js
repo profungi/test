@@ -88,8 +88,9 @@ class Translator {
    */
   async translateWithGemini(text) {
     try {
+      // 使用正确的模型名称：gemini-pro 或 gemini-1.5-pro
       const model = this.clients.gemini.getGenerativeModel({
-        model: 'gemini-1.5-flash', // 使用最便宜的模型
+        model: 'gemini-pro',
       });
 
       const prompt = `请将以下英文活动标题翻译成自然流畅的中文，保持活动的吸引力和准确性。只返回翻译后的文本，不要添加任何解释、引号或标点符号。
@@ -99,7 +100,7 @@ class Translator {
 中文翻译:`;
 
       const result = await model.generateContent(prompt);
-      const response = result.response;
+      const response = await result.response;
       const translated = response.text().trim();
 
       // 去除可能的引号
