@@ -20,10 +20,14 @@ class ExistingEventTranslator {
     const providerIndex = args.indexOf('--provider');
     const provider = providerIndex !== -1 && args[providerIndex + 1]
       ? args[providerIndex + 1]
-      : process.env.TRANSLATOR_PROVIDER || 'google';
+      : process.env.TRANSLATOR_PROVIDER || 'auto';
 
     this.translator = new Translator(provider);
-    console.log(`🌐 使用翻译服务: ${provider}`);
+    if (provider === 'auto') {
+      console.log(`🌐 使用自动翻译模式 (优先级: Gemini → OpenAI → Mistral → Google)`);
+    } else {
+      console.log(`🌐 使用指定翻译服务: ${provider}`);
+    }
   }
 
   async connect() {
@@ -221,23 +225,33 @@ class ExistingEventTranslator {
   node translate-existing-events.js [选项]
 
 选项:
-  --provider <provider>   指定翻译服务 (google | openai)
-                         默认: google
+  --provider <provider>   指定翻译服务 (auto | gemini | openai | mistral | google)
+                         默认: auto (自动按优先级回退)
 
   --help, -h             显示帮助信息
 
 示例:
-  node translate-existing-events.js
-  node translate-existing-events.js --provider google
-  node translate-existing-events.js --provider openai
+  node translate-existing-events.js                    # 自动模式
+  node translate-existing-events.js --provider gemini  # 只用 Gemini
+  node translate-existing-events.js --provider openai  # 只用 OpenAI
+  node translate-existing-events.js --provider google  # 只用 Google
 
 环境变量:
-  TRANSLATOR_PROVIDER    默认翻译服务提供商
-  OPENAI_API_KEY        OpenAI API 密钥（使用 openai 时需要）
-  GOOGLE_TRANSLATE_API_KEY  Google Translate API 密钥（可选，不设置会使用免费接口）
+  TRANSLATOR_PROVIDER       默认翻译服务提供商 (默认: auto)
+  GEMINI_API_KEY           Google Gemini API 密钥
+  OPENAI_API_KEY           OpenAI API 密钥
+  MISTRAL_API_KEY          Mistral AI API 密钥
+  GOOGLE_TRANSLATE_API_KEY Google Translate API 密钥（可选）
+
+翻译优先级（auto 模式）:
+  1. Gemini (免费额度大，质量好)
+  2. OpenAI (质量最好，便宜)
+  3. Mistral (性价比高)
+  4. Google Translate (免费兜底)
 
 说明:
   此脚本会翻译数据库中所有 title_zh 字段为空的活动标题。
+  使用 auto 模式时，会按优先级尝试所有可用服务，一个失败自动切换到下一个。
   翻译完成后，网站前端会自动显示中文标题。
 `);
   }
