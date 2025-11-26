@@ -57,6 +57,10 @@ Thumbs.db
 .settings/
 .classpath
 
+# Dev Container - 保留配置，但忽略运行时文件
+# .devcontainer/ 目录应该被提交到 git
+# 但如果有临时文件可以在这里忽略
+
 # Temporary files
 tmp/
 *.tmp

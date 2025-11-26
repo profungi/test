@@ -1,0 +1,269 @@
+#!/usr/bin/env node
+
+/**
+ * 翻译历史活动标题脚本
+ * 为数据库中已存在的活动添加中文标题翻译
+ */
+
+require('dotenv').config();
+const sqlite3 = require('sqlite3').verbose();
+const path = require('path');
+const Translator = require('./src/utils/translator');
+
+class ExistingEventTranslator {
+  constructor() {
+    this.dbPath = path.join(__dirname, 'data', 'events.db');
+    this.db = null;
+
+    // 从环境变量或命令行参数获取翻译服务提供商
+    const args = process.argv.slice(2);
+    const providerIndex = args.indexOf('--provider');
+    const provider = providerIndex !== -1 && args[providerIndex + 1]
+      ? args[providerIndex + 1]
+      : process.env.TRANSLATOR_PROVIDER || 'google';
+
+    this.translator = new Translator(provider);
+    console.log(`🌐 使用翻译服务: ${provider}`);
+  }
+
+  async connect() {
+    return new Promise((resolve, reject) => {
+      this.db = new sqlite3.Database(this.dbPath, (err) => {
+        if (err) {
+          reject(err);
+        } else {
+          console.log('✅ 已连接到数据库');
+          resolve();
+        }
+      });
+    });
+  }
+
+  async close() {
+    return new Promise((resolve, reject) => {
+      if (this.db) {
+        this.db.close((err) => {
+          if (err) reject(err);
+          else {
+            console.log('✅ 数据库连接已关闭');
+            resolve();
+          }
+        });
+      } else {
+        resolve();
+      }
+    });
+  }
+
+  /**
+   * 获取所有需要翻译的活动（title_zh 为空或 NULL）
+   */
+  async getEventsNeedingTranslation() {
+    return new Promise((resolve, reject) => {
+      const query = `
+        SELECT id, title, title_zh
+        FROM events
+        WHERE title_zh IS NULL OR title_zh = ''
+        ORDER BY id ASC
+      `;
+
+      this.db.all(query, [], (err, rows) => {
+        if (err) {
+          reject(err);
+        } else {
+          resolve(rows);
+        }
+      });
+    });
+  }
+
+  /**
+   * 更新单个活动的中文标题
+   */
+  async updateEventTitle(id, titleZh) {
+    return new Promise((resolve, reject) => {
+      const query = `
+        UPDATE events
+        SET title_zh = ?
+        WHERE id = ?
+      `;
+
+      this.db.run(query, [titleZh, id], function(err) {
+        if (err) {
+          reject(err);
+        } else {
+          resolve({ updated: this.changes > 0 });
+        }
+      });
+    });
+  }
+
+  /**
+   * 批量翻译并更新活动
+   */
+  async translateAndUpdate(events, batchSize = 10, delayMs = 1000) {
+    const total = events.length;
+    let successCount = 0;
+    let failCount = 0;
+
+    console.log(`\n📊 待翻译活动总数: ${total}\n`);
+
+    for (let i = 0; i < events.length; i += batchSize) {
+      const batch = events.slice(i, i + batchSize);
+      const batchNum = Math.floor(i / batchSize) + 1;
+      const totalBatches = Math.ceil(events.length / batchSize);
+
+      console.log(`\n📦 批次 ${batchNum}/${totalBatches}: 处理 ${batch.length} 个活动...`);
+
+      // 翻译当前批次
+      const translations = await Promise.allSettled(
+        batch.map(async (event, index) => {
+          const globalIndex = i + index + 1;
+
+          try {
+            // 翻译标题
+            const titleZh = await this.translator.translate(event.title);
+
+            // 更新数据库
+            await this.updateEventTitle(event.id, titleZh);
+
+            console.log(`  ✓ [${globalIndex}/${total}] ID ${event.id}: ${event.title.substring(0, 40)}... → ${titleZh.substring(0, 30)}...`);
+
+            return { success: true, id: event.id, titleZh };
+          } catch (error) {
+            console.error(`  ✗ [${globalIndex}/${total}] ID ${event.id} 翻译失败: ${error.message}`);
+            return { success: false, id: event.id, error: error.message };
+          }
+        })
+      );
+
+      // 统计结果
+      translations.forEach(result => {
+        if (result.status === 'fulfilled' && result.value.success) {
+          successCount++;
+        } else {
+          failCount++;
+        }
+      });
+
+      // 显示进度
+      const progress = Math.round((i + batch.length) / total * 100);
+      console.log(`\n  进度: ${i + batch.length}/${total} (${progress}%)`);
+      console.log(`  成功: ${successCount} | 失败: ${failCount}`);
+
+      // 如果不是最后一批，延迟避免速率限制
+      if (i + batchSize < events.length) {
+        console.log(`  ⏳ 等待 ${delayMs}ms...`);
+        await new Promise(resolve => setTimeout(resolve, delayMs));
+      }
+    }
+
+    return { total, successCount, failCount };
+  }
+
+  /**
+   * 主执行函数
+   */
+  async run() {
+    console.log('🚀 开始翻译历史活动标题...\n');
+
+    try {
+      // 1. 连接数据库
+      await this.connect();
+
+      // 2. 获取需要翻译的活动
+      const events = await this.getEventsNeedingTranslation();
+
+      if (events.length === 0) {
+        console.log('✨ 所有活动标题都已翻译完成！');
+        return;
+      }
+
+      console.log(`📋 找到 ${events.length} 个需要翻译的活动`);
+
+      // 3. 批量翻译并更新
+      const result = await this.translateAndUpdate(
+        events,
+        10,   // 每批 10 个
+        1000  // 间隔 1 秒
+      );
+
+      // 4. 输出最终报告
+      console.log('\n' + '='.repeat(60));
+      console.log('✨ 翻译完成！\n');
+      console.log(`📊 最终统计:`);
+      console.log(`   总计: ${result.total} 个活动`);
+      console.log(`   成功: ${result.successCount} 个 (${Math.round(result.successCount / result.total * 100)}%)`);
+      console.log(`   失败: ${result.failCount} 个 (${Math.round(result.failCount / result.total * 100)}%)`);
+      console.log('='.repeat(60) + '\n');
+
+      if (result.failCount > 0) {
+        console.log('⚠️  部分活动翻译失败，可以重新运行此脚本来重试');
+      }
+
+    } catch (error) {
+      console.error('\n❌ 发生错误:', error.message);
+      console.error(error.stack);
+      process.exit(1);
+    } finally {
+      await this.close();
+    }
+  }
+
+  /**
+   * 显示帮助信息
+   */
+  static showHelp() {
+    console.log(`
+🌐 翻译历史活动标题
+
+用法:
+  node translate-existing-events.js [选项]
+
+选项:
+  --provider <provider>   指定翻译服务 (google | openai)
+                         默认: google
+
+  --help, -h             显示帮助信息
+
+示例:
+  node translate-existing-events.js
+  node translate-existing-events.js --provider google
+  node translate-existing-events.js --provider openai
+
+环境变量:
+  TRANSLATOR_PROVIDER    默认翻译服务提供商
+  OPENAI_API_KEY        OpenAI API 密钥（使用 openai 时需要）
+  GOOGLE_TRANSLATE_API_KEY  Google Translate API 密钥（可选，不设置会使用免费接口）
+
+说明:
+  此脚本会翻译数据库中所有 title_zh 字段为空的活动标题。
+  翻译完成后，网站前端会自动显示中文标题。
+`);
+  }
+}
+
+// 主函数
+async function main() {
+  const args = process.argv.slice(2);
+
+  // 显示帮助
+  if (args.includes('--help') || args.includes('-h')) {
+    ExistingEventTranslator.showHelp();
+    return;
+  }
+
+  // 运行翻译
+  const translator = new ExistingEventTranslator();
+  await translator.run();
+}
+
+// 执行
+if (require.main === module) {
+  main().catch(error => {
+    console.error('Fatal error:', error);
+    process.exit(1);
+  });
+}
+
+module.exports = ExistingEventTranslator;

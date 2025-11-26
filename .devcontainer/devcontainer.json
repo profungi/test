@@ -1,0 +1,107 @@
+{
+  "name": "Bay Area Events Scraper Dev Container",
+  "build": {
+    "dockerfile": "Dockerfile",
+    "args": {
+      "NODE_VERSION": "24"
+    }
+  },
+
+  // 配置容器启动后要运行的命令
+  "postCreateCommand": "bash .devcontainer/post-create.sh",
+
+  // 转发端口 - Next.js 网站
+  "forwardPorts": [3000],
+  "portsAttributes": {
+    "3000": {
+      "label": "Next.js Website",
+      "onAutoForward": "notify"
+    }
+  },
+
+  // 设置容器的环境变量
+  "containerEnv": {
+    "TZ": "America/Los_Angeles",
+    "PUPPETEER_SKIP_CHROMIUM_DOWNLOAD": "false"
+  },
+
+  // 挂载 .env 文件（如果存在）
+  "mounts": [
+    "source=${localEnv:HOME}/.gitconfig,target=/root/.gitconfig,type=bind,consistency=cached"
+  ],
+
+  // VS Code 自定义设置
+  "customizations": {
+    "vscode": {
+      // 推荐的扩展
+      "extensions": [
+        // JSON 支持
+        "ZainChen.json",
+
+        // SQLite 支持
+        "alexcvzz.vscode-sqlite",
+        "qwtel.sqlite-viewer",
+
+        // JavaScript/TypeScript 开发
+        "dbaeumer.vscode-eslint",
+        "esbenp.prettier-vscode",
+
+        // Next.js 和 React 开发
+        "dsznajder.es7-react-js-snippets",
+        "styled-components.vscode-styled-components",
+
+        // 通用开发工具
+        "eamodio.gitlens",
+        "ms-azuretools.vscode-docker",
+        "christian-kohler.npm-intellisense",
+        "christian-kohler.path-intellisense"
+      ],
+
+      // VS Code 设置
+      "settings": {
+        "editor.formatOnSave": true,
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "editor.codeActionsOnSave": {
+          "source.fixAll.eslint": "explicit"
+        },
+        "files.associations": {
+          "*.json": "jsonc"
+        },
+        "terminal.integrated.defaultProfile.linux": "bash",
+        "terminal.integrated.profiles.linux": {
+          "bash": {
+            "path": "/bin/bash",
+            "icon": "terminal-bash"
+          }
+        }
+      }
+    }
+  },
+
+  // 功能特性
+  "features": {
+    "ghcr.io/devcontainers/features/git:1": {
+      "version": "latest"
+    },
+    "ghcr.io/devcontainers/features/github-cli:1": {
+      "version": "latest"
+    }
+  },
+
+  // 容器用户
+  "remoteUser": "node",
+
+  // 给予额外的权限以运行 Puppeteer
+  "runArgs": [
+    "--init",
+    "--security-opt",
+    "seccomp=unconfined"
+  ],
+
+  // 容器启动后执行的命令（每次启动）
+  "postStartCommand": "echo 'Dev container started! Run npm start or cd website && npm run dev'",
+
+  // 工作目录
+  "workspaceFolder": "/workspace",
+  "workspaceMount": "source=${localWorkspaceFolder},target=/workspace,type=bind,consistency=cached"
+}
