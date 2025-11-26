@@ -20,7 +20,8 @@
     "init-user-feedback-db": "node init-user-feedback-db.js",
     "fix-eventbrite-data": "node fix-eventbrite-data.js",
     "sync-database": "node sync-database.js",
-    "collect-feedback": "node collect-feedback.js"
+    "collect-feedback": "node collect-feedback.js",
+    "translate-existing": "node translate-existing-events.js"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.24.3",

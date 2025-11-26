@@ -45,6 +45,9 @@ export default function EventCard({ event }: EventCardProps) {
   // 获取活动链接
   const eventUrl = event.short_url || event.original_url;
 
+  // 根据语言选择显示的标题
+  const displayTitle = locale === 'zh' && event.title_zh ? event.title_zh : event.title;
+
   return (
     <div className="bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow p-6 border border-gray-200">
       {/* 顶部标签栏 */}
@@ -61,7 +64,7 @@ export default function EventCard({ event }: EventCardProps) {
 
       {/* 活动标题 */}
       <h3 className="text-lg font-semibold text-gray-900 mb-3 line-clamp-2">
-        {event.title}
+        {displayTitle}
       </h3>
 
       {/* 活动详情 */}
