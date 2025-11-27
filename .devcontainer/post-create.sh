@@ -20,13 +20,22 @@ npm --version
 
 # 安装根目录依赖
 echo -e "${BLUE}📦 Installing root dependencies...${NC}"
-npm install
+# 使用 npm ci 代替 npm install（更快，更可靠）
+if [ -f "package-lock.json" ]; then
+    npm ci || npm install
+else
+    npm install
+fi
 
 # 安装网站依赖
 if [ -d "website" ]; then
     echo -e "${BLUE}🌐 Installing website dependencies...${NC}"
     cd website
-    npm install
+    if [ -f "package-lock.json" ]; then
+        npm ci || npm install
+    else
+        npm install
+    fi
     cd ..
 fi
 

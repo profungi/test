@@ -1,19 +1,19 @@
 # 使用官方 Node.js 24 镜像作为基础
+# 使用 slim 版本减少镜像大小，加速下载
 ARG NODE_VERSION=24
-FROM node:${NODE_VERSION}-bookworm
+FROM node:${NODE_VERSION}-bookworm-slim
 
 # 避免交互式提示
 ENV DEBIAN_FRONTEND=noninteractive
 
 # 更新包列表并安装必要的系统依赖
-RUN apt-get update && apt-get install -y \
+# 使用单个 RUN 命令减少层数，加速构建
+RUN apt-get update && apt-get install -y --no-install-recommends \
     # 基础工具
     git \
     curl \
     wget \
-    vim \
-    nano \
-    unzip \
+    ca-certificates \
     # SQLite3 和开发库
     sqlite3 \
     libsqlite3-dev \
@@ -87,9 +87,13 @@ WORKDIR /workspace
 ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=false
 ENV PUPPETEER_EXECUTABLE_PATH=/usr/bin/google-chrome-stable
 
-# 预安装 Puppeteer 的 Chrome（可选，加速首次启动）
+# 预安装 Puppeteer 的 Chrome（加速首次启动）
 # 这会在构建时下载 Chrome，避免每次创建容器时下载
 RUN npx puppeteer browsers install chrome || true
+
+# 🚀 Sculptor 优化说明：
+# 项目依赖会在 postCreateCommand 中安装
+# 但 Chrome 和系统依赖已经预装在镜像中，这能节省大量时间
 
 # 切换到 node 用户
 USER $USERNAME
