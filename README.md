@@ -591,10 +591,13 @@ scraping: {
 - 验证网络连接和代理设置
 - 查看 GitHub Actions 日志
 
-**2. 翻译API错误**  
-- 验证 OpenAI API 密钥
+**2. 翻译API错误**
+- 验证 API 密钥（Gemini/OpenAI/Mistral）
 - 检查 API 配额是否充足
-- 系统会自动降级到手动翻译
+- 系统会自动降级到 Google Translate 免费服务
+- **注意**: 如遇 Gemini 404 错误，确保使用 `gemini-2.5-flash` 模型（1.5版本已退役）
+- 运行测试: `npm run test-gemini` 或 `npm run test-translation`
+- 详情参见: `GEMINI_FIX_REPORT.md`
 
 **3. 短链接生成失败**
 - 验证 Short.io API 密钥  

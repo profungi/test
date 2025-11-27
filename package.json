@@ -21,7 +21,9 @@
     "fix-eventbrite-data": "node fix-eventbrite-data.js",
     "sync-database": "node sync-database.js",
     "collect-feedback": "node collect-feedback.js",
-    "translate-existing": "node translate-existing-events.js"
+    "translate-existing": "node translate-existing-events.js",
+    "test-gemini": "node test-gemini-models.js",
+    "test-translation": "node test-translation.js"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.24.3",

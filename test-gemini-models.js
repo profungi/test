@@ -11,14 +11,15 @@ async function testGemini() {
 
   const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
 
-  // 测试不同的模型名称
+  // 测试不同的模型名称（2024年11月更新）
+  // 注意：gemini-1.5-* 模型已于2024年9月退役
   const models = [
-    'gemini-pro',
-    'gemini-1.5-pro',
-    'gemini-1.5-flash',
-    'models/gemini-pro',
-    'models/gemini-1.5-pro',
-    'models/gemini-1.5-flash'
+    'gemini-2.5-flash',
+    'gemini-2.5-pro',
+    'gemini-2.0-flash',
+    'gemini-2.5-flash-lite',
+    'models/gemini-2.5-flash',
+    'models/gemini-2.5-pro'
   ];
 
   console.log('🔍 测试可用的 Gemini 模型...\n');

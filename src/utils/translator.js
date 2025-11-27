@@ -88,10 +88,11 @@ class Translator {
    */
   async translateWithGemini(text) {
     try {
-      // 使用最新的 Gemini 模型（SDK 0.15.0+）
-      // gemini-1.5-flash-latest 是免费且快速的模型
+      // 使用 Gemini 2.5 Flash 模型（2024年11月更新）
+      // gemini-2.5-flash 是最新的、价格性能比最佳的模型
+      // 注意：gemini-1.5-* 模型已于2024年9月退役
       const model = this.clients.gemini.getGenerativeModel({
-        model: 'gemini-1.5-flash-latest',
+        model: 'gemini-2.5-flash',
       });
 
       const prompt = `请将以下英文活动标题翻译成自然流畅的中文，保持活动的吸引力和准确性。只返回翻译后的文本，不要添加任何解释、引号或标点符号。
