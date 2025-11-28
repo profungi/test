@@ -109,6 +109,14 @@ class ExistingEventTranslator {
     const total = events.length;
     let successCount = 0;
     let failCount = 0;
+    const providerStats = {
+      gemini: 0,
+      openai: 0,
+      mistral: 0,
+      google: 0,
+      skipped: 0,
+      failed: 0,
+    };
 
     console.log(`\n📊 待翻译活动总数: ${total}\n`);
 
@@ -125,15 +133,27 @@ class ExistingEventTranslator {
           const globalIndex = i + index + 1;
 
           try {
-            // 翻译标题
-            const titleZh = await this.translator.translate(event.title);
+            // 翻译标题（返回 {text, provider}）
+            const result = await this.translator.translate(event.title);
+            const titleZh = result.text;
+            const provider = result.provider;
 
             // 更新数据库
             await this.updateEventTitle(event.id, titleZh);
 
-            console.log(`  ✓ [${globalIndex}/${total}] ID ${event.id}: ${event.title.substring(0, 40)}... → ${titleZh.substring(0, 30)}...`);
+            // 服务图标
+            const providerIcon = {
+              gemini: '🔮',
+              openai: '🤖',
+              mistral: '🌪️',
+              google: '🌐',
+              skipped: '⏭️',
+              failed: '❌',
+            }[provider] || '❓';
 
-            return { success: true, id: event.id, titleZh };
+            console.log(`  ${providerIcon} [${globalIndex}/${total}] ID ${event.id}: ${event.title.substring(0, 40)}... → ${titleZh.substring(0, 30)}... (${provider})`);
+
+            return { success: true, id: event.id, titleZh, provider };
           } catch (error) {
             console.error(`  ✗ [${globalIndex}/${total}] ID ${event.id} 翻译失败: ${error.message}`);
             return { success: false, id: event.id, error: error.message };
@@ -145,8 +165,13 @@ class ExistingEventTranslator {
       translations.forEach(result => {
         if (result.status === 'fulfilled' && result.value.success) {
           successCount++;
+          const provider = result.value.provider || 'unknown';
+          if (providerStats.hasOwnProperty(provider)) {
+            providerStats[provider]++;
+          }
         } else {
           failCount++;
+          providerStats.failed++;
         }
       });
 
@@ -162,7 +187,7 @@ class ExistingEventTranslator {
       }
     }
 
-    return { total, successCount, failCount };
+    return { total, successCount, failCount, providerStats };
   }
 
   /**
@@ -186,11 +211,29 @@ class ExistingEventTranslator {
       console.log(`📋 找到 ${events.length} 个需要翻译的活动`);
 
       // 3. 批量翻译并更新
-      const result = await this.translateAndUpdate(
-        events,
-        10,   // 每批 10 个
-        1000  // 间隔 1 秒
-      );
+      // 根据翻译服务提供商调整批次大小和间隔
+      let batchSize, delayMs;
+
+      const provider = this.translator.provider;
+      if (provider === 'gemini') {
+        // Gemini 免费层：每分钟最多 10 个请求
+        // 使用保守策略：每批 2 个，间隔 15 秒
+        batchSize = 2;
+        delayMs = 15000;
+        console.log('⚠️  使用 Gemini 服务，应用速率限制保护（每批2个，间隔15秒）');
+      } else if (provider === 'auto') {
+        // 自动模式：适中策略
+        // Gemini 可能会先被尝试，但会自动回退到 Google
+        batchSize = 5;
+        delayMs = 8000;
+        console.log('⚙️  自动模式：每批5个，间隔8秒（平衡速度与稳定性）');
+      } else {
+        // OpenAI/Mistral/Google：较宽松的限制
+        batchSize = 10;
+        delayMs = 2000;
+      }
+
+      const result = await this.translateAndUpdate(events, batchSize, delayMs);
 
       // 4. 输出最终报告
       console.log('\n' + '='.repeat(60));
@@ -199,6 +242,16 @@ class ExistingEventTranslator {
       console.log(`   总计: ${result.total} 个活动`);
       console.log(`   成功: ${result.successCount} 个 (${Math.round(result.successCount / result.total * 100)}%)`);
       console.log(`   失败: ${result.failCount} 个 (${Math.round(result.failCount / result.total * 100)}%)`);
+
+      // 显示每个服务的使用情况
+      if (result.providerStats) {
+        console.log(`\n📊 翻译服务使用情况:`);
+        if (result.providerStats.gemini > 0) console.log(`   🔮 Gemini: ${result.providerStats.gemini} (${Math.round(result.providerStats.gemini / result.total * 100)}%)`);
+        if (result.providerStats.openai > 0) console.log(`   🤖 OpenAI: ${result.providerStats.openai} (${Math.round(result.providerStats.openai / result.total * 100)}%)`);
+        if (result.providerStats.mistral > 0) console.log(`   🌪️  Mistral: ${result.providerStats.mistral} (${Math.round(result.providerStats.mistral / result.total * 100)}%)`);
+        if (result.providerStats.google > 0) console.log(`   🌐 Google: ${result.providerStats.google} (${Math.round(result.providerStats.google / result.total * 100)}%)`);
+        if (result.providerStats.skipped > 0) console.log(`   ⏭️  跳过: ${result.providerStats.skipped} (已含中文)`);
+      }
       console.log('='.repeat(60) + '\n');
 
       if (result.failCount > 0) {

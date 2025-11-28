@@ -115,20 +115,31 @@ $ node test-translation.js
 
 这确保了**100%的翻译成功率**，即使某个服务不可用。
 
-## 成本分析
+## 成本分析与速率限制
 
 ### Gemini 2.5 Flash
 - **免费额度**: 每月 1,500,000 tokens
+- **速率限制**: ⚠️ **每分钟 10 个请求**（严格限制）
 - **项目使用量**:
   - 每周约 103 个活动
   - 每个标题约 50 字符
   - 每月约 20,600 字符 ≈ 5,150 tokens
 - **成本**: **$0.00/月** (完全在免费额度内)
+- **批量翻译时间**: 325个活动约需 **40-45分钟** ⏰
 
-### Google Translate (免费兜底)
+### Google Translate (免费兜底) - ⭐ 推荐
 - **成本**: $0.00
-- **质量**: ⭐⭐⭐
+- **速率限制**: 无
+- **质量**: ⭐⭐⭐⭐
 - **可用性**: 100%
+- **批量翻译时间**: 325个活动约需 **1-2分钟** ⚡
+
+### 结论
+对于批量翻译，**强烈推荐使用 Google Translate**：
+- ✅ 无速率限制
+- ✅ 翻译速度快
+- ✅ 质量足够好
+- ✅ 完全免费
 
 ## 配置说明
 
@@ -137,14 +148,27 @@ $ node test-translation.js
 在 `.env` 文件中配置：
 
 ```bash
-# 推荐配置 1: 使用 Gemini（最佳性价比）
+# 推荐配置 1: 使用 Google Translate（批量翻译最佳）⭐
+TRANSLATOR_PROVIDER=google
+# 完全免费、无速率限制、1-2分钟完成325个活动
+
+# 推荐配置 2: 使用 Gemini（小批量翻译）
+GEMINI_API_KEY=your_actual_gemini_api_key_here
+TRANSLATOR_PROVIDER=gemini
+# 注意：速率限制严格，325个活动需要40-45分钟
+
+# 推荐配置 3: 自动模式（智能回退）
 GEMINI_API_KEY=your_actual_gemini_api_key_here
 TRANSLATOR_PROVIDER=auto
-
-# 推荐配置 2: 完全免费（使用 Google Translate）
-TRANSLATOR_PROVIDER=auto
-# 不设置任何 API Key，系统会自动使用免费服务
+# 先尝试 Gemini，遇到速率限制自动切换到 Google
 ```
+
+### 速率限制注意事项
+
+⚠️ **重要**：Gemini 免费层有严格限制
+- 每分钟最多 10 个请求
+- 批量翻译会很慢
+- 建议批量翻译使用 Google Translate
 
 ### 获取 Gemini API Key
 
