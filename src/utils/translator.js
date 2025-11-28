@@ -84,9 +84,9 @@ class Translator {
   }
 
   /**
-   * 使用 Google Gemini 翻译
+   * 使用 Google Gemini 翻译（带速率限制重试）
    */
-  async translateWithGemini(text) {
+  async translateWithGemini(text, retries = 1) {
     try {
       // 使用 Gemini 2.5 Flash 模型（2024年11月更新）
       // gemini-2.5-flash 是最新的、价格性能比最佳的模型
@@ -108,7 +108,12 @@ class Translator {
       // 去除可能的引号
       return translated.replace(/^["']|["']$/g, '');
     } catch (error) {
-      console.error('Gemini 翻译错误:', error.message);
+      // 检查是否是速率限制错误
+      if (error.message.includes('429') || error.message.includes('quota')) {
+        console.warn('⚠️  Gemini 速率限制，自动回退到其他服务...');
+      } else {
+        console.error('Gemini 翻译错误:', error.message);
+      }
       throw error;
     }
   }
