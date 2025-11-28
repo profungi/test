@@ -26,8 +26,13 @@
   },
 
   // 挂载 .env 文件（如果存在）
+  // 🚀 使用 Docker volumes 隔离 node_modules，避免本地和容器的架构冲突
   "mounts": [
-    "source=${localEnv:HOME}/.gitconfig,target=/root/.gitconfig,type=bind,consistency=cached"
+    "source=${localEnv:HOME}/.gitconfig,target=/root/.gitconfig,type=bind,consistency=cached",
+    // 为根目录 node_modules 创建独立的 volume
+    "source=bay-area-events-node-modules,target=/workspace/node_modules,type=volume",
+    // 为 website 目录 node_modules 创建独立的 volume
+    "source=bay-area-events-website-node-modules,target=/workspace/website/node_modules,type=volume"
   ],
 
   // VS Code 自定义设置

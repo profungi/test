@@ -2,7 +2,7 @@
 
 > **解决问题**: 每次建构新的 agent 都要等很久？使用 Dev Container 一次配置，快速启动！
 
-## 💡 重要：两种使用场景
+## 💡 重要：两种使用场景 + 架构冲突解决
 
 这个 dev container 配置支持两种使用场景：
 
@@ -17,14 +17,36 @@ Sculptor 会**自动检测并使用** `.devcontainer/` 配置来加速 agent 启
 
 **详细说明**: 查看 [`.devcontainer/SCULPTOR_OPTIMIZATION.md`](.devcontainer/SCULPTOR_OPTIMIZATION.md)
 
-### 2️⃣ 本地开发（VS Code）
+### 2️⃣ 本地开发（推荐：不使用容器）⭐ **推荐方式**
 
-在你的电脑上使用 VS Code 开发：
+**重要**：由于架构差异（macOS vs Linux），推荐本地开发**不使用容器**：
 
-- ✅ **一次构建，快速启动**: 首次 3-5 分钟，后续 10-30 秒
-- ✅ **环境一致**: 所有开发者使用相同的环境
-- ✅ **隔离性强**: 不会污染本地环境
-- ✅ **即开即用**: Node.js, Puppeteer, SQLite 等全部预装
+- ✅ **网站开发**: 直接在本地运行 `npm run dev`（无架构冲突）
+- ✅ **热重载快**: 原生 macOS 性能最佳
+- ✅ **无二进制冲突**: 所有 node 模块都是 macOS 版本
+- ✅ **Sculptor 仍然快**: 使用 Docker Volumes 隔离
+
+**如果遇到 `lightningcss.darwin-arm64.node` 错误**：
+
+```bash
+# 运行修复脚本
+./fix-local-dev.sh
+
+# 或手动修复
+rm -rf node_modules website/node_modules
+npm install
+cd website && npm install
+```
+
+**详细说明**: 查看 [`.devcontainer/HYBRID_DEVELOPMENT.md`](.devcontainer/HYBRID_DEVELOPMENT.md)
+
+### 3️⃣ 本地使用 Dev Container（可选，仅测试）
+
+只在需要测试 Linux 环境时使用：
+
+- ✅ **Docker Volumes**: node_modules 完全隔离
+- ✅ **不影响本地**: 退出容器后本地环境正常
+- ⚠️ **不推荐日常开发**: 性能较本地慢
 
 ---
 
