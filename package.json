@@ -22,6 +22,7 @@
     "sync-database": "node sync-database.js",
     "collect-feedback": "node collect-feedback.js",
     "translate-existing": "node translate-existing-events.js",
+    "clean-english-translations": "node clean-english-translations.js",
     "test-gemini": "node test-gemini-models.js",
     "test-translation": "node test-translation.js"
   },
