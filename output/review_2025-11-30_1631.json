@@ -1,0 +1,237 @@
+{
+  "review_id": "review_2025-11-30_1631_h0k",
+  "generated_at": "2025-11-30T16:31:34.322Z",
+  "scrape_date": "2025-11-30",
+  "target_week": "2025-12-01_to_2025-12-07",
+  "target_week_readable": "12/01 - 12/07",
+  "scraping_report": {
+    "total_scraped": 49,
+    "after_deduplication": 9,
+    "after_classification": 9,
+    "classification_report": {
+      "totalEvents": 9,
+      "eventTypes": {
+        "other": 2,
+        "free": 6,
+        "festival": 1
+      },
+      "priorityLevels": {
+        "3": 2,
+        "9": 6,
+        "10": 1
+      },
+      "chineseRelevant": 0,
+      "topPriorityEvents": 7
+    }
+  },
+  "instructions": {
+    "how_to_review": "将你想要发布的活动的 'selected' 字段改为 true",
+    "next_step": "保存文件后运行: npm run generate-post [此文件路径]",
+    "fields_explanation": {
+      "title": "活动标题",
+      "time_display": "显示用的时间格式",
+      "location": "活动地点",
+      "price": "票价信息",
+      "event_type": "AI识别的活动类型",
+      "priority": "优先级分数 (越高越重要)",
+      "chinese_relevant": "是否与中文社区相关",
+      "original_url": "原始活动链接"
+    }
+  },
+  "stats": {
+    "total_candidates": 9,
+    "by_type": {
+      "festival": 1,
+      "free": 6,
+      "other": 2
+    },
+    "by_priority": {
+      "3": 2,
+      "9": 6,
+      "10": 1
+    },
+    "chinese_relevant": 0
+  },
+  "events": [
+    {
+      "id": 1,
+      "selected": false,
+      "title": "22nd “Another Hole in the Head Film Fest” Sci-Fi + Horror in SF (Dec. 5-18)",
+      "time_display": "Friday 12/05 6:30 PM - 7:30 PM",
+      "location": "Balboa Theatre, San Francisco",
+      "price": "$17.95*",
+      "event_type": "festival",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/22nd-hole-head-film-fest-scifi-horror-sf-dec-518/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2025-11-30T16:29:11.108Z"
+    },
+    {
+      "id": 2,
+      "selected": false,
+      "title": "Dear San Francisco: Home for the HolidaysClub Fugazi",
+      "time_display": "Wednesday 12/03 7:30 PM",
+      "location": "678 Green Street, San Francisco, CA",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://boxoffice.clubfugazisf.com/clubfugazisf/events/46365?sessionView=CALENDAR",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "sfstation",
+      "scraped_at": "2025-11-30T16:29:34.195Z"
+    },
+    {
+      "id": 3,
+      "selected": false,
+      "title": "Wicked Director Jon M. Chu in Conversation with Mina KimCity Arts & Lectures - Sydney Goldstein Theater",
+      "time_display": "Wednesday 12/03 6:00 PM",
+      "location": "275 Hayes Street, San Francisco, CA",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.cityboxoffice.com/eventperformances.asp?evt=3252",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "sfstation",
+      "scraped_at": "2025-11-30T16:29:34.195Z"
+    },
+    {
+      "id": 4,
+      "selected": false,
+      "title": "Gap’s 2nd Annual Holiday Market w/ SF’s Creative Talents (Dec. 5-6)",
+      "time_display": "Friday 12/05 5:00 PM - 5:00 PM",
+      "location": "Gap Inc., San Francisco",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/gaps-2nd-annual-holiday-market-sfs-creative-talents-dec-56/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2025-11-30T16:29:11.108Z"
+    },
+    {
+      "id": 5,
+      "selected": false,
+      "title": "“Heath Ceramics” Make Good Market w/ 35+ Vendors (SF)",
+      "time_display": "Saturday 12/06 10:00 AM - 5:00 PM",
+      "location": "Heath Ceramics, San Francisco",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/heath-ceramics-good-market-35-vendors-sf/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2025-11-30T16:29:11.108Z"
+    },
+    {
+      "id": 6,
+      "selected": false,
+      "title": "Hawaiian Holiday Craft Fair in SF (Dec. 6-7)",
+      "time_display": "Sunday 12/07 10:00 AM - 5:00 PM",
+      "location": "Harvey Milk Center for the Arts, San Francisco",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/hawaiian-holiday-craft-fair-sf-dec-67/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2025-11-30T16:29:11.109Z"
+    },
+    {
+      "id": 7,
+      "selected": false,
+      "title": "SF’s Final “Head West” Marketplace of 2025 (Ferry Building)",
+      "time_display": "Sunday 12/07 11:00 AM - 4:00 PM",
+      "location": "San Francisco Ferry Building",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/head-west-marketplace-at-the-ferry-building-sf/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Come for the Marketplace, stay for the experience! HEAD WEST is a marketplace for emerging + establi...",
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2025-11-30T16:29:11.109Z"
+    },
+    {
+      "id": 8,
+      "selected": false,
+      "title": "www.sfstation.com",
+      "time_display": "Tuesday 12/02 10:00 AM",
+      "location": "Pier 15, San Francisco, CA",
+      "price": "Check event page",
+      "event_type": "other",
+      "priority": 3,
+      "chinese_relevant": false,
+      "original_url": "https://www.sfstation.com/glow-play-in-the-light-e15766383",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "sfstation",
+      "scraped_at": "2025-11-30T16:29:34.194Z"
+    },
+    {
+      "id": 9,
+      "selected": false,
+      "title": "www.sfstation.com",
+      "time_display": "Tuesday 12/02 9:00 AM",
+      "location": "Fort Mason, San Francisco, CA",
+      "price": "Check event page",
+      "event_type": "other",
+      "priority": 3,
+      "chinese_relevant": false,
+      "original_url": "https://www.sfstation.com/the-guardsmen-tree-lot-e2475863",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "sfstation",
+      "scraped_at": "2025-11-30T16:29:34.195Z"
+    }
+  ]
+}
