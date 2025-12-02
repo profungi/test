@@ -8,6 +8,10 @@ const nextConfig: NextConfig = {
   outputFileTracingIncludes: {
     '/': ['../data/events.db'],
   },
+  // 禁用构建时的 ESLint 检查 (避免 Next.js 内部 ESLint 配置警告)
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
 };
 
 export default withNextIntl(nextConfig);

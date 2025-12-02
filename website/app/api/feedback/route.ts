@@ -7,6 +7,10 @@ import crypto from 'crypto';
 const dbPath = join(process.cwd(), '..', 'data', 'events.db');
 
 function getDb() {
+  // 在 Vercel 环境中，数据库文件不存在
+  if (process.env.VERCEL) {
+    throw new Error('Feedback database not configured for Vercel. Please use Turso or another cloud database.');
+  }
   return new Database(dbPath);
 }
 

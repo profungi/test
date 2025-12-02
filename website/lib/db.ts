@@ -10,6 +10,13 @@ let db: Database.Database | null = null;
 
 function getDatabase() {
   if (!db) {
+    // 在 Vercel 环境中,数据库文件不存在,返回 null 进入演示模式
+    if (process.env.VERCEL) {
+      console.warn('⚠️  Running in Vercel without database. Using demo mode.');
+      console.warn('⚠️  Please configure Turso or another cloud database for production.');
+      return null;
+    }
+
     db = new Database(DB_PATH, {
       readonly: true,      // 只读模式，确保不会修改数据
       fileMustExist: true  // 数据库必须存在
@@ -85,6 +92,12 @@ export function getCurrentWeekIdentifier(): string {
  */
 export function getEvents(filters: EventFilters = {}): Event[] {
   const database = getDatabase();
+
+  // 演示模式：如果没有数据库，返回空数组
+  if (!database) {
+    console.log('📋 Demo mode: returning empty events list');
+    return [];
+  }
 
   const {
     week = 'next',
@@ -184,6 +197,12 @@ export function getEvents(filters: EventFilters = {}): Event[] {
 export function getEventById(id: number): Event | null {
   const database = getDatabase();
 
+  // 演示模式：如果没有数据库，返回 null
+  if (!database) {
+    console.log('📋 Demo mode: event not found');
+    return null;
+  }
+
   try {
     const stmt = database.prepare('SELECT * FROM events WHERE id = ?');
     const event = stmt.get(id) as Event | undefined;
@@ -199,6 +218,15 @@ export function getEventById(id: number): Event | null {
  */
 export function getStats(weekIdentifier?: string) {
   const database = getDatabase();
+
+  // 演示模式：如果没有数据库，返回空统计
+  if (!database) {
+    console.log('📋 Demo mode: returning empty stats');
+    return {
+      total: 0,
+      by_type: {},
+    };
+  }
 
   const week = weekIdentifier || getNextWeekIdentifier();
 
@@ -239,6 +267,12 @@ export function getStats(weekIdentifier?: string) {
  */
 export function getAvailableWeeks(): WeekIdentifier[] {
   const database = getDatabase();
+
+  // 演示模式：如果没有数据库，返回空列表
+  if (!database) {
+    console.log('📋 Demo mode: returning empty weeks list');
+    return [];
+  }
 
   try {
     const stmt = database.prepare(`
