@@ -5,7 +5,11 @@
  * 执行活动抓取、AI分类和生成人工审核文件
  */
 
-const EventDatabase = require('./utils/database');
+// 根据环境变量选择数据库: Turso (生产) 或 SQLite (本地测试)
+const EventDatabase = process.env.USE_TURSO
+  ? require('./utils/turso-database')
+  : require('./utils/database');
+
 const AIEventClassifier = require('./utils/ai-classifier');
 const ManualReviewManager = require('./utils/manual-review');
 const Translator = require('./utils/translator');
@@ -39,8 +43,10 @@ class EventScrapeOrchestrator {
 
   async run() {
     const weekText = this.targetWeek === 'current' ? '本周' : '下周';
-    console.log(`🚀 开始抓取湾区${weekText}活动...\n`);
-    
+    const dbType = process.env.USE_TURSO ? 'Turso 云数据库' : '本地 SQLite';
+    console.log(`🚀 开始抓取湾区${weekText}活动...`);
+    console.log(`💾 数据库: ${dbType}\n`);
+
     try {
       // 1. 连接数据库
       await this.database.connect();
@@ -289,12 +295,17 @@ class EventScrapeOrchestrator {
   npm run scrape-current-week              # 抓取本周活动
   npm run scrape -- --week current         # 抓取本周活动
   npm run scrape -- --ai-provider gemini   # 使用指定的AI提供商
+  USE_TURSO=1 npm run scrape               # 直接写入 Turso 数据库
   npm run scrape -- --help                 # 显示帮助信息
 
 参数:
   --week <current|next>     指定抓取本周或下周的活动 (默认: next)
   --ai-provider <provider>  指定AI提供商 (openai, gemini, claude)
                            默认使用环境变量 AI_PROVIDER 或 openai
+
+环境变量:
+  USE_TURSO=1              直接写入 Turso 云数据库 (推荐用于生产)
+                           默认使用本地 SQLite (用于开发测试)
 
 功能:
 1. 并行抓取 Eventbrite, SF Station, Funcheap 的活动信息
