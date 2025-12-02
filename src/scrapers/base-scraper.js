@@ -34,6 +34,24 @@ class BaseScraper {
     this.pageQueue = [];
   }
 
+  // 获取本周的时间范围 (周一到周日)
+  getCurrentWeekRange() {
+    const today = new Date();
+    console.log(`[Time Range] Today is: ${format(today, 'yyyy-MM-dd (EEEE)')}`);
+
+    // 找到本周的周一
+    const thisWeekMonday = startOfWeek(today, { weekStartsOn: 1 });
+    const thisWeekSunday = endOfWeek(thisWeekMonday, { weekStartsOn: 1 });
+
+    console.log(`[Time Range] Current week range: ${format(thisWeekMonday, 'yyyy-MM-dd')} to ${format(thisWeekSunday, 'yyyy-MM-dd')}`);
+
+    return {
+      start: thisWeekMonday,
+      end: thisWeekSunday,
+      identifier: format(thisWeekMonday, 'yyyy-MM-dd') + '_to_' + format(thisWeekSunday, 'yyyy-MM-dd')
+    };
+  }
+
   // 获取下周的时间范围 (周一到周日)
   // 基准时间为当前抓取时间
   getNextWeekRange() {
@@ -556,12 +574,14 @@ class BaseScraper {
   }
 
   // 公共的抓取入口
-  async scrape() {
+  async scrape(targetWeek = 'next') {
     console.log(`Starting to scrape ${this.sourceName}...`);
 
     try {
-      const weekRange = this.getNextWeekRange();
-      console.log(`Target week: ${weekRange.identifier}`);
+      const weekRange = targetWeek === 'current'
+        ? this.getCurrentWeekRange()
+        : this.getNextWeekRange();
+      console.log(`Target week (${targetWeek}): ${weekRange.identifier}`);
 
       const rawEvents = await this.scrapeEvents(weekRange);
       const normalizedEvents = [];

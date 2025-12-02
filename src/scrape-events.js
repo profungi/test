@@ -18,7 +18,7 @@ const FuncheapWeekendScraper = require('./scrapers/funcheap-weekend-scraper');
 const config = require('./config');
 
 class EventScrapeOrchestrator {
-  constructor() {
+  constructor(options = {}) {
     this.database = new EventDatabase();
     this.aiClassifier = new AIEventClassifier();
     this.reviewManager = new ManualReviewManager();
@@ -32,10 +32,14 @@ class EventScrapeOrchestrator {
       new SFStationScraper(),
       new FuncheapWeekendScraper()
     ];
+
+    // 设置抓取哪一周: 'current' 或 'next' (默认)
+    this.targetWeek = options.week || 'next';
   }
 
   async run() {
-    console.log('🚀 开始抓取湾区活动...\n');
+    const weekText = this.targetWeek === 'current' ? '本周' : '下周';
+    console.log(`🚀 开始抓取湾区${weekText}活动...\n`);
     
     try {
       // 1. 连接数据库
@@ -75,7 +79,9 @@ class EventScrapeOrchestrator {
       console.log('\n📊 AI分类报告:', classificationReport);
       
       // 7. 生成人工审核文件
-      const weekRange = this.scrapers[0].getNextWeekRange();
+      const weekRange = this.targetWeek === 'current'
+        ? this.scrapers[0].getCurrentWeekRange()
+        : this.scrapers[0].getNextWeekRange();
       const reviewResult = await this.reviewManager.generateReviewFile(
         topCandidates, 
         weekRange,
@@ -107,7 +113,7 @@ class EventScrapeOrchestrator {
     const scrapePromises = this.scrapers.map(async (scraper) => {
       try {
         console.log(`开始抓取: ${scraper.sourceName}`);
-        const events = await scraper.scrape();
+        const events = await scraper.scrape(this.targetWeek);
 
         // 记录抓取日志
         await this.database.logScrapingResult(
@@ -250,7 +256,9 @@ class EventScrapeOrchestrator {
   // 数据库去重逻辑
   async filterByDatabase(events) {
     const uniqueEvents = [];
-    const weekRange = this.scrapers[0].getNextWeekRange();
+    const weekRange = this.targetWeek === 'current'
+      ? this.scrapers[0].getCurrentWeekRange()
+      : this.scrapers[0].getNextWeekRange();
 
     for (const event of events) {
       event.weekIdentifier = weekRange.identifier;
@@ -277,11 +285,14 @@ class EventScrapeOrchestrator {
 🎯 Bay Area Events Scraper
 
 用法:
-  npm run scrape                           # 抓取活动并生成审核文件
-  npm run scrape -- --ai-provider gemini  # 使用指定的AI提供商
-  npm run scrape -- --help                # 显示帮助信息
+  npm run scrape                           # 抓取下周活动并生成审核文件
+  npm run scrape-current-week              # 抓取本周活动
+  npm run scrape -- --week current         # 抓取本周活动
+  npm run scrape -- --ai-provider gemini   # 使用指定的AI提供商
+  npm run scrape -- --help                 # 显示帮助信息
 
 参数:
+  --week <current|next>     指定抓取本周或下周的活动 (默认: next)
   --ai-provider <provider>  指定AI提供商 (openai, gemini, claude)
                            默认使用环境变量 AI_PROVIDER 或 openai
 
@@ -301,12 +312,27 @@ class EventScrapeOrchestrator {
 // 处理命令行参数
 async function main() {
   const args = process.argv.slice(2);
-  
+
   if (args.includes('--help') || args.includes('-h')) {
     EventScrapeOrchestrator.showHelp();
     return;
   }
-  
+
+  // 处理周选择
+  let targetWeek = 'next'; // 默认下周
+  const weekIndex = args.indexOf('--week');
+  if (weekIndex !== -1 && args[weekIndex + 1]) {
+    const week = args[weekIndex + 1];
+    if (['current', 'next'].includes(week)) {
+      targetWeek = week;
+      console.log(`📅 Target week: ${week === 'current' ? '本周' : '下周'}`);
+    } else {
+      console.error(`❌ Invalid week option: ${week}`);
+      console.error('Valid options: current, next');
+      process.exit(1);
+    }
+  }
+
   // 处理AI提供商选择
   const aiProviderIndex = args.indexOf('--ai-provider');
   if (aiProviderIndex !== -1 && args[aiProviderIndex + 1]) {
@@ -320,8 +346,8 @@ async function main() {
       process.exit(1);
     }
   }
-  
-  const orchestrator = new EventScrapeOrchestrator();
+
+  const orchestrator = new EventScrapeOrchestrator({ week: targetWeek });
   await orchestrator.run();
 }
 

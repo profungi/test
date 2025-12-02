@@ -6,6 +6,8 @@
   "scripts": {
     "start": "node src/index.js",
     "scrape": "node src/scrape-events.js",
+    "scrape-current-week": "node src/scrape-events.js --week current",
+    "scrape-next-week": "node src/scrape-events.js --week next",
     "scrape-eventbrite": "node scrape-single-source.js eventbrite",
     "scrape-funcheap": "node scrape-single-source.js funcheap",
     "scrape-sfstation": "node scrape-single-source.js sfstation",
