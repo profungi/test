@@ -1,4 +1,5 @@
-import { getEvents, getStats } from '@/lib/db';
+// import { getEvents, getStats } from '@/lib/db'; //local
+import { getEvents, getStats } from '@/lib/turso-db';  // 改这里！
 import { EventFilters } from '@/lib/types';
 import FilterBar from '../components/FilterBar';
 import EventCard from '../components/EventCard';
