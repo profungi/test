@@ -11,20 +11,27 @@ let db: Database.Database | null = null;
 function getDatabase() {
   if (!db) {
     // 在 Vercel 环境中,数据库文件不存在,返回 null 进入演示模式
-    if (process.env.VERCEL) {
+    // Vercel 设置 VERCEL=1 和 VERCEL_ENV (production/preview/development)
+    if (process.env.VERCEL || process.env.VERCEL_ENV) {
       console.warn('⚠️  Running in Vercel without database. Using demo mode.');
       console.warn('⚠️  Please configure Turso or another cloud database for production.');
       return null;
     }
 
-    db = new Database(DB_PATH, {
-      readonly: true,      // 只读模式，确保不会修改数据
-      fileMustExist: true  // 数据库必须存在
-    });
+    try {
+      db = new Database(DB_PATH, {
+        readonly: true,      // 只读模式，确保不会修改数据
+        fileMustExist: true  // 数据库必须存在
+      });
 
-    // 注意：只读模式下不能设置 pragma，WAL 模式由 scraper 在写入时设置
+      // 注意：只读模式下不能设置 pragma，WAL 模式由 scraper 在写入时设置
 
-    console.log('✅ Connected to database:', DB_PATH);
+      console.log('✅ Connected to database:', DB_PATH);
+    } catch (error) {
+      console.error('❌ Failed to connect to database:', error);
+      console.warn('⚠️  Falling back to demo mode.');
+      return null;
+    }
   }
   return db;
 }
