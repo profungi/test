@@ -40,7 +40,9 @@ export async function POST(request: NextRequest) {
     }
 
     // Get user information
-    const ip = request.ip || request.headers.get('x-forwarded-for') || 'unknown';
+    const ip = request.headers.get('x-forwarded-for') ||
+                request.headers.get('x-real-ip') ||
+                'unknown';
     const userAgent = request.headers.get('user-agent') || '';
     const referrer = request.headers.get('referer') || '';
 

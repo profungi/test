@@ -93,9 +93,17 @@ class EventDatabase {
 
   async createIndexes() {
     const indexQueries = [
+      // URL 去重索引（最高优先级，最快速的去重方式）
+      `CREATE INDEX IF NOT EXISTS idx_events_original_url
+       ON events(original_url)`,
+
       // 主要去重查询的复合索引
       `CREATE INDEX IF NOT EXISTS idx_events_dedup
        ON events(week_identifier, location, date(start_time))`,
+
+      // 跨周去重索引（location + start_time）
+      `CREATE INDEX IF NOT EXISTS idx_events_location_time
+       ON events(location, start_time)`,
 
       // 加速 week_identifier 查询
       `CREATE INDEX IF NOT EXISTS idx_events_week
@@ -255,87 +263,119 @@ class EventDatabase {
     return new Promise((resolve, reject) => {
       const normalizedTitle = this.normalizeTitle(event.title);
 
-      // 策略1：时间接近 + 地点 + 标题相似（原有逻辑）
-      const query1 = `
-        SELECT title, normalized_title, start_time, location
+      // 策略0：URL 完全匹配（最快速准确的去重）
+      // 如果 URL 相同，无论什么时候抓取的都是重复
+      if (event.originalUrl) {
+        const urlQuery = `
+          SELECT id, title, week_identifier
+          FROM events
+          WHERE original_url = ?
+          LIMIT 1
+        `;
+
+        this.db.get(urlQuery, [event.originalUrl], (urlErr, urlRow) => {
+          if (urlErr) {
+            reject(urlErr);
+            return;
+          }
+
+          if (urlRow) {
+            console.log(`[DB Dedup - URL] Duplicate found: "${event.title}" already exists in week ${urlRow.week_identifier}`);
+            resolve(true);
+            return;
+          }
+
+          // URL 不重复，继续检查其他策略
+          this.checkContentDuplication(event, normalizedTitle, resolve, reject);
+        });
+      } else {
+        // 没有 URL，直接检查内容重复
+        this.checkContentDuplication(event, normalizedTitle, resolve, reject);
+      }
+    });
+  }
+
+  // 辅助方法：检查内容去重（标题+时间+地点）
+  checkContentDuplication(event, normalizedTitle, resolve, reject) {
+    // 策略1：时间接近 + 地点 + 标题相似
+    // 移除 week_identifier 限制，改为基于实际时间范围去重
+    const query1 = `
+      SELECT title, normalized_title, start_time, location, week_identifier
+      FROM events
+      WHERE location = ?
+      AND ABS(julianday(start_time) - julianday(?)) < ?
+    `;
+
+    const timeWindowDays = config.deduplication.timeWindowHours / 24;
+
+    this.db.all(query1, [
+      event.location,
+      event.startTime,
+      timeWindowDays
+    ], (err, rows) => {
+      if (err) {
+        reject(err);
+        return;
+      }
+
+      // 检查时间接近的活动
+      if (rows.length > 0) {
+        for (const row of rows) {
+          const similarity = this.calculateStringSimilarity(
+            normalizedTitle,
+            row.normalized_title
+          );
+
+          if (similarity >= config.deduplication.titleSimilarityThreshold) {
+            console.log(`[DB Dedup - Content] Duplicate found: "${event.title}" matches "${row.title}" in week ${row.week_identifier} (similarity: ${similarity.toFixed(2)})`);
+            resolve(true);
+            return;
+          }
+        }
+      }
+
+      // 策略2：同地点 + 高度相似标题（检测多日活动或长期活动）
+      // 在近期范围内查找（比如最近 30 天）
+      const query2 = `
+        SELECT title, normalized_title, start_time, location, week_identifier
         FROM events
-        WHERE week_identifier = ?
-        AND location = ?
-        AND ABS(julianday(start_time) - julianday(?)) < ?
+        WHERE location = ?
+        AND ABS(julianday(start_time) - julianday(?)) < 30
       `;
 
-      const timeWindowDays = config.deduplication.timeWindowHours / 24;
-
-      this.db.all(query1, [
-        event.weekIdentifier,
+      this.db.all(query2, [
         event.location,
-        event.startTime,
-        timeWindowDays
-      ], (err, rows) => {
-        if (err) {
-          reject(err);
+        event.startTime
+      ], (err2, rows2) => {
+        if (err2) {
+          reject(err2);
           return;
         }
 
-        // 检查时间接近的活动
-        if (rows.length > 0) {
-          for (const row of rows) {
-            const similarity = this.calculateStringSimilarity(
-              normalizedTitle,
-              row.normalized_title
-            );
+        if (rows2.length === 0) {
+          resolve(false);
+          return;
+        }
 
-            if (similarity >= config.deduplication.titleSimilarityThreshold) {
-              console.log(`[DB Dedup] Duplicate found: "${event.title}" matches "${row.title}" (similarity: ${similarity.toFixed(2)})`);
-              resolve(true);
-              return;
-            }
+        // 检查标题高度相似的活动（即使时间差较大）
+        // 这用于检测跨多天的同一活动或长期重复活动
+        const highSimilarityThreshold = 0.90;  // 更严格的相似度阈值
+
+        for (const row of rows2) {
+          const similarity = this.calculateStringSimilarity(
+            normalizedTitle,
+            row.normalized_title
+          );
+
+          // 只有在标题高度相似时才认为是重复
+          if (similarity >= highSimilarityThreshold) {
+            console.log(`[DB Dedup - Multi-day] Duplicate found: "${event.title}" matches "${row.title}" in week ${row.week_identifier} (similarity: ${similarity.toFixed(2)})`);
+            resolve(true);
+            return;
           }
         }
 
-        // 策略2：同地点 + 高度相似标题 + 时间在同一周内（用于多日活动检测）
-        // 例如："The Box SF ... (Nov 1-2)" 可能在Funcheap分成两个条目
-        const query2 = `
-          SELECT title, normalized_title, start_time, location
-          FROM events
-          WHERE week_identifier = ?
-          AND location = ?
-        `;
-
-        this.db.all(query2, [
-          event.weekIdentifier,
-          event.location
-        ], (err2, rows2) => {
-          if (err2) {
-            reject(err2);
-            return;
-          }
-
-          if (rows2.length === 0) {
-            resolve(false);
-            return;
-          }
-
-          // 检查标题高度相似的活动（即使时间差较大）
-          // 这用于检测跨多天的同一活动
-          const highSimilarityThreshold = 0.85;  // 更严格的相似度阈值
-
-          for (const row of rows2) {
-            const similarity = this.calculateStringSimilarity(
-              normalizedTitle,
-              row.normalized_title
-            );
-
-            // 只有在标题高度相似时才认为是重复（即使时间差很大）
-            if (similarity >= highSimilarityThreshold) {
-              console.log(`[DB Dedup] Multi-day event duplicate found: "${event.title}" matches "${row.title}" (similarity: ${similarity.toFixed(2)})`);
-              resolve(true);
-              return;
-            }
-          }
-
-          resolve(false);
-        });
+        resolve(false);
       });
     });
   }
