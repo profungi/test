@@ -8,10 +8,16 @@ const dbPath = join(process.cwd(), '..', 'data', 'events.db');
 
 function getDb() {
   // 在 Vercel 环境中，数据库文件不存在
-  if (process.env.VERCEL) {
+  if (process.env.VERCEL || process.env.VERCEL_ENV) {
     throw new Error('Feedback database not configured for Vercel. Please use Turso or another cloud database.');
   }
-  return new Database(dbPath);
+
+  try {
+    return new Database(dbPath);
+  } catch (error) {
+    console.error('Failed to open database:', error);
+    throw new Error('Database connection failed. Please check configuration.');
+  }
 }
 
 // Generate anonymous session ID from IP
