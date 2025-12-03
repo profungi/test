@@ -1,24 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
-import Database from 'better-sqlite3';
-import { join } from 'path';
 import crypto from 'crypto';
-
-// Database connection
-const dbPath = join(process.cwd(), '..', 'data', 'events.db');
-
-function getDb() {
-  // 在 Vercel 环境中，数据库文件不存在
-  if (process.env.VERCEL || process.env.VERCEL_ENV) {
-    throw new Error('Feedback database not configured for Vercel. Please use Turso or another cloud database.');
-  }
-
-  try {
-    return new Database(dbPath);
-  } catch (error) {
-    console.error('Failed to open database:', error);
-    throw new Error('Database connection failed. Please check configuration.');
-  }
-}
+import { saveFeedback, getRecentFeedbackStats, getTotalFeedbackStats } from '@/lib/turso-feedback';
 
 // Generate anonymous session ID from IP
 function generateSessionId(ip: string): string {
@@ -59,45 +41,31 @@ export async function POST(request: NextRequest) {
     const sessionId = generateSessionId(ip);
     const ipHash = hashIp(ip);
 
-    // Insert feedback
-    const db = getDb();
-
+    // Save feedback to Turso
     try {
-      const stmt = db.prepare(`
-        INSERT INTO user_feedback (
-          session_id,
-          feedback_type,
-          comment,
-          filter_state,
-          events_shown,
-          user_agent,
-          referrer,
-          locale,
-          created_at,
-          ip_hash
-        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-      `);
-
-      const result = stmt.run(
+      const result = await saveFeedback({
         sessionId,
         feedbackType,
-        comment || null,
-        filterState ? JSON.stringify(filterState) : null,
-        eventsShown || null,
+        comment,
+        filterState: filterState ? JSON.stringify(filterState) : undefined,
+        eventsShown,
         userAgent,
         referrer,
-        locale || 'en',
-        new Date().toISOString(),
-        ipHash
-      );
+        locale: locale || 'en',
+        ipHash,
+      });
 
       return NextResponse.json({
         success: true,
-        feedbackId: result.lastInsertRowid,
+        feedbackId: result.feedbackId,
         message: 'Thank you for your feedback!',
       });
-    } finally {
-      db.close();
+    } catch (dbError) {
+      console.error('Database error:', dbError);
+      return NextResponse.json(
+        { error: 'Failed to save feedback to database' },
+        { status: 500 }
+      );
     }
   } catch (error) {
     console.error('Error saving feedback:', error);
@@ -111,35 +79,15 @@ export async function POST(request: NextRequest) {
 // GET endpoint to retrieve feedback stats (optional, for admin use)
 export async function GET(request: NextRequest) {
   try {
-    const db = getDb();
+    const [recentStats, totalStats] = await Promise.all([
+      getRecentFeedbackStats(),
+      getTotalFeedbackStats(),
+    ]);
 
-    try {
-      const stats = db.prepare(`
-        SELECT
-          feedback_type,
-          COUNT(*) as count,
-          DATE(created_at) as date
-        FROM user_feedback
-        WHERE created_at >= datetime('now', '-7 days')
-        GROUP BY feedback_type, DATE(created_at)
-        ORDER BY date DESC
-      `).all();
-
-      const totalStats = db.prepare(`
-        SELECT
-          feedback_type,
-          COUNT(*) as count
-        FROM user_feedback
-        GROUP BY feedback_type
-      `).all();
-
-      return NextResponse.json({
-        recentStats: stats,
-        totalStats: totalStats,
-      });
-    } finally {
-      db.close();
-    }
+    return NextResponse.json({
+      recentStats,
+      totalStats,
+    });
   } catch (error) {
     console.error('Error fetching feedback stats:', error);
     return NextResponse.json(
