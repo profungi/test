@@ -44,6 +44,18 @@ Scraper → Turso ← Vercel 网站
 
 ### 快速开始
 
+<<<<<<< HEAD
+=======
+0. **安装依赖** (如果还没有)
+
+   ```bash
+   # 在项目根目录
+   npm install @libsql/client
+   ```
+
+   ✅ 已完成 - `@libsql/client@^0.15.15` 已添加到 package.json
+
+>>>>>>> c0436a1a3310afb038b65d0fb637a4052593a4fb
 1. **配置环境变量** (如果还没有)
 
    在项目根目录创建 `.env` 文件:
