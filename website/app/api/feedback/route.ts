@@ -86,41 +86,29 @@ export async function POST(request: NextRequest) {
     }
 
     try {
-      const stmt = db.prepare(`
-        INSERT INTO user_feedback (
-          session_id,
-          feedback_type,
-          comment,
-          filter_state,
-          events_shown,
-          user_agent,
-          referrer,
-          locale,
-          created_at,
-          ip_hash
-        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-      `);
-
-      const result = stmt.run(
+      const result = await saveFeedback({
         sessionId,
         feedbackType,
-        comment || null,
-        filterState ? JSON.stringify(filterState) : null,
-        eventsShown || null,
+        comment,
+        filterState: filterState ? JSON.stringify(filterState) : undefined,
+        eventsShown,
         userAgent,
         referrer,
-        locale || 'en',
-        new Date().toISOString(),
-        ipHash
-      );
+        locale: locale || 'en',
+        ipHash,
+      });
 
       return NextResponse.json({
         success: true,
-        feedbackId: result.lastInsertRowid,
+        feedbackId: result.feedbackId,
         message: 'Thank you for your feedback!',
       });
-    } finally {
-      db.close();
+    } catch (dbError) {
+      console.error('Database error:', dbError);
+      return NextResponse.json(
+        { error: 'Failed to save feedback to database' },
+        { status: 500 }
+      );
     }
   } catch (error) {
     console.error('Error saving feedback:', error);
@@ -165,13 +153,10 @@ export async function GET(request: NextRequest) {
         GROUP BY feedback_type
       `).all();
 
-      return NextResponse.json({
-        recentStats: stats,
-        totalStats: totalStats,
-      });
-    } finally {
-      db.close();
-    }
+    return NextResponse.json({
+      recentStats,
+      totalStats,
+    });
   } catch (error) {
     console.error('Error fetching feedback stats:', error);
     return NextResponse.json(
