@@ -1,32 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import crypto from 'crypto';
-
-// 检查是否在 Vercel 环境
-const isVercel = !!(process.env.VERCEL || process.env.VERCEL_ENV);
-
-// 只在非 Vercel 环境导入 better-sqlite3
-let Database: any = null;
-let dbPath: string | null = null;
-
-if (!isVercel) {
-  Database = require('better-sqlite3');
-  const { join } = require('path');
-  dbPath = join(process.cwd(), '..', 'data', 'events.db');
-}
-
-function getDb() {
-  // 在 Vercel 环境中，返回 null（不保存数据）
-  if (isVercel) {
-    return null;
-  }
-
-  try {
-    return new Database(dbPath);
-  } catch (error) {
-    console.error('Failed to open database:', error);
-    return null;
-  }
-}
+import { saveFeedback, getRecentFeedbackStats, getTotalFeedbackStats } from '@/lib/turso-feedback';
 
 // Generate anonymous session ID from IP
 function generateSessionId(ip: string): string {
@@ -67,24 +41,7 @@ export async function POST(request: NextRequest) {
     const sessionId = generateSessionId(ip);
     const ipHash = hashIp(ip);
 
-    // Insert feedback
-    const db = getDb();
-
-    // 在 Vercel 环境中，不保存到数据库，直接返回成功
-    if (!db) {
-      console.log('[Feedback] Vercel environment - feedback not saved:', {
-        feedbackType,
-        locale,
-        eventsShown,
-      });
-
-      return NextResponse.json({
-        success: true,
-        feedbackId: Date.now(), // 虚拟 ID
-        message: 'Thank you for your feedback!',
-      });
-    }
-
+    // Save feedback to Turso
     try {
       const result = await saveFeedback({
         sessionId,
@@ -122,36 +79,10 @@ export async function POST(request: NextRequest) {
 // GET endpoint to retrieve feedback stats (optional, for admin use)
 export async function GET(request: NextRequest) {
   try {
-    const db = getDb();
-
-    // 在 Vercel 环境中，返回空统计
-    if (!db) {
-      return NextResponse.json({
-        recentStats: [],
-        totalStats: [],
-        message: 'Stats not available in Vercel environment',
-      });
-    }
-
-    try {
-      const stats = db.prepare(`
-        SELECT
-          feedback_type,
-          COUNT(*) as count,
-          DATE(created_at) as date
-        FROM user_feedback
-        WHERE created_at >= datetime('now', '-7 days')
-        GROUP BY feedback_type, DATE(created_at)
-        ORDER BY date DESC
-      `).all();
-
-      const totalStats = db.prepare(`
-        SELECT
-          feedback_type,
-          COUNT(*) as count
-        FROM user_feedback
-        GROUP BY feedback_type
-      `).all();
+    const [recentStats, totalStats] = await Promise.all([
+      getRecentFeedbackStats(),
+      getTotalFeedbackStats(),
+    ]);
 
     return NextResponse.json({
       recentStats,
