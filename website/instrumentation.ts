@@ -2,6 +2,7 @@
 // This file runs before any other code in the app
 
 export async function register() {
+  // Only run in Node.js runtime, skip Edge runtime entirely
   if (process.env.NEXT_RUNTIME === 'nodejs') {
     console.log('=== Instrumentation Register (Node.js Runtime) ===');
     console.log('Environment:', {
@@ -10,12 +11,6 @@ export async function register() {
       NODE_ENV: process.env.NODE_ENV,
       NEXT_RUNTIME: process.env.NEXT_RUNTIME,
     });
-
-    // Check if __dirname is available
-    try {
-      console.log('__dirname check:', typeof __dirname !== 'undefined' ? 'available' : 'not available');
-    } catch (e) {
-      console.error('__dirname error:', e);
-    }
   }
+  // Edge runtime: do nothing, avoid any Node.js specific code
 }
