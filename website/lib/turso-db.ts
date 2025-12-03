@@ -1,11 +1,22 @@
-import { createClient } from '@libsql/client';
+import { createClient, Client } from '@libsql/client';
 import { Event, EventFilters, WeekIdentifier } from './types';
 
-// Turso 数据库连接
-const turso = createClient({
-  url: process.env.TURSO_DATABASE_URL!,
-  authToken: process.env.TURSO_AUTH_TOKEN!,
-});
+// Turso 数据库连接（延迟初始化）
+let turso: Client | null = null;
+
+function getTursoClient(): Client {
+  if (!turso) {
+    if (!process.env.TURSO_DATABASE_URL || !process.env.TURSO_AUTH_TOKEN) {
+      throw new Error('Missing Turso environment variables: TURSO_DATABASE_URL or TURSO_AUTH_TOKEN');
+    }
+
+    turso = createClient({
+      url: process.env.TURSO_DATABASE_URL,
+      authToken: process.env.TURSO_AUTH_TOKEN,
+    });
+  }
+  return turso;
+}
 
 /**
  * 获取下周的周标识符
@@ -134,7 +145,8 @@ export async function getEvents(filters: EventFilters = {}): Promise<Event[]> {
   `;
 
   try {
-    const result = await turso.execute({ sql, args: params });
+    const client = getTursoClient();
+    const result = await client.execute({ sql, args: params });
     return result.rows as unknown as Event[];
   } catch (error) {
     console.error('Database query error:', error);

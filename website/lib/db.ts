@@ -1,4 +1,3 @@
-import Database from 'better-sqlite3';
 import path from 'path';
 import { Event, EventFilters, WeekIdentifier } from './types';
 
@@ -6,7 +5,7 @@ import { Event, EventFilters, WeekIdentifier } from './types';
 const DB_PATH = path.join(process.cwd(), '..', 'data', 'events.db');
 
 // 初始化数据库连接（只读模式 + WAL 模式）
-let db: Database.Database | null = null;
+let db: any = null;
 
 function getDatabase() {
   if (!db) {
@@ -19,6 +18,8 @@ function getDatabase() {
     }
 
     try {
+      // 动态导入 better-sqlite3（只在非 Vercel 环境）
+      const Database = require('better-sqlite3');
       db = new Database(DB_PATH, {
         readonly: true,      // 只读模式，确保不会修改数据
         fileMustExist: true  // 数据库必须存在
