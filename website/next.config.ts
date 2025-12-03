@@ -12,6 +12,15 @@ const nextConfig: NextConfig = {
   eslint: {
     ignoreDuringBuilds: true,
   },
+  // 排除 better-sqlite3 以避免 Vercel 构建错误
+  webpack: (config, { isServer }) => {
+    if (isServer) {
+      // 在服务器端忽略 better-sqlite3（Vercel 不支持 native modules）
+      config.externals = config.externals || [];
+      config.externals.push('better-sqlite3');
+    }
+    return config;
+  },
 };
 
 export default withNextIntl(nextConfig);
