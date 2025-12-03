@@ -159,7 +159,8 @@ export async function getEvents(filters: EventFilters = {}): Promise<Event[]> {
  */
 export async function getEventById(id: number): Promise<Event | null> {
   try {
-    const result = await turso.execute({
+    const client = getTursoClient();
+    const result = await client.execute({
       sql: 'SELECT * FROM events WHERE id = ?',
       args: [id]
     });
@@ -177,14 +178,16 @@ export async function getStats(weekIdentifier?: string) {
   const week = weekIdentifier || getNextWeekIdentifier();
 
   try {
+    const client = getTursoClient();
+
     // 总数
-    const totalResult = await turso.execute({
+    const totalResult = await client.execute({
       sql: 'SELECT COUNT(*) as count FROM events WHERE week_identifier = ?',
       args: [week]
     });
 
     // 按类型统计
-    const typeResult = await turso.execute({
+    const typeResult = await client.execute({
       sql: `
         SELECT event_type, COUNT(*) as count
         FROM events
@@ -217,7 +220,8 @@ export async function getStats(weekIdentifier?: string) {
  */
 export async function getAvailableWeeks(): Promise<WeekIdentifier[]> {
   try {
-    const result = await turso.execute({
+    const client = getTursoClient();
+    const result = await client.execute({
       sql: `
         SELECT DISTINCT week_identifier, COUNT(*) as event_count
         FROM events
