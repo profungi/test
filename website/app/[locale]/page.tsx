@@ -69,7 +69,7 @@ export default async function HomePage({
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
           <div className="flex items-center gap-4">
             <Image
-              src="/grape-mascot.jpg"
+              src="/grape-mascot.png"
               alt="Grape Mascot"
               width={80}
               height={80}
@@ -107,7 +107,7 @@ export default async function HomePage({
           <div className="text-center py-12 bg-white/60 rounded-2xl border-2 border-[#F0D3B6]">
             <div className="mb-4">
               <Image
-                src="/grape-mascot.jpg"
+                src="/grape-mascot.png"
                 alt="Grape Mascot"
                 width={80}
                 height={80}
@@ -149,7 +149,7 @@ export default async function HomePage({
             </p>
             <div className="mt-4">
               <Image
-                src="/grape-mascot.jpg"
+                src="/grape-mascot.png"
                 alt="Grape Mascot"
                 width={60}
                 height={60}
