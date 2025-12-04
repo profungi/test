@@ -125,11 +125,12 @@ export default function EventDescriptionPopover({ description, children }: Event
           {/* 桌面端悬停显示的 popover */}
           {!isTouchDevice && isHovered && createPortal(
             <div
-              className="fixed w-[520px] max-w-[90vw] bg-white/95 backdrop-blur-sm border-2 border-[#F0D3B6] rounded-xl shadow-2xl p-4"
+              className="fixed w-[520px] max-w-[90vw] bg-white border-2 border-[#F0D3B6] rounded-xl shadow-2xl p-4"
               style={{
-                zIndex: 9999,
+                zIndex: 99999,
                 top: `${popoverStyle.top}px`,
                 left: `${popoverStyle.left}px`,
+                pointerEvents: 'auto',
               }}
               onMouseEnter={() => {
                 if (hoverTimeoutRef.current) {
@@ -143,7 +144,7 @@ export default function EventDescriptionPopover({ description, children }: Event
                 {description}
               </div>
               <div
-                className={`absolute -top-2 w-4 h-4 bg-white/95 border-l-2 border-t-2 border-[#F0D3B6] transform rotate-45 ${popoverPosition === 'right' ? 'right-4' : 'left-4'}`}
+                className={`absolute -top-2 w-4 h-4 bg-white border-l-2 border-t-2 border-[#F0D3B6] transform rotate-45 ${popoverPosition === 'right' ? 'right-4' : 'left-4'}`}
               ></div>
             </div>,
             document.body
@@ -154,8 +155,8 @@ export default function EventDescriptionPopover({ description, children }: Event
             <>
               <div
                 ref={popoverRef}
-                className="fixed inset-x-4 top-1/2 -translate-y-1/2 bg-white/95 backdrop-blur-sm border-2 border-[#F0D3B6] rounded-2xl shadow-2xl p-6 max-h-[80vh] overflow-y-auto"
-                style={{ zIndex: 9999 }}
+                className="fixed inset-x-4 top-1/2 -translate-y-1/2 bg-white border-2 border-[#F0D3B6] rounded-2xl shadow-2xl p-6 max-h-[80vh] overflow-y-auto"
+                style={{ zIndex: 99999 }}
               >
                 {/* 关闭按钮 */}
                 <button
@@ -175,7 +176,7 @@ export default function EventDescriptionPopover({ description, children }: Event
               {/* 移动端遮罩层 */}
               <div
                 className="fixed inset-0 bg-black bg-opacity-50"
-                style={{ zIndex: 9998 }}
+                style={{ zIndex: 99998 }}
                 onClick={() => setIsOpen(false)}
               />
             </>,
