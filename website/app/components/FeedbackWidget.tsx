@@ -136,7 +136,7 @@ export default function FeedbackWidget({
             value={comment}
             onChange={(e) => setComment(e.target.value)}
             placeholder={t('commentPlaceholder')}
-            className="w-full p-3 bg-white text-[#4A2C22] placeholder-[#4A2C22]/40 border-2 border-[#F0D3B6] rounded-xl resize-none focus:ring-2 focus:ring-[#A25AD9] focus:border-[#A25AD9] transition-all"
+            className="w-full p-3 bg-white text-[#4A2C22] placeholder-[#4A2C22]/40 border-2 border-[#F0D3B6] rounded-xl resize-none focus:ring-2 focus:ring-[#B37DA2] focus:border-[#B37DA2] transition-all"
             rows={3}
             maxLength={500}
           />
@@ -155,7 +155,7 @@ export default function FeedbackWidget({
             <button
               onClick={handleCommentSubmit}
               disabled={isSubmitting}
-              className="px-6 py-2 bg-[#A25AD9] text-white rounded-xl hover:bg-[#8C3EC5] font-bold transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed shadow-md hover:shadow-lg hover:shadow-[#A25AD9]/30"
+              className="px-6 py-2 bg-[#B37DA2] text-white rounded-xl hover:bg-[#8B557A] font-bold transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed shadow-md hover:shadow-lg hover:shadow-[#B37DA2]/30"
             >
               {isSubmitting ? t('submitting') : t('submit')}
             </button>
