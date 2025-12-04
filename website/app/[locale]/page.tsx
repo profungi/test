@@ -64,14 +64,19 @@ export default async function HomePage({
   return (
     <div className="min-h-screen">
       {/* 顶部导航栏 */}
-      <header className="bg-purple-950/40 backdrop-blur-md shadow-lg">
+      <header className="bg-white/90 backdrop-blur-md shadow-md border-b-2 border-[#F0D3B6]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-          <h1 className="text-3xl font-bold text-white">
-            🎯 {t('siteTitle')}
-          </h1>
-          <p className="mt-2 text-sm text-purple-200">
-            {t('siteSubtitle')}
-          </p>
+          <div className="flex items-center gap-4">
+            <span className="text-5xl">🍇</span>
+            <div>
+              <h1 className="text-3xl font-bold text-[#4A2C22]">
+                {t('siteTitle')}
+              </h1>
+              <p className="mt-1 text-sm text-[#4A2C22]/70 font-medium">
+                {t('siteSubtitle')}
+              </p>
+            </div>
+          </div>
         </div>
       </header>
 
@@ -82,9 +87,9 @@ export default async function HomePage({
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* 统计信息 */}
         <div className="mb-6 flex items-center justify-between">
-          <h2 className="text-2xl font-semibold text-white">
+          <h2 className="text-2xl font-bold text-[#4A2C22]">
             {weekTitle}
-            <span className="ml-3 text-lg font-normal text-purple-200">
+            <span className="ml-3 text-lg font-semibold text-[#A25AD9]">
               {t('eventsCount', { count: events.length })}
             </span>
           </h2>
@@ -92,9 +97,10 @@ export default async function HomePage({
 
         {/* 活动列表 */}
         {events.length === 0 ? (
-          <div className="text-center py-12">
-            <p className="text-purple-200 text-lg">{t('noEvents')}</p>
-            <p className="text-purple-300 text-sm mt-2">
+          <div className="text-center py-12 bg-white/60 rounded-2xl border-2 border-[#F0D3B6]">
+            <p className="text-[#4A2C22] text-xl font-bold mb-2">🍇</p>
+            <p className="text-[#4A2C22] text-lg font-semibold">{t('noEvents')}</p>
+            <p className="text-[#4A2C22]/60 text-sm mt-2">
               {t('noEventsHint')}
             </p>
           </div>
@@ -107,7 +113,7 @@ export default async function HomePage({
             </div>
 
             {/* 用户反馈组件 */}
-            <Suspense fallback={<div className="mt-8 text-center text-purple-300">Loading...</div>}>
+            <Suspense fallback={<div className="mt-8 text-center text-[#A25AD9] font-medium">Loading...</div>}>
               <FeedbackSection eventsCount={events.length} />
             </Suspense>
           </>
@@ -115,17 +121,20 @@ export default async function HomePage({
       </main>
 
       {/* 页脚 */}
-      <footer className="bg-purple-950/40 backdrop-blur-md border-t border-purple-500/30 mt-12">
+      <footer className="bg-[#4A2C22] border-t-4 border-[#A25AD9] mt-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-          <div className="text-center text-sm text-purple-200">
-            <p>
+          <div className="text-center">
+            <p className="text-[#FFF4E6] text-sm font-medium">
               {t('dataSource')}
             </p>
-            <p className="mt-2">
+            <p className="text-[#F0D3B6] text-xs mt-2">
               {t('updateInfo', {
                 date: currentDate
               })}
             </p>
+            <div className="mt-4 text-4xl">
+              🍇
+            </div>
           </div>
         </div>
       </footer>

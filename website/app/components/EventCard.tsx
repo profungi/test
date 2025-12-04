@@ -71,7 +71,8 @@ export default function EventCard({ event }: EventCardProps) {
   return (
     <div
       ref={cardRef}
-      className="glow-card group relative bg-[rgb(30,27,75)] rounded-lg p-6 border border-purple-500/20 overflow-hidden transition-all duration-300"
+      className="glow-card group relative bg-white rounded-2xl p-6 border-2 border-[#4A2C22]/10 overflow-hidden transition-all duration-300"
+      style={{ borderColor: '#F0D3B6' }}
     >
       {/* 顶部标签栏 */}
       <div className="flex items-center justify-between mb-3">
@@ -79,34 +80,34 @@ export default function EventCard({ event }: EventCardProps) {
           {emoji} {label}
         </span>
         {event.priority >= 9 && (
-          <span className="text-yellow-500 text-sm">
+          <span className="text-[#F7D46A] text-sm font-bold bg-[#4A2C22]/10 px-2 py-1 rounded-full">
             ⭐ {event.priority}/10
           </span>
         )}
       </div>
 
       {/* 活动标题 */}
-      <h3 className="text-lg font-semibold text-white mb-3 line-clamp-2 relative z-10">
+      <h3 className="text-lg font-bold text-[#4A2C22] mb-3 line-clamp-2 relative z-10">
         {displayTitle}
       </h3>
 
       {/* 活动详情 */}
       <div className="space-y-2 mb-4 relative z-10">
         {/* 时间 */}
-        <div className="flex items-start text-sm text-purple-200">
+        <div className="flex items-start text-sm text-[#4A2C22]/80">
           <span className="mr-2">📅</span>
           <span>{formatTime(event.start_time)}</span>
         </div>
 
         {/* 地点 */}
-        <div className="flex items-start text-sm text-purple-200">
+        <div className="flex items-start text-sm text-[#4A2C22]/80">
           <span className="mr-2">📍</span>
           <span className="line-clamp-1">{formatLocation(event.location)}</span>
         </div>
 
         {/* 价格 */}
         {event.price && (
-          <div className="flex items-start text-sm text-purple-200">
+          <div className="flex items-start text-sm text-[#4A2C22]/80">
             <span className="mr-2">💰</span>
             <span>{event.price}</span>
           </div>
@@ -115,7 +116,7 @@ export default function EventCard({ event }: EventCardProps) {
         {/* 描述 */}
         {event.description && (
           <EventDescriptionPopover description={event.description}>
-            <div className="flex items-start text-sm text-purple-300">
+            <div className="flex items-start text-sm text-[#4A2C22]/70">
               <span className="mr-2">✨</span>
               <span className="line-clamp-2">{event.description}</span>
             </div>
@@ -129,14 +130,14 @@ export default function EventCard({ event }: EventCardProps) {
           href={eventUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="flex-1 bg-purple-600 hover:bg-purple-500 text-white text-center py-2 px-4 rounded-md text-sm font-medium transition-colors shadow-lg hover:shadow-purple-500/50"
+          className="flex-1 bg-[#A25AD9] hover:bg-[#8C3EC5] text-white text-center py-2.5 px-4 rounded-xl text-sm font-bold transition-all duration-200 shadow-md hover:shadow-lg hover:shadow-[#A25AD9]/30"
         >
           {t('viewDetails')}
         </a>
       </div>
 
       {/* 来源标签 */}
-      <div className="mt-3 text-xs text-purple-400 text-right relative z-10">
+      <div className="mt-3 text-xs text-[#4A2C22]/50 text-right relative z-10">
         {locale === 'zh' ? '来源' : 'Source'}: {event.source}
       </div>
     </div>

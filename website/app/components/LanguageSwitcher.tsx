@@ -24,23 +24,23 @@ export default function LanguageSwitcher() {
   };
 
   return (
-    <div className="flex items-center gap-2 bg-purple-900/50 rounded-lg shadow-sm border border-purple-400/30 p-1">
+    <div className="flex items-center gap-2 bg-white rounded-xl shadow-sm border-2 border-[#F0D3B6] p-1">
       <button
         onClick={() => switchLanguage('en')}
-        className={`px-3 py-1.5 rounded text-sm font-medium transition-colors ${
+        className={`px-3 py-1.5 rounded-lg text-sm font-bold transition-all duration-200 ${
           locale === 'en'
-            ? 'bg-purple-600 text-white shadow-lg shadow-purple-500/50'
-            : 'text-purple-200 hover:text-white hover:bg-purple-800/50'
+            ? 'bg-[#A25AD9] text-white shadow-md shadow-[#A25AD9]/30'
+            : 'text-[#4A2C22] hover:bg-[#FFF4E6]'
         }`}
       >
         {t('english')}
       </button>
       <button
         onClick={() => switchLanguage('zh')}
-        className={`px-3 py-1.5 rounded text-sm font-medium transition-colors ${
+        className={`px-3 py-1.5 rounded-lg text-sm font-bold transition-all duration-200 ${
           locale === 'zh'
-            ? 'bg-purple-600 text-white shadow-lg shadow-purple-500/50'
-            : 'text-purple-200 hover:text-white hover:bg-purple-800/50'
+            ? 'bg-[#A25AD9] text-white shadow-md shadow-[#A25AD9]/30'
+            : 'text-[#4A2C22] hover:bg-[#FFF4E6]'
         }`}
       >
         {t('chinese')}

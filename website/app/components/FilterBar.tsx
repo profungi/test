@@ -30,27 +30,27 @@ export default function FilterBar() {
   };
 
   return (
-    <div className="bg-purple-950/40 backdrop-blur-md shadow-lg border-b border-purple-500/30">
+    <div className="bg-white/80 backdrop-blur-md shadow-md border-b-2 border-[#F0D3B6]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
         {/* 周切换按钮和语言切换器 */}
         <div className="flex items-center justify-between mb-4">
           <div className="flex gap-2">
             <button
               onClick={() => updateFilter('week', 'current')}
-              className={`px-4 py-2 rounded-md text-sm font-medium transition-colors ${
+              className={`px-4 py-2 rounded-xl text-sm font-bold transition-all duration-200 ${
                 currentWeek === 'current'
-                  ? 'bg-purple-600 text-white shadow-lg shadow-purple-500/50'
-                  : 'bg-purple-900/50 text-purple-200 hover:bg-purple-800/60'
+                  ? 'bg-[#A25AD9] text-white shadow-md shadow-[#A25AD9]/30'
+                  : 'bg-[#FFF4E6] text-[#4A2C22] hover:bg-[#F9B879]/30 border border-[#F0D3B6]'
               }`}
             >
               {t('thisWeek')}
             </button>
             <button
               onClick={() => updateFilter('week', 'next')}
-              className={`px-4 py-2 rounded-md text-sm font-medium transition-colors ${
+              className={`px-4 py-2 rounded-xl text-sm font-bold transition-all duration-200 ${
                 currentWeek === 'next'
-                  ? 'bg-purple-600 text-white shadow-lg shadow-purple-500/50'
-                  : 'bg-purple-900/50 text-purple-200 hover:bg-purple-800/60'
+                  ? 'bg-[#A25AD9] text-white shadow-md shadow-[#A25AD9]/30'
+                  : 'bg-[#FFF4E6] text-[#4A2C22] hover:bg-[#F9B879]/30 border border-[#F0D3B6]'
               }`}
             >
               {t('nextWeek')}
@@ -63,13 +63,13 @@ export default function FilterBar() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           {/* 地区筛选 */}
           <div>
-            <label className="block text-sm font-medium text-purple-200 mb-1">
+            <label className="block text-sm font-bold text-[#4A2C22] mb-2">
               📍 {t('filterByLocation')}
             </label>
             <select
               value={currentLocation}
               onChange={(e) => updateFilter('location', e.target.value)}
-              className="w-full px-3 py-2 border border-purple-400/40 rounded-md focus:ring-2 focus:ring-purple-400 focus:border-purple-400 bg-purple-950/60 text-white font-medium shadow-sm hover:border-purple-400/60 transition-colors cursor-pointer"
+              className="w-full px-3 py-2.5 border-2 border-[#F0D3B6] rounded-xl focus:ring-2 focus:ring-[#A25AD9] focus:border-[#A25AD9] bg-white text-[#4A2C22] font-medium shadow-sm hover:border-[#A25AD9]/50 transition-all cursor-pointer"
             >
               <option value="all">{t('allLocations')}</option>
               <option value="sf">{t('sanFrancisco')}</option>
@@ -82,13 +82,13 @@ export default function FilterBar() {
 
           {/* 类型筛选 */}
           <div>
-            <label className="block text-sm font-medium text-purple-200 mb-1">
+            <label className="block text-sm font-bold text-[#4A2C22] mb-2">
               🎭 {t('filterByType')}
             </label>
             <select
               value={currentType}
               onChange={(e) => updateFilter('type', e.target.value)}
-              className="w-full px-3 py-2 border border-purple-400/40 rounded-md focus:ring-2 focus:ring-purple-400 focus:border-purple-400 bg-purple-950/60 text-white font-medium shadow-sm hover:border-purple-400/60 transition-colors cursor-pointer"
+              className="w-full px-3 py-2.5 border-2 border-[#F0D3B6] rounded-xl focus:ring-2 focus:ring-[#A25AD9] focus:border-[#A25AD9] bg-white text-[#4A2C22] font-medium shadow-sm hover:border-[#A25AD9]/50 transition-all cursor-pointer"
             >
               <option value="all">{t('allTypes')}</option>
               <option value="market">{t('market')}</option>
@@ -106,13 +106,13 @@ export default function FilterBar() {
 
           {/* 价格筛选 */}
           <div>
-            <label className="block text-sm font-medium text-purple-200 mb-1">
+            <label className="block text-sm font-bold text-[#4A2C22] mb-2">
               💰 {t('filterByPrice')}
             </label>
             <select
               value={currentPrice}
               onChange={(e) => updateFilter('price', e.target.value)}
-              className="w-full px-3 py-2 border border-purple-400/40 rounded-md focus:ring-2 focus:ring-purple-400 focus:border-purple-400 bg-purple-950/60 text-white font-medium shadow-sm hover:border-purple-400/60 transition-colors cursor-pointer"
+              className="w-full px-3 py-2.5 border-2 border-[#F0D3B6] rounded-xl focus:ring-2 focus:ring-[#A25AD9] focus:border-[#A25AD9] bg-white text-[#4A2C22] font-medium shadow-sm hover:border-[#A25AD9]/50 transition-all cursor-pointer"
             >
               <option value="all">{t('allPrices')}</option>
               <option value="free">{t('free')}</option>

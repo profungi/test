@@ -1,8 +1,18 @@
 @import "tailwindcss";
 
 :root {
-  --background: #1a0f3e;
-  --foreground: #ededed;
+  /* Brand Colors */
+  --grape-purple: #A25AD9;
+  --champagne-yellow: #F7D46A;
+  --leaf-green: #2FA56D;
+  --cream-orange: #F9B879;
+  --light-cream: #FFF4E6;
+  --dark-brown: #4A2C22;
+  --light-divider: #F0D3B6;
+
+  /* System colors */
+  --background: #FFF4E6;
+  --foreground: #4A2C22;
   --mouse-x: 0px;
   --mouse-y: 0px;
 }
@@ -15,10 +25,10 @@
 }
 
 body {
-  background: linear-gradient(135deg, #1a0f3e 0%, #2d1b69 50%, #1a0f3e 100%);
+  background: linear-gradient(135deg, #FFF4E6 0%, #F9B879 50%, #FFF4E6 100%);
   min-height: 100vh;
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-geist-sans), -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 }
 
 /* Feedback widget animations */
@@ -72,9 +82,16 @@ select {
   appearance: none;
 }
 
-/* Glow Card Effect */
+/* Glow Card Effect - Grape Purple Theme */
 .glow-card {
   position: relative;
+  box-shadow: 0 4px 6px rgba(74, 44, 34, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.glow-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 16px rgba(162, 90, 217, 0.2);
 }
 
 .glow-card::before,
@@ -91,7 +108,7 @@ select {
 .glow-card::before {
   background: radial-gradient(
     800px circle at var(--mouse-x) var(--mouse-y),
-    rgba(147, 51, 234, 0.15),
+    rgba(162, 90, 217, 0.12),
     transparent 40%
   );
   z-index: 1;
@@ -100,7 +117,7 @@ select {
 .glow-card::after {
   background: radial-gradient(
     600px circle at var(--mouse-x) var(--mouse-y),
-    rgba(168, 85, 247, 0.4),
+    rgba(247, 212, 106, 0.2),
     transparent 40%
   );
   z-index: 2;
