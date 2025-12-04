@@ -106,11 +106,16 @@ export default function EventDescriptionPopover({ description, children }: Event
 
         {/* 桌面端悬停显示的 popover */}
         {!isTouchDevice && isHovered && (
-          <div className={`absolute z-50 w-[65ch] max-w-[90vw] bg-white/95 backdrop-blur-sm border border-gray-300 rounded-lg shadow-xl p-4 mt-2 ${popoverPosition === 'right' ? 'right-0' : 'left-0'}`}>
-            <div className="text-sm text-gray-700 whitespace-pre-wrap break-words max-h-60 overflow-y-auto">
+          <div
+            className={`absolute w-[65ch] max-w-[90vw] bg-white/95 backdrop-blur-sm border-2 border-[#F0D3B6] rounded-xl shadow-2xl p-4 mt-2 ${popoverPosition === 'right' ? 'right-0' : 'left-0'}`}
+            style={{ zIndex: 9999 }}
+          >
+            <div className="text-sm text-[#4A2C22] whitespace-pre-wrap break-words max-h-60 overflow-y-auto">
               {description}
             </div>
-            <div className={`absolute -top-2 w-4 h-4 bg-white/95 border-l border-t border-gray-300 transform rotate-45 ${popoverPosition === 'right' ? 'right-4' : 'left-4'}`}></div>
+            <div
+              className={`absolute -top-2 w-4 h-4 bg-white/95 border-l-2 border-t-2 border-[#F0D3B6] transform rotate-45 ${popoverPosition === 'right' ? 'right-4' : 'left-4'}`}
+            ></div>
           </div>
         )}
       </div>
@@ -120,26 +125,28 @@ export default function EventDescriptionPopover({ description, children }: Event
         <>
           <div
             ref={popoverRef}
-            className="fixed inset-x-4 top-1/2 -translate-y-1/2 z-50 bg-white/95 backdrop-blur-sm border border-gray-300 rounded-lg shadow-2xl p-6 max-h-[80vh] overflow-y-auto"
+            className="fixed inset-x-4 top-1/2 -translate-y-1/2 bg-white/95 backdrop-blur-sm border-2 border-[#F0D3B6] rounded-2xl shadow-2xl p-6 max-h-[80vh] overflow-y-auto"
+            style={{ zIndex: 9999 }}
           >
             {/* 关闭按钮 */}
             <button
               onClick={() => setIsOpen(false)}
-              className="absolute top-3 right-3 text-gray-400 hover:text-gray-600 text-2xl leading-none"
+              className="absolute top-3 right-3 text-[#4A2C22]/40 hover:text-[#4A2C22] text-2xl leading-none font-bold"
               aria-label="Close"
             >
               ×
             </button>
 
             {/* 完整描述 */}
-            <div className="text-sm text-gray-700 whitespace-pre-wrap break-words pr-8">
+            <div className="text-sm text-[#4A2C22] whitespace-pre-wrap break-words pr-8">
               {description}
             </div>
           </div>
 
           {/* 移动端遮罩层 */}
           <div
-            className="fixed inset-0 bg-black bg-opacity-50 z-40"
+            className="fixed inset-0 bg-black bg-opacity-50"
+            style={{ zIndex: 9998 }}
             onClick={() => setIsOpen(false)}
           />
         </>

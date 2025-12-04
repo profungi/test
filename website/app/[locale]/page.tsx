@@ -7,6 +7,7 @@ import FeedbackSection from '../components/FeedbackSection';
 import { useTranslations } from 'next-intl';
 import { getTranslations } from 'next-intl/server';
 import { Suspense } from 'react';
+import Image from 'next/image';
 
 // ISR 配置：1小时重新验证
 export const revalidate = 3600;
@@ -67,7 +68,13 @@ export default async function HomePage({
       <header className="bg-white/90 backdrop-blur-md shadow-md border-b-2 border-[#F0D3B6]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
           <div className="flex items-center gap-4">
-            <span className="text-5xl">🍇</span>
+            <Image
+              src="/grape-mascot.jpg"
+              alt="Grape Mascot"
+              width={80}
+              height={80}
+              className="object-contain"
+            />
             <div>
               <h1 className="text-3xl font-bold text-[#4A2C22]">
                 {t('siteTitle')}
@@ -98,7 +105,15 @@ export default async function HomePage({
         {/* 活动列表 */}
         {events.length === 0 ? (
           <div className="text-center py-12 bg-white/60 rounded-2xl border-2 border-[#F0D3B6]">
-            <p className="text-[#4A2C22] text-xl font-bold mb-2">🍇</p>
+            <div className="mb-4">
+              <Image
+                src="/grape-mascot.jpg"
+                alt="Grape Mascot"
+                width={80}
+                height={80}
+                className="object-contain mx-auto"
+              />
+            </div>
             <p className="text-[#4A2C22] text-lg font-semibold">{t('noEvents')}</p>
             <p className="text-[#4A2C22]/60 text-sm mt-2">
               {t('noEventsHint')}
@@ -132,8 +147,14 @@ export default async function HomePage({
                 date: currentDate
               })}
             </p>
-            <div className="mt-4 text-4xl">
-              🍇
+            <div className="mt-4">
+              <Image
+                src="/grape-mascot.jpg"
+                alt="Grape Mascot"
+                width={60}
+                height={60}
+                className="object-contain mx-auto"
+              />
             </div>
           </div>
         </div>
