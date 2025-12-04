@@ -1,26 +1,6 @@
-import createMiddleware from 'next-intl/middleware';
-import { routing } from './i18n/routing';
-import { NextRequest } from 'next/server';
+// 临时测试：不用 next-intl，只看 Edge 正常不正常
+import {NextResponse} from 'next/server';
 
-const intlMiddleware = createMiddleware(routing);
-
-export default function middleware(request: NextRequest) {
-  try {
-    return intlMiddleware(request);
-  } catch (error) {
-    console.error('[Middleware Error]', {
-      message: error instanceof Error ? error.message : String(error),
-      stack: error instanceof Error ? error.stack : undefined,
-      url: request.url,
-    });
-    throw error;
-  }
+export function middleware() {
+  return NextResponse.next();
 }
-
-export const config = {
-  // Match only internationalized pathnames
-  // Skip static files, _next, api routes, and files with extensions
-  matcher: [
-    '/((?!api|_next|_vercel|.*\\..*).*)'
-  ]
-};
