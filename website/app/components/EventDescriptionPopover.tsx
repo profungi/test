@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useRef, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 
 interface EventDescriptionPopoverProps {
   description: string;
@@ -12,12 +13,15 @@ export default function EventDescriptionPopover({ description, children }: Event
   const [isHovered, setIsHovered] = useState(false);
   const [isTouchDevice, setIsTouchDevice] = useState(false);
   const [popoverPosition, setPopoverPosition] = useState<'left' | 'right'>('left');
+  const [popoverStyle, setPopoverStyle] = useState<{ top: number; left: number }>({ top: 0, left: 0 });
+  const [mounted, setMounted] = useState(false);
   const popoverRef = useRef<HTMLDivElement>(null);
   const triggerRef = useRef<HTMLDivElement>(null);
   const hoverTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   // 检测是否为触摸设备
   useEffect(() => {
+    setMounted(true);
     setIsTouchDevice('ontouchstart' in window || navigator.maxTouchPoints > 0);
   }, []);
 
@@ -44,20 +48,30 @@ export default function EventDescriptionPopover({ description, children }: Event
   }, [isOpen]);
 
   const handleMouseEnter = () => {
-    if (!isTouchDevice) {
-      // 计算 popover 应该显示在左边还是右边
-      if (triggerRef.current) {
-        const rect = triggerRef.current.getBoundingClientRect();
-        const viewportWidth = window.innerWidth;
-        const popoverWidth = 65 * 8; // 65ch 大约等于 65 * 8px（假设字符宽度约8px）
+    if (!isTouchDevice && triggerRef.current) {
+      const rect = triggerRef.current.getBoundingClientRect();
+      const viewportWidth = window.innerWidth;
+      const popoverWidth = 520; // 65ch 大约等于 520px
 
-        // 如果右边空间不够，就显示在左边（右对齐）
-        if (rect.left + popoverWidth > viewportWidth - 20) {
-          setPopoverPosition('right');
-        } else {
-          setPopoverPosition('left');
+      // 计算位置
+      let left = rect.left;
+      let position: 'left' | 'right' = 'left';
+
+      // 如果右边空间不够，就显示在右边（右对齐）
+      if (rect.left + popoverWidth > viewportWidth - 20) {
+        position = 'right';
+        left = rect.right - popoverWidth;
+        // 确保不超出左边界
+        if (left < 20) {
+          left = 20;
         }
       }
+
+      setPopoverPosition(position);
+      setPopoverStyle({
+        top: rect.bottom + window.scrollY + 8,
+        left: left,
+      });
 
       // 桌面端：延迟显示，避免误触
       hoverTimeoutRef.current = setTimeout(() => {
@@ -93,7 +107,7 @@ export default function EventDescriptionPopover({ description, children }: Event
   }, []);
 
   return (
-    <div className="relative">
+    <>
       {/* 触发区域 */}
       <div
         ref={triggerRef}
@@ -103,54 +117,72 @@ export default function EventDescriptionPopover({ description, children }: Event
         onClick={handleClick}
       >
         {children}
-
-        {/* 桌面端悬停显示的 popover */}
-        {!isTouchDevice && isHovered && (
-          <div
-            className={`absolute w-[65ch] max-w-[90vw] bg-white/95 backdrop-blur-sm border-2 border-[#F0D3B6] rounded-xl shadow-2xl p-4 mt-2 ${popoverPosition === 'right' ? 'right-0' : 'left-0'}`}
-            style={{ zIndex: 9999 }}
-          >
-            <div className="text-sm text-[#4A2C22] whitespace-pre-wrap break-words max-h-60 overflow-y-auto">
-              {description}
-            </div>
-            <div
-              className={`absolute -top-2 w-4 h-4 bg-white/95 border-l-2 border-t-2 border-[#F0D3B6] transform rotate-45 ${popoverPosition === 'right' ? 'right-4' : 'left-4'}`}
-            ></div>
-          </div>
-        )}
       </div>
 
-      {/* 移动端/触摸设备点击显示的 popover */}
-      {isTouchDevice && isOpen && (
+      {/* 使用 Portal 渲染 popover 到 body */}
+      {mounted && (
         <>
-          <div
-            ref={popoverRef}
-            className="fixed inset-x-4 top-1/2 -translate-y-1/2 bg-white/95 backdrop-blur-sm border-2 border-[#F0D3B6] rounded-2xl shadow-2xl p-6 max-h-[80vh] overflow-y-auto"
-            style={{ zIndex: 9999 }}
-          >
-            {/* 关闭按钮 */}
-            <button
-              onClick={() => setIsOpen(false)}
-              className="absolute top-3 right-3 text-[#4A2C22]/40 hover:text-[#4A2C22] text-2xl leading-none font-bold"
-              aria-label="Close"
+          {/* 桌面端悬停显示的 popover */}
+          {!isTouchDevice && isHovered && createPortal(
+            <div
+              className="fixed w-[520px] max-w-[90vw] bg-white/95 backdrop-blur-sm border-2 border-[#F0D3B6] rounded-xl shadow-2xl p-4"
+              style={{
+                zIndex: 9999,
+                top: `${popoverStyle.top}px`,
+                left: `${popoverStyle.left}px`,
+              }}
+              onMouseEnter={() => {
+                if (hoverTimeoutRef.current) {
+                  clearTimeout(hoverTimeoutRef.current);
+                }
+                setIsHovered(true);
+              }}
+              onMouseLeave={handleMouseLeave}
             >
-              ×
-            </button>
+              <div className="text-sm text-[#4A2C22] whitespace-pre-wrap break-words max-h-60 overflow-y-auto">
+                {description}
+              </div>
+              <div
+                className={`absolute -top-2 w-4 h-4 bg-white/95 border-l-2 border-t-2 border-[#F0D3B6] transform rotate-45 ${popoverPosition === 'right' ? 'right-4' : 'left-4'}`}
+              ></div>
+            </div>,
+            document.body
+          )}
 
-            {/* 完整描述 */}
-            <div className="text-sm text-[#4A2C22] whitespace-pre-wrap break-words pr-8">
-              {description}
-            </div>
-          </div>
+          {/* 移动端/触摸设备点击显示的 popover */}
+          {isTouchDevice && isOpen && createPortal(
+            <>
+              <div
+                ref={popoverRef}
+                className="fixed inset-x-4 top-1/2 -translate-y-1/2 bg-white/95 backdrop-blur-sm border-2 border-[#F0D3B6] rounded-2xl shadow-2xl p-6 max-h-[80vh] overflow-y-auto"
+                style={{ zIndex: 9999 }}
+              >
+                {/* 关闭按钮 */}
+                <button
+                  onClick={() => setIsOpen(false)}
+                  className="absolute top-3 right-3 text-[#4A2C22]/40 hover:text-[#4A2C22] text-2xl leading-none font-bold"
+                  aria-label="Close"
+                >
+                  ×
+                </button>
 
-          {/* 移动端遮罩层 */}
-          <div
-            className="fixed inset-0 bg-black bg-opacity-50"
-            style={{ zIndex: 9998 }}
-            onClick={() => setIsOpen(false)}
-          />
+                {/* 完整描述 */}
+                <div className="text-sm text-[#4A2C22] whitespace-pre-wrap break-words pr-8">
+                  {description}
+                </div>
+              </div>
+
+              {/* 移动端遮罩层 */}
+              <div
+                className="fixed inset-0 bg-black bg-opacity-50"
+                style={{ zIndex: 9998 }}
+                onClick={() => setIsOpen(false)}
+              />
+            </>,
+            document.body
+          )}
         </>
       )}
-    </div>
+    </>
   );
 }

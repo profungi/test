@@ -71,7 +71,7 @@ export default function EventCard({ event }: EventCardProps) {
   return (
     <div
       ref={cardRef}
-      className="glow-card group relative bg-white rounded-2xl p-6 border-2 border-[#4A2C22]/10 overflow-hidden transition-all duration-300"
+      className="glow-card group relative bg-white rounded-2xl p-6 border-2 border-[#4A2C22]/10 transition-all duration-300"
       style={{ borderColor: '#F0D3B6' }}
     >
       {/* 顶部标签栏 */}
