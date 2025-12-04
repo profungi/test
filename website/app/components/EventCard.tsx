@@ -130,7 +130,7 @@ export default function EventCard({ event }: EventCardProps) {
           href={eventUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="flex-1 bg-[#A25AD9] hover:bg-[#8C3EC5] text-white text-center py-2.5 px-4 rounded-xl text-sm font-bold transition-all duration-200 shadow-md hover:shadow-lg hover:shadow-[#A25AD9]/30"
+          className="flex-1 bg-[#B37DA2] hover:bg-[#8B557A] text-white text-center py-2.5 px-4 rounded-xl text-sm font-bold transition-all duration-200 shadow-md hover:shadow-lg hover:shadow-[#B37DA2]/30"
         >
           {t('viewDetails')}
         </a>

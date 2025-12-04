@@ -29,7 +29,7 @@ export default function LanguageSwitcher() {
         onClick={() => switchLanguage('en')}
         className={`px-3 py-1.5 rounded-lg text-sm font-bold transition-all duration-200 ${
           locale === 'en'
-            ? 'bg-[#A25AD9] text-white shadow-md shadow-[#A25AD9]/30'
+            ? 'bg-[#B37DA2] text-white shadow-md shadow-[#B37DA2]/30'
             : 'text-[#4A2C22] hover:bg-[#FFF4E6]'
         }`}
       >
@@ -39,7 +39,7 @@ export default function LanguageSwitcher() {
         onClick={() => switchLanguage('zh')}
         className={`px-3 py-1.5 rounded-lg text-sm font-bold transition-all duration-200 ${
           locale === 'zh'
-            ? 'bg-[#A25AD9] text-white shadow-md shadow-[#A25AD9]/30'
+            ? 'bg-[#B37DA2] text-white shadow-md shadow-[#B37DA2]/30'
             : 'text-[#4A2C22] hover:bg-[#FFF4E6]'
         }`}
       >

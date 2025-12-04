@@ -96,7 +96,7 @@ export default async function HomePage({
         <div className="mb-6 flex items-center justify-between">
           <h2 className="text-2xl font-bold text-[#4A2C22]">
             {weekTitle}
-            <span className="ml-3 text-lg font-semibold text-[#A25AD9]">
+            <span className="ml-3 text-lg font-semibold text-[#B37DA2]">
               {t('eventsCount', { count: events.length })}
             </span>
           </h2>
@@ -128,7 +128,7 @@ export default async function HomePage({
             </div>
 
             {/* 用户反馈组件 */}
-            <Suspense fallback={<div className="mt-8 text-center text-[#A25AD9] font-medium">Loading...</div>}>
+            <Suspense fallback={<div className="mt-8 text-center text-[#B37DA2] font-medium">Loading...</div>}>
               <FeedbackSection eventsCount={events.length} />
             </Suspense>
           </>
@@ -136,7 +136,7 @@ export default async function HomePage({
       </main>
 
       {/* 页脚 */}
-      <footer className="bg-[#4A2C22] border-t-4 border-[#A25AD9] mt-12">
+      <footer className="bg-[#4A2C22] border-t-4 border-[#B37DA2] mt-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <div className="text-center">
             <p className="text-[#FFF4E6] text-sm font-medium">
