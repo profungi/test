@@ -1,10 +1,21 @@
-import { createClient } from '@libsql/client';
+import { createClient, Client } from '@libsql/client';
 
-// Turso 数据库连接
-const turso = createClient({
-  url: process.env.TURSO_DATABASE_URL!,
-  authToken: process.env.TURSO_AUTH_TOKEN!,
-});
+// Turso 数据库连接（延迟初始化）
+let turso: Client | null = null;
+
+function getTursoClient(): Client {
+  if (!turso) {
+    if (!process.env.TURSO_DATABASE_URL || !process.env.TURSO_AUTH_TOKEN) {
+      throw new Error('Missing Turso environment variables: TURSO_DATABASE_URL or TURSO_AUTH_TOKEN');
+    }
+
+    turso = createClient({
+      url: process.env.TURSO_DATABASE_URL,
+      authToken: process.env.TURSO_AUTH_TOKEN,
+    });
+  }
+  return turso;
+}
 
 export interface FeedbackData {
   sessionId: string;
@@ -22,7 +33,8 @@ export interface FeedbackData {
  * 保存用户反馈到 Turso
  */
 export async function saveFeedback(data: FeedbackData): Promise<{ feedbackId: number }> {
-  const result = await turso.execute({
+  const client = getTursoClient();
+  const result = await client.execute({
     sql: `
       INSERT INTO user_feedback (
         session_id,
@@ -60,7 +72,8 @@ export async function saveFeedback(data: FeedbackData): Promise<{ feedbackId: nu
  * 获取反馈统计（最近 7 天）
  */
 export async function getRecentFeedbackStats() {
-  const result = await turso.execute({
+  const client = getTursoClient();
+  const result = await client.execute({
     sql: `
       SELECT
         feedback_type,
@@ -80,7 +93,8 @@ export async function getRecentFeedbackStats() {
  * 获取总体反馈统计
  */
 export async function getTotalFeedbackStats() {
-  const result = await turso.execute({
+  const client = getTursoClient();
+  const result = await client.execute({
     sql: `
       SELECT
         feedback_type,
