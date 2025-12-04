@@ -3,6 +3,7 @@
 import { Event, EVENT_TYPE_EMOJIS, EVENT_TYPE_LABELS, EVENT_TYPE_COLORS } from '@/lib/types';
 import { useLocale, useTranslations } from 'next-intl';
 import EventDescriptionPopover from './EventDescriptionPopover';
+import { useRef, useEffect } from 'react';
 
 interface EventCardProps {
   event: Event;
@@ -11,6 +12,7 @@ interface EventCardProps {
 export default function EventCard({ event }: EventCardProps) {
   const locale = useLocale();
   const t = useTranslations('event');
+  const cardRef = useRef<HTMLDivElement>(null);
 
   // 格式化时间
   const formatTime = (timeStr: string) => {
@@ -48,8 +50,29 @@ export default function EventCard({ event }: EventCardProps) {
   // 根据语言选择显示的标题
   const displayTitle = locale === 'zh' && event.title_zh ? event.title_zh : event.title;
 
+  // Glow effect on mouse move
+  useEffect(() => {
+    const card = cardRef.current;
+    if (!card) return;
+
+    const handleMouseMove = (e: MouseEvent) => {
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+
+      card.style.setProperty('--mouse-x', `${x}px`);
+      card.style.setProperty('--mouse-y', `${y}px`);
+    };
+
+    card.addEventListener('mousemove', handleMouseMove);
+    return () => card.removeEventListener('mousemove', handleMouseMove);
+  }, []);
+
   return (
-    <div className="bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow p-6 border border-gray-200">
+    <div
+      ref={cardRef}
+      className="glow-card group relative bg-[rgb(30,27,75)] rounded-lg p-6 border border-purple-500/20 overflow-hidden transition-all duration-300"
+    >
       {/* 顶部标签栏 */}
       <div className="flex items-center justify-between mb-3">
         <span className={`px-3 py-1 rounded-full text-sm font-medium ${colorClass}`}>
@@ -63,27 +86,27 @@ export default function EventCard({ event }: EventCardProps) {
       </div>
 
       {/* 活动标题 */}
-      <h3 className="text-lg font-semibold text-gray-900 mb-3 line-clamp-2">
+      <h3 className="text-lg font-semibold text-white mb-3 line-clamp-2 relative z-10">
         {displayTitle}
       </h3>
 
       {/* 活动详情 */}
-      <div className="space-y-2 mb-4">
+      <div className="space-y-2 mb-4 relative z-10">
         {/* 时间 */}
-        <div className="flex items-start text-sm text-gray-700">
+        <div className="flex items-start text-sm text-purple-200">
           <span className="mr-2">📅</span>
           <span>{formatTime(event.start_time)}</span>
         </div>
 
         {/* 地点 */}
-        <div className="flex items-start text-sm text-gray-700">
+        <div className="flex items-start text-sm text-purple-200">
           <span className="mr-2">📍</span>
           <span className="line-clamp-1">{formatLocation(event.location)}</span>
         </div>
 
         {/* 价格 */}
         {event.price && (
-          <div className="flex items-start text-sm text-gray-700">
+          <div className="flex items-start text-sm text-purple-200">
             <span className="mr-2">💰</span>
             <span>{event.price}</span>
           </div>
@@ -92,7 +115,7 @@ export default function EventCard({ event }: EventCardProps) {
         {/* 描述 */}
         {event.description && (
           <EventDescriptionPopover description={event.description}>
-            <div className="flex items-start text-sm text-gray-600">
+            <div className="flex items-start text-sm text-purple-300">
               <span className="mr-2">✨</span>
               <span className="line-clamp-2">{event.description}</span>
             </div>
@@ -101,19 +124,19 @@ export default function EventCard({ event }: EventCardProps) {
       </div>
 
       {/* 操作按钮 */}
-      <div className="flex gap-2">
+      <div className="flex gap-2 relative z-10">
         <a
           href={eventUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="flex-1 bg-blue-600 hover:bg-blue-700 text-white text-center py-2 px-4 rounded-md text-sm font-medium transition-colors"
+          className="flex-1 bg-purple-600 hover:bg-purple-500 text-white text-center py-2 px-4 rounded-md text-sm font-medium transition-colors shadow-lg hover:shadow-purple-500/50"
         >
           {t('viewDetails')}
         </a>
       </div>
 
       {/* 来源标签 */}
-      <div className="mt-3 text-xs text-gray-400 text-right">
+      <div className="mt-3 text-xs text-purple-400 text-right relative z-10">
         {locale === 'zh' ? '来源' : 'Source'}: {event.source}
       </div>
     </div>

@@ -62,14 +62,14 @@ export default async function HomePage({
   const currentDate = new Date().toLocaleDateString(locale === 'zh' ? 'zh-CN' : 'en-US');
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen">
       {/* 顶部导航栏 */}
-      <header className="bg-white shadow-sm">
+      <header className="bg-purple-950/40 backdrop-blur-md shadow-lg">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-          <h1 className="text-3xl font-bold text-gray-900">
+          <h1 className="text-3xl font-bold text-white">
             🎯 {t('siteTitle')}
           </h1>
-          <p className="mt-2 text-sm text-gray-600">
+          <p className="mt-2 text-sm text-purple-200">
             {t('siteSubtitle')}
           </p>
         </div>
@@ -82,9 +82,9 @@ export default async function HomePage({
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* 统计信息 */}
         <div className="mb-6 flex items-center justify-between">
-          <h2 className="text-2xl font-semibold text-gray-900">
+          <h2 className="text-2xl font-semibold text-white">
             {weekTitle}
-            <span className="ml-3 text-lg font-normal text-gray-600">
+            <span className="ml-3 text-lg font-normal text-purple-200">
               {t('eventsCount', { count: events.length })}
             </span>
           </h2>
@@ -93,8 +93,8 @@ export default async function HomePage({
         {/* 活动列表 */}
         {events.length === 0 ? (
           <div className="text-center py-12">
-            <p className="text-gray-500 text-lg">{t('noEvents')}</p>
-            <p className="text-gray-400 text-sm mt-2">
+            <p className="text-purple-200 text-lg">{t('noEvents')}</p>
+            <p className="text-purple-300 text-sm mt-2">
               {t('noEventsHint')}
             </p>
           </div>
@@ -107,7 +107,7 @@ export default async function HomePage({
             </div>
 
             {/* 用户反馈组件 */}
-            <Suspense fallback={<div className="mt-8 text-center text-gray-500">Loading...</div>}>
+            <Suspense fallback={<div className="mt-8 text-center text-purple-300">Loading...</div>}>
               <FeedbackSection eventsCount={events.length} />
             </Suspense>
           </>
@@ -115,9 +115,9 @@ export default async function HomePage({
       </main>
 
       {/* 页脚 */}
-      <footer className="bg-white border-t border-gray-200 mt-12">
+      <footer className="bg-purple-950/40 backdrop-blur-md border-t border-purple-500/30 mt-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-          <div className="text-center text-sm text-gray-600">
+          <div className="text-center text-sm text-purple-200">
             <p>
               {t('dataSource')}
             </p>

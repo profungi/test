@@ -82,8 +82,8 @@ export default function FeedbackWidget({
 
   if (isSubmitted) {
     return (
-      <div className={`bg-green-50 border border-green-200 rounded-lg p-6 text-center ${className}`}>
-        <p className="text-green-800 font-medium">
+      <div className={`bg-green-900/40 border border-green-400/50 rounded-lg p-6 text-center ${className}`}>
+        <p className="text-green-200 font-medium">
           {t('thankYou')}
         </p>
       </div>
@@ -91,9 +91,9 @@ export default function FeedbackWidget({
   }
 
   return (
-    <div className={`bg-gradient-to-br from-blue-50 to-purple-50 border border-blue-200 rounded-lg p-6 ${className}`}>
+    <div className={`bg-purple-900/30 backdrop-blur-sm border border-purple-400/30 rounded-lg p-6 ${className}`}>
       <div className="text-center mb-4">
-        <h3 className="text-lg font-semibold text-gray-800 mb-2">
+        <h3 className="text-lg font-semibold text-purple-100 mb-2">
           {t('question')}
         </h3>
       </div>
@@ -129,14 +129,14 @@ export default function FeedbackWidget({
       {/* Comment box for thumbs down */}
       {showCommentBox && (
         <div className="mt-4 animate-fadeIn">
-          <p className="text-sm text-gray-600 mb-2 text-center">
+          <p className="text-sm text-purple-200 mb-2 text-center">
             {t('commentPrompt')}
           </p>
           <textarea
             value={comment}
             onChange={(e) => setComment(e.target.value)}
             placeholder={t('commentPlaceholder')}
-            className="w-full p-3 border border-gray-300 rounded-lg resize-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            className="w-full p-3 bg-purple-950/50 text-white placeholder-purple-400 border border-purple-400/40 rounded-lg resize-none focus:ring-2 focus:ring-purple-400 focus:border-transparent"
             rows={3}
             maxLength={500}
           />
@@ -147,7 +147,7 @@ export default function FeedbackWidget({
                 setSelectedFeedback(null);
                 setComment('');
               }}
-              className="px-4 py-2 text-gray-600 hover:text-gray-800 transition-colors"
+              className="px-4 py-2 text-purple-300 hover:text-purple-100 transition-colors"
               disabled={isSubmitting}
             >
               {t('cancel')}
@@ -155,7 +155,7 @@ export default function FeedbackWidget({
             <button
               onClick={handleCommentSubmit}
               disabled={isSubmitting}
-              className="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+              className="px-6 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-500 transition-colors disabled:opacity-50 disabled:cursor-not-allowed shadow-lg hover:shadow-purple-500/50"
             >
               {isSubmitting ? t('submitting') : t('submit')}
             </button>
