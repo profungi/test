@@ -157,6 +157,7 @@ export default async function HomePage({
                 className="object-contain mx-auto"
               />
             </div>
+<<<<<<< HEAD
             <div className="mt-4 pt-4 border-t border-[#B37DA2]/30">
               <div className="flex justify-center gap-4 mb-2">
                 <Link
@@ -177,6 +178,20 @@ export default async function HomePage({
                 © 2025 Champagne Grape
               </p>
             </div>
+||||||| 9b6f72b
+=======
+            <div className="mt-4 pt-4 border-t border-[#B37DA2]/30">
+              <Link
+                href={`/${locale}/privacy`}
+                className="text-[#F0D3B6] text-xs hover:text-[#FFF4E6] transition-colors"
+              >
+                {locale === 'zh' ? '隐私政策' : 'Privacy Policy'}
+              </Link>
+              <p className="text-[#F0D3B6]/60 text-xs mt-2">
+                © 2024 Champagne Grape
+              </p>
+            </div>
+>>>>>>> refs/tags/sculptor-merge-source-2219207b29d85b2fa6cec2e7ccabf4ccfa584079
           </div>
         </div>
       </footer>
