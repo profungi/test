@@ -7,6 +7,8 @@ import FeedbackSection from '../components/FeedbackSection';
 import { useTranslations } from 'next-intl';
 import { getTranslations } from 'next-intl/server';
 import { Suspense } from 'react';
+import Image from 'next/image';
+import Link from 'next/link';
 
 // ISR 配置：1小时重新验证
 export const revalidate = 3600;
@@ -62,16 +64,27 @@ export default async function HomePage({
   const currentDate = new Date().toLocaleDateString(locale === 'zh' ? 'zh-CN' : 'en-US');
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen">
       {/* 顶部导航栏 */}
-      <header className="bg-white shadow-sm">
+      <header className="bg-white/90 backdrop-blur-md shadow-md border-b-2 border-[#F0D3B6]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-          <h1 className="text-3xl font-bold text-gray-900">
-            🎯 {t('siteTitle')}
-          </h1>
-          <p className="mt-2 text-sm text-gray-600">
-            {t('siteSubtitle')}
-          </p>
+          <div className="flex items-center gap-4">
+            <Image
+              src="/grape-mascot.png"
+              alt="Grape Mascot"
+              width={80}
+              height={80}
+              className="object-contain"
+            />
+            <div>
+              <h1 className="text-3xl font-bold text-[#4A2C22]">
+                {t('siteTitle')}
+              </h1>
+              <p className="mt-1 text-sm text-[#4A2C22]/70 font-medium">
+                {t('siteSubtitle')}
+              </p>
+            </div>
+          </div>
         </div>
       </header>
 
@@ -82,9 +95,9 @@ export default async function HomePage({
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* 统计信息 */}
         <div className="mb-6 flex items-center justify-between">
-          <h2 className="text-2xl font-semibold text-gray-900">
+          <h2 className="text-2xl font-bold text-[#4A2C22]">
             {weekTitle}
-            <span className="ml-3 text-lg font-normal text-gray-600">
+            <span className="ml-3 text-lg font-semibold text-[#B37DA2]">
               {t('eventsCount', { count: events.length })}
             </span>
           </h2>
@@ -92,9 +105,18 @@ export default async function HomePage({
 
         {/* 活动列表 */}
         {events.length === 0 ? (
-          <div className="text-center py-12">
-            <p className="text-gray-500 text-lg">{t('noEvents')}</p>
-            <p className="text-gray-400 text-sm mt-2">
+          <div className="text-center py-12 bg-white/60 rounded-2xl border-2 border-[#F0D3B6]">
+            <div className="mb-4">
+              <Image
+                src="/grape-mascot.png"
+                alt="Grape Mascot"
+                width={80}
+                height={80}
+                className="object-contain mx-auto"
+              />
+            </div>
+            <p className="text-[#4A2C22] text-lg font-semibold">{t('noEvents')}</p>
+            <p className="text-[#4A2C22]/60 text-sm mt-2">
               {t('noEventsHint')}
             </p>
           </div>
@@ -107,7 +129,7 @@ export default async function HomePage({
             </div>
 
             {/* 用户反馈组件 */}
-            <Suspense fallback={<div className="mt-8 text-center text-gray-500">Loading...</div>}>
+            <Suspense fallback={<div className="mt-8 text-center text-[#B37DA2] font-medium">Loading...</div>}>
               <FeedbackSection eventsCount={events.length} />
             </Suspense>
           </>
@@ -115,17 +137,46 @@ export default async function HomePage({
       </main>
 
       {/* 页脚 */}
-      <footer className="bg-white border-t border-gray-200 mt-12">
+      <footer className="bg-[#4A2C22] border-t-4 border-[#B37DA2] mt-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-          <div className="text-center text-sm text-gray-600">
-            <p>
+          <div className="text-center">
+            <p className="text-[#FFF4E6] text-sm font-medium">
               {t('dataSource')}
             </p>
-            <p className="mt-2">
+            <p className="text-[#F0D3B6] text-xs mt-2">
               {t('updateInfo', {
                 date: currentDate
               })}
             </p>
+            <div className="mt-4">
+              <Image
+                src="/grape-mascot.png"
+                alt="Grape Mascot"
+                width={60}
+                height={60}
+                className="object-contain mx-auto"
+              />
+            </div>
+            <div className="mt-4 pt-4 border-t border-[#B37DA2]/30">
+              <div className="flex justify-center gap-4 mb-2">
+                <Link
+                  href={`/${locale}/privacy`}
+                  className="text-[#F0D3B6] text-xs hover:text-[#FFF4E6] transition-colors"
+                >
+                  {locale === 'zh' ? '隐私政策' : 'Privacy Policy'}
+                </Link>
+                <span className="text-[#F0D3B6]/40">|</span>
+                <Link
+                  href={`/${locale}/terms`}
+                  className="text-[#F0D3B6] text-xs hover:text-[#FFF4E6] transition-colors"
+                >
+                  {locale === 'zh' ? '使用条款' : 'Terms of Use'}
+                </Link>
+              </div>
+              <p className="text-[#F0D3B6]/60 text-xs">
+                © 2025 Champagne Grape
+              </p>
+            </div>
           </div>
         </div>
       </footer>
