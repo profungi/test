@@ -8,6 +8,7 @@ import { useTranslations } from 'next-intl';
 import { getTranslations } from 'next-intl/server';
 import { Suspense } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 
 // ISR 配置：1小时重新验证
 export const revalidate = 3600;
@@ -155,6 +156,17 @@ export default async function HomePage({
                 height={60}
                 className="object-contain mx-auto"
               />
+            </div>
+            <div className="mt-4 pt-4 border-t border-[#B37DA2]/30">
+              <Link
+                href={`/${locale}/privacy`}
+                className="text-[#F0D3B6] text-xs hover:text-[#FFF4E6] transition-colors"
+              >
+                {locale === 'zh' ? '隐私政策' : 'Privacy Policy'}
+              </Link>
+              <p className="text-[#F0D3B6]/60 text-xs mt-2">
+                © 2024 Champagne Grape
+              </p>
             </div>
           </div>
         </div>
