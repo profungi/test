@@ -1,4 +1,236 @@
 {
+  "terms": {
+    "pageTitle": "Terms of Use - Bay Area Events",
+    "pageDescription": "Read the terms and conditions for using Bay Area Events website.",
+    "backToHome": "← Back to Bay Area Events",
+    "title": "Terms of Use",
+    "lastUpdated": "Last Updated: {date}",
+    "intro": "Please read these Terms of Use (\"Terms\") carefully before using this website (the \"Site\"). By accessing or using the Site, you agree to be bound by these Terms. If you do not agree, do not use the Site.",
+    "section1": {
+      "title": "1. Who We Are",
+      "description": "The Site is operated by Champagne Grape (\"we\", \"us\", \"our\") at https://ymjr.de/. We provide curated listings of public events in and around the San Francisco Bay Area.",
+      "disclaimer": "We are not the organizer of the events listed on the Site and we are not affiliated with or endorsed by Eventbrite, SF Station, Funcheap, or any other third-party platforms mentioned on the Site."
+    },
+    "section2": {
+      "title": "2. Use of the Site",
+      "intro": "You may use the Site only for lawful purposes and in accordance with these Terms. In particular, you agree that you will not:",
+      "item1": "Use the Site in any way that violates applicable law or regulation",
+      "item2": "Use the Site to abuse, harass, or harm others",
+      "item3": "Attempt to interfere with the proper functioning of the Site",
+      "item4": "Use any automated system (including bots, spiders, or scrapers) to access or copy the Site or its content, except as explicitly allowed by us in writing",
+      "reserve": "We reserve the right to suspend or restrict access to the Site (in whole or in part) if we reasonably believe you have violated these Terms or pose a risk to the Site or other users."
+    },
+    "section3": {
+      "title": "3. Informational Purpose Only",
+      "intro": "The Site is intended for informational purposes only. We:",
+      "item1": "Do not organize the events listed",
+      "item2": "Do not sell tickets",
+      "item3": "Do not control the content, accuracy, or availability of the events or third-party websites we link to",
+      "changes": "Event details (including dates, times, locations, prices, descriptions, and availability) may change or be canceled at any time. You are solely responsible for confirming all details on the original event page or with the event organizer before attending.",
+      "risk": "Your decision to attend any event is entirely at your own risk. We do not assess or guarantee the safety, quality, suitability, or legality of any event or venue."
+    },
+    "section4": {
+      "title": "4. Third-Party Content and Links",
+      "intro": "Many event listings on the Site are based on information from third-party websites and event organizers (for example, Eventbrite, SF Station, and Funcheap), and may link directly to those sites.",
+      "noControl": "We do not control, endorse, or assume responsibility for:",
+      "item1": "The content, accuracy, policies, or practices of any third-party websites",
+      "item2": "The quality, safety, legality, or availability of any events, products, or services offered by third parties",
+      "mention": "Any mention of a third-party website, platform, organizer, or event on the Site is for informational purposes only and does not constitute our endorsement or recommendation.",
+      "ownRisk": "If you choose to visit or use any third-party websites or services, you do so at your own risk and are subject to their terms of use and privacy policies."
+    },
+    "section5": {
+      "title": "5. Intellectual Property",
+      "ourContent": {
+        "title": "5.1 Our Content",
+        "description": "Except for third-party content described below, the Site and its original content, features, and functionality—such as our source code, user interface, design, layout, filters, and any text or translations written by us (collectively, \"Our Content\")—are owned by Champagne Grape or our licensors and are protected by applicable intellectual property laws.",
+        "license": "Subject to your compliance with these Terms, we grant you a limited, non-exclusive, non-transferable, revocable license to access and use Our Content on the Site for personal, non-commercial purposes.",
+        "restrictions": "You may not:",
+        "item1": "Copy, modify, reproduce, distribute, or create derivative works of Our Content, except as expressly permitted by law",
+        "item2": "Remove any copyright, trademark, or other proprietary notices from Our Content",
+        "item3": "Use Our Content to create a competing service that reproduces or systematically copies our selection, organization, or presentation of event information, without our prior written consent"
+      },
+      "thirdParty": {
+        "title": "5.2 Third-Party Content",
+        "description": "Event titles, dates, times, locations, prices, descriptions, images, and other event-related materials displayed on the Site may originate from third-party websites and event organizers (collectively, \"Third-Party Content\").",
+        "ownership": "All rights in Third-Party Content are owned by the respective third-party platforms and/or event organizers. We do not claim any ownership of Third-Party Content and display it solely to help users discover events.",
+        "noRights": "Nothing in these Terms grants you any rights to Third-Party Content beyond what is permitted under applicable law and the terms of the original third-party platforms. You are responsible for complying with any terms and conditions imposed by those third parties.",
+        "trademarks": "Third-party trademarks, logos, and brand names displayed on the Site belong to their respective owners. Their appearance on the Site does not imply endorsement or sponsorship."
+      }
+    },
+    "section6": {
+      "title": "6. Disclaimer of Warranties",
+      "intro": "The Site and all content on it (including Our Content and any Third-Party Content) are provided on an \"as is\" and \"as available\" basis, without warranties of any kind, whether express or implied.",
+      "disclaim": "To the fullest extent permitted by law, we disclaim all warranties, including but not limited to:",
+      "item1": "Warranties of merchantability",
+      "item2": "Fitness for a particular purpose",
+      "item3": "Non-infringement",
+      "item4": "Accuracy, reliability, or completeness of any content",
+      "noWarrant": "Without limiting the foregoing, we do not warrant that:",
+      "warrant1": "The Site will be uninterrupted, secure, or error-free",
+      "warrant2": "Defects will be corrected",
+      "warrant3": "The Site or its servers are free of viruses or other harmful components",
+      "warrant4": "Any event information displayed on the Site is current, accurate, complete, or available"
+    },
+    "section7": {
+      "title": "7. Limitation of Liability",
+      "intro": "To the fullest extent permitted by law, in no event shall Champagne Grape, its owners, employees, or affiliates be liable for any:",
+      "item1": "Indirect, incidental, special, consequential, or punitive damages",
+      "item2": "Any loss of profits or revenues",
+      "item3": "Any loss of data, use, goodwill, or other intangible losses",
+      "arising": "arising out of or in connection with:",
+      "arise1": "Your use of (or inability to use) the Site",
+      "arise2": "Any content on the Site",
+      "arise3": "Any third-party websites or services",
+      "arise4": "Any events you choose to attend based on information found on the Site",
+      "aggregate": "In all cases, our total aggregate liability to you for any claims relating to the Site shall not exceed $150 USD, to the extent permitted by law.",
+      "jurisdictions": "Some jurisdictions do not allow certain limitations of liability, so some of the above limitations may not apply to you."
+    },
+    "section8": {
+      "title": "8. Indemnification",
+      "intro": "You agree to indemnify, defend, and hold harmless Champagne Grape and its owners, employees, and affiliates from and against any claims, liabilities, damages, losses, and expenses (including reasonable legal fees) arising out of or in any way connected with:",
+      "item1": "Your use of the Site",
+      "item2": "Your violation of these Terms",
+      "item3": "Your violation of any rights of another person (including rights of third-party platforms or event organizers)"
+    },
+    "section9": {
+      "title": "9. Changes to the Site and These Terms",
+      "siteChanges": "We may update or modify the Site at any time, including by adding or removing features, events, or content.",
+      "termsChanges": "We may also update these Terms from time to time. When we do, we will update the \"Last updated\" date at the top of this page. If changes are material, we may provide additional notice (such as a notice on the Site).",
+      "continued": "Your continued use of the Site after any changes to the Terms means you accept the updated Terms."
+    },
+    "section10": {
+      "title": "10. Termination",
+      "description": "We may suspend or terminate your access to the Site at any time, with or without notice, if we reasonably believe you have violated these Terms or are using the Site in a way that could harm us, the Site, or others.",
+      "survival": "Upon termination, your right to use the Site will immediately stop. Sections of these Terms that by their nature should survive termination (such as intellectual property, disclaimers, limitations of liability, and indemnification) will continue to apply."
+    },
+    "section11": {
+      "title": "11. Governing Law and Jurisdiction",
+      "law": "These Terms and your use of the Site are governed by the laws of California, without regard to its conflict of law principles.",
+      "jurisdiction": "Any disputes arising out of or relating to these Terms or the Site shall be brought exclusively in the courts located in San Francisco County, California, and you consent to the jurisdiction of those courts."
+    },
+    "section12": {
+      "title": "12. Contact",
+      "intro": "If you have any questions about these Terms, please contact us at:",
+      "name": "Champagne Grape",
+      "email": "Email: profungi@gmail.com"
+    }
+  },
+  "privacy": {
+    "pageTitle": "Privacy Policy - Bay Area Events",
+    "pageDescription": "Learn how Bay Area Events collects, uses, and protects your information.",
+    "backToHome": "← Back to Bay Area Events",
+    "title": "Privacy Policy",
+    "effectiveDate": "Effective Date: {date}",
+    "lastUpdated": "Last Updated: {date}",
+    "section1": {
+      "title": "1. Introduction",
+      "intro": "Welcome to Bay Area Events (\"we,\" \"our,\" or \"us\"), operated by Champagne Grape. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website at https://ymjr.de/ (the \"Site\").",
+      "commitment": "We are committed to protecting your privacy and being transparent about our data practices. Please read this policy carefully. If you do not agree with the terms of this privacy policy, please do not access the Site."
+    },
+    "section2": {
+      "title": "2. Information We Collect",
+      "automatic": {
+        "title": "2.1 Information Collected Automatically",
+        "intro": "When you visit our Site, we may automatically collect certain information about your device and usage patterns through privacy-focused analytics tools:",
+        "item1": "Device type and browser information",
+        "item2": "Operating system",
+        "item3": "Pages visited and time spent on pages",
+        "item4": "Referral source (how you found our Site)",
+        "item5": "General geographic region (country/region level, not precise location)"
+      },
+      "provided": {
+        "title": "2.2 Information You Provide",
+        "intro": "When you use our feedback feature, you may voluntarily provide:",
+        "item1": "Feedback type (thumbs up/thumbs down)",
+        "item2": "Optional comments about your experience",
+        "item3": "Current filter settings (week, location, event type, price range)"
+      }
+    },
+    "section3": {
+      "title": "3. How We Use Your Information",
+      "analytics": {
+        "title": "3.1 Analytics and Performance",
+        "description": "We use Vercel Web Analytics and Vercel Speed Insights to understand how visitors use our Site and to improve performance. These are privacy-focused, cookie-less analytics tools that do not track individual users across websites or create detailed personal profiles. They help us understand aggregate usage patterns like which pages are most popular and how quickly pages load."
+      },
+      "cookies": {
+        "title": "3.2 Cookies and Similar Technologies",
+        "intro": "Our Site uses minimal cookies:",
+        "essential": {
+          "label": "Essential cookies:",
+          "description": "Required for basic site functionality, such as remembering your language preference."
+        },
+        "analytics": {
+          "label": "Analytics:",
+          "description": "Vercel Analytics uses a privacy-focused approach that does not rely on cookies. It uses pseudonymous session identifiers that cannot be used to identify you personally."
+        },
+        "consent": "You can control cookie preferences through your browser settings. A cookie consent banner will appear on your first visit to allow you to make informed choices about non-essential cookies."
+      }
+    },
+    "section4": {
+      "title": "4. Feedback Data",
+      "intro": "When you submit feedback through our Site:",
+      "item1": "Your feedback is stored in our database (hosted on Turso in the US West region)",
+      "item2": "We use this feedback solely to improve our event curation and Site features",
+      "item3": "Feedback is stored with minimal metadata (timestamp, locale, filter state) and no personal identifiers",
+      "note": "We do not require any personal information to submit feedback, and we do not attempt to identify individual users from their feedback."
+    },
+    "section5": {
+      "title": "5. Data Retention",
+      "item1": "Analytics data: Retained according to Vercel's standard retention policies (typically aggregated data without individual user tracking)",
+      "item2": "Feedback data: Retained for approximately one year, after which it may be deleted or anonymized for aggregate analysis",
+      "note": "We do not create detailed individual profiles from the information we collect."
+    },
+    "section6": {
+      "title": "6. Data Sharing",
+      "intro": "We do not sell, rent, or share your personal information with third parties for their marketing purposes. We may share data with:",
+      "vercel": {
+        "label": "Vercel:",
+        "description": "Our hosting and analytics provider, which processes data according to their privacy policy"
+      },
+      "turso": {
+        "label": "Turso:",
+        "description": "Our database provider for storing feedback data, which processes data according to their privacy policy"
+      },
+      "safeguards": "These service providers are contractually obligated to protect your data and use it only for the purposes of providing their services to us."
+    },
+    "section7": {
+      "title": "7. International Data Transfers",
+      "description": "Our Site is hosted on Vercel's global infrastructure, and our database is hosted in the US West region. If you are accessing our Site from outside the United States, please be aware that your information may be transferred to, stored, and processed in the United States. By using our Site, you consent to such transfers. Our service providers maintain their own privacy frameworks and data protection practices."
+    },
+    "section8": {
+      "title": "8. Your Rights",
+      "intro": "Depending on your location, you may have certain rights regarding your data:",
+      "item1": "Access: Request information about data we hold about you",
+      "item2": "Deletion: Request deletion of any feedback you have submitted",
+      "item3": "Opt-out: Disable cookies through your browser settings",
+      "item4": "Complaints: Lodge a complaint with your local data protection authority",
+      "contact": "To exercise these rights, please contact us using the information below."
+    },
+    "section9": {
+      "title": "9. California Residents",
+      "intro": "If you are a California resident, you have additional rights under the California Consumer Privacy Act (CCPA) and the California Privacy Rights Act (CPRA):",
+      "item1": "Right to Know: You can request disclosure of the categories and specific pieces of personal information we have collected about you",
+      "item2": "Right to Delete: You can request deletion of personal information we have collected from you",
+      "item3": "Right to Opt-Out: We do not sell personal information, so no opt-out is necessary",
+      "item4": "Right to Non-Discrimination: We will not discriminate against you for exercising your privacy rights",
+      "note": "Because we collect minimal personal information and do not sell data, most CCPA/CPRA requirements have limited applicability to our Site. To make a request, please contact us at the email address below."
+    },
+    "section10": {
+      "title": "10. Children's Privacy",
+      "description": "Our Site is not intended for children under 13 years of age. We do not knowingly collect personal information from children under 13. If you are a parent or guardian and believe your child has provided us with personal information, please contact us immediately."
+    },
+    "section11": {
+      "title": "11. Changes to This Privacy Policy",
+      "description": "We may update this Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page and updating the \"Last Updated\" date. We encourage you to review this Privacy Policy periodically for any changes."
+    },
+    "section12": {
+      "title": "12. Contact Us",
+      "intro": "If you have questions or concerns about this Privacy Policy or our data practices, please contact us:",
+      "name": "Champagne Grape",
+      "email": "Email: profungi@gmail.com",
+      "website": "Website: https://ymjr.de/"
+    }
+  },
   "metadata": {
     "title": "Bay Area Events",
     "description": "Discover the best events in the Bay Area! Markets, festivals, food, and art activities. Covering San Francisco, South Bay, East Bay, and more.",
@@ -74,5 +306,10 @@
     "submitting": "Submitting...",
     "cancel": "Cancel",
     "thankYou": "✨ Thank you for your feedback!"
+  },
+  "footer": {
+    "privacyPolicy": "Privacy Policy",
+    "termsOfUse": "Terms of Use",
+    "copyright": "© 2025 Champagne Grape. All rights reserved."
   }
 }
