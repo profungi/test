@@ -1,5 +1,4 @@
 {
-<<<<<<< HEAD
   "terms": {
     "pageTitle": "Terms of Use - Bay Area Events",
     "pageDescription": "Read the terms and conditions for using Bay Area Events website.",
@@ -83,7 +82,6 @@
       "arise2": "Any content on the Site",
       "arise3": "Any third-party websites or services",
       "arise4": "Any events you choose to attend based on information found on the Site",
-      "aggregate": "In all cases, our total aggregate liability to you for any claims relating to the Site shall not exceed $150 USD, to the extent permitted by law.",
       "jurisdictions": "Some jurisdictions do not allow certain limitations of liability, so some of the above limitations may not apply to you."
     },
     "section8": {
@@ -232,125 +230,6 @@
       "website": "Website: https://ymjr.de/"
     }
   },
-||||||| 9b6f72b
-=======
-  "privacy": {
-    "pageTitle": "Privacy Policy - Bay Area Events",
-    "pageDescription": "Learn how Bay Area Events collects, uses, and protects your information.",
-    "backToHome": "← Back to Bay Area Events",
-    "title": "Privacy Policy",
-    "effectiveDate": "Effective Date: {date}",
-    "lastUpdated": "Last Updated: {date}",
-    "section1": {
-      "title": "1. Introduction",
-      "intro": "Welcome to Bay Area Events (\"we,\" \"our,\" or \"us\"), operated by Champagne Grape. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website at https://ymjr.de/ (the \"Site\").",
-      "commitment": "We are committed to protecting your privacy and being transparent about our data practices. Please read this policy carefully. If you do not agree with the terms of this privacy policy, please do not access the Site."
-    },
-    "section2": {
-      "title": "2. Information We Collect",
-      "automatic": {
-        "title": "2.1 Information Collected Automatically",
-        "intro": "When you visit our Site, we may automatically collect certain information about your device and usage patterns through privacy-focused analytics tools:",
-        "item1": "Device type and browser information",
-        "item2": "Operating system",
-        "item3": "Pages visited and time spent on pages",
-        "item4": "Referral source (how you found our Site)",
-        "item5": "General geographic region (country/region level, not precise location)"
-      },
-      "provided": {
-        "title": "2.2 Information You Provide",
-        "intro": "When you use our feedback feature, you may voluntarily provide:",
-        "item1": "Feedback type (thumbs up/thumbs down)",
-        "item2": "Optional comments about your experience",
-        "item3": "Current filter settings (week, location, event type, price range)"
-      }
-    },
-    "section3": {
-      "title": "3. How We Use Your Information",
-      "analytics": {
-        "title": "3.1 Analytics and Performance",
-        "description": "We use Vercel Web Analytics and Vercel Speed Insights to understand how visitors use our Site and to improve performance. These are privacy-focused, cookie-less analytics tools that do not track individual users across websites or create detailed personal profiles. They help us understand aggregate usage patterns like which pages are most popular and how quickly pages load."
-      },
-      "cookies": {
-        "title": "3.2 Cookies and Similar Technologies",
-        "intro": "Our Site uses minimal cookies:",
-        "essential": {
-          "label": "Essential cookies:",
-          "description": "Required for basic site functionality, such as remembering your language preference."
-        },
-        "analytics": {
-          "label": "Analytics:",
-          "description": "Vercel Analytics uses a privacy-focused approach that does not rely on cookies. It uses pseudonymous session identifiers that cannot be used to identify you personally."
-        },
-        "consent": "You can control cookie preferences through your browser settings. A cookie consent banner will appear on your first visit to allow you to make informed choices about non-essential cookies."
-      }
-    },
-    "section4": {
-      "title": "4. Feedback Data",
-      "intro": "When you submit feedback through our Site:",
-      "item1": "Your feedback is stored in our database (hosted on Turso in the US West region)",
-      "item2": "We use this feedback solely to improve our event curation and Site features",
-      "item3": "Feedback is stored with minimal metadata (timestamp, locale, filter state) and no personal identifiers",
-      "note": "We do not require any personal information to submit feedback, and we do not attempt to identify individual users from their feedback."
-    },
-    "section5": {
-      "title": "5. Data Retention",
-      "item1": "Analytics data: Retained according to Vercel's standard retention policies (typically aggregated data without individual user tracking)",
-      "item2": "Feedback data: Retained for approximately one year, after which it may be deleted or anonymized for aggregate analysis",
-      "note": "We do not create detailed individual profiles from the information we collect."
-    },
-    "section6": {
-      "title": "6. Data Sharing",
-      "intro": "We do not sell, rent, or share your personal information with third parties for their marketing purposes. We may share data with:",
-      "vercel": {
-        "label": "Vercel:",
-        "description": "Our hosting and analytics provider, which processes data according to their privacy policy"
-      },
-      "turso": {
-        "label": "Turso:",
-        "description": "Our database provider for storing feedback data, which processes data according to their privacy policy"
-      },
-      "safeguards": "These service providers are contractually obligated to protect your data and use it only for the purposes of providing their services to us."
-    },
-    "section7": {
-      "title": "7. International Data Transfers",
-      "description": "Our Site is hosted on Vercel's global infrastructure, and our database is hosted in the US West region. If you are accessing our Site from outside the United States, please be aware that your information may be transferred to, stored, and processed in the United States. By using our Site, you consent to such transfers. Our service providers maintain their own privacy frameworks and data protection practices."
-    },
-    "section8": {
-      "title": "8. Your Rights",
-      "intro": "Depending on your location, you may have certain rights regarding your data:",
-      "item1": "Access: Request information about data we hold about you",
-      "item2": "Deletion: Request deletion of any feedback you have submitted",
-      "item3": "Opt-out: Disable cookies through your browser settings",
-      "item4": "Complaints: Lodge a complaint with your local data protection authority",
-      "contact": "To exercise these rights, please contact us using the information below."
-    },
-    "section9": {
-      "title": "9. California Residents",
-      "intro": "If you are a California resident, you have additional rights under the California Consumer Privacy Act (CCPA) and the California Privacy Rights Act (CPRA):",
-      "item1": "Right to Know: You can request disclosure of the categories and specific pieces of personal information we have collected about you",
-      "item2": "Right to Delete: You can request deletion of personal information we have collected from you",
-      "item3": "Right to Opt-Out: We do not sell personal information, so no opt-out is necessary",
-      "item4": "Right to Non-Discrimination: We will not discriminate against you for exercising your privacy rights",
-      "note": "Because we collect minimal personal information and do not sell data, most CCPA/CPRA requirements have limited applicability to our Site. To make a request, please contact us at the email address below."
-    },
-    "section10": {
-      "title": "10. Children's Privacy",
-      "description": "Our Site is not intended for children under 13 years of age. We do not knowingly collect personal information from children under 13. If you are a parent or guardian and believe your child has provided us with personal information, please contact us immediately."
-    },
-    "section11": {
-      "title": "11. Changes to This Privacy Policy",
-      "description": "We may update this Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page and updating the \"Last Updated\" date. We encourage you to review this Privacy Policy periodically for any changes."
-    },
-    "section12": {
-      "title": "12. Contact Us",
-      "intro": "If you have questions or concerns about this Privacy Policy or our data practices, please contact us:",
-      "name": "Champagne Grape",
-      "email": "Email: profungi@gmail.com",
-      "website": "Website: https://ymjr.de/"
-    }
-  },
->>>>>>> refs/tags/sculptor-merge-source-2219207b29d85b2fa6cec2e7ccabf4ccfa584079
   "metadata": {
     "title": "Bay Area Events",
     "description": "Discover the best events in the Bay Area! Markets, festivals, food, and art activities. Covering San Francisco, South Bay, East Bay, and more.",
@@ -426,18 +305,10 @@
     "submitting": "Submitting...",
     "cancel": "Cancel",
     "thankYou": "✨ Thank you for your feedback!"
-<<<<<<< HEAD
   },
   "footer": {
     "privacyPolicy": "Privacy Policy",
     "termsOfUse": "Terms of Use",
     "copyright": "© 2025 Champagne Grape. All rights reserved."
-||||||| 9b6f72b
-=======
-  },
-  "footer": {
-    "privacyPolicy": "Privacy Policy",
-    "copyright": "© 2024 Champagne Grape. All rights reserved."
->>>>>>> refs/tags/sculptor-merge-source-2219207b29d85b2fa6cec2e7ccabf4ccfa584079
   }
 }
