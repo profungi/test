@@ -4,6 +4,7 @@ import { EventFilters } from '@/lib/types';
 import FilterBar from '../components/FilterBar';
 import EventCard from '../components/EventCard';
 import FeedbackSection from '../components/FeedbackSection';
+import Header from '../components/Header';
 import { useTranslations } from 'next-intl';
 import { getTranslations } from 'next-intl/server';
 import { Suspense } from 'react';
@@ -66,27 +67,7 @@ export default async function HomePage({
   return (
     <div className="min-h-screen">
       {/* 顶部导航栏 */}
-      <header className="bg-white/90 backdrop-blur-md shadow-md border-b-2 border-[#F0D3B6]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-          <div className="flex items-center gap-4">
-            <Image
-              src="/grape-mascot.png"
-              alt="Grape Mascot"
-              width={80}
-              height={80}
-              className="object-contain"
-            />
-            <div>
-              <h1 className="text-3xl font-bold text-[#4A2C22]">
-                {t('siteTitle')}
-              </h1>
-              <p className="mt-1 text-sm text-[#4A2C22]/70 font-medium">
-                {t('siteSubtitle')}
-              </p>
-            </div>
-          </div>
-        </div>
-      </header>
+      <Header />
 
       {/* 筛选栏 */}
       <FilterBar />

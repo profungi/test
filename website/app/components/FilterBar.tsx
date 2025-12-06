@@ -3,7 +3,6 @@
 import { useRouter, useSearchParams, usePathname } from 'next/navigation';
 import { useTranslations, useLocale } from 'next-intl';
 import { LOCATION_LABELS, EVENT_TYPE_LABELS } from '@/lib/types';
-import LanguageSwitcher from './LanguageSwitcher';
 
 export default function FilterBar() {
   const router = useRouter();
@@ -32,31 +31,28 @@ export default function FilterBar() {
   return (
     <div className="bg-white/80 backdrop-blur-md shadow-md border-b-2 border-[#F0D3B6]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-        {/* 周切换按钮和语言切换器 */}
-        <div className="flex items-center justify-between mb-4">
-          <div className="flex gap-2">
-            <button
-              onClick={() => updateFilter('week', 'current')}
-              className={`px-4 py-2 rounded-xl text-sm font-bold transition-all duration-200 ${
-                currentWeek === 'current'
-                  ? 'bg-[#B37DA2] text-white shadow-md shadow-[#B37DA2]/30'
-                  : 'bg-[#FFF4E6] text-[#4A2C22] hover:bg-[#F9B879]/30 border border-[#F0D3B6]'
-              }`}
-            >
-              {t('thisWeek')}
-            </button>
-            <button
-              onClick={() => updateFilter('week', 'next')}
-              className={`px-4 py-2 rounded-xl text-sm font-bold transition-all duration-200 ${
-                currentWeek === 'next'
-                  ? 'bg-[#B37DA2] text-white shadow-md shadow-[#B37DA2]/30'
-                  : 'bg-[#FFF4E6] text-[#4A2C22] hover:bg-[#F9B879]/30 border border-[#F0D3B6]'
-              }`}
-            >
-              {t('nextWeek')}
-            </button>
-          </div>
-          <LanguageSwitcher />
+        {/* 周切换按钮 */}
+        <div className="flex gap-2 mb-4">
+          <button
+            onClick={() => updateFilter('week', 'current')}
+            className={`px-4 py-2 rounded-xl text-sm font-bold transition-all duration-200 ${
+              currentWeek === 'current'
+                ? 'bg-[#B37DA2] text-white shadow-md shadow-[#B37DA2]/30'
+                : 'bg-[#FFF4E6] text-[#4A2C22] hover:bg-[#F9B879]/30 border border-[#F0D3B6]'
+            }`}
+          >
+            {t('thisWeek')}
+          </button>
+          <button
+            onClick={() => updateFilter('week', 'next')}
+            className={`px-4 py-2 rounded-xl text-sm font-bold transition-all duration-200 ${
+              currentWeek === 'next'
+                ? 'bg-[#B37DA2] text-white shadow-md shadow-[#B37DA2]/30'
+                : 'bg-[#FFF4E6] text-[#4A2C22] hover:bg-[#F9B879]/30 border border-[#F0D3B6]'
+            }`}
+          >
+            {t('nextWeek')}
+          </button>
         </div>
 
         {/* 筛选器 */}
