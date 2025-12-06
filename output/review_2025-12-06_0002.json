@@ -1,0 +1,623 @@
+{
+  "review_id": "review_2025-12-06_0002_g8j",
+  "generated_at": "2025-12-06T00:02:38.042Z",
+  "scrape_date": "2025-12-06",
+  "target_week": "2025-12-08_to_2025-12-14",
+  "target_week_readable": "12/08 - 12/14",
+  "scraping_report": {
+    "total_scraped": 44,
+    "after_deduplication": 29,
+    "after_classification": 29,
+    "classification_report": {
+      "totalEvents": 29,
+      "eventTypes": {
+        "art": 2,
+        "music": 1,
+        "festival": 2,
+        "free": 21,
+        "other": 3
+      },
+      "priorityLevels": {
+        "3": 3,
+        "4": 1,
+        "5": 2,
+        "9": 21,
+        "10": 2
+      },
+      "chineseRelevant": 0,
+      "topPriorityEvents": 23
+    }
+  },
+  "instructions": {
+    "how_to_review": "将你想要发布的活动的 'selected' 字段改为 true",
+    "next_step": "保存文件后运行: npm run generate-post [此文件路径]",
+    "fields_explanation": {
+      "title": "活动标题",
+      "time_display": "显示用的时间格式",
+      "location": "活动地点",
+      "price": "票价信息",
+      "event_type": "AI识别的活动类型",
+      "priority": "优先级分数 (越高越重要)",
+      "chinese_relevant": "是否与中文社区相关",
+      "original_url": "原始活动链接"
+    }
+  },
+  "stats": {
+    "total_candidates": 28,
+    "by_type": {
+      "festival": 2,
+      "free": 21,
+      "art": 2,
+      "other": 3
+    },
+    "by_priority": {
+      "3": 3,
+      "5": 2,
+      "9": 21,
+      "10": 2
+    },
+    "chinese_relevant": 0
+  },
+  "events": [
+    {
+      "id": 1,
+      "selected": false,
+      "title": "Luiz Gonzaga's BDAY Celebration",
+      "time_display": "Friday 12/12 8:00 PM",
+      "location": "Casa de Cultura at the Capoeira Arts Foundation Building, 1901 San Pablo Avenue, Berkeley, CA 94702",
+      "price": "$23.18",
+      "event_type": "festival",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/luiz-gonzagas-bday-celebration-tickets-1967748079476?aff=ebdssbcitybrowsenightlife",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Join us for a celebration of Luiz Gonzaga's music and legacy, with a ton of Forró at Casa de Cultura...",
+      "description_detail": "Join us for a celebration of Luiz Gonzaga's music and legacy, with a ton of Forró at Casa de Cultura in Berkeley, CALet’s celebrate together the Music, legacy and B-day of the Godfather of Forró Music and Brazilian’s first major musical star Luiz Gonzaga. At the one and only \"Casa de Cultura\", the Brazilian Cultural Center in Berkeley, CAPlaying live : Khalifa do Accordion, Robson Batinga & Veesh Maria Deejay Set playing Gonzaga Only from Top to Bottom and Forró Dance Class prior to the Show. Read moreCategory: Music, Cultural",
+      "source": "eventbrite",
+      "scraped_at": "2025-12-06T00:02:06.613Z"
+    },
+    {
+      "id": 2,
+      "selected": false,
+      "title": "“Children’s Winter Holiday Festival” at SF’s Russian Center (2025)",
+      "time_display": "Saturday 12/13 11:00 AM - 5:00 PM",
+      "location": "2460 Sutter Street, San Francisco",
+      "price": "$23.18*",
+      "event_type": "festival",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/childrens-winter-holiday-festival-sfs-russian-center-2025/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2025-12-05T23:53:26.460Z"
+    },
+    {
+      "id": 3,
+      "selected": false,
+      "title": "East Palo Alto Holiday Winterfest",
+      "time_display": "Saturday 12/13 10:00 AM",
+      "location": "2000 University Cir, 2000 University Circle, East Palo Alto, CA 94303",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/east-palo-alto-holiday-winterfest-tickets-1974529489857?aff=ebdssbneighborhoodbrowse",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Join us at East Palo Alto Holiday Winterfest for fun, food, music, and holiday cheer in person!Join ...",
+      "description_detail": "Join us at East Palo Alto Holiday Winterfest for fun, food, music, and holiday cheer in person!Join us for the East Palo Alto Holiday Winterfest!Get ready to celebrate the season with us in person at the East Palo Alto Holiday Winterfest. It’s the perfect chance to enjoy festive vibes, great company, and tons of holiday cheer. There will be a toy and book giveaway for the children as well as food and fun for all! Whether you're coming with friends or family, there’s something special waiting for everyone. Don't miss out on this cool community gathering filled with fun and holiday spirit!A few things to note:Toys will be available while supplies Toys are available for East Palo Alto residents only. Verification will be required at entry.For questions, please contact commservices@cityofepa.org or use the Eventbrite app.Read moreCategory: Community, City & Town",
+      "source": "eventbrite",
+      "scraped_at": "2025-12-06T00:02:06.626Z"
+    },
+    {
+      "id": 4,
+      "selected": false,
+      "title": "Santa Run at Cityline",
+      "time_display": "Saturday 12/13 10:00 AM",
+      "location": "Cityline Redwood Square, Murphy Avenue, Sunnyvale, CA 94086",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/santa-run-at-cityline-tickets-1971351675930?aff=ebdssbcitybrowse",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Join us for a very merry special edition of the Sunnyvale Rumble Run Club at Cityline.🎅 Sunnyvale R...",
+      "description_detail": "Join us for a very merry special edition of the Sunnyvale Rumble Run Club at Cityline.🎅 Sunnyvale Rumble Run Club: Santa Edition at Cityline!Saturday, December 13th • 10 AM • Redwood Square, Downtown SunnyvaleGet ready to sleigh the day! 🏃‍♀️🎄Join us for a very merry special edition of the Sunnyvale Rumble Run Club at Cityline — where holiday spirit meets endorphins and a little friendly cardio competition.Throw on your best Santa suit and choose your pace:🎅 5K Run Group – For the Santas who mean business🦌 1-Mile Run/Walk Group – For those spreading cheer at a lighter paceBoth groups will take off from Redwood Square at 10 AM, winding through Downtown Sunnyvale and ending at Tipsy Putt for cool down and post-run cheer!Specials from Tipsy Putt, just for the Run Club:⛳️ Free Putt-Putt🍹 $5 House Lite Beer & $2 Off Cocktails🧀 $4 Off Nacho PlatterBring your holiday spirit, your running shoes, and your crew — it’s the most fun you’ll have in a Santa hat all season!Meet me at Cityline.Read moreCategory: Holiday, Christmas",
+      "source": "eventbrite",
+      "scraped_at": "2025-12-06T00:02:06.627Z"
+    },
+    {
+      "id": 5,
+      "selected": false,
+      "title": "Master the “Spike” Strategy for Top College Admissions",
+      "time_display": "Saturday 12/13 10:30 AM",
+      "location": "10050 Bubb Rd suite 2, 10050 Bubb Road, #suite 2 Cupertino, CA 95014",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/master-the-spike-strategy-for-top-college-admissions-tickets-1976783485619?aff=ebdssbcitybrowse",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Join us to uncover the secrets behind successful colleg admissions with the ultimate “Spike” strateg...",
+      "description_detail": "Join us to uncover the secrets behind successful colleg admissions with the ultimate “Spike” strategy!Why You Can’t Miss This EventThe admissions logic for top schools has completely changed. Top schools are no longer looking for students who “do a little bit of everything.” They now want students with a clear, sharp, and distinctive Spike—a single area of excellence. Admissions officers are no longer searching for “well-rounded students,” but for standout individuals who complete a diverse class like puzzle pieces.What You Will GainDuring this session, you’ll get a complete framework to help your child develop their Spike:✔ Real Case Analysis: How top students leverage one strong area to stand out.✔ G8–G12 Identity Building: How to combine academics + extracurriculars effectively.✔ The Biggest Pitfall: Why “joining everything casually” can derail your child.✔ Counseling Planning Roadmap: Annual strategy from G8 Exploration → G9 Focus → G10 Formation → G11 BreakthroughSpecial HostJun LiuAs the founder and CEO of 7EDU, she brings over 20 years of expertise in K–12 education and college counseling. She has guided thousands of students in building standout academic and extracurricular profiles, with 95% gaining admission to Top 30 U.S. universities and over 300 students accepted to Ivy League and other top-tier institutions. Her results-driven approach has consistently empowered students to reach—and often exceed—their highest potential.Get Your Questions Answered – Personalized AdviceThis onsite coffee hour is interactive! Parents will have the opportunity to ask questions directly during the session.💡 Pro Tip: To make the most of this personalized guidance, you can submit your specific questions during registration. Ms. Jun will answer your questions during coffee hour to address your child’s unique situation.Whether it’s about selecting the right extracurriculars, refining your child’s Spike, or planning a multi-year strategy, this is your chance to get tailored insights that you won’t find in generic guides.🗓 Date & Time: Saturday, December 13, 2025 | 10:30 AM – 12:00 PM☕ Language: Mandarin ONLY📍 Location: 10050 Bubb Rd Suite 2, Cupertino CA🍵 Perks: Coffee, tea, and light snacks providedRead moreCategory: Family & Education, Education",
+      "source": "eventbrite",
+      "scraped_at": "2025-12-06T00:02:06.628Z"
+    },
+    {
+      "id": 6,
+      "selected": false,
+      "title": "Festive Night at the Museum",
+      "time_display": "Friday 12/12 4:00 PM",
+      "location": "New Museum Los Gatos, 106 East Main Street, Los Gatos, CA 95030",
+      "price": "$0 – $50",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/festive-night-at-the-museum-tickets-1598054306449?aff=ebdssbcitybrowse",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Explore our art & history exhibitions, then get creative with holiday-themed crafts.Join us for a fe...",
+      "description_detail": "Explore our art & history exhibitions, then get creative with holiday-themed crafts.Join us for a festive night at the museum with additional open hours & free admission, Friday, Dec 12, 4-8 PM! As a featured stop along the Los Gatos Chamber's Holiday Trolley route, we'll be staying open late to spread some holiday cheer.Explore our upper gallery, showcasing three stunning exhibitions: Ebb & Flow, Stitches & Wiggles: Unraveled and Reimagined Mixed Media Art by Jody Alexander and Thomas Campbell, and Encounters: The Photography of r.r. jones. Then, get creative with holiday-themed crafts, like ornament making, DIY greeting card design, and rock penguin painting.Enjoy light refreshments - hot cider, hot tea, and hot toddies! - while immersing yourself in stunning art, festive crafts, and live music. We’re excited to share a cozy evening full of holiday cheer with you at NUMU!Drink tickets will be available with a $5 suggested donation. NUMU Members will receive a free drink ticket. Become a member today!Looking for a festive way to get to the museum? The Los Gatos Chamber of Commerce’s Magical Memories Trolley will be stopping right outside! The free trolley will follow a scenic hop on/hop off loop through our beautifully decorated downtown.Saturday, December 6 (4-8 PM)Sunday, December 7 (1-5 PM)Friday, December 12 (5-8 PM)Saturday, December 13 (1-5 PM)Sunday, December 14 (1-5 PM)Learn more about the trolley service.HEALTH & SAFETY GUIDELINES:In accordance with the New Museum Los Gatos, masks are highly reccommended while inside the museum.Do not attend if you are experiencing symptoms of COVID-19, or have been in close contact or tested positive within the past 10 days.Read moreCategory: Arts, Other",
+      "source": "eventbrite",
+      "scraped_at": "2025-12-06T00:02:06.629Z"
+    },
+    {
+      "id": 7,
+      "selected": false,
+      "title": "New Palo Alto Museum: Community Sneak Peek & Open House",
+      "time_display": "Saturday 12/13 11:00 AM",
+      "location": "300 Homer Ave, 300 Homer Avenue, Palo Alto, CA 94301",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/new-palo-alto-museum-community-sneak-peek-open-house-tickets-1975576625869?aff=ebdssbcitybrowse",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Get the first look at the new Palo Alto Museum's ideas for the inaugural exhibits, events, and exper...",
+      "description_detail": "Get the first look at the new Palo Alto Museum's ideas for the inaugural exhibits, events, and experiences to open in February 2026!Get Ready for the Palo Alto Museum: Community Sneak Peek Open House!Come join us in person for a first look at the Palo Alto Museum that will open in February 2026. This is your chance toStep inside our newly renovated 1932 landmark buildingPreview 7 Little Big Ideas for our inaugural exhibits, events, and experiencesAdd your voice, support the vision, and help bring to life the Museum!Bring your curiosity, explore plans for the new Museum, and connect with other community members. Don’t miss out on this sneak peek!Read moreCategory: Community, City & Town",
+      "source": "eventbrite",
+      "scraped_at": "2025-12-06T00:02:06.631Z"
+    },
+    {
+      "id": 8,
+      "selected": false,
+      "title": "Holiday Market at El PRADO Hotel, Palo Alto",
+      "time_display": "Sunday 12/14 1:00 PM",
+      "location": "el PRADO Hotel, 520 Cowper Street, Palo Alto, CA 94301",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/holiday-market-at-el-prado-hotel-palo-alto-tickets-1968253931493?aff=ebdssbcitybrowse",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "A festive holiday market and shopping event at El Prado Hotel featuring 25+ vendors, champagne walls...",
+      "description_detail": "A festive holiday market and shopping event at El Prado Hotel featuring 25+ vendors, champagne walls, photobooths, and more.Join influencer @soniabegoniablog for a festive afternoon at the Holiday Market — an exclusive shopping and social experience designed to bring together community, creativity, and holiday cheer! ✨🗓 Sunday, December 14🕐 1:00 PM – 4:00 PM📍 El Prado Hotel, Palo Alto🌟 What to Expect25+ curated local vendors — discover unique gifts, handmade goods, boutique fashion, and holiday treatsChampagne walls & chai station — sip, shop, and celebrate in styleInteractive photobooths — capture your memories with friends and fellow influencersLive music & festive ambiance — perfect for networking, shopping, and content creation👗 Dress CodeWear white or red cocktail attire and embrace the holiday spirit in style!💫 Perfect ForHoliday shoppers looking for one-of-a-kind giftsContent creators and influencers seeking festive photo opsFriends and families celebrating the seasonAnyone who loves champagne, community, and chic holiday vibesRead moreCategory: Holiday, Christmas",
+      "source": "eventbrite",
+      "scraped_at": "2025-12-06T00:02:06.631Z"
+    },
+    {
+      "id": 9,
+      "selected": false,
+      "title": "Let's Glow SFSan Francisco Ferry Building",
+      "time_display": "Tuesday 12/09 5:30 PM",
+      "location": "One Ferry Building, San Francisco, CA",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://downtownsf.org/things-to-do/lets-glow-sf",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "sfstation",
+      "scraped_at": "2025-12-05T23:53:49.664Z"
+    },
+    {
+      "id": 10,
+      "selected": false,
+      "title": "22nd Another Hole in the Head Film FestivalBalboa Theatre",
+      "time_display": "Tuesday 12/09 6:30 PM",
+      "location": "3630 Balboa Street, San Francisco, CA",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://holehead2025.eventive.org/schedule",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "sfstation",
+      "scraped_at": "2025-12-05T23:53:49.664Z"
+    },
+    {
+      "id": 11,
+      "selected": false,
+      "title": "www.sfstation.com",
+      "time_display": "Tuesday 12/09 11:00 AM",
+      "location": "Embarcadero Center, San Francisco, CA",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.sfstation.com/sfmade-holiday-pop-up-e1279911",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "sfstation",
+      "scraped_at": "2025-12-05T23:53:49.664Z"
+    },
+    {
+      "id": 12,
+      "selected": false,
+      "title": "1000 Whispers From Our FutureAudium Theater of Sound",
+      "time_display": "Thursday 12/11 8:00 PM",
+      "location": "1616 Bush Street, San Francisco, CA",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.cityboxoffice.com/eventperformances.asp?evt=1760",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "sfstation",
+      "scraped_at": "2025-12-05T23:53:49.665Z"
+    },
+    {
+      "id": 13,
+      "selected": false,
+      "title": "Free 23rd Annual Montclair Village “Holiday Stroll” 2025 (Oakland)",
+      "time_display": "Thursday 12/11 4:00 PM - 8:00 PM",
+      "location": "Montclair Village, East Bay",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/free-annual-montclair-village-holiday-stroll-2025-oakland/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2025-12-05T23:53:26.460Z"
+    },
+    {
+      "id": 14,
+      "selected": false,
+      "title": "Haight Street Holiday Block Party (Winter 2025)",
+      "time_display": "Thursday 12/11 5:00 PM - 9:00 PM",
+      "location": "Haight Ashbury, San Francisco",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/haight-street-holiday-block-party-winter-2025/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2025-12-05T23:53:26.460Z"
+    },
+    {
+      "id": 15,
+      "selected": false,
+      "title": "Excelsior’s “From the E” Christmas Night Market (Dec. 2025)",
+      "time_display": "Friday 12/12 5:00 PM - 10:00 PM",
+      "location": "Norton and Harrington Streets, San Francisco Bay Area",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/excelsiors-first-ever-from-the-e-night-market-dec-2025/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Come join us at the Excelsior Night Market for a night of food, fun, and community vibes! This is th...",
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2025-12-05T23:53:26.460Z"
+    },
+    {
+      "id": 16,
+      "selected": false,
+      "title": "“ARTasting” Holiday Artist Maker Fair + Lively Indoor Night Market (Downtown SF)",
+      "time_display": "Friday 12/12 5:00 PM - 9:00 PM",
+      "location": "Hunt & Gather, San Francisco",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/artasting-holiday-artist-maker-fair-lively-indoor-night-market-downtown-sf/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2025-12-05T23:53:26.460Z"
+    },
+    {
+      "id": 17,
+      "selected": false,
+      "title": "“Off the Grid” Fort Mason: Holidays Night Market w/ 110+ Vendors (December 2025)",
+      "time_display": "Friday 12/12 4:00 PM - 9:00 PM",
+      "location": "Fort Mason Center, San Francisco Bay Area",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/off-the-grid-fort-mason-holidays-night-market-w-110-vendors-december-2025/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "🎉 Off the Grid Returns to Fort Mason for 2025 – With a Massive Monthly Night Market + 110+ Vendors!...",
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2025-12-05T23:53:26.460Z"
+    },
+    {
+      "id": 18,
+      "selected": false,
+      "title": "Berkeley’s “Joy Village Bazaar” Free Holiday Craft & Community Fair (2025)",
+      "time_display": "Saturday 12/13 11:00 AM - 5:00 PM",
+      "location": "North Shattuck District, East Bay",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/berkeleys-joy-village-bazaar-free-holiday-craft-community-fair-2025/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2025-12-05T23:53:26.460Z"
+    },
+    {
+      "id": 19,
+      "selected": false,
+      "title": "Root Division’s 1st Annual Holiday Artist Fair + Free Drink Tickets (SF)",
+      "time_display": "Saturday 12/13 12:00 PM - 5:00 PM",
+      "location": "Root Division, San Francisco",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/root-divisions-1st-annual-holiday-artist-fair-free-drink-tickets-sf/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2025-12-05T23:53:26.460Z"
+    },
+    {
+      "id": 20,
+      "selected": false,
+      "title": "2025 “Holidays on Taraval” (SF)",
+      "time_display": "Saturday 12/13 4:00 PM - 8:00 PM",
+      "location": "Taraval Street, San Francisco Bay Area",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/2024-holidays-on-taraval-sf/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2025-12-05T23:53:26.460Z"
+    },
+    {
+      "id": 21,
+      "selected": false,
+      "title": "“Sleigh the Day” 2025 Holiday Flea Market w/ Cars + Coffee (Ohlone College)",
+      "time_display": "Saturday 12/13 9:00 AM - 2:00 PM",
+      "location": "Ohlone College Lot D and E, East Bay",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/sleigh-day-2025-holiday-flea-market-cars-coffee-ohlone-college/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2025-12-05T23:53:26.460Z"
+    },
+    {
+      "id": 22,
+      "selected": false,
+      "title": "Union Square’s “Winter Walk” 2025 Opening Day (Dec. 13-24)",
+      "time_display": "Saturday 12/13 10:00 AM - 9:00 PM",
+      "location": "Lower Stockton Street, San Francisco Bay Area",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/union-squares-festive-winter-walk-2025-dec-13-24/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Winter Walk Presented by JPMorganChase, San Francisco’s signature holiday event, returns to Union Sq...",
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2025-12-05T23:53:26.460Z"
+    },
+    {
+      "id": 23,
+      "selected": false,
+      "title": "Kimochi Silver Bells Arts & Crafts Faire (SF)",
+      "time_display": "Saturday 12/13 10:00 AM - 5:00 PM",
+      "location": "St. Mary’s Cathedral Event Center, San Francisco",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/kimochi-silver-bells-arts-crafts-faire-sf/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2025-12-05T23:53:26.460Z"
+    },
+    {
+      "id": 24,
+      "selected": false,
+      "title": "The Guardsmen Tree Lot Party",
+      "time_display": "Saturday 12/13 8:00 PM",
+      "location": "The Guardsmen Christmas Tree Lot, Festival Pavilion at the Fort Mason Center for Arts & Culture, San Francisco, CA 94123",
+      "price": "From $119.18",
+      "event_type": "art",
+      "priority": 5,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/the-guardsmen-tree-lot-party-tickets-1123242952909?aff=ebdssbcitybrowsenightlife",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Celebrate the season with a magical night of dancing and beverages in an indoor winter wonderland.Th...",
+      "description_detail": "Celebrate the season with a magical night of dancing and beverages in an indoor winter wonderland.The Guardsmen are excited to invite you to the party that San Francisco Magazine calls the \"top holiday soiree\" of the year.Enjoy a hosted bar from 8pm–1:30am, dance, mingle and be jolly in what will be the best event of the holiday season!Chromeo (DJ Set) will be headlining The Guardsmen Tree Lot Party!Now almost twenty years into their storied career, Montreal natives Dave 1 and P-Thugg have turned an inseparable childhood friendship into a world-renowned, critically acclaimed marquee band—largely credited for pioneering the ’80s-tinged electro-funk sound that permeates radio airwaves today. Chromeo are known for their analog synth sonics, catchy hooks, and iconic visuals, but also as a relentless touring act—selling out shows internationally and regularly appearing on major festival stages. 2023 marked Chromeo’s fifth performance at Coachella (they’ve also played Lollapalooza and Bonnaroo four times) and their seventh annual headline show at Colorado’s Red Rocks Amphitheater.Described as \"THE party that everyone talks about for months\", The Guardsmen Tree Lot Party brings together San Francisco’s glamorous and fun-loving partygoers, all to raise funds for over 2,500 Bay Area at-risk youth.The Festival Pavilion in Fort Mason Center is one of SF's most sensational waterfront venues and will be transformed into a winter wonderland that rivals the North Pole and will leave you awestruck. Beautiful Christmas trees line the entry as you make your way to your complimentary champagne. Have your picture taken with all your friends at the step and repeat or grab some fun snaps at one of the themed photo booths.Grab a drink from one of many bars, then make your way to one of the largest dance floors in all of San Francisco and enjoy the show.One of the most magical nights of the year is coming up.Be sure to get your ticket today!Cocktail Attire Strongly SuggestedA Huge Thank You To Our 2025 Tree Lot Sponsors:Presenting Sponsor: DiageoSnazzy BeveragesPlumpjack GroupBalboa CafeWhite RabbitAll proceeds benefit at-risk Bay Area kids: The Guardsmen make a life-changing difference in the lives of at-risk youth by raising funds for scholarships, camperships, and other youth programs. Learn more at www.guardsmen.orgFAQsWho are The Guardsmen? Why is this a benefit?Every year The Guardsmen changes lives across the Bay Area by sending more than 2,500 at-risk youth to outdoor education programs and by providing scholarships for more than 250 students to attend private schools. Learn more about The GuardsmenWhat should I wear?Cocktail attire is highly suggested. Because it is chilly in San Francisco, you can wear a jacket and leave it in our coat check while you enjoy the night's festivities. The event is held at The Guardsmen Christmas Tree Lot which sells living trees for weeks leading up to the event so, despite the well-swept floors, your shoes may get dirty.Do I need to bring money? Are drinks included?Drinks are included in all tickets. Please bring cash to tip. All tips and proceeds go to support Bay Area at-risk youth.Are there ID requirements or an age limit to enter the event?Per state law, guests must be 21 or older to attend; both scannable tickets and valid government ID's are required at the door for check-in - no exceptions.How should I get to the Tree Lot Party?Parking is limited at Fort Mason. Please consider taking a ride-sharing service.May I upgrade my ticket (e.g. GA to VIP)?Yes, please transfer to the other ticket type in Eventbrite. There will be the ability to upgrade your tickets at the venue.What does it take to put on The Guardsmen Tree Lot Party?The Tree Lot Party is put on entirely by volunteers. See this brief video on what it takes to put on this world-famous eventWhat's The Guardsmen's IRS status?The Guardsmen is a registered 501 (c) (3) nonprofit corporation. Donations are greatly appreciated and highly encouraged but are separate from ticket purchases. Only a ticket purchase grants the ticket holder entrance to the event. Separate donations alone can not qualify for entrance.What is the refund policy? How can I transfer my registration?While registrations are non-refundable, you may transfer your registration to a friend on Eventbrite.To learn about event sponsorship opportunities:Contact the event hosts with any questions: treelotparty@guardsmen.orgThank you for supporting The Guardsmen!guardsmen.orgRead moreCategory: Charity & Causes, Other",
+      "source": "eventbrite",
+      "scraped_at": "2025-12-06T00:02:06.611Z"
+    },
+    {
+      "id": 25,
+      "selected": false,
+      "title": "2025素人剧社话剧 「你想吃雪糕吗」",
+      "time_display": "Saturday 12/13 3:00 PM",
+      "location": "Starbright Theater, 1770 West Campbell Avenue, Campbell, CA 95008",
+      "price": "From $44.52",
+      "event_type": "art",
+      "priority": 5,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/2025-tickets-1698721514779?aff=ebdssbcitybrowse",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "一场闹剧，一场大雨，三个怀揣困境的女孩在城市的一角相遇。一段不大不小的冒险，周周和渺渺从误解到和解，旁观的陌生人也从中获取到力量。当雨过天晴，也许情感并不是压力，也许”喜欢“只是一件简单的小事，也许打...",
+      "description_detail": "一场闹剧，一场大雨，三个怀揣困境的女孩在城市的一角相遇。一段不大不小的冒险，周周和渺渺从误解到和解，旁观的陌生人也从中获取到力量。当雨过天晴，也许情感并不是压力，也许”喜欢“只是一件简单的小事，也许打开门，光就会洒下来，也许这世上有一场雨，淋湿我也淋湿你。素人剧社全新演绎同名话剧《你想吃雪糕吗》---北美首演在这个温暖的冬季， 素人剧社给你带来三个女孩情感困境的夏日物语~十八岁的渺渺，迫不及待着长大，仿佛长大就能逃离。她陷入对偶像的迷恋，当幻象破碎，她发现自己好像也成了别人的幻象。二十八岁的周周，她变得”还不错“，可当”爱情“、”单身“、”结婚“的压力充斥漫天，她不再相信还不错的自己，一场镜花水月，醒来之后又该往哪儿走？X X 岁的陌生人，她总是权衡利弊，渴望感情的同时也变得患得患失，如果”喜欢“让一个人脆弱，那我们还能不能喜欢这样的自己？早鸟票 50张可享受85折 Code： icecream 直接下单先到先得！！！Read moreCategory: Arts, Theatre",
+      "source": "eventbrite",
+      "scraped_at": "2025-12-06T00:02:06.630Z"
+    },
+    {
+      "id": 26,
+      "selected": false,
+      "title": "Salmon Watch on Los Gatos Creek - Two Dates - Three Time Slots",
+      "time_display": "Saturday 12/13 9:00 AM",
+      "location": "1901 S Bascom Ave #1184, 1901 South Bascom Avenue, #1184 Campbell, CA 95008",
+      "price": "$0.99",
+      "event_type": "other",
+      "priority": 3,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/salmon-watch-on-los-gatos-creek-two-dates-three-time-slots-tickets-1975345606885?aff=ebdssbcitybrowse",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "The rains have brought the salmon to our creeks! We are offering limited tickets for viewing this ev...",
+      "description_detail": "The rains have brought the salmon to our creeks! We are offering limited tickets for viewing this event. December 13 and December 20.Read moreCategory: Family & Education, Other",
+      "source": "eventbrite",
+      "scraped_at": "2025-12-06T00:02:06.630Z"
+    },
+    {
+      "id": 27,
+      "selected": false,
+      "title": "www.sfstation.com",
+      "time_display": "Tuesday 12/09 11:00 AM",
+      "location": "1 Dr. Carlton B. Goodlett Place, San Francisco, CA",
+      "price": "Check event page",
+      "event_type": "other",
+      "priority": 3,
+      "chinese_relevant": false,
+      "original_url": "https://www.sfstation.com/city-hall-small-business-holiday-pop-up-e15767967",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "sfstation",
+      "scraped_at": "2025-12-05T23:53:49.665Z"
+    },
+    {
+      "id": 28,
+      "selected": false,
+      "title": "Polk Street 2025 Holiday Sip & Stroll (SF)",
+      "time_display": "Thursday 12/11 4:00 PM - 8:00 PM",
+      "location": "On Polk Street in SF between California & Broadway",
+      "price": "$35*",
+      "event_type": "other",
+      "priority": 3,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/polk-street-2025-holiday-sip-stroll-sf/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2025-12-05T23:53:26.460Z"
+    }
+  ]
+}
