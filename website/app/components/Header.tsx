@@ -1,0 +1,36 @@
+'use client';
+
+import Image from 'next/image';
+import { useTranslations } from 'next-intl';
+import LanguageSwitcher from './LanguageSwitcher';
+
+export default function Header() {
+  const t = useTranslations('home');
+
+  return (
+    <header className="bg-white/90 backdrop-blur-md shadow-md border-b-2 border-[#F0D3B6]">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+        <div className="flex items-center justify-between">
+          <div className="flex items-center gap-4">
+            <Image
+              src="/grape-mascot.png"
+              alt="Grape Mascot"
+              width={80}
+              height={80}
+              className="object-contain"
+            />
+            <div>
+              <h1 className="text-3xl font-bold text-[#4A2C22]">
+                {t('siteTitle')}
+              </h1>
+              <p className="mt-1 text-sm text-[#4A2C22]/70 font-medium">
+                {t('siteSubtitle')}
+              </p>
+            </div>
+          </div>
+          <LanguageSwitcher compact />
+        </div>
+      </div>
+    </header>
+  );
+}
