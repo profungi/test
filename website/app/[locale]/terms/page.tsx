@@ -163,7 +163,6 @@ export default async function TermsPage({
               <li>{t('section7.arise3')}</li>
               <li>{t('section7.arise4')}</li>
             </ul>
-            <p className="text-[#4A2C22]/80 mb-4">{t('section7.aggregate')}</p>
             <p className="text-[#4A2C22]/80">{t('section7.jurisdictions')}</p>
           </section>
 
