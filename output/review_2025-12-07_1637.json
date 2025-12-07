@@ -1,0 +1,583 @@
+{
+  "review_id": "review_2025-12-07_1637_1b3",
+  "generated_at": "2025-12-07T16:37:30.438Z",
+  "scrape_date": "2025-12-07",
+  "target_week": "2025-12-08_to_2025-12-14",
+  "target_week_readable": "12/08 - 12/14",
+  "scraping_report": {
+    "total_scraped": 67,
+    "after_deduplication": 28,
+    "after_classification": 28,
+    "classification_report": {
+      "totalEvents": 28,
+      "eventTypes": {
+        "art": 3,
+        "other": 3,
+        "free": 19,
+        "music": 2,
+        "market": 1
+      },
+      "priorityLevels": {
+        "3": 3,
+        "4": 2,
+        "5": 3,
+        "9": 19,
+        "10": 1
+      },
+      "chineseRelevant": 0,
+      "topPriorityEvents": 20
+    }
+  },
+  "instructions": {
+    "how_to_review": "将你想要发布的活动的 'selected' 字段改为 true",
+    "next_step": "保存文件后运行: npm run generate-post [此文件路径]",
+    "fields_explanation": {
+      "title": "活动标题",
+      "time_display": "显示用的时间格式",
+      "location": "活动地点",
+      "price": "票价信息",
+      "event_type": "AI识别的活动类型",
+      "priority": "优先级分数 (越高越重要)",
+      "chinese_relevant": "是否与中文社区相关",
+      "original_url": "原始活动链接"
+    }
+  },
+  "stats": {
+    "total_candidates": 26,
+    "by_type": {
+      "market": 1,
+      "free": 19,
+      "art": 3,
+      "other": 3
+    },
+    "by_priority": {
+      "3": 3,
+      "5": 3,
+      "9": 19,
+      "10": 1
+    },
+    "chinese_relevant": 0
+  },
+  "events": [
+    {
+      "id": 1,
+      "selected": false,
+      "title": "2025 Oakland Coffee Holiday Market",
+      "time_display": "Sunday 12/14 10:00 AM - 3:00 PM",
+      "location": "Rotunda Building, East Bay",
+      "price": "$5",
+      "event_type": "market",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/2025-oakland-coffee-holiday-market/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2025-12-07T16:28:48.308Z"
+    },
+    {
+      "id": 2,
+      "selected": false,
+      "title": "US Air Force Band of the Golden West Presents: “Home for the Holidays”",
+      "time_display": "Monday 12/08 7:00 PM",
+      "location": "Temple Hill Auditorium, Lincoln Avenue, Oakland, CA, USA, 4780 Lincoln Avenue, Oakland, CA 94602",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/us-air-force-band-of-the-golden-west-presents-home-for-the-holidays-tickets-1936833704749?aff=ebdssbcitybrowse",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Enjoy a free Christmas concert by the U.S. Air Force Band of the Golden West on Dec 8 at 7 PM. Reser...",
+      "description_detail": "Enjoy a free Christmas concert by the U.S. Air Force Band of the Golden West on Dec 8 at 7 PM. Reserve your tickets today!Join us on December 8 at 7:00 PM in the Temple Hill Auditorium for a stirring brass and vocal Christmas concert by the U.S. Air Force Band of the Golden West! Celebrate the season with inspiring music that honors service, uplifts communities, and connects audiences through the power of sound. This family-friendly performance is free, but tickets are required—reserve yours today!Read moreCategory: Holiday, Christmas",
+      "source": "eventbrite",
+      "scraped_at": "2025-12-07T16:37:06.948Z"
+    },
+    {
+      "id": 3,
+      "selected": false,
+      "title": "Fiesta Navideña",
+      "time_display": "Saturday 12/13 5:30 PM",
+      "location": "School of Arts and Culture at the Mexican Heritage Plaza, 1700 Alum Rock Ave, San Jose, CA 95116",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/fiesta-navidena-tickets-1830965891269?aff=ebdssbcitybrowse",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Celebrate the Holiday Spirit of Fiesta Navideña at the Mexican Heritage Plaza!Every December, the Me...",
+      "description_detail": "Celebrate the Holiday Spirit of Fiesta Navideña at the Mexican Heritage Plaza!Every December, the Mexican Heritage Plaza (La Plaza) shines with twinkling décor, an 18-foot Christmas tree, and community cheer. This year, the 15th annual Fiesta Navideña lights up the night on Saturday, December 13. The celebration features a free concert by Carlos y Charlos, whose passionate norteño and conjunto sounds will resonate through the Mayfair neighborhood for La Plaza’s final event of the year.As the evening falls, families gather to enjoy festive activities for all ages, including an enchanting folklórico performance by longtime partners Los Lupeños de San José. Guests can participate in an interactive posada, celebrating a cherished Mexican tradition of hospitality while welcoming the holiday season, presented by Teatro Vision. The night will also feature an art workshop for all ages, local vendors offering handmade crafts and gifts, and the delicious aroma of steaming tamales.“For many people from the local community, the Mexican Heritage Plaza serves as a second home, a place where they can celebrate traditions from Mexico and across Latin America. For years, Fiesta Navideña has brought generations together to honor culture, faith, and family. Attendees may have traveled here and left their motherland, but they carry traditions with them, and it’s our duty to be the place where they can come together and celebrate.”Read moreCategory: Holiday, Christmas",
+      "source": "eventbrite",
+      "scraped_at": "2025-12-07T16:37:06.949Z"
+    },
+    {
+      "id": 4,
+      "selected": false,
+      "title": "FHS PTSA presents College Planning Roadmap for Juniors",
+      "time_display": "Monday 12/08 6:00 PM",
+      "location": "Fremont High School, 575 West Fremont Avenue, Sunnyvale, CA 94087",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/fhs-ptsa-presents-college-planning-roadmap-for-juniors-tickets-1963651330991?aff=ebdssbcitybrowse",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Get ready, juniors! Join us for a College Planning Roadmap event with speaker Syrous Parsay.This eve...",
+      "description_detail": "Get ready, juniors! Join us for a College Planning Roadmap event with speaker Syrous Parsay.This event will take place in the Fair Oaks Room on the FHS campus.The College application process can be overwhelming and intimidating for both parents and students. There are a myriad of decisions, conflicting information, and as the result the stress level tends to be high. Come join us for this informative lecture on \"College Planning Road Map - Junior Class\". This workshop will provide the attendees with an understanding of the application process for the Junior Class, and how to reduce the stress of getting through it all.The session will focus on the following topics:Admission puzzlePandemic changesCollege profiling and selectionMajor selectionWriting effective essaysSubmission strategiesScholarships & Financial aidSummer planning (internships, workshops, etc.)Managing the stress of the processList of useful resourcesPlease come prepared to take notes. Photos or recording of the lecture is prohibited, and there will be no handouts.Read moreCategory: Family & Education, Education",
+      "source": "eventbrite",
+      "scraped_at": "2025-12-07T16:37:06.950Z"
+    },
+    {
+      "id": 5,
+      "selected": false,
+      "title": "SCB Concert: Sleigh Ride",
+      "time_display": "Monday 12/08 7:30 PM",
+      "location": "20300 Herriman Ave, 20300 Herriman Avenue, Saratoga, CA 95070",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/scb-concert-sleigh-ride-tickets-1974558380269?aff=ebdssbcitybrowse",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Get ready to jingle all the way at SCB Concert: Sleigh Ride – music, fun, and festive tunes.SCB Conc...",
+      "description_detail": "Get ready to jingle all the way at SCB Concert: Sleigh Ride – music, fun, and festive tunes.SCB Concert: Sleigh Ride!Join us in person for a festive evening filled with great music and holiday cheer. Works by JP Sousa, Claude Smith, Leon Jessel, Steve Reisteter, and Leroy Anderson (of course!). Grab your friends, dress cozy, and come enjoy the music. Admission is free; voluntary donartions gladly appreciated.The digital concert program will be available at www.saratogaband.com a few days prior to the show.Read moreCategory: Music, Classical",
+      "source": "eventbrite",
+      "scraped_at": "2025-12-07T16:37:06.952Z"
+    },
+    {
+      "id": 6,
+      "selected": false,
+      "title": "Real Estate Investing - No Money or Credit - Saratoga, California",
+      "time_display": "Monday 12/08 5:00 PM",
+      "location": "95070, 95070, Saratoga, CA 95070",
+      "price": "$0.99",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/real-estate-investing-no-money-or-credit-saratoga-california-tickets-914746711037?aff=ebdssbcitybrowse",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Join our live online event - Learn to Buy Houses without your own Money or Credit! Turn real estate ...",
+      "description_detail": "Join our live online event - Learn to Buy Houses without your own Money or Credit! Turn real estate dreams into your reality!T urn your real estate dreams into reality! For the D ream-Builders, Money-Makers, and Freedom-Chasers, are you ready to redefine your WHY, supercharge your GOALS, and find a purpose that truly pays off?G et set to join a vibrant commmunity of real estate enthusiasts, a band of modern -day moguls turning houses into cash flow. Whether you're a fix & flip fanatic,a buy & hold believer, or fascinated by new construction, seller-financed notes, or commercial/multi-family properties, we've got the blueprint just for you!U nlock the secret vault of financial independence, create passive income streams, and build a legacy for generations to come. Remember, we're not just dealing in properties - we're investing futures.W e will master the art of minimizing taxes (imagine saving 2/3 taxes for the rest of your life!), busting debt, and growing your real estate empire with your retirement funds. Yes, you read that right - all legal, and ethical!W e're also about networking because we believe in the power of collaberation. Make business buddies to learn with, work with, and hang out with!W hat's financial success, you ask? It's not about the dollar amount. It's about buying FREEDOM and reclaiming your LIFE. It's about choosing WHAT you want to do. WHEN you want to do it, WHO you want to do it with, and WHERE you want to do it - regardless of time and costs involved.U ltimately, we're here to help you live the life you love and inspire others to do the same!J oin us every Wednesday, 8:00 - 10:00 pm Central Time, to convert your ambitions into action. Got questions or need more info? Give us a call or shoot a text to (847)461-8578S o what are you waiting for? Be a part of the real estate revolution and create your own success story!978234001Read moreCategory: Business, Real Estate",
+      "source": "eventbrite",
+      "scraped_at": "2025-12-07T16:37:06.952Z"
+    },
+    {
+      "id": 7,
+      "selected": false,
+      "title": "Child Care Blueprint Convening",
+      "time_display": "Monday 12/08 9:30 AM",
+      "location": "350 Twin Dolphin Dr, 350 Twin Dolphin Drive, Redwood City, CA 94065",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/child-care-blueprint-convening-tickets-1935902920749?aff=ebdssbcitybrowse",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Celebrate a year of collaboration as we unveil the near-final Child Care Blueprint and explore how w...",
+      "description_detail": "Celebrate a year of collaboration as we unveil the near-final Child Care Blueprint and explore how we’ll bring its vision to life in 2026.Category: Family & Education, Education",
+      "source": "eventbrite",
+      "scraped_at": "2025-12-07T16:37:06.954Z"
+    },
+    {
+      "id": 8,
+      "selected": false,
+      "title": "Holiday Art Bazaar at Hayes Valley Art Works + Meet Adominable Snowman (SF)",
+      "time_display": "Saturday 12/13 11:00 AM - 5:00 PM",
+      "location": "Hayes Valley Art Works, San Francisco",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/holiday-art-bazaar-hayes-valley-art-works-meet-adominable-snowman-sf/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2025-12-07T16:28:48.307Z"
+    },
+    {
+      "id": 9,
+      "selected": false,
+      "title": "Emerge Holiday Craft Fair: Artisans + DIY Workshops (SF)",
+      "time_display": "Saturday 12/13 11:00 AM - 5:00 PM",
+      "location": "Groundfloor, San Francisco",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/emerge-holiday-craft-fair-artisans-diy-workshops-sf/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2025-12-07T16:28:48.307Z"
+    },
+    {
+      "id": 10,
+      "selected": false,
+      "title": "San Francisco SantaCon: City-Wide Santa Pub Crawl (2025)",
+      "time_display": "Saturday 12/13 12:00 PM - 5:00 PM",
+      "location": "Union Square Park, San Francisco Bay Area",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/santacon-san-francisco/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2025-12-07T16:28:48.307Z"
+    },
+    {
+      "id": 11,
+      "selected": false,
+      "title": "Root Division’s 1st Annual Artist Fair (SF)",
+      "time_display": "Saturday 12/13 12:00 PM - 5:00 PM",
+      "location": "Root Division, San Francisco",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/root-divisions-1st-annual-artist-fair-sf/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2025-12-07T16:28:48.307Z"
+    },
+    {
+      "id": 12,
+      "selected": false,
+      "title": "Free Holiday Market: Ceramics + Handmade Gifts (SF Clayworks)",
+      "time_display": "Saturday 12/13 12:00 PM - 5:00 PM",
+      "location": "sfclayworks",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/free-holiday-market-ceramics-handmade-gifts-sf-clayworks/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2025-12-07T16:28:48.307Z"
+    },
+    {
+      "id": 13,
+      "selected": false,
+      "title": "BART SweaterFest 2025: Free Holiday Fun + BARTmobile Rides (Rockridge)",
+      "time_display": "Saturday 12/13 1:00 PM - 3:00 PM",
+      "location": "Rockridge BART, East Bay",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/bart-sweaterfest-2025-free-holiday-fun-bartmobile-rides-rockridge/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2025-12-07T16:28:48.307Z"
+    },
+    {
+      "id": 14,
+      "selected": false,
+      "title": "2025 Filipino “Parol Lantern” Festival (SF)",
+      "time_display": "Saturday 12/13 3:00 PM - 8:00 PM",
+      "location": "Yerba Buena Center for the Arts, San Francisco",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/2025-filipino-parol-lantern-festival-sf/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2025-12-07T16:28:48.308Z"
+    },
+    {
+      "id": 15,
+      "selected": false,
+      "title": "SF’s 11th Annual Krampus Pub Crawl (2025)",
+      "time_display": "Saturday 12/13 3:00 PM - 4:00 PM",
+      "location": "Tunnel Top Lounge and Bar, San Francisco",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/sfs-11th-annual-krampus-pub-crawl-2025/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2025-12-07T16:28:48.308Z"
+    },
+    {
+      "id": 16,
+      "selected": false,
+      "title": "Sausalito Lighted Boat Parade + Fireworks (2025)",
+      "time_display": "Saturday 12/13 6:00 PM - 7:30 PM",
+      "location": "Gabrielson Park, San Francisco Bay Area",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/lighted-boat-parade-sausalito/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2025-12-07T16:28:48.308Z"
+    },
+    {
+      "id": 17,
+      "selected": false,
+      "title": "“Let’s Glow SF” 2025: SF’s Huge Holiday Projection Arts Festival (Final Day)",
+      "time_display": "Sunday 12/14 5:30 PM - 10:00 PM",
+      "location": "San Francisco's Financial District",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/lets-glow-sf-2025-sfs-huge-holiday-projection-arts-festival-final-day/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Let’s Glow SF, the nation’s largest FREE holiday projection arts festival, is making a triumphant re...",
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2025-12-07T16:28:48.308Z"
+    },
+    {
+      "id": 18,
+      "selected": false,
+      "title": "Union Square’s Festive “Winter Walk” 2025 (Dec. 13-24)",
+      "time_display": "Sunday 12/14 10:00 AM - 9:00 PM",
+      "location": "Lower Stockton Street, San Francisco Bay Area",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/union-squares-festive-winter-walk-2025-dec-13-24-2/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Winter Walk Presented by JPMorganChase, San Francisco’s signature holiday event, returns to Union Sq...",
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2025-12-07T16:28:48.308Z"
+    },
+    {
+      "id": 19,
+      "selected": false,
+      "title": "6th Annual Bernal Heights “Holidays on the Hill” Art + Gift Faire (2025)",
+      "time_display": "Sunday 12/14 11:00 AM - 4:00 PM",
+      "location": "Bernal Heights Branch Library, San Francisco",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/6th-annual-bernal-heights-holidays-hill-art-gift-faire-2025/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2025-12-07T16:28:48.308Z"
+    },
+    {
+      "id": 20,
+      "selected": false,
+      "title": "Holly Daze: The Box Shop’s December Open House + Makers Market",
+      "time_display": "Sunday 12/14 12:00 PM - 4:00 PM",
+      "location": "The Box Shop, San Francisco",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/holly-daze-box-shops-december-open-house-makers-market/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2025-12-07T16:28:48.308Z"
+    },
+    {
+      "id": 21,
+      "selected": false,
+      "title": "Lectures on Tap- The Search for Quantum Gravity in Antarctica",
+      "time_display": "Monday 12/08 6:30 PM",
+      "location": "Nob Hill, Nob Hill, San Francisco, CA 94109",
+      "price": "$48.80",
+      "event_type": "art",
+      "priority": 5,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/lectures-on-tap-the-search-for-quantum-gravity-in-antarctica-tickets-1964553978835?aff=ebdssbneighborhoodbrowse",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Professors, experts, and storytellers giving thought-provoking lectures in SF bars.📍 Location: Exac...",
+      "description_detail": "Professors, experts, and storytellers giving thought-provoking lectures in SF bars.📍 Location: Exact address found in the confirmation email📚 Lecture: “The Search for Quantum Gravity in Antarctica”🎤 Speaker: Dr. Grant Kendrick ParkerJoin us for a captivating evening as Dr. Grant Kendrick Parker takes us on a journey to the icy depths of Antarctica, home to the IceCube Neutrino Observatory, a groundbreaking particle detector buried more than a mile below the surface. This unique facility is tasked with observing neutrinos—special particles that travel from our atmosphere and even from distant galaxies.In this lecture, Dr. Parker will share how he uses the data collected from IceCube to explore the fundamental nature of spacetime and test theories of quantum gravity involving microscopic black holes.Dr. Grant Kendrick Parker is a particle physicist at the Lawrence Livermore National Laboratory, where he investigates some of the deepest mysteries in physics. His dissertation research has been published in prestigious journals such as Nature Physics and Physical Review Letters. Currently, he is focused on understanding the matter-antimatter asymmetry in the universe and developing new machine learning tools for particle detectors.Don’t miss this enlightening opportunity to learn about the intersection of physics and exploration with Dr. Grant Kendrick Parker!Get a drink, connect, and learn at Lectures on Tap! 🙌Agenda6:30 PM – Doors open: find a seat (open seating!), order food & drinks, and expect a bar line—arriving early is key.6:55 PM – Host introduction7:00 PM – Lecture begins7:45 PM – Audience Q&A8:00 PM – Have 1:1 time with the speaker, mingle with fellow guests, and order another round8:30 PM – Wrap up.Read moreCategory: Community, Other",
+      "source": "eventbrite",
+      "scraped_at": "2025-12-07T16:37:06.946Z"
+    },
+    {
+      "id": 22,
+      "selected": false,
+      "title": "The Original San Jose Nutcracker",
+      "time_display": "Sunday 12/14 2:00 PM",
+      "location": "San Jose Center for the Performing Arts, 255 South Almaden Boulevard, San Jose, CA 95113",
+      "price": "From $54.02",
+      "event_type": "art",
+      "priority": 5,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/the-original-san-jose-nutcracker-tickets-1608339780579?aff=ebdssbcitybrowse",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Join our 60th Anniversary production of the holiday classic for the Land of Sweets Spectacular “Cand...",
+      "description_detail": "Join our 60th Anniversary production of the holiday classic for the Land of Sweets Spectacular “Candyland Matinee”!Step into a world where dreams come to life and holiday magic fills the air! Celebrate the 60th Jubilee Anniversary of The Original San Jose Nutcracker, an enchanting ballet that has been a cherished San Jose holiday tradition for generations.Join us December 13-14 & 20-21, 2025 at the San Jose Center for the Performing Arts for a timeless journey featuring brave toy soldiers, shimmering snowflakes, and the elegance of waltzing flowers. Witness the epic battle between courageous soldiers and mischievous mice, all set beneath a breathtaking 60-foot Christmas tree.This year’s landmark production is proudly accompanied by The Cambrian Symphony, bringing Tchaikovsky’s unforgettable score to life with the power and beauty of a live orchestra.Join our VIP Experience — Don’t just see The Nutcracker, live it! Enjoy a pre-performance backstage tour to see the magic behind the scenes, then join the cast in the exclusive Candy Kingdom Party filled with sweet treats, festive crafts, and photo opportunities with beloved characters.Help us celebrate 60 years by enjoying one of our special themed performances to elevate your holiday experience:December 13th 2:00pm: A Very Nutcracker Holiday “Ugly Sweater & Sparkles Matinee”! Come dressed in your most festive holiday attire — the tackier, the better! Ugly sweaters, sparkly scarves, and holiday hats encouraged. Enjoy a family-focused show full of seasonal cheer and Nutcracker magic.December 13th 7:30pm: Clara's Homecoming - Alumni Night! Celebrate 60 magical years with past performers, friends, and family returning to the stage and the audience.December 14th 2:00pm: Land of Sweets Spectacular “Candyland Matinee”! A treat-themed matinee where everyone can enjoy a little extra sweetness — themed concessions, pink and pastel decor, and candy cane treats.December 20th 2:00pm: Clara & Sugar Plum Dress-Up Day “Tutus & Tiaras Matinee”! Little ones are invited to dress up as their favorite Nutcracker characters! From Sugar Plums to Mouse Kings, this show is all about imagination and sparkle. Great for first-time balletgoers and families.December 20th 7:30pm: Twilight in the Candy Kingdom: Family Pride Night! An inclusive, joyful celebration for all families — with glittering treats, bold costumes, and a pre-show character meet-and-greet with our radiant Mother Cupcake.December 21st 2:00pm: Storybook Sunday: Nutcracker Edition! Focuses on the tale behind the ballet — lobby storytelling, digital “read-along” Nutcracker story, and a magical moment for young readers.Let The Original San Jose Nutcracker ignite your imagination and create treasured memories during this dazzling Jubilee celebration!Read moreCategory: Arts, Ballet",
+      "source": "eventbrite",
+      "scraped_at": "2025-12-07T16:37:06.950Z"
+    },
+    {
+      "id": 23,
+      "selected": false,
+      "title": "Princess: A 'WICKED' Experience!",
+      "time_display": "Saturday 12/13 9:30 PM",
+      "location": "OASIS, 298 11th Street, San Francisco, CA 94103",
+      "price": "From $17.40",
+      "event_type": "art",
+      "priority": 5,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/princess-a-wicked-experience-tickets-1227020434149?aff=ebdssbcitybrowse",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "A DISCO-POP DANCE PARTY, DRAG SPECTACULAR + TRIBUTE TO ALL THE HITS FROM \"WICKED\"! Doors at 9:30pmTi...",
+      "description_detail": "A DISCO-POP DANCE PARTY, DRAG SPECTACULAR + TRIBUTE TO ALL THE HITS FROM \"WICKED\"! Doors at 9:30pmTito Soto PresentsPrincess: A 'WICKED' Experience!A DISCO-POP DANCE PARTY, DRAG SPECTACULAR+ TRIBUTE TO ALL THE HITS FROM \"WICKED\"!By popular demand, we will be BACK with an even fiercer version of our Wicked Spectacular right after 'Wicked Part 2' is released! Come dressed in your favorite OZ look, and watch OVER 30+ drag stars recreate all your favorite musical numbers from the hit broadway musical/movie! Featuring specialty drink potions, a themed Photo Booth, and highly immersive performances.This will be one of our craziest shows of the year, save the date!HOSTED BY LISA FRANKENSTEIN + SNAXXGAY ASS PHOTOBOOTH BY EVIANSTUNTING PHOTOS BY RACHEL ZIEGLERSPONSORED BYMILAGRO TEQUILAEXTRA LEWKS ENCOURAGED!!!Early Arrival Strongly SuggestedDoors 9:30pm, show around 11:30pm.ATTENTION:NO TRANSPHOBIA, HOMOPHOBIA, ABLEISM, XENOPHOBIA, MISOGYNY AND ANY OTHER FORM OF BIGOTRY ALLOWED IN THIS SPACE9:30pm - LATE298 11th St, San Francisco, CA 94103Oasis is 21+Read moreCategory: Arts, Musical",
+      "source": "eventbrite",
+      "scraped_at": "2025-12-07T16:37:06.954Z"
+    },
+    {
+      "id": 24,
+      "selected": false,
+      "title": "SF Ghost Hunting Tour in Chinatown with a Paranormal Investigator",
+      "time_display": "Monday 12/08 7:00 PM",
+      "location": "The Haunt SF Ghost Tours, 598 Clay Street, San Francisco, CA 94111",
+      "price": "From $59.98",
+      "event_type": "other",
+      "priority": 3,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/sf-ghost-hunting-tour-in-chinatown-with-a-paranormal-investigator-tickets-432300621797?aff=ebdssbcitybrowse",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Join San Francisco’s real ghost hunting excursion through Gold Rush-era neighborhoods after dark, se...",
+      "description_detail": "Join San Francisco’s real ghost hunting excursion through Gold Rush-era neighborhoods after dark, seeking out evidence of the paranormal.Welcome to The Haunt, a ghost hunting tour led by a professional paranormal investigator. Meet your guide near Chinatown in the Jackson Square Historic District -- a little-known Gold Rush-era neighborhood with eerie, well-preserved Victorian architecture.Your tour guide will outfit everyone with an EMF meter that you'll use throughout the paranormal investigation, and explain the types of hauntings and ghosts that we encounter in San Francisco.From there we'll enter the old neighborhood, hearing about the forgotten graves and ships buried beneath us.Down quiet alleyways, we'll learn of the destruction of the Great Earthquake of 1906, and the residual hauntings that still plague the neighborhood.At any point, we might detect EMF activity, and we'll investigate further using tools such as dowsing rods and a Spirit Box.In Chinatown, we'll learn of the tragedies that mark the neighborhood's past, including the true crimes whose energies still linger, from a mysterious death in a historic theatre, to the city's biggest massacre at the Golden Dragon.We'll end the investigation with a ceremony to honor whatever spirits joined us, with a ritual to ensure that nothing follows you home.Read moreCategory: Holiday, Halloween",
+      "source": "eventbrite",
+      "scraped_at": "2025-12-07T16:37:06.947Z"
+    },
+    {
+      "id": 25,
+      "selected": false,
+      "title": "Granada's Annual Banquet: Foundations of the Future",
+      "time_display": "Saturday 12/13 5:00 PM",
+      "location": "Khadija Banquet Hall, 3003 Scott Boulevard, Santa Clara, CA 95054",
+      "price": "$35 – $575",
+      "event_type": "other",
+      "priority": 3,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/granadas-annual-banquet-foundations-of-the-future-tickets-1636337221679?aff=ebdssbcitybrowse",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Join us at Granada's Annual Banquet to celebrate our past achievements and lay the groundwork for a ...",
+      "description_detail": "Join us at Granada's Annual Banquet to celebrate our past achievements and lay the groundwork for a bright future ahead!Granada Annual Banquet: Foundations of the FutureJoin us for a night of faith, community, and inspiration as we come together to support the Foundations of the Future Campaign.✨ What to Expect🍽️ A delicious dinner with friends and family🎤 Inspiring guest speakers and special presentations🎶 Uplifting entertainment and community spirit🏫 Exciting updates on GIS growth and the MCA 3.0 project❤️ Why AttendBe part of shaping the future of Islamic education in our communityCelebrate the achievements of our students and the schoolSupport the projects that will impact generations to come👉 Reserve your seat today and help us build a stronger future together.👉 If you're unable to attend, please consider donating -> tinyurl.com/ynmzmncdRead moreCategory: Charity & Causes, Education",
+      "source": "eventbrite",
+      "scraped_at": "2025-12-07T16:37:06.951Z"
+    },
+    {
+      "id": 26,
+      "selected": false,
+      "title": "The 1st Annual Rhino Xmas Gay-la (The Castro)",
+      "time_display": "Sunday 12/14 6:00 PM - 9:00 PM",
+      "location": "Eureka Valley Recreation Center, San Francisco",
+      "price": "$22*",
+      "event_type": "other",
+      "priority": 3,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/1st-annual-rhino-xmas-gayla-castro/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2025-12-07T16:28:48.308Z"
+    }
+  ]
+}
