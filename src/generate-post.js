@@ -210,8 +210,9 @@ class PostGenerationOrchestrator {
       }
 
       // 10. 保存发布记录到数据库 (反馈系统)
+      let postId = null;
       try {
-        const postId = await this.savePublicationRecord(
+        postId = await this.savePublicationRecord(
           finalEvents,          // 使用最终的活动列表（包含新添加的）
           weekRange,
           reviewFilePath,

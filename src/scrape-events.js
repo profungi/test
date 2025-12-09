@@ -53,38 +53,38 @@ class EventScrapeOrchestrator {
       
       // 2. 并行抓取所有数据源
       const allEvents = await this.scrapeAllSources();
-      
+
       if (allEvents.length === 0) {
         console.log('❌ 没有找到任何活动');
         return;
       }
-      
-      // 3. 去重和数据清理
-      const uniqueEvents = await this.deduplicateEvents(allEvents);
-      console.log(`🔍 去重后剩余 ${uniqueEvents.length} 个活动`);
-      
-      // 4. AI分类和优先级排序
-      const classifiedEvents = await this.aiClassifier.classifyEvents(uniqueEvents);
 
-      // 4.5 翻译活动标题（新增）
+      // 3. 翻译活动标题（在去重之前，确保 title_zh 在保存到数据库时已存在）
       console.log('\n🌐 开始翻译活动标题...');
       const translatedEvents = await this.translator.translateEvents(
-        classifiedEvents,
+        allEvents,
         10,  // 每批翻译 10 个
         1000 // 每批间隔 1 秒
       );
 
-      // 5. 选择最佳候选活动
+      // 4. 去重和数据清理（此时每个 event 已经有 title_zh 字段）
+      const uniqueEvents = await this.deduplicateEvents(translatedEvents);
+      console.log(`🔍 去重后剩余 ${uniqueEvents.length} 个活动`);
+
+      // 5. AI分类和优先级排序
+      const classifiedEvents = await this.aiClassifier.classifyEvents(uniqueEvents);
+
+      // 6. 选择最佳候选活动
       const topCandidates = this.aiClassifier.selectTopCandidates(
-        translatedEvents,
+        classifiedEvents,
         config.scraping.totalCandidatesForReview
       );
-      
-      // 6. 生成分类报告
+
+      // 7. 生成分类报告
       const classificationReport = this.aiClassifier.generateClassificationReport(classifiedEvents);
       console.log('\n📊 AI分类报告:', classificationReport);
-      
-      // 7. 生成人工审核文件
+
+      // 8. 生成人工审核文件
       const weekRange = this.targetWeek === 'current'
         ? this.scrapers[0].getCurrentWeekRange()
         : this.scrapers[0].getNextWeekRange();

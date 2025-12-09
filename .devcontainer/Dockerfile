@@ -1,20 +1,7 @@
 # 使用官方 Node.js 24 镜像作为基础
-<<<<<<< HEAD
 # 使用标准版本（包含更多工具）以便安装 Chromium
-||||||| dc076b5
-# 使用 slim 版本减少镜像大小，加速下载
-=======
-# 使用 slim 版本减少镜像大小，加速下载
-# 注意：使用 amd64 因为 Puppeteer Chrome 在 ARM64 Linux 上支持不完整
->>>>>>> refs/tags/sculptor-merge-source-5bd2cf985193ee807ca48afb3de82280ea96f46b
 ARG NODE_VERSION=24
-<<<<<<< HEAD
 FROM node:${NODE_VERSION}-bookworm
-||||||| dc076b5
-FROM node:${NODE_VERSION}-bookworm-slim
-=======
-FROM --platform=linux/amd64 node:${NODE_VERSION}-bookworm-slim
->>>>>>> refs/tags/sculptor-merge-source-5bd2cf985193ee807ca48afb3de82280ea96f46b
 
 # 避免交互式提示
 ENV DEBIAN_FRONTEND=noninteractive
@@ -104,23 +91,10 @@ RUN npm install -g \
 # 设置工作目录
 WORKDIR /workspace
 
-<<<<<<< HEAD
 # 为 Puppeteer 设置环境变量
 # 跳过下载 Chrome，使用系统的 Chromium
 ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true
 ENV PUPPETEER_EXECUTABLE_PATH=/usr/bin/chromium
-||||||| dc076b5
-# 为 Puppeteer 设置环境变量
-ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=false
-ENV PUPPETEER_EXECUTABLE_PATH=/usr/bin/google-chrome-stable
-
-# 预安装 Puppeteer 的 Chrome（加速首次启动）
-# 这会在构建时下载 Chrome，避免每次创建容器时下载
-RUN npx puppeteer browsers install chrome || true
-=======
-# 为 Puppeteer 设置环境变量（不指定 EXECUTABLE_PATH，让 Puppeteer 使用自己下载的）
-ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=false
->>>>>>> refs/tags/sculptor-merge-source-5bd2cf985193ee807ca48afb3de82280ea96f46b
 
 # 🚀 Sculptor 优化说明：
 # 使用系统的 Chromium 而不是 Puppeteer 下载的 Chrome
