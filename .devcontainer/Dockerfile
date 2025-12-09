@@ -1,7 +1,8 @@
 # 使用官方 Node.js 24 镜像作为基础
 # 使用 slim 版本减少镜像大小，加速下载
+# 注意：使用 amd64 因为 Puppeteer Chrome 在 ARM64 Linux 上支持不完整
 ARG NODE_VERSION=24
-FROM node:${NODE_VERSION}-bookworm-slim
+FROM --platform=linux/amd64 node:${NODE_VERSION}-bookworm-slim
 
 # 避免交互式提示
 ENV DEBIAN_FRONTEND=noninteractive
@@ -66,6 +67,12 @@ RUN groupmod --gid $USER_GID $USERNAME \
     && usermod --uid $USER_UID --gid $USER_GID $USERNAME \
     && chown -R $USER_UID:$USER_GID /home/$USERNAME
 
+# 给 node 用户 sudo 权限（Dev Container 需要）
+RUN apt-get update && apt-get install -y sudo \
+    && echo "$USERNAME ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers.d/$USERNAME \
+    && chmod 0440 /etc/sudoers.d/$USERNAME \
+    && rm -rf /var/lib/apt/lists/*
+
 # 配置 npm 全局安装路径（避免权限问题）
 RUN mkdir -p /home/$USERNAME/.npm-global \
     && chown -R $USERNAME:$USERNAME /home/$USERNAME/.npm-global
@@ -83,20 +90,21 @@ RUN npm install -g \
 # 设置工作目录
 WORKDIR /workspace
 
-# 为 Puppeteer 设置环境变量
+# 为 Puppeteer 设置环境变量（不指定 EXECUTABLE_PATH，让 Puppeteer 使用自己下载的）
 ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=false
-ENV PUPPETEER_EXECUTABLE_PATH=/usr/bin/google-chrome-stable
-
-# 预安装 Puppeteer 的 Chrome（加速首次启动）
-# 这会在构建时下载 Chrome，避免每次创建容器时下载
-RUN npx puppeteer browsers install chrome || true
 
 # 🚀 Sculptor 优化说明：
 # 项目依赖会在 postCreateCommand 中安装
 # 但 Chrome 和系统依赖已经预装在镜像中，这能节省大量时间
 
-# 切换到 node 用户
+# 切换到 node 用户（在安装 Chrome 之前切换）
 USER $USERNAME
+
+# 设置 Puppeteer 缓存路径为 node 用户的 home 目录
+ENV PUPPETEER_CACHE_DIR=/home/$USERNAME/.cache/puppeteer
+
+# 注意：Chrome 会在 post-create.sh 中安装（有网络保证）
+# 这里不预装是为了避免构建时的网络问题
 
 # 设置 shell 为 bash
 ENV SHELL=/bin/bash

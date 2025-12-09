@@ -18,6 +18,20 @@ echo -e "${BLUE}📦 Checking Node.js version...${NC}"
 node --version
 npm --version
 
+# 修复 node_modules 权限（Docker volume 可能权限不对）
+echo -e "${BLUE}🔧 Fixing node_modules permissions...${NC}"
+sudo chown -R node:node /workspace/node_modules 2>/dev/null || true
+sudo chown -R node:node /workspace/website/node_modules 2>/dev/null || true
+
+# 安装 Puppeteer Chrome（使用 linux 平台，会自动匹配 amd64）
+echo -e "${BLUE}🎭 Installing Puppeteer Chrome for $(uname -m)...${NC}"
+if [ ! -d "$HOME/.cache/puppeteer/chrome" ]; then
+    npx puppeteer browsers install chrome --platform linux
+    echo -e "${GREEN}✅ Chrome installed${NC}"
+else
+    echo -e "${GREEN}✅ Chrome already installed${NC}"
+fi
+
 # 安装根目录依赖
 echo -e "${BLUE}📦 Installing root dependencies...${NC}"
 # 使用 npm ci 代替 npm install（更快，更可靠）
