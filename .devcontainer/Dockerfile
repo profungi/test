@@ -1,7 +1,7 @@
 # 使用官方 Node.js 24 镜像作为基础
-# 使用 slim 版本减少镜像大小，加速下载
+# 使用标准版本（包含更多工具）以便安装 Chromium
 ARG NODE_VERSION=24
-FROM node:${NODE_VERSION}-bookworm-slim
+FROM node:${NODE_VERSION}-bookworm
 
 # 避免交互式提示
 ENV DEBIAN_FRONTEND=noninteractive
@@ -17,8 +17,10 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     # SQLite3 和开发库
     sqlite3 \
     libsqlite3-dev \
+    # 安装 Chromium（Debian 提供 ARM64 版本）
+    chromium \
+    chromium-driver \
     # Puppeteer 和 Chrome 依赖
-    ca-certificates \
     fonts-liberation \
     libappindicator3-1 \
     libasound2 \
@@ -66,6 +68,12 @@ RUN groupmod --gid $USER_GID $USERNAME \
     && usermod --uid $USER_UID --gid $USER_GID $USERNAME \
     && chown -R $USER_UID:$USER_GID /home/$USERNAME
 
+# 给 node 用户 sudo 权限（Dev Container 需要）
+RUN apt-get update && apt-get install -y sudo \
+    && echo "$USERNAME ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers.d/$USERNAME \
+    && chmod 0440 /etc/sudoers.d/$USERNAME \
+    && rm -rf /var/lib/apt/lists/*
+
 # 配置 npm 全局安装路径（避免权限问题）
 RUN mkdir -p /home/$USERNAME/.npm-global \
     && chown -R $USERNAME:$USERNAME /home/$USERNAME/.npm-global
@@ -84,16 +92,13 @@ RUN npm install -g \
 WORKDIR /workspace
 
 # 为 Puppeteer 设置环境变量
-ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=false
-ENV PUPPETEER_EXECUTABLE_PATH=/usr/bin/google-chrome-stable
-
-# 预安装 Puppeteer 的 Chrome（加速首次启动）
-# 这会在构建时下载 Chrome，避免每次创建容器时下载
-RUN npx puppeteer browsers install chrome || true
+# 跳过下载 Chrome，使用系统的 Chromium
+ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true
+ENV PUPPETEER_EXECUTABLE_PATH=/usr/bin/chromium
 
 # 🚀 Sculptor 优化说明：
-# 项目依赖会在 postCreateCommand 中安装
-# 但 Chrome 和系统依赖已经预装在镜像中，这能节省大量时间
+# 使用系统的 Chromium 而不是 Puppeteer 下载的 Chrome
+# 这样可以在 ARM64 系统上正常工作
 
 # 切换到 node 用户
 USER $USERNAME

@@ -18,6 +18,21 @@ echo -e "${BLUE}📦 Checking Node.js version...${NC}"
 node --version
 npm --version
 
+# 修复 node_modules 权限（Docker volume 可能权限不对）
+echo -e "${BLUE}🔧 Fixing node_modules permissions...${NC}"
+sudo chown -R node:node /workspace/node_modules 2>/dev/null || true
+sudo chown -R node:node /workspace/website/node_modules 2>/dev/null || true
+
+# 验证 Chromium 安装
+echo -e "${BLUE}🎭 Verifying Chromium installation...${NC}"
+if command -v chromium &> /dev/null; then
+    CHROMIUM_VERSION=$(chromium --version)
+    echo -e "${GREEN}✅ Chromium installed: $CHROMIUM_VERSION${NC}"
+    echo -e "${GREEN}   Architecture: $(uname -m)${NC}"
+else
+    echo -e "${YELLOW}⚠️  Chromium not found${NC}"
+fi
+
 # 安装根目录依赖
 echo -e "${BLUE}📦 Installing root dependencies...${NC}"
 # 使用 npm ci 代替 npm install（更快，更可靠）
