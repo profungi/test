@@ -840,3 +840,25 @@ node translate-missing.js --help
 - `TURSO_DATABASE_URL`: Turso 数据库 URL（使用 Turso 时需要）
 - `TURSO_AUTH_TOKEN`: Turso 认证令牌（使用 Turso 时需要）
 
+
+## 📚 文档
+
+### 核心文档
+- [README.md](README.md) - 本文档，项目总览
+- [QUICK_START.md](QUICK_START.md) - 快速入门指南
+- [ARCHITECTURE.md](ARCHITECTURE.md) - 系统架构设计
+- [SUMMARY.md](SUMMARY.md) - 最新开发总结
+
+### 详细文档（docs/）
+- [DATA_ARCHITECTURE.md](docs/DATA_ARCHITECTURE.md) - 数据架构和同步策略
+- [DATABASE_CONFIG.md](docs/DATABASE_CONFIG.md) - 数据库配置指南
+- [TRANSLATION_GUIDE.md](docs/TRANSLATION_GUIDE.md) - 翻译速率限制策略
+
+### 工具脚本（scripts/）
+- `check-db-config.js` - 检查数据库配置
+- `check-env.sh` - 检查环境变量
+- `test-sync.sh` - 测试同步功能
+
+### 归档文档（archive/）
+已完成的迁移文档和临时报告存档在 `archive/` 目录，仅供参考。
+
