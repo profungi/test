@@ -813,3 +813,30 @@ npm run adjust-weights
 ## 联系方式
 
 如有问题或建议，请创建 Issue 或 Pull Request。
+## 翻译缺失的中文标题
+
+如果数据库中有活动缺失中文翻译，可以使用 `translate-missing.js` 脚本来批量翻译：
+
+```bash
+# 翻译本地 SQLite 数据库中缺失的翻译
+node translate-missing.js
+
+# 翻译 Turso 数据库中缺失的翻译
+USE_TURSO=1 node translate-missing.js
+
+# 查看帮助
+node translate-missing.js --help
+```
+
+脚本会：
+1. 查找所有 `title_zh` 为 NULL 或空的活动
+2. 使用配置的翻译服务批量翻译标题
+3. 更新数据库中的 `title_zh` 字段
+4. 显示翻译统计信息
+
+环境变量：
+- `TRANSLATOR_PROVIDER`: 翻译服务提供商（auto, gemini, openai, mistral, google）
+- `USE_TURSO`: 设置为 1 使用 Turso 数据库
+- `TURSO_DATABASE_URL`: Turso 数据库 URL（使用 Turso 时需要）
+- `TURSO_AUTH_TOKEN`: Turso 认证令牌（使用 Turso 时需要）
+
