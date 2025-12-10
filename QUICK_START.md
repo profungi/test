@@ -150,10 +150,17 @@ npm run collect-feedback
 - **同步**: 单向 Turso → Local
 - **用途**: 存储抓取的活动信息
 
-### Feedback 表（反馈数据）
+### User Feedback 表（用户反馈数据）
+- **主库**: Turso（云端）
+- **副本**: Local SQLite（本地）
+- **同步**: 单向 Turso → Local
+- **用途**: 存储网站用户的点赞和反馈
+- **来源**: Website 用户交互
+
+### 本地独有 Feedback 表
 - **位置**: Local SQLite（仅本地）
 - **不同步**: 本地独有数据
-- **用途**: 发布记录、点击数据、AI 权重调整
+- **用途**: 发布记录（posts）、点击数据（event_performance）、AI 权重调整（weight_adjustments）
 
 ### Review 文件
 - **位置**: `./output/review_*.json`

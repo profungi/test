@@ -4,8 +4,9 @@
  * Turso → Local 单向同步脚本
  *
  * 功能：
- * - 只同步 events 表（活动数据）
- * - 不触碰 feedback 表（posts, event_performance, weight_adjustments）
+ * - 同步 events 表（活动数据）
+ * - 同步 user_feedback 表（用户反馈数据）
+ * - 不触碰本地独有的 feedback 表（posts, event_performance, weight_adjustments）
  * - 支持增量同步和全量同步
  * - 保留本地独有的数据
  */
@@ -57,37 +58,73 @@ class TursoToLocalSync {
     console.log('');
 
     try {
-      // 1. 获取本地最新的 scraped_at 时间
-      let lastSyncTime = null;
+      // 1. 获取本地最新的同步时间
+      let lastEventSyncTime = null;
+      let lastFeedbackSyncTime = null;
+
       if (mode === 'incremental' && !since) {
-        lastSyncTime = await this.getLastSyncTime();
-        console.log(`📅 上次同步时间: ${lastSyncTime || '无（首次同步）'}\n`);
+        lastEventSyncTime = await this.getLastEventSyncTime();
+        lastFeedbackSyncTime = await this.getLastFeedbackSyncTime();
+        console.log(`📅 上次同步时间:`);
+        console.log(`   Events: ${lastEventSyncTime || '无（首次同步）'}`);
+        console.log(`   Feedback: ${lastFeedbackSyncTime || '无（首次同步）'}\n`);
       }
 
       // 2. 从 Turso 获取数据
       console.log('📡 正在从 Turso 获取数据...');
-      const tursoEvents = await this.fetchFromTurso(since || lastSyncTime);
-      console.log(`   ✅ 获取到 ${tursoEvents.length} 条记录\n`);
+      const tursoEvents = await this.fetchEventsFromTurso(since || lastEventSyncTime);
+      const tursoFeedback = await this.fetchFeedbackFromTurso(since || lastFeedbackSyncTime);
+      console.log(`   ✅ Events: ${tursoEvents.length} 条记录`);
+      console.log(`   ✅ Feedback: ${tursoFeedback.length} 条记录\n`);
 
-      if (tursoEvents.length === 0) {
+      if (tursoEvents.length === 0 && tursoFeedback.length === 0) {
         console.log('✅ 没有新数据需要同步！');
         return;
       }
 
       // 3. 预览数据
-      this.previewData(tursoEvents);
+      if (tursoEvents.length > 0) {
+        console.log('📋 Events 数据预览:');
+        this.previewEventsData(tursoEvents);
+      }
+
+      if (tursoFeedback.length > 0) {
+        console.log('\n📋 User Feedback 数据预览:');
+        this.previewFeedbackData(tursoFeedback);
+      }
 
       // 4. 同步到本地
       if (!dryRun) {
-        console.log('\n💾 正在同步到本地数据库...');
-        const stats = await this.syncToLocal(tursoEvents, mode);
+        const eventStats = { inserted: 0, updated: 0, skipped: 0, failed: 0 };
+        const feedbackStats = { inserted: 0, updated: 0, skipped: 0, failed: 0 };
+
+        if (tursoEvents.length > 0) {
+          console.log('\n💾 正在同步 Events 到本地数据库...');
+          Object.assign(eventStats, await this.syncEventsToLocal(tursoEvents, mode));
+        }
+
+        if (tursoFeedback.length > 0) {
+          console.log('\n💾 正在同步 User Feedback 到本地数据库...');
+          Object.assign(feedbackStats, await this.syncFeedbackToLocal(tursoFeedback, mode));
+        }
 
         console.log('\n✅ 同步完成！');
-        console.log('\n📊 同步统计:');
-        console.log(`   新增: ${stats.inserted} 条`);
-        console.log(`   更新: ${stats.updated} 条`);
-        console.log(`   跳过: ${stats.skipped} 条`);
-        console.log(`   失败: ${stats.failed} 条`);
+
+        if (tursoEvents.length > 0) {
+          console.log('\n📊 Events 同步统计:');
+          console.log(`   新增: ${eventStats.inserted} 条`);
+          console.log(`   更新: ${eventStats.updated} 条`);
+          console.log(`   跳过: ${eventStats.skipped} 条`);
+          console.log(`   失败: ${eventStats.failed} 条`);
+        }
+
+        if (tursoFeedback.length > 0) {
+          console.log('\n📊 User Feedback 同步统计:');
+          console.log(`   新增: ${feedbackStats.inserted} 条`);
+          console.log(`   更新: ${feedbackStats.updated} 条`);
+          console.log(`   跳过: ${feedbackStats.skipped} 条`);
+          console.log(`   失败: ${feedbackStats.failed} 条`);
+        }
       } else {
         console.log('\n🔍 预览模式 - 未实际写入数据');
       }
@@ -103,7 +140,7 @@ class TursoToLocalSync {
     }
   }
 
-  async getLastSyncTime() {
+  async getLastEventSyncTime() {
     return new Promise((resolve, reject) => {
       this.localDb.get(
         'SELECT MAX(scraped_at) as last_time FROM events',
@@ -115,7 +152,19 @@ class TursoToLocalSync {
     });
   }
 
-  async fetchFromTurso(sinceTime) {
+  async getLastFeedbackSyncTime() {
+    return new Promise((resolve, reject) => {
+      this.localDb.get(
+        'SELECT MAX(created_at) as last_time FROM user_feedback',
+        (err, row) => {
+          if (err) reject(err);
+          else resolve(row?.last_time || null);
+        }
+      );
+    });
+  }
+
+  async fetchEventsFromTurso(sinceTime) {
     let query = `
       SELECT
         id, title, normalized_title, start_time, end_time, location,
@@ -142,9 +191,32 @@ class TursoToLocalSync {
     return result.rows;
   }
 
-  previewData(events) {
-    console.log('📋 数据预览:');
+  async fetchFeedbackFromTurso(sinceTime) {
+    let query = `
+      SELECT
+        id, session_id, feedback_type, comment, filter_state,
+        events_shown, user_agent, referrer, locale, created_at, ip_hash
+      FROM user_feedback
+    `;
 
+    const args = [];
+
+    if (sinceTime) {
+      query += ' WHERE created_at > ?';
+      args.push(sinceTime);
+    }
+
+    query += ' ORDER BY created_at ASC';
+
+    const result = await this.tursoClient.execute({
+      sql: query,
+      args: args
+    });
+
+    return result.rows;
+  }
+
+  previewEventsData(events) {
     // 显示前 5 条和最后 1 条
     const preview = events.slice(0, 5);
     preview.forEach((event, i) => {
@@ -166,7 +238,29 @@ class TursoToLocalSync {
     }
   }
 
-  async syncToLocal(events, mode) {
+  previewFeedbackData(feedback) {
+    // 显示前 5 条和最后 1 条
+    const preview = feedback.slice(0, 5);
+    preview.forEach((item, i) => {
+      console.log(`   ${i + 1}. ${item.feedback_type}`);
+      console.log(`      Session: ${item.session_id}`);
+      console.log(`      Locale: ${item.locale}`);
+      console.log(`      Events shown: ${item.events_shown || 'N/A'}`);
+      console.log(`      时间: ${item.created_at}`);
+      if (item.comment) {
+        console.log(`      评论: ${item.comment.substring(0, 50)}...`);
+      }
+      console.log('');
+    });
+
+    if (feedback.length > 5) {
+      console.log(`   ... 还有 ${feedback.length - 5} 条记录`);
+      const last = feedback[feedback.length - 1];
+      console.log(`   ${feedback.length}. ${last.feedback_type} (${last.created_at})\n`);
+    }
+  }
+
+  async syncEventsToLocal(events, mode) {
     const stats = {
       inserted: 0,
       updated: 0,
@@ -196,9 +290,48 @@ class TursoToLocalSync {
     return stats;
   }
 
+  async syncFeedbackToLocal(feedback, mode) {
+    const stats = {
+      inserted: 0,
+      updated: 0,
+      skipped: 0,
+      failed: 0
+    };
+
+    // 如果是全量同步，先清空 user_feedback 表
+    if (mode === 'full') {
+      console.log('   ⚠️  全量同步：清空本地 user_feedback 表...');
+      await this.clearLocalFeedback();
+      console.log('   ✅ 已清空');
+    }
+
+    for (const item of feedback) {
+      try {
+        const result = await this.upsertFeedback(item);
+        if (result === 'inserted') stats.inserted++;
+        else if (result === 'updated') stats.updated++;
+        else stats.skipped++;
+      } catch (error) {
+        console.error(`   ❌ 同步失败: feedback ${item.id} - ${error.message}`);
+        stats.failed++;
+      }
+    }
+
+    return stats;
+  }
+
   async clearLocalEvents() {
     return new Promise((resolve, reject) => {
       this.localDb.run('DELETE FROM events', (err) => {
+        if (err) reject(err);
+        else resolve();
+      });
+    });
+  }
+
+  async clearLocalFeedback() {
+    return new Promise((resolve, reject) => {
+      this.localDb.run('DELETE FROM user_feedback', (err) => {
         if (err) reject(err);
         else resolve();
       });
@@ -289,6 +422,75 @@ class TursoToLocalSync {
     });
   }
 
+  async upsertFeedback(feedback) {
+    return new Promise((resolve, reject) => {
+      // 先检查是否存在（基于 Turso 的 id）
+      this.localDb.get(
+        'SELECT id FROM user_feedback WHERE id = ?',
+        [feedback.id],
+        (err, row) => {
+          if (err) {
+            reject(err);
+            return;
+          }
+
+          if (row) {
+            // 更新现有记录（虽然 user_feedback 通常不需要更新，但保持一致性）
+            const updateQuery = `
+              UPDATE user_feedback SET
+                session_id = ?, feedback_type = ?, comment = ?, filter_state = ?,
+                events_shown = ?, user_agent = ?, referrer = ?, locale = ?,
+                created_at = ?, ip_hash = ?
+              WHERE id = ?
+            `;
+
+            this.localDb.run(updateQuery, [
+              feedback.session_id,
+              feedback.feedback_type,
+              feedback.comment,
+              feedback.filter_state,
+              feedback.events_shown,
+              feedback.user_agent,
+              feedback.referrer,
+              feedback.locale,
+              feedback.created_at,
+              feedback.ip_hash,
+              feedback.id
+            ], (err) => {
+              if (err) reject(err);
+              else resolve('updated');
+            });
+          } else {
+            // 插入新记录（保留 Turso 的 id）
+            const insertQuery = `
+              INSERT INTO user_feedback (
+                id, session_id, feedback_type, comment, filter_state,
+                events_shown, user_agent, referrer, locale, created_at, ip_hash
+              ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+            `;
+
+            this.localDb.run(insertQuery, [
+              feedback.id,
+              feedback.session_id,
+              feedback.feedback_type,
+              feedback.comment,
+              feedback.filter_state,
+              feedback.events_shown,
+              feedback.user_agent,
+              feedback.referrer,
+              feedback.locale,
+              feedback.created_at,
+              feedback.ip_hash
+            ], (err) => {
+              if (err) reject(err);
+              else resolve('inserted');
+            });
+          }
+        }
+      );
+    });
+  }
+
   async close() {
     return new Promise((resolve) => {
       this.localDb.close((err) => {
@@ -330,14 +532,16 @@ class TursoToLocalSync {
   node sync-from-turso.js --since 2025-12-01
 
 重要说明:
-  ✅ 只同步 events 表（活动数据）
-  ✅ 不会触碰 feedback 表（posts, event_performance, weight_adjustments）
-  ✅ 使用 original_url 作为唯一标识，避免重复
-  ✅ 保留本地独有的数据（如 feedback 数据）
+  ✅ 同步 events 表（活动数据）
+  ✅ 同步 user_feedback 表（用户反馈数据）
+  ✅ 不会触碰本地独有的表（posts, event_performance, weight_adjustments）
+  ✅ Events 使用 original_url 作为唯一标识
+  ✅ User Feedback 使用 id 作为唯一标识
+  ✅ 保留本地独有的数据
 
 同步策略:
-  - 增量同步: 只同步上次同步后的新数据（基于 scraped_at）
-  - 全量同步: 清空 events 表，重新导入所有数据
+  - 增量同步: 只同步上次同步后的新数据（events 基于 scraped_at，feedback 基于 created_at）
+  - 全量同步: 清空表，重新导入所有数据
   - Upsert 逻辑: 存在则更新，不存在则插入
 `);
   }
