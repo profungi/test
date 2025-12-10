@@ -326,35 +326,41 @@ class Translator {
 
       console.log(`\n📦 批次 ${batchNum}/${totalBatches}: 翻译 ${batch.length} 个文本...`);
 
-      // 并行翻译当前批次
-      const batchResults = await Promise.all(
-        batch.map(async (text, index) => {
-          const globalIndex = i + index + 1;
-          try {
-            const result = await this.translate(text);
-            stats[result.provider]++;
+      // 串行翻译当前批次（避免并发请求触发速率限制）
+      const batchResults = [];
+      for (let j = 0; j < batch.length; j++) {
+        const text = batch[j];
+        const globalIndex = i + j + 1;
 
-            const providerIcon = {
-              gemini: '🔮',
-              openai: '🤖',
-              mistral: '🌪️',
-              google: '🌐',
-              skipped: '⏭️',
-              failed: '❌',
-            }[result.provider] || '❓';
+        try {
+          const result = await this.translate(text);
+          stats[result.provider]++;
 
-            console.log(
-              `  ${providerIcon} [${globalIndex}/${total}] ${text.substring(0, 35)}... → ${result.text.substring(0, 25)}... (${result.provider})`
-            );
+          const providerIcon = {
+            gemini: '🔮',
+            openai: '🤖',
+            mistral: '🌪️',
+            google: '🌐',
+            skipped: '⏭️',
+            failed: '❌',
+          }[result.provider] || '❓';
 
-            return result;
-          } catch (error) {
-            console.error(`  ✗ [${globalIndex}/${total}] 翻译失败: ${text.substring(0, 40)}...`);
-            stats.failed++;
-            return { text, provider: 'failed' };
+          console.log(
+            `  ${providerIcon} [${globalIndex}/${total}] ${text.substring(0, 35)}... → ${result.text.substring(0, 25)}... (${result.provider})`
+          );
+
+          batchResults.push(result);
+
+          // 在批次内的请求之间也添加小延迟（对 Gemini 或 auto 模式）
+          if (j < batch.length - 1 && (this.provider === 'gemini' || this.provider === 'auto')) {
+            await new Promise(resolve => setTimeout(resolve, 200)); // 200ms 延迟，进一步降低速率
           }
-        })
-      );
+        } catch (error) {
+          console.error(`  ✗ [${globalIndex}/${total}] 翻译失败: ${text.substring(0, 40)}...`);
+          stats.failed++;
+          batchResults.push({ text, provider: 'failed' });
+        }
+      }
 
       results.push(...batchResults);
 
