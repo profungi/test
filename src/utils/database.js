@@ -394,8 +394,8 @@ class EventDatabase {
           INSERT INTO events (
             title, normalized_title, start_time, end_time, location,
             price, description, description_detail, original_url, source, event_type,
-            priority, scraped_at, week_identifier
-          ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+            priority, scraped_at, week_identifier, title_zh
+          ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
         `;
 
         const values = [
@@ -412,7 +412,8 @@ class EventDatabase {
           event.eventType || 'other',
           event.priority || 0,
           new Date().toISOString(),
-          event.weekIdentifier
+          event.weekIdentifier,
+          event.title_zh || null
         ];
 
         this.db.run(query, values, function(err) {
