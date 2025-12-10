@@ -5,6 +5,9 @@
  * 执行活动抓取、AI分类和生成人工审核文件
  */
 
+// 加载环境变量（如果有 .env 文件）
+require('dotenv').config();
+
 // 根据环境变量选择数据库: Turso (生产) 或 SQLite (本地测试)
 const EventDatabase = process.env.USE_TURSO
   ? require('./utils/turso-database')
