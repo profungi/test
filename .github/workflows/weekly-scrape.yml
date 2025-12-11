@@ -73,6 +73,16 @@ jobs:
           npm run scrape
         fi
     
+    - name: Sync from Turso to local database
+      if: success()
+      env:
+        TURSO_DATABASE_URL: ${{ secrets.TURSO_DATABASE_URL }}
+        TURSO_AUTH_TOKEN: ${{ secrets.TURSO_AUTH_TOKEN }}
+      run: |
+        echo "🔄 Syncing from Turso to local database..."
+        npm run sync-from-turso
+        echo "✅ Sync completed"
+
     - name: Upload review files
       uses: actions/upload-artifact@v4
       if: always()
@@ -80,9 +90,9 @@ jobs:
         name: event-review-files-${{ github.run_id }}
         path: output/review_*.json
         retention-days: 7
-        
+
     - name: Upload database
-      uses: actions/upload-artifact@v4  
+      uses: actions/upload-artifact@v4
       if: always()
       with:
         name: events-database-${{ github.run_id }}
