@@ -343,7 +343,8 @@ class DuplicateRemover {
       const deleteIds = ids.filter((id) => id !== keepId);
 
       if (deleteIds.length > 0) {
-        const removed = await this.deleteByIds(deleteIds);
+        // 传递 keepId，以便保留最佳的 performance 数据
+        const removed = await this.deleteByIds(deleteIds, keepId);
         totalRemoved += removed;
       }
     }
@@ -352,20 +353,89 @@ class DuplicateRemover {
     console.log(`   ✅ 删除了 ${totalRemoved} 个重复活动\n`);
   }
 
-  async deleteByIds(ids) {
+  async deleteByIds(ids, keepId = null) {
     const placeholders = ids.map(() => '?').join(',');
 
     if (this.useTurso) {
-      // 先删除 event_performance 表中的相关记录（如果存在）
+      // 先处理 event_performance 表中的相关记录
       try {
-        await this.client.execute({
-          sql: `DELETE FROM event_performance WHERE event_id IN (${placeholders})`,
-          args: ids,
-        });
+        if (keepId) {
+          // 策略：保留 engagement_score 最高的 performance 记录
+          // 1. 找到这批重复活动中 engagement_score 最高的那条完整的 performance 记录
+          const bestPerf = await this.client.execute({
+            sql: `
+              SELECT *
+              FROM event_performance
+              WHERE event_id IN (${placeholders})
+              ORDER BY engagement_score DESC
+              LIMIT 1
+            `,
+            args: ids,
+          });
+
+          // 2. 删除所有这批重复活动的 performance 记录
+          await this.client.execute({
+            sql: `DELETE FROM event_performance WHERE event_id IN (${placeholders})`,
+            args: ids,
+          });
+
+          // 3. 如果找到了最佳 performance，重新插入并关联到 keepId
+          if (bestPerf.rows.length > 0) {
+            const best = bestPerf.rows[0];
+            await this.client.execute({
+              sql: `
+                INSERT INTO event_performance (
+                  event_id, post_id, event_title, event_type, event_url,
+                  location, location_category, price, price_category,
+                  start_time, is_weekend, is_free, is_outdoor, is_chinese_relevant,
+                  shortio_clicks, xiaohongshu_likes, xiaohongshu_favorites,
+                  xiaohongshu_comments, xiaohongshu_shares, engagement_score,
+                  normalized_score, feedback_collected_at, feedback_updated_at,
+                  data_source, source_review, source_website, manually_added_at_publish
+                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+              `,
+              args: [
+                keepId,  // 使用保留的活动 ID
+                best.post_id,
+                best.event_title,
+                best.event_type,
+                best.event_url,
+                best.location,
+                best.location_category,
+                best.price,
+                best.price_category,
+                best.start_time,
+                best.is_weekend,
+                best.is_free,
+                best.is_outdoor,
+                best.is_chinese_relevant,
+                best.shortio_clicks,
+                best.xiaohongshu_likes,
+                best.xiaohongshu_favorites,
+                best.xiaohongshu_comments,
+                best.xiaohongshu_shares,
+                best.engagement_score,
+                best.normalized_score,
+                best.feedback_collected_at,
+                best.feedback_updated_at,
+                best.data_source,
+                best.source_review,
+                best.source_website,
+                best.manually_added_at_publish
+              ],
+            });
+          }
+        } else {
+          // 没有指定 keepId，直接删除所有
+          await this.client.execute({
+            sql: `DELETE FROM event_performance WHERE event_id IN (${placeholders})`,
+            args: ids,
+          });
+        }
       } catch (error) {
         // 如果 event_performance 表不存在，忽略错误继续执行
         if (!error.message.includes('no such table')) {
-          console.warn(`⚠️  删除 event_performance 记录时出错: ${error.message}`);
+          console.warn(`⚠️  处理 event_performance 记录时出错: ${error.message}`);
         }
       }
 
@@ -377,30 +447,106 @@ class DuplicateRemover {
       return Number(result.rowsAffected || 0);
     } else {
       return new Promise((resolve, reject) => {
-        // 先删除 event_performance 表中的相关记录（如果存在）
-        this.db.run(
-          `DELETE FROM event_performance WHERE event_id IN (${placeholders})`,
-          ids,
-          (err) => {
-            // 忽略 event_performance 不存在的错误
-            if (err && !err.message.includes('no such table')) {
-              console.warn(`⚠️  删除 event_performance 记录时出错: ${err.message}`);
-            }
-
-            // 然后删除 events 表中的记录
-            this.db.run(
-              `DELETE FROM events WHERE id IN (${placeholders})`,
+        // 本地 SQLite 处理（与 Turso 逻辑相同）
+        const handlePerformance = (callback) => {
+          if (keepId) {
+            // 1. 找到最佳 performance 记录
+            this.db.get(
+              `SELECT * FROM event_performance
+               WHERE event_id IN (${placeholders})
+               ORDER BY engagement_score DESC
+               LIMIT 1`,
               ids,
-              function (err) {
-                if (err) {
-                  reject(err);
+              (err, bestPerf) => {
+                if (err && !err.message.includes('no such table')) {
+                  console.warn(`⚠️  查询 event_performance 时出错: ${err.message}`);
+                  callback();
                   return;
                 }
-                resolve(this.changes);
+
+                // 2. 删除所有相关的 performance 记录
+                this.db.run(
+                  `DELETE FROM event_performance WHERE event_id IN (${placeholders})`,
+                  ids,
+                  (err) => {
+                    if (err && !err.message.includes('no such table')) {
+                      console.warn(`⚠️  删除 event_performance 时出错: ${err.message}`);
+                    }
+
+                    // 3. 重新插入最佳记录（关联到 keepId）
+                    if (bestPerf) {
+                      this.db.run(
+                        `INSERT INTO event_performance (
+                          event_id, post_id, event_title, event_type, event_url,
+                          location, location_category, price, price_category,
+                          start_time, is_weekend, is_free, is_outdoor, is_chinese_relevant,
+                          shortio_clicks, xiaohongshu_likes, xiaohongshu_favorites,
+                          xiaohongshu_comments, xiaohongshu_shares, engagement_score,
+                          normalized_score, feedback_collected_at, feedback_updated_at,
+                          data_source, source_review, source_website, manually_added_at_publish
+                        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+                        [
+                          keepId,
+                          bestPerf.post_id,
+                          bestPerf.event_title,
+                          bestPerf.event_type,
+                          bestPerf.event_url,
+                          bestPerf.location,
+                          bestPerf.location_category,
+                          bestPerf.price,
+                          bestPerf.price_category,
+                          bestPerf.start_time,
+                          bestPerf.is_weekend,
+                          bestPerf.is_free,
+                          bestPerf.is_outdoor,
+                          bestPerf.is_chinese_relevant,
+                          bestPerf.shortio_clicks,
+                          bestPerf.xiaohongshu_likes,
+                          bestPerf.xiaohongshu_favorites,
+                          bestPerf.xiaohongshu_comments,
+                          bestPerf.xiaohongshu_shares,
+                          bestPerf.engagement_score,
+                          bestPerf.normalized_score,
+                          bestPerf.feedback_collected_at,
+                          bestPerf.feedback_updated_at,
+                          bestPerf.data_source,
+                          bestPerf.source_review,
+                          bestPerf.source_website,
+                          bestPerf.manually_added_at_publish
+                        ],
+                        () => callback()
+                      );
+                    } else {
+                      callback();
+                    }
+                  }
+                );
               }
             );
+          } else {
+            // 没有指定 keepId，直接删除
+            this.db.run(
+              `DELETE FROM event_performance WHERE event_id IN (${placeholders})`,
+              ids,
+              () => callback()
+            );
           }
-        );
+        };
+
+        // 先处理 performance，再删除 events
+        handlePerformance(() => {
+          this.db.run(
+            `DELETE FROM events WHERE id IN (${placeholders})`,
+            ids,
+            function (err) {
+              if (err) {
+                reject(err);
+                return;
+              }
+              resolve(this.changes);
+            }
+          );
+        });
       });
     }
   }
