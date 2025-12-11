@@ -338,54 +338,34 @@ npm run generate-post "./output/review_2024-09-19_1430.json"
 
 ## 📝 命令参考
 
-### 主要命令
+### 快速参考
 
-#### 1. 抓取活动（主要功能）
 ```bash
-npm run scrape
-```
-- 从三个网站抓取活动（Eventbrite, SF Station, Funcheap）
-- 包括湾区多个城市的活动
-- AI分类和去重
-- 生成 review JSON 文件在 `output/` 目录
+# 抓取活动（使用 Turso 云数据库）
+USE_TURSO=1 npm run scrape
 
-#### 2. 使用不同AI提供商
-```bash
-npm run scrape -- --ai-provider openai   # 使用OpenAI (默认)
-npm run scrape -- --ai-provider gemini   # 使用Google Gemini
-npm run scrape -- --ai-provider claude   # 使用Claude
-```
+# 生成小红书内容
+npm run generate-post "./output/review_*.json"
 
-#### 3. 生成文章（在审核后）
-```bash
-npm run generate-post output/review_YYYY-MM-DD_HHMM.json
-```
-- 根据审核后的JSON生成最终文章
-- 输出Markdown格式
+# 同步数据库
+npm run sync-from-turso
 
-#### 4. 查看帮助
-```bash
-npm run scrape -- --help
+# 翻译缺失标题
+USE_TURSO=1 npm run translate-missing
+
+# 启动网站
+cd website && npm run dev
 ```
 
-### 调试命令
+### 完整命令列表
 
-#### 查看抓取错误
-```bash
-npm run scrape 2>&1 | grep -i "error\|invalid\|failed"
-```
-
-#### 查看特定网站的日志
-```bash
-npm run scrape 2>&1 | grep "Funcheap"
-npm run scrape 2>&1 | grep "SFStation"
-npm run scrape 2>&1 | grep "Eventbrite"
-```
-
-#### 查看时间处理日志
-```bash
-npm run scrape 2>&1 | grep -E "Invalid time|normalize|parseTime"
-```
+查看 **[COMMANDS.md](COMMANDS.md)** 获取所有可用命令的详细说明，包括：
+- 主要工作流程（抓取、生成、发布）
+- 数据库管理（同步、去重、迁移）
+- 翻译工具（翻译缺失、修复错误）
+- 调试和测试（AI 测试、数据库检查）
+- 网站开发（启动、构建、反馈）
+- 故障排除（常见问题解决方案）
 
 ### 数据流程
 
@@ -740,41 +720,6 @@ npm run adjust-weights
 
 ---
 
-## 📚 文档目录
-
-### 📖 核心文档
-- **README.md**: 项目概述和快速开始（本文件）
-- **ARCHITECTURE.md**: 项目架构详解（分层设计、数据流、模块职责）
-
-### 🛠️ 设置和使用
-- **docs/setup/SETUP_GUIDE.md**: 详细设置指南
-- **docs/setup/COMMANDS_REFERENCE.md**: 完整命令参考手册
-
-### ✨ 功能文档
-- **docs/features/WEBSITE_DESIGN.md**: 网站设计文档
-- **docs/features/USER_FEEDBACK_DOCUMENTATION.md**: 用户反馈功能完整文档
-- **docs/features/I18N_STRATEGY.md**: 国际化策略
-
-### 🔧 详细功能指南
-- **docs/feedback-feature/**: 反馈功能详细文档
-  - `QUICK_START.md`: 快速开始
-  - `TROUBLESHOOTING.md`: 故障排查
-  - `IMPLEMENTATION_SUMMARY.md`: 实现总结
-  - `LOCAL_SETUP_INSTRUCTIONS.md`: 本地设置指南
-
-### 📦 归档文档
-- **docs/archive/**: 历史文档和旧版设计
-  - `FEEDBACK_LOOP_DESIGN.md`: 爬虫反馈闭环系统设计
-  - `CLEANUP_SUMMARY.md`: 项目清理总结
-  - `SHORTURL_FALLBACK.md`: 短链接降级策略
-
-### 🛠️ 调试工具
-- **scripts/debug/**: 调试和诊断脚本
-  - `debug-website.sh`: 网站调试工具
-  - `diagnose-website.sh`: 连接诊断工具
-  - `test-feedback-api.sh`: 反馈API测试
-- **cleanup.sh**: 项目清理脚本
-
 ## 📊 更新日志
 
 ### 2025年11月21日 - 用户反馈和偏好记忆功能 ⭐
@@ -844,21 +789,28 @@ node translate-missing.js --help
 ## 📚 文档
 
 ### 核心文档
-- [README.md](README.md) - 本文档，项目总览
-- [QUICK_START.md](QUICK_START.md) - 快速入门指南
-- [ARCHITECTURE.md](ARCHITECTURE.md) - 系统架构设计
-- [SUMMARY.md](SUMMARY.md) - 最新开发总结
+- **[README.md](README.md)** - 本文档，项目总览和快速开始
+- **[COMMANDS.md](COMMANDS.md)** - ⭐ 命令大全，所有可用命令的完整参考
+- **[ARCHITECTURE.md](ARCHITECTURE.md)** - 系统架构设计
+- **[SUMMARY.md](SUMMARY.md)** - 最新开发总结
 
 ### 详细文档（docs/）
-- [DATA_ARCHITECTURE.md](docs/DATA_ARCHITECTURE.md) - 数据架构和同步策略
-- [DATABASE_CONFIG.md](docs/DATABASE_CONFIG.md) - 数据库配置指南
-- [TRANSLATION_GUIDE.md](docs/TRANSLATION_GUIDE.md) - 翻译速率限制策略
+- **[DATA_ARCHITECTURE.md](docs/DATA_ARCHITECTURE.md)** - 数据架构和同步策略
+- **[DATABASE_CONFIG.md](docs/DATABASE_CONFIG.md)** - 数据库配置指南
+- **[TRANSLATION_GUIDE.md](docs/TRANSLATION_GUIDE.md)** - 翻译速率限制策略
+
+### 功能文档（docs/features/）
+- **[USER_FEEDBACK_DOCUMENTATION.md](docs/features/USER_FEEDBACK_DOCUMENTATION.md)** - 用户反馈功能文档
+- **[WEBSITE_DESIGN.md](docs/features/WEBSITE_DESIGN.md)** - 网站设计文档
+- **[I18N_STRATEGY.md](docs/features/I18N_STRATEGY.md)** - 国际化策略
 
 ### 工具脚本（scripts/）
 - `check-db-config.js` - 检查数据库配置
 - `check-env.sh` - 检查环境变量
 - `test-sync.sh` - 测试同步功能
+- `clear-all-events.js` - 清空所有活动
+- `sync-database.js` - 数据库同步工具
 
-### 归档文档（archive/）
-已完成的迁移文档和临时报告存档在 `archive/` 目录，仅供参考。
+### 归档文档（docs/archive/）
+已完成的迁移文档和临时报告存档在 `docs/archive/` 目录，仅供参考。
 
