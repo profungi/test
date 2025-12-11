@@ -235,6 +235,50 @@ class Translator {
   }
 
   /**
+   * 验证翻译输出是否有效
+   * @param {string} translated - 翻译后的文本
+   * @param {string} original - 原始文本
+   * @returns {boolean} 是否有效
+   */
+  validateTranslation(translated, original) {
+    if (!translated || typeof translated !== 'string') {
+      return false;
+    }
+
+    // 检查1: 长度异常（翻译结果不应该比原文长5倍以上）
+    if (translated.length > original.length * 5) {
+      console.warn(`⚠️  翻译结果异常长 (${translated.length} 字符，原文 ${original.length} 字符)`);
+      return false;
+    }
+
+    // 检查2: 包含AI思考过程的关键词
+    const thinkingKeywords = [
+      'THOUGHT', 'THINKING', 'ANALYSIS', 'CONSIDER',
+      '思考：', '分析：', '考虑：', 'Let me', 'I need to'
+    ];
+    for (const keyword of thinkingKeywords) {
+      if (translated.includes(keyword)) {
+        console.warn(`⚠️  翻译结果包含思考过程关键词: "${keyword}"`);
+        return false;
+      }
+    }
+
+    // 检查3: 包含多余的解释性文字（例如带引号的解释）
+    if (translated.match(/["'"].*?["'"]\s*[-:：]\s*/)) {
+      console.warn(`⚠️  翻译结果可能包含解释性文字`);
+      return false;
+    }
+
+    // 检查4: 不应该包含换行符（活动标题应该是单行）
+    if (translated.includes('\n')) {
+      console.warn(`⚠️  翻译结果包含换行符`);
+      return false;
+    }
+
+    return true;
+  }
+
+  /**
    * 翻译单个文本（带优先级回退）
    * @param {string} text - 要翻译的文本
    * @returns {Promise<{text: string, provider: string}>} 翻译结果和使用的服务
@@ -253,6 +297,13 @@ class Translator {
     if (this.provider !== 'auto') {
       try {
         const translated = await this.translateWithProvider(text, this.provider);
+
+        // 验证翻译结果
+        if (!this.validateTranslation(translated, text)) {
+          console.error(`❌ ${this.provider} 翻译结果验证失败`);
+          return { text, provider: 'failed' };
+        }
+
         return { text: translated, provider: this.provider };
       } catch (error) {
         console.error(`❌ ${this.provider} 翻译失败:`, error.message);
@@ -266,6 +317,13 @@ class Translator {
     for (const provider of providers) {
       try {
         const translated = await this.translateWithProvider(text, provider);
+
+        // 验证翻译结果
+        if (!this.validateTranslation(translated, text)) {
+          console.warn(`⚠️  ${provider} 翻译结果验证失败，尝试下一个服务...`);
+          continue;
+        }
+
         return { text: translated, provider };
       } catch (error) {
         console.warn(`⚠️  ${provider} 翻译失败，尝试下一个服务...`);
