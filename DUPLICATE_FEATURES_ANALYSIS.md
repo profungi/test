@@ -3,7 +3,24 @@
 ## 📋 检查时间
 2025-12-10
 
-## 🔍 发现的重复或相似功能
+## ✅ 已执行的清理操作
+
+1. **删除旧的去重脚本**
+   - ✅ 已删除 `remove-duplicates.js`
+   - ✅ 新版本 `remove-duplicates-turso.js` 完全覆盖功能
+
+2. **移动工具脚本到 scripts/ 目录**
+   - ✅ `clear-all-events.js` → `scripts/clear-all-events.js`
+   - ✅ `clear-database.js` → `scripts/clear-database.js`
+   - ✅ `clear-next-week-events.js` → `scripts/clear-next-week-events.js`
+   - ✅ `sync-database.js` → `scripts/sync-database.js`
+
+3. **根目录 JS 文件数量**
+   - 之前: 18 个文件
+   - 现在: 13 个文件
+   - 减少: 5 个文件 (-28%)
+
+## 🔍 原始发现的重复或相似功能
 
 ### 1. 去重功能（有重复）⚠️
 
@@ -207,44 +224,28 @@ sync-database.js  # 只有一次性的引用
 
 ## 🎯 推荐行动
 
-### 立即执行
+### ✅ 已完成
 
-1. **删除 `remove-duplicates.js`**
-   ```bash
-   rm remove-duplicates.js
-   ```
-   理由：新版本完全覆盖，保留会混淆
+1. **删除 `remove-duplicates.js`** ✅
+   - 理由：新版本完全覆盖，保留会混淆
+   - 状态：已删除
 
-### 建议执行
+2. **移动测试工具到 scripts/** ✅
+   - `clear-all-events.js` → `scripts/`
+   - `clear-database.js` → `scripts/`
+   - `clear-next-week-events.js` → `scripts/`
+   - `sync-database.js` → `scripts/`
+   - 理由：这些是开发/测试工具，不是日常使用
 
-2. **移动测试工具到 scripts/**
-   ```bash
-   mv clear-*.js scripts/
-   mv sync-database.js scripts/
-   ```
-   理由：这些是开发/测试工具，不是日常使用
+### 可选执行（未来优化）
 
-3. **或者归档不常用的工具**
-   ```bash
-   mv clear-*.js archive/
-   mv sync-database.js archive/
-   ```
-   理由：如果几乎不用，归档保留即可
-
-4. **更新 package.json**（如果有引用）
-   ```json
-   // 更新路径
-   "sync-database": "node scripts/sync-database.js"
-   ```
-
-### 可选执行
-
-5. **合并 clear 脚本**
+3. **合并 clear 脚本**
    创建 `scripts/clear-data.js` 统一管理：
    ```javascript
    // 接受参数：--all, --events, --next-week
    // 避免多个相似脚本
    ```
+   状态：可选，目前保持现状
 
 ---
 
@@ -262,16 +263,41 @@ sync-database.js  # 只有一次性的引用
 
 ## 📌 结论
 
-**发现 1 个明确的重复功能**：
-- `remove-duplicates.js` vs `remove-duplicates-turso.js`
+**✅ 已清理的重复功能**：
+- `remove-duplicates.js` vs `remove-duplicates-turso.js` → 已删除旧版本
 
-**发现 3 个相似但未使用的工具**：
-- `clear-*.js` (3个文件)
+**✅ 已移动的工具脚本**：
+- `clear-*.js` (3个文件) → 已移到 `scripts/`
+- `sync-database.js` → 已移到 `scripts/`
 
-**发现 1 个一次性使用的工具**：
-- `sync-database.js`
+**✅ 项目更整洁**：
+- 根目录 JS 文件从 18 个减少到 13 个
+- 开发工具统一放在 `scripts/` 目录
+- 日常使用的脚本保留在根目录
 
-**建议**：
-1. 删除旧的 `remove-duplicates.js`
-2. 将测试工具移到 `scripts/` 或 `archive/`
-3. 保持项目根目录整洁
+**当前根目录文件列表**：
+```
+clean-english-translations.js    - 清理英文翻译
+collect-feedback.js              - 收集反馈
+generate-english-posts.js        - 生成英文发布
+init-feedback-db.js              - 初始化 feedback 表
+init-user-feedback-db.js         - 初始化 user_feedback 表
+remove-duplicates-turso.js       - 去重（支持 Turso）
+scrape-single-source.js          - 单源抓取
+setup.js                         - 初始化设置
+sync-from-turso.js               - Turso 同步
+test-gemini-models.js            - 测试 Gemini 模型
+test-translation.js              - 测试翻译
+translate-existing-events.js     - 翻译现有活动
+translate-missing.js             - 翻译缺失标题
+```
+
+**scripts/ 目录文件列表**：
+```
+check-db-config.js               - 检查数据库配置
+check-env.sh                     - 检查环境变量
+clear-all-events.js              - 清空所有活动
+clear-database.js                - 删除数据库文件
+clear-next-week-events.js        - 清空下周活动
+sync-database.js                 - 数据格式修复（一次性）
+```
