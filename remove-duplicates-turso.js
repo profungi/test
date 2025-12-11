@@ -356,6 +356,20 @@ class DuplicateRemover {
     const placeholders = ids.map(() => '?').join(',');
 
     if (this.useTurso) {
+      // 先删除 event_performance 表中的相关记录（如果存在）
+      try {
+        await this.client.execute({
+          sql: `DELETE FROM event_performance WHERE event_id IN (${placeholders})`,
+          args: ids,
+        });
+      } catch (error) {
+        // 如果 event_performance 表不存在，忽略错误继续执行
+        if (!error.message.includes('no such table')) {
+          console.warn(`⚠️  删除 event_performance 记录时出错: ${error.message}`);
+        }
+      }
+
+      // 然后删除 events 表中的记录
       const result = await this.client.execute({
         sql: `DELETE FROM events WHERE id IN (${placeholders})`,
         args: ids,
@@ -363,15 +377,28 @@ class DuplicateRemover {
       return Number(result.rowsAffected || 0);
     } else {
       return new Promise((resolve, reject) => {
+        // 先删除 event_performance 表中的相关记录（如果存在）
         this.db.run(
-          `DELETE FROM events WHERE id IN (${placeholders})`,
+          `DELETE FROM event_performance WHERE event_id IN (${placeholders})`,
           ids,
-          function (err) {
-            if (err) {
-              reject(err);
-              return;
+          (err) => {
+            // 忽略 event_performance 不存在的错误
+            if (err && !err.message.includes('no such table')) {
+              console.warn(`⚠️  删除 event_performance 记录时出错: ${err.message}`);
             }
-            resolve(this.changes);
+
+            // 然后删除 events 表中的记录
+            this.db.run(
+              `DELETE FROM events WHERE id IN (${placeholders})`,
+              ids,
+              function (err) {
+                if (err) {
+                  reject(err);
+                  return;
+                }
+                resolve(this.changes);
+              }
+            );
           }
         );
       });
