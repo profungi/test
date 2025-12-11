@@ -62,32 +62,36 @@ class EventScrapeOrchestrator {
         return;
       }
 
-      // 3. 翻译活动标题（在去重之前，确保 title_zh 在保存到数据库时已存在）
+      // 3. 内存去重（节省翻译 token，数据库去重在翻译后）
+      const memoryDedupedEvents = this.deduplicateInMemory(allEvents);
+      console.log(`🔍 内存去重: ${allEvents.length} → ${memoryDedupedEvents.length} 个活动`);
+
+      // 4. 翻译活动标题（只翻译内存去重后的活动，节省 token）
       console.log('\n🌐 开始翻译活动标题...');
       const translatedEvents = await this.translator.translateEvents(
-        allEvents,
+        memoryDedupedEvents,
         10,  // 每批翻译 10 个
         1000 // 每批间隔 1 秒
       );
 
-      // 4. 去重和数据清理（此时每个 event 已经有 title_zh 字段）
-      const uniqueEvents = await this.deduplicateEvents(translatedEvents);
-      console.log(`🔍 去重后剩余 ${uniqueEvents.length} 个活动`);
+      // 5. 数据库去重和保存（此时 title_zh 已存在）
+      const uniqueEvents = await this.filterByDatabase(translatedEvents);
+      console.log(`🔍 数据库去重后剩余 ${uniqueEvents.length} 个活动`);
 
-      // 5. AI分类和优先级排序
+      // 6. AI分类和优先级排序
       const classifiedEvents = await this.aiClassifier.classifyEvents(uniqueEvents);
 
-      // 6. 选择最佳候选活动
+      // 7. 选择最佳候选活动
       const topCandidates = this.aiClassifier.selectTopCandidates(
         classifiedEvents,
         config.scraping.totalCandidatesForReview
       );
 
-      // 7. 生成分类报告
+      // 8. 生成分类报告
       const classificationReport = this.aiClassifier.generateClassificationReport(classifiedEvents);
       console.log('\n📊 AI分类报告:', classificationReport);
 
-      // 8. 生成人工审核文件
+      // 9. 生成人工审核文件
       const weekRange = this.targetWeek === 'current'
         ? this.scrapers[0].getCurrentWeekRange()
         : this.scrapers[0].getNextWeekRange();
@@ -198,11 +202,8 @@ class EventScrapeOrchestrator {
     return allEvents;
   }
 
-  // 去重处理（优化：统一key生成 + 数据库去重）
-  async deduplicateEvents(events) {
-    console.log('🔄 开始去重处理...');
-
-    // 第一步：内存快速去重
+  // 内存去重（不保存到数据库，用于翻译前快速去重）
+  deduplicateInMemory(events) {
     const uniqueMap = new Map();
 
     for (const event of events) {
@@ -211,22 +212,11 @@ class EventScrapeOrchestrator {
       if (!uniqueMap.has(key)) {
         uniqueMap.set(key, event);
       } else {
-        console.log(`  📝 去重: ${event.title}`);
+        console.log(`  📝 内存去重: ${event.title}`);
       }
     }
 
-    const memoryDedupedEvents = Array.from(uniqueMap.values());
-    console.log(`  ✅ 内存去重: ${events.length} → ${memoryDedupedEvents.length}`);
-
-    // 第二步：数据库历史去重
-    const uniqueEvents = await this.filterByDatabase(memoryDedupedEvents);
-
-    console.log(`\n📊 去重统计:`);
-    console.log(`   原始活动: ${events.length}`);
-    console.log(`   内存去重后: ${memoryDedupedEvents.length} (-${events.length - memoryDedupedEvents.length})`);
-    console.log(`   最终唯一活动: ${uniqueEvents.length} (-${memoryDedupedEvents.length - uniqueEvents.length})`);
-
-    return uniqueEvents;
+    return Array.from(uniqueMap.values());
   }
 
   // 生成活动唯一键

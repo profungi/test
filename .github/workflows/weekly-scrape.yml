@@ -57,6 +57,9 @@ jobs:
 
     - name: Run event scraper
       env:
+        USE_TURSO: 1
+        TURSO_DATABASE_URL: ${{ secrets.TURSO_DATABASE_URL }}
+        TURSO_AUTH_TOKEN: ${{ secrets.TURSO_AUTH_TOKEN }}
         SHORTIO_API_KEY: ${{ secrets.SHORTIO_API_KEY }}
         AI_PROVIDER: ${{ secrets.AI_PROVIDER || 'openai' }}
         OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
