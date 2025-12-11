@@ -340,10 +340,10 @@ class TursoToLocalSync {
 
   async upsertEvent(event) {
     return new Promise((resolve, reject) => {
-      // 先检查是否存在（基于 original_url）
+      // 先检查是否存在（基于 Turso 的 ID）
       this.localDb.get(
-        'SELECT id FROM events WHERE original_url = ?',
-        [event.original_url],
+        'SELECT id FROM events WHERE id = ?',
+        [event.id],
         (err, row) => {
           if (err) {
             reject(err);
@@ -351,14 +351,15 @@ class TursoToLocalSync {
           }
 
           if (row) {
-            // 更新现有记录
+            // 记录已存在，更新它（保持相同的 ID）
             const updateQuery = `
               UPDATE events SET
                 title = ?, normalized_title = ?, start_time = ?, end_time = ?,
                 location = ?, price = ?, description = ?, description_detail = ?,
-                short_url = ?, source = ?, event_type = ?, priority = ?,
-                scraped_at = ?, week_identifier = ?, is_processed = ?, title_zh = ?
-              WHERE original_url = ?
+                original_url = ?, short_url = ?, source = ?, event_type = ?,
+                priority = ?, scraped_at = ?, week_identifier = ?, is_processed = ?,
+                title_zh = ?
+              WHERE id = ?
             `;
 
             this.localDb.run(updateQuery, [
@@ -370,6 +371,7 @@ class TursoToLocalSync {
               event.price,
               event.description,
               event.description_detail,
+              event.original_url,
               event.short_url,
               event.source,
               event.event_type,
@@ -378,23 +380,24 @@ class TursoToLocalSync {
               event.week_identifier,
               event.is_processed,
               event.title_zh,
-              event.original_url
+              event.id
             ], (err) => {
               if (err) reject(err);
               else resolve('updated');
             });
           } else {
-            // 插入新记录
+            // 记录不存在，插入新记录（使用 Turso 的 ID）
             const insertQuery = `
               INSERT INTO events (
-                title, normalized_title, start_time, end_time, location,
+                id, title, normalized_title, start_time, end_time, location,
                 price, description, description_detail, original_url, short_url,
                 source, event_type, priority, scraped_at, week_identifier,
                 is_processed, title_zh
-              ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+              ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
             `;
 
             this.localDb.run(insertQuery, [
+              event.id,  // 使用 Turso 的 ID
               event.title,
               event.normalized_title,
               event.start_time,
