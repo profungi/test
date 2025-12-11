@@ -231,13 +231,13 @@
     }
   },
   "metadata": {
-    "title": "湾区活动",
+    "title": "湾区精选活动",
     "description": "发现湾区最精彩的活动！市集、节日、美食、艺术活动一网打尽。涵盖旧金山、南湾、东湾等地区。",
     "thisWeek": "本周",
     "nextWeek": "下周"
   },
   "home": {
-    "siteTitle": "湾区活动 Bay Area Events",
+    "siteTitle": "湾区精选活动 Bay Area Selected Events",
     "siteSubtitle": "发现湾区最精彩的活动 · 每周更新",
     "thisWeekEvents": "本周活动",
     "nextWeekEvents": "下周活动",
@@ -245,7 +245,7 @@
     "noEvents": "暂无活动",
     "noEventsHint": "请尝试调整筛选条件或查看其他周的活动",
     "dataSource": "数据来源: Eventbrite, SF Station, Funcheap",
-    "updateInfo": "每周三自动更新 · 最后更新时间: {date}"
+    "updateInfo": "每周自动更新 · 最后更新时间: {date}"
   },
   "filter": {
     "filterByWeek": "按周筛选",

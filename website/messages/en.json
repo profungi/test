@@ -231,13 +231,13 @@
     }
   },
   "metadata": {
-    "title": "Bay Area Events",
+    "title": "Bay Area Selected Events",
     "description": "Discover the best events in the Bay Area! Markets, festivals, food, and art activities. Covering San Francisco, South Bay, East Bay, and more.",
     "thisWeek": "This Week",
     "nextWeek": "Next Week"
   },
   "home": {
-    "siteTitle": "Bay Area Events",
+    "siteTitle": "Bay Area Selected Events",
     "siteSubtitle": "Discover the best events in the Bay Area · Updated weekly",
     "thisWeekEvents": "This Week's Events",
     "nextWeekEvents": "Next Week's Events",
@@ -245,7 +245,7 @@
     "noEvents": "No events found",
     "noEventsHint": "Please try adjusting your filters or check events for other weeks",
     "dataSource": "Data sources: Eventbrite, SF Station, Funcheap",
-    "updateInfo": "Updated every Wednesday · Last updated: {date}"
+    "updateInfo": "Updated weekly · Last updated: {date}"
   },
   "filter": {
     "filterByWeek": "Filter by Week",
