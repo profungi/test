@@ -47,7 +47,8 @@ npm run scrape -- --help
 
 **流程**:
 1. 并行抓取 Eventbrite、SF Station、Funcheap
-2. 内存去重（节省翻译 token）
+2. 内存去重 + 过滤无效活动（节省翻译 token）
+   - 过滤标题为网站域名的无效活动（如 www.sfstation.com）
 3. 翻译活动标题（添加 `title_zh` 字段）
 4. 数据库去重和保存
 5. AI 分类和优先级排序
