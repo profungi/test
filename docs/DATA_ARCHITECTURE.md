@@ -19,7 +19,23 @@ description, description_detail, original_url, short_url,
 source, event_type, priority, scraped_at, week_identifier
 ```
 
-### 2. **Feedback 表**（反馈数据）- 本地独有
+### 2. **User Feedback 表**（用户反馈数据）- 云端主库
+```
+Turso (主) ⟷ Local SQLite (副本)
+```
+
+**用途**: 存储网站用户的点赞和反馈
+- ✅ **写入**: Website（用户交互，写入 Turso）
+- ✅ **读取**: 分析脚本（从本地）
+- ✅ **同步**: Turso → Local（单向）
+
+**字段**:
+```sql
+id, session_id, feedback_type, comment, filter_state,
+events_shown, user_agent, referrer, locale, created_at, ip_hash
+```
+
+### 3. **本地独有 Feedback 表**（发布反馈数据）- 本地独有
 ```
 Local SQLite (唯一)
 ```
@@ -34,7 +50,7 @@ Local SQLite (唯一)
 2. `event_performance` - 活动表现（点击、点赞、收藏等）
 3. `weight_adjustments` - AI 权重调整历史
 
-### 3. **Review 文件**（临时文件）- 本地文件系统
+### 4. **Review 文件**（临时文件）- 本地文件系统
 ```
 ./output/review_*.json
 ```

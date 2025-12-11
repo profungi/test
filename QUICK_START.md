@@ -44,6 +44,18 @@ npm run sync-full
 npm run sync-preview
 ```
 
+### 去重管理
+```bash
+# 删除重复活动（支持 Turso 和本地）
+npm run remove-duplicates
+
+# 预览重复活动（不实际删除）
+npm run remove-duplicates-preview
+
+# 使用标题去重（兼容旧逻辑）
+npm run remove-duplicates-by-title
+```
+
 ### 生成发布内容
 ```bash
 # 交互式生成
@@ -150,10 +162,17 @@ npm run collect-feedback
 - **同步**: 单向 Turso → Local
 - **用途**: 存储抓取的活动信息
 
-### Feedback 表（反馈数据）
+### User Feedback 表（用户反馈数据）
+- **主库**: Turso（云端）
+- **副本**: Local SQLite（本地）
+- **同步**: 单向 Turso → Local
+- **用途**: 存储网站用户的点赞和反馈
+- **来源**: Website 用户交互
+
+### 本地独有 Feedback 表
 - **位置**: Local SQLite（仅本地）
 - **不同步**: 本地独有数据
-- **用途**: 发布记录、点击数据、AI 权重调整
+- **用途**: 发布记录（posts）、点击数据（event_performance）、AI 权重调整（weight_adjustments）
 
 ### Review 文件
 - **位置**: `./output/review_*.json`
@@ -230,10 +249,12 @@ sqlite3 data/events.db "SELECT COUNT(*) FROM event_performance;"
 | `npm run scrape` | 抓取活动 |
 | `npm run translate-missing` | 翻译缺失标题 |
 | `npm run sync-from-turso` | 同步数据 |
+| `npm run remove-duplicates` | 删除重复活动 |
 | `npm run generate-post` | 生成发布内容 |
 | `npm run check-db` | 检查配置 |
 | `npm run sync-preview` | 预览同步 |
 | `npm run sync-full` | 全量同步 |
+| `npm run remove-duplicates-preview` | 预览重复 |
 
 ## 🚀 开始使用
 

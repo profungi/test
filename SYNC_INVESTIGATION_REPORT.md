@@ -371,14 +371,119 @@ GROUP BY source, original_url HAVING COUNT(*) > 1
 - **问题明确**：需要添加到同步脚本
 - **影响有限**：目前不影响 Website 运行
 - **解决方案**：修改 `sync-from-turso.js` 添加 user_feedback 表同步
+<<<<<<< HEAD
+=======
+- **✅ 状态**：已完成实现（2025-12-10）
+>>>>>>> 6f2e5a43aa019e14f8fb7c1cf255d17b73271d01
 
 ### remove-duplicates.js
 - **根本原因**：只支持本地数据库，不支持 Turso
 - **次要原因**：去重逻辑可能不够准确
 - **解决方案**：创建支持 Turso 的版本，改进去重逻辑
+<<<<<<< HEAD
 
 ### 优先级
 1. 🔥 高优先级：创建 Turso 去重脚本（立即解决用户问题）
 2. 🔥 高优先级：添加 user_feedback 同步（完善数据同步）
 3. ⚠️ 中优先级：改进去重逻辑（提高准确性）
 4. 💡 低优先级：Schema 优化（长期改进）
+=======
+- **✅ 状态**：已完成实现（2025-12-10）
+
+### 优先级
+1. ✅ ~~高优先级：添加 user_feedback 同步（完善数据同步）~~ - 已完成
+2. ✅ ~~高优先级：创建 Turso 去重脚本（立即解决用户问题）~~ - 已完成
+3. ✅ ~~中优先级：改进去重逻辑（提高准确性）~~ - 已完成
+4. 💡 低优先级：Schema 优化（长期改进） - 待实现
+
+---
+
+## 实施记录
+
+### 2025-12-10: user_feedback 同步功能已完成
+
+**修改的文件**:
+- `sync-from-turso.js` - 添加了 user_feedback 表的同步功能
+
+**新增的方法**:
+1. `getLastFeedbackSyncTime()` - 获取上次同步的 user_feedback 时间
+2. `fetchFeedbackFromTurso(sinceTime)` - 从 Turso 获取 user_feedback 数据
+3. `syncFeedbackToLocal(feedback, mode)` - 同步 user_feedback 到本地
+4. `upsertFeedback(feedback)` - 插入或更新 user_feedback 记录
+5. `clearLocalFeedback()` - 清空本地 user_feedback 表（全量同步用）
+6. `previewFeedbackData(feedback)` - 预览 user_feedback 数据
+
+**同步策略**:
+- 使用 `id` 作为唯一标识（保留 Turso 的 AUTOINCREMENT id）
+- 支持增量同步（基于 `created_at` 时间戳）
+- 支持全量同步（清空并重新导入）
+- Upsert 逻辑：存在则更新，不存在则插入
+
+**文档更新**:
+- 更新了 `sync-from-turso.js` 的帮助文档
+- 更新了 `QUICK_START.md` 的数据库说明
+- 更新了 `docs/DATA_ARCHITECTURE.md` 的数据分层说明
+
+**测试**:
+- ✅ JavaScript 语法检查通过
+- ✅ 帮助文档显示正常
+- ✅ 本地数据库确认有 user_feedback 表（2 条记录）
+- ⚠️ 完整同步测试需要有效的 Turso 配置
+
+---
+
+### 2025-12-10: Turso 去重脚本已完成
+
+**新建的文件**:
+- `remove-duplicates-turso.js` - 支持 Turso 的去重脚本
+- `DEDUPLICATION_GUIDE.md` - 详细的去重功能使用指南
+
+**核心功能**:
+1. **双数据库支持**: 自动检测 `USE_TURSO` 环境变量
+   - USE_TURSO=1: 操作 Turso 云端数据库
+   - USE_TURSO=0 或未设置: 操作本地 SQLite
+
+2. **改进的去重逻辑**:
+   - 默认使用 `original_url` 作为唯一标识（比 normalized_title 更准确）
+   - 支持 `--dedupe-by=normalized_title` 兼容旧逻辑
+   - 优先保留 priority 最高或 scraped_at 最新的活动
+
+3. **安全特性**:
+   - `--dry-run` 预览模式，查看将要删除的数据
+   - 智能配置检测，占位符自动回退到本地数据库
+   - 详细的统计信息和操作日志
+
+4. **无效活动清理**:
+   - 自动删除标题是域名的活动（www.sfstation.com 等）
+
+**npm 脚本**:
+- `npm run remove-duplicates` - 删除重复活动
+- `npm run remove-duplicates-preview` - 预览模式
+- `npm run remove-duplicates-by-title` - 使用标题去重
+
+**去重策略**:
+```javascript
+// 对每组重复活动
+1. 比较 priority（优先级）
+   → 保留 priority 最高的
+
+2. 如果 priority 相同，比较 scraped_at（抓取时间）
+   → 保留最新抓取的
+
+3. 删除其他重复项
+```
+
+**文档更新**:
+- 创建了 `DEDUPLICATION_GUIDE.md` - 完整的使用指南
+- 更新了 `QUICK_START.md` - 添加去重命令
+- 更新了 `package.json` - 添加 3 个去重脚本
+- 更新了调查报告状态
+
+**测试**:
+- ✅ JavaScript 语法检查通过
+- ✅ 帮助文档显示正常
+- ✅ 预览模式测试通过（本地数据库 480 条记录，0 重复）
+- ✅ npm 脚本测试通过
+- ✅ 智能配置回退测试通过
+- ⚠️ Turso 实际去重测试需要有效配置
+>>>>>>> 6f2e5a43aa019e14f8fb7c1cf255d17b73271d01
