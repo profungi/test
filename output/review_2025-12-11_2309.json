@@ -1,0 +1,867 @@
+{
+  "review_id": "review_2025-12-11_2309_8vo",
+  "generated_at": "2025-12-11T23:09:34.942Z",
+  "scrape_date": "2025-12-11",
+  "target_week": "2025-12-15_to_2025-12-21",
+  "target_week_readable": "12/15 - 12/21",
+  "scraping_report": {
+    "total_scraped": 59,
+    "after_deduplication": 50,
+    "after_classification": 50,
+    "classification_report": {
+      "totalEvents": 50,
+      "eventTypes": {
+        "music": 5,
+        "art": 7,
+        "free": 20,
+        "other": 4,
+        "festival": 8,
+        "market": 2,
+        "food": 4
+      },
+      "priorityLevels": {
+        "3": 4,
+        "4": 5,
+        "5": 7,
+        "6": 4,
+        "9": 20,
+        "10": 10
+      },
+      "chineseRelevant": 0,
+      "topPriorityEvents": 30
+    }
+  },
+  "instructions": {
+    "how_to_review": "将你想要发布的活动的 'selected' 字段改为 true",
+    "next_step": "保存文件后运行: npm run generate-post [此文件路径]",
+    "fields_explanation": {
+      "title": "活动标题",
+      "time_display": "显示用的时间格式",
+      "location": "活动地点",
+      "price": "票价信息",
+      "event_type": "AI识别的活动类型",
+      "priority": "优先级分数 (越高越重要)",
+      "chinese_relevant": "是否与中文社区相关",
+      "original_url": "原始活动链接"
+    }
+  },
+  "stats": {
+    "total_candidates": 40,
+    "by_type": {
+      "festival": 8,
+      "market": 2,
+      "free": 20,
+      "food": 4,
+      "art": 6
+    },
+    "by_priority": {
+      "5": 6,
+      "6": 4,
+      "9": 20,
+      "10": 10
+    },
+    "chinese_relevant": 0
+  },
+  "events": [
+    {
+      "id": 1,
+      "selected": false,
+      "title": "I'll Know It's Christmas - South Bay Veterans Chorus Holiday Concert",
+      "time_display": "Friday 12/19 7:30 PM",
+      "location": "Prince of Peace Lutheran Church, 12770 Saratoga Avenue, Saratoga, CA 95070",
+      "price": "$23.18",
+      "event_type": "festival",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/ill-know-its-christmas-south-bay-veterans-chorus-holiday-concert-tickets-1809460437879?aff=ebdssbcitybrowse",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Come join us for a heartwarming holiday concert by the South Bay Veterans Chorus - a sure sign that ...",
+      "description_detail": "Come join us for a heartwarming holiday concert by the South Bay Veterans Chorus - a sure sign that Christmas is here!Join us for a festive evening at the I'll Know It's Christmas - South Bay Veterans Chorus Holiday Concert! The talented veterans will fill the Prince of Peace Lutheran Church with beautiful holiday music. Get into the spirit of the season and support our local veterans by attending this special event. Don't miss out on this heartwarming performance!Read moreCategory: Holiday, Christmas",
+      "source": "eventbrite",
+      "scraped_at": "2025-12-11T23:06:30.116Z"
+    },
+    {
+      "id": 2,
+      "selected": false,
+      "title": "Local Maker's Market: Love You A Latte",
+      "time_display": "Saturday 12/20 11:00 AM",
+      "location": "788 W Hamilton Ave, 788 West Hamilton Avenue, Campbell, CA 95008",
+      "price": "$0.99",
+      "event_type": "market",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/local-makers-market-love-you-a-latte-tickets-1247690829859?aff=ebdssbcitybrowse",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "This Campbell pop-up market is a great way to grow in community and culture, supporting small busine...",
+      "description_detail": "This Campbell pop-up market is a great way to grow in community and culture, supporting small businesses throughout the bay area!This community, outdoor event is held at The Coffee Shack, a drive-thru coffee shack that will be turned into a destination and take you on a journey through the unique and inspired drinks! This facility gets turned into an outdoor market and a walk-up coffee shop! It is family & dog friendly! We encourage people to bring their pets and children and walk through the many delightful arts, crafts, and food vendors that set up to put on this event!We offer 21+ Vendors, 1-2 Food Trucks, & LIVE music!A raffle will be held with 100 Shack points and a vendor basket! Winner is announced by same day on our instagram (@thecoffeeshack.ca) ! Our makers/vendors come from various locations and have a variety of unique crafts!This event is all about supporting small & local businesses, along with bringing community together and sharing joy & success!Follow our instagram to keep up to date on all the new offerings at The Coffee Shack, and for updates on this event! (IG: @thecoffeeshack.ca) Read moreCategory: Community, City & Town",
+      "source": "eventbrite",
+      "scraped_at": "2025-12-11T23:06:30.117Z"
+    },
+    {
+      "id": 3,
+      "selected": false,
+      "title": "SF Bay Area NPHC Holiday Party Celebration",
+      "time_display": "Friday 12/19 7:00 PM",
+      "location": "HELLA BEES, 2340 Harrison Street, Oakland, CA 94612",
+      "price": "From $49.87",
+      "event_type": "festival",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/sf-bay-area-nphc-holiday-party-celebration-tickets-1975063870203?aff=ebdssbdestsearch",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Join us for a fun-filled holiday bash with the SF Bay Area NPHC familyi—good vibes & great company!S...",
+      "description_detail": "Join us for a fun-filled holiday bash with the SF Bay Area NPHC familyi—good vibes & great company!SF Bay Area NPHC Presents ... Holiday Party CelebrationJoin us for a fun-filled, in-person Holiday Party Celebration hosted by SF Bay Area NPHC! It's the perfect chance to hang out, enjoy good vibes, and celebrate the season with great company. Don't miss out on this year's Neophyte preentation and a hat & sock drive. This event is open to all 21+. CASHLESS EVENT. See you there!Read moreCategory: Holiday, Other",
+      "source": "eventbrite",
+      "scraped_at": "2025-12-11T23:06:30.121Z"
+    },
+    {
+      "id": 4,
+      "selected": false,
+      "title": "Tip Top Shape Holiday Party",
+      "time_display": "Saturday 12/20 7:00 PM",
+      "location": "Tip Top Shape health and fitness, 9th Street, Oakland, CA, USA, 472 9th Street, Oakland, CA 94607",
+      "price": "$60.54",
+      "event_type": "festival",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/tip-top-shape-holiday-party-tickets-1964631167709?aff=ebdssbdestsearch",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Get ready to celebrate the holiday season in style at our Tip Top Shape Holiday Party - it's gonna b...",
+      "description_detail": "Get ready to celebrate the holiday season in style at our Tip Top Shape Holiday Party - it's gonna be a blast!Welcome to the Tip Top Shape Holiday Party!Come join us at Tip Top Shape, 472 9th Street, Oakland for a festive celebration honoring our members, our community and those that have gone before us (Mama Gracie). Get ready to mingle, enjoy delicious treats, dance and participate in fun activities.Don't miss out on this opportunity to connect with like-minded individuals and celebrate the holiday season in style. Colors are: shades of purple, teal and silver.Mark your calendars and get ready to have a blast at the Tip Top Shape Holiday Party! We can't wait to see you there. (Limited tickets available)Read moreCategory: Holiday, Christmas",
+      "source": "eventbrite",
+      "scraped_at": "2025-12-11T23:06:30.122Z"
+    },
+    {
+      "id": 5,
+      "selected": false,
+      "title": "Navidad en Mexico 2025",
+      "time_display": "Sunday 12/21 3:00 PM",
+      "location": "Calvin Simmons Theatre, 10 10th Street, Oakland, CA 94607",
+      "price": "$55.20",
+      "event_type": "festival",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/navidad-en-mexico-2025-tickets-1811486889049?aff=ebdssbdestsearch",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "¡Ven y celebra la Navidad en México 2025 con bailes folkloricos, música, comida y tradiciones mexica...",
+      "description_detail": "¡Ven y celebra la Navidad en México 2025 con bailes folkloricos, música, comida y tradiciones mexicanas en un ambiente festivo y acogedor!¡Navidad en Mexico 2025!¡Celebra la Navidad al estilo mexicano en el año 2025! Ven y únete a nosotros en el Calvin Simmons Theatre para una noche llena de música, baile y tradiciones mexicanas. Disfruta de villancicos, posadas y deliciosas comidas típicas. ¡No te pierdas esta oportunidad de sumergirte en la magia de la Navidad mexicana! ¡Compra tus boletos ahora y celebra con nosotros!Join us for a night of Folklorico dance, accompanied by Mariachi and special guest Singer Nina Hernandez!Read moreCategory: Holiday, Christmas",
+      "source": "eventbrite",
+      "scraped_at": "2025-12-11T23:06:30.122Z"
+    },
+    {
+      "id": 6,
+      "selected": false,
+      "title": "I'll Know It's Christmas - South Bay Veterans Chorus Holiday Concert",
+      "time_display": "Friday 12/19 7:30 PM",
+      "location": "Prince of Peace Lutheran Church, 12770 Saratoga Avenue, Saratoga, CA 95070",
+      "price": "$23.18",
+      "event_type": "festival",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/ill-know-its-christmas-south-bay-veterans-chorus-holiday-concert-tickets-1809460437879?aff=ebdssbdestsearch",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Come join us for a heartwarming holiday concert by the South Bay Veterans Chorus - a sure sign that ...",
+      "description_detail": "Come join us for a heartwarming holiday concert by the South Bay Veterans Chorus - a sure sign that Christmas is here!Join us for a festive evening at the I'll Know It's Christmas - South Bay Veterans Chorus Holiday Concert! The talented veterans will fill the Prince of Peace Lutheran Church with beautiful holiday music. Get into the spirit of the season and support our local veterans by attending this special event. Don't miss out on this heartwarming performance!Read moreCategory: Holiday, Christmas",
+      "source": "eventbrite",
+      "scraped_at": "2025-12-11T23:06:30.125Z"
+    },
+    {
+      "id": 7,
+      "selected": false,
+      "title": "Gingerbread Paint Party",
+      "time_display": "Friday 12/19 6:30 PM",
+      "location": "Sueños, 112 Paseo de San Antonio, San Jose, CA 95112",
+      "price": "$44.52",
+      "event_type": "festival",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/gingerbread-paint-party-tickets-1974990479690?aff=ebdssbdestsearch",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Get ready to unleash your inner artist at the Gingerbread Paint Party, where creativity meets holida...",
+      "description_detail": "Get ready to unleash your inner artist at the Gingerbread Paint Party, where creativity meets holiday cheer!✨ Gingerbread Paint Party — Dec 19, 2025 | 6:30pm–8:30pm ✨Kick off the holidays with a sweet + festive night of creativity! 🍬🎨Join us in Downtown San Jose, CA for a cozy paint party where we’ll be creating the cutest gingerbread-themed canvases. Whether you’re bringing friends, family, or flying solo—this event is perfect for all ages!📍 Location: Downtown San Jose, Suenos Boutique🍽 Come early and enjoy food & drinks at nearby restaurants!Let’s make the season merry, bright & gingerbread-sweet! 🤎✨Read moreCategory: Holiday, Christmas",
+      "source": "eventbrite",
+      "scraped_at": "2025-12-11T23:06:30.125Z"
+    },
+    {
+      "id": 8,
+      "selected": false,
+      "title": "Christmas Party for Single Professionals at Upscale Hotel",
+      "time_display": "Saturday 12/20 7:00 PM",
+      "location": "AC Hotel Sunnyvale Cupertino, 597 East El Camino Real, Sunnyvale, CA 94087",
+      "price": "From $33.85",
+      "event_type": "festival",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/christmas-party-for-single-professionals-at-upscale-hotel-tickets-1965624313234?aff=ebdssbdestsearch",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Celebrate Christmas with new single friends!Celebrate The Holidays with new single friends at an ups...",
+      "description_detail": "Celebrate Christmas with new single friends!Celebrate The Holidays with new single friends at an upscale hotel! Our FUN Mixer Game makes it EASY to meet people. Festive holiday attire, including a red Santa hat (optional). Adults of all ages welcome. Saturday, Dec 20, 2025, 7-10pm.DISCOUNT TICKETS: $30/early birds; $40/advance; $50/door, if space permits. Includes light appetizers, served at 7pm, as long as they last.SPEED DATING SPECIAL for ages 40-55: $50/advance only, includes all of the above, plus Speed Dating!LOCATION: AC by Marriott Hotel, 597 E El Camino Real, Sunnyvale CA. Free parking!CO-SPONSORED by The Society of Single Professionals, Your Asian Connection, Bay Area Singles Events and Travel, and dozens of singles organizations and meetups. All events benefit The Seva Foundation, to restore sight to the blind.MORE PARTIES at www.thepartyhotline.com.· 50+ Saturday Night Fever! Nov 8, San Francisco· SF Speed Dating, 30s & 40s, Nov 12, San Francisco· Silicon Valley Speed Dating, 30s & 40s and 50+, Nov 14, Sunnyvale· Salsa Thursday! Nov 20, Sausalito· 50 & Fabulous, Nov 23, Tiburon· 50+ Holiday Mixer, Men Needed, Dec 7, Los Gatos· Holiday Speed Dating, 30s/40s, Dec 10, Campbell· Holiday Dance, adults of all ages, Dec 12, Alameda· Christmas Party, adults of all ages, Dec 20, Sunnyvale· New Years Eve Bash, Dec 31, TBAFOLLOW US ON INSTAGRAM.VIDEO from our New Years Eve Bash.Read moreCategory: Holiday, Christmas",
+      "source": "eventbrite",
+      "scraped_at": "2025-12-11T23:06:30.125Z"
+    },
+    {
+      "id": 9,
+      "selected": false,
+      "title": "Holiday Night Market w/ CASE (SF)",
+      "time_display": "Friday 12/19 5:00 PM - 9:00 PM",
+      "location": "Fillmore & O'Farrell, San Francisco Bay Area",
+      "price": "Check event page",
+      "event_type": "market",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/holiday-night-market-w-case-sf/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2025-12-11T22:55:02.462Z"
+    },
+    {
+      "id": 10,
+      "selected": false,
+      "title": "WinterFest 2025: Cosmic Fun + Science Talks (Chabot Space & Science Center)",
+      "time_display": "Saturday 12/20 10:00 AM - 5:00 PM",
+      "location": "Chabot Space & Science Center, East Bay",
+      "price": "$24*",
+      "event_type": "festival",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/winterfest-2025-cosmic-fun-science-talks-chabot-space-science-center/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2025-12-11T22:55:02.462Z"
+    },
+    {
+      "id": 11,
+      "selected": false,
+      "title": "Home for the Holidays w/Moondance",
+      "time_display": "Friday 12/19 8:30 PM",
+      "location": "X Bar Cupertino, 20990 Homestead Road, Cupertino, CA 95014",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/home-for-the-holidays-wmoondance-tickets-1965646937905?aff=ebdssbcitybrowsenightlife",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Join us for a cozy night of holiday cheer with live music from Moondance - a perfect way to feel at ...",
+      "description_detail": "Join us for a cozy night of holiday cheer with live music from Moondance - a perfect way to feel at home this holiday season!Home for the Holidays w/Moondance Come join us for a festive evening filled with live music by Moondance at X Bar Cupertino! Get into the holiday spirit with great tunes, good company, and maybe even a little dancing. This in-person event is the perfect way to celebrate the season with friends and family. Don't miss out on this special night of music and merriment!Read moreCategory: Holiday, Christmas",
+      "source": "eventbrite",
+      "scraped_at": "2025-12-11T23:06:30.114Z"
+    },
+    {
+      "id": 12,
+      "selected": false,
+      "title": "Apisol Sparking Honey Drink - Pop Up",
+      "time_display": "Saturday 12/20 9:00 AM",
+      "location": "Jiaren Cafe, 1171 Homestead Road, #140b Santa Clara, CA 95050",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/apisol-sparking-honey-drink-pop-up-tickets-1975076056653?aff=ebdssbcitybrowse",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Try Apisol’s sparkling honey drinks and sip on some buzz-worthy fizz!Apisol is a unique sparkling ho...",
+      "description_detail": "Try Apisol’s sparkling honey drinks and sip on some buzz-worthy fizz!Apisol is a unique sparkling honey drink, unlike anything you’ve ever tasted. Lightly fizzy and refreshing, it’s made locally in small batches with real Napa Valley honey and all-natural ingredients. This is a FREE event, feel free to drop by anytime!Apisol started as a fun project in my kitchen when I was experimenting with honey and trying to create something light and refreshing. It felt like I moved science from the lab to the kitchen, just with something I actually wanted to drink at the end. And after 189 rounds of trial and error, it finally clicked and became something I wanted to share - Ariana We’re excited to host this pop-up and to support local creators and small businesses! Please note that each vendor runs their pop-up independently. Jiaren Café is simply providing space and helping introduce their work to our community.By attending, you understand that:All products, services, and purchases are offered directly by the vendor, not by Jiaren Café.Any questions or concerns about items or experiences should be handled with the vendor.Jiaren Café isn’t responsible for the vendor’s products, ingredients, or activities, and we’re not able to take on liability for any issues that may arise.Participation is voluntary and at your own discretion.Thank you for supporting local entrepreneurs and helping us build a creative and safe community space!Read moreCategory: Food & Drink, Other",
+      "source": "eventbrite",
+      "scraped_at": "2025-12-11T23:06:30.115Z"
+    },
+    {
+      "id": 13,
+      "selected": false,
+      "title": "Volunteer Outside at McClellan Ranch Preserve",
+      "time_display": "Friday 12/19 9:00 AM",
+      "location": "McClellan Ranch Preserve, 22221 McClellan Rd, Cupertino, CA 95014",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/volunteer-outside-at-mcclellan-ranch-preserve-registration-1972864392506?aff=ebdssbcitybrowse",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Volunteer your time to improve habitat health in Cupertino!Join Grassroots Ecology in our ongoing re...",
+      "description_detail": "Volunteer your time to improve habitat health in Cupertino!Join Grassroots Ecology in our ongoing restoration of habitat along Stevens Creek at McClellan Ranch Preserve in Cupertino! We will spend our time together installing native plants, weeding invasive species, and making wire cages to protect plants. Volunteers should expect to walk off trail on uneven ground, kneel or sit on kneeling pads, use hand tools, and carry buckets.Visit Grassroots Ecology’s McClellan Ranch Preserve page to learn more about the ecosystem and accessibility considerations.Waivers/Registration: All volunteers attending the workday must be registered individually and have approved the online waiver through this Eventbrite page. Youth under 18 must have their legal guardian approve the waiver on their behalf. Volunteers age 12 and under require an accompanying adult.Parking: 22221 McClellan Rd, Cupertino, CA 95014, park in the main parking lot in front of the meadow. Additional parking can be found in the overflow lot (located to the left of the main entrance).Alternate Transportation: The closest bus stop (via VTA route 51) is approximately 1 mile away from the preserve. (Note: this route may not run on the weekend). The surrounding neighborhood is bike-friendly and there are plenty of safe places to lock bikes.Meeting Space: We will meet at the picnic tables at the front of the meadow. This site has multi-stall gender-specific restrooms, as well as a water fountain/bottle filling station.Prepare for Working Outdoors:Reusable water bottle (filled with water)Snacks, if desiredLong pants, long sleeves recommendedSturdy closed-toed shoes that can get dirtyHat/sunscreenEpi-Pen or allergy medicine, if applicablePlan for potential exposure to sun, poison oak, ticks, prickly plantsWe will provide gloves, tools, light refreshments, and ponchos (if necessary).Event Cancellations:We are committed to the safety of our staff and volunteers. In the event that we must cancel a workday due to extreme weather conditions or poor air quality, a Grassroots Ecology staff person will reach out via email no later than 5:00 PM the day prior to this event.Join Us!Grassroots Ecology encourages people from all identities and backgrounds to participate in our programs. Many of our programs are outdoors and involve moving and working in a variety of landscapes. If you have accessibility concerns (e.g. allergies, limited mobility, learning differences), our projects are flexible and we are happy to work with you. Please reach out to the workday facilitator so we can prepare for your participation.Accessibility concerns? Questions? Cancellations?Email maya@grassrootsecology.orgRead moreCategory: Charity & Causes, Environment",
+      "source": "eventbrite",
+      "scraped_at": "2025-12-11T23:06:30.115Z"
+    },
+    {
+      "id": 14,
+      "selected": false,
+      "title": "Persian Bay Run Crew: Yalda 5K & 10K Social Run (3 Mile & 6 Mile)",
+      "time_display": "Saturday 12/20 9:00 AM",
+      "location": "Petals Creamery, 5 North Santa Cruz Avenue, Los Gatos, CA 95030",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/persian-bay-run-crew-yalda-5k-10k-social-run-3-mile-6-mile-tickets-1966987842587?aff=ebdssbcitybrowse",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Join Persian Bay Run Crew (PBRC) and Petals Creamery for a joyful community run celebrating Yalda — ...",
+      "description_detail": "Join Persian Bay Run Crew (PBRC) and Petals Creamery for a joyful community run celebrating Yalda — the longest night of the year!Persian Bay Run Crew (PBRC) x Petals Creamery Present:Yalda 5K & 10K Social Run (3 Mile & 6 Mile)Join Persian Bay Run Crew (PBRC) and Petals Creamery for a joyful community run celebrating Yalda — the longest night of the year! 🌙🍉We’re teaming up with Petals Creamery, a Persian culture–inspired ice cream shop in the heart of Los Gatos, to bring you a run filled with culture, connection, and community.📅 Date: Saturday, December 20, 2025⏰ Meet Time: 8:45 AM🏁 Run Start Time: 9:00 AM (We start sharp!)📍 Meet-Up Location: In front of Petals Creamery5 N Santa Cruz Ave, Los Gatos, CA 95030🏃 Route:We’ll start from Petals Creamery, run along the beautiful Los Gatos Creek Trail toward Vasona Lake, and then loop back to Petals Creamery — total distance of 5K (3 miles) or 10K (6 miles) depending on your choice and pace.👉 Check out our Strava page for full route details!🍦 After-Run SocialAfter the run, Petals Creamery will open early exclusively for our runners! 🎉Enjoy Persian treats and more:And of course — don’t leave without trying their legendary Havij Bastani (carrot ice cream) and other amazing flavors inspired by Persian culture!👟 Who Can Join?Everyone is welcome — runners, joggers, and walkers!Whether you’re an experienced athlete or just looking for a fun, social way to stay active and meet new friends, this event is for you.Let’s move together, celebrate Yalda, and make the spirit of the season last a little longer. ❤️🅿 Parking InfoFree 2-hour parking is available throughout downtown Los Gatos.Recommended spots:Near the meet-up location (there are lots of parking on the street)Los Gatos Public Parking Lot 6 (Behind Petals Creamery), 224 W Main St, Los Gatos📞 Questions?Contact Mohammad at 📱 (925) 660-9783Follow Petals Creamery and PBRC to stay connected!Previous Events:Ti-Tap & Chocolate Milk 5K & 10K Social RunNowruz 5K & 10K Social RunYalda 5K Social RunRead moreCategory: Sports & Fitness, Running",
+      "source": "eventbrite",
+      "scraped_at": "2025-12-11T23:06:30.116Z"
+    },
+    {
+      "id": 15,
+      "selected": false,
+      "title": "Introduction to Competitive Robotics (Age 8-18)",
+      "time_display": "Saturday 12/20 10:00 AM",
+      "location": "Dr Owl Academy, 15445 Los Gatos Boulevard, Los Gatos, CA 95032",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/introduction-to-competitive-robotics-age-8-18-tickets-1976356181541?aff=ebdssbcitybrowse",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Explore FLL & FTC robotics! Tour the lab, meet coaches, and see live robot demos at our upcoming Ope...",
+      "description_detail": "Explore FLL & FTC robotics! Tour the lab, meet coaches, and see live robot demos at our upcoming Open House. Register now to join the fun!Discover how students learn engineering, coding, and teamwork through FLL (FIRST LEGO League) and FTC (FIRST Tech Challenge) robotics! This Open House is the perfect opportunity for families interested in competitive robotics to see our program in action.What You’ll Experience✨ Classroom Tour – Explore our robotics labs where students design, build, code, and test their robots.🤖 Robot Demonstrations – See real FLL robots complete missions and watch our FTC robots drive, spin, lift, and score.👥 Meet the Coaches – Talk with our experienced coaching team about our curriculum, competition strategy, and student pathways.🚀 Learn About FLL & FTC – Understand what competitions look like, how teams are formed, and what skills students gain throughout the season.💬 Q&A for Parents and Students – Get answers about schedules, placement, skill levels, and how to get started.Whether your student is brand new to robotics or eager to join a competitive team, this event will inspire them to take the next step.Spots are limited—please register to attend. We look forward to meeting you!Speaker Bio - Ms. ShannonVeteran 10yr robotics coach, numerous awards including multiple regional & state champions, 2nd place in the world (2023), Dean’s list award (2023), founder and mentor for multiple STEM related non-profit, Degrees in Engineering and Education from Cornell and Stanford UniversityRead moreCategory: Science & Tech, Robotics",
+      "source": "eventbrite",
+      "scraped_at": "2025-12-11T23:06:30.117Z"
+    },
+    {
+      "id": 16,
+      "selected": false,
+      "title": "Community Health Fair: Holiday Festival",
+      "time_display": "Thursday 12/18 4:00 PM",
+      "location": "The HUB (Sunnydale Ave Community Center), 1530 Sunnydale Avenue, San Francisco, CA 94134",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/community-health-fair-holiday-festival-tickets-1977105919026?aff=ebdssbdestsearch",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Join us for a special edition of our Community Health Fair at the HUB!Community Health Fair: Holiday...",
+      "description_detail": "Join us for a special edition of our Community Health Fair at the HUB!Community Health Fair: Holiday FestivalJoin us December 18th for a special Community Health Fair. We are bringing in the holidays with FREE testing, and resources from local organizations. Plus a chance for families to get a gift card for the holiday season (SUPPLIES LIMITED). Come on down to our Holiday Festival and celebrate our last event of 2025! Read moreCategory: Health, Personal health",
+      "source": "eventbrite",
+      "scraped_at": "2025-12-11T23:06:30.121Z"
+    },
+    {
+      "id": 17,
+      "selected": false,
+      "title": "The Moth SF StorySLAMPublic Works",
+      "time_display": "Tuesday 12/16 7:30 PM",
+      "location": "161 Erie Street, San Francisco, CA",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://events.blackthorn.io/en/5fAWdcJ7/sf-storyslam-thats-a-wrap-2025-4a26QmPpov/overview",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "sfstation",
+      "scraped_at": "2025-12-11T22:55:32.741Z"
+    },
+    {
+      "id": 18,
+      "selected": false,
+      "title": "22nd Another Hole in the Head Film FestivalBalboa Theatre",
+      "time_display": "Tuesday 12/16 8:15 PM",
+      "location": "3630 Balboa Street, San Francisco, CA",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://holehead2025.eventive.org/schedule",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "sfstation",
+      "scraped_at": "2025-12-11T22:55:32.741Z"
+    },
+    {
+      "id": 19,
+      "selected": false,
+      "title": "www.sfstation.com",
+      "time_display": "Tuesday 12/16 11:00 AM",
+      "location": "Embarcadero Center, San Francisco, CA",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.sfstation.com/sfmade-holiday-pop-up-e1279911",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "sfstation",
+      "scraped_at": "2025-12-11T22:55:32.741Z"
+    },
+    {
+      "id": 20,
+      "selected": false,
+      "title": "www.sfstation.com",
+      "time_display": "Tuesday 12/16 11:00 AM",
+      "location": "Stockton and Post, San Francisco, CA",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.sfstation.com#",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "sfstation",
+      "scraped_at": "2025-12-11T22:55:32.742Z"
+    },
+    {
+      "id": 21,
+      "selected": false,
+      "title": "Dear San Francisco: Home for the HolidaysClub Fugazi",
+      "time_display": "Wednesday 12/17 7:30 PM",
+      "location": "678 Green Street, San Francisco, CA",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://boxoffice.clubfugazisf.com/clubfugazisf/events/46365?sessionView=CALENDAR",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "sfstation",
+      "scraped_at": "2025-12-11T22:55:32.742Z"
+    },
+    {
+      "id": 22,
+      "selected": false,
+      "title": "Throwback Thursdays (MUSIC VIDEO PARTY)Delirium Bar",
+      "time_display": "Thursday 12/18 10:00 PM",
+      "location": "3139 16th Street, San Francisco, CA",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.youtube.com/shorts/dhqVJDt3Hy8",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "sfstation",
+      "scraped_at": "2025-12-11T22:55:32.742Z"
+    },
+    {
+      "id": 23,
+      "selected": false,
+      "title": "1000 Whispers From Our FutureAudium Theater of Sound",
+      "time_display": "Thursday 12/18 8:00 PM",
+      "location": "1616 Bush Street, San Francisco, CA",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.cityboxoffice.com/eventperformances.asp?evt=1760",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "sfstation",
+      "scraped_at": "2025-12-11T22:55:32.742Z"
+    },
+    {
+      "id": 24,
+      "selected": false,
+      "title": "Smuin presents The Christmas BalletYerba Buena Center for the Arts (YBCA)",
+      "time_display": "Thursday 12/18 7:30 PM",
+      "location": "701 Mission Street, San Francisco, CA",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.smuinballet.org/events/christmas-2025/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "sfstation",
+      "scraped_at": "2025-12-11T22:55:32.742Z"
+    },
+    {
+      "id": 25,
+      "selected": false,
+      "title": "FISHERMoscone Center",
+      "time_display": "Friday 12/19 8:00 PM",
+      "location": "747 Howard Street, San Francisco, CA",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.axs.com/series/28763/fisher-2-nights-in-sf-tickets",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "sfstation",
+      "scraped_at": "2025-12-11T22:55:32.742Z"
+    },
+    {
+      "id": 26,
+      "selected": false,
+      "title": "The Wardrobe Project Flea (Rockridge BART Plaza)",
+      "time_display": "Saturday 12/20 10:00 AM - 5:00 PM",
+      "location": "Rockridge BART, East Bay",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/wardrobe-project-flea-rockridge-bart-plaza/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2025-12-11T22:55:02.462Z"
+    },
+    {
+      "id": 27,
+      "selected": false,
+      "title": "SFMade’s 1st Ever “Holiday Pop-Up Store” (Final Day)",
+      "time_display": "Saturday 12/20 11:00 AM - 4:00 PM",
+      "location": "2 Embarcadero Center, San Francisco Bay Area",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/sfmades-1st-ever-holiday-pop-up-store-final-day/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "This holiday season, SFMade is hosting their first-ever Holiday Pop-Up Store: a 3-week retail destin...",
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2025-12-11T22:55:02.462Z"
+    },
+    {
+      "id": 28,
+      "selected": false,
+      "title": "Rodeo Holiday “Indoors by the Bay” Market (East Bay)",
+      "time_display": "Saturday 12/20 11:00 AM - 4:00 PM",
+      "location": "The Waterfront Rodeo, East Bay",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/rodeo-holiday-indoors-bay-market-east-bay/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2025-12-11T22:55:02.462Z"
+    },
+    {
+      "id": 29,
+      "selected": false,
+      "title": "“Love the City” Winter Wonderland Food & Toy Giveaway",
+      "time_display": "Saturday 12/20 12:00 PM - 6:00 PM",
+      "location": "4705 3rd Street, San Francisco Bay Area",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/love-the-city-winter-wonderland-food-toy-giveaway/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2025-12-11T22:55:02.462Z"
+    },
+    {
+      "id": 30,
+      "selected": false,
+      "title": "Livermore SantaCon",
+      "time_display": "Saturday 12/20 2:00 PM - 8:00 PM",
+      "location": "Downtown Livermore, San Francisco Bay Area",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/livermore-santacon/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2025-12-11T22:55:02.462Z"
+    },
+    {
+      "id": 31,
+      "selected": false,
+      "title": "Castro Wine Walk Holiday Edition",
+      "time_display": "Thursday 12/18 6:00 PM",
+      "location": "The Academy SF, 2166 Market Street, San Francisco, CA 94114",
+      "price": "$40 – $70",
+      "event_type": "food",
+      "priority": 6,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/castro-wine-walk-holiday-edition-tickets-1967681604648?aff=ebdssbdestsearch",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Join us for the Castro Wine Walk! Sip seasonal pours, sip and stroll through local businesses, and c...",
+      "description_detail": "Join us for the Castro Wine Walk! Sip seasonal pours, sip and stroll through local businesses, and celebrate in the gayborhood. ✨🍷✨ Castro Wine Walk ✨🍷Raise a glass—it’s the holiday season in the Castro! On Thursday, December 18, the Castro Merchants Association is uncorking the Castro Wine Walk, where you can sip, swirl, and stroll through local participating businesses.Enjoy seasonal pours—from bold reds to sparkling sips—while soaking in holiday vibes and neighborhood spirit. Each stop will feature a unique wine and a warm welcome, making it the perfect evening to connect with friends, neighbors, and fellow wine lovers, all while supporting local businesses.🍷 14 Businesses. Countless Wines. One Festive Night.Whether you’re here for the pinot, the people-watching, or just an excuse to say cheers, queers, the Castro Wine Walk is the perfect way to celebrate the season.Tickets are limited—grab yours today and toast to fall in the Castro! 🌈🍁Tickets include:Wine tastings (1-2 per location)Stroll & sip between stops through activation of the Castro Entertainment ZoneSouvenir wine tumblerMap and \"punch card\"Participating Businesses:The Academy SF – LGBTQ+ social club & event space (check-in / 1st stop)La Med Noe – Mediterranean restaurant on Noe StreetBlush! Wine Bar – Cozy French-style wine bar in the heart of the CastroBar 49 – Beer, wine, and cocktails at Castro’s newest barCopper | Bar Kitchen & Microbrewery – LGBT-owned, cozy microbrewery & barLobby Bar – Vintage-inspired craft cocktail loungeCanela Bistro & Wine Bar – Spanish tapas and wine bar rooted in the CastroCastro Village Wine Co. – Boutique California wine shop and tasting barSwirl on Castro – Wine bar and shop known for hand-picked selectionsPoesia – Cozy Italian restaurant on 18th Street with classic Italian filmsFlora King - Argentinian comfort food + live music & flavorful winesMIdnight Sun - LGBTQIA+ video bar since 1971Rikki's Sports Bar - Read moreCategory: Food & Drink, Wine",
+      "source": "eventbrite",
+      "scraped_at": "2025-12-11T23:06:30.122Z"
+    },
+    {
+      "id": 32,
+      "selected": false,
+      "title": "\"BAILE INOLVIDABLE\" CHRISTMAS LATIN DANCE PARTY | SAN FRANCISCO",
+      "time_display": "Saturday 12/20 10:00 PM",
+      "location": "The EndUp, 401 6th Street, San Francisco, CA 94103",
+      "price": "$0 – $15.18",
+      "event_type": "food",
+      "priority": 6,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/baile-inolvidable-christmas-latin-dance-party-san-francisco-tickets-1975699613729?aff=ebdssbdestsearch",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "CHRISTMAS LATIN NIGHT IN SAN FRANCISCO | CROSSOVER DANCE PARTY FT. TOP DJS & FOOD STAND IN THE OUTDO...",
+      "description_detail": "CHRISTMAS LATIN NIGHT IN SAN FRANCISCO | CROSSOVER DANCE PARTY FT. TOP DJS & FOOD STAND IN THE OUTDOOR PATIO AT THE ENDUP SF | | UNTIL 4AM“BAILE INOLVIDABLE” 🌴San Francisco, Saturday, December 20thbe ready for this Christmas Latin Partyfeaturing our resident DJS 🎅🏻🎄mixing the best of REGGAETONTop Latin Hits - Dembow - MerengueDJ Papaxito | DJ Mike V | DJ Johan Ortiz | DJ Mendocaat The EndUp SF = 401 6th St San Francisco▶️ Doors open at 10pmLatin music goes until 4:00 a.m. 🎊+ Food Stand at the Outdoor Patio▶️ BOTTLE SERVICE package includesBottle delivered by our host+ Event tickets+ Express entrance by the VIP Line* More info or reservation detailsCall / Text : (415)676-8890* All sales are final / no refundsRead moreCategory: Holiday, Christmas",
+      "source": "eventbrite",
+      "scraped_at": "2025-12-11T23:06:30.123Z"
+    },
+    {
+      "id": 33,
+      "selected": false,
+      "title": "Hands-On: Gnocchi al Burro e Tartufo (Holiday Edition)",
+      "time_display": "Thursday 12/18 6:00 PM",
+      "location": "Eataly Silicon Valley, 2855 Stevens Creek Boulevard, San Jose, CA 95128",
+      "price": "$129.54",
+      "event_type": "food",
+      "priority": 6,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/hands-on-gnocchi-al-burro-e-tartufo-holiday-edition-tickets-1964753061296?aff=ebdssbdestsearch",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "It’s time to dive in, holiday-style! In our hands-on format, our Scuola Instructor will teach you ho...",
+      "description_detail": "It’s time to dive in, holiday-style! In our hands-on format, our Scuola Instructor will teach you how to make Gnocchi al Burro e Tartufo.About this Class: It’s time to get your hands messy! In our hands-on format, our Scuola Chef will prepare the signature dish for you to taste in class. You’ll then dive right in to making the recipe yourself from scratch. Take your culinary creation with you at the end of class and enjoy your own hard work at home! Feel the festive spirit in this Holiday Edition of this class. About this Dish: Gnocchi are the traditional Italian form of dumplings made with flour and potatoes. In this decadent dish, we’ll toss the gnocchi in a rich truffle sauce, the perfect dish to elevate your holiday meal and savor a luxurious Italian ingredient. In this Class You Will: Learn about the traditions and culture of Italian truffles Observe as our Scuola Instructor teaches the group how to make Gnocchi al Burro e Tartufo Make your own potato gnocchi by hand Enjoy a menu featuring an antipasto and wine pairing Please Note: One ticket purchase is valid for one guest Seating is first-come, first-served Class duration is approximate and may vary by 10-15 minutes All guests planning to consume alcohol must be able to produce a valid government-issued identification to prove they are 21 or older. Non-alcoholic beverages are available. Classes are also suitable for children 8+ who are passionate about Italian cuisine. 15 and under must be accompanied by a supervising adult. Please notify us in advance if you have any dietary restrictions. If we are not notified ahead of time of any special needs, we may not be able to accommodate them. For any questions, please contact us at esv-scuola@eataly.comCANCELLATION POLICYPayment in full is required at the time of registration and all sales are final. No refunds are offered on classes and events. For groups of 5-10 guests, a minimum of 7 days' notice (class day not included) is required to receive a credit in the form of a coupon for a future class or event. For groups of up to 4 guests, a minimum of 4 days' notice (class day not included) is required to receive a credit in the form of a coupon code for a future class or event at La Scuola. We reserve the right to reschedule or cancel a class or event due to unforeseen circumstances, inclement weather or otherwise. In the event of a class or event cancellation, we will contact you directly at the phone number or email address you have provided to offer a full refund or credit to transfer to a future class or event. While we are not able to offer credit, transfers or refunds for last-minute illnesses, work-related conflicts, personal emergencies or events beyond our control, you are always welcome to send someone in your place, as we understand that these things do happen. If you are purchasing this class or event as a gift, please provide this cancellation policy to the recipient, as the policy will still apply. Credits issued for La Scuola events are redeemable only for future La Scuola events and cannot be used to register for events in other parts of the marketplace or exchanged for store credit or Eataly gift cards.​Read moreCategory: Food & Drink, Food",
+      "source": "eventbrite",
+      "scraped_at": "2025-12-11T23:06:30.125Z"
+    },
+    {
+      "id": 34,
+      "selected": false,
+      "title": "SF’s Holiday “Castro Wine Walk” (2025)",
+      "time_display": "Thursday 12/18 6:00 PM - 9:00 PM",
+      "location": "The Academy, San Francisco",
+      "price": "$40*",
+      "event_type": "food",
+      "priority": 6,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/sfs-holiday-castro-wine-walk-2025/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2025-12-11T22:55:02.461Z"
+    },
+    {
+      "id": 35,
+      "selected": false,
+      "title": "¡BAILA! Community. Dance. Party - Live Salsa ft. Jesús Díaz y su QBA",
+      "time_display": "Friday 12/19 8:00 PM",
+      "location": "La Peña Cultural Center, 3105 Shattuck Avenue, Berkeley, CA 94705",
+      "price": "$17.30 – $30",
+      "event_type": "art",
+      "priority": 5,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/baila-community-dance-party-live-salsa-ft-jesus-diaz-y-su-qba-tickets-1975167165161?aff=ebdssbcitybrowsenightlife",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "La Peña's all-ages monthly Salsa & Bachata night in Berkeley with a live band, inclusive dance class...",
+      "description_detail": "La Peña's all-ages monthly Salsa & Bachata night in Berkeley with a live band, inclusive dance class, and a consent-centered dance floor!Doors 7:30 PM / Class 8 PM / Baile 8 PM - 1 AMBAILA is like a spontaneous dance party that broke out in your kitchen, only if your kitchen had big wood floors, a live Salsa band, a powerful sound system, an upgraded lighting system and 200 of your friends, chosen family, and new faces ready to join the community.At La Peña, we believe that joy and dance are forms of liberation. Movement, like dancing, is essential to our well-being, and gathering in community keeps our spirit alive.That's why every 3rd Friday of the month, La Peña becomes the Bay Area's most joyful and inclusive dance floor.Each edition of BAILA features:8 PM Easy-to-follow gender-inclusive salsa and bachata dance classes10 PM A live Bay Area Salsa bandTwo dance floors with live DJ sets by our resident DJs DJ José Ruíz and DJ RonFood and drinks from our neighbors Los Cilantros Mexican RestaurantFundraising bar that supports La Peña's programsFREE coat checkEveryone is welcome! All ages! BAILA is intentionally created as a safe, gender-inclusive, LGBTQ+ affirming space.Tickets $15-$30:Super Early Bird - $15 (limited quantity available)Early Bird - $20 (available until 2 weeks prior to the event)General Admission Pre-sale - $25 (available until midnight the night before the event)Day of/Door Price - $30Special Discounts & Offers:Student & Senior 65+ Discount - $25 (available online day of event or at the door, valid ID required at check-in)Group Rate - $20 per person (4+ tickets, available online only)2-for-1 Birthday Special - Door Only! Show Birthday flyer at the door. Flyer can be found on our Facebook or Instagram released the week of the event.La Peña Members - FreeAll online ticket sales end when doors open. After that, tickets will only be available for purchase at the door.Join Our Volunteer CommunityVolunteer at BAILA to help create a safer, inclusive space for all! Enjoy free entry, complimentary food and refreshments, and connect with our community.Sign up to volunteer: signup.com/go/VmjiQENLa Peña is a Safer Dance SpaceBAILA is part of La Pe˜ña's commitment as a Safer Dance Space Member: we are building an empowering dance space rooted in consent culture.This means:Inclusive & Affirming: All genders, LGBTQIA+, and all ages (minors with supervision) are welcome.Zero Tolerance for Harrassment or Abuse: No harrassment (verbal, physical, emotional, or sexual). We expect kindness and respect for all.Responsibile Alcohol Consumption: Be mindful and legal with consumption. Moderation ensures the safety and well-being of all.Respect & Consent: Always ask before dancing or making physical contactShared Responsibility: Together we shape a space where everyone feels safe, valued, and free to express themselves.We value your safety and the safety of our community. Violations of these agreements may result in removal from the event.If you need support during the event seek out a La Peña staff member.If you wish to make a report after the event please use our Contact Us form.Questions?Contact us: programs@Lapena.org or use our Contact Us form—AccessibilityLa Peña is a wheelchair-accessible venue with step-less entry, wide doorways, and accessible restrooms.Masks are strongly encouraged. If you’re experiencing COVID-19, cold, or flu-like symptoms, please consider staying home to protect our community. HEPA air purifiers operate throughout our space.All-gender restrooms availableWe strive to make La Peña a welcoming, accessible space for everyone. If you have any specific needs or questions about accessibility, please contact us at least one week in advance, and we’ll do our best to accommodate. Email us at programs@Lapena.orgSupport La PeñaLa Peña is a nonprofit cultural center dedicated to arts, culture, and collective liberation for 50 years.Become a La Peña Member: Membership includes free entry to our monthly dance parties and exclusive perks. Learn MoreDonate Today: Help sustain a space where music, dance, and social justice meet. Learn MoreRead moreCategory: Community, City & Town",
+      "source": "eventbrite",
+      "scraped_at": "2025-12-11T23:06:30.113Z"
+    },
+    {
+      "id": 36,
+      "selected": false,
+      "title": "BOLLYWOOD CHRISTMAS PARTY | MYTH - SAN JOSE | DEC 19TH",
+      "time_display": "Friday 12/19 10:00 PM",
+      "location": "Myth Lounge San Jose Downtown, San Jose Downtown, San Jose, CA 95113",
+      "price": "$0 – $108.55",
+      "event_type": "art",
+      "priority": 5,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/bollywood-christmas-party-myth-san-jose-dec-19th-tickets-1976369047022?aff=ebdssbcitybrowsenightlife",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Ho Ho Ho! Get ready to groove to the beats of Bollywood music and celebrate Christmas in style at th...",
+      "description_detail": "Ho Ho Ho! Get ready to groove to the beats of Bollywood music and celebrate Christmas in style at the Myth Lounge on December 20th!🎉Let's celebrate christmas and dance the night away at the hottest Bollywood Holiday Party in San Jose at Myth lounge on Dec 20thBay Areas Fav and most dynamic DJK (just back from his India tour) will be playing all time Bollywood Hits including trending charts and fresh exclusive mixes!!Immerse yourself in the holiday spririt with our stunning christmas decor and party accessories.‼️Dress Code: Red‼️‼️Special VIP and birthday tables available, call 4086121299 or 4084106140 for more info‼️VIP Experiences:‼️ SPECIAL BIRTHDAY EXPERIENCE - VIP TABLES ‼️Celebrate your birthday in style with our exclusive VIP table package. For $100, reserve a table that covers entry for up to 10 people. Enjoy special perks such as a personalized birthday sign with your name, Birthday Decor, a special DJ announcement, and more. Experience VIP treatment with guaranteed entry, no-line VIP access, a dedicated VIP zone, and free mixers for your drinks. Please call 4084106140for additional requests and details. (bottle service required, min spend $300 excluding hookah)‼️ Exclusive VIP Experience ‼️For $60, reserve a VIP table that covers entry for up to 8 people. Enjoy all the benefits of VIP treatment, including guaranteed entry, no-line VIP access, a dedicated VIP zone, and free mixers for your drinks. (bottle service required, min spend $300 excluding hookah)Stay tuned for this and our future events at Instagram or FacebookImportant Rules:* Age Restriction: This event is strictly for individuals aged 21 and over. A valid physical ID will be required for entry.* We reserve the right to refuse entry to any ticket-holder, without a refund, for reasons including but not limited to: disorderly behavior, failure to comply with venue rules, inappropriate attire, intoxication, venue capacity, breach of security, and other restrictions.* While all efforts will be to ensure safety and suitability of the make up and products used, the event organizers shall not be held liable for any allergic reactions, skin sensitivities or any other adverse reaction resulting from make up application. Attendees choosing to utilize makeup application do so at their own discretion and assume all associated risks.* No Refunds, All Sales Final: Please note that unforeseen circumstances beyond our control will not be grounds for a refund. This includes weather conditions, natural disasters, waiting in lines, extended wait times, family emergencies, medical emergencies (including COVID-19 results), employment issues, traffic, parking, transportation issues, etc. We are not obligated to provide a refund, credit, exchange, or transfer if you purchased tickets for the wrong date, location, or event.* This is a public event that will be covered by photographers. By entering the event premises, you consent to interviews, photography, audio and video recordings, and their release, publication, exhibition, or reproduction for news, webcasts, promotional purposes, telecasts, advertising, inclusion on websites, social media, and other offline marketing purposes.Read moreCategory: Music, DJ/Dance",
+      "source": "eventbrite",
+      "scraped_at": "2025-12-11T23:06:30.114Z"
+    },
+    {
+      "id": 37,
+      "selected": false,
+      "title": "Dream Team 2 presents Beetlejuice",
+      "time_display": "Thursday 12/18 7:00 PM",
+      "location": "Santa Clara High School Theater, 3000 Benton St, Santa Clara, CA 95051",
+      "price": "From $14.64",
+      "event_type": "art",
+      "priority": 5,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/dream-team-2-presents-beetlejuice-tickets-1955989510279?aff=ebdssbcitybrowse",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "If a show is sold out and you need tickets, please check the page periodically to see if any become ...",
+      "description_detail": "If a show is sold out and you need tickets, please check the page periodically to see if any become available.Category: Arts, Musical",
+      "source": "eventbrite",
+      "scraped_at": "2025-12-11T23:06:30.115Z"
+    },
+    {
+      "id": 38,
+      "selected": false,
+      "title": "Sound Healing Meditation (Sound Bath) - Los Gatos 7pm",
+      "time_display": "Thursday 12/18 7:00 PM",
+      "location": "History Club of Los Gatos, 123 Los Gatos Boulevard, Los Gatos, CA 95030",
+      "price": "From $49.87",
+      "event_type": "art",
+      "priority": 5,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/sound-healing-meditation-sound-bath-los-gatos-7pm-tickets-1752172327599?aff=ebdssbcitybrowse",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "RELAX, UNWIND, AND REJUVENATE WITH A DEEPLY NURTURING SOUND HEALING MEDITATION DESIGNED TO MELT AWAY...",
+      "description_detail": "RELAX, UNWIND, AND REJUVENATE WITH A DEEPLY NURTURING SOUND HEALING MEDITATION DESIGNED TO MELT AWAY STRESS AND RESTORE INNER HARMONYA Sound Healing Meditation (aka Sound Bath) is a gentle, nurturing and cathartic meditation experience for anyone looking to improve the quality of their life. This act of self-care is beneficial for anyone from beginners to advanced meditators who are ready to experience a greater sense of peace and well-being.Our Sound Healing Meditations assist in clearing out that which is blocking the natural flow of energy, helping to restore natural vitality while strengthening the connection and balance between mind, body and soul. The safe space created offers participants an opportunity to deepen their own journey of self-love, healing or transformation. While relieving stress, tension and anxiety this sound immersion experience will have you feeling revitalized, relaxed and rejuvenated.When: Thursday December 18, 2025Doors open at 6:00pm. Studio doors lock at 6:55pm and meditation begins promptly at 7:00pm. Due to the nature of the event we are unable to accommodate late entry.Where: History Club of Los Gatos123 Los Gatos Blvd. Los Gatos, CA 95030Please arrive early to allow time for parking, check in and to get settled and comfortable.Cost: Ticket options below. Tickets available at the door, space permitting.$45 Early Bird General Admission - Check in at 6:30pm$50 Early Bird VIP - Check in at 6:15pm$55 Early Bird Hall Of Fame - 6:00pm Front of the line check in + 1crystal and 1 stick of Palo SantoStarting 12/15$50 General Admission - Check in at 6:30pm$55 VIP - Check in at 6:15pm$60 Hall Of Fame - 6:00pm Front of the line check in + 1 crystal and 1 stick of Palo SantoWhat to bring:A padded mat / thick yoga mat, blanket, pillows, water and anything else needed to make yourself comfortable while lying or sitting down. We also suggest wearing comfortable layered clothing.Important Details:NO LATE ADMITTANCE. Due to the nature of the event we are unable to accommodate late entry.Doors open at 6:00pm. Studio doors lock at 6:55 and meditation begins promptly at 7:00pm. Please arrive early to allow time for parking, check in and to get settled and comfortable.ALL SALES ARE FINAL. No refunds, exchanges or make-up sessions. If you’re unable to make it to your session, you may give your ticket to another person.Certified Sound Healing and Pranic Healing practitioner Natalie Skyy will guide you through a unique and blissful Sound Healing Meditation journey. Once participants have made themselves comfortable by either sitting or lying down each session begins with a guided meditation leading you towards a place of serenity. Participants are then immersed in a wide range of sounds created by powerful instruments taking the mind, body and soul to a state of tranquility and deep relaxation.Sound Healing Meditation participants report experiencing:•Reduced stress, anxiety, depression and chronic fatigue.•Enhanced concentration, memory and attention span.•Increased energy, inspiration, focus and motivation.•Boosts in creativity, awareness and intuition.•Improved quality and regulated sleep patterns.•Lowered blood pressure and balanced hormones.•Alleviated symptoms associated with grief and PTSD.•Deep relaxation and rejuvenation.•Improved mood and mental clarity.•Feeling centered and peaceful.•Relief from physical aches and pains.Additional benefits of Sound Healing Meditation sessions may include:•Releases energetic blocks.•Balances chakras also known as life-force energy centers.•Assists in creating new neural pathways.•Breaks old patterns and habits.•Activates higher states of consciousness.•Enhances brain and neurological function.•Balances both hemispheres of the brain.•The sounds created cannot be predicted by the mind which causes the brainwaves to slow down to a profoundly relaxing and restorative Theta state. Theta waves are associated with daydreaming, creativity, imagination, self-reprogramming, and deep meditation.Read moreCategory: Health, Personal health",
+      "source": "eventbrite",
+      "scraped_at": "2025-12-11T23:06:30.116Z"
+    },
+    {
+      "id": 39,
+      "selected": false,
+      "title": "Equinox Cacao and Sound Bath Series",
+      "time_display": "Friday 12/19 6:00 PM",
+      "location": "2028 Jardin Dr, 2028 Jardin Drive, Mountain View, CA 94040",
+      "price": "$50",
+      "event_type": "art",
+      "priority": 5,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/equinox-cacao-and-sound-bath-series-tickets-1395412689919?aff=ebdssbcitybrowse",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "A beautiful and heartfelt way to celebrate nature cycles and transitions with Ceremonial Cacao and S...",
+      "description_detail": "A beautiful and heartfelt way to celebrate nature cycles and transitions with Ceremonial Cacao and Sound Healing session.🌿 Equinox Gathering Series: Cacao Ceremony & Sound Healing 🌸Hosted by Cacao SpaceStep into the sacred balance of light and dark as we honor the turning of the seasons with a heart-centered series of Equinox Gatherings. Each session is a journey inward—an invitation to reconnect with your inner rhythm through the sacred medicine of ceremonial cacao and the deeply restorative vibrations of sound healing.✨ What to Expect:Each gathering is thoughtfully designed to support your body, mind, and spirit through seasonal transition. Together we will:💛 Sip warm, hand-prepared ceremonial cacao in a meditative circle🎶 Sink into deep relaxation with a live sound bath featuring crystal bowls, chimes, and earth instruments🌬 Be guided through meditation and breathing practices to ground and center📝 Reflect and release throughsharing within a safe circle🌸 Set intentions for balance, renewal, and aligned actionWhether you’re returning to the circle or joining us for the first time, these gatherings offer a nourishing space to pause, breathe, and reawaken your inner light.📅 Upcoming Equinox Series Dates:June 19th 2025 – Summer Solstice : Fire, Radiance & ExpansionSeptember 19th 2025– Autumn Equinox: Harvest & Letting GoDecember 19th 2025 – Winter Solstice: Rest & Inner Wisdom📍 Location: 2028 Jardin Drive, Mountain View, 94040.(Note that this event is held at a private residentrial building)⏰ Time: 6 pm🎟 Tickets: $50 for each session or $120 for 3 sessions. Discount code for regular Cacao Space guests is available.(Spaces are limited to preserve intimacy—early booking is encouraged.)Parking down the street in the neighborhood is available.Bring your yoga mat, a blanket, water bottle, an open heart and anything that makes you feel cozy and grounded.—Come as you are. Leave more connected.We can’t wait to share this heart-opening journey with you.🌕✨ Hosted with love by Ksenia of Cacao Space and Gaby of Song Pine and StoneRead moreCategory: Community, State",
+      "source": "eventbrite",
+      "scraped_at": "2025-12-11T23:06:30.118Z"
+    },
+    {
+      "id": 40,
+      "selected": false,
+      "title": "Holiday Dinner Dance Party w/ Halsey & The Hi-Hats",
+      "time_display": "Saturday 12/20 5:30 PM",
+      "location": "Verdi Club, 2424 Mariposa Street, San Francisco, CA 94110",
+      "price": "$55 – $81.88",
+      "event_type": "art",
+      "priority": 5,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/holiday-dinner-dance-party-w-halsey-the-hi-hats-tickets-1849390860849?aff=ebdssbdestsearch",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Halsey and the Hi-Hats playing the very best retro holiday songs and other fun jazz favorites.Holida...",
+      "description_detail": "Halsey and the Hi-Hats playing the very best retro holiday songs and other fun jazz favorites.Holiday Dinner Dance Party w/ Halsey & The Hi-HatsThe Hi-Hats’ Holiday Extravaganza:Have Yourself a Merry Little Christmas with Halsey and the Hi-Hats playing the very best retro holiday songs and other fun jazz favorites. It may not be a White Christmas in San Francisco, but it will be the Most Wonderful Time of the Year! So get your dancing shoes on and take a Sleigh Ride over to Verdi Club!Buffet MenuTBASchedule5:30 Doors Open6:30 Dinner7:30 DanceHalsey & The Hi-HatsHalsey & the Hi-Hats play jazz, swing, rock, and dance music with vintage style, specializing in the Great American Songbook and forgotten gems of the 20s-60s. Our sultry vocals, soaring horn lines, and swinging rhythm section will get you on your feet and dancing!Read moreCategory: Food & Drink, Food",
+      "source": "eventbrite",
+      "scraped_at": "2025-12-11T23:06:30.120Z"
+    }
+  ]
+}
