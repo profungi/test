@@ -19,16 +19,17 @@ class ManualReviewManager {
   }
 
   // 生成人工审核文件
-  async generateReviewFile(events, weekRange, scrapingReport = {}) {
+  async generateReviewFile(events, weekRange, scrapingReport = {}, weekType = 'next') {
     await this.ensureOutputDirectory();
 
     const reviewId = this.generateReviewId();
+    const weekLabel = weekType === 'current' ? '本周' : '下周';
     const reviewData = {
       review_id: reviewId,
       generated_at: new Date().toISOString(),
       scrape_date: format(new Date(), 'yyyy-MM-dd'),
       target_week: weekRange.identifier,
-      target_week_readable: `${format(weekRange.start, 'MM/dd')} - ${format(weekRange.end, 'MM/dd')}`,
+      target_week_readable: `${weekLabel} (${format(weekRange.start, 'MM/dd')} - ${format(weekRange.end, 'MM/dd')})`,
       scraping_report: scrapingReport,
       instructions: {
         how_to_review: "将你想要发布的活动的 'selected' 字段改为 true",
