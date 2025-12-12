@@ -1,0 +1,84 @@
+# Bay Area Selected Events
+
+> Weekly curated event listings for the San Francisco Bay Area
+
+## About This Site
+
+Bay Area Selected Events (湾区精选活动) is a curated event discovery platform that aggregates and presents the best events happening in the San Francisco Bay Area. We source events from Eventbrite, SF Station, Funcheap, and other platforms, then organize them for easy browsing.
+
+## Main Features
+
+- **Weekly Event Listings**: Events organized by current week and next week
+- **Location Filtering**: San Francisco, South Bay, East Bay, North Bay, Peninsula
+- **Event Type Filtering**: Markets, Festivals, Food & Drink, Art & Culture, Music, Sports, Outdoor, Family, Tech
+- **Price Filtering**: Free events and paid events
+- **Bilingual Support**: Available in English and Chinese (中文)
+
+## Content Structure
+
+- `/en` - English version of the site
+- `/zh` - Chinese version of the site (中文版)
+- `/en/privacy` - Privacy Policy
+- `/en/terms` - Terms of Use
+- `/sitemap.xml` - XML Sitemap for all pages
+
+## Event Categories
+
+1. **Market (市集)** - Farmers markets, craft fairs, flea markets
+2. **Festival (节日)** - Cultural celebrations, seasonal festivals
+3. **Food & Drink (美食)** - Food festivals, wine tastings, culinary events
+4. **Art & Culture (艺术)** - Museum exhibitions, gallery openings, performances
+5. **Music (音乐)** - Concerts, live music, music festivals
+6. **Sports (体育)** - Games, races, fitness events
+7. **Outdoor (户外)** - Hiking, beach activities, nature events
+8. **Family (亲子)** - Kid-friendly activities, family events
+9. **Tech (科技)** - Tech meetups, hackathons, conferences
+
+## Geographic Coverage
+
+- San Francisco (旧金山)
+- South Bay (南湾) - San Jose, Palo Alto, Mountain View, Sunnyvale
+- East Bay (东湾) - Oakland, Berkeley, Fremont
+- North Bay (北湾) - Marin County, Napa, Sonoma
+- Peninsula (半岛) - San Mateo, Redwood City
+
+## Data Sources
+
+Events are aggregated from:
+- Eventbrite
+- SF Station
+- Funcheap SF
+- Local community calendars
+
+## Update Schedule
+
+The site is updated weekly with new events. Event data includes:
+- Event name (in English and Chinese)
+- Date and time
+- Location
+- Price (free or paid)
+- Event type/category
+- Original source URL
+
+## Contact
+
+- Website: https://champagne-grape.com
+- Email: bayareaselected@gmail.com
+- Operated by: Champagne Grape
+
+## Technical Information
+
+- Built with: Next.js 15, React 18
+- Hosting: Vercel
+- Database: Turso (SQLite)
+- Analytics: Umami, Vercel Analytics
+- Internationalization: next-intl
+
+## API Information
+
+This site does not provide a public API. For data inquiries, please contact us via email.
+
+## Licensing
+
+- Site design and code: Proprietary
+- Event data: Sourced from third-party platforms, subject to their respective terms

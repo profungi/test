@@ -1,0 +1,23 @@
+{
+  "name": "Bay Area Selected Events",
+  "short_name": "Bay Events",
+  "description": "Discover the best events in the Bay Area! Markets, festivals, food, and art activities.",
+  "start_url": "/en",
+  "display": "standalone",
+  "background_color": "#FFF4E6",
+  "theme_color": "#4A2C22",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "icons": [
+    {
+      "src": "/grape-mascot.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["events", "entertainment", "lifestyle"],
+  "lang": "en",
+  "dir": "ltr",
+  "prefer_related_applications": false
+}
