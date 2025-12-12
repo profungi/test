@@ -96,14 +96,15 @@ class EventScrapeOrchestrator {
         ? this.scrapers[0].getCurrentWeekRange()
         : this.scrapers[0].getNextWeekRange();
       const reviewResult = await this.reviewManager.generateReviewFile(
-        topCandidates, 
+        topCandidates,
         weekRange,
         {
           total_scraped: allEvents.length,
           after_deduplication: uniqueEvents.length,
           after_classification: classifiedEvents.length,
           classification_report: classificationReport
-        }
+        },
+        this.targetWeek  // 传递 weekType
       );
       
       console.log('\n✨ 抓取完成！');
@@ -205,8 +206,16 @@ class EventScrapeOrchestrator {
   // 内存去重（不保存到数据库，用于翻译前快速去重）
   deduplicateInMemory(events) {
     const uniqueMap = new Map();
+    let invalidCount = 0;
 
     for (const event of events) {
+      // 过滤无效活动（标题是网站域名）
+      if (this.isInvalidEvent(event)) {
+        invalidCount++;
+        console.log(`  ❌ 过滤无效活动: ${event.title}`);
+        continue;
+      }
+
       const key = this.generateEventKey(event);
 
       if (!uniqueMap.has(key)) {
@@ -216,7 +225,31 @@ class EventScrapeOrchestrator {
       }
     }
 
+    if (invalidCount > 0) {
+      console.log(`  🗑️  过滤掉 ${invalidCount} 个无效活动`);
+    }
+
     return Array.from(uniqueMap.values());
+  }
+
+  // 检查是否是无效活动
+  isInvalidEvent(event) {
+    if (!event.title) return true;
+
+    const title = event.title.trim().toLowerCase();
+
+    // 过滤标题是网站域名的活动
+    const invalidPatterns = [
+      'www.sfstation.com',
+      'sfstation.com',
+      'www.eventbrite.com',
+      'eventbrite.com',
+      'www.funcheap.com',
+      'funcheap.com',
+      // 可以添加更多无效模式
+    ];
+
+    return invalidPatterns.some(pattern => title === pattern || title.includes(pattern));
   }
 
   // 生成活动唯一键
