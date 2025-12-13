@@ -1,6 +1,6 @@
 import { MetadataRoute } from 'next';
 
-const BASE_URL = process.env.SITE_URL || 'https://champagne-grape.com';
+const BASE_URL = process.env.SITE_URL || 'https://bayareaselected.com';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const locales = ['en', 'zh'];
