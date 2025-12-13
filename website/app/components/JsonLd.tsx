@@ -3,7 +3,7 @@ interface WebsiteJsonLdProps {
 }
 
 export function WebsiteJsonLd({ locale }: WebsiteJsonLdProps) {
-  const BASE_URL = process.env.SITE_URL || 'https://champagne-grape.com';
+  const BASE_URL = process.env.SITE_URL || 'https://bayareaselected.com';
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -47,7 +47,7 @@ interface OrganizationJsonLdProps {
 }
 
 export function OrganizationJsonLd({ locale }: OrganizationJsonLdProps) {
-  const BASE_URL = process.env.SITE_URL || 'https://champagne-grape.com';
+  const BASE_URL = process.env.SITE_URL || 'https://bayareaselected.com';
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -118,7 +118,7 @@ interface EventJsonLdProps {
 }
 
 export function EventJsonLd({ event }: EventJsonLdProps) {
-  const BASE_URL = process.env.SITE_URL || 'https://champagne-grape.com';
+  const BASE_URL = process.env.SITE_URL || 'https://bayareaselected.com';
 
   const jsonLd = {
     "@context": "https://schema.org",
