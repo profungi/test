@@ -1,0 +1,17 @@
+/* TEAM */
+Site: Bay Area Selected Events
+Location: San Francisco Bay Area, California, USA
+Contact: bayareaselected@gmail.com
+
+/* THANKS */
+Data Sources: Eventbrite, SF Station, Funcheap SF
+
+/* SITE */
+Last update: 2024
+Standards: HTML5, CSS3, JavaScript ES6+
+Framework: Next.js 15, React 18
+Styling: Tailwind CSS
+Database: Turso (SQLite)
+Hosting: Vercel
+Languages: English, Chinese (中文)
+Analytics: Umami, Vercel Analytics

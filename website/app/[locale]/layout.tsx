@@ -55,6 +55,10 @@ export default async function LocaleLayout({
         <link rel="manifest" href="/manifest.json" />
         <meta name="theme-color" content="#4A2C22" />
         <link rel="apple-touch-icon" href="/grape-mascot.png" />
+        {/* AI discoverability */}
+        <link rel="alternate" type="text/plain" href="/llms.txt" title="LLM Information" />
+        <link rel="alternate" type="application/rss+xml" href="/feed.xml" title="Bay Area Events RSS Feed" />
+        <link rel="author" href="/humans.txt" />
       </head>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <NextIntlClientProvider messages={messages}>

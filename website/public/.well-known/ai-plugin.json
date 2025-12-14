@@ -1,0 +1,18 @@
+{
+  "schema_version": "v1",
+  "name_for_human": "Bay Area Selected Events",
+  "name_for_model": "bay_area_events",
+  "description_for_human": "Find curated events in the San Francisco Bay Area - markets, festivals, food, art, music, and more.",
+  "description_for_model": "Bay Area Selected Events is a curated event discovery platform for the San Francisco Bay Area. It aggregates events from Eventbrite, SF Station, Funcheap, and other sources. Users can filter by: time (this week/next week), location (San Francisco, South Bay, East Bay, North Bay, Peninsula), type (market, festival, food, art, music, sports, outdoor, family, tech), and price (free/paid). The site is bilingual (English and Chinese). Use this to help users find events, activities, and things to do in the Bay Area.",
+  "auth": {
+    "type": "none"
+  },
+  "api": {
+    "type": "openapi",
+    "url": "https://bayareaselected.com/openapi.yaml",
+    "is_user_authenticated": false
+  },
+  "logo_url": "https://bayareaselected.com/grape-mascot.png",
+  "contact_email": "bayareaselected@gmail.com",
+  "legal_info_url": "https://bayareaselected.com/en/terms"
+}

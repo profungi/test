@@ -10,7 +10,7 @@ export default function robots(): MetadataRoute.Robots {
         allow: '/',
         disallow: ['/api/', '/_next/'],
       },
-      // 专门为 AI 爬虫设置
+      // AI 爬虫 - 明确允许
       {
         userAgent: 'GPTBot',
         allow: '/',
@@ -39,7 +39,21 @@ export default function robots(): MetadataRoute.Robots {
         userAgent: 'Bytespider',
         allow: '/',
       },
+      {
+        userAgent: 'CCBot',
+        allow: '/',
+      },
+      {
+        userAgent: 'FacebookBot',
+        allow: '/',
+      },
+      {
+        userAgent: 'cohere-ai',
+        allow: '/',
+      },
     ],
     sitemap: `${BASE_URL}/sitemap.xml`,
+    // @ts-expect-error - Next.js types don't include custom fields but they work
+    host: BASE_URL,
   };
 }
