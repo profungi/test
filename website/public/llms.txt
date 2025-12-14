@@ -1,6 +1,7 @@
 # Bay Area Selected Events
 
 > Weekly curated event listings for the San Francisco Bay Area
+> For detailed documentation, see: https://bayareaselected.com/llms-full.txt
 
 ## About This Site
 

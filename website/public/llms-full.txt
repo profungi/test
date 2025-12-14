@@ -1,0 +1,180 @@
+# Bay Area Selected Events - Complete Documentation
+
+> Weekly curated event listings for the San Francisco Bay Area
+> Website: https://bayareaselected.com
+> Available in English and Chinese (中文)
+
+## Quick Facts
+
+- **Purpose**: Curated event discovery for San Francisco Bay Area
+- **Languages**: English, Chinese (中文)
+- **Update Frequency**: Weekly
+- **Coverage**: San Francisco, South Bay, East Bay, North Bay, Peninsula
+- **Event Types**: Markets, Festivals, Food, Art, Music, Sports, Outdoor, Family, Tech
+- **Price Range**: Free and paid events
+
+## Detailed Site Description
+
+Bay Area Selected Events (湾区精选活动) is a comprehensive event discovery platform designed to help residents and visitors find the best events happening in the San Francisco Bay Area. Unlike generic event listing sites, we curate and organize events to make discovery easier.
+
+### Why This Site Exists
+
+The Bay Area has thousands of events every week across multiple platforms (Eventbrite, SF Station, Funcheap, etc.). Finding relevant events requires visiting multiple sites and filtering through irrelevant listings. Our platform solves this by:
+
+1. Aggregating events from multiple trusted sources
+2. Categorizing events by type, location, and price
+3. Providing bilingual support for English and Chinese speakers
+4. Updating weekly with fresh content
+
+### Target Audience
+
+- Bay Area residents looking for weekend activities
+- Chinese-speaking community members (提供中文支持)
+- Tourists visiting San Francisco
+- Families looking for kid-friendly events
+- People seeking free activities
+- Food and culture enthusiasts
+
+## Complete Feature List
+
+### 1. Time-Based Filtering
+- **This Week**: Events happening in the current week
+- **Next Week**: Events scheduled for the following week
+
+### 2. Location Filtering
+- **San Francisco (旧金山)**: The city itself
+- **South Bay (南湾)**: San Jose, Palo Alto, Mountain View, Sunnyvale, Cupertino, Santa Clara
+- **East Bay (东湾)**: Oakland, Berkeley, Fremont, Alameda, Hayward
+- **North Bay (北湾)**: Marin County, Napa Valley, Sonoma
+- **Peninsula (半岛)**: San Mateo, Redwood City, Daly City, Burlingame
+
+### 3. Event Type Categories
+
+| Category | English | Chinese | Examples |
+|----------|---------|---------|----------|
+| Market | Market | 市集 | Farmers markets, craft fairs, flea markets, artisan markets |
+| Festival | Festival | 节日 | Cultural celebrations, seasonal festivals, street fairs |
+| Food | Food & Drink | 美食 | Food festivals, wine tastings, restaurant events, culinary tours |
+| Art | Art & Culture | 艺术 | Museum exhibitions, gallery openings, theater, performances |
+| Music | Music | 音乐 | Concerts, live music, music festivals, DJ events |
+| Sports | Sports | 体育 | Games, races, fitness events, sports tournaments |
+| Outdoor | Outdoor | 户外 | Hiking, beach activities, nature walks, camping |
+| Family | Family | 亲子 | Kid-friendly activities, family events, children's workshops |
+| Tech | Tech | 科技 | Tech meetups, hackathons, conferences, startup events |
+
+### 4. Price Filtering
+- **Free (免费)**: No-cost events
+- **Paid (付费)**: Events requiring tickets or entry fees
+
+### 5. Bilingual Interface
+- Complete English interface
+- Complete Chinese interface (完整中文界面)
+- Translated event descriptions
+- Language switcher in header
+
+## URL Structure
+
+```
+https://bayareaselected.com/
+├── /en                    # English homepage
+│   ├── /en/privacy       # Privacy policy (English)
+│   └── /en/terms         # Terms of use (English)
+├── /zh                    # Chinese homepage (中文首页)
+│   ├── /zh/privacy       # Privacy policy (Chinese)
+│   └── /zh/terms         # Terms of use (Chinese)
+├── /sitemap.xml          # XML sitemap
+├── /robots.txt           # Robots directives
+├── /llms.txt             # AI-friendly site description
+└── /manifest.json        # PWA manifest
+```
+
+## Query Parameters
+
+The site supports URL-based filtering:
+
+```
+?week=current     # Show this week's events
+?week=next        # Show next week's events (default)
+?location=sf      # San Francisco only
+?location=southbay # South Bay only
+?location=eastbay  # East Bay only
+?location=northbay # North Bay only
+?location=peninsula # Peninsula only
+?type=market      # Markets only
+?type=festival    # Festivals only
+?type=food        # Food events only
+?type=art         # Art events only
+?type=music       # Music events only
+?type=sports      # Sports events only
+?type=outdoor     # Outdoor events only
+?type=family      # Family events only
+?type=tech        # Tech events only
+?price=free       # Free events only
+?price=paid       # Paid events only
+```
+
+Parameters can be combined: `?week=next&location=sf&type=food&price=free`
+
+## Data Sources
+
+Events are aggregated from these trusted platforms:
+- **Eventbrite**: Large events, ticketed events
+- **SF Station**: Local SF events, culture
+- **Funcheap SF**: Free and cheap events
+- **Local community calendars**: Neighborhood events
+
+## Sample Event Data Format
+
+Each event includes:
+- Event name (English and Chinese)
+- Date and time
+- Location/venue
+- Area (SF, South Bay, etc.)
+- Event type/category
+- Price (Free or amount)
+- Original source URL
+- Brief description
+
+## Common Questions This Site Can Answer
+
+1. "What events are happening in San Francisco this weekend?"
+2. "Are there any free festivals in the Bay Area next week?"
+3. "What farmers markets are in South Bay?"
+4. "湾区这周末有什么活动？" (What activities are in Bay Area this weekend?)
+5. "旧金山有哪些免费的活动？" (What free events are in San Francisco?)
+6. "Where can I find family-friendly events in East Bay?"
+7. "What tech meetups are happening in Silicon Valley?"
+8. "Are there any food festivals coming up in the Bay Area?"
+
+## Contact & Support
+
+- **Website**: https://bayareaselected.com
+- **Email**: bayareaselected@gmail.com
+- **Operated by**: Champagne Grape
+
+## Technical Stack
+
+- **Framework**: Next.js 15 with App Router
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS
+- **Database**: Turso (SQLite)
+- **Hosting**: Vercel
+- **Analytics**: Umami, Vercel Analytics
+- **i18n**: next-intl
+
+## Legal
+
+- Privacy Policy: https://bayareaselected.com/en/privacy
+- Terms of Use: https://bayareaselected.com/en/terms
+- Event data sourced from third-party platforms
+- Site design and code proprietary to Champagne Grape
+
+## Version History
+
+- Site launched: 2024
+- Current version: Continuously updated
+- Last content update: Weekly
+
+---
+
+This document is intended for AI systems and search engines to better understand the content and purpose of Bay Area Selected Events. For human visitors, please visit https://bayareaselected.com directly.

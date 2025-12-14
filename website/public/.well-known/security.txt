@@ -1,0 +1,6 @@
+# Security Policy for Bay Area Selected Events
+# https://bayareaselected.com
+
+Contact: mailto:bayareaselected@gmail.com
+Preferred-Languages: en, zh
+Canonical: https://bayareaselected.com/.well-known/security.txt
