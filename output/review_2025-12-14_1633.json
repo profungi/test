@@ -1,0 +1,639 @@
+{
+  "review_id": "review_2025-12-14_1633_487",
+  "generated_at": "2025-12-14T16:33:47.598Z",
+  "scrape_date": "2025-12-14",
+  "target_week": "2025-12-15_to_2025-12-21",
+  "target_week_readable": "下周 (12/15 - 12/21)",
+  "scraping_report": {
+    "total_scraped": 42,
+    "after_deduplication": 30,
+    "after_classification": 30,
+    "classification_report": {
+      "totalEvents": 30,
+      "eventTypes": {
+        "free": 27,
+        "food": 1,
+        "festival": 1,
+        "music": 1
+      },
+      "priorityLevels": {
+        "4": 1,
+        "6": 1,
+        "9": 27,
+        "10": 1
+      },
+      "chineseRelevant": 0,
+      "topPriorityEvents": 28
+    }
+  },
+  "instructions": {
+    "how_to_review": "将你想要发布的活动的 'selected' 字段改为 true",
+    "next_step": "保存文件后运行: npm run generate-post [此文件路径]",
+    "fields_explanation": {
+      "title": "活动标题",
+      "time_display": "显示用的时间格式",
+      "location": "活动地点",
+      "price": "票价信息",
+      "event_type": "AI识别的活动类型",
+      "priority": "优先级分数 (越高越重要)",
+      "chinese_relevant": "是否与中文社区相关",
+      "original_url": "原始活动链接"
+    }
+  },
+  "stats": {
+    "total_candidates": 29,
+    "by_type": {
+      "festival": 1,
+      "free": 27,
+      "food": 1
+    },
+    "by_priority": {
+      "6": 1,
+      "9": 27,
+      "10": 1
+    },
+    "chinese_relevant": 0
+  },
+  "events": [
+    {
+      "id": 1,
+      "selected": false,
+      "title": "WinterFest 2025: Cosmic Fun + Science Talks (Chabot Space & Science Center)",
+      "time_display": "Saturday 12/20 10:00 AM - 5:00 PM",
+      "location": "Chabot Space & Science Center, East Bay",
+      "price": "$24*",
+      "event_type": "festival",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/winterfest-2025-cosmic-fun-science-talks-chabot-space-science-center/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2025-12-14T16:29:57.700Z"
+    },
+    {
+      "id": 2,
+      "selected": false,
+      "title": "The Moth SF StorySLAMPublic Works",
+      "time_display": "Tuesday 12/16 7:30 PM",
+      "location": "161 Erie Street, San Francisco, CA",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://events.blackthorn.io/en/5fAWdcJ7/sf-storyslam-thats-a-wrap-2025-4a26QmPpov/overview",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "sfstation",
+      "scraped_at": "2025-12-14T16:30:23.387Z"
+    },
+    {
+      "id": 3,
+      "selected": false,
+      "title": "22nd Another Hole in the Head Film FestivalBalboa Theatre",
+      "time_display": "Tuesday 12/16 8:15 PM",
+      "location": "3630 Balboa Street, San Francisco, CA",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://holehead2025.eventive.org/schedule",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "sfstation",
+      "scraped_at": "2025-12-14T16:30:23.387Z"
+    },
+    {
+      "id": 4,
+      "selected": false,
+      "title": "Dear San Francisco: Home for the HolidaysClub Fugazi",
+      "time_display": "Wednesday 12/17 7:30 PM",
+      "location": "678 Green Street, San Francisco, CA",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://boxoffice.clubfugazisf.com/clubfugazisf/events/46365?sessionView=CALENDAR",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "sfstation",
+      "scraped_at": "2025-12-14T16:30:23.388Z"
+    },
+    {
+      "id": 5,
+      "selected": false,
+      "title": "Lightscape at San Francisco Botanical GardenSan Francisco Botanical Garden",
+      "time_display": "Wednesday 12/17 5:00 PM",
+      "location": "1199 9th Avenue, San Francisco, CA",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://gggp.org/lightscape/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "sfstation",
+      "scraped_at": "2025-12-14T16:30:23.388Z"
+    },
+    {
+      "id": 6,
+      "selected": false,
+      "title": "Throwback Thursdays (MUSIC VIDEO PARTY)Delirium Bar",
+      "time_display": "Thursday 12/18 10:00 PM",
+      "location": "3139 16th Street, San Francisco, CA",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.youtube.com/shorts/dhqVJDt3Hy8",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "sfstation",
+      "scraped_at": "2025-12-14T16:30:23.388Z"
+    },
+    {
+      "id": 7,
+      "selected": false,
+      "title": "1000 Whispers From Our FutureAudium Theater of Sound",
+      "time_display": "Thursday 12/18 8:00 PM",
+      "location": "1616 Bush Street, San Francisco, CA",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.cityboxoffice.com/eventperformances.asp?evt=1760",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "sfstation",
+      "scraped_at": "2025-12-14T16:30:23.388Z"
+    },
+    {
+      "id": 8,
+      "selected": false,
+      "title": "Smuin presents The Christmas BalletYerba Buena Center for the Arts (YBCA)",
+      "time_display": "Thursday 12/18 7:30 PM",
+      "location": "701 Mission Street, San Francisco, CA",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.smuinballet.org/events/christmas-2025/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "sfstation",
+      "scraped_at": "2025-12-14T16:30:23.388Z"
+    },
+    {
+      "id": 9,
+      "selected": false,
+      "title": "FISHERMoscone Center",
+      "time_display": "Friday 12/19 8:00 PM",
+      "location": "747 Howard Street, San Francisco, CA",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.axs.com/series/28763/fisher-2-nights-in-sf-tickets",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "sfstation",
+      "scraped_at": "2025-12-14T16:30:23.388Z"
+    },
+    {
+      "id": 10,
+      "selected": false,
+      "title": "Union Square’s 2025 Chanukah Festival: 25-Foot-Tall Menorah (2nd Night)",
+      "time_display": "Monday 12/15 4:45 PM - 5:45 PM",
+      "location": "Union Square Park, San Francisco Bay Area",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/union-squares-2025-chanukah-festival-25-foot-tall-menorah-dec-14-22/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Lighting it up since 1975, San Francisco celebrates the 50th anniversary of the first giant public m...",
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2025-12-14T16:29:57.699Z"
+    },
+    {
+      "id": 11,
+      "selected": false,
+      "title": "Union Square’s 2025 Chanukah Festival: 25-Foot-Tall Menorah (3rd Night)",
+      "time_display": "Tuesday 12/16 4:45 PM - 5:45 PM",
+      "location": "Union Square Park, San Francisco Bay Area",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/union-squares-2025-chanukah-festival-25-foot-tall-menorah-3rd-night/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Lighting it up since 1975, San Francisco celebrates the 50th anniversary of the first giant public m...",
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2025-12-14T16:29:57.699Z"
+    },
+    {
+      "id": 12,
+      "selected": false,
+      "title": "2025 Chanukah Party: Giveaways, DJ & Holiday Food",
+      "time_display": "Tuesday 12/16 6:30 PM - 8:00 PM",
+      "location": "NEMA - SF Luxury Apartments",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/2025-chanukah-party-giveaways-dj-holiday-food/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Lighting it up since 1975, San Francisco celebrates the 50th anniversary of the first giant public m...",
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2025-12-14T16:29:57.699Z"
+    },
+    {
+      "id": 13,
+      "selected": false,
+      "title": "2025 Union Square’s Chanukah Festival: 25-Foot-Tall Menorah: 4th Night",
+      "time_display": "Wednesday 12/17 4:45 PM - 5:45 PM",
+      "location": "Union Square Plaza, San Francisco Bay Area",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/2025-union-squares-chanukah-festival-25-foot-tall-menorah-4th-night/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Lighting it up since 1975, San Francisco celebrates the 50th anniversary of the first giant public m...",
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2025-12-14T16:29:57.699Z"
+    },
+    {
+      "id": 14,
+      "selected": false,
+      "title": "2025 Winter Wonderland Hanukkah Celebration at Thrive City",
+      "time_display": "Thursday 12/18 4:00 PM - 7:00 PM",
+      "location": "Thrive City Plaza (at Chase Center), San Francisco Bay Area",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/2025-winter-wonderland-hanukkah-celebration-at-thrive-city/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2025-12-14T16:29:57.699Z"
+    },
+    {
+      "id": 15,
+      "selected": false,
+      "title": "2025 Union Square’s Chanukah Festival: 25-Foot-Tall Menorah: 5th Night",
+      "time_display": "Thursday 12/18 8:00 PM - 9:00 PM",
+      "location": "Union Square Park, San Francisco Bay Area",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/2025-union-squares-chanukah-festival-25-foot-tall-menorah-5th-night/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Lighting it up since 1975, San Francisco celebrates the 50th anniversary of the first giant public m...",
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2025-12-14T16:29:57.700Z"
+    },
+    {
+      "id": 16,
+      "selected": false,
+      "title": "2025 Union Square’s Chanukah Festival: 25-Foot-Tall Menorah: 6th Night",
+      "time_display": "Friday 12/19 2:30 PM - 3:30 PM",
+      "location": "Union Square Park, San Francisco Bay Area",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/2025-union-squares-chanukah-festival-25-foot-tall-menorah-6th-night/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Lighting it up since 1975, San Francisco celebrates the 50th anniversary of the first giant public m...",
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2025-12-14T16:29:57.700Z"
+    },
+    {
+      "id": 17,
+      "selected": false,
+      "title": "“Off the Grid” Fort Mason: Holiday Night Market w/ 110+ Vendors (December 2025)",
+      "time_display": "Friday 12/19 4:00 PM - 9:00 PM",
+      "location": "Fort Mason Center, San Francisco Bay Area",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/off-the-grid-fort-mason-holidays-night-market-w-110-vendors-december-2025/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2025-12-14T16:29:57.700Z"
+    },
+    {
+      "id": 18,
+      "selected": false,
+      "title": "Holiday Night Market w/ CASE (SF)",
+      "time_display": "Friday 12/19 5:00 PM - 9:00 PM",
+      "location": "Fillmore & O'Farrell, San Francisco Bay Area",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/holiday-night-market-w-case-sf/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2025-12-14T16:29:57.700Z"
+    },
+    {
+      "id": 19,
+      "selected": false,
+      "title": "The Wardrobe Project Flea (Rockridge BART Plaza)",
+      "time_display": "Saturday 12/20 10:00 AM - 5:00 PM",
+      "location": "Rockridge BART, East Bay",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/wardrobe-project-flea-rockridge-bart-plaza/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2025-12-14T16:29:57.700Z"
+    },
+    {
+      "id": 20,
+      "selected": false,
+      "title": "SFMade’s 1st Ever “Holiday Pop-Up Store” (Final Day)",
+      "time_display": "Saturday 12/20 11:00 AM - 4:00 PM",
+      "location": "2 Embarcadero Center, San Francisco Bay Area",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/sfmades-1st-ever-holiday-pop-up-store-final-day/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "This holiday season, SFMade is hosting their first-ever Holiday Pop-Up Store: a 3-week retail destin...",
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2025-12-14T16:29:57.700Z"
+    },
+    {
+      "id": 21,
+      "selected": false,
+      "title": "Rodeo Holiday “Indoors by the Bay” Market (East Bay)",
+      "time_display": "Saturday 12/20 11:00 AM - 4:00 PM",
+      "location": "The Waterfront Rodeo, East Bay",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/rodeo-holiday-indoors-bay-market-east-bay/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2025-12-14T16:29:57.700Z"
+    },
+    {
+      "id": 22,
+      "selected": false,
+      "title": "19th Annual Holiday Celebration + Free Festivities (Oakland)",
+      "time_display": "Saturday 12/20 11:00 AM - 5:00 PM",
+      "location": "EOBA, East Bay",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/19th-annual-holiday-celebration-free-festivities-oakland/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2025-12-14T16:29:57.700Z"
+    },
+    {
+      "id": 23,
+      "selected": false,
+      "title": "“Love the City” Winter Wonderland Food & Toy Giveaway",
+      "time_display": "Saturday 12/20 12:00 PM - 6:00 PM",
+      "location": "4705 3rd Street, San Francisco Bay Area",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/love-the-city-winter-wonderland-food-toy-giveaway/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2025-12-14T16:29:57.700Z"
+    },
+    {
+      "id": 24,
+      "selected": false,
+      "title": "Livermore SantaCon",
+      "time_display": "Saturday 12/20 2:00 PM - 8:00 PM",
+      "location": "Downtown Livermore, San Francisco Bay Area",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/livermore-santacon/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2025-12-14T16:29:57.701Z"
+    },
+    {
+      "id": 25,
+      "selected": false,
+      "title": "2025 Union Square’s Chanukah Festival: 25-Foot-Tall Menorah: 7th Night",
+      "time_display": "Saturday 12/20 8:00 PM - 9:00 PM",
+      "location": "Union Square Park, San Francisco Bay Area",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/2025-union-squares-chanukah-festival-25-foot-tall-menorah-7th-night/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Lighting it up since 1975, San Francisco celebrates the 50th anniversary of the first giant public m...",
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2025-12-14T16:29:57.701Z"
+    },
+    {
+      "id": 26,
+      "selected": false,
+      "title": "Solstice Art Market for Palestine (SF)",
+      "time_display": "Sunday 12/21 12:00 PM - 6:00 PM",
+      "location": "San Francisco Mime Troupe",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/solstice-art-market-palestine-sf/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2025-12-14T16:29:57.701Z"
+    },
+    {
+      "id": 27,
+      "selected": false,
+      "title": "2025 Union Square’s Chanukah Festival: Grand Finale",
+      "time_display": "Sunday 12/21 4:00 PM - 6:00 PM",
+      "location": "Union Square Park, San Francisco Bay Area",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/2025-union-squares-chanukah-festival-grand-finale-car-menorah-parade/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Lighting it up since 1975, San Francisco celebrates the 50th anniversary of the first giant public m...",
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2025-12-14T16:29:57.701Z"
+    },
+    {
+      "id": 28,
+      "selected": false,
+      "title": "SF’s Menorah Car Parade 2025",
+      "time_display": "Sunday 12/21 6:30 PM - 7:30 PM",
+      "location": "Union Square Park, San Francisco Bay Area",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/sfs-menorah-car-parade-2025/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Lighting it up since 1975, San Francisco celebrates the 50th anniversary of the first giant public m...",
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2025-12-14T16:29:57.701Z"
+    },
+    {
+      "id": 29,
+      "selected": false,
+      "title": "SF’s Holiday “Castro Wine Walk” (2025)",
+      "time_display": "Thursday 12/18 6:00 PM - 9:00 PM",
+      "location": "The Academy, San Francisco",
+      "price": "$40*",
+      "event_type": "food",
+      "priority": 6,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/sfs-holiday-castro-wine-walk-2025/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2025-12-14T16:29:57.699Z"
+    }
+  ]
+}
