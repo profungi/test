@@ -19,11 +19,44 @@ function getTursoClient(): Client {
 }
 
 /**
+ * 获取太平洋时区的当前日期
+ * 解决服务器使用 UTC 时区导致周计算错误的问题
+ */
+function getPacificDate(): Date {
+  const now = new Date();
+  // 获取太平洋时区的日期字符串
+  const pacificDateStr = now.toLocaleDateString('en-US', {
+    timeZone: 'America/Los_Angeles',
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+  });
+  // 解析为 Date 对象 (格式: MM/DD/YYYY)
+  const [month, day, year] = pacificDateStr.split('/').map(Number);
+  return new Date(year, month - 1, day);
+}
+
+/**
+ * 获取太平洋时区的星期几 (0=周日, 1=周一, ...)
+ */
+function getPacificDayOfWeek(): number {
+  const now = new Date();
+  const pacificWeekday = now.toLocaleDateString('en-US', {
+    timeZone: 'America/Los_Angeles',
+    weekday: 'short',
+  });
+  const weekdayMap: { [key: string]: number } = {
+    'Sun': 0, 'Mon': 1, 'Tue': 2, 'Wed': 3, 'Thu': 4, 'Fri': 5, 'Sat': 6
+  };
+  return weekdayMap[pacificWeekday] ?? 0;
+}
+
+/**
  * 获取下周的周标识符
  */
 export function getNextWeekIdentifier(): string {
-  const now = new Date();
-  const day = now.getDay();
+  const now = getPacificDate();
+  const day = getPacificDayOfWeek();
   const daysFromMonday = day === 0 ? 6 : day - 1;
   const thisMonday = new Date(now);
   thisMonday.setDate(now.getDate() - daysFromMonday);
@@ -48,8 +81,8 @@ export function getNextWeekIdentifier(): string {
  * 获取本周的周标识符
  */
 export function getCurrentWeekIdentifier(): string {
-  const now = new Date();
-  const day = now.getDay();
+  const now = getPacificDate();
+  const day = getPacificDayOfWeek();
   const daysFromMonday = day === 0 ? 6 : day - 1;
   const thisMonday = new Date(now);
   thisMonday.setDate(now.getDate() - daysFromMonday);
