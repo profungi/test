@@ -110,13 +110,18 @@ class EventScrapeOrchestrator {
       console.log('\n✨ 抓取完成！');
       console.log(`📝 请审核文件: ${reviewResult.filepath}`);
       console.log(`⏭️  下一步运行: npm run generate-post "${reviewResult.filepath}"`);
-      
+
     } catch (error) {
       console.error('❌ 抓取过程中发生错误:', error.message);
       console.error(error.stack);
       process.exit(1);
     } finally {
       await this.database.close();
+
+      // 如果使用 Turso，自动同步到本地
+      if (process.env.USE_TURSO) {
+        await this.syncToLocal();
+      }
     }
   }
 
@@ -311,6 +316,27 @@ class EventScrapeOrchestrator {
     return uniqueEvents;
   }
 
+  // 同步到本地数据库
+  async syncToLocal() {
+    console.log('\n🔄 正在同步到本地数据库...');
+
+    try {
+      const { execSync } = require('child_process');
+
+      // 运行同步脚本
+      execSync('node sync-from-turso.js', {
+        stdio: 'inherit',
+        cwd: process.cwd()
+      });
+
+      console.log('✅ 同步完成！');
+    } catch (error) {
+      console.error('⚠️  同步失败:', error.message);
+      console.error('   你可以稍后手动运行: npm run sync-from-turso');
+      // 不要因为同步失败而退出，scrape 本身是成功的
+    }
+  }
+
   // 显示帮助信息
   static showHelp() {
     console.log(`
@@ -332,6 +358,7 @@ class EventScrapeOrchestrator {
 环境变量:
   USE_TURSO=1              直接写入 Turso 云数据库 (推荐用于生产)
                            默认使用本地 SQLite (用于开发测试)
+                           ⚡ 使用 Turso 时会在抓取完成后自动同步到本地
 
 功能:
 1. 并行抓取 Eventbrite, SF Station, Funcheap 的活动信息
