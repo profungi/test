@@ -1,9 +1,9 @@
 name: Weekly Bay Area Events Scraper
 
 on:
-  # 每周日 UTC 时间 16:00 (PST 时间 08:00) 运行
+  # 每周一 UTC 时间 16:00 (PST 时间 08:00) 运行
   schedule:
-    - cron: '0 16 * * 0'
+    - cron: '0 16 * * 1'
 
   # 允许手动触发
   workflow_dispatch:
