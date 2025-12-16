@@ -5,6 +5,11 @@
  * 读取人工审核后的文件，生成短链接并创建最终的小红书发布内容
  */
 
+// 根据环境变量选择数据库: Turso (生产) 或 SQLite (本地测试)
+const EventDatabase = process.env.USE_TURSO
+  ? require('./utils/turso-database')
+  : require('./utils/database');
+
 const URLShortener = require('./utils/url-shortener');
 const ContentTranslator = require('./formatters/translator');
 const PostGenerator = require('./formatters/post-generator');
@@ -21,6 +26,7 @@ class PostGenerationOrchestrator {
     this.postGenerator = new PostGenerator();
     this.reviewManager = new ManualReviewManager();
     this.performanceDB = new PerformanceDatabase();
+    this.eventDB = new EventDatabase();  // 用于保存手动添加的活动
     this.reviewMerger = new ReviewMerger();
     this.publicationConfirmer = new PublicationConfirmer();
   }
@@ -142,6 +148,33 @@ class PostGenerationOrchestrator {
         console.log(`\n🌐 正在翻译新添加的 ${newEvents.length} 个活动...`);
         const translatedNewEvents = await this.translator.translateAndOptimizeEvents(newEvents);
         finalEvents = [...translatedEvents, ...translatedNewEvents];
+
+        // 保存新活动到数据库 (支持 USE_TURSO)
+        const dbType = process.env.USE_TURSO ? 'Turso 云数据库' : '本地 SQLite';
+        console.log(`\n💾 保存新活动到 ${dbType}...`);
+
+        let savedCount = 0;
+        try {
+          await this.eventDB.connect();
+
+          for (const event of translatedNewEvents) {
+            try {
+              await this.eventDB.saveEvent(event);
+              savedCount++;
+            } catch (error) {
+              console.warn(`⚠️  保存活动失败 (${event.title}): ${error.message}`);
+            }
+          }
+
+          console.log(`✅ 已保存 ${savedCount}/${translatedNewEvents.length} 个活动到数据库`);
+        } finally {
+          await this.eventDB.close();
+        }
+
+        // 如果使用 Turso，自动同步到本地
+        if (process.env.USE_TURSO && savedCount > 0) {
+          await this.syncToLocal();
+        }
       }
 
       // 8.5. 保存最终发布内容到文件（覆盖原文件或创建新文件）
@@ -362,6 +395,22 @@ class PostGenerationOrchestrator {
    */
   isFree(price) {
     return CommonHelpers.isFree(price);
+  }
+
+  /**
+   * 同步到本地数据库
+   * 只在使用 Turso 时调用
+   */
+  async syncToLocal() {
+    console.log('\n🔄 正在同步到本地数据库...');
+    try {
+      const { execSync } = require('child_process');
+      execSync('node sync-from-turso.js', { stdio: 'inherit', cwd: process.cwd() });
+      console.log('✅ 同步完成！');
+    } catch (error) {
+      console.error('⚠️  同步失败:', error.message);
+      console.error('   你可以稍后手动运行: npm run sync-from-turso');
+    }
   }
 
   /**
