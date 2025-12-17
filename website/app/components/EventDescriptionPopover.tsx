@@ -13,6 +13,7 @@ export default function EventDescriptionPopover({ description, children }: Event
   const [isHovered, setIsHovered] = useState(false);
   const [isTouchDevice, setIsTouchDevice] = useState(false);
   const [popoverPosition, setPopoverPosition] = useState<'left' | 'right'>('left');
+  const [verticalPosition, setVerticalPosition] = useState<'below' | 'above'>('below');
   const [popoverStyle, setPopoverStyle] = useState<{ top: number; left: number }>({ top: 0, left: 0 });
   const [mounted, setMounted] = useState(false);
   const popoverRef = useRef<HTMLDivElement>(null);
@@ -51,9 +52,11 @@ export default function EventDescriptionPopover({ description, children }: Event
     if (!isTouchDevice && triggerRef.current) {
       const rect = triggerRef.current.getBoundingClientRect();
       const viewportWidth = window.innerWidth;
+      const viewportHeight = window.innerHeight;
       const popoverWidth = 520; // 65ch 大约等于 520px
+      const popoverHeight = 280; // 估算的 popover 高度（max-h-60 = 240px + padding）
 
-      // 计算位置
+      // 计算水平位置
       let left = rect.left;
       let position: 'left' | 'right' = 'left';
 
@@ -67,9 +70,35 @@ export default function EventDescriptionPopover({ description, children }: Event
         }
       }
 
+      // 计算垂直位置（fixed 定位使用视口坐标，不需要 scrollY）
+      let top: number;
+      let vPosition: 'below' | 'above' = 'below';
+
+      // 检查下方空间是否足够
+      const spaceBelow = viewportHeight - rect.bottom;
+      const spaceAbove = rect.top;
+
+      if (spaceBelow < popoverHeight && spaceAbove > spaceBelow) {
+        // 下方空间不够，且上方空间更大，显示在上方
+        vPosition = 'above';
+        top = rect.top - popoverHeight - 8;
+        // 确保不超出顶部
+        if (top < 10) {
+          top = 10;
+        }
+      } else {
+        // 显示在下方
+        top = rect.bottom + 8;
+        // 确保不超出底部
+        if (top + popoverHeight > viewportHeight - 10) {
+          top = viewportHeight - popoverHeight - 10;
+        }
+      }
+
       setPopoverPosition(position);
+      setVerticalPosition(vPosition);
       setPopoverStyle({
-        top: rect.bottom + window.scrollY + 8,
+        top: top,
         left: left,
       });
 
@@ -143,9 +172,16 @@ export default function EventDescriptionPopover({ description, children }: Event
               <div className="text-sm text-[#4A2C22] whitespace-pre-wrap break-words max-h-60 overflow-y-auto">
                 {description}
               </div>
-              <div
-                className={`absolute -top-2 w-4 h-4 bg-white border-l-2 border-t-2 border-[#F0D3B6] transform rotate-45 ${popoverPosition === 'right' ? 'right-4' : 'left-4'}`}
-              ></div>
+              {/* 箭头：根据垂直位置决定显示在顶部还是底部 */}
+              {verticalPosition === 'below' ? (
+                <div
+                  className={`absolute -top-2 w-4 h-4 bg-white border-l-2 border-t-2 border-[#F0D3B6] transform rotate-45 ${popoverPosition === 'right' ? 'right-4' : 'left-4'}`}
+                ></div>
+              ) : (
+                <div
+                  className={`absolute -bottom-2 w-4 h-4 bg-white border-r-2 border-b-2 border-[#F0D3B6] transform rotate-45 ${popoverPosition === 'right' ? 'right-4' : 'left-4'}`}
+                ></div>
+              )}
             </div>,
             document.body
           )}
