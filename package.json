@@ -24,6 +24,7 @@
     "sync-database": "node sync-database.js",
     "sync-from-turso": "node sync-from-turso.js",
     "sync-full": "node sync-from-turso.js --full",
+    "sync-diff": "node sync-from-turso.js --diff",
     "sync-preview": "node sync-from-turso.js --dry-run",
     "translate-missing": "node translate-missing.js",
     "check-db": "node scripts/check-db-config.js",

@@ -32,7 +32,7 @@ class TursoToLocalSync {
 
   async run(options = {}) {
     const {
-      mode = 'incremental',  // incremental | full
+      mode = 'incremental',  // incremental | full | diff
       since = null,          // 只同步此日期后的数据
       dryRun = false         // 预览模式，不实际写入
     } = options;
@@ -49,8 +49,13 @@ class TursoToLocalSync {
       process.exit(1);
     }
 
+    const modeLabels = {
+      full: '全量同步',
+      incremental: '增量同步',
+      diff: '差异同步（含删除）'
+    };
     console.log('📋 同步配置:');
-    console.log(`   模式: ${mode === 'full' ? '全量同步' : '增量同步'}`);
+    console.log(`   模式: ${modeLabels[mode] || mode}`);
     console.log(`   预览模式: ${dryRun ? '是（不会实际写入）' : '否'}`);
     if (since) {
       console.log(`   时间过滤: ${since} 之后的数据`);
@@ -95,12 +100,19 @@ class TursoToLocalSync {
 
       // 4. 同步到本地
       if (!dryRun) {
-        const eventStats = { inserted: 0, updated: 0, skipped: 0, failed: 0 };
-        const feedbackStats = { inserted: 0, updated: 0, skipped: 0, failed: 0 };
+        const eventStats = { inserted: 0, updated: 0, skipped: 0, failed: 0, deleted: 0 };
+        const feedbackStats = { inserted: 0, updated: 0, skipped: 0, failed: 0, deleted: 0 };
 
         if (tursoEvents.length > 0) {
           console.log('\n💾 正在同步 Events 到本地数据库...');
           Object.assign(eventStats, await this.syncEventsToLocal(tursoEvents, mode));
+        }
+
+        // 差异同步模式：删除本地多余的记录
+        if (mode === 'diff') {
+          console.log('\n🗑️  正在删除本地多余的 Events...');
+          const tursoIds = tursoEvents.map(e => e.id);
+          eventStats.deleted = await this.deleteLocalEventsNotInTurso(tursoIds);
         }
 
         if (tursoFeedback.length > 0) {
@@ -110,11 +122,12 @@ class TursoToLocalSync {
 
         console.log('\n✅ 同步完成！');
 
-        if (tursoEvents.length > 0) {
+        if (tursoEvents.length > 0 || eventStats.deleted > 0) {
           console.log('\n📊 Events 同步统计:');
           console.log(`   新增: ${eventStats.inserted} 条`);
           console.log(`   更新: ${eventStats.updated} 条`);
           console.log(`   跳过: ${eventStats.skipped} 条`);
+          console.log(`   删除: ${eventStats.deleted} 条`);
           console.log(`   失败: ${eventStats.failed} 条`);
         }
 
@@ -127,6 +140,21 @@ class TursoToLocalSync {
         }
       } else {
         console.log('\n🔍 预览模式 - 未实际写入数据');
+
+        // 预览模式下也显示将要删除的记录
+        if (mode === 'diff') {
+          const tursoIds = tursoEvents.map(e => e.id);
+          const toDelete = await this.getLocalEventsNotInTurso(tursoIds);
+          if (toDelete.length > 0) {
+            console.log(`\n🗑️  将删除 ${toDelete.length} 条本地多余的 Events:`);
+            toDelete.slice(0, 10).forEach((e, i) => {
+              console.log(`   ${i + 1}. [ID ${e.id}] ${e.title}`);
+            });
+            if (toDelete.length > 10) {
+              console.log(`   ... 还有 ${toDelete.length - 10} 条`);
+            }
+          }
+        }
       }
 
       console.log('\n═══════════════════════════════════════\n');
@@ -170,7 +198,7 @@ class TursoToLocalSync {
         id, title, normalized_title, start_time, end_time, location,
         price, description, description_detail, original_url, short_url,
         source, event_type, priority, scraped_at, week_identifier,
-        is_processed, title_zh
+        is_processed, title_zh, summary_en, summary_zh
       FROM events
     `;
 
@@ -338,6 +366,55 @@ class TursoToLocalSync {
     });
   }
 
+  async getLocalEventsNotInTurso(tursoIds) {
+    return new Promise((resolve, reject) => {
+      if (tursoIds.length === 0) {
+        // 如果 Turso 没有数据，返回所有本地数据
+        this.localDb.all('SELECT id, title FROM events', (err, rows) => {
+          if (err) reject(err);
+          else resolve(rows);
+        });
+        return;
+      }
+
+      const placeholders = tursoIds.map(() => '?').join(',');
+      this.localDb.all(
+        `SELECT id, title FROM events WHERE id NOT IN (${placeholders})`,
+        tursoIds,
+        (err, rows) => {
+          if (err) reject(err);
+          else resolve(rows);
+        }
+      );
+    });
+  }
+
+  async deleteLocalEventsNotInTurso(tursoIds) {
+    return new Promise((resolve, reject) => {
+      if (tursoIds.length === 0) {
+        // 如果 Turso 没有数据，删除所有本地数据
+        this.localDb.run('DELETE FROM events', function(err) {
+          if (err) reject(err);
+          else resolve(this.changes);
+        });
+        return;
+      }
+
+      const placeholders = tursoIds.map(() => '?').join(',');
+      this.localDb.run(
+        `DELETE FROM events WHERE id NOT IN (${placeholders})`,
+        tursoIds,
+        function(err) {
+          if (err) reject(err);
+          else {
+            console.log(`   ✅ 删除了 ${this.changes} 条本地多余的记录`);
+            resolve(this.changes);
+          }
+        }
+      );
+    });
+  }
+
   async upsertEvent(event) {
     return new Promise((resolve, reject) => {
       // 先检查是否存在（基于 Turso 的 ID）
@@ -358,7 +435,7 @@ class TursoToLocalSync {
                 location = ?, price = ?, description = ?, description_detail = ?,
                 original_url = ?, short_url = ?, source = ?, event_type = ?,
                 priority = ?, scraped_at = ?, week_identifier = ?, is_processed = ?,
-                title_zh = ?
+                title_zh = ?, summary_en = ?, summary_zh = ?
               WHERE id = ?
             `;
 
@@ -380,6 +457,8 @@ class TursoToLocalSync {
               event.week_identifier,
               event.is_processed,
               event.title_zh,
+              event.summary_en,
+              event.summary_zh,
               event.id
             ], (err) => {
               if (err) reject(err);
@@ -392,8 +471,8 @@ class TursoToLocalSync {
                 id, title, normalized_title, start_time, end_time, location,
                 price, description, description_detail, original_url, short_url,
                 source, event_type, priority, scraped_at, week_identifier,
-                is_processed, title_zh
-              ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                is_processed, title_zh, summary_en, summary_zh
+              ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
             `;
 
             this.localDb.run(insertQuery, [
@@ -414,7 +493,9 @@ class TursoToLocalSync {
               event.scraped_at,
               event.week_identifier,
               event.is_processed,
-              event.title_zh
+              event.title_zh,
+              event.summary_en,
+              event.summary_zh
             ], (err) => {
               if (err) reject(err);
               else resolve('inserted');
@@ -513,6 +594,7 @@ class TursoToLocalSync {
 选项:
   --full              全量同步（清空本地 events 表并重新导入）
   --incremental       增量同步（只同步新数据，默认）
+  --diff              差异同步（同步所有数据，并删除本地多余的记录）
   --since DATE        只同步指定日期后的数据（如: 2025-12-01）
   --dry-run           预览模式（不实际写入数据）
   -h, --help          显示帮助信息
@@ -528,23 +610,26 @@ class TursoToLocalSync {
   # 全量同步
   node sync-from-turso.js --full
 
-  # 预览同步但不实际写入
-  node sync-from-turso.js --dry-run
+  # 差异同步（推荐：同步并删除本地多余记录）
+  node sync-from-turso.js --diff
+
+  # 预览差异同步（不实际执行）
+  node sync-from-turso.js --diff --dry-run
 
   # 只同步 12月1日后的数据
   node sync-from-turso.js --since 2025-12-01
 
 重要说明:
-  ✅ 同步 events 表（活动数据）
+  ✅ 同步 events 表（活动数据，包括 summary_en/summary_zh）
   ✅ 同步 user_feedback 表（用户反馈数据）
   ✅ 不会触碰本地独有的表（posts, event_performance, weight_adjustments）
-  ✅ Events 使用 original_url 作为唯一标识
+  ✅ Events 使用 id 作为唯一标识
   ✅ User Feedback 使用 id 作为唯一标识
-  ✅ 保留本地独有的数据
 
 同步策略:
-  - 增量同步: 只同步上次同步后的新数据（events 基于 scraped_at，feedback 基于 created_at）
+  - 增量同步: 只同步上次同步后的新数据（不会删除本地记录）
   - 全量同步: 清空表，重新导入所有数据
+  - 差异同步: 同步所有数据，并删除 Turso 上已删除的记录（推荐用于去重后）
   - Upsert 逻辑: 存在则更新，不存在则插入
 `);
   }
@@ -558,8 +643,12 @@ if (args.includes('--help') || args.includes('-h')) {
   process.exit(0);
 }
 
+let mode = 'incremental';
+if (args.includes('--full')) mode = 'full';
+else if (args.includes('--diff')) mode = 'diff';
+
 const options = {
-  mode: args.includes('--full') ? 'full' : 'incremental',
+  mode,
   since: args.find(arg => arg.startsWith('--since'))?.split('=')[1] || null,
   dryRun: args.includes('--dry-run')
 };

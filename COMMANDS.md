@@ -50,9 +50,10 @@ npm run scrape -- --help
 2. 内存去重 + 过滤无效活动（节省翻译 token）
    - 过滤标题为网站域名的无效活动（如 www.sfstation.com）
 3. 翻译活动标题（添加 `title_zh` 字段）
-4. 数据库去重和保存
-5. AI 分类和优先级排序
-6. 生成审核 JSON 文件
+4. 生成 AI 摘要（添加 `summary_en`, `summary_zh` 字段）
+5. 数据库去重和保存
+6. AI 分类和优先级排序
+7. 生成审核 JSON 文件
 
 ### 2. 生成小红书内容（第二步）
 
@@ -91,11 +92,14 @@ npm run generate-english
 ### Turso 云数据库同步
 
 ```bash
-# 从 Turso 同步到本地（基本）
+# 从 Turso 同步到本地（增量）
 npm run sync-from-turso
 
 # 完整同步（清空本地后重新同步）
 npm run sync-full
+
+# 差异同步（同步数据并删除本地多余记录）
+npm run sync-diff
 
 # 预览同步操作（不实际修改）
 npm run sync-preview
@@ -103,6 +107,11 @@ npm run sync-preview
 # 旧的同步命令（已弃用，使用 sync-from-turso 代替）
 npm run sync-database
 ```
+
+**同步模式说明**:
+- `sync-from-turso`: 增量同步，只添加和更新，不删除本地多余的记录
+- `sync-full`: 完整同步，先清空本地数据库再同步所有数据
+- `sync-diff`: 差异同步，同步所有数据并删除 Turso 中不存在的本地记录
 
 ### 去重工具
 
@@ -154,6 +163,44 @@ node scripts/clear-next-week-events.js
 # 清空整个数据库（危险！）
 node scripts/clear-database.js
 ```
+
+---
+
+## AI 摘要生成
+
+### 批量生成摘要
+
+为已有活动生成 AI 摘要（本周和下周）：
+
+```bash
+# 生成摘要（直接写入 Turso 数据库）
+npm run generate-summaries
+
+# 查看帮助
+node generate-summaries.js --help
+```
+
+**说明**:
+- 使用 NewAPI → Gemini → Mistral 的优先级顺序
+- 生成中英文双语摘要
+- 跳过已有摘要的活动
+- 完成后运行 `npm run sync-from-turso` 同步到本地
+
+**环境变量**:
+```bash
+# NewAPI（优先）
+NEWAPI_API_KEY=your_key
+NEWAPI_BASE_URL=https://api.newapi.pro/v1
+NEWAPI_MODEL=gpt-4o-mini
+
+# Gemini（备选）
+GEMINI_API_KEY=your_key
+
+# Mistral（备选）
+MISTRAL_API_KEY=your_key
+```
+
+详细文档：[AI 摘要功能](docs/features/AI_SUMMARY_FEATURE.md)
 
 ---
 
@@ -367,6 +414,11 @@ OPENAI_API_KEY=sk-...
 GEMINI_API_KEY=AIza...
 CLAUDE_API_KEY=sk-ant-...
 MISTRAL_API_KEY=...
+
+# NewAPI（用于 AI 摘要，优先使用）
+NEWAPI_API_KEY=...
+NEWAPI_BASE_URL=https://api.newapi.pro/v1
+NEWAPI_MODEL=gpt-4o-mini
 ```
 
 ### 其他服务
@@ -572,9 +624,11 @@ npm run init-feedback-db                # 初始化反馈数据库
 npm run init-user-feedback-db           # 初始化用户反馈表
 npm run fix-eventbrite-data             # 修复 Eventbrite 数据
 npm run sync-database                   # 同步数据库（旧）
-npm run sync-from-turso                 # 从 Turso 同步
+npm run sync-from-turso                 # 从 Turso 同步（增量）
 npm run sync-full                       # 完整同步
+npm run sync-diff                       # 差异同步（删除本地多余记录）
 npm run sync-preview                    # 预览同步
+npm run generate-summaries              # 生成 AI 摘要
 npm run translate-missing               # 翻译缺失标题
 npm run check-db                        # 检查数据库配置
 npm run check-env                       # 检查环境变量
@@ -599,8 +653,9 @@ npm run remove-duplicates-by-title      # 按标题去重
   - `DATA_ARCHITECTURE.md`: 数据架构
   - `DATABASE_CONFIG.md`: 数据库配置
   - `TRANSLATION_GUIDE.md`: 翻译指南
-  - `USER_FEEDBACK_DOCUMENTATION.md`: 用户反馈功能
+  - `features/AI_SUMMARY_FEATURE.md`: AI 摘要功能
+  - `features/USER_FEEDBACK_DOCUMENTATION.md`: 用户反馈功能
 
 ---
 
-**最后更新**: 2024-12-11
+**最后更新**: 2024-12-17
