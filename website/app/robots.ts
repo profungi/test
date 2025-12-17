@@ -53,7 +53,6 @@ export default function robots(): MetadataRoute.Robots {
       },
     ],
     sitemap: `${BASE_URL}/sitemap.xml`,
-    // @ts-expect-error - Next.js types don't include custom fields but they work
     host: BASE_URL,
   };
 }
