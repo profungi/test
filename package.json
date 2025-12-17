@@ -30,6 +30,7 @@
     "check-env": "bash scripts/check-env.sh",
     "collect-feedback": "node collect-feedback.js",
     "translate-existing": "node translate-existing-events.js",
+    "generate-summaries": "node generate-summaries.js",
     "clean-english-translations": "node clean-english-translations.js",
     "test-gemini": "node test-gemini-models.js",
     "test-translation": "node test-translation.js",
