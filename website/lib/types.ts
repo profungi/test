@@ -12,6 +12,8 @@ export interface Event {
   price: string | null;
   description: string | null;
   description_detail: string | null;
+  summary_en: string | null;
+  summary_zh: string | null;
   original_url: string;
   short_url: string | null;
   source: string;

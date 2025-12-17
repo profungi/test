@@ -80,9 +80,10 @@ class EventDatabase {
 
           // 创建索引以优化查询性能
           this.createIndexes().then(() => {
-            // 迁移：为现有表添加 description_detail 列（如果不存在）
+            // 迁移：为现有表添加新列（如果不存在）
             this.migrateAddDescriptionDetail()
               .then(() => this.migrateAddTitleZh())
+              .then(() => this.migrateAddSummaryColumns())
               .then(resolve)
               .catch(reject);
           }).catch(reject);
@@ -211,6 +212,47 @@ class EventDatabase {
           // 列已存在，无需迁移
           resolve();
         }
+      });
+    });
+  }
+
+  async migrateAddSummaryColumns() {
+    return new Promise((resolve, reject) => {
+      // 检查列是否已存在
+      this.db.all("PRAGMA table_info(events)", (err, rows) => {
+        if (err) {
+          reject(err);
+          return;
+        }
+
+        const hasSummaryEn = rows.some(row => row.name === 'summary_en');
+        const hasSummaryZh = rows.some(row => row.name === 'summary_zh');
+
+        const migrations = [];
+        if (!hasSummaryEn) migrations.push("ALTER TABLE events ADD COLUMN summary_en TEXT");
+        if (!hasSummaryZh) migrations.push("ALTER TABLE events ADD COLUMN summary_zh TEXT");
+
+        if (migrations.length === 0) {
+          resolve();
+          return;
+        }
+
+        console.log('🔄 Migrating database: adding summary columns...');
+
+        let completed = 0;
+        migrations.forEach(sql => {
+          this.db.run(sql, (err) => {
+            if (err) {
+              reject(err);
+              return;
+            }
+            completed++;
+            if (completed === migrations.length) {
+              console.log('✅ Migration complete: summary columns added');
+              resolve();
+            }
+          });
+        });
       });
     });
   }
@@ -394,8 +436,8 @@ class EventDatabase {
           INSERT INTO events (
             title, normalized_title, start_time, end_time, location,
             price, description, description_detail, original_url, source, event_type,
-            priority, scraped_at, week_identifier, title_zh
-          ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+            priority, scraped_at, week_identifier, title_zh, summary_en, summary_zh
+          ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
         `;
 
         const values = [
@@ -413,7 +455,9 @@ class EventDatabase {
           event.priority || 0,
           new Date().toISOString(),
           event.weekIdentifier,
-          event.title_zh || null
+          event.title_zh || null,
+          event.summary_en || null,
+          event.summary_zh || null
         ];
 
         this.db.run(query, values, function(err) {
