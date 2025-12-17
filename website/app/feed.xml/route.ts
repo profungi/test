@@ -21,12 +21,12 @@ export async function GET() {
     </image>
     ${events.slice(0, 20).map(event => `
     <item>
-      <title><![CDATA[${event.name_en || event.name}]]></title>
-      <link>${event.url || BASE_URL}</link>
-      <description><![CDATA[${event.description_en || event.description || event.name_en || event.name} - ${event.location || 'Bay Area'} - ${event.price || 'Check event details'}]]></description>
-      <pubDate>${new Date(event.date || Date.now()).toUTCString()}</pubDate>
-      <guid isPermaLink="false">${event.id || event.url || `${BASE_URL}#${event.name}`}</guid>
-      <category>${event.type || 'event'}</category>
+      <title><![CDATA[${event.title}]]></title>
+      <link>${event.original_url || BASE_URL}</link>
+      <description><![CDATA[${event.summary_en || event.description || event.title} - ${event.location || 'Bay Area'} - ${event.price || 'Check event details'}]]></description>
+      <pubDate>${new Date(event.start_time || Date.now()).toUTCString()}</pubDate>
+      <guid isPermaLink="false">${event.id || event.original_url || `${BASE_URL}#${event.title}`}</guid>
+      <category>${event.event_type || 'event'}</category>
     </item>`).join('')}
   </channel>
 </rss>`;

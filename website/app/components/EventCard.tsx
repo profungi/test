@@ -120,7 +120,7 @@ export default function EventCard({ event }: EventCardProps) {
 
         {/* 描述/摘要 */}
         {displaySummary && (
-          <EventDescriptionPopover description={event.description || displaySummary}>
+          <EventDescriptionPopover description={displaySummary}>
             <div className="flex items-start text-sm text-[#4A2C22]/70">
               <span className="mr-2">✨</span>
               <span className="line-clamp-2">{displaySummary}</span>
