@@ -16,6 +16,7 @@ const EventDatabase = process.env.USE_TURSO
 const AIEventClassifier = require('./utils/ai-classifier');
 const ManualReviewManager = require('./utils/manual-review');
 const Translator = require('./utils/translator');
+const Summarizer = require('./utils/summarizer');
 
 // 导入所有爬虫
 const EventbriteScraper = require('./scrapers/eventbrite-scraper');
@@ -33,6 +34,9 @@ class EventScrapeOrchestrator {
     // 初始化翻译器（默认使用 auto 模式：Gemini → OpenAI → Mistral → Google）
     const translatorProvider = process.env.TRANSLATOR_PROVIDER || 'auto';
     this.translator = new Translator(translatorProvider);
+
+    // 初始化摘要生成器（优先级：NewAPI → Gemini → Mistral）
+    this.summarizer = new Summarizer();
 
     this.scrapers = [
       new EventbriteScraper(),
@@ -74,24 +78,32 @@ class EventScrapeOrchestrator {
         1000 // 每批间隔 1 秒
       );
 
-      // 5. 数据库去重和保存（此时 title_zh 已存在）
-      const uniqueEvents = await this.filterByDatabase(translatedEvents);
+      // 5. 生成AI摘要（中英文）
+      console.log('\n📝 开始生成活动摘要...');
+      const summarizedEvents = await this.summarizer.summarizeEvents(
+        translatedEvents,
+        5,    // 每批处理 5 个
+        2000  // 每批间隔 2 秒
+      );
+
+      // 6. 数据库去重和保存（此时 title_zh 和 summary 已存在）
+      const uniqueEvents = await this.filterByDatabase(summarizedEvents);
       console.log(`🔍 数据库去重后剩余 ${uniqueEvents.length} 个活动`);
 
-      // 6. AI分类和优先级排序
+      // 7. AI分类和优先级排序
       const classifiedEvents = await this.aiClassifier.classifyEvents(uniqueEvents);
 
-      // 7. 选择最佳候选活动
+      // 8. 选择最佳候选活动
       const topCandidates = this.aiClassifier.selectTopCandidates(
         classifiedEvents,
         config.scraping.totalCandidatesForReview
       );
 
-      // 8. 生成分类报告
+      // 9. 生成分类报告
       const classificationReport = this.aiClassifier.generateClassificationReport(classifiedEvents);
       console.log('\n📊 AI分类报告:', classificationReport);
 
-      // 9. 生成人工审核文件
+      // 10. 生成人工审核文件
       const weekRange = this.targetWeek === 'current'
         ? this.scrapers[0].getCurrentWeekRange()
         : this.scrapers[0].getNextWeekRange();
