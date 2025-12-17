@@ -37,8 +37,9 @@ class TursoDatabase {
       INSERT INTO events (
         title, normalized_title, start_time, end_time, location,
         price, description, description_detail, original_url, source,
-        event_type, priority, scraped_at, week_identifier, title_zh
-      ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+        event_type, priority, scraped_at, week_identifier, title_zh,
+        summary_en, summary_zh
+      ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
       ON CONFLICT(normalized_title, start_time, location) DO UPDATE SET
         title = excluded.title,
         description = excluded.description,
@@ -48,7 +49,9 @@ class TursoDatabase {
         priority = excluded.priority,
         price = excluded.price,
         scraped_at = excluded.scraped_at,
-        title_zh = excluded.title_zh
+        title_zh = excluded.title_zh,
+        summary_en = excluded.summary_en,
+        summary_zh = excluded.summary_zh
     `;
 
     try {
@@ -69,7 +72,9 @@ class TursoDatabase {
           event.priority || 0,
           new Date().toISOString(),
           event.weekIdentifier,
-          event.title_zh || null
+          event.title_zh || null,
+          event.summary_en || null,
+          event.summary_zh || null
         ]
       });
 

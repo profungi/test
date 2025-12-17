@@ -50,6 +50,11 @@ export default function EventCard({ event }: EventCardProps) {
   // 根据语言选择显示的标题
   const displayTitle = locale === 'zh' && event.title_zh ? event.title_zh : event.title;
 
+  // 根据语言选择显示的摘要（优先使用 AI 摘要，fallback 到原始 description）
+  const displaySummary = locale === 'zh'
+    ? (event.summary_zh || event.description)
+    : (event.summary_en || event.description);
+
   // Glow effect on mouse move
   useEffect(() => {
     const card = cardRef.current;
@@ -113,12 +118,12 @@ export default function EventCard({ event }: EventCardProps) {
           </div>
         )}
 
-        {/* 描述 */}
-        {event.description && (
-          <EventDescriptionPopover description={event.description}>
+        {/* 描述/摘要 */}
+        {displaySummary && (
+          <EventDescriptionPopover description={event.description || displaySummary}>
             <div className="flex items-start text-sm text-[#4A2C22]/70">
               <span className="mr-2">✨</span>
-              <span className="line-clamp-2">{event.description}</span>
+              <span className="line-clamp-2">{displaySummary}</span>
             </div>
           </EventDescriptionPopover>
         )}
