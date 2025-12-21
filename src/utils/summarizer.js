@@ -18,14 +18,13 @@ class Summarizer {
    */
   initializeClients() {
     // NewAPI (OpenAI-compatible)
-    if (process.env.NEWAPI_API_KEY) {
+    if (process.env.NEWAPI_API_KEY && process.env.NEWAPI_MODEL) {
       try {
         this.clients.newapi = new OpenAI({
           apiKey: process.env.NEWAPI_API_KEY,
-          baseURL: process.env.NEWAPI_BASE_URL || 'https://api.newapi.pro/v1',
+          baseURL: process.env.NEWAPI_BASE_URL || 'https://yinli.one/v1',
         });
-        this.newapiModel = process.env.NEWAPI_MODEL || 'gpt-4o-mini';
-        console.log('✅ NewAPI 客户端已初始化');
+        console.log(`✅ NewAPI 客户端已初始化 (model: ${process.env.NEWAPI_MODEL})`);
       } catch (error) {
         console.warn('⚠️  NewAPI 客户端初始化失败:', error.message);
       }
@@ -93,7 +92,7 @@ class Summarizer {
     const prompt = this.buildPrompt(title, description, eventType);
 
     const response = await this.clients.newapi.chat.completions.create({
-      model: this.newapiModel,
+      model: process.env.NEWAPI_MODEL,
       messages: [
         {
           role: 'user',
