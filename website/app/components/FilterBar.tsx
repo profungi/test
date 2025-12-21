@@ -92,10 +92,6 @@ export default function FilterBar() {
               <option value="food">{t('food')}</option>
               <option value="art">{t('art')}</option>
               <option value="music">{t('music')}</option>
-              <option value="sports">{t('sports')}</option>
-              <option value="outdoor">{t('outdoor')}</option>
-              <option value="family">{t('family')}</option>
-              <option value="tech">{t('tech')}</option>
               <option value="other">{t('other')}</option>
             </select>
           </div>
