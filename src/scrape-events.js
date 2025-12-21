@@ -66,19 +66,28 @@ class EventScrapeOrchestrator {
         return;
       }
 
-      // 3. 内存去重（节省翻译 token，数据库去重在翻译后）
+      // 3. 内存去重
       const memoryDedupedEvents = this.deduplicateInMemory(allEvents);
       console.log(`🔍 内存去重: ${allEvents.length} → ${memoryDedupedEvents.length} 个活动`);
 
-      // 4. 翻译活动标题（只翻译内存去重后的活动，节省 token）
+      // 4. 数据库去重（先去重再翻译，节省 token）
+      const uniqueEvents = await this.filterByDatabase(memoryDedupedEvents);
+      console.log(`🔍 数据库去重后剩余 ${uniqueEvents.length} 个活动`);
+
+      if (uniqueEvents.length === 0) {
+        console.log('✅ 没有新活动需要处理');
+        return;
+      }
+
+      // 5. 翻译活动标题（只翻译去重后的新活动）
       console.log('\n🌐 开始翻译活动标题...');
       const translatedEvents = await this.translator.translateEvents(
-        memoryDedupedEvents,
+        uniqueEvents,
         10,  // 每批翻译 10 个
         1000 // 每批间隔 1 秒
       );
 
-      // 5. 生成AI摘要（中英文）
+      // 6. 生成AI摘要（中英文）
       console.log('\n📝 开始生成活动摘要...');
       const summarizedEvents = await this.summarizer.summarizeEvents(
         translatedEvents,
@@ -86,12 +95,8 @@ class EventScrapeOrchestrator {
         2000  // 每批间隔 2 秒
       );
 
-      // 6. 数据库去重和保存（此时 title_zh 和 summary 已存在）
-      const uniqueEvents = await this.filterByDatabase(summarizedEvents);
-      console.log(`🔍 数据库去重后剩余 ${uniqueEvents.length} 个活动`);
-
       // 7. AI分类和优先级排序
-      const classifiedEvents = await this.aiClassifier.classifyEvents(uniqueEvents);
+      const classifiedEvents = await this.aiClassifier.classifyEvents(summarizedEvents);
 
       // 8. 选择最佳候选活动
       const topCandidates = this.aiClassifier.selectTopCandidates(
@@ -254,19 +259,29 @@ class EventScrapeOrchestrator {
     if (!event.title) return true;
 
     const title = event.title.trim().toLowerCase();
+    const url = (event.originalUrl || event.url || '').toLowerCase();
 
     // 过滤标题是网站域名的活动
-    const invalidPatterns = [
+    const invalidTitlePatterns = [
       'www.sfstation.com',
       'sfstation.com',
       'www.eventbrite.com',
       'eventbrite.com',
       'www.funcheap.com',
       'funcheap.com',
-      // 可以添加更多无效模式
     ];
 
-    return invalidPatterns.some(pattern => title === pattern || title.includes(pattern));
+    // 过滤无效的 URL（不是真正的活动链接）
+    const invalidUrlPatterns = [
+      'sfstation.com/#',
+      'sfstation.com/?',
+      'sfstation.com/calendar',
+    ];
+
+    const hasBadTitle = invalidTitlePatterns.some(pattern => title === pattern || title.includes(pattern));
+    const hasBadUrl = invalidUrlPatterns.some(pattern => url.includes(pattern));
+
+    return hasBadTitle || hasBadUrl;
   }
 
   // 生成活动唯一键
