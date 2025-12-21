@@ -24,7 +24,7 @@ class ExistingEventTranslator {
 
     this.translator = new Translator(provider);
     if (provider === 'auto') {
-      console.log(`🌐 使用自动翻译模式 (优先级: Gemini → OpenAI → Mistral → Google)`);
+      console.log(`🌐 使用自动翻译模式 (优先级: NewAPI → Gemini → OpenAI → Mistral → Google)`);
     } else {
       console.log(`🌐 使用指定翻译服务: ${provider}`);
     }
@@ -110,6 +110,7 @@ class ExistingEventTranslator {
     let successCount = 0;
     let failCount = 0;
     const providerStats = {
+      newapi: 0,
       gemini: 0,
       openai: 0,
       mistral: 0,
@@ -143,6 +144,7 @@ class ExistingEventTranslator {
 
             // 服务图标
             const providerIcon = {
+              newapi: '🔷',
               gemini: '🔮',
               openai: '🤖',
               mistral: '🌪️',
@@ -252,6 +254,7 @@ class ExistingEventTranslator {
       // 显示每个服务的使用情况
       if (result.providerStats) {
         console.log(`\n📊 翻译服务使用情况:`);
+        if (result.providerStats.newapi > 0) console.log(`   🔷 NewAPI: ${result.providerStats.newapi} (${Math.round(result.providerStats.newapi / result.total * 100)}%)`);
         if (result.providerStats.gemini > 0) console.log(`   🔮 Gemini: ${result.providerStats.gemini} (${Math.round(result.providerStats.gemini / result.total * 100)}%)`);
         if (result.providerStats.openai > 0) console.log(`   🤖 OpenAI: ${result.providerStats.openai} (${Math.round(result.providerStats.openai / result.total * 100)}%)`);
         if (result.providerStats.mistral > 0) console.log(`   🌪️  Mistral: ${result.providerStats.mistral} (${Math.round(result.providerStats.mistral / result.total * 100)}%)`);
@@ -297,16 +300,20 @@ class ExistingEventTranslator {
 
 环境变量:
   TRANSLATOR_PROVIDER       默认翻译服务提供商 (默认: auto)
+  NEWAPI_API_KEY           NewAPI 密钥（需同时配置 MODEL）
+  NEWAPI_BASE_URL          NewAPI Base URL
+  NEWAPI_MODEL             NewAPI 模型名称（需同时配置 API_KEY）
   GEMINI_API_KEY           Google Gemini API 密钥
   OPENAI_API_KEY           OpenAI API 密钥
   MISTRAL_API_KEY          Mistral AI API 密钥
   GOOGLE_TRANSLATE_API_KEY Google Translate API 密钥（可选）
 
 翻译优先级（auto 模式）:
-  1. Gemini (免费额度大，质量好)
-  2. OpenAI (质量最好，便宜)
-  3. Mistral (性价比高)
-  4. Google Translate (免费兜底)
+  1. NewAPI (可配置任意模型)
+  2. Gemini (免费额度大，质量好)
+  3. OpenAI (质量最好，便宜)
+  4. Mistral (性价比高)
+  5. Google Translate (免费兜底)
 
 说明:
   此脚本会翻译数据库中所有 title_zh 字段为空的活动标题。

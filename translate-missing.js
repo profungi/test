@@ -269,9 +269,12 @@ class MissingTranslationFixer {
 
 环境变量:
   USE_TURSO=1                    # 使用 Turso 数据库（默认使用本地 SQLite）
-  TRANSLATOR_PROVIDER=auto       # 翻译服务 (auto|gemini|openai|mistral|google)
+  TRANSLATOR_PROVIDER=auto       # 翻译服务 (auto|newapi|gemini|openai|mistral|google)
   TURSO_DATABASE_URL=...         # Turso 数据库 URL
   TURSO_AUTH_TOKEN=...           # Turso 认证令牌
+  NEWAPI_API_KEY=...             # NewAPI 密钥（需同时配置 MODEL）
+  NEWAPI_BASE_URL=...            # NewAPI Base URL
+  NEWAPI_MODEL=...               # NewAPI 模型名称（需同时配置 API_KEY）
 
 示例:
   # 使用本地数据库，自动选择翻译服务
@@ -282,6 +285,9 @@ class MissingTranslationFixer {
 
   # 指定使用 Gemini 翻译
   TRANSLATOR_PROVIDER=gemini node translate-missing.js
+
+翻译优先级（auto 模式）:
+  NewAPI → Gemini → OpenAI → Mistral → Google Translate
 
 速率限制策略:
   - Gemini/auto 模式：5 个/批，批次间隔 5 秒，批次内延迟 200ms

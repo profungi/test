@@ -1,7 +1,7 @@
 /**
  * 翻译服务模块
  * 支持多种翻译服务，带优先级回退机制
- * 优先级：Gemini → OpenAI → Mistral → Google Translate
+ * 优先级：NewAPI → Gemini → OpenAI → Mistral → Google Translate
  */
 
 const axios = require('axios');
@@ -26,6 +26,19 @@ class Translator {
    * 初始化所有翻译服务客户端
    */
   initializeClients() {
+    // NewAPI (OpenAI-compatible, 优先级最高)
+    if (process.env.NEWAPI_API_KEY && process.env.NEWAPI_MODEL) {
+      try {
+        this.clients.newapi = new OpenAI({
+          apiKey: process.env.NEWAPI_API_KEY,
+          baseURL: process.env.NEWAPI_BASE_URL || 'https://api.newapi.pro/v1',
+        });
+        console.log(`✅ NewAPI 客户端已初始化 (translator, model: ${process.env.NEWAPI_MODEL})`);
+      } catch (error) {
+        console.warn('⚠️  NewAPI 客户端初始化失败:', error.message);
+      }
+    }
+
     // Gemini
     if (process.env.GEMINI_API_KEY) {
       try {
@@ -79,8 +92,36 @@ class Translator {
    * 获取可用的翻译服务列表（按优先级排序）
    */
   getAvailableProviders() {
-    const priority = ['gemini', 'openai', 'mistral', 'google'];
+    const priority = ['newapi', 'gemini', 'openai', 'mistral', 'google'];
     return priority.filter(p => this.clients[p]);
+  }
+
+  /**
+   * 使用 NewAPI 翻译
+   */
+  async translateWithNewAPI(text) {
+    try {
+      const response = await this.clients.newapi.chat.completions.create({
+        model: process.env.NEWAPI_MODEL,
+        messages: [
+          {
+            role: 'system',
+            content: '你是一个专业的英译中翻译助手。请将英文活动标题翻译成自然流畅的中文，保持活动的吸引力和准确性。只返回翻译后的文本，不要添加任何解释、引号或标点符号。',
+          },
+          {
+            role: 'user',
+            content: text,
+          },
+        ],
+        temperature: 0.3,
+        max_tokens: 100,
+      });
+
+      return response.choices[0].message.content.trim();
+    } catch (error) {
+      console.error('NewAPI 翻译错误:', error.message);
+      throw error;
+    }
   }
 
   /**
@@ -341,6 +382,8 @@ class Translator {
    */
   async translateWithProvider(text, provider) {
     switch (provider) {
+      case 'newapi':
+        return await this.translateWithNewAPI(text);
       case 'gemini':
         return await this.translateWithGemini(text);
       case 'openai':
@@ -365,6 +408,7 @@ class Translator {
     const results = [];
     const total = texts.length;
     const stats = {
+      newapi: 0,
       gemini: 0,
       openai: 0,
       mistral: 0,
@@ -395,6 +439,7 @@ class Translator {
           stats[result.provider]++;
 
           const providerIcon = {
+            newapi: '🔷',
             gemini: '🔮',
             openai: '🤖',
             mistral: '🌪️',
@@ -434,6 +479,7 @@ class Translator {
     console.log(`✨ 批量翻译完成！\n`);
     console.log(`📊 翻译统计:`);
     console.log(`   总计: ${total} 个文本`);
+    if (stats.newapi > 0) console.log(`   🔷 NewAPI: ${stats.newapi} (${Math.round((stats.newapi / total) * 100)}%)`);
     if (stats.gemini > 0) console.log(`   🔮 Gemini: ${stats.gemini} (${Math.round((stats.gemini / total) * 100)}%)`);
     if (stats.openai > 0) console.log(`   🤖 OpenAI: ${stats.openai} (${Math.round((stats.openai / total) * 100)}%)`);
     if (stats.mistral > 0) console.log(`   🌪️  Mistral: ${stats.mistral} (${Math.round((stats.mistral / total) * 100)}%)`);
