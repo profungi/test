@@ -33,6 +33,12 @@ class TursoDatabase {
   }
 
   async saveEvent(event) {
+    // 先检查是否重复
+    const isDup = await this.isDuplicate(event);
+    if (isDup) {
+      return { saved: false, reason: 'duplicate' };
+    }
+
     const sql = `
       INSERT INTO events (
         title, normalized_title, start_time, end_time, location,
@@ -40,18 +46,6 @@ class TursoDatabase {
         event_type, priority, scraped_at, week_identifier, title_zh,
         summary_en, summary_zh
       ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-      ON CONFLICT(normalized_title, start_time, location) DO UPDATE SET
-        title = excluded.title,
-        description = excluded.description,
-        description_detail = excluded.description_detail,
-        end_time = excluded.end_time,
-        event_type = excluded.event_type,
-        priority = excluded.priority,
-        price = excluded.price,
-        scraped_at = excluded.scraped_at,
-        title_zh = excluded.title_zh,
-        summary_en = excluded.summary_en,
-        summary_zh = excluded.summary_zh
     `;
 
     try {
