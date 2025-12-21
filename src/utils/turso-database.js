@@ -33,6 +33,14 @@ class TursoDatabase {
   }
 
   async saveEvent(event) {
+    // 先检查是否重复
+    const isDup = await this.isDuplicate(event);
+    if (isDup) {
+      // 重复的活动：更新数据库中的信息，但不进入审核文件
+      await this.updateEvent(event);
+      return { saved: false, reason: 'duplicate' };
+    }
+
     const sql = `
       INSERT INTO events (
         title, normalized_title, start_time, end_time, location,
@@ -40,18 +48,6 @@ class TursoDatabase {
         event_type, priority, scraped_at, week_identifier, title_zh,
         summary_en, summary_zh
       ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-      ON CONFLICT(normalized_title, start_time, location) DO UPDATE SET
-        title = excluded.title,
-        description = excluded.description,
-        description_detail = excluded.description_detail,
-        end_time = excluded.end_time,
-        event_type = excluded.event_type,
-        priority = excluded.priority,
-        price = excluded.price,
-        scraped_at = excluded.scraped_at,
-        title_zh = excluded.title_zh,
-        summary_en = excluded.summary_en,
-        summary_zh = excluded.summary_zh
     `;
 
     try {
@@ -82,6 +78,50 @@ class TursoDatabase {
     } catch (error) {
       console.error('Error saving event to Turso:', error);
       return { saved: false, error: error.message };
+    }
+  }
+
+  async updateEvent(event) {
+    const sql = `
+      UPDATE events SET
+        title = ?,
+        description = ?,
+        description_detail = ?,
+        end_time = ?,
+        event_type = ?,
+        priority = ?,
+        price = ?,
+        scraped_at = ?,
+        title_zh = ?,
+        summary_en = ?,
+        summary_zh = ?
+      WHERE normalized_title = ?
+        AND location = ?
+        AND ABS(julianday(start_time) - julianday(?)) < 1
+    `;
+
+    try {
+      await this.client.execute({
+        sql,
+        args: [
+          event.title,
+          event.description || '',
+          event.description_detail || null,
+          event.endTime || null,
+          event.eventType || 'other',
+          event.priority || 0,
+          event.price || 'Free',
+          new Date().toISOString(),
+          event.title_zh || null,
+          event.summary_en || null,
+          event.summary_zh || null,
+          this.normalizeTitle(event.title),
+          event.location,
+          event.startTime
+        ]
+      });
+    } catch (error) {
+      console.error('Error updating event in Turso:', error);
     }
   }
 
