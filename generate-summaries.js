@@ -220,9 +220,9 @@ class ExistingSummarizer {
 环境变量:
   TURSO_DATABASE_URL    Turso 数据库 URL
   TURSO_AUTH_TOKEN      Turso 认证 Token
-  NEWAPI_API_KEY        NewAPI 密钥（优先使用）
+  NEWAPI_API_KEY        NewAPI 密钥（需同时配置 MODEL）
   NEWAPI_BASE_URL       NewAPI Base URL
-  NEWAPI_MODEL          NewAPI 模型名称
+  NEWAPI_MODEL          NewAPI 模型名称（需同时配置 API_KEY）
   GEMINI_API_KEY        Gemini API 密钥（备选）
   MISTRAL_API_KEY       Mistral API 密钥（备选）
 
