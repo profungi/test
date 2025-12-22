@@ -1,0 +1,373 @@
+{
+  "review_id": "review_2025-12-22_1633_msa",
+  "generated_at": "2025-12-22T16:33:13.528Z",
+  "scrape_date": "2025-12-22",
+  "target_week": "2025-12-29_to_2026-01-04",
+  "target_week_readable": "下周 (12/29 - 01/04)",
+  "scraping_report": {
+    "total_scraped": 26,
+    "after_deduplication": 16,
+    "after_classification": 16,
+    "classification_report": {
+      "totalEvents": 16,
+      "eventTypes": {
+        "free": 14,
+        "festival": 2
+      },
+      "priorityLevels": {
+        "9": 14,
+        "10": 2
+      },
+      "chineseRelevant": 0,
+      "topPriorityEvents": 16
+    }
+  },
+  "instructions": {
+    "how_to_review": "将你想要发布的活动的 'selected' 字段改为 true",
+    "next_step": "保存文件后运行: npm run generate-post [此文件路径]",
+    "fields_explanation": {
+      "title": "活动标题",
+      "time_display": "显示用的时间格式",
+      "location": "活动地点",
+      "price": "票价信息",
+      "event_type": "AI识别的活动类型",
+      "priority": "优先级分数 (越高越重要)",
+      "chinese_relevant": "是否与中文社区相关",
+      "original_url": "原始活动链接"
+    }
+  },
+  "stats": {
+    "total_candidates": 16,
+    "by_type": {
+      "festival": 2,
+      "free": 14
+    },
+    "by_priority": {
+      "9": 14,
+      "10": 2
+    },
+    "chinese_relevant": 0
+  },
+  "events": [
+    {
+      "id": 1,
+      "selected": false,
+      "title": "New Year’s Eve at Oakland Zoo’s “Glowfari” 2025 Lights Festival",
+      "time_display": "Wednesday 12/31 4:30 PM - 9:00 PM",
+      "location": "Oakland Zoo",
+      "price": "$30.75*",
+      "event_type": "festival",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/new-years-eve-at-oakland-zoos-glowfari-2025-lights-festival/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Glowfari returns in November 2025! This wildly popular, family-friendly experience features hundreds...",
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2025-12-22T16:29:20.562Z"
+    },
+    {
+      "id": 2,
+      "selected": false,
+      "title": "New Year’s Day at Oakland Zoo’s “Glowfari” 2025 Lights Festival",
+      "time_display": "Thursday 01/01 4:30 PM - 9:00 PM",
+      "location": "Oakland Zoo",
+      "price": "$30.75*",
+      "event_type": "festival",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/new-years-day-at-oakland-zoos-glowfari-2025-lights-festival/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Glowfari returns in November 2025! This wildly popular, family-friendly experience features hundreds...",
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2025-12-22T16:29:20.563Z"
+    },
+    {
+      "id": 3,
+      "selected": false,
+      "title": "Cirque du Soleil ECHOLot A at Mission Rock",
+      "time_display": "Tuesday 12/30 7:00 PM",
+      "location": "3rd St at Channel St, San Francisco, CA",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://tickets.cirquedusoleil.com/shop/#/e4568e04-f349-44e5-b71d-c6d60df94f6f/shop/select?locale=en&skin=echo_v2",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "sfstation",
+      "scraped_at": "2025-12-22T16:29:25.411Z"
+    },
+    {
+      "id": 4,
+      "selected": false,
+      "title": "Tiny Chef, Big ImpactCalifornia Academy of Sciences",
+      "time_display": "Tuesday 12/30 9:30 AM",
+      "location": "55 Music Concourse Drive, San Francisco, CA",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.calacademy.org/buy-tickets",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "sfstation",
+      "scraped_at": "2025-12-22T16:29:25.412Z"
+    },
+    {
+      "id": 5,
+      "selected": false,
+      "title": "Starlight by Circus BellaThe Crossing at East Cut",
+      "time_display": "Tuesday 12/30 7:00 PM",
+      "location": "250 Main Street, San Francisco, CA",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://circusbella.vbotickets.com/events",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "sfstation",
+      "scraped_at": "2025-12-22T16:29:25.412Z"
+    },
+    {
+      "id": 6,
+      "selected": false,
+      "title": "Lightscape at San Francisco Botanical GardenSan Francisco Botanical Garden",
+      "time_display": "Tuesday 12/30 5:00 PM",
+      "location": "1199 9th Avenue, San Francisco, CA",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://gggp.org/lightscape/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "sfstation",
+      "scraped_at": "2025-12-22T16:29:25.412Z"
+    },
+    {
+      "id": 7,
+      "selected": false,
+      "title": "Dear San FranciscoClub Fugazi",
+      "time_display": "Tuesday 12/30 2:00 PM",
+      "location": "678 Green Street, San Francisco, CA",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://boxoffice.clubfugazisf.com/clubfugazisf/events/46365?sessionView=CALENDAR",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "sfstation",
+      "scraped_at": "2025-12-22T16:29:25.412Z"
+    },
+    {
+      "id": 8,
+      "selected": false,
+      "title": "New Year's Eve with Fantastic NegritoThe Chapel",
+      "time_display": "Wednesday 12/31 8:30 PM",
+      "location": "777 Valencia Street, San Francisco, CA",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventim.us/event/new-years-eve-with-fantastic-negrito/670058",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "sfstation",
+      "scraped_at": "2025-12-22T16:29:25.412Z"
+    },
+    {
+      "id": 9,
+      "selected": false,
+      "title": "Swedish House MafiaPier 80",
+      "time_display": "Wednesday 12/31 8:00 PM",
+      "location": "401 Cesar Chavez, San Francisco, CA",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.axs.com/search?endDate=&searchQuery=Swedish%2520House%2520Mafia",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "sfstation",
+      "scraped_at": "2025-12-22T16:29:25.412Z"
+    },
+    {
+      "id": 10,
+      "selected": false,
+      "title": "1000 Whispers From Our FutureAudium Theater of Sound",
+      "time_display": "Thursday 01/01 8:00 PM",
+      "location": "1616 Bush Street, San Francisco, CA",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.cityboxoffice.com/eventperformances.asp?evt=1760",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "sfstation",
+      "scraped_at": "2025-12-22T16:29:25.412Z"
+    },
+    {
+      "id": 11,
+      "selected": false,
+      "title": "New Year Holiday Party at The Midway with Wax Motif, AC Slater, David Carvalho, and more!The Midway",
+      "time_display": "Thursday 01/01 9:00 PM",
+      "location": "900 Marin Street, San Francisco, CA",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://luma.com/x6bhpxre",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "sfstation",
+      "scraped_at": "2025-12-22T16:29:25.412Z"
+    },
+    {
+      "id": 12,
+      "selected": false,
+      "title": "RESET 2026Public Works",
+      "time_display": "Friday 01/02 9:00 PM",
+      "location": "161 Erie Street, San Francisco, CA",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://tixr.com/groups/publicsf/reset2026",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "sfstation",
+      "scraped_at": "2025-12-22T16:29:25.412Z"
+    },
+    {
+      "id": 13,
+      "selected": false,
+      "title": "San Francisco New Year’s Eve Fireworks at Midnight (2025/2026)",
+      "time_display": "Wednesday 12/31 11:59 PM - 12:59 AM",
+      "location": "Embarcadero, San Francisco Bay Area",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/san-francisco-new-years-eve-fireworks/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2025-12-22T16:29:20.562Z"
+    },
+    {
+      "id": 14,
+      "selected": false,
+      "title": "SF’s DFT New Year’s Day: “Downtown First Thursdays” (2026)",
+      "time_display": "Thursday 01/01 5:00 PM - 10:00 PM",
+      "location": "2nd St & Howard St, San Francisco",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/sfs-dft-years-day-downtown-thursdays-2026/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2025-12-22T16:29:20.562Z"
+    },
+    {
+      "id": 15,
+      "selected": false,
+      "title": "2026 New Year’s Day “Hatsumode” Japanese Shrine Visit (SF)",
+      "time_display": "Thursday 01/01 11:00 AM - 4:00 PM",
+      "location": "Konko Church of San Francisco",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/2026-years-day-hatsumode-japanese-shrine-visit-sf/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2025-12-22T16:29:20.562Z"
+    },
+    {
+      "id": 16,
+      "selected": false,
+      "title": "SF’s Free DFT Monthly Block Party: “Downtown First Thursdays” (2026)",
+      "time_display": "Thursday 01/01 5:00 PM - 10:00 PM",
+      "location": "2nd Street between Market and Howard Streets, San Francisco",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/sfs-free-dft-monthly-block-party-downtown-thursdays-2026/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Downtown First Thursdays is back for a full year of street parties in 2026: Starting Jan 1, 2026 wit...",
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2025-12-22T16:29:20.563Z"
+    }
+  ]
+}
