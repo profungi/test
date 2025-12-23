@@ -64,23 +64,39 @@ class ExistingSummarizer {
 
   /**
    * 获取需要生成摘要的活动
+   * @param {Object} weekIdentifiers - 周标识符
+   * @param {boolean} allEvents - 是否处理所有活动（不限周）
    */
-  async getEventsNeedingSummary(weekIdentifiers) {
-    const sql = `
-      SELECT id, title, description, event_type, summary_en, summary_zh
-      FROM events
-      WHERE week_identifier IN (?, ?)
-        AND description IS NOT NULL
-        AND LENGTH(description) > 10
-        AND (summary_en IS NULL OR summary_en = '' OR summary_zh IS NULL OR summary_zh = '')
-      ORDER BY id ASC
-    `;
+  async getEventsNeedingSummary(weekIdentifiers, allEvents = false) {
+    let sql;
+    let args;
 
-    const result = await this.client.execute({
-      sql,
-      args: [weekIdentifiers.current, weekIdentifiers.next],
-    });
+    if (allEvents) {
+      // 处理所有缺失摘要的活动
+      sql = `
+        SELECT id, title, description, event_type, summary_en, summary_zh
+        FROM events
+        WHERE description IS NOT NULL
+          AND LENGTH(description) > 10
+          AND (summary_en IS NULL OR summary_en = '' OR summary_zh IS NULL OR summary_zh = '')
+        ORDER BY scraped_at DESC
+      `;
+      args = [];
+    } else {
+      // 只处理本周和下周的活动
+      sql = `
+        SELECT id, title, description, event_type, summary_en, summary_zh
+        FROM events
+        WHERE week_identifier IN (?, ?)
+          AND description IS NOT NULL
+          AND LENGTH(description) > 10
+          AND (summary_en IS NULL OR summary_en = '' OR summary_zh IS NULL OR summary_zh = '')
+        ORDER BY id ASC
+      `;
+      args = [weekIdentifiers.current, weekIdentifiers.next];
+    }
 
+    const result = await this.client.execute({ sql, args });
     return result.rows;
   }
 
@@ -102,18 +118,24 @@ class ExistingSummarizer {
 
   /**
    * 批量生成摘要
+   * @param {boolean} allEvents - 是否处理所有活动
    */
-  async run() {
+  async run(allEvents = false) {
     console.log('='.repeat(60));
     console.log('  批量生成活动摘要');
     console.log('='.repeat(60) + '\n');
 
     const weeks = this.getWeekIdentifiers();
-    console.log(`📅 本周: ${weeks.current}`);
-    console.log(`📅 下周: ${weeks.next}\n`);
+
+    if (allEvents) {
+      console.log(`📅 模式: 处理所有缺失摘要的活动\n`);
+    } else {
+      console.log(`📅 本周: ${weeks.current}`);
+      console.log(`📅 下周: ${weeks.next}\n`);
+    }
 
     // 获取需要处理的活动
-    const events = await this.getEventsNeedingSummary(weeks);
+    const events = await this.getEventsNeedingSummary(weeks, allEvents);
 
     if (events.length === 0) {
       console.log('✨ 所有活动都已有摘要，无需处理！');
@@ -215,7 +237,12 @@ class ExistingSummarizer {
 
 用法:
   node generate-summaries.js          # 为本周和下周活动生成摘要
+  node generate-summaries.js --all    # 为所有缺失摘要的活动生成摘要
   node generate-summaries.js --help   # 显示帮助
+
+选项:
+  --all, -a    处理所有缺失摘要的活动（不限于本周和下周）
+  --help, -h   显示帮助信息
 
 环境变量:
   TURSO_DATABASE_URL    Turso 数据库 URL
@@ -226,8 +253,12 @@ class ExistingSummarizer {
   GEMINI_API_KEY        Gemini API 密钥（备选）
   MISTRAL_API_KEY       Mistral API 密钥（备选）
 
+AI 服务优先级:
+  NewAPI → Gemini → Mistral
+
 说明:
-  此脚本会为本周和下周所有有描述但没有摘要的活动生成中英文摘要。
+  此脚本会为有描述但没有摘要的活动生成中英文摘要。
+  默认只处理本周和下周的活动，使用 --all 处理所有历史活动。
   摘要会直接写入 Turso 数据库。
   完成后可运行 npm run sync-from-turso 同步到本地。
 `);
@@ -243,9 +274,12 @@ async function main() {
     return;
   }
 
+  // 检查是否处理所有活动
+  const allEvents = args.includes('--all') || args.includes('-a');
+
   try {
     const summarizer = new ExistingSummarizer();
-    await summarizer.run();
+    await summarizer.run(allEvents);
   } catch (error) {
     console.error('❌ 发生错误:', error.message);
     process.exit(1);
