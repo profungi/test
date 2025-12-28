@@ -22,6 +22,7 @@ const Summarizer = require('./utils/summarizer');
 const EventbriteScraper = require('./scrapers/eventbrite-scraper');
 const SFStationScraper = require('./scrapers/sfstation-scraper');
 const FuncheapWeekendScraper = require('./scrapers/funcheap-weekend-scraper');
+const ConfigurableScraperManager = require('./scrapers/configurable-scraper-manager');
 
 const config = require('./config');
 
@@ -38,11 +39,19 @@ class EventScrapeOrchestrator {
     // 初始化摘要生成器（优先级：NewAPI → Gemini → Mistral）
     this.summarizer = new Summarizer();
 
-    this.scrapers = [
+    // 原有的爬虫
+    const legacyScrapers = [
       new EventbriteScraper(),
       new SFStationScraper(),
       new FuncheapWeekendScraper()
     ];
+
+    // 新的配置驱动爬虫
+    this.configurableManager = new ConfigurableScraperManager();
+    const configurableScrapers = this.configurableManager.getAllScrapers();
+
+    // 合并所有爬虫
+    this.scrapers = [...legacyScrapers, ...configurableScrapers];
 
     // 设置抓取哪一周: 'current' 或 'next' (默认)
     this.targetWeek = options.week || 'next';
@@ -57,9 +66,18 @@ class EventScrapeOrchestrator {
     try {
       // 1. 连接数据库
       await this.database.connect();
-      
+
       // 2. 并行抓取所有数据源
-      const allEvents = await this.scrapeAllSources();
+      const scrapedEvents = await this.scrapeAllSources();
+
+      // 3. 生成固定时间活动
+      const weekRange = this.targetWeek === 'current'
+        ? this.scrapers[0].getCurrentWeekRange()
+        : this.scrapers[0].getNextWeekRange();
+      const recurringEvents = this.configurableManager.generateRecurringEvents(weekRange);
+
+      // 合并所有活动
+      const allEvents = [...scrapedEvents, ...recurringEvents];
 
       if (allEvents.length === 0) {
         console.log('❌ 没有找到任何活动');
