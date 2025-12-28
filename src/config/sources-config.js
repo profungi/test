@@ -171,13 +171,358 @@ module.exports = {
       cacheMinutes: 43200
     },
     {
-      name: 'morganhill mushroom',
+      name: 'morganhillmushroom',
       displayName: 'Morgan Hill Mushroom Mardi Gras',
       priority: 2,
       enabled: true,
       frequency: 'seasonal',
       activeMonths: [5], // May (Memorial Day weekend)
       url: 'https://morganhillmushroomfestival.org/',
+      extractionType: 'single',
+      cacheMinutes: 43200
+    },
+    {
+      name: 'mvobon',
+      displayName: 'Mountain View Obon Festival',
+      priority: 2,
+      enabled: true,
+      frequency: 'seasonal',
+      activeMonths: [7, 8], // July-August
+      url: 'https://obon.mvbuddhisttemple.org/',
+      extractionType: 'single',
+      cacheMinutes: 43200
+    },
+    {
+      name: 'pistahan',
+      displayName: 'Pistahan Festival (Filipino)',
+      priority: 2,
+      enabled: true,
+      frequency: 'seasonal',
+      activeMonths: [7, 8], // Usually August
+      url: 'https://www.pistahan.net/',
+      extractionType: 'single',
+      cacheMinutes: 43200
+    },
+    {
+      name: 'sjcincodemayosalsa',
+      displayName: 'Cinco de Mayo Salsa Fest',
+      priority: 2,
+      enabled: true,
+      frequency: 'seasonal',
+      activeMonths: [4, 5], // April-May
+      url: 'https://cincodemayosanjose.com/',
+      extractionType: 'single',
+      cacheMinutes: 43200
+    },
+    {
+      name: 'sanmateocountyfair',
+      displayName: 'San Mateo County Fair',
+      priority: 1,
+      enabled: true,
+      frequency: 'seasonal',
+      activeMonths: [5, 6], // Usually June
+      url: 'https://sanmateocountyfair.com/',
+      extractionType: 'single',
+      cacheMinutes: 43200
+    },
+    {
+      name: 'alamedacountyfair',
+      displayName: 'Alameda County Fair',
+      priority: 2,
+      enabled: true,
+      frequency: 'seasonal',
+      activeMonths: [6, 7], // Usually June-July
+      url: 'https://annual.alamedacountyfair.com/',
+      extractionType: 'single',
+      cacheMinutes: 43200
+    },
+    {
+      name: 'svopenstudios',
+      displayName: 'Silicon Valley Open Studios',
+      priority: 2,
+      enabled: true,
+      frequency: 'seasonal',
+      activeMonths: [4, 5], // May
+      url: 'https://svos.org/',
+      extractionType: 'single',
+      cacheMinutes: 43200
+    },
+    {
+      name: 'gilroygarlic',
+      displayName: 'Gilroy Garlic Festival',
+      priority: 2,
+      enabled: true,
+      frequency: 'seasonal',
+      activeMonths: [7, 8], // Usually late July
+      url: 'https://visitgilroy.com/gilroy-garlic-festival/',
+      extractionType: 'single',
+      cacheMinutes: 43200
+    },
+    {
+      name: 'sfpride',
+      displayName: 'SF Pride',
+      priority: 1,
+      enabled: true,
+      frequency: 'seasonal',
+      activeMonths: [5, 6], // June
+      url: 'https://sfpride.org/',
+      extractionType: 'single',
+      cacheMinutes: 43200
+    },
+    {
+      name: 'trebanightmarket',
+      displayName: 'TREBA Night Market',
+      priority: 2,
+      enabled: true,
+      frequency: 'seasonal',
+      activeMonths: [8, 9], // September
+      url: 'https://www.sanjosemade.com/pages/treba-night-market-2025',
+      extractionType: 'single',
+      cacheMinutes: 43200
+    },
+    {
+      name: 'poblaadoresnightmarket',
+      displayName: 'Pobladores Night Market',
+      priority: 2,
+      enabled: true,
+      frequency: 'seasonal',
+      activeMonths: [6, 7], // June-July
+      url: 'https://sjdowntown.com/pobladores-night-market/',
+      extractionType: 'single',
+      cacheMinutes: 43200
+    },
+
+    // ========== 三番大型节日/街市 ==========
+    {
+      name: 'carnavalsf',
+      displayName: 'Carnaval San Francisco',
+      priority: 1,
+      enabled: true,
+      frequency: 'seasonal',
+      activeMonths: [5], // May (Memorial Day weekend)
+      url: 'https://carnavalsanfrancisco.org/',
+      extractionType: 'single',
+      cacheMinutes: 43200
+    },
+    {
+      name: 'northbeachfestival',
+      displayName: 'North Beach Festival',
+      priority: 1,
+      enabled: true,
+      frequency: 'seasonal',
+      activeMonths: [6], // June (Father's Day weekend)
+      url: 'https://www.northbeachfestival.org/',
+      extractionType: 'single',
+      cacheMinutes: 43200
+    },
+    {
+      name: 'folsomstreetfair',
+      displayName: 'Folsom Street Fair',
+      priority: 1,
+      enabled: true,
+      frequency: 'seasonal',
+      activeMonths: [9], // September (last Sunday)
+      url: 'https://www.folsomstreet.org/',
+      extractionType: 'single',
+      cacheMinutes: 43200
+    },
+    {
+      name: 'nihonmachistreetfair',
+      displayName: 'Nihonmachi Street Fair (Japantown)',
+      priority: 2,
+      enabled: true,
+      frequency: 'seasonal',
+      activeMonths: [8], // August
+      url: 'https://www.nihonmachistreetfair.org/',
+      extractionType: 'single',
+      cacheMinutes: 43200
+    },
+
+    // ========== 东湾节日/活动 ==========
+    {
+      name: 'oaklandfirstfridays',
+      displayName: 'Oakland First Fridays',
+      priority: 1,
+      enabled: true,
+      frequency: 'monthly',
+      url: 'https://www.oaklandfirstfridays.org/',
+      extractionType: 'list',
+      cacheMinutes: 10080 // 7 days
+    },
+    {
+      name: 'berkeleysolanostroll',
+      displayName: 'Berkeley Solano Avenue Stroll',
+      priority: 1,
+      enabled: true,
+      frequency: 'seasonal',
+      activeMonths: [9], // September (second Sunday)
+      url: 'https://www.solanoavenueassn.org/events/solano-avenue-stroll/',
+      extractionType: 'single',
+      cacheMinutes: 43200
+    },
+    {
+      name: 'oaklandgreekfestival',
+      displayName: 'Oakland Greek Festival',
+      priority: 2,
+      enabled: true,
+      frequency: 'seasonal',
+      activeMonths: [5], // May
+      url: 'https://www.visitoakland.com/events/annual-events/oakland-greek-festival/',
+      extractionType: 'single',
+      cacheMinutes: 43200
+    },
+
+    // ========== 希腊文化节 ==========
+    {
+      name: 'belmontgreekfestival',
+      displayName: 'Belmont Greek Festival',
+      priority: 2,
+      enabled: true,
+      frequency: 'seasonal',
+      activeMonths: [8, 9], // August-September
+      url: 'https://www.belmontgreekfestival.com/',
+      extractionType: 'single',
+      cacheMinutes: 43200
+    },
+
+    // ========== 半岛节日 ==========
+    {
+      name: 'pacificafogfest',
+      displayName: 'Pacifica Fog Fest',
+      priority: 2,
+      enabled: true,
+      frequency: 'seasonal',
+      activeMonths: [9], // September
+      url: 'https://www.visitpacifica.com/events',
+      extractionType: 'list',
+      cacheMinutes: 43200
+    },
+    {
+      name: 'redwoodcitymusic',
+      displayName: 'Redwood City Music on the Square',
+      priority: 2,
+      enabled: true,
+      frequency: 'seasonal',
+      activeMonths: [5, 6, 7, 8], // Summer series
+      url: 'https://www.redwoodcity.org/residents/redwood-city-events/music/music-on-the-square',
+      extractionType: 'list',
+      cacheMinutes: 43200
+    },
+
+    // ========== 中国文化节日 ==========
+    {
+      name: 'sfchinesenewyear',
+      displayName: 'SF Chinese New Year Parade & Festival',
+      priority: 1,
+      enabled: true,
+      frequency: 'seasonal',
+      activeMonths: [1, 2], // January-February (varies by lunar calendar)
+      url: 'https://chineseparade.com/',
+      extractionType: 'single',
+      cacheMinutes: 43200
+    },
+    {
+      name: 'sfmoonfestival',
+      displayName: 'SF Chinatown Autumn Moon Festival',
+      priority: 1,
+      enabled: true,
+      frequency: 'seasonal',
+      activeMonths: [9, 10], // September-October (varies by lunar calendar)
+      url: 'https://www.moonfestival.org/',
+      extractionType: 'single',
+      cacheMinutes: 43200
+    },
+
+    // ========== 意大利文化节 ==========
+    {
+      name: 'sfitalianheritage',
+      displayName: 'SF Italian Heritage Festival & Parade',
+      priority: 1,
+      enabled: true,
+      frequency: 'seasonal',
+      activeMonths: [10], // October (Columbus Day weekend)
+      url: 'https://sfitalianheritage.org/',
+      extractionType: 'single',
+      cacheMinutes: 43200
+    },
+    {
+      name: 'festaitaliana',
+      displayName: 'Festa Italiana (North Beach)',
+      priority: 2,
+      enabled: true,
+      frequency: 'seasonal',
+      activeMonths: [5, 6], // May-June
+      url: 'https://sfiacfoundation.org/festa',
+      extractionType: 'single',
+      cacheMinutes: 43200
+    },
+    {
+      name: 'italianfamilyfesta',
+      displayName: 'Italian Family Festa (San Jose)',
+      priority: 2,
+      enabled: true,
+      frequency: 'seasonal',
+      activeMonths: [8, 9], // August-September
+      url: 'https://www.italianfamilyfestasj.org/',
+      extractionType: 'single',
+      cacheMinutes: 43200
+    },
+
+    // ========== 德国文化节 (Oktoberfest) ==========
+    {
+      name: 'mvoktoberfest',
+      displayName: 'Mountain View Oktoberfest',
+      priority: 1,
+      enabled: true,
+      frequency: 'seasonal',
+      activeMonths: [9, 10], // September-October
+      url: 'https://www.mvoktoberfest.com/',
+      extractionType: 'single',
+      cacheMinutes: 43200
+    },
+    {
+      name: 'campbelloktoberfest',
+      displayName: 'Campbell Oktoberfest',
+      priority: 2,
+      enabled: true,
+      frequency: 'seasonal',
+      activeMonths: [9, 10], // September-October
+      url: 'https://campbelloktoberfest.com/',
+      extractionType: 'single',
+      cacheMinutes: 43200
+    },
+    {
+      name: 'redwoodcityoktoberfest',
+      displayName: 'Redwood City Oktoberfest',
+      priority: 2,
+      enabled: true,
+      frequency: 'seasonal',
+      activeMonths: [9], // September
+      url: 'https://www.redwoodcity.org/residents/redwood-city-events/oktoberfest',
+      extractionType: 'single',
+      cacheMinutes: 43200
+    },
+    {
+      name: 'oaktoberfest',
+      displayName: 'Oaktoberfest (Oakland Dimond)',
+      priority: 2,
+      enabled: true,
+      frequency: 'seasonal',
+      activeMonths: [10], // October
+      url: 'https://www.oaktoberfest.org/',
+      extractionType: 'single',
+      cacheMinutes: 43200
+    },
+
+    // ========== 法国文化节 ==========
+    {
+      name: 'bastilledaysf',
+      displayName: 'Bastille Day SF Festival',
+      priority: 1,
+      enabled: true,
+      frequency: 'seasonal',
+      activeMonths: [7], // July (14th)
+      url: 'https://celebratebastilledaysf.org/',
       extractionType: 'single',
       cacheMinutes: 43200
     }
