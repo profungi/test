@@ -314,7 +314,119 @@ class UniversalScraper {
   }
 
   /**
-   * 使用AI从任意网站提取活动信息
+   * 使用AI从列表页提取多个活动
+   * @param {string} url - 活动列表页URL
+   * @returns {Promise<Array>} - 活动数组
+   */
+  async scrapeListPageWithAI(url) {
+    try {
+      console.log('🤖 Using AI to extract multiple events from list page...');
+
+      // 1. 获取网页HTML
+      const httpResponse = await axios.get(url, {
+        headers: {
+          'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
+        },
+        timeout: 15000
+      });
+
+      const html = httpResponse.data;
+      const $ = cheerio.load(html);
+
+      // 2. 清理HTML
+      $('script, style, nav, footer, header, aside, .ad, .advertisement').remove();
+
+      const bodyText = $('body').text()
+        .replace(/\s+/g, ' ')
+        .trim()
+        .substring(0, 6000); // 增加到6000字符以包含更多活动
+
+      // 3. 使用AI提取结构化信息 - 返回数组
+      const messages = [
+        {
+          role: 'user',
+          content: `Extract ALL events from this events listing page.
+
+Web page URL: ${url}
+
+Web page content:
+${bodyText}
+
+Please extract and return ONLY a JSON array with this exact format (no markdown, no explanation):
+[
+  {
+    "title": "Event title",
+    "startTime": "2025-11-15T10:00:00.000Z",
+    "endTime": "2025-11-15T18:00:00.000Z",
+    "location": "Full address or venue name with city",
+    "price": "Free" or "$20" or null,
+    "description": "Brief description of the event (1-2 sentences)"
+  },
+  ...
+]
+
+Important:
+- Extract ALL events you can find on this page
+- startTime and endTime must be in ISO 8601 format (YYYY-MM-DDTHH:MM:SS.000Z)
+- If you cannot determine endTime, set it to null
+- If the event is free, use "Free" for price
+- If price is not mentioned, set it to null
+- Location should include city name
+- Keep description concise
+- Return an empty array [] if no events found`
+        }
+      ];
+
+      const response = await this.translator.aiService.chatCompletion(messages, {
+        temperature: 0.1,
+        maxTokens: 2000 // 增加token以支持多个活动
+      });
+
+      const result = response.content;
+
+      // 解析AI返回的JSON数组
+      let eventsData;
+      try {
+        eventsData = JSON.parse(result);
+      } catch (e) {
+        // 如果失败，尝试提取JSON部分
+        const jsonMatch = result.match(/\[[\s\S]*\]/);
+        if (jsonMatch) {
+          eventsData = JSON.parse(jsonMatch[0]);
+        } else {
+          throw new Error('Failed to parse AI response as JSON array');
+        }
+      }
+
+      // 确保是数组
+      if (!Array.isArray(eventsData)) {
+        throw new Error('AI response is not an array');
+      }
+
+      // 转换为标准格式
+      const events = eventsData.map(event => ({
+        title: event.title,
+        startTime: event.startTime,
+        endTime: event.endTime || null,
+        location: event.location,
+        price: event.price || null,
+        description: event.description || null,
+        originalUrl: url,
+        _source_website: url,
+        _manually_added: true,
+        _extraction_method: 'ai_list'
+      }));
+
+      console.log(`✅ AI extracted ${events.length} events from list page`);
+      return events;
+
+    } catch (error) {
+      throw new Error(`AI list extraction failed: ${error.message}`);
+    }
+  }
+
+  /**
+   * 使用AI从任意网站提取活动信息（单个活动）
    */
   async scrapeWithAI(url) {
     try {
