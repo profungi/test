@@ -103,7 +103,22 @@ class ConfigurableScraper extends BaseScraper {
       }
     }
 
-    return events;
+    // 时间过滤和规范化（使用BaseScraper的方法，与其他scrapers保持一致）
+    const validEvents = [];
+    for (const event of events) {
+      // 1. 时间验证
+      if (!this.isValidEventTime(event.startTime, weekRange)) {
+        console.log(`   ⏰ 跳过（时间不在范围）: ${event.title} (${event.startTime || 'no date'})`);
+        continue;
+      }
+
+      // 2. 规范化事件数据（清理location等）
+      const normalizedEvent = this.normalizeEvent(event, weekRange);
+      validEvents.push(normalizedEvent);
+    }
+
+    console.log(`   ⏰ 时间过滤: ${events.length} → ${validEvents.length} 个活动`);
+    return validEvents;
   }
 
   /**
@@ -159,10 +174,10 @@ class ConfigurableScraper extends BaseScraper {
       }
     }
 
-    // 提取地点
+    // 提取地点（不使用fallback，找不到就留空，让BaseScraper的normalizeEvent处理）
     let location = '';
     if (selectors.location) {
-      location = this.extractCleanLocation($, $container, [selectors.location], 'San Francisco Bay Area');
+      location = this.extractCleanLocation($, $container, [selectors.location], '');
     }
 
     // 提取描述
@@ -222,9 +237,9 @@ class ConfigurableScraper extends BaseScraper {
         }
       }
 
-      // 更新地点
+      // 更新地点（不使用fallback）
       if (detailSelectors.location && !rawEvent.location) {
-        detailEvent.location = this.extractCleanLocation($, $('body'), [detailSelectors.location], 'San Francisco Bay Area');
+        detailEvent.location = this.extractCleanLocation($, $('body'), [detailSelectors.location], '');
       }
 
       // 提取价格
@@ -284,23 +299,57 @@ class ConfigurableScraper extends BaseScraper {
    * 判断是否应该跳过这个事件
    */
   shouldSkipEvent(event) {
-    if (!this.config.filters) {
-      return false;
-    }
+    const titleLower = (event.title || '').toLowerCase().trim();
 
-    const filters = this.config.filters;
+    // 通用验证规则（适用于所有源）
+    // 1. 过滤无效标题（导航、UI元素等）
+    const invalidTitles = [
+      'make your plans',
+      'upcoming events',
+      'calendar',
+      'subscribe',
+      'contact us',
+      'more events',
+      'view all',
+      'load more',
+      'show more',
+      'event calendar',
+      'all events'
+    ];
 
-    // 检查标题长度
-    if (filters.minTitleLength && event.title.length < filters.minTitleLength) {
+    if (invalidTitles.some(invalid => titleLower === invalid || titleLower.includes(invalid))) {
+      console.log(`   ⚠️  跳过（无效标题）: ${event.title}`);
       return true;
     }
 
-    // 检查是否在跳过列表中
-    if (filters.skipTitles) {
-      for (const skipTitle of filters.skipTitles) {
-        if (event.title.toLowerCase().includes(skipTitle.toLowerCase())) {
-          console.log(`   ⏭️  Skipping: "${event.title}" (matches filter: "${skipTitle}")`);
-          return true;
+    // 2. 标题太短（可能是UI元素）
+    if (titleLower.length < 5) {
+      console.log(`   ⚠️  跳过（标题太短）: ${event.title}`);
+      return true;
+    }
+
+    // 3. 必须有URL（没有URL可能是占位符）
+    if (!event.originalUrl || event.originalUrl.trim().length === 0) {
+      console.log(`   ⚠️  跳过（无URL）: ${event.title}`);
+      return true;
+    }
+
+    // 配置化的过滤规则（可选）
+    if (this.config.filters) {
+      const filters = this.config.filters;
+
+      // 检查标题长度
+      if (filters.minTitleLength && event.title.length < filters.minTitleLength) {
+        return true;
+      }
+
+      // 检查是否在跳过列表中
+      if (filters.skipTitles) {
+        for (const skipTitle of filters.skipTitles) {
+          if (event.title.toLowerCase().includes(skipTitle.toLowerCase())) {
+            console.log(`   ⏭️  跳过（配置过滤）: "${event.title}" (matches: "${skipTitle}")`);
+            return true;
+          }
         }
       }
     }
