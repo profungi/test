@@ -1,0 +1,711 @@
+{
+  "review_id": "review_2025-12-29_1642_sku",
+  "generated_at": "2025-12-29T16:42:21.287Z",
+  "scrape_date": "2025-12-29",
+  "target_week": "2026-01-05_to_2026-01-11",
+  "target_week_readable": "下周 (01/05 - 01/11)",
+  "scraping_report": {
+    "total_scraped": 40,
+    "after_deduplication": 33,
+    "after_classification": 33,
+    "classification_report": {
+      "totalEvents": 33,
+      "eventTypes": {
+        "festival": 7,
+        "free": 15,
+        "fair": 1,
+        "art": 5,
+        "food": 2,
+        "music": 1,
+        "other": 1,
+        "market": 1
+      },
+      "priorityLevels": {
+        "3": 1,
+        "4": 1,
+        "5": 5,
+        "6": 2,
+        "9": 15,
+        "10": 9
+      },
+      "chineseRelevant": 0,
+      "topPriorityEvents": 24
+    }
+  },
+  "instructions": {
+    "how_to_review": "将你想要发布的活动的 'selected' 字段改为 true",
+    "next_step": "保存文件后运行: npm run generate-post [此文件路径]",
+    "fields_explanation": {
+      "title": "活动标题",
+      "time_display": "显示用的时间格式",
+      "location": "活动地点",
+      "price": "票价信息",
+      "event_type": "AI识别的活动类型",
+      "priority": "优先级分数 (越高越重要)",
+      "chinese_relevant": "是否与中文社区相关",
+      "original_url": "原始活动链接"
+    }
+  },
+  "stats": {
+    "total_candidates": 32,
+    "by_type": {
+      "festival": 7,
+      "fair": 1,
+      "market": 1,
+      "free": 15,
+      "food": 2,
+      "art": 5,
+      "other": 1
+    },
+    "by_priority": {
+      "3": 1,
+      "5": 5,
+      "6": 2,
+      "9": 15,
+      "10": 9
+    },
+    "chinese_relevant": 0
+  },
+  "events": [
+    {
+      "id": 1,
+      "selected": false,
+      "title": "W HOTEL New Years Eve San Francisco 2026",
+      "time_display": "Monday 01/05 4:35 PM",
+      "location": "W San Francisco, 181 3rd Street, San Francisco, CA 94103",
+      "price": "$158 – $300",
+      "event_type": "festival",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/w-hotel-new-years-eve-san-francisco-2026-tickets-1450455684999?aff=ebdssbdestsearch",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "San Francisco’s # 1 New Years Eve Party! FIVE SEPARATE ROOMS, 10 DJs, OPEN BAR, a MEGA, Must attend ...",
+      "description_detail": "San Francisco’s # 1 New Years Eve Party! FIVE SEPARATE ROOMS, 10 DJs, OPEN BAR, a MEGA, Must attend NYE Event!Aykut Events NYE International Ball 2026W Hotel San Francisco New Year's Eve CelebrationLooking for the best New Years Eve Party that San Francisco has to offer? Aykut Events known by organizing the MOST fun and absolutely best NYE Events in The Bay Area. This will be the Premier New Years Eve celebration in San Francisco again by far! One of a Kind...- FIVE Separate Rooms w/ 10 DJs- OPEN BAR ALL NIGHT- Multiple Balloon Drops at Midnight- Dancers, Drummers- A Special Photo Booth, Red Carpet, NYE Party Favors & Much More!San Francisco’s # 1 New Years Eve Party!!___________** FIVE SEPARATE ROOMS **ROOM # 1 - EDM / HOUSE / TOP 40 / CLUB ANTHEMSKBLO, AYKUT, DR T, TURKER_______________________ROOM # 2 - LATIN ROOMSANTERO… Reggaeton, Latin, Salsa, Merengue,Tropical, Pop Latino, Rock en Español._______________________ROOM # 3 - HIP HOP / MASHUP / 80's-90's ROOM w/ DJs:KEVIN ARMSTRONGD DOUBLE J_______________________ROOM # 4 - PERSIAN / MIDDLE EASTERN ROOM:DR T, NITRO_______________________ROOM # 5 - VIP ROOM:DJ GREGORY SMITH_______________________PICTURES FROM OUR PREVIOUS SOLD-OUT NYE EVENTS:2025 – W HOTEL2024 - W HOTEL2023 – W HOTELMORE!_____________________Gorgeous, Over The Top, Amazing, Magnificent‘W HOTEL SAN FRANCISCO’What a wonderful Venue to welcome the NEW YEAR!Our NYE Event sells out every year in advance. Secure your tickets now while they last and be part of the BEST!_____________________VISIT OUR WEB SITE FOR MOREAYKUTEVENTS.COM#NewYearsEve #NewYearsEveParty #NYE #NYEParty#Party #2025 #2026 #SF #SanFrancisco #Event #Festival #Music- 21 & Up only.- NO REFUNDS. ALL SALES FINAL!Release of Liability:By purchasing tickets through Eventbrite, you agree to release and forever discharge the Promoter, along with its officers and agents, from any liability or claims for damages that may arise from your attendance and voluntary participation in the event(s). This includes claims for personal injury, damage to personal property, or negligence on the part of the Promoter.It is understood that purchasing tickets and participating in the event does not constitute an assumption of responsibility, liability, or control by the Promoter over the event.Indemnity and Release:By purchasing tickets for this event, the ticket holder agrees to indemnify and hold harmless the event Promoter, along with its officers, owners, employees, and agents, from and against all claims, damages, losses, and expenses, including reasonable attorney’s fees, arising out of or related to compliance with this indemnity clause.The ticket holder, along with their heirs, executors, administrators, successors, and assigns, hereby releases, discharges, and forever waives any and all actions, causes of action, suits, debts, judgments, claims, demands, or liabilities, known or unknown, in law or equity, which they have ever had, now have, or may have against the event Promoter and its affiliated entities, owners, officers, employees, or agents.Support:If you experience an issue at the event, you must submit a complaint to the Promoter within 5 calendar days after the event date. Failure to do so will result in a complete waiver of your right to request compensation, whether monetary or otherwise.For customer support, please contact the Promoter at: info@aykutevents.comPhotography & Multimedia Disclaimer:By participating in our event, you agree to the following,Aykut Events reserves the right to use any photographs, videography, or other recordings taken at any event hosted or associated with Aykut Events or its affiliates. This includes the right to use such images without the written permission of those depicted.These images may be included in various media produced, used, or contracted by Aykut Events, such as magazines, websites, social media, blogs, presentations, and other marketing materials.Read moreCategory: Holiday, New Years Eve",
+      "source": "eventbrite",
+      "scraped_at": "2025-12-29T16:39:54.023Z"
+    },
+    {
+      "id": 2,
+      "selected": false,
+      "title": "The Grand Affair NYE 2026 Celebration",
+      "time_display": "Monday 01/05 4:35 PM",
+      "location": "The Grand Nightclub, 520 4th Street, San Francisco, CA 94107",
+      "price": "From $23.13",
+      "event_type": "fair",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/the-grand-affair-nye-2026-celebration-tickets-1975366093160?aff=ebdssbdestsearch",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "On Wednesday, Dec 31st, the classiest of revelers will be celebrating the dawn of 2026 at our red-ca...",
+      "description_detail": "On Wednesday, Dec 31st, the classiest of revelers will be celebrating the dawn of 2026 at our red-carpet event fitting of this Grand Affair.Read moreCategory: Holiday, New Years Eve",
+      "source": "eventbrite",
+      "scraped_at": "2025-12-29T16:39:54.024Z"
+    },
+    {
+      "id": 3,
+      "selected": false,
+      "title": "Above It All - Glitter & Gold NYE 2026 Rooftop Celebration",
+      "time_display": "Monday 01/05 4:35 PM",
+      "location": "Charmaine's Rooftop Bar & Lounge, 45 McAllister Street, San Francisco, CA 94102",
+      "price": "$20.26 – $40",
+      "event_type": "festival",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/above-it-all-glitter-gold-nye-2026-rooftop-celebration-tickets-1970027620645?aff=ebdssbdestsearch",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Charmaine's hosts the ultimate New Year's Eve rooftop celebration feat. cocktails, house music and o...",
+      "description_detail": "Charmaine's hosts the ultimate New Year's Eve rooftop celebration feat. cocktails, house music and one of the best views in San FranciscoThe team with Above It All returns to Charmaine's, our favorite rooftop on planet earth, for a spectacular New Year's Eve blowout! Dj Hawthorne (EndUp/Mezzanine) brings the groove with hosts Nick Sincere and Suzan Revah to keep the party moving. Along with our special guest AVERY DANIELS - this promises to be the spot to ring in 2026! Arrive early and stay late!This year's theme is GLITTER & GOLD! So lean into it! We'll host a complimentary champagne toast at midnight and deliver a few fun surprises along the way.Times are tough. We get it. We feel it. Consequently, we are keeping these ticket prices as low as possible. We have partnered with Charmaine's to give everyone the BEST party at the BEST possible price. Space is limited!Things to rememeber: The Elevator to the roof can only go so fast and carry so many. It's important to stagger the arrivals. Here's how it works:Three Tiers of TicketsEarly Bird Discount $20.26 <> MUST ARRIVE BEFORE 10:00pmEarly Bird General $30.00 <> MUST ARRIVE BEFORE 10:30pmVip/Priority $40.00 <> ENCOURAGED TO ARRIVE AFTER 10:30pm*Note: Those who purchase VIP/Priority will be given priorty to the elevator not matter when they arrive. We might have tickets at the door depending on capacity but we are NOT going to pack the place so folks can't move around and ewnjoy themselves. SPACE IS TRULY LIMITEDWHAT IF IT RAINS?! Well, if it rains, we're still going to do what we can to have a good time and celebrate the arrival of the New Year. This is happening RAIN OR SHINE. However, if it rains, the firepits will be covered and we'll be dancing under tents.DRESS ACCORDINGLY. PRAY FOR A BEAUTIFUL SAN FRANCISCO NIGHT21+ Only <> Party until 2:00amParking is too expensive for just don't do it. Take an UBER.Read moreCategory: Holiday, New Years Eve",
+      "source": "eventbrite",
+      "scraped_at": "2025-12-29T16:39:54.024Z"
+    },
+    {
+      "id": 4,
+      "selected": false,
+      "title": "MOANY NYE 2026 @ The Regency Ballroom San Francisco",
+      "time_display": "Monday 01/05 4:35 PM",
+      "location": "The Regency Ballroom, 1300 Van Ness Avenue, San Francisco, CA 94109",
+      "price": "From $37.92",
+      "event_type": "festival",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/moany-nye-2026-the-regency-ballroom-san-francisco-tickets-1790525051629?aff=ebdssbdestsearch",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "The Best New Years Eve Midnight Experience In San Francisco!🎆 MOANY 2026 - New Year’s Eve in San Fr...",
+      "description_detail": "The Best New Years Eve Midnight Experience In San Francisco!🎆 MOANY 2026 - New Year’s Eve in San Francisco📍 The City’s #1 NYE Destination - 23 Years StrongStep into a legendary San Francisco tradition this New Year’s Eve at MOANY 2026, the 23rd Annual Massive Big Room NYE Celebration 🥂✨. This is Northern California’s most anticipated NYE party, where thousands gather to welcome the new year in pure style, energy, and spectacle.🌐 New for 2026 - 360° Stage + Ultra VIP DeckFor the first time ever, we’re introducing a full 360° stage in the main room, bringing you closer to the music than ever before 🔥. Elevate your experience with our brand-new Ultra VIP Viewing Deck , the most exclusive vantage point in the house.🎇 The Midnight Moment You’ll Never ForgetWhen the clock strikes twelve, get ready for the ultimate NYE countdown:– 🎊 Massive Confetti Blast– 🎈 Epic Balloon Drop– 🔥 Lasers + Mega LED Wall– 💥 Insane Festival-Level ProductionThis is the biggest and best NYE midnight experience in the Bay Area, period.🎧 3 Rooms of Music • Headliners from Vegas & the Bay🔥 Headlining: Romeo Reyes (Las Vegas)🔥 All-Star Bay Area Lineup: Papi Chulo • Zuhnddry • Brian V • BRN • Suave4k • IsThatJerel • ChazMultiple stages. Nonstop music. All vibes covered.📸 Capture Every Moment– 📷 Photo Booths– 🔄 360° Booth– 🎭 NYE Props & Decor🥇 Why MOANY?For over two decades, MOANY has set the standard for New Year’s Eve in San Francisco — blending massive production, elite talent, and an unbeatable crowd. This year, we’re leveling up to new heights.🎟️ Tickets & VIP Tables are limited - secure your spot early and be part of the #1 New Year’s Eve Party in Northern California.**TABLE SERVICE PACKAGES & GROUP RATES AVAILABLE.**For more information refer to ticket information section or email info@socialsf.net. Call/Text/WhatsApp: +1 415-706-6079Read moreCategory: Holiday, New Years Eve",
+      "source": "eventbrite",
+      "scraped_at": "2025-12-29T16:39:54.025Z"
+    },
+    {
+      "id": 5,
+      "selected": false,
+      "title": "New Years Eve Extravaganza XII w/ Chuy Gomez, Kilo, Dwayne Taylor",
+      "time_display": "Monday 01/05 4:38 PM",
+      "location": "Downtown San Jose Marriott Hotel, 301 S. Market Street, San Jose, CA 95113",
+      "price": "From $103.22",
+      "event_type": "festival",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/new-years-eve-extravaganza-xii-w-chuy-gomez-kilo-dwayne-taylor-tickets-1637176040609?aff=ebdssbdestsearch",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "12 years at the Marriott and we are doing it again!🎉 Join us for the ultimate New Year's Eve celebr...",
+      "description_detail": "12 years at the Marriott and we are doing it again!🎉 Join us for the ultimate New Year's Eve celebration at the San Jose Downtown Marriott Hotel! 🎉Taylor Productions and Kilo Enterprises proudly present the #1 New Year's Eve Party in San Jose, and this year, we're aiming to make it the most unforgettable event yet! We've been ranked as the #3 New Year's Eve party in the city, but with your support, we're determined to claim the top spot!🎧 Party with DJ Brotha Reese, Scotty Fox and DJ Chuy Gomez 🎧Get ready to dance the night away with the hottest beats from our incredible lineup of DJs. DJ Brotha Reese, Scotty Fox and DJ Chuy Gomez will be spinning the latest tracks, Oldschool, R&B, Salsa and Grownfolks music ensuring an electrifying atmosphere and an epic countdown to midnight! Party starts at 8:00pm and we party until 2:00am in the morning.🍾 Free Champagne Toast 🍾Raise your glasses and toast to the new year with a complimentary glass of champagne! We'll provide the bubbly so that you can kick off 2026 in style.🎁 Party Favors 🎁To add even more excitement to the night, we'll be handing out festive party favors. Brace yourself for an abundance of fun surprises that will enhance your New Year's Eve experience!🍽️ Free Hors d'oeuvres 🍽️Indulge in delectable bites throughout the evening with our complimentary hors d'oeuvres. Our culinary team will tantalize your taste buds, ensuring that your appetite is satisfied while you celebrate. (21 and above Only. No kids or adults that act like kids)💼 Room Specials at the 5-star Downtown Marriott Hotel 💼Make the most of your New Year's Eve experience by taking advantage of our exclusive room specials. For just $189.00, enjoy the luxurious accommodations of the 5-star Downtown Marriott Hotel. Extend the festivities and revel in comfort and convenience just steps away from the party! (Note when booking a room using the Moble App. you may have to click on Full Site to book CheckOUT Night)Save $100 off of regular Bottle Service Prices when you buy a Table for Four (6) in advance!Don't miss out on this incredible opportunity to be part of the #1 New Year's Eve Party in San Jose! Mark your calendars for December 31st and join us at the San Jose Downtown Marriott Hotel for an evening of pure excitement and celebration.For more information and to reserve your tickets, visit our www.taylorrocks.com or contact us at 408 690-5999. Let's make this New Year's Eve the most memorable one yet! 🎉Read moreCategory: Holiday, New Years Eve",
+      "source": "eventbrite",
+      "scraped_at": "2025-12-29T16:39:54.028Z"
+    },
+    {
+      "id": 6,
+      "selected": false,
+      "title": "New Years Eve 2026",
+      "time_display": "Monday 01/05 4:38 PM",
+      "location": "SP2 Communal Bar + Restaurant, 72 N Almaden Ave, San Jose, CA 95110",
+      "price": "From $12.51",
+      "event_type": "festival",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/new-years-eve-2026-tickets-1976683595846?aff=ebdssbdestsearch",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Close out the year where the lights hit different and the energy stays high. NYE at SP2 — good music...",
+      "description_detail": "Close out the year where the lights hit different and the energy stays high. NYE at SP2 — good music, good people, unforgettable moments.SP2 Communal Bar & Restaurant + Heavy Arsenal Present✨ NYE 2026 ✨The 11th Annual Black & White BallRing in the New Year at one of San Jose’s most anticipated NYE traditions. The Black & White Ball returns for its 11th year, bringing together style, sound, and celebration under one roof at SP2.This year, we’re setting the tone with an elite lineup spanning the Bay Area to Las Vegas, soundtracking the countdown with nothing but timeless energy and forward-moving vibes: Miles Medina Wreck A Noize PdotJDHDExpect a packed dance floor, elevated cocktails, premium bottle service, and a room full of people who understand that New Year’s Eve is about showing up right.🖤 Cocktail attire strongly encouraged — black, white, and everything in between. This is your night to dress with intention and step into the new year in style.🍾 Bottle service availableCall directly to reserve: 415.737.5772This event will sell out.Start the year where the energy is right, the music hits, and the memories last.Read moreCategory: Holiday, New Years Eve",
+      "source": "eventbrite",
+      "scraped_at": "2025-12-29T16:39:54.028Z"
+    },
+    {
+      "id": 7,
+      "selected": false,
+      "title": "New Year's Eve Celebration | San Jose",
+      "time_display": "Monday 01/05 4:38 PM",
+      "location": "Sushi Confidential San Jose, 26 North San Pedro Street, San Jose, CA 95113",
+      "price": "$23.18 – $200",
+      "event_type": "festival",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/new-years-eve-celebration-san-jose-tickets-1976374703942?aff=ebdssbdestsearch",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Join us for an epic New Year's Eve celebration @Sushi Confidential in Downtown San Jose Ca🔥 BOGO SA...",
+      "description_detail": "Join us for an epic New Year's Eve celebration @Sushi Confidential in Downtown San Jose Ca🔥 BOGO SALE - VERY LIMITED! GENERAL ADMISSION ON SALE NOW (WHILE SUPPLIES LAST)A limited amount of tickets may be available at the door—advance purchase strongly recommended.New Year’s Eve at Sushi Confidential - San JoseWednesday, December 31, 2025 • Doors at 8:00 PMRing in 2026 at San Jose’s most elevated adults-only NYE experience - a stylish celebration designed for a mature crowd, ages 30+This is the perfect setting for professionals, friends, & couples who want a sophisticated night without the chaos of downtown bar crowds.Expect an unforgettable night featuring:Elite DJs + Live MusicStreet Performers & DancersBurlesque / GoGo Show MomentsElegant Balloon DropParty FavorsChampagne Toast at MidnightCoat CheckPhoto Booth & red carpet photo opsProfessional media coverage capturing the night minute-by-minuteWorldwide live video countdown on multiple large screensAtmosphere & VenueSushi Confidential delivers a stylish outdoor-indoor experience with:Fire pits on every tableHeat lamps throughoutPremium sound systemUpscale yet relaxed vibeGreat cocktails & sushiA social, comfortable environment built for connection and celebrationParking & Travel$10 city-operated parking next doorIndoor & outdoor spacesWe highly encourage Uber/Lyft or nearby hotel accommodations if consuming alcoholMultiple hotels located within 1–2 blocks (easy walking distance)VIP UpgradesRed Carpet VIP Express EntryIncludes 2 drink ticketsPremium VIP Bottle Service (Main Floor)Includes personal cocktail waitress($100–$200 deposit required) A 20% Tax & Gratuity will be added to the final bill.For large groups-we highly recommend VIP to secure the best seating and service.Start the New Year in StyleDance, toast, and celebrate with a polished crowd in a refined, energetic environment. Don’t wait-tickets are moving fast and BOGO pricing is almost sold out.All Sales Final — No RefundsMassive Balloon Drop • Champagne Toast at Midnight • Live Global Countdown • Concert-Level Sound & Lighting • And More!Questions: 408-863-1424BOTTLE SERVICE AND VIP SECTION RESERVATION: 1-408-863-1424Read moreCategory: Holiday, New Years Eve",
+      "source": "eventbrite",
+      "scraped_at": "2025-12-29T16:39:54.028Z"
+    },
+    {
+      "id": 8,
+      "selected": false,
+      "title": "New Year’s Eve Dinner & Celebration at Oveja Negra Santana Row",
+      "time_display": "Monday 01/05 4:39 PM",
+      "location": "Hotel Valencia Santana Row, Valencia Hotel Collection, 355 Santana Row, San Jose, CA 95128",
+      "price": "$284.62",
+      "event_type": "festival",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/new-years-eve-dinner-celebration-at-oveja-negra-santana-row-tickets-1798906320229?aff=ebdssbdestsearch",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "An Evening of Fine Dining, Casino Glamour & CelebrationRing in 2026 with an unforgettable celebratio...",
+      "description_detail": "An Evening of Fine Dining, Casino Glamour & CelebrationRing in 2026 with an unforgettable celebration at Hotel Valencia Santana Row, where refined elegance and festive indulgence set the stage for the city’s most sophisticated soirée.Begin your evening with a chef-curated four-course dinner at Oveja Negra, followed by an exclusive New Year’s Eve celebration featuring music, dancing, and Casino Night entertainment.✨ Evening HighlightsElegant four-course dinner at Oveja NegraTwo seating times: 6:00 PM OR 9:00 PMCasino Night ExperienceMusic and dancing in a vibrant, upscale settingMidnight Champagne toast to welcome 2026Late-night indulgence with a chef’s special snack💫 Event DetailsDate: December 31, 2025Location: Oveja Negra at Hotel Valencia Santana RowTickets: $265 per person(Inclusive of taxes and gratuities; Eventbrite fees not included)Seating: Limited availability — early reservations strongly encouragedCelebrate in timeless Valencia style, an evening of elegance, excitement, and exquisite hospitality as you toast to the New Year at Hotel Valencia Santana Row.Terms & ConditionsGuests must be 21 years of age or older to attend.Ticket required for entry; one ticket per guest.All sales are final. Tickets are non-refundable and non-transferable.Read moreCategory: Holiday, New Years Eve",
+      "source": "eventbrite",
+      "scraped_at": "2025-12-29T16:39:54.029Z"
+    },
+    {
+      "id": 9,
+      "selected": false,
+      "title": "The Box SF “Eat Me!” Artisan Food Fair (2026)",
+      "time_display": "Saturday 01/10 11:00 AM - 5:00 PM",
+      "location": "The Box SF",
+      "price": "*",
+      "event_type": "market",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/the-box-sf-eat-me-artisan-food-fair-2026/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "The Box SF presents EAT ME!, a monthly artisanal food fair, kicking off on January 10-11, 2026! Enjo...",
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2025-12-29T16:28:40.833Z"
+    },
+    {
+      "id": 10,
+      "selected": false,
+      "title": "2026 San Francisco Fireworks New Year's Eve | Gatsby's Party Cruise",
+      "time_display": "Monday 01/05 4:35 PM",
+      "location": "San Francisco Belle, 7 The Embarcadero, San Francisco, CA 94111",
+      "price": "From $238.30",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/2026-san-francisco-fireworks-new-years-eve-gatsbys-party-cruise-tickets-1231090919079?aff=ebdssbdestsearch",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "SF NYE 2026 Gatsby's Cruise, all aboard Pier Pressure SF's Largest Yacht, 2 Levels of Music/Dance Fl...",
+      "description_detail": "SF NYE 2026 Gatsby's Cruise, all aboard Pier Pressure SF's Largest Yacht, 2 Levels of Music/Dance Floors, Premium Bar, Apps, & VIP Dinner.VIP Nightlife & Bay Area Nightlife present...Gatsby's New Year's Eve 2026 Party CruisePresented By Pier Pressure®Wed, Dec 31, 2025, 9:00 PM - 1:00 AM PST• 4 Decks • 2 Levels of Music • Premium Open Bar • Complimentary Appetizers • VIP Seated Dinner (Find Live Promo Codes Only at VIPnightlife.com • Click Buy Tickets For Promo Code)Check-In Begins 8:55 PM aboard the San Francisco Belle (Pier 3, Hornblower Landing)Enjoy a spacious ship that never feels too crowded. The San Francisco Belle showcases:Optimal viewing areas on the top deck, plenty of seats for VIPs to have an enjoyable sit down dinner with exclusive DJ and dance floor.Each DJ will have robust sound & lighting systems mixing up beat dance music to include hits of today and past 20 years. There's also a massive party deck for all to dance and ring in 2026 New Year in grand style!!NEED TO QUENCH YOUR THIRST?This classic yacht hosts multiple fully staffed & stocked bars with all types of premium and call liquor brand types to make sure everyone is served in proficient manner.THIS ONE & ONLY VIP CRUISE FEATURES ...Breathtaking views of the Bay Bridge, Golden Gate Bridge, Alcatraz, San Francisco Skyline, and possible Fireworks Show at Midnight TBA. Plus Casino Night with Craps, Roulette & Blackjack!** Disclaimer: No Refunds if firework show/s canceled.TICKET OPTIONS & INCENTIVESGA TICKET INCLUDES ...Premium Open Bar featuring Tito's Vodka & Top Shelf Liquor Selections, Complimentary Appetizers until Midnight, and Complimentarty Party Favors (while supplies last).VIP PRIORITY TICKET INCLUDES ...Ultra-Premium Open Bar featuring Tito's Vodka & Top Shelf Liquor Selections, Complimentary Appetizers until Midnight, Seated 4-Course Dinner (see full menu below) with Private PPE Servers at Buffet, For-Fun Casino Games, and Upgraded Party Favors (while supplies last).CURRENT SCHEDULE8:55 PM Check-In Begins9:00 PM VIP Boarding Starts9:10 PM GA Boarding9:55 PM Gate Closes (DO NOT BE LATE - NO REFUNDS)10:00 PM Cruise Begins12:45-1:00 AM Dock & DisembarkDOCK LOCATION: Pier 3 - Hornblower Landing (x-street: Washington St.)This all-inclusive ticket is truly the most memorable way to ring in the new year on the San Francisco Bay. Just take a gander around the Bay Area ... you won't find a bigger ship with the most value in one ticket. * Purchase early to save money. *TOP SHELF LIQUOR SELECTIONHosted Top Shelf Cocktail bar consisting of top shelf spirits, wines, beers, soft drinks, fruit juices, mineral water, iced tea, coffee, and hot tea:SPIRITSBelevedere Vodka, Ketel One Vodka, Hendrick's Gin, Don Julio Silver Tequila, Bosscal Mezcal Joven Tequila, Jameson Whiskey, Crown Royal Whiskey, Johnnie Walker Black Scotch, Maker's Mark Bourbon, Bulleit Bourbon, Hennessy Vs Cognac, Amaretto di Saronno, Aperol, Chambord, Grand Marnier, Amaretto, Bailey’s Irish Cream, Blue Curaçao, Kahlua, Melon Liqueur, Peach Schnapps, Sour Apple Liqueur, Triple Sec, Dry Vermouth, Sweet Vermouth.WINES BY THE GLASSSycamore Lane Chardonnay, Sycamore Lane Cabernet Sauvignon, William Wycliff Sparkling Wine.BEERSCorona Extra, Sam Adams Boston Lager, Angry Orchard Crisp Apple (GF), Truly Hard Seltzer, N/A Sam Adams Just the Haze, Stella Artois, Bud Lite, Golden Road Brewing Brew Heaven Blonde Ale, Golden Road Brewing Ride On 10 Hop Hazy IPA, Golden Road Brewing Ride on 5 Hop Citrus IPA, Golden Road Brewing Mango Cart, Kona Big Wave Golden Ale, Nutrl Vodka Seltzer.SODAS & JUICESOrange Juice, Cranberry Juice, Pineapple Juice, Grapefruit Juice , Coke, Diet Coke, Sprite, Ginger Ale, Tonic Water, Sparkling Water.DISCLAIMER*Brands listed above might be substituted for similar brands of equal or better quality. If you have a specific request for a brand please let your sales manager or event coordinator know a minimum of 14 business days before your event. Additional charges may apply for special orders.*Spirits to be served by the glass for cocktails only. No shots will be served on board. No spirits sold by the bottle.FOOD SELECTION FOR ALLVIP MENU SELECTIONSALADSAccompanied by fresh breads and butterCaesar Salad – Romaine Lettuce, Aged Reggiano Parmesan Cheese, Herb Crouton, Traditional Caesar Dressing.Field Green Salad – Tomatoes, Cucumbers, Carrots, Ranch Dressing, Balsamic Dressing.MAINOven Roasted Chicken Breast with Rosemary & Thyme – Creamy Mushroom Sauce.Coriander Crusted Salmon – Lemon Herb Beurre Blanc.Braised Beef Short Ribs – Baby Carrots, Cabernet Sauvignon Sauce.COMPLEMENTSFarm Fresh Seasonal Vegetables.Garlic Mashed Potatoes.DESSERTHornblower Signature Dessert - Cakes, Brownies, Seasonal Fruit.GA MENU SELECTIONPASSED APPSShrimp Cocktail (G*)Vegan Spring Roll with Sweet Chili Dipping Sauce (G*, V, VG)Thai Chicken Satay (G*,N)SpanakopitaSTATIONSlider Station – Beef Sliders and Vegan Patty SlidersALL YOU NEED TO KNOWAge Requirement: All guests must be over 21 years of age and show valid ID. Any guests without their ID's will not be permitted on the vessel.All Sales are Final. No refunds or exchanges. Prices may increase based on supply & demand. Seating for dinner maybe paired with another couple or group.Find Your Tickets: When you order tickets on Eventbrite, an account is created using the email address you enter during checkout. To access your tickets, log in to the Eventbrite app or website using the email on your order. Then, go to Tickets. Find all you need to know available HERE ONLINE.Important Note: All tickets can be under one name and it should be under the card holder's name who should present during check-in for verification purposes.Boarding/Yacht Location: San Francisco Belle is docked at Hornblower Landing (City Cruises) at Pier 3, 7 the Embarcadero, San Francisco, California 94111. Click To View Pier 3 - Hornblower Landing Directions.Do Not Miss the Boat: Gates close at 9:55pm. Cruise leaves sharply at 10:00pm. Absolutely NO Refunds or exchanges. We reserved a spot for you on our cruise.Fashion Tips: Dress to impress. Upscale cocktail / semi-formal attire required.Bag Policy: Large purses or backpacks / camel packs will not be allowed onboard. All bags are subject to search.Parking: Please allow plenty of time to find parking. Attendant parking lot is available at Pier 3, on the Embarcadero. Additional parking lots available: On Davis St. between Broadway St & Vallejo St, On the corner of The Embarcadero and Broadway St, and On The Embarcadero and Washington St. (Directly across from Pier 3). Click to View Map of Embarcadero Parking.Bay Area Nightlife and Hornblower Cruises & Events are not responsible for any parking lots. * Make sure to give yourself plenty of time to find parking. If you miss the boat; you will not be refunded.Party Responsibly: Please DO NOT Drink & Drive. Opt for Ride Share Apps (Lyft or Uber), a taxi service or designated driver.Questions? Please email: info@vipnightlife.com. We look forward to celebrating with you responsibly.Disclaimer: We do not have any schedules or planned fireworks for this event. But fireworks around town can be seen if they happen. *NO REFUNDS IF FIREWORKS ARE CANCELLED.*MORE THINGS TO DO THIS NYECan't decide what to do on New Year's Eve? Get your attire on point and head out to some of the biggest and best New Year's Eve parties and special events for a day or night full of fun in the city you're living or traveling to. Learn more.ADDITIONAL INFORMATIONNo alcohol, open containers or outside food is permitted. No illegal drugs or controlled substances, including prescription drugs and marijuana, will be tolerated. Using marijuana on the water is illegal, regardless of medical condition(s). The use and or possession of illegal drugs or controlled substances is absolutely prohibited by the US Coast Guard.Yacht Company holds a zero tolerance policy related to illegal substances aboard all vessels. Anyone caught participating or processing any such items will not be allowed to board and substances will be confiscated.If you are thought to be under the influence of, or caught participating in, illegal substances on board, you'll be quarantined until boat can safely return to dock and the cruise is subject to end for all guests immediately upon doing so; no refunds will be issued under any circumstances.Thank you in advance for your cooperation. Let’s have fun and party safe!PURCHASE POLICYNO REFUNDS OR EXCHANGES. ALL SALES FINAL: There are NO REFUNDS, NO CANCELLATIONS, no credits, no exchanges, and no transfers after the order has been made.Credit Card & ID:You must present the original credit card used to purchase the ticket and a valid Government Issued Photo Identification (along with your e-tickets that have been emailed to you via Eventbrite when your order was placed): the name on both the credit card and ID match the name on your purchased tickets, in order to gain entry to the event. If the name on the Credit Card and/or ID does not match the tickets, or if you do not have both the credit card used to make the purchase and government issued identification, you will be denied entry to event without a refund.Covid Policy:No credit or refund will be issued as a result of the ticket purchaser or any person in the party contracting COVID-19 or a variant alike. By purchasing tickets to a VIP Nightlife Event, you understand and agree that tickets are non-refundable and you are assuming the risk that you may not be able to use tickets purchased if you contract COVID-19 or variants alike. You further agree that you will not attend any VIP Nightlife event if you currently have symptoms of COVID-19, have been exposed to COVID-19 prior to attending and/or have tested positive for COVID-19 and have not completed the CDC recommended quarantine period.Support:If you encounter a problem at the event, you must file a complaint with Promoter within 5 calendar days following the date of the event; failure to contact Promoter within the 5-day period will be a complete waiver of your right to request compensation whether monetary or otherwise. If you need customer support, Promoter’s email is info@vipnightlife.com.Purchase Policy:By placing an order, you are confirming that you received this policy and are agreeing to abide by the clauses within. This Purchase Policy is a binding contract between you and event Promoter.Event Booking:By purchasing a ticket, package or reservation you're entitled to entry to event you're purchasing it for. At the time of your order, Eventbrite will place an order for your ticket(s) in the Promoter’s ticketing system, reducing the number of tickets available for the chosen event. Before purchasing your ticket(s) we urge you to confirm the title, time and location of the event(s) you wish to attend, as there are no refunds. Each event has a definitive date, start time and end time. If you do not show up to the event, you understand that you are forfeiting your ticket(s) and therefore your ticketing fee (the entirety of what you paid) will not be returned to you. If you do not attend your event, you're still 100% financially liable for your purchase. If you cannot attend event, you will not receive refund.Event Cancellations:If the event is canceled you will receive a refund for the face value of the ticket.No Refunds:Unforeseen circumstances beyond promoter’s control will not be grounds for a refund, including but not limited to the following: local or national weather conditions, natural disasters, waiting in lines, extended waits in lines, family emergencies, medical emergencies, employment issues including layoffs, traffic, parking, public or private transportation issues, etc. If you purchased for the incorrect date, location, event, etc, promoter is not obligated to provide a refund, credit, exchange or transfer. If cancellation or transfer request is approved, promoter reserves the right to charge a $10 administrative fee for its time, in addition to charging a $10 restocking fee per ticket if tickets are placed back on sale. Promoters, Venue Owners, Venue Management, Security, Event Staff, and other agents of the event, have the right to refuse entry to any ticket-holder, without a refund, for any reason at their discretion , including but not limited to: disorderly behavior, failing to comply with the rules of the venue, incorrect attire, intoxication, venue capacity, breach of security, and other restrictions. Ticket-holder is aware that the Venue and Talent are subject to change without notice, which are not grounds for a refund. Ticket-holder is aware that amenities promised by Promoter are not guaranteed, and are not grounds for a refund, including but not limited to: VIP amenities, drink specials, drink tickets, gifts, express entry, special areas, celebrity guests, etc. Dissatisfaction with any aspect of the event is not grounds for a refund, including but not limited to: music, DJ(s), decorations or lack thereof, party favors or lack thereof, beverages or lack thereof, alcohol selection, bar staff, food availability and selection, fellow patrons/attendees, venue staff, event staff, security, performances, ambiance, amenities, venue, check-in process, seating or lack of seating, wait in lines, emergency closures of event, emergency return of boats or yachts, delayed commencing of events, early ending of events, public amenities such as fireworks or public performances or the lack thereof, line of sight of public amenities such as fireworks or public performances being blocked by trees, buildings, boats, people, and/or other things, etc.Release of Liability:By purchasing the tickets through Eventbrite, you hereby release and forever discharge Promoter from any liability or claims for damages that may arise as a result of your attendance at, and voluntary participation in, the event(s), including claims for personal injury, or damage to personal property, or any other claims for negligence on the part of the event’s Promoter. By purchasing the tickets through Eventbrite for this event, you hereby release and forever discharge event Promoter, and their officers and agents, from any liability or claims for damages that may arise as a result of your attendance and participation at the event(s). It is hereby understood that the purchase of tickets by you and your participation in the events shall not be construed as an assumption on the part of Promoter of responsibility, liability, or control of the events.Indemnity:By Purchasing tickets for this event, ticket purchaser agrees to indemnify and hold harmless event Promoter, said entities officers, owners, employees, and agents, from and against all claims, damages, losses and expenses, including reasonable attorney’s fees arising out of or by reason of complying with this Indemnity Clause. Ticket purchaser, their heirs, executors, administrators, successors and assigns, hereby release, remise, and forever discharge event Promoter and its entities owners, officers, employees and agents, from all manner of actions, causes of actions, suits, debts, judgments, executions, claims, demands whatsoever, known or unknown, in law or equity, which ticket-holder has ever had, now have, may have, or claim against event Promoter.Collections & Legal Action Against Debt:Once you make a purchase, if those funds are removed from the Promoter's account and given back to you, you owe the Promoter that money back, plus applicable fees as outlined below. If you owe money to Promoter, Promoter reserves the right to take legal action against you and/or send you to collections for the recovery of said debt. If you are sent to collection or there is legal action taken against you, you are fiscally responsible for any and all legal costs and fees, directly associated and/or indirectly associated, with recovering the debt owed by you. Promoter's collection’s agencies reserve the right to negatively affect your personal credit score until your debt is paid. Once an account has been placed in collections, the only way to get yourself out of Collections is to pay the debt owed by you to the collections agency.Arbitration Agreement:In the event there are any legal disputes against Promoter, by agreeing to this Purchase Policy, you agree that such disputes will be arbitrated. You further agree that the location of arbitration will be set in Los Angeles County, California.Severability:If any clause, aspect, part or provisions of this Purchase Policy is found to be null, void, illegal or otherwise unenforceable, the rest of this Purchase Policy remains in full binding effect, and the unenforceable provision(s) shall be deemed modified to the limited extent required to permit the enforcement of said clause that required modification and of the agreement as a whole.Thank you for your purchase!Read moreCategory: Holiday, New Years Eve",
+      "source": "eventbrite",
+      "scraped_at": "2025-12-29T16:39:54.024Z"
+    },
+    {
+      "id": 11,
+      "selected": false,
+      "title": "New Years' Eve Party @ Golfland",
+      "time_display": "Monday 01/05 4:38 PM",
+      "location": "1199 Jacklin Rd, 1199 Jacklin Road, Milpitas, CA 95035",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/new-years-eve-party-golfland-tickets-1978659074556?aff=ebdssbdestsearch",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Ring in 2026 at Golfland! Enjoy a full night of fun in a family friendly environment. Pay one price ...",
+      "description_detail": "Ring in 2026 at Golfland! Enjoy a full night of fun in a family friendly environment. Pay one price for unlimited access to all attractionsRing in 2026 at Golfland!Enjoy a full night of fun in a family friendly environment. Pay one price for unlimited access to all attractions!Enjoy lighted dance floor, midnight baloon drop and cider toast.December 31st – 6pm-1amUnlimited video games*, mini golf, bumper cars, laser tag and race cars. Event is rain or shine.$41.99 Online Presale | $46.00 at the doorRead moreCategory: Holiday, New Years Eve",
+      "source": "eventbrite",
+      "scraped_at": "2025-12-29T16:39:54.028Z"
+    },
+    {
+      "id": 12,
+      "selected": false,
+      "title": "♥BAY AREA SINGLES NEW YEAR'S EVE DANCE PARTY 2026♥",
+      "time_display": "Monday 01/05 4:39 PM",
+      "location": "Hilton Garden Inn Sunnyvale, 767 North Mathilda Avenue, Sunnyvale, CA 94085",
+      "price": "$49.87 – $80",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/bay-area-singles-new-years-eve-dance-party-2026-tickets-1977438686342?aff=ebdssbdestsearch",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "THE BEST PARTY OF THE YEAR! The #1 New Years Eve Singles Party in the Bay Area!Come celebrate New Ye...",
+      "description_detail": "THE BEST PARTY OF THE YEAR! The #1 New Years Eve Singles Party in the Bay Area!Come celebrate New Year Eve this year with BAY AREA SINGLES at a a modern hotel. There will be good snacks and drinks, VIP tables and prizes, and one of the Bay Area's Hottest DJ playing your favorite dance tunes from the past and all the LATEST HITS!* The Best Singles Party in the Bay Area!* Beautiful ballroom!* Complimentary Party Favors!* VIP Tables and Prizes!* Complimentary Champagne Toast at midnight!* Watch the live Countdown on Large Screen!* Talented Professional Photographers!* Free Parking!Why pay $100 or more for a New Year's Eve party when ours is more reasonably priced and likely to be the best one?AGENDA:8:00PM - 9:00PM VIP Seating8:30PM - 9:00PM Ice Breaker and Dance Class9:00PM - 12:00AM Dance Party, Live Countdown and Champagne toast12:00AM - 1:00AM Dance Party continues, plus NYE Prize giveaways!TICKET ADVANCE:$80 VIP(Includes VIP seating and a Prize)$45 General Advance(No reserved seating and no prize)TICKET AT THE DOOR:$60 for 1 Person$100 for 2 PeopleDRESS CODE:Black Tie to Semi Formal Attire.Coat & Tie/Dressy Attire RequiredLOCATION:Hilton Garden Inn, 767 N Mathilda, Sunnyvale CA. Free parking. Discounted overnight hotel rooms available. Does NOT include admission to the party.OVER NIGHT HOTEL ROOMS:Room Type: King Bed or Queen/Queen bedsGroup Rate: $89 per night, single/double occupancy, plus occupancy tax.Complimentary WiFi in guest roomsComplimentary Overnight ParkingRead moreCategory: Holiday, New Years Eve",
+      "source": "eventbrite",
+      "scraped_at": "2025-12-29T16:39:54.030Z"
+    },
+    {
+      "id": 13,
+      "selected": false,
+      "title": "Tiny Chef, Big ImpactCalifornia Academy of Sciences",
+      "time_display": "Tuesday 01/06 9:30 AM",
+      "location": "55 Music Concourse Drive, San Francisco, CA",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.calacademy.org/buy-tickets",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "sfstation",
+      "scraped_at": "2025-12-29T16:28:52.649Z"
+    },
+    {
+      "id": 14,
+      "selected": false,
+      "title": "ALTERNA returns to The Church of 8 Wheels for \"First Tuesdays\" Goth Skate January 6thChurch of 8 Wheels",
+      "time_display": "Tuesday 01/06 10:00 PM",
+      "location": "554 Fillmore Street, San Francisco, CA",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "http://www.churchof8wheels.com/1stTuesdaysGothCO8W.html",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "sfstation",
+      "scraped_at": "2025-12-29T16:28:52.650Z"
+    },
+    {
+      "id": 15,
+      "selected": false,
+      "title": "Chris BottiSFJAZZ Center - SF Jazz",
+      "time_display": "Tuesday 01/06 7:30 PM",
+      "location": "201 Franklin Street, San Francisco, CA",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.sfjazz.org/tickets/productions/25-26/chris-botti/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "sfstation",
+      "scraped_at": "2025-12-29T16:28:52.650Z"
+    },
+    {
+      "id": 16,
+      "selected": false,
+      "title": "Safeway Holiday Ice Rink in Union SquareUnion Square",
+      "time_display": "Tuesday 01/06 10:00 AM",
+      "location": "Stockton and Post, San Francisco, CA",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://unionsquareicerink.com/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "sfstation",
+      "scraped_at": "2025-12-29T16:28:52.650Z"
+    },
+    {
+      "id": 17,
+      "selected": false,
+      "title": "Cirque du Soleil ECHOLot A at Mission Rock",
+      "time_display": "Wednesday 01/07 7:00 PM",
+      "location": "3rd St at Channel St, San Francisco, CA",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://tickets.cirquedusoleil.com/shop/#/e4568e04-f349-44e5-b71d-c6d60df94f6f/shop/select?locale=en&skin=echo_v2",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "sfstation",
+      "scraped_at": "2025-12-29T16:28:52.650Z"
+    },
+    {
+      "id": 18,
+      "selected": false,
+      "title": "Golden State Warriors 2025/2026 SeasonChase Center",
+      "time_display": "Wednesday 01/07 7:00 PM",
+      "location": "1 Warriors Way, San Francisco, CA",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://ticketmaster.evyy.net/c/253558/264167/4272?u=https%3A%2F%2Fwww.ticketmaster.com%2Fartist%2F805946",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "sfstation",
+      "scraped_at": "2025-12-29T16:28:52.650Z"
+    },
+    {
+      "id": 19,
+      "selected": false,
+      "title": "David R. Ayón - Forging Latino PowerBook Passage - San Francisco",
+      "time_display": "Wednesday 01/07 5:30 PM",
+      "location": "1 Ferry Bulding, San Francisco, CA",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.bookpassage.com/event/david-r-ay%C3%B3n-forging-latino-power-ferry-building-event",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "sfstation",
+      "scraped_at": "2025-12-29T16:28:52.650Z"
+    },
+    {
+      "id": 20,
+      "selected": false,
+      "title": "Dear San FranciscoClub Fugazi",
+      "time_display": "Wednesday 01/07 7:30 PM",
+      "location": "678 Green Street, San Francisco, CA",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://boxoffice.clubfugazisf.com/clubfugazisf/events/46365?sessionView=CALENDAR",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "sfstation",
+      "scraped_at": "2025-12-29T16:28:52.650Z"
+    },
+    {
+      "id": 21,
+      "selected": false,
+      "title": "You’re Going to Die: Poetry, Prose, & Everything GoesThe Lost Church - San Francisco",
+      "time_display": "Thursday 01/08 8:15 PM",
+      "location": "988 Columbus Avenue, San Francisco, CA",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://thelostchurch.my.salesforce-sites.com/ticket#/instances/a0FTU00000McDh72AF",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "sfstation",
+      "scraped_at": "2025-12-29T16:28:52.650Z"
+    },
+    {
+      "id": 22,
+      "selected": false,
+      "title": "Dr. Kim Makoi - Booze to Balance: A Chill 30-Day Liver-Healing ProgramBook Passage - San Francisco",
+      "time_display": "Thursday 01/08 5:30 PM",
+      "location": "1 Ferry Bulding, San Francisco, CA",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.bookpassage.com/event/dr-kim-makoi-booze-balance-chill-30-day-liver-healing-program-ferry-building-event",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "sfstation",
+      "scraped_at": "2025-12-29T16:28:52.650Z"
+    },
+    {
+      "id": 23,
+      "selected": false,
+      "title": "Playing The Dead - Grateful Thursdays on Haight StreetO'Reilly's Pub",
+      "time_display": "Thursday 01/08 8:00 PM",
+      "location": "1840 Haight Street, San Francisco, CA",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://bit.ly/ptd-jan8",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "sfstation",
+      "scraped_at": "2025-12-29T16:28:52.650Z"
+    },
+    {
+      "id": 24,
+      "selected": false,
+      "title": "The Annual Bowie Bash!Great American Music Hall (GAMH)",
+      "time_display": "Friday 01/09 9:30 PM",
+      "location": "859 O'Farrell Street, San Francisco, CA",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://gamh.com/shows-the-15th-annual-bowie-bash/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "sfstation",
+      "scraped_at": "2025-12-29T16:28:52.650Z"
+    },
+    {
+      "id": 25,
+      "selected": false,
+      "title": "2026 SF New Year's Eve Under the Fireworks Cruise",
+      "time_display": "Monday 01/05 4:35 PM",
+      "location": "San Francisco Spirit, Pier 3, San Francisco, CA 94111",
+      "price": "From $273.95",
+      "event_type": "food",
+      "priority": 6,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/2026-sf-new-years-eve-under-the-fireworks-cruise-tickets-1231110056319?aff=ebdssbdestsearch",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Ring in the New Year in style, 2 levels of music, open bar, mix & mingle food menu, amazing firework...",
+      "description_detail": "Ring in the New Year in style, 2 levels of music, open bar, mix & mingle food menu, amazing firework skyline & under the bridge views in SF.VIP Nightlife & Bay Area Nightlife present ...Pier Pressure SF2026 New Year's Eve Under the Fireworks CruiseWed, Dec 31, 2025, 9:00 PM - 1:00 AM PST• Boarding Glass of Champagne• Mix & Mingle Food Menu heavy hors d’oeuvres• 4 Hours with Open Bar Entire Cruise• 2 Decks of Music• 1 Amazing Fireworks ShowCheck-In Begins 8:45PM aboard San Francisco Spirit Yacht, at Pier 3 (Hornblower Landing)The only way to catch the true spirit of San Francisco is to embark on the Pier Pressure™ cruise. Let loose and set sail along gorgeous San Francisco Bay aboard the multi-million dollar luxury yacht, the San Francisco Spirit.PERKS OF THIS VIP CRUISEFind Live Promo Codes Only at VIPnightlife.com (Click Buy Tickets For Promo Code)Premium Open Bar from Start to Finish (see liquor selection below)Incredible Mix & Mingle Food Menu (see menu below)Breathtaking views of the Bay Bridge, Golden Gate Bridge, Alcatraz, and the spectacular San Francisco Skyline & more.Three decks with 3 dance areas playing the hits of today with House, Top 40, Hip HopA gorgeous fun filled crowdThree fully stocked & professionally staffed barsSpectacular group saving packagesPier Pressure SF Under the Fireworks Cruise will have a two LIVE DJs on board keeping you and your friends moving on the dance floor while the city skyline passes you by. Party on the dance floor and get a drink in your hand with the fully stocked bars on board.Bring your significant and or group of favorite friends; and create the ultimate experience that no club, bar, or land entity could possibly offer.Ring in the New Year in style--with views, music and open bar the entire cruise! Grab tickets now and be ready for an experience you won't soon forget, but will most likely want to indulge in again...Deck.1: Hip Hop/ThrowbacksDeck.2: Top 40/RemixesDeck.3: Spacious Open Air Deck with Quaint Bar Lounge - Premium Views of Fireworks.AMAZING MIX & MINGLE MENUI. DISPLAYMediterranean Station (V)Roasted Garlic Hummus and Jalapeno Cilantro Hummus, Tzatziki, Seasonal Roasted Vegetables, Pita Chips, Naan.Artisan Cheese DisplayGrand Cru Reserve, 4 Year Aged Cheddar, Buttermilk Bleu, Fontina, Dried Fruits, Assorted Crackers and Crostini.Korean Barbeque Beef SkewerMoroccan Chicken Skewer (G*)Vegan Spring Roll (*G, V, VG)Maui Shrimp Spring Roll (N)II. SALADAccompanied by fresh breads and butterCaesar SaladRomaine Lettuce, Aged Reggiano Parmesan Cheese, Herb Crouton, Traditional Caesar DressingKale Quinoa SaladQuinoa, Roasted Red Pepper, Spinach, Lemon Oregano VinaigretteIII. STATIONSChef’s Carving StationHand Carved Strip Loin, USDA Choice, Garlic Mashed Potatoes, Bordelaise Sauce, Horseradish CrèmeItalian StationChicken Vesuvio with Roasted Potatoes, Roasted Vegetable Farfalle, Pasta Al FornoIV. HORNBLOWER SIGNATURE DESSERT STATIONMini Cakes, Mini Brownies, Seasonal FruitPREMIUM OPEN BAR FEAT. TITO'S VODKAHosted premium brand cocktail bar consisting of premium wines, beers, soft drinks, fruit juices, mineral water, iced tea, coffee, and hot tea:SPIRITSVodkaTito’s, Ketel One, Grey GooseRumCruzan Light, Cruzan Coconut, Cruzan Dark & Captain MorganGinHendrick'sTequilaPatron Silver, Don JulioWhiskeyJameson, Crown RoyalScotchJohnnie Walker BlackBourbonMaker's Mark, BulleitCordialsAmaretto di Saronno, Aperol, Bailey’s Irish Cream, Blue Curacao, Chambord, Grand Marnier, Kahlua, Melon Liqueur, Peach Schnapps, Sour Apple Liqueur, Triple Sec, Dry Vermouth & Sweet VermouthCognacHennessy VSWINESSycamore Lane Chardonnay, Sycamore Lane Cabernet Sauvignon & William Wycliff Sparkling WineGlass of Champagne for NYE Midnight ToastBEERSTrumer Pilsner, Corona Extra, Fort Point Pale Ale, Fort Point KSA, Fort Point Villager IPA, Angry Orchard Hard Cider (GF) & Truly, Hard SeltzerNON-ALCOHOLIC BEVERAGESSoft Drinks, Fruit Juices, Mineral Water, Iced Tea, Coffee and Hot TeaDISCLAIMER*Brands listed above might be substituted for similar brands of equal or better quality.NOTE*Spirits to be served by the glass for cocktails only. No shots will be served on board. No spirits sold by the bottle.SAN FRANCISCO SPIRIT • WHY WE LOVE ITThe San Francisco Spirit Yacht is a beautiful 150 ft. luxury yacht built to sail in comfort with ample space to experience an unbelievable party on the water. The spacious yacht has 3 decks, 3 bars, 3 dance areas, and an expansive outdoor bow & sky deck to enjoy the views.Step aboard for the best in Bay Area nightlife. Within its two climate-controlled interior decks, The San Francisco Spirit omits an energetic and elegant atmosphere that's sure to delight all guests.PERFECT FOR ...Local Singles and Couples looking to expand their Social Circle, or just simply dance the night away under the starsTourists or anyone new to the city that wants to make the most out of their visitSomething Fresh and Fun for a Guys or Ladies Night outCELEBRATE ON BOARD ...Birthdays, Work Parties, Bachelor or Bachelorette Party, Ladies Night, Guy’s Night & more...CURRENT SCHEDULE8:45 PM Check-In Begins9:00 PM VIP Boarding Starts9:15 PM GA Boarding9:25 PM Gate Closes - Do Not Be Late, NO REFUNDS!!9:30 PM Cruising Begins11:55 PM - Pass Glasses of Champagne for Midnight Toast12:45-1:00 AM Dock & DisembarkBoarding Location: Pier 3 - Hornblower Landing (x-street: Washington St.)** Due to high guest count and for the comfort of all guests on board, Yacht may return for 15-20 minutes to dock half-way through event to refill fresh water and or empty greywater tanks (to be determined at captain's discretion underway). Doors/ramp won't be opened/prepped for any disembarkation during this time. **ALL YOU NEED TO KNOWAge Requirement: Must be 21+ to participate. Valid Photo ID must be able to compare with guest. ID's will be checked and bag searches will be conducted randomly (discretion of Captain).All Sales Final: No refunds or exchanges. Prices may increase based on supply & demand.Find Your Tickets: When you order tickets on Eventbrite, an account is created using the email address you enter during checkout. To access your tickets, log in to the Eventbrite app or website using the email on your order. Then, go to Tickets. Find all you need to know available HERE ONLINE.Important Note: All tickets can be under one name and it should be under the card holder's name who should present during check-in for verification purposes.Boarding/Yacht Location: San Francisco Spirit Yacht boarding location (Hornblower Cruises & Events) is located at Pier 3, on The Embarcadero, San Francisco, CA 94111. ** Click To View Pier 3 - Hornblower Landing Directions.Do Not Miss the Boat: Gates close at 9:25pm. Cruise leaves sharply at 9:30pm. Absolutely NO Refunds or exchanges. We reserved a spot for you on our cruise.Fashiion Tips: Dress to impress. Upscale cocktail / semi-formal attire required. If you have any questions about dress code please email us: info@vipnightlife.comBag Requirements: Large purses or backpacks / camel packs will not be allowed onboard.Parking: Attend parking lot available at Pier 3, on the Embarcadero. Additional Parking: On Davis St. between Broadway St. & Vallejo St, On the corner of The Embarcadero & Broadway St and On The Embarcadero & Washington St. (directly across from Pier 3). * * Click To View Pier 3 Hornblower Landing Parking Options *** Make sure to give yourself plenty of time to find parking. Bay Area Nightlife and Hornblower Cruises & Events are not responsible for any parking lots.Party Responsibly: Please DO NOT Drink & Drive. Opt for Ride Share Apps (Lyft or Uber), a taxi service or designated driver.Questions? Please email: info@vipnightlife.com. We look forward to celebrating with you responsibly.MORE THINGS TO DO THIS NYECan't decide what to do on New Year's Eve? Get your attire on point and head out to some of the biggest and best New Year's Eve parties and special events for a day or night full of fun in the city you're living or traveling to. Learn more.PHOTOGRAPHY / MULTIMEDIA DISCLAIMERBy attending our event, you agree to the following:Allowed: Non-Professional Recording Equipment (Point & Shoot Cameras, Flip Video Cameras, etc.) Cameras for personal use only.Not Allowed: Professional Recording (Photo, Video, Audio) Equipment (NO Detachable Zoom Lenses, Tripods or Other Commercial Equipment without the written consent of VIPNightlife.com.VIPNightlife.com reserves the right to use any photograph/ videography or other, similar reproductions or recordings taken at any event hosted, or any affiliate of VIPNightlife.com. VIPNightlife.com also reserves the right to use any photograph/ videography without the written permission of those included within the photograph.Photographs may be used in publications or other forms of media produced, used, or contracted by VIPNightlife.com. This includes, but is not limited to: magazines, websites, social media, blog, presentations and other VIPNightlife.com marketing materials or other, similar reproductions or recordings.A person attending a VIPNightlife.com event who does not wish to have their image recorded for distribution should make their wishes known to the photographer and or event organizers.Any person or organization not affiliated with the VIPNightlife.com may not use, copy, alter or modify VIPNightlife.com photographs, graphics, videography or other, similar reproductions or recordings without the advance written permission of VIPNightlife.com.FOR ALL PHOTOS FROM OUR PAST CRUISES CLICK HEREADDITIONAL INFORMATIONNo alcohol, open containers or outside food is permitted. No illegal drugs or controlled substances, including prescription drugs & marijuana, are tolerated. Using marijuana on the water is illegal, regardless of medical condition(s). The use and or possession of illegal drugs or controlled substances is absolutely prohibited by the US Coast Guard.Yacht Company holds a zero tolerance policy related to illegal substances aboard all vessels. Anyone caught participating or processing any such items will not be allowed to board and substances will be confiscated.If you are thought to be under the influence of, or caught participating in, illegal substances on board, you'll be quarantined until boat can safely return to dock and the cruise is subject to end for all guests immediately upon doing so; no refunds will be issued under any circumstances.Thank you in advance for your cooperation. Let’s have fun and party safe!PURCHASE POLICYNO REFUNDS OR EXCHANGES. ALL SALES FINAL: There are NO REFUNDS, NO CANCELLATIONS, no credits, no exchanges, and no transfers after the order has been made.Credit Card & ID:You must present the original credit card used to purchase the ticket and a valid Government Issued Photo Identification (along with your e-tickets that have been emailed to you via Eventbrite when your order was placed): the name on both the credit card and ID match the name on your purchased tickets, in order to gain entry to the event. If the name on the Credit Card and/or ID does not match the tickets, or if you do not have both the credit card used to make the purchase and government issued identification, you will be denied entry to event without a refund.Covid Policy:No credit or refund will be issued as a result of the ticket purchaser or any person in the party contracting COVID-19 or a variant alike. By purchasing tickets to a VIP Nightlife Event, you understand and agree that tickets are non-refundable and you are assuming the risk that you may not be able to use tickets purchased if you contract COVID-19 or variants alike. You further agree that you will not attend any VIP Nightlife event if you currently have symptoms of COVID-19, have been exposed to COVID-19 prior to attending and/or have tested positive for COVID-19 and have not completed the CDC recommended quarantine period.Support:If you encounter a problem at the event, you must file a complaint with Promoter within 5 calendar days following the date of the event; failure to contact Promoter within the 5-day period will be a complete waiver of your right to request compensation whether monetary or otherwise. If you need customer support, Promoter’s email is info@vipnightlife.com.Purchase Policy:By placing an order, you are confirming that you received this policy and are agreeing to abide by the clauses within. This Purchase Policy is a binding contract between you and event Promoter.Event Booking:By purchasing a ticket, package or reservation you're entitled to entry to event you're purchasing it for. At the time of your order, Eventbrite will place an order for your ticket(s) in the Promoter’s ticketing system, reducing the number of tickets available for the chosen event. Before purchasing your ticket(s) we urge you to confirm the title, time and location of the event(s) you wish to attend, as there are no refunds. Each event has a definitive date, start time and end time. If you do not show up to the event, you understand that you are forfeiting your ticket(s) and therefore your ticketing fee (the entirety of what you paid) will not be returned to you. If you do not attend your event, you're still 100% financially liable for your purchase. If you cannot attend event, you will not receive refund.Event Cancellations:If the event is canceled you will receive a refund for the face value of the ticket.No Refunds:Unforeseen circumstances beyond promoter’s control will not be grounds for a refund, including but not limited to the following: local or national weather conditions, natural disasters, waiting in lines, extended waits in lines, family emergencies, medical emergencies, employment issues including layoffs, traffic, parking, public or private transportation issues, etc. If you purchased for the incorrect date, location, event, etc, promoter is not obligated to provide a refund, credit, exchange or transfer. If cancellation or transfer request is approved, promoter reserves the right to charge a $10 administrative fee for its time, in addition to charging a $10 restocking fee per ticket if tickets are placed back on sale. Promoters, Venue Owners, Venue Management, Security, Event Staff, and other agents of the event, have the right to refuse entry to any ticket-holder, without a refund, for any reason at their discretion , including but not limited to: disorderly behavior, failing to comply with the rules of the venue, incorrect attire, intoxication, venue capacity, breach of security, and other restrictions. Ticket-holder is aware that the Venue and Talent are subject to change without notice, which are not grounds for a refund. Ticket-holder is aware that amenities promised by Promoter are not guaranteed, and are not grounds for a refund, including but not limited to: VIP amenities, drink specials, drink tickets, gifts, express entry, special areas, celebrity guests, etc. Dissatisfaction with any aspect of the event is not grounds for a refund, including but not limited to: music, DJ(s), decorations or lack thereof, party favors or lack thereof, beverages or lack thereof, alcohol selection, bar staff, food availability and selection, fellow patrons/attendees, venue staff, event staff, security, performances, ambiance, amenities, venue, check-in process, seating or lack of seating, wait in lines, emergency closures of event, emergency return of boats or yachts, delayed commencing of events, early ending of events, public amenities such as fireworks or public performances or the lack thereof, line of sight of public amenities such as fireworks or public performances being blocked by trees, buildings, boats, people, and/or other things, etc.Release of Liability:By purchasing the tickets through Eventbrite, you hereby release and forever discharge Promoter from any liability or claims for damages that may arise as a result of your attendance at, and voluntary participation in, the event(s), including claims for personal injury, or damage to personal property, or any other claims for negligence on the part of the event’s Promoter. By purchasing the tickets through Eventbrite for this event, you hereby release and forever discharge event Promoter, and their officers and agents, from any liability or claims for damages that may arise as a result of your attendance and participation at the event(s). It is hereby understood that the purchase of tickets by you and your participation in the events shall not be construed as an assumption on the part of Promoter of responsibility, liability, or control of the events.Indemnity:By Purchasing tickets for this event, ticket purchaser agrees to indemnify and hold harmless event Promoter, said entities officers, owners, employees, and agents, from and against all claims, damages, losses and expenses, including reasonable attorney’s fees arising out of or by reason of complying with this Indemnity Clause. Ticket purchaser, their heirs, executors, administrators, successors and assigns, hereby release, remise, and forever discharge event Promoter and its entities owners, officers, employees and agents, from all manner of actions, causes of actions, suits, debts, judgments, executions, claims, demands whatsoever, known or unknown, in law or equity, which ticket-holder has ever had, now have, may have, or claim against event Promoter.Collections & Legal Action Against Debt:Once you make a purchase, if those funds are removed from the Promoter's account and given back to you, you owe the Promoter that money back, plus applicable fees as outlined below. If you owe money to Promoter, Promoter reserves the right to take legal action against you and/or send you to collections for the recovery of said debt. If you are sent to collection or there is legal action taken against you, you are fiscally responsible for any and all legal costs and fees, directly associated and/or indirectly associated, with recovering the debt owed by you. Promoter's collection’s agencies reserve the right to negatively affect your personal credit score until your debt is paid. Once an account has been placed in collections, the only way to get yourself out of Collections is to pay the debt owed by you to the collections agency.Arbitration Agreement:In the event there are any legal disputes against Promoter, by agreeing to this Purchase Policy, you agree that such disputes will be arbitrated. You further agree that the location of arbitration will be set in Los Angeles County, California.Severability:If any clause, aspect, part or provisions of this Purchase Policy is found to be null, void, illegal or otherwise unenforceable, the rest of this Purchase Policy remains in full binding effect, and the unenforceable provision(s) shall be deemed modified to the limited extent required to permit the enforcement of said clause that required modification and of the agreement as a whole.Thank you for your purchase!Read moreCategory: Holiday, New Years Eve",
+      "source": "eventbrite",
+      "scraped_at": "2025-12-29T16:39:54.024Z"
+    },
+    {
+      "id": 26,
+      "selected": false,
+      "title": "NEW YEAR'S EVE 2026 : TWO LATIN DANCE FLOORS | SAN FRANCISCO",
+      "time_display": "Monday 01/05 4:35 PM",
+      "location": "The EndUp, 401 6th Street, San Francisco, CA 94103",
+      "price": "From $25.85",
+      "event_type": "food",
+      "priority": 6,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/new-years-eve-2026-two-latin-dance-floors-san-francisco-tickets-1976370236580?aff=ebdssbdestsearch",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "HOTTEST LATIN NYE PARTY IN SAN FRANCISCO | LATIN DANCE ROOM + REGGAETON ROOM + OUTDOOR PATIO | VENUE...",
+      "description_detail": "HOTTEST LATIN NYE PARTY IN SAN FRANCISCO | LATIN DANCE ROOM + REGGAETON ROOM + OUTDOOR PATIO | VENUE DECORATION | FOOD STAND | UNTIL 4:30AMNEW YEAR’s EVE 2026 🎊San Francisco, Let’s welcome theNew Year with the hottest Latin NightWEDNESDAY, DECEMBER 31stTwo Dance Floors + Outdoor PatioFeaturing :- Five DJs- Full Venue Decoration- Party Favors- New Year’s countdown at midnight- Party goes until 4:30 a.m.- Food Stand in the outdoor patioat The EndUp Nightclub401 6th St San FranciscoDoors open at 9:30pm 🎉* Tickets are valid for entry until 1:30am****************************▶️ EVENT ROOMS** REGGAETON ROOMReggaeton + Dembow + Latin EDMDJ Mike V | DJ Erwin** LATIN DANCE ROOMTop Latin Hits +Merengue +Salsa +BachataDJ Mendoca | DJ Diego Flow** OUTDOOR PATIO****************************▶️ TABLE RESERVATION PACKAGETABLES FOR FOUR, SIX or TEN pplIncludes:- Express entrance by the VIP Line- 750 ML BOTTLE SERVICE (choose of)(Don Julio, Cazadores, Tito's, Ketel,Jameson or Aguardiente)- Free House Champagne- Table by the dance floor- Drink mixers & Ice- Price includes Tips & Gratuity* For more information or pre-arrange larger tablesPlease Text or Call : (415)676-8890* Online pre-booking payments available* All sales are final / no refunds***************************** Dress Code :No Sportswear / No Ball CapsLet’s dress up and have fun.Read moreCategory: Holiday, New Years Eve",
+      "source": "eventbrite",
+      "scraped_at": "2025-12-29T16:39:54.024Z"
+    },
+    {
+      "id": 27,
+      "selected": false,
+      "title": "COLOSSUS",
+      "time_display": "Monday 01/05 4:35 PM",
+      "location": "1015 Folsom, 1015 Folsom St, San Francisco, CA 94103",
+      "price": "From $23.11",
+      "event_type": "art",
+      "priority": 5,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/colossus-tickets-1974536220990?aff=ebdssbdestsearch",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "3 ROOMS | 6 DJS | 10 HOURS - CRYSTAL WATERS LIVE!TICKETS GOING FAST - BUY YOUR TICKETS NOW AND BE A ...",
+      "description_detail": "3 ROOMS | 6 DJS | 10 HOURS - CRYSTAL WATERS LIVE!TICKETS GOING FAST - BUY YOUR TICKETS NOW AND BE A PART OF COLOSSUS HISTORY!35 YEAR REUNION THURSDAY JAN 01, 2026 | 6PM-4AMCelebrating the birthplace of House Music in San Francisco!BLACK FRIDAY TICKET PRESALE ON NOW'LA DA DEE' LIVE ON STAGE Lendary dancefloor divas CRYSTAL WATERS ['Gypsy Woman' '100% Pure Love'] and KYM SIMS ['Too Blind to See It']Main Room Headline DJs HOSH GURELI [vinyl set] JERRY BONHAM [Spundae] + Special closing set BEATS BY JUAN. [Lover Boy Palm Springs]Hi-NRG Disco Room Jim Hopkins | Rob Kaftan VIP Room Tech House Jamie J Sanchez Hostess Sister RomaRead moreCategory: Holiday, Other",
+      "source": "eventbrite",
+      "scraped_at": "2025-12-29T16:39:54.024Z"
+    },
+    {
+      "id": 28,
+      "selected": false,
+      "title": "New Year's Eve 2026 at Cat Club",
+      "time_display": "Monday 01/05 4:37 PM",
+      "location": "Cat Club, 1190 Folsom Street, San Francisco, CA 94103",
+      "price": "From $23.18",
+      "event_type": "art",
+      "priority": 5,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/new-years-eve-2026-at-cat-club-tickets-1962979404240?aff=ebdssbdestsearch",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Party hard into the the New Year with friends! Have the best time in two great rooms of your favorit...",
+      "description_detail": "Party hard into the the New Year with friends! Have the best time in two great rooms of your favorite music from the 70's & 80's.New Year's Eve 2026 at Cat ClubPresented by Cat Club and Club GossipWednesday December 31st, 2025Hosted by Randy MaupinGrab yourself that great drink and let's dance to the best music all night. Join us as we all roar together on New Year’s Eve 2026 as the Cat Club plays host to San Francisco's ultimate party in two fantastic rooms with the music you crave from the 70s & 80s. This party is ready go at 9pm and won't stop until 3am! With two rooms, two bars, two dance floors and with pretty video everywhere, the entertainment is immersive and pleasurable to the senses, get your tickets and experience it for yourself!We’ve got the the most amazing 70's & Disco music in the back room and all the outrageous and over the top 80's & new wave in the front room, no one does it like we do! In back we’ll feature all the glorious 70’s Disco & Funk with DJ Andy T (The Stud) & DJ Shindog (New Wave City), and, please do party like the rockstar you are in the front room, filled with fun & entertaining 80’s & New Wave music with DJ Starr Noir (Nightshift) & DJ Porter (Funkytown).Advance ticket's start at $20 so get yourself the best deal today, the general admission ticket goes up in price as the event gets nearer. If you want a bottle service table we've got a couple of those, go take a look. If you have any questions please read those ticket descriptions, it’s all there really, but if you have question, feel free to ask. Noise makers, balloons and NYE decorations are everywhere with a complimentary Champagne toast at midnight. WHO’S READY TO MAKE SOME NOISE??Let's toast to a great New Year, surrounded by all our friends. We open at 9pm. We close by 3am. 1190 Folsom Street near 8th, 21+ only w/ID. Happy New Year!!Read moreCategory: Holiday, New Years Eve",
+      "source": "eventbrite",
+      "scraped_at": "2025-12-29T16:39:54.026Z"
+    },
+    {
+      "id": 29,
+      "selected": false,
+      "title": "NEW YEARS EVE 2026 MASSIVE PARTY",
+      "time_display": "Monday 01/05 4:37 PM",
+      "location": "Roccapulco, Mission Street, San Francisco, CA, USA, 3140 Mission Street, San Francisco, CA 94110",
+      "price": "$0 – $695.44",
+      "event_type": "art",
+      "priority": 5,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/new-years-eve-2026-massive-party-tickets-1972404570165?aff=ebdssbdestsearch",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "SAN FRANCISCO’S BIGGEST REGGAETON & HIP-HOP NYE PARTY!!FOR AND QUESTIONS CALL 415-724-6940Welcome to...",
+      "description_detail": "SAN FRANCISCO’S BIGGEST REGGAETON & HIP-HOP NYE PARTY!!FOR AND QUESTIONS CALL 415-724-6940Welcome to the ultimate NYE 2026 MASSIVE PARTY! 🎉 Get ready to ring in the New Year in style at Roccapulco in San Francisco, CA, USA. Join us on December 31, 2025 at 9:00 PM for a night you won't forget. Let's dance, laugh, and create unforgettable memories together. 21+ EVENT Roccapulco has delivered the premier New Year’s Eve celebration for over a decade—consistently attracting high-profile guests, including members of the Golden State Warriors and other notable celebrities.At midnight, guests will experience an unforgettable balloon drop filled with cash and exclusive prizes, complemented by vibrant confetti cannons and CO₂ effects that will electrify the atmosphere. Party favors will also be provided to enhance the celebration.Join us for an extraordinary night you absolutely won’t want to miss.Read moreCategory: Holiday, New Years Eve",
+      "source": "eventbrite",
+      "scraped_at": "2025-12-29T16:39:54.026Z"
+    },
+    {
+      "id": 30,
+      "selected": false,
+      "title": "Happy New Year 2026",
+      "time_display": "Monday 01/05 4:38 PM",
+      "location": "Blanco Urban Venue, 12 North San Pedro Street, San Jose, CA 95110",
+      "price": "From $55.20",
+      "event_type": "art",
+      "priority": 5,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/happy-new-year-2026-tickets-1134252522829?aff=ebdssbdestsearch",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Let's ring in 2026 with a bang at our Happy New Year bash – it's gonna be lit!Inni Entertainments br...",
+      "description_detail": "Let's ring in 2026 with a bang at our Happy New Year bash – it's gonna be lit!Inni Entertainments brings the most awaited event' Happy New Year 2026'Looking for the best New Years Eve Party that Bay Area has to offer?Here it isA Premium Three Level Party with 3 different music, 3 different DJ's, 3 different Vibes.atAN UPSCALE 3 LEVEL VENUE IN THE HEART OF SAN JOSE DOWNTOWN.BLANCO URBAN VENUE12 N San Pedro St,San Jose, CAon Wednesday, December 31, 20258 PM OnwardsSPECIAL FEATURES:FIRST FLOOR - BOLLYWOOD/EDMSECOND FLOOR/MEZANNINE - PUNJABI/BHANGRATHIRD FLOOR/COVERED ROOFTOP - TELUGU/TAMIL/KANNADA/MALAYALAM MIXEVERY FLOOR WITH ITS OWN DEDTIACTED BARAGES 13 AND ABOVEEACH TICKET INCLUDES 2 DRINKS.DELICIOUS DINNER INCLUDEDMASSIVE BALLOON DROPRED CARPET ENTRY FOR EVERYONENYE PARTY FAVORSNYE THEMED PHOTOBOOTHMULTIPLE DJ'SBollywood/Hip-Hop/Rap/EDM/Bhangra/Punjabi/Tollywood/tamil/kannada/Malayalam Mix By 4 DJ'sExtra drinks can be purchased at the bar.Dinner is served only until 10:00 PM. Its Included only for online purchases, not for walk-ins. If a guest with an online ticket including dinner, arrives after 10:30 PM, we would not be responsible if there is no food.Price goes up as the date gets closer to the event date.Doors open at 8 pm and party last until 2 am.Dress Code: Dress at your best to look your bestTickets available oninnientertainments.comhappynewyear2026.Eventbrite.comand sulekha** No refunds**For group discounts/bottle services/resrved booth seating please call 408-410-6626Come join us at as we ring in the new year in style!Let's make memories together as we say goodbye to the old and hello to the new. See you there!Read moreCategory: Holiday, New Years Eve",
+      "source": "eventbrite",
+      "scraped_at": "2025-12-29T16:39:54.028Z"
+    },
+    {
+      "id": 31,
+      "selected": false,
+      "title": "Crawl 'Til The Ball Falls: San Jose NYE Bar Crawl 2026",
+      "time_display": "Monday 01/05 4:38 PM",
+      "location": "Cash Only, 78 E. Santa Clara St., San Jose, CA 95113",
+      "price": "From $25.67",
+      "event_type": "art",
+      "priority": 5,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/crawl-til-the-ball-falls-san-jose-nye-bar-crawl-2026-tickets-1835665548069?aff=ebdssbdestsearch",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Barcrawlerz is taking over San Jose this NYE!Barcrawlerz is a San Jose Bar Crawl like no other. Craw...",
+      "description_detail": "Barcrawlerz is taking over San Jose this NYE!Barcrawlerz is a San Jose Bar Crawl like no other. Crawl 'Til the Ball Falls features The Best Drink Specials and The Best Bars in Town.PARTICIPATING BARS:CASH ONLY [REGISTRATION]THE BRITCARAVAN LOUNGEMINI BOSSSAN PEDRO SOCIALSTILL O.G. / ALTER EGOHere is how it works:1) Pre-Purchase Your Bar Crawl Wristband.2) Check in at Cash Only (78 E. Santa Clara St.) to get your wristband and map with participating bars, their location, and their drink specials. (Registration is from 5PM-10PM) **WRISTBAND MUST BE PICKED UP DURING THESE TIMES**3) Your wristband gets you into any of the participating bars with no cover, plus gets you drink specials all night. ***Unless otherwise indicated by the maps***4) Have Fun!For questions, email info@barcrawlerz.com or call us @ (310) 273-8772 Ext. 1NEW YEARS EVE 2026 MAP & SPECIALS BELOW.**Subject to changes**Read moreCategory: Holiday, New Years Eve",
+      "source": "eventbrite",
+      "scraped_at": "2025-12-29T16:39:54.028Z"
+    },
+    {
+      "id": 32,
+      "selected": false,
+      "title": "ANNUAL THROWBACK NEW YEARS EVE BASH AT HOLIDAY INN MILPITAS",
+      "time_display": "Monday 01/05 4:38 PM",
+      "location": "Holiday Inn & Suites Silicon Valley - Milpitas by IHG, 1100 Cadillac Court, Milpitas, CA 95035",
+      "price": "From $44.52",
+      "event_type": "other",
+      "priority": 3,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/annual-throwback-new-years-eve-bash-at-holiday-inn-milpitas-tickets-1797269855519?aff=ebdssbdestsearch",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "ANNUAL THROWBACK NEW YEARS EVE BASH AT HOLIDAY INN MILPITAS",
+      "description_detail": "ANNUAL THROWBACK NEW YEARS EVE BASH AT HOLIDAY INN MILPITAS",
+      "source": "eventbrite",
+      "scraped_at": "2025-12-29T16:39:54.028Z"
+    }
+  ]
+}
