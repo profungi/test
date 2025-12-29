@@ -525,6 +525,140 @@ module.exports = {
       url: 'https://celebratebastilledaysf.org/',
       extractionType: 'single',
       cacheMinutes: 43200
+    },
+
+    // ========== 小城市艺术节 & 社区活动 ==========
+    {
+      name: 'kingsmountainartfair',
+      displayName: 'Kings Mountain Art Fair',
+      priority: 1,
+      enabled: true,
+      frequency: 'seasonal',
+      activeMonths: [8, 9], // Labor Day Weekend
+      url: 'https://www.kingsmountainartfair.org/',
+      extractionType: 'single',
+      cacheMinutes: 43200
+    },
+    {
+      name: 'losaltosartwine',
+      displayName: 'Los Altos Arts & Wine Festival',
+      priority: 1,
+      enabled: true,
+      frequency: 'seasonal',
+      activeMonths: [7], // July
+      url: 'https://downtownlosaltos.org/event/46th-los-altos-arts-wine-festival/',
+      extractionType: 'single',
+      cacheMinutes: 43200
+    },
+    {
+      name: 'saratogaartshow',
+      displayName: 'Saratoga Rotary Art Show',
+      priority: 2,
+      enabled: true,
+      frequency: 'seasonal',
+      activeMonths: [5], // May
+      url: 'https://saratogartshow.org/',
+      extractionType: 'single',
+      cacheMinutes: 43200
+    },
+    {
+      name: 'paloaltocodeart',
+      displayName: 'Code:ART Festival (Palo Alto)',
+      priority: 1,
+      enabled: true,
+      frequency: 'seasonal',
+      activeMonths: [10], // October
+      url: 'https://www.paloalto.gov/Departments/Community-Services/Arts-Sciences/Public-Art-Program/CodeART',
+      extractionType: 'single',
+      cacheMinutes: 43200
+    },
+    {
+      name: 'paloaltofestivalarts',
+      displayName: 'Palo Alto Festival of the Arts',
+      priority: 1,
+      enabled: true,
+      frequency: 'seasonal',
+      activeMonths: [8], // August
+      url: 'https://www.paloaltochamber.com/festival-of-the-arts',
+      extractionType: 'single',
+      cacheMinutes: 43200
+    },
+    {
+      name: 'millbraeartwine',
+      displayName: 'Millbrae Art & Wine Festival',
+      priority: 2,
+      enabled: true,
+      frequency: 'seasonal',
+      activeMonths: [8, 9], // August-September
+      url: 'https://www.millbraechamber.com/artwinefestival2025',
+      extractionType: 'single',
+      cacheMinutes: 43200
+    },
+    {
+      name: 'sausalitoartfestival',
+      displayName: 'Sausalito Art Festival',
+      priority: 1,
+      enabled: true,
+      frequency: 'seasonal',
+      activeMonths: [8, 9], // Labor Day Weekend
+      url: 'https://www.sausalitoartfestival.org/',
+      extractionType: 'single',
+      cacheMinutes: 43200
+    },
+    {
+      name: 'tiburonwinefestival',
+      displayName: 'Tiburon Wine Festival',
+      priority: 1,
+      enabled: true,
+      frequency: 'seasonal',
+      activeMonths: [5, 6], // Spring
+      url: 'https://www.tiburonchamber.org/tiburon-wine-festival/',
+      extractionType: 'single',
+      cacheMinutes: 43200
+    },
+    {
+      name: 'alamedaparkstreet',
+      displayName: 'Park Street Art & Wine Festival (Alameda)',
+      priority: 1,
+      enabled: true,
+      frequency: 'seasonal',
+      activeMonths: [7], // July
+      url: 'https://alamedamainstreet.com/events/park-street-art-wine-faire/',
+      extractionType: 'single',
+      cacheMinutes: 43200
+    },
+    {
+      name: 'berkeleyliveoak',
+      displayName: 'Live Oak Park Festival (Berkeley)',
+      priority: 2,
+      enabled: true,
+      frequency: 'seasonal',
+      activeMonths: [5], // May
+      url: 'https://www.liveoakparkfestival.org/',
+      extractionType: 'single',
+      cacheMinutes: 43200
+    },
+    {
+      name: 'alamedacountyfair',
+      displayName: 'Alameda County Fair (Pleasanton)',
+      priority: 1,
+      enabled: true,
+      frequency: 'seasonal',
+      activeMonths: [6, 7], // June-July
+      url: 'https://alamedacountyfair.com/',
+      extractionType: 'single',
+      cacheMinutes: 43200
+    },
+    {
+      name: 'mvartwine',
+      displayName: 'Mountain View Art & Wine Festival',
+      priority: 1,
+      enabled: true,
+      frequency: 'seasonal',
+      activeMonths: [9], // September
+      url: 'https://www.mvartwine.com/',
+      extractionType: 'single',
+      cacheMinutes: 43200
     }
   ],
 

@@ -42,10 +42,15 @@ async function testConfigurableScrapers() {
         console.log(`   ✅ Result: ${events.length} events`);
 
         if (events.length > 0) {
-          console.log(`   📄 Sample event:`);
-          console.log(`      Title: ${events[0].title?.substring(0, 60) || 'N/A'}`);
-          console.log(`      Location: ${events[0].location || 'N/A'}`);
-          console.log(`      URL: ${events[0].originalUrl?.substring(0, 60) || 'N/A'}`);
+          const sampleCount = Math.min(5, events.length);
+          console.log(`   📄 First ${sampleCount} sample events:\n`);
+          events.slice(0, sampleCount).forEach((e, idx) => {
+            console.log(`      ${idx + 1}. ${e.title}`);
+            console.log(`         Date: ${e.startTime || 'N/A'}`);
+            console.log(`         Location: ${e.location || 'N/A'}`);
+            console.log(`         URL: ${e.originalUrl}`);
+            console.log('');
+          });
         }
 
       } catch (error) {
