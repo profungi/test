@@ -29,7 +29,9 @@ if (fs.existsSync(TEST_DB_PATH)) {
 console.log(`📁 测试数据库路径: ${TEST_DB_PATH}\n`);
 
 // ⚠️ 关键：在require任何模块之前设置环境变量
-delete process.env.USE_TURSO;  // 禁用Turso
+// 注意：不能 delete USE_TURSO，因为 dotenv.config() 会重新从 .env 读取
+// 必须设置为空字符串（falsy值），这样 dotenv 不会覆盖，且 boolean 判断为 false
+process.env.USE_TURSO = '';  // 禁用Turso（空字符串 = false）
 process.env.DATABASE_PATH = TEST_DB_PATH;  // 设置测试数据库路径
 
 // 删除已经缓存的config模块（如果有）
