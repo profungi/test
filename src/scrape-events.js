@@ -126,10 +126,7 @@ class EventScrapeOrchestrator {
       const classificationReport = this.aiClassifier.generateClassificationReport(classifiedEvents);
       console.log('\n📊 AI分类报告:', classificationReport);
 
-      // 10. 生成人工审核文件
-      const weekRange = this.targetWeek === 'current'
-        ? this.scrapers[0].getCurrentWeekRange()
-        : this.scrapers[0].getNextWeekRange();
+      // 10. 生成人工审核文件（重用之前的weekRange）
       const reviewResult = await this.reviewManager.generateReviewFile(
         topCandidates,
         weekRange,
