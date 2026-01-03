@@ -5,7 +5,8 @@ const config = require('../config');
 
 class EventDatabase {
   constructor() {
-    this.dbPath = config.database.path;
+    // 支持环境变量覆盖数据库路径（用于测试隔离）
+    this.dbPath = process.env.DATABASE_PATH || config.database.path;
     this.ensureDirectoryExists();
     this.db = null;
   }
