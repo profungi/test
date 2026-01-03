@@ -12,6 +12,8 @@
     "scrape-funcheap": "node scrape-single-source.js funcheap",
     "scrape-sfstation": "node scrape-single-source.js sfstation",
     "scrape-all-sites": "node src/scrape-events.js",
+    "test-scrape": "node test-scrape-isolated.js",
+    "test-scrape-current": "node test-scrape-isolated.js --week current",
     "generate-post": "node src/generate-post.js",
     "generate-english": "node generate-english-posts.js",
     "test-english": "node test-english-generator.js",
