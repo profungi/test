@@ -14,6 +14,7 @@
     "scrape-all-sites": "node src/scrape-events.js",
     "test-scrape": "node test-scrape-isolated.js",
     "test-scrape-current": "node test-scrape-isolated.js --week current",
+    "test-scrape-quick": "node test-scrape-quick.js",
     "generate-post": "node src/generate-post.js",
     "generate-english": "node generate-english-posts.js",
     "test-english": "node test-english-generator.js",
