@@ -15,6 +15,7 @@
     "test-scrape": "node test-scrape-isolated.js",
     "test-scrape-current": "node test-scrape-isolated.js --week current",
     "test-scrape-quick": "node test-scrape-quick.js",
+    "test-two-sources": "node test-two-sources.js",
     "cleanup-test-data": "node cleanup-test-data.js",
     "generate-post": "node src/generate-post.js",
     "generate-english": "node generate-english-posts.js",
