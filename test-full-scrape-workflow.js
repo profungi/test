@@ -176,6 +176,26 @@ async function testFullScrapeWorkflow() {
     const translatedCount = translatedEvents.filter(e => e.title_zh).length;
     console.log(`\n✅ 翻译完成: ${translatedCount}/${translatedEvents.length} 个活动有中文标题\n`);
 
+    // 立即验证数据库
+    console.log('🔍 立即验证数据库中的翻译...');
+    const checkTranslations = await new Promise((resolve, reject) => {
+      db.db.all('SELECT id, title, title_zh FROM events WHERE id IN (' + savedEvents.map(e => e.id).join(',') + ')', (err, rows) => {
+        if (err) reject(err);
+        else resolve(rows);
+      });
+    });
+    const dbHasTranslations = checkTranslations.filter(r => r.title_zh).length;
+    console.log(`   数据库中有翻译的活动: ${dbHasTranslations}/${checkTranslations.length}`);
+    if (dbHasTranslations < checkTranslations.length) {
+      console.log('   ⚠️  警告：部分翻译未写入数据库！');
+      checkTranslations.forEach(r => {
+        if (!r.title_zh) {
+          console.log(`     - ID ${r.id}: ${r.title} - 缺少 title_zh`);
+        }
+      });
+    }
+    console.log('');
+
     // 5. 生成摘要
     console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
     console.log('  步骤 5/7: 生成活动摘要');
