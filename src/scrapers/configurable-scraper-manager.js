@@ -4,6 +4,7 @@
  */
 
 const ConfigurableScraper = require('./configurable-scraper');
+const SJDowntownApiScraper = require('./sjdowntown-api-scraper');
 const sourcesConfig = require('../config/sources-config');
 
 class ConfigurableScraperManager {
@@ -12,9 +13,38 @@ class ConfigurableScraperManager {
   }
 
   /**
+   * 获取所有启用的 REST API 源爬虫
+   */
+  getAPIScrapers() {
+    if (!this.config.api_sources) {
+      return [];
+    }
+
+    return this.config.api_sources
+      .filter(source => source.enabled)
+      .map(source => this.createApiScraper(source));
+  }
+
+  /**
+   * 根据 API 类型创建相应的抓取器
+   */
+  createApiScraper(source) {
+    switch (source.apiType) {
+      case 'wordpress_events_calendar':
+        return new SJDowntownApiScraper(source);
+      default:
+        throw new Error(`Unknown API type: ${source.apiType}`);
+    }
+  }
+
+  /**
    * 获取所有启用的CSS源爬虫
    */
   getCSSScrapers() {
+    if (!this.config.css_sources) {
+      return [];
+    }
+
     return this.config.css_sources
       .filter(source => source.enabled)
       .map(source => new ConfigurableScraper(source));
@@ -24,6 +54,10 @@ class ConfigurableScraperManager {
    * 获取所有启用的AI源爬虫（考虑季节性）
    */
   getAIScrapers(currentMonth = null) {
+    if (!this.config.ai_sources) {
+      return [];
+    }
+
     const month = currentMonth || new Date().getMonth() + 1; // 1-12
 
     return this.config.ai_sources
@@ -33,17 +67,19 @@ class ConfigurableScraperManager {
   }
 
   /**
-   * 获取所有爬虫（CSS + AI，过滤季节性）
+   * 获取所有爬虫（API + CSS + AI，过滤季节性）
    */
   getAllScrapers(currentMonth = null) {
+    const apiScrapers = this.getAPIScrapers();
     const cssScrapers = this.getCSSScrapers();
     const aiScrapers = this.getAIScrapers(currentMonth);
 
     console.log(`\n📋 Configured Scrapers:`);
+    console.log(`   REST API sources: ${apiScrapers.length}`);
     console.log(`   CSS sources: ${cssScrapers.length}`);
     console.log(`   AI sources: ${aiScrapers.length} (filtered by month)`);
 
-    return [...cssScrapers, ...aiScrapers];
+    return [...apiScrapers, ...cssScrapers, ...aiScrapers];
   }
 
   /**

@@ -4,65 +4,34 @@
  */
 
 module.exports = {
-  // ========== CSS抓取源 ==========
-  // 这些网站有清晰的HTML结构，可以用CSS选择器直接抓取
-  css_sources: [
-    {
-      name: 'dothebay',
-      displayName: 'DoTheBay',
-      priority: 1, // 最高优先级 - 54个事件
-      enabled: true,
-      frequency: 'weekly',
-      listUrl: 'https://dothebay.com/events',
-      waitTime: 5000, // 需要等待JavaScript渲染
-      selectors: {
-        container: '.ds-listing',
-        title: '.ds-listing-event-title-text, h3, h4',
-        date: '.ds-event-time',
-        location: '.ds-event-location, .ds-venue',
-        link: 'a',
-        description: '.ds-listing-event-description, .description'
-      },
-      // 需要访问详情页获取完整信息
-      needsDetailPage: true,
-      detailSelectors: {
-        title: 'h1, .event-title',
-        date: '.event-date, time, .ds-event-time',
-        location: '.event-location, .venue, address',
-        price: '.price, .cost, .admission',
-        description: '.event-description, .description, .content'
-      }
-    },
+  // ========== REST API 抓取源 ==========
+  // 这些网站提供 REST API，可以直接获取结构化数据
+  api_sources: [
     {
       name: 'sjdowntown',
       displayName: 'San Jose Downtown',
-      priority: 2,
+      priority: 1,
       enabled: true,
       frequency: 'weekly',
-      listUrl: 'https://sjdowntown.com/dtsj-events',
-      waitTime: 2000,
-      selectors: {
-        container: 'article',
-        title: 'h2, h3, .entry-title',
-        date: '.event-date, time',
-        location: '.location, .venue',
-        link: 'a',
-        description: '.entry-content, .description'
+      apiType: 'wordpress_events_calendar', // The Events Calendar REST API
+      baseUrl: 'https://sjdowntown.com',
+      apiEndpoint: '/?rest_route=/tribe/events/v1/events',
+      apiParams: {
+        per_page: 50 // 每次获取50个事件
       },
-      // 过滤无效标题
-      filters: {
-        skipTitles: [
-          'Whats going on',
-          'What\'s going on',
-          'Events Search',
-          'Search and Views Navigation',
-          'Navigation',
-          'Sonic Runway' // 固定装置
-        ],
-        minTitleLength: 5
+      // 日期参数会在运行时根据 weekRange 动态添加
+      supportsDateFiltering: true,
+      dateParams: {
+        start: 'start_date',  // API 参数名
+        end: 'end_date'       // API 参数名
       }
     }
   ],
+
+  // ========== CSS抓取源 ==========
+  // 这些网站有清晰的HTML结构，可以用CSS选择器直接抓取
+  // 注：目前为空，之前的 DoTheBay 和 San Jose Downtown 已移除
+  css_sources: [],
 
   // ========== AI抓取源 ==========
   // 这些网站结构复杂或动态渲染，使用AI提取更可靠
