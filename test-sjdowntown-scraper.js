@@ -105,11 +105,23 @@ async function testScraper() {
       console.log('  数据库统计');
       console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n');
 
-      const totalEvents = db.db.prepare('SELECT COUNT(*) as count FROM events').get();
       console.log(`   数据库路径: ${TEST_DB_PATH}`);
+
+      // 使用 sqlite3 的异步 API
+      const totalEvents = await new Promise((resolve, reject) => {
+        db.db.get('SELECT COUNT(*) as count FROM events', (err, row) => {
+          if (err) reject(err);
+          else resolve(row);
+        });
+      });
       console.log(`   总活动数: ${totalEvents.count}`);
 
-      const bySource = db.db.prepare('SELECT source, COUNT(*) as count FROM events GROUP BY source').all();
+      const bySource = await new Promise((resolve, reject) => {
+        db.db.all('SELECT source, COUNT(*) as count FROM events GROUP BY source', (err, rows) => {
+          if (err) reject(err);
+          else resolve(rows);
+        });
+      });
       console.log('   按来源分布:');
       bySource.forEach(row => {
         console.log(`   - ${row.source}: ${row.count}`);

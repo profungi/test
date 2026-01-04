@@ -515,6 +515,44 @@ class EventDatabase {
     });
   }
 
+  /**
+   * 更新活动的翻译（title_zh）
+   */
+  async updateEventTranslation(eventId, titleZh) {
+    return new Promise((resolve, reject) => {
+      this.db.run(
+        'UPDATE events SET title_zh = ? WHERE id = ?',
+        [titleZh, eventId],
+        function(err) {
+          if (err) {
+            reject(err);
+          } else {
+            resolve({ updated: this.changes > 0 });
+          }
+        }
+      );
+    });
+  }
+
+  /**
+   * 更新活动的摘要（summary_zh, summary_en）
+   */
+  async updateEventSummaries(eventId, summaryZh, summaryEn) {
+    return new Promise((resolve, reject) => {
+      this.db.run(
+        'UPDATE events SET summary_zh = ?, summary_en = ? WHERE id = ?',
+        [summaryZh, summaryEn, eventId],
+        function(err) {
+          if (err) {
+            reject(err);
+          } else {
+            resolve({ updated: this.changes > 0 });
+          }
+        }
+      );
+    });
+  }
+
   async close() {
     return new Promise((resolve, reject) => {
       if (this.db) {
