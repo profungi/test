@@ -496,9 +496,10 @@ class Translator {
    * @param {Array<Object>} events - 活动对象数组（每个对象需有 title 字段）
    * @param {number} batchSize - 批次大小
    * @param {number} delayMs - 每批次之间的延迟（毫秒）
+   * @param {Object} database - 可选的数据库实例，用于更新数据库
    * @returns {Promise<Array<Object>>} 添加了 title_zh 字段的活动数组
    */
-  async translateEvents(events, batchSize = 10, delayMs = 1000) {
+  async translateEvents(events, batchSize = 10, delayMs = 1000, database = null) {
     if (!events || events.length === 0) {
       return events;
     }
@@ -516,6 +517,25 @@ class Translator {
       ...event,
       title_zh: translationResults[index].text,
     }));
+
+    // 如果提供了数据库实例，更新数据库中的 title_zh
+    if (database) {
+      console.log(`\n💾 更新数据库中的翻译...`);
+      let updateCount = 0;
+
+      for (const event of translatedEvents) {
+        if (event.title_zh && event.id) {
+          try {
+            await database.updateEventTranslation(event.id, event.title_zh);
+            updateCount++;
+          } catch (error) {
+            console.warn(`  ⚠️  更新失败 (ID: ${event.id}): ${error.message}`);
+          }
+        }
+      }
+
+      console.log(`✅ 数据库更新完成: ${updateCount}/${translatedEvents.length} 个活动\n`);
+    }
 
     return translatedEvents;
   }
