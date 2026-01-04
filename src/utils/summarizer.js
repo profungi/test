@@ -242,9 +242,10 @@ class Summarizer {
    * @param {Array<Object>} events - 活动对象数组
    * @param {number} batchSize - 批次大小
    * @param {number} delayMs - 每批次之间的延迟（毫秒）
+   * @param {Object} database - 可选的数据库实例，用于更新数据库
    * @returns {Promise<Array<Object>>} 添加了 summary_en 和 summary_zh 的活动数组
    */
-  async summarizeEvents(events, batchSize = 5, delayMs = 2000) {
+  async summarizeEvents(events, batchSize = 5, delayMs = 2000, database = null) {
     if (!events || events.length === 0) {
       return events;
     }
@@ -359,6 +360,29 @@ class Summarizer {
     if (stats.skipped > 0) console.log(`   ⏭️  跳过: ${stats.skipped}`);
     if (stats.failed > 0) console.log(`   ❌ 失败: ${stats.failed}`);
     console.log(`${'='.repeat(60)}\n`);
+
+    // 如果提供了数据库实例，更新数据库中的摘要
+    if (database) {
+      console.log(`💾 更新数据库中的摘要...`);
+      let updateCount = 0;
+
+      for (const event of results) {
+        if ((event.summary_zh || event.summary_en) && event.id) {
+          try {
+            await database.updateEventSummaries(
+              event.id,
+              event.summary_zh,
+              event.summary_en
+            );
+            updateCount++;
+          } catch (error) {
+            console.warn(`  ⚠️  更新失败 (ID: ${event.id}): ${error.message}`);
+          }
+        }
+      }
+
+      console.log(`✅ 数据库更新完成: ${updateCount}/${results.length} 个活动\n`);
+    }
 
     return results;
   }

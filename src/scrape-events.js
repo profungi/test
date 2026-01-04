@@ -102,7 +102,8 @@ class EventScrapeOrchestrator {
       const translatedEvents = await this.translator.translateEvents(
         uniqueEvents,
         10,  // 每批翻译 10 个
-        1000 // 每批间隔 1 秒
+        1000, // 每批间隔 1 秒
+        this.database // 传入数据库实例以更新翻译
       );
 
       // 6. 生成AI摘要（中英文）
@@ -110,7 +111,8 @@ class EventScrapeOrchestrator {
       const summarizedEvents = await this.summarizer.summarizeEvents(
         translatedEvents,
         5,    // 每批处理 5 个
-        2000  // 每批间隔 2 秒
+        2000, // 每批间隔 2 秒
+        this.database // 传入数据库实例以更新摘要
       );
 
       // 7. AI分类和优先级排序
@@ -345,6 +347,8 @@ class EventScrapeOrchestrator {
       try {
         const result = await this.database.saveEvent(event);
         if (result.saved) {
+          // 将数据库 ID 添加到事件对象中，用于后续更新翻译和摘要
+          event.id = result.id;
           uniqueEvents.push(event);
         } else {
           console.log(`  📝 数据库去重: ${event.title}`);

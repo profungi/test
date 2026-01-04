@@ -190,6 +190,38 @@ class TursoDatabase {
     }
   }
 
+  /**
+   * 更新活动的翻译（title_zh）
+   */
+  async updateEventTranslation(eventId, titleZh) {
+    try {
+      const result = await this.client.execute({
+        sql: 'UPDATE events SET title_zh = ? WHERE id = ?',
+        args: [titleZh, eventId]
+      });
+      return { updated: result.rowsAffected > 0 };
+    } catch (error) {
+      console.error('Turso updateEventTranslation error:', error);
+      throw error;
+    }
+  }
+
+  /**
+   * 更新活动的摘要（summary_zh, summary_en）
+   */
+  async updateEventSummaries(eventId, summaryZh, summaryEn) {
+    try {
+      const result = await this.client.execute({
+        sql: 'UPDATE events SET summary_zh = ?, summary_en = ? WHERE id = ?',
+        args: [summaryZh, summaryEn, eventId]
+      });
+      return { updated: result.rowsAffected > 0 };
+    } catch (error) {
+      console.error('Turso updateEventSummaries error:', error);
+      throw error;
+    }
+  }
+
   async close() {
     // Turso 客户端不需要显式关闭
     console.log('✅ Turso connection closed');
