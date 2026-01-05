@@ -17,6 +17,8 @@
     "test-scrape-quick": "node test-scrape-quick.js",
     "test-full-workflow": "node test-full-scrape-workflow.js",
     "test-translation-summary": "node test-translation-summary-update.js",
+    "verify-turso": "node verify-turso-setup.js",
+    "check-turso": "node check-turso-data.js",
     "cleanup-test-data": "node cleanup-test-data.js",
     "generate-post": "node src/generate-post.js",
     "generate-english": "node generate-english-posts.js",

@@ -49,7 +49,7 @@ class TursoDatabase {
     `;
 
     try {
-      await this.client.execute({
+      const result = await this.client.execute({
         sql,
         args: [
           event.title,
@@ -72,7 +72,11 @@ class TursoDatabase {
         ]
       });
 
-      return { saved: true };
+      // 获取插入的 ID
+      // Turso 返回的 lastInsertRowid 是插入行的 ID
+      const insertedId = result.lastInsertRowid;
+
+      return { saved: true, id: insertedId };
     } catch (error) {
       console.error('Error saving event to Turso:', error);
       return { saved: false, error: error.message };
