@@ -244,7 +244,7 @@
     "eventsCount": "共 {count} 个活动",
     "noEvents": "暂无活动",
     "noEventsHint": "请尝试调整筛选条件或查看其他周的活动",
-    "dataSource": "数据来源: Eventbrite, SF Station, Funcheap",
+    "dataSource": "数据来源: Eventbrite, SF Station, Funcheap, SJ Downtown 等",
     "updateInfo": "每周自动更新 · 最后更新时间: {date}"
   },
   "filter": {

@@ -4,7 +4,7 @@ Location: San Francisco Bay Area, California, USA
 Contact: bayareaselected@gmail.com
 
 /* THANKS */
-Data Sources: Eventbrite, SF Station, Funcheap SF
+Data Sources: Eventbrite, SF Station, Funcheap SF, SJ Downtown, San José Made, Half Moon Bay Pumpkin, Silicon Valley Pride, SF/Cupertino Cherry Blossom, Obon Festivals
 
 /* SITE */
 Last update: 2024

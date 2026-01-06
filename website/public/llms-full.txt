@@ -121,6 +121,7 @@ Events are aggregated from these trusted platforms:
 - **Eventbrite**: Large events, ticketed events
 - **SF Station**: Local SF events, culture
 - **Funcheap SF**: Free and cheap events
+- *SJ Downtown**: City events, bar events, food events
 - **Local community calendars**: Neighborhood events
 
 ## Sample Event Data Format
