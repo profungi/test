@@ -184,9 +184,45 @@ export async function getEvents(filters: EventFilters = {}): Promise<Event[]> {
     ORDER BY priority DESC, start_time ASC
   `;
 
+  // 调试日志
+  console.log('[DEBUG] Event Filter Query:');
+  console.log('  Pacific Today:', todayStr);
+  console.log('  SQL:', sql);
+  console.log('  Params:', params);
+
   try {
     const client = getTursoClient();
+
+    // 先检查 Fireside 活动的原始数据
+    const debugResult = await client.execute({
+      sql: `SELECT title, start_time, date(start_time) as parsed_date,
+             date(start_time) >= ? as should_show
+            FROM events
+            WHERE title LIKE '%Fireside%'
+            LIMIT 1`,
+      args: [todayStr]
+    });
+    if (debugResult.rows.length > 0) {
+      console.log('[DEBUG] Fireside event raw data from DB:');
+      console.log(debugResult.rows[0]);
+    }
+
     const result = await client.execute({ sql, args: params });
+    console.log('[DEBUG] Query returned', result.rows.length, 'events');
+    if (result.rows.length > 0) {
+      console.log('[DEBUG] First event start_time:', (result.rows[0] as any).start_time);
+      console.log('[DEBUG] Last event start_time:', (result.rows[result.rows.length - 1] as any).start_time);
+
+      // 检查是否有 Fireside Meeting
+      const firesideEvent = result.rows.find((row: any) => row.title?.includes('Fireside'));
+      if (firesideEvent) {
+        console.log('[DEBUG] ⚠️ Fireside Meeting found in results:');
+        console.log('  Title:', (firesideEvent as any).title);
+        console.log('  start_time:', (firesideEvent as any).start_time);
+        console.log('  start_time type:', typeof (firesideEvent as any).start_time);
+        console.log('  Expected filter: >= ', todayStr);
+      }
+    }
     return result.rows as unknown as Event[];
   } catch (error) {
     console.error('Database query error:', error);
