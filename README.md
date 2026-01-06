@@ -785,32 +785,43 @@ node translate-missing.js --help
 - `TURSO_DATABASE_URL`: Turso 数据库 URL（使用 Turso 时需要）
 - `TURSO_AUTH_TOKEN`: Turso 认证令牌（使用 Turso 时需要）
 
+---
 
-## 📚 文档
+## 📚 完整文档
 
-### 核心文档
-- **[README.md](README.md)** - 本文档，项目总览和快速开始
-- **[COMMANDS.md](COMMANDS.md)** - ⭐ 命令大全，所有可用命令的完整参考
-- **[ARCHITECTURE.md](ARCHITECTURE.md)** - 系统架构设计
-- **[SUMMARY.md](SUMMARY.md)** - 最新开发总结
+详细文档请查看: **[docs/INDEX.md](docs/INDEX.md)**
 
-### 详细文档（docs/）
-- **[DATA_ARCHITECTURE.md](docs/DATA_ARCHITECTURE.md)** - 数据架构和同步策略
-- **[DATABASE_CONFIG.md](docs/DATABASE_CONFIG.md)** - 数据库配置指南
-- **[TRANSLATION_GUIDE.md](docs/TRANSLATION_GUIDE.md)** - 翻译速率限制策略
+### 快速链接
 
-### 功能文档（docs/features/）
-- **[USER_FEEDBACK_DOCUMENTATION.md](docs/features/USER_FEEDBACK_DOCUMENTATION.md)** - 用户反馈功能文档
-- **[WEBSITE_DESIGN.md](docs/features/WEBSITE_DESIGN.md)** - 网站设计文档
-- **[I18N_STRATEGY.md](docs/features/I18N_STRATEGY.md)** - 国际化策略
+- **[完整爬虫分析](docs/scraping-config-review.md)** - 深度代码分析和调试指南
+- **[数据源概览](docs/SCRAPING_ANALYSIS.md)** - 当前数据源状态和推荐
+- **[测试指南](docs/TESTING.md)** - 测试工具和调试流程
+- **[命令参考](COMMANDS.md)** - 所有可用命令
+- **[系统架构](ARCHITECTURE.md)** - 系统设计和工作流
 
-### 工具脚本（scripts/）
-- `check-db-config.js` - 检查数据库配置
-- `check-env.sh` - 检查环境变量
-- `test-sync.sh` - 测试同步功能
-- `clear-all-events.js` - 清空所有活动
-- `sync-database.js` - 数据库同步工具
+### 调试工具
 
-### 归档文档（docs/archive/）
-已完成的迁移文档和临时报告存档在 `docs/archive/` 目录，仅供参考。
+```bash
+# 调试单个数据源（不保存数据库）
+npm run debug-eventbrite
+npm run debug-funcheap
+npm run debug-sfstation
 
+# 查看详细统计、样本、质量分析
+```
+
+---
+
+## 🔍 故障排除
+
+### 爬虫问题
+- **抓取数量少**: 查看 [scraping-config-review.md](docs/scraping-config-review.md) 诊断步骤
+- **CSS选择器失效**: 运行 `npm run debug-eventbrite` 检查详情
+- **数据源分析**: 参考 [SCRAPING_ANALYSIS.md](docs/SCRAPING_ANALYSIS.md)
+
+### 数据库问题
+- **Turso连接**: `npm run verify-turso`
+- **数据检查**: `npm run check-turso`
+- **翻译/摘要未保存**: `npm run test-translation-summary`
+
+详细故障排除: [docs/TESTING.md#troubleshooting](docs/TESTING.md#troubleshooting)
