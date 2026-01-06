@@ -49,6 +49,7 @@ Events are aggregated from:
 - Eventbrite
 - SF Station
 - Funcheap SF
+- SJ Downtown
 - Local community calendars
 
 ## Update Schedule
