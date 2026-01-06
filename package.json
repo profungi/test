@@ -45,7 +45,8 @@
     "test-translation": "node test-translation.js",
     "remove-duplicates": "node remove-duplicates-turso.js",
     "remove-duplicates-preview": "node remove-duplicates-turso.js --dry-run",
-    "remove-duplicates-by-title": "node remove-duplicates-turso.js --dedupe-by=normalized_title"
+    "remove-duplicates-by-title": "node remove-duplicates-turso.js --dedupe-by=normalized_title",
+    "diagnose-sync": "node diagnose-sync-failure.js"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.24.3",
