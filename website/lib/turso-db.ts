@@ -170,6 +170,13 @@ export async function getEvents(filters: EventFilters = {}): Promise<Event[]> {
     params.push(`%${search}%`, `%${search}%`);
   }
 
+  // 6. 过滤已过期的活动（start_time 在今天之前的不显示）
+  // 使用 Pacific 时区的今天日期
+  const pacificToday = getPacificDate();
+  const todayStr = `${pacificToday.getFullYear()}-${String(pacificToday.getMonth() + 1).padStart(2, '0')}-${String(pacificToday.getDate()).padStart(2, '0')}`;
+  conditions.push('date(start_time) >= ?');
+  params.push(todayStr);
+
   // 构建完整 SQL
   const sql = `
     SELECT * FROM events
