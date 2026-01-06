@@ -1,75 +1,59 @@
 # Dependencies
 node_modules/
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-pnpm-debug.log*
-# package-lock.json should be committed for dependency consistency
+pnpm-lock.yaml
 
 # Environment variables
 .env
 .env.local
-.env.development
-.env.test
-.env.production
 
-# Database
-*.db
+# Database files
+data/*.db
+data/*.db-journal
+data/*.db-wal
+data/*.db-shm
 *.sqlite
 *.sqlite3
-data/*.db
-data/*.sqlite
-
-# Logs
-*.log
-logs/
-npm-debug.log
-yarn-debug.log
 
 # Output files
 output/
-temp/
-images/
-dist/
-build/
+*.json.bak
+review_*.json
 
-# Assets (template images)
-# assets/
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+*.log
 
 # OS files
 .DS_Store
-.DS_Store?
-._*
-.Spotlight-V100
-.Trashes
-ehthumbs.db
 Thumbs.db
-*.swp
-*.swo
-*~
+desktop.ini
 
 # IDE
 .vscode/
 .idea/
-*.sublime-project
-*.sublime-workspace
-.project
-.settings/
-.classpath
+*.swp
+*.swo
+*~
 
-# Dev Container - 保留配置，但忽略运行时文件
-# .devcontainer/ 目录应该被提交到 git
-# 但如果有临时文件可以在这里忽略
+# Test files (keep active tools, archive completed ones)
+test/legacy/
+test/archive/
+test-data/
+*-test.html
+eventbrite-test.html
+funcheap-test.html
 
 # Temporary files
 tmp/
+temp/
 *.tmp
+
+# Build artifacts
+dist/
+build/
+
+# Backup files
 *.bak
-
-# Testing
-coverage/
-.nyc_output/
-
-# Misc
-.cache/
-.parcel-cache/
+*~

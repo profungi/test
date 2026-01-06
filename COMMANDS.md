@@ -104,8 +104,6 @@ npm run sync-diff
 # 预览同步操作（不实际修改）
 npm run sync-preview
 
-# 旧的同步命令（已弃用，使用 sync-from-turso 代替）
-npm run sync-database
 ```
 
 **同步模式说明**:
@@ -616,14 +614,10 @@ npm run scrape-sfstation                # 只抓取 SF Station
 npm run scrape-all-sites                # 抓取所有网站
 npm run generate-post                   # 生成小红书内容
 npm run generate-english                # 生成英文帖子
-npm run test-english                    # 测试英文生成器
-npm run test-cover                      # 测试封面生成
 npm run validate                        # 验证环境
 npm run dev                             # 开发模式
 npm run init-feedback-db                # 初始化反馈数据库
 npm run init-user-feedback-db           # 初始化用户反馈表
-npm run fix-eventbrite-data             # 修复 Eventbrite 数据
-npm run sync-database                   # 同步数据库（旧）
 npm run sync-from-turso                 # 从 Turso 同步（增量）
 npm run sync-full                       # 完整同步
 npm run sync-diff                       # 差异同步（删除本地多余记录）
