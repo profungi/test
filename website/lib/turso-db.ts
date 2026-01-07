@@ -174,7 +174,19 @@ export async function getEvents(filters: EventFilters = {}): Promise<Event[]> {
   // 使用 Pacific 时区的今天日期
   const pacificToday = getPacificDate();
   const todayStr = `${pacificToday.getFullYear()}-${String(pacificToday.getMonth() + 1).padStart(2, '0')}-${String(pacificToday.getDate()).padStart(2, '0')}`;
-  conditions.push('date(start_time) >= ?');
+
+  // 计算当前 Pacific 时区相对于 UTC 的偏移量（考虑夏令时）
+  // 创建一个 Pacific 时区的日期对象来获取准确的偏移量
+  const now = new Date();
+  const pacificTimeStr = now.toLocaleString('en-US', { timeZone: 'America/Los_Angeles' });
+  const utcTimeStr = now.toLocaleString('en-US', { timeZone: 'UTC' });
+  const pacificTime = new Date(pacificTimeStr);
+  const utcTime = new Date(utcTimeStr);
+  const offsetHours = Math.round((utcTime.getTime() - pacificTime.getTime()) / (1000 * 60 * 60));
+
+  // 使用 datetime() 函数将 UTC 时间转换为 Pacific 时区，然后再提取日期
+  // 偏移量是负数（Pacific 在 UTC 之后），所以用负号
+  conditions.push(`date(datetime(start_time, '-${offsetHours} hours')) >= ?`);
   params.push(todayStr);
 
   // 构建完整 SQL
@@ -184,45 +196,9 @@ export async function getEvents(filters: EventFilters = {}): Promise<Event[]> {
     ORDER BY priority DESC, start_time ASC
   `;
 
-  // 调试日志
-  console.log('[DEBUG] Event Filter Query:');
-  console.log('  Pacific Today:', todayStr);
-  console.log('  SQL:', sql);
-  console.log('  Params:', params);
-
   try {
     const client = getTursoClient();
-
-    // 先检查 Fireside 活动的原始数据
-    const debugResult = await client.execute({
-      sql: `SELECT title, start_time, date(start_time) as parsed_date,
-             date(start_time) >= ? as should_show
-            FROM events
-            WHERE title LIKE '%Fireside%'
-            LIMIT 1`,
-      args: [todayStr]
-    });
-    if (debugResult.rows.length > 0) {
-      console.log('[DEBUG] Fireside event raw data from DB:');
-      console.log(debugResult.rows[0]);
-    }
-
     const result = await client.execute({ sql, args: params });
-    console.log('[DEBUG] Query returned', result.rows.length, 'events');
-    if (result.rows.length > 0) {
-      console.log('[DEBUG] First event start_time:', (result.rows[0] as any).start_time);
-      console.log('[DEBUG] Last event start_time:', (result.rows[result.rows.length - 1] as any).start_time);
-
-      // 检查是否有 Fireside Meeting
-      const firesideEvent = result.rows.find((row: any) => row.title?.includes('Fireside'));
-      if (firesideEvent) {
-        console.log('[DEBUG] ⚠️ Fireside Meeting found in results:');
-        console.log('  Title:', (firesideEvent as any).title);
-        console.log('  start_time:', (firesideEvent as any).start_time);
-        console.log('  start_time type:', typeof (firesideEvent as any).start_time);
-        console.log('  Expected filter: >= ', todayStr);
-      }
-    }
     return result.rows as unknown as Event[];
   } catch (error) {
     console.error('Database query error:', error);
