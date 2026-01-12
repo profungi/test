@@ -1,0 +1,868 @@
+{
+  "review_id": "review_2026-01-12_1644_0h2",
+  "generated_at": "2026-01-12T16:44:59.926Z",
+  "scrape_date": "2026-01-12",
+  "target_week": "2026-01-19_to_2026-01-25",
+  "target_week_readable": "下周 (01/19 - 01/25)",
+  "scraping_report": {
+    "total_scraped": 87,
+    "after_deduplication": 72,
+    "after_classification": 72,
+    "classification_report": {
+      "totalEvents": 72,
+      "eventTypes": {
+        "tech": 1,
+        "other": 8,
+        "festival": 4,
+        "free": 27,
+        "food": 9,
+        "fair": 2,
+        "art": 10,
+        "music": 3,
+        "market": 8
+      },
+      "priorityLevels": {
+        "3": 8,
+        "4": 3,
+        "5": 11,
+        "6": 9,
+        "9": 27,
+        "10": 14
+      },
+      "chineseRelevant": 0,
+      "topPriorityEvents": 41
+    }
+  },
+  "instructions": {
+    "how_to_review": "将你想要发布的活动的 'selected' 字段改为 true",
+    "next_step": "保存文件后运行: npm run generate-post [此文件路径]",
+    "fields_explanation": {
+      "title": "活动标题",
+      "time_display": "显示用的时间格式",
+      "location": "活动地点",
+      "price": "票价信息",
+      "event_type": "AI识别的活动类型",
+      "priority": "优先级分数 (越高越重要)",
+      "chinese_relevant": "是否与中文社区相关",
+      "original_url": "原始活动链接"
+    }
+  },
+  "stats": {
+    "total_candidates": 40,
+    "by_type": {
+      "festival": 4,
+      "fair": 2,
+      "market": 8,
+      "free": 18,
+      "food": 8
+    },
+    "by_priority": {
+      "6": 8,
+      "9": 18,
+      "10": 14
+    },
+    "chinese_relevant": 0
+  },
+  "events": [
+    {
+      "id": 1,
+      "selected": false,
+      "title": "Berkeley MLK Breakfast 2026",
+      "time_display": "Monday 01/19 9:00 AM",
+      "location": "200 Marina Boulevard, Berkeley, CA 94710",
+      "price": "$35",
+      "event_type": "festival",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/berkeley-mlk-breakfast-2026-tickets-1976524783835?aff=ebdssbcitybrowse",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Join us (live) for a morning of community to explore our theme of \"Being the Light\" Now in its 15th ...",
+      "description_detail": "Join us (live) for a morning of community to explore our theme of \"Being the Light\"\nNow in its 15th year, we’re pleased to invite you to join faith, community and civic leaders for our 15th annual community gathering celebrating the life and work of Rev. Dr. Martin Luther King Jr! The annual Berkeley MLK Breakfast Celebration is a way for our community to come together in a joyful, moving and meaningful way to celebrate people and organizations that exemplify Berkeley working to move forward together.\nThe program begins promptly at 9am, doors open at 8:30am\nThis year, Immediately following the Breakfast Celebration on Monday, January 19, Mayor Ishii’s office will be hosting a Day of Service. There are 2 volunteer opportunities available:\nCesar Chavez Park Cleanup | 10:30 AM - 2:00 PM: Participate in a shoreline cleanup with the City of Berkeley Parks, Recreation, and Waterfront Department. Meet at 11 Spinnaker Way for a brief training, then supplies will be distributed, including gloves, buckets, and a map of the targeted locations. (Note: You are welcome to bring your own buckets and gloves). Bring family, friends, or neighbors! Sign up to volunteer.\nMeal Distribution & Prep with Dorothy Day House | 4:00 PM - 6:00 PM: We will end the day at Dorothy Day House supporting their dinner program. Sign up to volunteer.\nYouth under 15 must be accompanied by an adult. Youth ages 15 through 17 may participate on their own but must have a parent or guardian sign a waiver in person at the event.\nOur staff will follow-up as the date approaches. If you have any questions, please contact Andrea Bernal at abernal@berkeleyca.gov.\nJoin us (live) for a morning of community to explore our theme of \"Being the Light\"\nNow in its 15th year, we’re pleased to invite you to join faith, community and civic leaders for our 15th annual community gathering celebrating the life and work of Rev. Dr. Martin Luther King Jr!",
+      "source": "eventbrite",
+      "scraped_at": "2026-01-12T16:40:22.293Z"
+    },
+    {
+      "id": 2,
+      "selected": false,
+      "title": "JAN 23 | FRIDAY | BOLLYWOOD BLACK AND WHITE AFFAIR | SAN JOSE",
+      "time_display": "Friday 01/23 10:00 PM",
+      "location": "152 Post Street, San Jose, CA 95113",
+      "price": "$108.55",
+      "event_type": "fair",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/jan-23-friday-bollywood-black-and-white-affair-san-jose-tickets-1979870552118?aff=ebdssbcitybrowsenightlife",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Read below -Hindi, Bollywood, Top40, Bhangra Mixes & Tik-Tok Trendy music all night long. Show off y...",
+      "description_detail": "Read below -Hindi, Bollywood, Top40, Bhangra Mixes & Tik-Tok Trendy music all night long. Show off your black and white attires!\n**Paid Adverstisement\nBuy One Get One Deals for San Jose - Try it and Get It delivered now ! (Click Here)\nRead below -Hindi, Bollywood, Top40, Bhangra Mixes & Tik-Tok Trendy music all night long. Show off your black and white attires!\n**Paid Adverstisement\nBuy One Get One Deals for San Jose - Try it and Get It delivered now ! (Click Here)\nDRESS CODE: Black and White is preferred\nONLINE DEALSA.) BIRTHDAY MONTH- FREE ENTRY (BY RSVP)B.) STUDENT DISCOUNTED TICKETSC.) GROUP OF 3 AND ABOVE\nAge Restriction: 21+ 🛑 (Please bring a valid form of ID - State issued ID/Driver License or Passport) No photocopies or digital ids will work. Club is Really strict about this🛑\nLOOKING FOR VIP TABLE? THE BEST BOTTLE SERVICE IN TOWN (Upto 5 VIP GUESTS)-\nEnjoy an exclusive Lit VIP experience with benefits such as fast entry, guaranteed table seating, cover for up to 5 people, a dedicated VIP area, and mixers for your drinks",
+      "source": "eventbrite",
+      "scraped_at": "2026-01-12T16:40:22.293Z"
+    },
+    {
+      "id": 3,
+      "selected": false,
+      "title": "Vision Board Party",
+      "time_display": "Thursday 01/22 6:00 PM",
+      "location": "Tessora's Wine Bar, 234 East Campbell Avenue, Campbell, CA 95008",
+      "price": "$55.20",
+      "event_type": "festival",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/vision-board-party-tickets-1979679133580?aff=ebdssbcitybrowse",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Get ready to manifest your dreams and goals with friends while sipping on some bubbly at our Vision ...",
+      "description_detail": "Get ready to manifest your dreams and goals with friends while sipping on some bubbly at our Vision Board Party!✨ VISION & VIBES — Vision Board Night ✨We’re not doing “new year, new me.”We’re stepping into “next level, same me.” 💁🏻‍♀️✨Join us on Jan 22nd, 2026 from 6:00pm–8:00pm for a powerful night of intention-setting, goal-building, and mindset elevation.Never too late to set your goals and create your 2026 vision boards together in a fun, high-vibe space at Tessora's Wine Bar. 🎨✨Your ticket includes a glass of wine 🥂 and all supplies. Feel Free to brinf your own as welo. Seats are limited. Get you ticket today.Read moreCategory: Home & Lifestyle, Other",
+      "source": "eventbrite",
+      "scraped_at": "2026-01-12T16:40:22.297Z"
+    },
+    {
+      "id": 4,
+      "selected": false,
+      "title": "The R&B Brunch on the Water with DJ Heartbreak",
+      "time_display": "Monday 01/19 12:00 PM",
+      "location": "eria events on bridgeway, 562 Bridgeway, Sausalito, CA 94965",
+      "price": "From $92.55",
+      "event_type": "festival",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/the-rb-brunch-on-the-water-with-dj-heartbreak-tickets-1979565894880?aff=ebdssbdestsearch",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Get ready to vibe by the water with DJ Heartbreak at The R&B Brunch - it's gonna be a smooth groove!...",
+      "description_detail": "Get ready to vibe by the water with DJ Heartbreak at The R&B Brunch - it's gonna be a smooth groove!The R&B Brunch on the Water with DJ HEARTBREAKMonday, January 20th12:00 PM – 4:00PMEria Events | Sausalito, CAJoin us back on the water for The R&B Brunch—a daytime experience rooted in music, food, family, and community. Set against the Sausalito waterfront, this event brings together timeless R&B, soulful throwbacks, and feel-good energy in a space designed for connection, celebration, and renewal.Whether you’re celebrating a birthday, gathering with family, or just looking for the perfect way to ease into the weekend, The R&B Brunch is intentionally curated to feel warm, elevated, and welcoming for all generations.What to Expect• Live R&B-focused DJ set featuring classics and contemporary favorites• Full brunch menu and craft cocktails available for purchase• Waterfront views with indoor and outdoor seating• A multigenerational crowd—families, friends, couples, and groups• An atmosphere centered on joy, nostalgia, and communityMusic VibeExpect a carefully curated blend of 90s & 2000s R&B, soulful classics, and modern slow-burn favorites. This is a brunch soundtrack designed to bring people together—not overpower conversation.Important Information• This is an all ages event. • Seating is first come, first served unless otherwise specified.• Beverages are not included with admission and are available for purchase through the venue.• Dress comfortably and stylishly—daytime chic encouraged.• Event is rain or shine. Outdoor access is weather permitting.Seating & Entry Times (Please Read Carefully)To ensure a smooth and enjoyable experience for all guests, The R&B Brunch will have two separate seatings:• First Seating: 12:00PM – 1:30 PM• Second Seating: 1:30 PM – 3:00 PMYour ticket is valid only for the seating time selected at checkout. Guests arriving outside of their ticketed seating window may be asked to wait until space becomes available and entry is not guaranteed. This policy allows us to properly accommodate all guests and maintain the quality of the experience.SUNSET AFTER PARTYFor those who want to keep the good vibes going, we’re also hosting a special after-party, R&B & Tacos, beginning at 4:00 PM. This sunset after-party will have a totally different vibe from the brunch. As the sun sets, we’ll clear out the tables, turn up the music, and transform the space into a lively party atmosphere for those who love to dance and celebrate.Please note that R&B & Tacos requires a separate ticket, which you can purchase through a different Eventbrite link. If you’d like to join us for the after-party, be sure to grab your ticket in advance and stick around for a sunset celebration!An Important Note for DJ HEARTBREAK's 2026 Season Ticket Holders:Your season pass to this event is valid and your entry is completely free. Your \"food portion\" of your ticket will be due at the venue. Please contact DJ HEARTBREAK on the official season pass holder channel on Instagram if you have any questions about adding additonal members of your party. Please still \"purchase\" a ticket using your unique discount code at checkout which will give you 100% off of your ticket.Final NotesThe R&B Brunch is about more than music—it’s about shared moments, healing energy, and creating space for people to truly enjoy one another. Come early, settle in, and let the afternoon unfold naturally.Tickets are limited and will not be held at the door once capacity is reached.We look forward to welcoming you back to the water.Read moreCategory: Food & Drink, Food",
+      "source": "eventbrite",
+      "scraped_at": "2026-01-12T16:40:22.304Z"
+    },
+    {
+      "id": 5,
+      "selected": false,
+      "title": "“Glowfari” 2025 Lights Festival at Oakland Zoo (Final Day)",
+      "time_display": "Sunday 01/25 4:30 PM - 9:00 PM",
+      "location": "Oakland Zoo",
+      "price": "$30.75*",
+      "event_type": "festival",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/glowfari-2025-lights-festival-at-oakland-zoo-final-day/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Glowfari returns in November 2025! This wildly popular, family-friendly experience features hundreds...",
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2026-01-12T16:29:59.010Z"
+    },
+    {
+      "id": 6,
+      "selected": false,
+      "title": "Live Music",
+      "time_display": "Monday 01/19 6:00 PM - 9:00 PM",
+      "location": "San Pedro Square Market, 87 N San Pedro St, San Jose, CA",
+      "price": "Check event page",
+      "event_type": "market",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://sjdowntown.com/event/live-music/2026-01-19/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Experience live music at San Pedro Square Market six days a week! Explore our calendar for the full ...",
+      "description_detail": null,
+      "source": "sjdowntown",
+      "scraped_at": "2026-01-12T16:29:49.503Z"
+    },
+    {
+      "id": 7,
+      "selected": false,
+      "title": "Live Music",
+      "time_display": "Tuesday 01/20 6:00 PM - 9:00 PM",
+      "location": "San Pedro Square Market, 87 N San Pedro St, San Jose, CA",
+      "price": "Check event page",
+      "event_type": "market",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://sjdowntown.com/event/live-music/2026-01-20/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Experience live music at San Pedro Square Market six days a week! Explore our calendar for the full ...",
+      "description_detail": null,
+      "source": "sjdowntown",
+      "scraped_at": "2026-01-12T16:29:49.504Z"
+    },
+    {
+      "id": 8,
+      "selected": false,
+      "title": "Jeopardy Bar League",
+      "time_display": "Tuesday 01/20 7:00 PM - 8:00 PM",
+      "location": "Three Sisters Whiskey Bar, 170 W. Saint John St., San Jose, CA",
+      "price": "Check event page",
+      "event_type": "market",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://sjdowntown.com/event/jeopardy-bar-league/2026-01-20/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "ATTENTION TRIVIA LOVERS! San Pedro Square Market is hosting Jeopardy Bar League – the official bar t...",
+      "description_detail": null,
+      "source": "sjdowntown",
+      "scraped_at": "2026-01-12T16:29:49.508Z"
+    },
+    {
+      "id": 9,
+      "selected": false,
+      "title": "Live Music",
+      "time_display": "Wednesday 01/21 6:00 PM - 9:00 PM",
+      "location": "San Pedro Square Market, 87 N San Pedro St, San Jose, CA",
+      "price": "Check event page",
+      "event_type": "market",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://sjdowntown.com/event/live-music/2026-01-21/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Experience live music at San Pedro Square Market six days a week! Explore our calendar for the full ...",
+      "description_detail": null,
+      "source": "sjdowntown",
+      "scraped_at": "2026-01-12T16:29:49.509Z"
+    },
+    {
+      "id": 10,
+      "selected": false,
+      "title": "Live Music",
+      "time_display": "Thursday 01/22 6:00 PM - 9:00 PM",
+      "location": "San Pedro Square Market, 87 N San Pedro St, San Jose, CA",
+      "price": "Check event page",
+      "event_type": "market",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://sjdowntown.com/event/live-music/2026-01-22/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Experience live music at San Pedro Square Market six days a week! Explore our calendar for the full ...",
+      "description_detail": null,
+      "source": "sjdowntown",
+      "scraped_at": "2026-01-12T16:29:49.509Z"
+    },
+    {
+      "id": 11,
+      "selected": false,
+      "title": "Live Music",
+      "time_display": "Friday 01/23 6:00 PM - 9:00 PM",
+      "location": "San Pedro Square Market, 87 N San Pedro St, San Jose, CA",
+      "price": "Check event page",
+      "event_type": "market",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://sjdowntown.com/event/live-music/2026-01-23/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Experience live music at San Pedro Square Market six days a week! Explore our calendar for the full ...",
+      "description_detail": null,
+      "source": "sjdowntown",
+      "scraped_at": "2026-01-12T16:29:49.509Z"
+    },
+    {
+      "id": 12,
+      "selected": false,
+      "title": "Hobee&#8217;s Pancake Market",
+      "time_display": "Saturday 01/24 9:00 AM - 2:00 PM",
+      "location": "Hobee&#8217;s, 261 N 2nd street, San Jose, CA",
+      "price": "Check event page",
+      "event_type": "market",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://sjdowntown.com/event/hobees-pancake-market/2026-01-24/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Brunch and Browse LOCAL vendors and artisans Saturdays from 9:00-2:00pm at Hobee&#8217;s Downtown Sa...",
+      "description_detail": null,
+      "source": "sjdowntown",
+      "scraped_at": "2026-01-12T16:29:49.510Z"
+    },
+    {
+      "id": 13,
+      "selected": false,
+      "title": "Live Music",
+      "time_display": "Saturday 01/24 6:00 PM - 9:00 PM",
+      "location": "San Pedro Square Market, 87 N San Pedro St, San Jose, CA",
+      "price": "Check event page",
+      "event_type": "market",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://sjdowntown.com/event/live-music/2026-01-24/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Experience live music at San Pedro Square Market six days a week! Explore our calendar for the full ...",
+      "description_detail": null,
+      "source": "sjdowntown",
+      "scraped_at": "2026-01-12T16:29:49.510Z"
+    },
+    {
+      "id": 14,
+      "selected": false,
+      "title": "Not A Genuine Black Man",
+      "time_display": "Sunday 01/25 7:00 PM - 9:00 PM",
+      "location": "City Lights Theater Company, 529 S 2nd St, San Jose, CA",
+      "price": "$20 – $35",
+      "event_type": "fair",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://sjdowntown.com/event/not-a-genuine-black-man/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "In 1971, Fair Housing advocates considered San Leandro one of the most racist suburbs in America. CB...",
+      "description_detail": null,
+      "source": "sjdowntown",
+      "scraped_at": "2026-01-12T16:29:49.510Z"
+    },
+    {
+      "id": 15,
+      "selected": false,
+      "title": "Revolution & Revenge from the 1950s to Now: A Conversation with Paul Starr",
+      "time_display": "Wednesday 01/21 4:00 PM",
+      "location": "Social Sciences Building, Social Science Matrix, 820 Social Sciences Building Berkeley Berkeley, CA 94720",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/revolution-revenge-from-the-1950s-to-now-a-conversation-with-paul-starr-tickets-1977404133995?aff=ebdssbcitybrowse",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Join acclaimed Princeton sociologist and Pulitzer Prize-winning author Paul Starr for a discussion o...",
+      "description_detail": "Join acclaimed Princeton sociologist and Pulitzer Prize-winning author Paul Starr for a discussion on his new book, American Contradiction.Category: Government, Other",
+      "source": "eventbrite",
+      "scraped_at": "2026-01-12T16:40:22.293Z"
+    },
+    {
+      "id": 16,
+      "selected": false,
+      "title": "2026 Caltrain NorcalMLK Celebration Train",
+      "time_display": "Monday 01/19 8:30 AM",
+      "location": "San Jose Diridon Station to San Francisco's Caltrain Station, Diridon Station, 65 Cahill Street San Jose, CA 95110",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/2026-caltrain-norcalmlk-celebration-train-registration-1979042772206?aff=ebdssbcitybrowse",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Take the Caltrain NorcalMLK Celebration Train to MLK Celebration Events in San Francisco on Monday, ...",
+      "description_detail": "Take the Caltrain NorcalMLK Celebration Train to MLK Celebration Events in San Francisco on Monday, January 19, and honor the life Dr. King.Take the Caltrain NorcalMLK Celebration Train to the MLK2026 celebration events in San Francisco on Monday, January 19, and honor the life and legacy of Dr. King through exciting activities for all.This free commemorative service is a program of the Northern California Dr. Martin Luther King, Jr. Community Foundation, in partnership with Caltrain, and it signals the region's dedication to continue the service begun by the late Coretta Scott King.The Caltrain NorcalMLK Celebration Train will depart from San Jose's Diridon Station at 9:20am (65 Cahill St., San Jose 95110), making stops at Palo Alto Station at 9:45am (95 University Ave., Palo Alto 94301),San Mateo Station at 10:02am (385 First Ave., San Mateo 94401), and the Millbrae Station at 10:08am (100 California Dr, Millbrae, CA 94030) before heading in to San Francisco by 10:27am. Once there, celebrants will be able to immediately take part in the MLK2026 March or head directly to Yerba Buena Gardens to take part in a full day of festivities. For more information about the Dr. Martin Luther King, Jr. Celebration, visit sfmlk.events. All of the day's events are free and open to the public.Reserve your complimentary commemorative tickets for departure from one of the above stations today, and pick up your tickets at your point of departure on Monday, January 19, one hour before travel.Terms and Conditions:This Commemorative Ticket is valid for the “Celebration Train” and one southbound Caltrain trip on January 19 after 1:00 p.m. (See the Caltrain schedule to plan your southbound travel.)Caltrain is a proof-of-payment system. Keep ticket in plain view for fare inspection.One commemorative ticket per person, including children.Not for sale, transfer or redistribution.Caltrain Customer Service Number: 1.800.660.4287Read moreCategory: Community, State",
+      "source": "eventbrite",
+      "scraped_at": "2026-01-12T16:40:22.294Z"
+    },
+    {
+      "id": 17,
+      "selected": false,
+      "title": "PERREO SAN JOSE! @ Pure Nightclub! SAT 1/24 BACK 2 SCHOOL! Reggaeton Top40",
+      "time_display": "Saturday 01/24 10:00 PM",
+      "location": "Pure Nightclub, 146 South Murphy Avenue, Sunnyvale, CA 94086",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/perreo-san-jose-pure-nightclub-sat-124-back-2-school-reggaeton-top40-tickets-1979870503974?aff=ebdssbcitybrowsenightlife",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "THE BAYS BIGGEST REGGAETON TOP40 EVENT IS BACK SATURDAY 1/24! @ PURE NIGHTCLUB! BACK TO SCHOOL EDITI...",
+      "description_detail": "THE BAYS BIGGEST REGGAETON TOP40 EVENT IS BACK SATURDAY 1/24! @ PURE NIGHTCLUB! BACK TO SCHOOL EDITION!THE SOUTH BAY AREA'S BIGGEST REGGAETON TOP40 EDM EVENT IS BACK THIS SATURDAY NIGHT! INSIDE PURE NIGHTCLUB*** PERREO SAN JOSE - SOUTHBAY! ***SATURDAY JANUARY 24TH! BACK TO SCHOOL EDITION!ALL COLLEGE IDS FREE BEFORE MIDNIGHT!@ THE MASSIVE PURE NIGHTCLUB SUNNYVALE!DOORS OPEN 10PM!COME PARTY WITH US IN THE SOUTH BAY AREA'S BIGGEST NIGHTCLUB AT PURE ! ALL THE BIG PERREO - HIPHOP - HOUSE & EDM VIBES!! EVERY MONTH ALONG W SOME OF THE BIGGEST LATIN DJS IN THE US & BAY AREA!FEATURING SOME OF THE BAYS BEST HIPHOP - LATIN - TOP 40 DJS IN THE BAY:DJS: BIG D - SWEET - MIGGSSFREE GUESTLIST!:LIMITED AMOUNT! FREE BEFORE 11PM GUESTLIST IS AVAILABLE! BUT WILL HIT ITS LIMIT - DOORS OPEN 10PMVIP BOTTLE SERVICE!: TO BOOK TEXT 408-732-2121(5PPL IN FREE PER BOTTLE PURCHASED!)21+PURENIGHTCLUB146 S. MURPHY AVE. SUNNYVALE, CARead moreCategory: Music, Latin",
+      "source": "eventbrite",
+      "scraped_at": "2026-01-12T16:40:22.294Z"
+    },
+    {
+      "id": 18,
+      "selected": false,
+      "title": "New Year, New You: Wellness Event by LA ViE MD, Los Gatos",
+      "time_display": "Thursday 01/22 4:00 PM",
+      "location": "652 North Santa Cruz Avenue, #suite a Los Gatos, CA 95030",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/new-year-new-you-wellness-event-by-la-vie-md-los-gatos-tickets-1979337501750?aff=ebdssbcitybrowse",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Kick off the year with a fresh approach to your health. Join us for an exclusive event focused on ad...",
+      "description_detail": "Kick off the year with a fresh approach to your health. Join us for an exclusive event focused on advanced medical wellness solutions & care\nWhat We’ll Cover • Hormone Replacement Therapy • Weight ,with GLP‑1 injections • IV Infusion Therapy • Launch of NAD+ shots • Launch of V Rejuvenation (Carboxytherapy treatment)\nWhat’s Included • Complimentary educational consultations with providers and representatives • Small bites and drinks • Raffle prizes\nEvent‑Only Perks • Event-only specials • First 50 RSVPs receive one spin of our Complimentary Mini Treatment Wheel at check‑in\nDate & Time Thursday, January 22, 4:00 PM – 6:00 PM\nSpots are limited. RSVP now.\nKick off the year with a fresh approach to your health. Join us for an exclusive event focused on advanced medical wellness solutions & care\nWhat We’ll Cover • Hormone Replacement Therapy • Weight ,with GLP‑1 injections • IV Infusion Therapy • Launch of NAD+ shots • Launch of V Rejuvenation (Carboxytherapy treatment)\nWhat’s Included • Complimentary educational consultations with providers and representatives • Small bites and drinks • Raffle prizes\nEvent‑Only Perks • Event-only specials • First 50 RSVPs receive one spin of our Complimentary Mini Treatment Wheel at check‑in\nDate & Time Thursday, January 22, 4:00 PM – 6:00 PM\nSpots are limited. RSVP now.\n652 North Santa Cruz Avenue\n#suite a Los Gatos, CA 95030",
+      "source": "eventbrite",
+      "scraped_at": "2026-01-12T16:40:22.295Z"
+    },
+    {
+      "id": 19,
+      "selected": false,
+      "title": "Happy Roses Start Now: Winter Pruning & Care for Better Blooms - Cupertino",
+      "time_display": "Saturday 01/24 10:30 AM",
+      "location": "SummerWinds Nursery, 1491 South De Anza Boulevard, Cupertino, CA 95014",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/happy-roses-start-now-winter-pruning-care-for-better-blooms-cupertino-tickets-1979898751463?aff=ebdssbcitybrowse",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Discover proper rose pruning and winter care techniques that lead to healthier plants and better blo...",
+      "description_detail": "Discover proper rose pruning and winter care techniques that lead to healthier plants and better blooms.Join us to learn when and how to prune roses, plus essential winter care tips that encourage healthier plants and better blooms. Ideal for both new and experienced rose gardeners.Registration encouraged due to limited seating.Read moreCategory: Home & Lifestyle, Home & Garden",
+      "source": "eventbrite",
+      "scraped_at": "2026-01-12T16:40:22.295Z"
+    },
+    {
+      "id": 20,
+      "selected": false,
+      "title": "BARC Trail Series: Stevens Canyon Run",
+      "time_display": "Sunday 01/25 8:00 AM",
+      "location": "11450 Stevens Canyon Rd, 11450 Stevens Canyon Road, Cupertino, CA 95014",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/barc-trail-series-stevens-canyon-run-tickets-1979363851563?aff=ebdssbcitybrowse",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Come out to Stevens Canyon for a 6 mile trail run with Bay Area Run CrewJoin the BARC Trail Series: ...",
+      "description_detail": "Come out to Stevens Canyon for a 6 mile trail run with Bay Area Run CrewJoin the BARC Trail Series: Stevens Canyon Run on Sunday, January 25th, 8am 📣🐻 👕 Wear: Shoes appropriate for mud and rocky soil, gear appropriate for light rain📍 Location: Stevens Creek Chestnut Parking Station, near 11450 Stevens Canyon Rd, Cupertino, CA 95014PLEASE NOTE: Lot parking fee is $6, limited road parking available outside the lot✅ RSVP: https://bit.ly/barceventbrite🕒 Schedule:7:45am Meetup & Socializing7:55am Warm up, Announcements & Group Photo8:00am Run - route: https://www.strava.com/routes/3441161767398658736 🗺️11:00am After-Party: Join our post-run social hour at Voyager Coffee 🎉🥳 Please check-in to sign the waiver before the run: https://bit.ly/barcrelease Read moreCategory: Sports & Fitness, Running",
+      "source": "eventbrite",
+      "scraped_at": "2026-01-12T16:40:22.295Z"
+    },
+    {
+      "id": 21,
+      "selected": false,
+      "title": "Tax Hacks to Save Money with Short Term Rentals",
+      "time_display": "Saturday 01/24 12:30 PM",
+      "location": "1 W Campbell Ave, 1 West Campbell Avenue, Campbell, CA 95008",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/tax-hacks-to-save-money-with-short-term-rentals-tickets-1972932697809?aff=ebdssbcitybrowse",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Learn about the Bay Area Real estate market, Airbnb's, Tax Hacks, House Flipping, and Real Estate In...",
+      "description_detail": "Learn about the Bay Area Real estate market, Airbnb's, Tax Hacks, House Flipping, and Real Estate InvestmentsRead moreCategory: Business, Finance",
+      "source": "eventbrite",
+      "scraped_at": "2026-01-12T16:40:22.297Z"
+    },
+    {
+      "id": 22,
+      "selected": false,
+      "title": "DaVinci Academy Open House K-8",
+      "time_display": "Saturday 01/24 1:00 PM",
+      "location": "1 West Campbell Avenue, Building A Campbell, CA 95008",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/davinci-academy-open-house-k-8-tickets-1977539707499?aff=ebdssbcitybrowse",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "You're Invited to DaVinci Academy's Open House! Meet our teachers, see the classrooms, and get to kn...",
+      "description_detail": "You're Invited to DaVinci Academy's Open House! \n\nMeet our teachers, see the classrooms, and get to know more about our unique program.\nYou're Invited to DaVinci Academy's Open House! \n\nMeet our teachers, see the classrooms, and get to know more about our unique program.\nSearching for the right school for your child?\nDiscover rich academics, weekly field trips and hands-on learning -- part of every child's education at DaVinci Academy. Throughout the school year and even at Summer Camp, our experienced teachers engage students in active, personalized learning.\nStudents can fly ahead at their own pace or take some extra time to master a topic. Learners enjoy experimenting in the S.T.E.M. Lab, planting and harvesting the school garden, and training on the fields and in the gymnasiums.\nIndependent Mastery Learning helps students build a rich, solid academic foundation and an independent mind in a program that encourages them to think for themselves. It's a practical and tailored approach to learning: each student at the exact level that's right for them in every subject. No waiting for others and no falling behind. Learners use their knowledge in real life, studying with a purpose and gaining experience as they discover their passions.\nOpen House at DaVinci Academy is a free, family-friendly event and the perfect opportunity to get to know us.\nClassrooms, science labs, gymnastics room, art studio and other facilities are on view to visiting families. Teachers, parents, and students are excited to answer your questions and share more about DaVinci Academy.\nTake a look at the curriculum and materials, explore our campus and see for yourself how unique, empowering and effective our Independent Mastery Learning Program can be for your child.\nChildren are welcome and light refreshments are served.\nWe look forward to meeting you!\nQuestions or wish to book a personal tour to see classrooms in action?\nCall us at 408.370.7400 or fill out a form on our website.",
+      "source": "eventbrite",
+      "scraped_at": "2026-01-12T16:40:22.297Z"
+    },
+    {
+      "id": 23,
+      "selected": false,
+      "title": "Grow More Fruit in Less Space: Backyard Orchard Culture - Campbell",
+      "time_display": "Sunday 01/25 10:30 AM",
+      "location": "SummerWinds Nursery, 2460 South Winchester Boulevard, Campbell, CA 95008",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/grow-more-fruit-in-less-space-backyard-orchard-culture-campbell-tickets-1979895486698?aff=ebdssbcitybrowse",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Discover how to grow more fruit in small spaces using Backyard Orchard Culture techniques.Discover h...",
+      "description_detail": "Discover how to grow more fruit in small spaces using Backyard Orchard Culture techniques.Discover how to plant and manage fruit trees using Backyard Orchard Culture techniques. We’ll walk through planting basics, spacing, pruning, and long-term care to help you enjoy a productive home orchard—even in limited space.Seating is limited. Registration requested.Read moreCategory: Home & Lifestyle, Home & Garden",
+      "source": "eventbrite",
+      "scraped_at": "2026-01-12T16:40:22.297Z"
+    },
+    {
+      "id": 24,
+      "selected": false,
+      "title": "Friday Night at the Art Center—\"Clay Sustains\" Opening Reception",
+      "time_display": "Friday 01/23 6:00 PM",
+      "location": "1313 Newell Rd, Palo Alto, CA 94303",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/friday-night-at-the-art-centerclay-sustains-opening-reception-tickets-1978359603831?aff=ebdssbcitybrowse",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Celebrate \"Clay Sustains: Vessels of Change\" Enjoy artmaking, a cash bar including wine by Comartin ...",
+      "description_detail": "Celebrate \"Clay Sustains: Vessels of Change\" Enjoy artmaking, a cash bar including wine by Comartin Cellars, a live performance & food!\n🗓️ Friday, Jan 23 | 🕕 6–8 PM | 📍 Palo Alto Art Center\n🎟️ FREE & open to all!\nJoin us for a free opening celebration of the exhibition Clay Sustains: Vessels of Change — with a wine bar by Comartin Cellars, our Featured Drink Partner bringing handcrafted local wines to the evening.\nClay Sustains: Vessels of Change brings together 15–20 established ceramic artists whose works explore themes of environmental crisis and cultural sustainability. The exhibition invites us to consider clay not only as a material shaped by earth, water, mineral, fire, and air — but as a vessel for understanding sustainability in our contemporary world. Through diverse processes, forms, and ideas, these artists ask:\nThis exhibition continues the Palo Alto Art Center’s Centering series and is guest curated by Rina Faletti, Ph.D.\nSip award-winning local wines — with wine sales supporting the Palo Alto Art Center Foundation and helping keep exhibitions free and accessible to the community.\n(Drinks available for purchase, including wine, beer and non-alcoholic options.)\nWe’re thrilled to welcome Comartin Cellars as our Featured Wine Partner for the evening. Comartin Cellars is a local winery in San Carlos focused on producing high-end wines expressing the site (terroir) from which they were grown. From the vineyard to the winemaking, all wines are created respecting sustainability and environmental preservation. Many vineyards are farmed organically to preserve our land and all wines are made with a minimalistic vision to harness purity —values that resonate deeply with the themes of Clay Sustains: Vessels of Change.\nCheck their wine club exclusive offerings here: Club – Comartin Cellars\nBecome a Palo Alto Art Center Foundation member!",
+      "source": "eventbrite",
+      "scraped_at": "2026-01-12T16:40:22.298Z"
+    },
+    {
+      "id": 25,
+      "selected": false,
+      "title": "The Box SF Monthly Artists and Makers Fair (January 24-25)",
+      "time_display": "Saturday 01/24 11:00 AM",
+      "location": "The Box SF -Historic Events, Meeting Spaces and 1850's Mercantile, 1069 Howard Street, San Francisco, CA 94103",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/the-box-sf-monthly-artists-and-makers-fair-january-24-25-tickets-1798614126269?aff=ebdssbdestsearch",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Join us at our historic building in the heart of San Francisco for a weekend of creativity, communit...",
+      "description_detail": "Join us at our historic building in the heart of San Francisco for a weekend of creativity, community, and supporting local artists sales!We are excited to invite you to join us at The Box SF Artists and Makers Fair for a multi-day weekend event held monthly at our historic building located in the heart of San Francisco!Originally the William Randolph Hearst printing plant built in the 1920’s, The Box SF is now home to two floors of premier event space, as well as an antique printing & vintage advertising mercantile modeled after an 1850’s country store.These monthly events consist of a Saturday - Sunday Art Sale with FREE public entry.TICKETS ARE NOT REQUIREDIf you are an artist or maker and would like to exhibit and sell your work please call 415-934-6900, email Jake at events@theboxsf.com or click this link.We hope to see you there!Read moreCategory: Arts, Craft",
+      "source": "eventbrite",
+      "scraped_at": "2026-01-12T16:40:22.304Z"
+    },
+    {
+      "id": 26,
+      "selected": false,
+      "title": "Explore STEAM Fair 2026",
+      "time_display": "Saturday 01/24 11:00 AM",
+      "location": "Live Oak High School, 1505 East Main Avenue, Morgan Hill, CA 95037",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/explore-steam-fair-2026-tickets-1980047012917?aff=ebdssbdestsearch",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Join us for a free, family-friendly day of hands-on Science, Technology, Engineering, Arts, and Math...",
+      "description_detail": "Join us for a free, family-friendly day of hands-on Science, Technology, Engineering, Arts, and Math activities for students of all ages.The Explore STEAM Fair brings together local students, educators, and community partners for a fun and interactive day of learning.Families can explore hands-on exhibits, and activities designed to spark curiosity and creativity across all STEAM fields.This event is free and open to the public.While registration is not required, we encourage families to register through Eventbrite to help us plan and track attendance.Registering helps us better prepare, please make sure to register! Walk-ins are welcome!Read moreCategory: Science & Tech, Science",
+      "source": "eventbrite",
+      "scraped_at": "2026-01-12T16:40:22.307Z"
+    },
+    {
+      "id": 27,
+      "selected": false,
+      "title": "The Book of MormonOrpheum Theatre",
+      "time_display": "Tuesday 01/20 7:00 PM",
+      "location": "1192 Market Street, San Francisco, CA",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.broadwaysf.com/events/the-book-of-mormon/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "sfstation",
+      "scraped_at": "2026-01-12T16:30:19.799Z"
+    },
+    {
+      "id": 28,
+      "selected": false,
+      "title": "San Francisco Art WeekSan Francisco - The City",
+      "time_display": "Tuesday 01/20 9:30 AM",
+      "location": "-, San Francisco, CA",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sfartweek.com/special-events/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "sfstation",
+      "scraped_at": "2026-01-12T16:30:19.799Z"
+    },
+    {
+      "id": 29,
+      "selected": false,
+      "title": "Golden State Warriors 2025/2026 SeasonChase Center",
+      "time_display": "Tuesday 01/20 7:00 PM",
+      "location": "1 Warriors Way, San Francisco, CA",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://ticketmaster.evyy.net/c/253558/264167/4272?u=https%3A%2F%2Fwww.ticketmaster.com%2Fartist%2F805946",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "sfstation",
+      "scraped_at": "2026-01-12T16:30:19.799Z"
+    },
+    {
+      "id": 30,
+      "selected": false,
+      "title": "Taleen Voskuni with Laura Marie Meyers & Jessica Joyce - Our Ex's WeddingBook Passage - San Francisco",
+      "time_display": "Tuesday 01/20 5:30 PM",
+      "location": "1 Ferry Bulding, San Francisco, CA",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.bookpassage.com/event/taleen-voskuni-our-exs-wedding-ferry-building-event",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "sfstation",
+      "scraped_at": "2026-01-12T16:30:19.799Z"
+    },
+    {
+      "id": 31,
+      "selected": false,
+      "title": "San Francisco Mayor Daniel Lurie with Political BreakdownThe Commons - KQED Headquarters",
+      "time_display": "Wednesday 01/21 7:00 PM",
+      "location": "2601 Mariposa Street, San Francisco, CA",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.tixr.com/groups/kqed/events/san-francisco-mayor-daniel-lurie-with-political-breakdown-169324",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "sfstation",
+      "scraped_at": "2026-01-12T16:30:19.799Z"
+    },
+    {
+      "id": 32,
+      "selected": false,
+      "title": "FOG Design+ArtFort Mason Center",
+      "time_display": "Thursday 01/22 11:00 AM",
+      "location": "Fort Mason, San Francisco, CA",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.fogfair.com",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "sfstation",
+      "scraped_at": "2026-01-12T16:30:19.800Z"
+    },
+    {
+      "id": 33,
+      "selected": false,
+      "title": "Spottswoode Wine Dinner",
+      "time_display": "Monday 01/19 6:00 PM",
+      "location": "Selby's, 3001 El Camino Real, Redwood City, CA 94061",
+      "price": "$300.37",
+      "event_type": "food",
+      "priority": 6,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/spottswoode-wine-dinner-tickets-1978745960434?aff=ebdssbneighborhoodbrowse",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "A dinner featuring Spottswoode wines paired with a multi-course menu.For more than four decades, Spo...",
+      "description_detail": "A dinner featuring Spottswoode wines paired with a multi-course menu.For more than four decades, Spottswoode has produced some of California’s most compelling wines. The story began in 1972, when Jack and Mary Novak acquired the historic Spottswoode estate. Located on the west side of St. Helena, the Novak family vineyard is meticulously hand-farmed and has been Certified Organic since 1985 and Biodynamic since 2008. This longstanding commitment to thoughtful stewardship and expressive winemaking is evident vintage after vintage. As wine writer Antonio Galloni once noted, “When I think of what St. Helena Cabernet Sauvignon should be, I often think of Spottswoode.” Sommeliers, consumers, and critics alike continue to regard Spottswoode as one of California’s finest wineries.Please join us for our first wine dinner of 2026, featuring an exceptional lineup of Spottswoode wines paired with a winter-inspired multi-course menu. Marketing Ambassador Lyndy Novak will guide us through each pour, sharing the stories, philosophy, and vineyard-driven expression behind these iconic wines.MenuTuna TartareFresno Chili, Salt & Vinegar ChipsSanger, Voyage 360, Brut Nature NV~Winter Citrus SaladRuby Red Beets, Chicories, Brokaw AvocadoSauvignon Blanc 2024Sauvignon Blanc 2015 (from Magnum)~Dungeness Crab Agnolotti,Ricotta, Sage, Meyer LemonSauvignon Blanc, Mary’s Block 2024~Petite Filet MignonPotato Rösti, Bone Marrow Mousse, Bordelaise SauceCabernet Sauvignon, Lyndenhurst 2021Cabernet Sauvignon, Lyndenhurst 2016~Crémeux des CîteauxHeirloom Apple Mostarda, Marcona Almonds, Truffled HoneyCabernet Sauvignon, Estate 2021Cabernet Sauvignon, Estate 2016*Advance notice is required for food allergy-related menu modifications. As soon as you purchase ticket(s), please forward the email confirmation with details to info@selbysrestaurant.com.**Cancellation policy: Up to 7 days before the event starts. Any cancellations after that will be issued in the form of a gift certificate. Eventbrite fees are nonrefundable. Email info@selbysrestaurant.com for help. Do not contact Eventbrite!Read more",
+      "source": "eventbrite",
+      "scraped_at": "2026-01-12T16:40:22.293Z"
+    },
+    {
+      "id": 34,
+      "selected": false,
+      "title": "Grapes and Giggles January Comedy Show | Bay Area | Peninsula",
+      "time_display": "Wednesday 01/21 8:15 PM",
+      "location": "Domenico Winery, 1697 Industrial Rd., San Carlos, CA 94070",
+      "price": "$25 – $35",
+      "event_type": "food",
+      "priority": 6,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/grapes-and-giggles-january-comedy-show-bay-area-peninsula-tickets-1979102270166?aff=ebdssbcitybrowsenightlife",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Stand-up comedy at the iconic Domenico Winery! You no longer have to travel to San Jose or San Franc...",
+      "description_detail": "Stand-up comedy at the iconic Domenico Winery! You no longer have to travel to San Jose or San Francisco for comedy! Stay in the Peninsula.Read moreCategory: Film & Media, Comedy",
+      "source": "eventbrite",
+      "scraped_at": "2026-01-12T16:40:22.299Z"
+    },
+    {
+      "id": 35,
+      "selected": false,
+      "title": "The Wine List by RNB Social CLub",
+      "time_display": "Saturday 01/24 7:00 PM",
+      "location": "Press Club, 20 Yerba Buena Lane, San Francisco, CA 94103",
+      "price": "From $28.52",
+      "event_type": "food",
+      "priority": 6,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/the-wine-list-by-rnb-social-club-tickets-1975666314129?aff=ebdssbdestsearch",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Get ready to sip and savor the finest wines at The Wine List by RNB Social Club, where every glass t...",
+      "description_detail": "Get ready to sip and savor the finest wines at The Wine List by RNB Social Club, where every glass tells a unique story.An evening for the refined, the curious, and the R&B-minded.RNB Social Club brings back THE WINE LIST, a curated wine-driven social designed for those who appreciate good pours, warm conversation, and an elevated R&B atmosphere. This isn’t a loud night out — it’s a slow unwind, a cultured vibe, a room full of people who came to connect with intention.The ExperienceRotating wine selections and guided poursA soulful R&B soundtrack — timeless classics + modern editsA beautifully dressed room at Press ClubA social setting engineered for real connectionSurprise tastings and interactive pairing insightsWho This Night Is ForFor achievers, creators, founders, and social tastemakers who want an elevated alternative to nightlife — a night where the vibe matches the ambition.Dress CodeWine-night chic. Clean. Elevated. Grown.TicketsCapacity is intentionally limited. Early purchase is strongly encouraged.The IntentionThe Wine List is part of the RNB Social Club multiverse — a world where music, culture, community, and luxury coexist. Each event is crafted to feel intimate, welcoming, and meaningful.Join us for a night built for the palate and the soul.Read moreCategory: Food & Drink, Wine",
+      "source": "eventbrite",
+      "scraped_at": "2026-01-12T16:40:22.300Z"
+    },
+    {
+      "id": 36,
+      "selected": false,
+      "title": "Wineluv Wednesdays: The January Edition",
+      "time_display": "Wednesday 01/21 5:00 PM",
+      "location": "Amador Club, 550 Montgomery Street, #10th Floor San Francisco, CA 94111",
+      "price": "From $108.55",
+      "event_type": "food",
+      "priority": 6,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/wineluv-wednesdays-the-january-edition-tickets-1977941071991?aff=ebdssbdestsearch",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Unlimited wine tasting ft. 10+ wineries and 40+ wines, all poured by the proprietors and winemakers ...",
+      "description_detail": "Unlimited wine tasting ft. 10+ wineries and 40+ wines, all poured by the proprietors and winemakers themselves. Try and buy your favorites.Join us in raising a glass to the new year and our founder's birthday at the January edition of Wineluv Wednesdays on January 21, 2026, from 5 pm to 8 pm. It will be a night filled with fabulous wine, delicious hors d'oeuvres and beautiful people in the penthouse at the Amador Club. Everyone can count on finding some new wines to LUV on this special night.Indulge in unlimited tastings of 40+ extraordinary selections from 10+ wineries, poured by the winemakers and proprietors themselves. All wines will be available for purchase, and we will have some special bottle selections and wine tasting experiences on the silent auction table as well.*Wineluvrs, come toast the new year (and the Wineluvdiva's birthday) with us and discover new wines to LUV. Get your tickets now, so you won't miss a sip!**For a limited time, buy one ticket and get one free. Go on a and invite a friend. We LUV meeting new Wineluvrs!*Wineries subject to change**Tickets are non-refundableRead moreCategory: Food & Drink, Wine",
+      "source": "eventbrite",
+      "scraped_at": "2026-01-12T16:40:22.300Z"
+    },
+    {
+      "id": 37,
+      "selected": false,
+      "title": "Easop's Sexy Camo Birthday Party",
+      "time_display": "Saturday 01/24 9:00 PM",
+      "location": "Q’s Lounge, 126 Broadway, Oakland, CA 94607",
+      "price": "$28.52",
+      "event_type": "food",
+      "priority": 6,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/easops-sexy-camo-birthday-party-tickets-1978889542893?aff=ebdssbdestsearch",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Celebrate Easop’s birthday with sexy camo vibez theme, live dj playing the best in old school hip-ho...",
+      "description_detail": "Celebrate Easop’s birthday with sexy camo vibez theme, live dj playing the best in old school hip-hop and r&b, food, and drinks.Category: Food & Drink",
+      "source": "eventbrite",
+      "scraped_at": "2026-01-12T16:40:22.303Z"
+    },
+    {
+      "id": 38,
+      "selected": false,
+      "title": "IFES Crab Cioppino - 01/24/26",
+      "time_display": "Saturday 01/24 5:00 PM",
+      "location": "IFES Portuguese Hall, 432 Stierlin Road, Mountain View, CA 94043",
+      "price": "From $49.87",
+      "event_type": "food",
+      "priority": 6,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/ifes-crab-cioppino-012426-tickets-1640350846539?aff=ebdssbdestsearch",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Get ready to dive into a sea of flavors at IFES Crab Cioppino - an evening filled with delicious sea...",
+      "description_detail": "Get ready to dive into a sea of flavors at IFES Crab Cioppino - an evening filled with delicious seafood delights!IFES Crab Cioppino - 01/24/26Come join us at IFES Portuguese Hall for a delicious evening filled with savory crab cioppino on January 24, 2026 at 5:00 PM (Pacific Time). Get ready to indulge in a flavorful seafood feast with friends and family. Don't miss out on this culinary experience!Read moreCategory: Food & Drink, Food",
+      "source": "eventbrite",
+      "scraped_at": "2026-01-12T16:40:22.305Z"
+    },
+    {
+      "id": 39,
+      "selected": false,
+      "title": "WINE CLUB MEMBER APPRECIATION PARTY! - GENERAL TICKETS",
+      "time_display": "Saturday 01/24 12:30 PM",
+      "location": "Enoteca La Storia, 416 North Santa Cruz Avenue, Los Gatos, CA 95030",
+      "price": "$50",
+      "event_type": "food",
+      "priority": 6,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/wine-club-member-appreciation-party-general-tickets-tickets-1980018607957?aff=ebdssbdestsearch",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Join us for a fun afternoon celebrating our wine club members with great wines, tasty bites and good...",
+      "description_detail": "Join us for a fun afternoon celebrating our wine club members with great wines, tasty bites and good conversation!Join Us for the WINE CLUB MEMBER APPRECIATION PARTY!Hey there, awesome wine lovers! This party in honor of our amazing members - and their peeps! You don't have to be a member to join in the fun. Come sip, savor, and socialize with fellow enthusiasts in a fun, laid-back atmosphere. It’s all about celebrating your passion for great wine and good company. Don’t miss out on this exclusive in-person event designed to show our appreciation for our cliub members. Grab your GENERAL tickets and get ready for a \"memorable\" day filled with awesome wines and tasty bites!PLEASE NOTE: Members can purchase a maximum of TWO (2) tickets at the discounted (aka FREE) price. Any additional tickets can be purchased at the General TIcket price of $50.OR...you and/or your friends can join either the Classico OR La Tavola Clubs for $50 - and instead of just 3 hours of wine enjoyment, you can get TWO bottles of wine, comprehensive wine notes, all kinds of perks/discounts AND keep the wine fun going for months!See you there!Read moreCategory: Food & Drink, Wine",
+      "source": "eventbrite",
+      "scraped_at": "2026-01-12T16:40:22.306Z"
+    },
+    {
+      "id": 40,
+      "selected": false,
+      "title": "Uncorked: Same Grape, Different Region",
+      "time_display": "Friday 01/23 6:00 PM",
+      "location": "Eataly Silicon Valley, 2855 Stevens Creek Boulevard, San Jose, CA 95128",
+      "price": "From $36.26",
+      "event_type": "food",
+      "priority": 6,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/uncorked-same-grape-different-region-tickets-1979127566829?aff=ebdssbdestsearch",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Sit at our table and learn from one of our resident Experts about the top picks. This class focus is...",
+      "description_detail": "Sit at our table and learn from one of our resident Experts about the top picks. This class focus is on the same grape different regions.About this Class:Sit at our table and learn from one of our resident Beverage Experts about Italian wines, producers, and regions. They’ll walk you through the history and traditions of the area alongside a tasting of curated wines. Learn about Italy in the best way – through your wine glass!In this Class You Will:Learn about the history, grape varieties, and traditions of these Italian top picks.Taste a selection of wines focused on Wines while enjoying traditional Italian cheese paired to perfection. Please contact the team with dietary restrictions. We are not able to see the request through Eventbrite at this time. Please send an email to esv-scuola@eataly.com.Discuss the flavor profile of each wine with an Eataly Beverage ExpertTake home tasting notes from this classPlease Note:This Class is Located at the Wine Bar - Located on the 2nd Floor of Eataly.One ticket purchase is valid for one guestSeating is first-come, first-servedClass duration is approximate and may vary by 10-15 minutesSorry, bambini - this is a 21+ only event. All guests planning to consume alcohol must be able to produce a valid government-issued identification to prove they are 21 or olderFor any questions, please contact us at esv-scuola@eataly.comCancellation PolicyPayment in full is required at the time of registration and all sales are final. No refunds are offered on classes and events. For groups of 5-10 guests, a minimum of 7 days' notice (class day not included) is required to receive a credit in the form of a coupon for a future class or event. For groups of up to 4 guests, a minimum of 4 days' notice (class day not included) is required to receive a credit in the form of a coupon code for a future class or event at La Scuola. We reserve the right to reschedule or cancel a class or event due to unforeseen circumstances, inclement weather or otherwise. In the event of a class or event cancellation, we will contact you directly at the phone number or email address you have provided to offer a full refund or credit to transfer to a future class or event. While we are not able to offer credit, transfers or refunds for last-minute illnesses, work-related conflicts, personal emergencies or events beyond our control, you are always welcome to send someone in your place, as we understand that these things do happen. If you are purchasing this class or event as a gift, please provide this cancellation policy to the recipient, as the policy will still apply. Credits issued for La Scuola events are redeemable only for future La Scuola events and cannot be used to register for events in other parts of the marketplace or exchanged for store credit or Eataly gift cards.Read moreCategory: Food & Drink, Wine",
+      "source": "eventbrite",
+      "scraped_at": "2026-01-12T16:40:22.306Z"
+    }
+  ]
+}
