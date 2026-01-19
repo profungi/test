@@ -1,0 +1,867 @@
+{
+  "review_id": "review_2026-01-19_1648_rg4",
+  "generated_at": "2026-01-19T16:48:47.629Z",
+  "scrape_date": "2026-01-19",
+  "target_week": "2026-01-26_to_2026-02-01",
+  "target_week_readable": "下周 (01/26 - 02/01)",
+  "scraping_report": {
+    "total_scraped": 90,
+    "after_deduplication": 79,
+    "after_classification": 79,
+    "classification_report": {
+      "totalEvents": 79,
+      "eventTypes": {
+        "art": 6,
+        "free": 32,
+        "other": 3,
+        "music": 8,
+        "festival": 9,
+        "food": 11,
+        "fair": 1,
+        "market": 9
+      },
+      "priorityLevels": {
+        "3": 3,
+        "4": 8,
+        "5": 6,
+        "6": 11,
+        "9": 32,
+        "10": 19
+      },
+      "chineseRelevant": 0,
+      "topPriorityEvents": 51
+    }
+  },
+  "instructions": {
+    "how_to_review": "将你想要发布的活动的 'selected' 字段改为 true",
+    "next_step": "保存文件后运行: npm run generate-post [此文件路径]",
+    "fields_explanation": {
+      "title": "活动标题",
+      "time_display": "显示用的时间格式",
+      "location": "活动地点",
+      "price": "票价信息",
+      "event_type": "AI识别的活动类型",
+      "priority": "优先级分数 (越高越重要)",
+      "chinese_relevant": "是否与中文社区相关",
+      "original_url": "原始活动链接"
+    }
+  },
+  "stats": {
+    "total_candidates": 40,
+    "by_type": {
+      "festival": 9,
+      "fair": 1,
+      "market": 9,
+      "free": 13,
+      "food": 8
+    },
+    "by_priority": {
+      "6": 8,
+      "9": 13,
+      "10": 19
+    },
+    "chinese_relevant": 0
+  },
+  "events": [
+    {
+      "id": 1,
+      "selected": false,
+      "title": "Desi Comedy Fest - Fri Jan 30 2026 - Sunnyvale",
+      "time_display": "Friday 01/30 8:00 PM",
+      "location": "Sunnyvale Theatre, 550 East Remington Drive, Sunnyvale, CA 94087",
+      "price": "From $27.37",
+      "event_type": "festival",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/desi-comedy-fest-fri-jan-30-2026-sunnyvale-tickets-1977746113866?aff=ebdssbcitybrowse",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Get ready to laugh till your sides hurt at Desi Comedy Fest 2026 - an evening filled with hilarious ...",
+      "description_detail": "Get ready to laugh till your sides hurt at Desi Comedy Fest 2026 - an evening filled with hilarious jokes and non-stop entertainment!Welcome to the Desi Comedy Fest happening at Sunnyvale Theatre on January 30, 2026 at 8:00 PM (Pacific Time)! (Doors open at 7:30pm)Get ready for a night filled with laughter and entertainment. Join us for a hilarious evening featuring talented Desi comedians. Don't miss out on this opportunity to unwind and enjoy some top-notch comedy. See you there!Read moreCategory: Arts, Comedy",
+      "source": "eventbrite",
+      "scraped_at": "2026-01-19T16:43:07.873Z"
+    },
+    {
+      "id": 2,
+      "selected": false,
+      "title": "Sonoma Sparkles at the Fairmont San Francisco",
+      "time_display": "Thursday 01/29 5:30 PM",
+      "location": "950 Mason Street, San Francisco, CA 94108",
+      "price": "$108.55",
+      "event_type": "fair",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/sonoma-sparkles-at-the-fairmont-san-francisco-tickets-1978435427622?aff=ebdssbdestsearch",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "An exclusive evening of bubbles, caviar, and breathtaking views in the Penthouse at Fairmont San Fra...",
+      "description_detail": "An exclusive evening of bubbles, caviar, and breathtaking views in the Penthouse at Fairmont San Francisco.\nJoin us for an intimate and elegant winter evening high above San Francisco at the legendary Fairmont Penthouse Suite. Sonoma Sparkles at the Fairmont showcases the sophistication, quality, and playful spirit of Sonoma Valley sparkling wines in one of the most iconic settings in the world.\nGuests will sip exceptional bubbles from featured Sonoma Valley producers, enjoy Tsar Nicoulai Caviar, and take in panoramic city views from this storied luxury penthouse. This limited-capacity event offers rare access to the penthouse suite creating a truly special night out.\nWith just 100 tickets available, this exclusive gathering promises a festive, refined, and memorable winter outing celebrating Sonoma Valley at its sparkling best!\nAn exclusive evening of bubbles, caviar, and breathtaking views in the Penthouse at Fairmont San Francisco.\nJoin us for an intimate and elegant winter evening high above San Francisco at the legendary Fairmont Penthouse Suite. Sonoma Sparkles at the Fairmont showcases the sophistication, quality, and playful spirit of Sonoma Valley sparkling wines in one of the most iconic settings in the world.\nGuests will sip exceptional bubbles from featured Sonoma Valley producers, enjoy Tsar Nicoulai Caviar, and take in panoramic city views from this storied luxury penthouse. This limited-capacity event offers rare access to the penthouse suite creating a truly special night out.\nWith just 100 tickets available, this exclusive gathering promises a festive, refined, and memorable winter outing celebrating Sonoma Valley at its sparkling best!\nRefunds up to 7 days before event\nSan Francisco, CA 94108",
+      "source": "eventbrite",
+      "scraped_at": "2026-01-19T16:43:07.877Z"
+    },
+    {
+      "id": 3,
+      "selected": false,
+      "title": "Éclat Noir Cigars Launch Party",
+      "time_display": "Saturday 01/31 4:00 PM",
+      "location": "1630 San Pablo Avenue, #6th Floor Oakland, CA 94612",
+      "price": "From $23.18",
+      "event_type": "festival",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/eclat-noir-cigars-launch-party-tickets-1978213975252?aff=ebdssbdestsearch",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "This is the celebration launching a women-led company rooted in refined taste, elevated culture, and...",
+      "description_detail": "This is the celebration launching a women-led company rooted in refined taste, elevated culture, and unapologetic confidence.\nStep into an evening of sophistication, culture, and unapologetic power as we celebrate the Official Launch of the 1st Black Woman Owned Cigar Company on the West Coast; Éclat Noir (pronounced ay-KLAH-nwar).\nJoin founder Ke’Shay Love (The Real Mrs. Parker) for an exclusive introduction of The Boss Lady, the flagship cigar crafted for those who lead with confidence and grace. Set in an intimate lounge atmosphere, this curated experience blends premium Nicaraguan cigars, refined ambiance, and elevated social energy.\nGuests will enjoy a luxurious setting designed for connection, conversation, and celebration—where bold femininity meets timeless elegance.\nThis is more than a cigar launch,It’s a statement.It’s a moment.\nIt's a movement.It’s Éclat Noir.\n\"Where Elegance Meets Power\"\nDress Code: Elegant ChicAudience: Cigar enthusiasts, tastemakers, creatives, and supporters of luxury brands.\nHosted By: Ke’Shay Love (The Real Mrs. Parker), Douglas Sanders (Black Tie Experience), Joe McCoy, and Torch OaklandBrand: The Boss Lady CigarRSVP / Contact: eclatnoircigars@gmail.comAll Social Media Platforms: @eclatnoircigars\nThis is the celebration launching a women-led company rooted in refined taste, elevated culture, and unapologetic confidence.\nStep into an evening of sophistication, culture, and unapologetic power as we celebrate the Official Launch of the 1st Black Woman Owned Cigar Company on the West Coast; Éclat Noir (pronounced ay-KLAH-nwar).\nJoin founder Ke’Shay Love (The Real Mrs. Parker) for an exclusive introduction of The Boss Lady, the flagship cigar crafted for those who lead with confidence and grace. Set in an intimate lounge atmosphere, this curated experience blends premium Nicaraguan cigars, refined ambiance, and elevated social energy.",
+      "source": "eventbrite",
+      "scraped_at": "2026-01-19T16:43:07.878Z"
+    },
+    {
+      "id": 4,
+      "selected": false,
+      "title": "Everything but the Plants Fair",
+      "time_display": "Monday 01/26 11:00 AM",
+      "location": "2490 Charleston Road, Mountain View, CA 94043",
+      "price": "$20",
+      "event_type": "market",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/everything-but-the-plants-fair-tickets-1976499393893?aff=ebdssbdestsearch",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Discover the latest hardscape and landscape materials through vendor demos, Q&A, and networking at o...",
+      "description_detail": "Discover the latest hardscape and landscape materials through vendor demos, Q&A, and networking at our inaugural APLD materials fair!\nJoin us for our first-ever materials fair, a special event created for landscape designers to explore everything but the plants. As an APLD sponsor, PBM is excited to bring together a curated group of leading vendors representing hardscape, porcelain, stone, turf, shade solutions, furniture, pottery, and more. Students are welcome to attend alongside design professionals.\nVendors will offer hands-on demos, expert guidance, and real-world material insights. Designers will rotate through quick, focused presentations to see products up close, compare options, and ask questions directly to the specialists.\nAfter the demo rounds, enjoy time to network with peers, revisit vendors for deeper conversations, and enjoy wood-fired pizza onsite. Attendees will also receive complimentary tote bags filled with product information and take-home resources.\nThis inaugural materials fair is designed to inspire, educate, and support your design practice—and we can’t wait to welcome you!\nDiscover the latest hardscape and landscape materials through vendor demos, Q&A, and networking at our inaugural APLD materials fair!\nJoin us for our first-ever materials fair, a special event created for landscape designers to explore everything but the plants. As an APLD sponsor, PBM is excited to bring together a curated group of leading vendors representing hardscape, porcelain, stone, turf, shade solutions, furniture, pottery, and more. Students are welcome to attend alongside design professionals.\nVendors will offer hands-on demos, expert guidance, and real-world material insights. Designers will rotate through quick, focused presentations to see products up close, compare options, and ask questions directly to the specialists.\nAfter the demo rounds, enjoy time to network with peers, revisit vendors for deeper conversations, and enjoy wood-fired pizza onsite.",
+      "source": "eventbrite",
+      "scraped_at": "2026-01-19T16:43:07.878Z"
+    },
+    {
+      "id": 5,
+      "selected": false,
+      "title": "Winterfest Silent Auction",
+      "time_display": "Saturday 01/31 4:00 PM",
+      "location": "1800 98th Avenue, Oakland, CA 94603",
+      "price": "From $7.18",
+      "event_type": "festival",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/winterfest-silent-auction-tickets-1980433425688?aff=ebdssbdestsearch",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Get ready to bid, mingle, and score awesome deals on Ballers and Roots tickets, family attractions, ...",
+      "description_detail": "Get ready to bid, mingle, and score awesome deals on Ballers and Roots tickets, family attractions, and more at Winterfest Silent Auction\nElmhurst United middle school cheer and dance teams have earned an incredible opportunity to compete at Nationals, a once-in-a-lifetime experience that rewards their hard work, dedication, and school pride. As a Title I school, many of our families face financial challenges, and without community support, we will not be able to attend Nationals.\nThis Silent Auction is one of our most important fundraisers. Every bid directly supports travel, competition fees, uniforms, and lodging for our student-athletes. These students practice tirelessly before and after school, maintain academic expectations, and represent our school with pride — but talent and effort alone cannot cover the cost.\nYour participation truly makes a difference. If we do not raise the necessary funds, our team will be unable to go to Nationals. By bidding, donating, or spreading the word, you are helping provide our students with an opportunity many of them may never have again.\nThank you for believing in our cheerleaders, investing in their future, and helping us prove that financial barriers should never limit big dreams.\nGet ready to bid, mingle, and score awesome deals on Ballers and Roots tickets, family attractions, and more at Winterfest Silent Auction\nElmhurst United middle school cheer and dance teams have earned an incredible opportunity to compete at Nationals, a once-in-a-lifetime experience that rewards their hard work, dedication, and school pride. As a Title I school, many of our families face financial challenges, and without community support, we will not be able to attend Nationals.\nThis Silent Auction is one of our most important fundraisers. Every bid directly supports travel, competition fees, uniforms, and lodging for our student-athletes.",
+      "source": "eventbrite",
+      "scraped_at": "2026-01-19T16:43:07.879Z"
+    },
+    {
+      "id": 6,
+      "selected": false,
+      "title": "New Year, New Flavor: A Sophisticated Dry January Celebration at Quattro",
+      "time_display": "Thursday 01/29 5:00 PM",
+      "location": "2050 University Avenue, East Palo Alto, CA 94303",
+      "price": "$220.11",
+      "event_type": "festival",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/new-year-new-flavor-a-sophisticated-dry-january-celebration-at-quattro-tickets-1979767501892?aff=ebdssbdestsearch",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Get ready to kick off the new year with a classy Dry January celebration full of sophisticated flavo...",
+      "description_detail": "Get ready to kick off the new year with a classy Dry January celebration full of sophisticated flavors at Quattro!\nDate: Thursday, January 29, 2026Time: 5:00 PM – 8:30 PMLocation: Quattro Restaurant & Bar, Four Seasons Hotel Silicon Valley, Palo Alto, CA\nJoin us for a one-night-only Dry January Wine Dinner at Quattro—a mindful way to celebrate with exceptional food and elegant pairings.\nThis intimate evening features a four-course menu focused on seasonal vegetables and fish, thoughtfully paired with French Bloom’s sophisticated non-alcoholic sparkling wines. Enjoy all the joy of a wine dinner, without the alcohol.\nThe experience begins with arrival canapés and a welcome spritz, followed by a relaxed, seated dining journey. Expect dishes like Caponata-stuffed tomato, zucchini custard, and our signature local farm trout, enhanced by the aroma of Perigord truffle at its seasonal peak. Dessert will feature a delicate mousse sweetened with honey from our own rooftop.\nReserve your spot now for this unique and refined culinary experience.\nMenu items may vary based on seasonal availability and the finest ingredients.\nGet ready to kick off the new year with a classy Dry January celebration full of sophisticated flavors at Quattro!\nDate: Thursday, January 29, 2026Time: 5:00 PM – 8:30 PMLocation: Quattro Restaurant & Bar, Four Seasons Hotel Silicon Valley, Palo Alto, CA\nJoin us for a one-night-only Dry January Wine Dinner at Quattro—a mindful way to celebrate with exceptional food and elegant pairings.\nThis intimate evening features a four-course menu focused on seasonal vegetables and fish, thoughtfully paired with French Bloom’s sophisticated non-alcoholic sparkling wines. Enjoy all the joy of a wine dinner, without the alcohol.\nThe experience begins with arrival canapés and a welcome spritz, followed by a relaxed, seated dining journey.",
+      "source": "eventbrite",
+      "scraped_at": "2026-01-19T16:43:07.883Z"
+    },
+    {
+      "id": 7,
+      "selected": false,
+      "title": "Flora Haven Afternoon Tea Experience | New Year Edition 2026",
+      "time_display": "Saturday 01/31 11:00 AM",
+      "location": "2350 Harris Way, 2350 Harris Way, San Jose, CA 95131",
+      "price": "$0 – $215.26",
+      "event_type": "festival",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/flora-haven-afternoon-tea-experience-new-year-edition-2026-tickets-1980041279769?aff=ebdssbdestsearch",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Join us for a refined New Year afternoon tea experience, featuring stunning florals and elegant phot...",
+      "description_detail": "Join us for a refined New Year afternoon tea experience, featuring stunning florals and elegant photo moments.Flora Haven Afternoon Tea Experience | New Year Edition 2026✨ Welcome the New Year with elegance, intention, and beauty ✨Join us at Flora Haven for a refined Afternoon Tea Experience celebrating new beginnings in a warm, festive setting. Surrounded by stunning florals, curated décor, and elegant photo moments, this experience is perfect for friends, couples, and families looking to create beautiful memories to start 2026.🌸 What to ExpectA charming afternoon tea experienceAssorted sweet treats and dessertsBeautifully curated photo opportunities throughout the venueA festive New Year–inspired atmosphere filled with florals and warmthWhether you’re dressing up for photos, enjoying meaningful conversations, or simply indulging in a cozy afternoon, this experience is designed to feel special, relaxing, and memorable.📅 Event DetailsDate: Saturday, January 31, 2026Time: 11:00 AM – 4:00 PM(Arrive anytime during the event window)Location:Flora Haven2350 Harris WaySan Jose, CA🎟️ Ticket Pricing$39.99 per guest$59.99 for two guests✨ Tea, desserts, and photo ops included.📸 Perfect ForFriends & couplesFamily outingsNew Year celebrationsElegant photo momentsSpots are limited. We recommend booking early to secure your place.We look forward to welcoming you to Flora Haven for an afternoon where intention blooms and beauty follows 💐✨ Limited SeatingSpots fill quickly—reserve yours early!Perfect for flower lovers and festive enthusiasts alike!Discover Flora Haven Studio in its beautiful new location!This updated space has been designed to enhance creativity, comfort, and inspiration. With more room to host workshops, events, and gatherings, our new studio offers a warm and inviting atmosphere that embodies the natural beauty and peaceful ambiance Flora Haven is known for. Whether you're attending a workshop, renting the space for a private event, or simply exploring, we look forward to welcoming you into our refreshed haven for all things floral.For more info, please contact: florahavenretreat@gmail.comWebsite: florahaven.comOffice hours: Tue - Fri: 10:00AM - 5:00PM | Sat: 10:00AM - 3:00PMAddress: 2350 Harris Way Suite B, San Jose, CA 95131Read moreCategory: Holiday, Other",
+      "source": "eventbrite",
+      "scraped_at": "2026-01-19T16:43:07.884Z"
+    },
+    {
+      "id": 8,
+      "selected": false,
+      "title": "San Francisco’s 2026 Slavic Festival (Jan. 31-Feb. 1)",
+      "time_display": "Saturday 01/31 11:00 AM - 10:00 PM",
+      "location": "2460 Sutter Street, San Francisco",
+      "price": "$17.85*",
+      "event_type": "festival",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/san-franciscos-slavic-festival-2026/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Welcome to San Francisco’s 2026 Slavic Festival! Join us for two days filled with delicious food, li...",
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2026-01-19T16:32:58.358Z"
+    },
+    {
+      "id": 9,
+      "selected": false,
+      "title": "San Francisco’s 2026 Slavic Festival (Jan. 31-Feb. 1)",
+      "time_display": "Sunday 02/01 11:00 AM - 7:00 PM",
+      "location": "2460 Sutter Street, San Francisco Bay Area",
+      "price": "$17.85*",
+      "event_type": "festival",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/san-franciscos-slavic-festival-2026-2/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Welcome to San Francisco’s 2026 Slavic Festival! Join us for two days filled with delicious food, li...",
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2026-01-19T16:32:58.358Z"
+    },
+    {
+      "id": 10,
+      "selected": false,
+      "title": "Live Music",
+      "time_display": "Monday 01/26 6:00 PM - 9:00 PM",
+      "location": "San Pedro Square Market, 87 N San Pedro St, San Jose, CA",
+      "price": "Check event page",
+      "event_type": "market",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://sjdowntown.com/event/live-music/2026-01-26/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Experience live music at San Pedro Square Market six days a week! Explore our calendar for the full ...",
+      "description_detail": null,
+      "source": "sjdowntown",
+      "scraped_at": "2026-01-19T16:32:49.542Z"
+    },
+    {
+      "id": 11,
+      "selected": false,
+      "title": "Live Music",
+      "time_display": "Tuesday 01/27 6:00 PM - 9:00 PM",
+      "location": "San Pedro Square Market, 87 N San Pedro St, San Jose, CA",
+      "price": "Check event page",
+      "event_type": "market",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://sjdowntown.com/event/live-music/2026-01-27/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Experience live music at San Pedro Square Market six days a week! Explore our calendar for the full ...",
+      "description_detail": null,
+      "source": "sjdowntown",
+      "scraped_at": "2026-01-19T16:32:49.544Z"
+    },
+    {
+      "id": 12,
+      "selected": false,
+      "title": "Jeopardy Bar League",
+      "time_display": "Tuesday 01/27 7:00 PM - 8:00 PM",
+      "location": "Three Sisters Whiskey Bar, 170 W. Saint John St., San Jose, CA",
+      "price": "Check event page",
+      "event_type": "market",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://sjdowntown.com/event/jeopardy-bar-league/2026-01-27/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "ATTENTION TRIVIA LOVERS! San Pedro Square Market is hosting Jeopardy Bar League – the official bar t...",
+      "description_detail": null,
+      "source": "sjdowntown",
+      "scraped_at": "2026-01-19T16:32:49.544Z"
+    },
+    {
+      "id": 13,
+      "selected": false,
+      "title": "Live Music",
+      "time_display": "Wednesday 01/28 6:00 PM - 9:00 PM",
+      "location": "San Pedro Square Market, 87 N San Pedro St, San Jose, CA",
+      "price": "Check event page",
+      "event_type": "market",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://sjdowntown.com/event/live-music/2026-01-28/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Experience live music at San Pedro Square Market six days a week! Explore our calendar for the full ...",
+      "description_detail": null,
+      "source": "sjdowntown",
+      "scraped_at": "2026-01-19T16:32:49.545Z"
+    },
+    {
+      "id": 14,
+      "selected": false,
+      "title": "Hellenic Music Ensemble",
+      "time_display": "Wednesday 01/28 7:00 PM - 9:00 PM",
+      "location": "San Jose Civic, 135 W San Carlos St, San Jose, CA",
+      "price": "$81 – $192",
+      "event_type": "festival",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://sjdowntown.com/event/hellenic-music-ensemble/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "A century of iconic Greek music comes to life in a global celebration of Hellenic culture. The Helle...",
+      "description_detail": null,
+      "source": "sjdowntown",
+      "scraped_at": "2026-01-19T16:32:49.546Z"
+    },
+    {
+      "id": 15,
+      "selected": false,
+      "title": "Live Music",
+      "time_display": "Thursday 01/29 6:00 PM - 9:00 PM",
+      "location": "San Pedro Square Market, 87 N San Pedro St, San Jose, CA",
+      "price": "Check event page",
+      "event_type": "market",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://sjdowntown.com/event/live-music/2026-01-29/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Experience live music at San Pedro Square Market six days a week! Explore our calendar for the full ...",
+      "description_detail": null,
+      "source": "sjdowntown",
+      "scraped_at": "2026-01-19T16:32:49.546Z"
+    },
+    {
+      "id": 16,
+      "selected": false,
+      "title": "Live Music",
+      "time_display": "Friday 01/30 6:00 PM - 9:00 PM",
+      "location": "San Pedro Square Market, 87 N San Pedro St, San Jose, CA",
+      "price": "Check event page",
+      "event_type": "market",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://sjdowntown.com/event/live-music/2026-01-30/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Experience live music at San Pedro Square Market six days a week! Explore our calendar for the full ...",
+      "description_detail": null,
+      "source": "sjdowntown",
+      "scraped_at": "2026-01-19T16:32:49.547Z"
+    },
+    {
+      "id": 17,
+      "selected": false,
+      "title": "Hobee&#8217;s Pancake Market",
+      "time_display": "Saturday 01/31 9:00 AM - 2:00 PM",
+      "location": "Hobee&#8217;s, 261 N 2nd street, San Jose, CA",
+      "price": "Check event page",
+      "event_type": "market",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://sjdowntown.com/event/hobees-pancake-market/2026-01-31/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Brunch and Browse LOCAL vendors and artisans Saturdays from 9:00-2:00pm at Hobee&#8217;s Downtown Sa...",
+      "description_detail": null,
+      "source": "sjdowntown",
+      "scraped_at": "2026-01-19T16:32:49.547Z"
+    },
+    {
+      "id": 18,
+      "selected": false,
+      "title": "The Festival of Undiscovered Grapes",
+      "time_display": "Saturday 01/31 12:00 PM - 5:00 PM",
+      "location": "Rotary Summit Center (Operated by Scott’s Seafood), 88 S. 4th Street, 7th Floor,, San Jose,, CA",
+      "price": "$75 – $125",
+      "event_type": "festival",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://sjdowntown.com/event/the-festival-of-undiscovered-grapes/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Be Bold. Drink Different. Taste Original. Discover California’s underdog grapes. Nine grapes dominat...",
+      "description_detail": null,
+      "source": "sjdowntown",
+      "scraped_at": "2026-01-19T16:32:49.547Z"
+    },
+    {
+      "id": 19,
+      "selected": false,
+      "title": "Live Music",
+      "time_display": "Saturday 01/31 6:00 PM - 9:00 PM",
+      "location": "San Pedro Square Market, 87 N San Pedro St, San Jose, CA",
+      "price": "Check event page",
+      "event_type": "market",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://sjdowntown.com/event/live-music/2026-01-31/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Experience live music at San Pedro Square Market six days a week! Explore our calendar for the full ...",
+      "description_detail": null,
+      "source": "sjdowntown",
+      "scraped_at": "2026-01-19T16:32:49.547Z"
+    },
+    {
+      "id": 20,
+      "selected": false,
+      "title": "The Oakland Pancakes & Booze Art Show",
+      "time_display": "Thursday 01/29 7:00 PM",
+      "location": "Crybaby, 1928 Telegraph Avenue, Oakland, CA 94612",
+      "price": "$16.74",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/the-oakland-pancakes-booze-art-show-tickets-1839564881079?aff=ebdssbcitybrowse",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Oakland's Pop-Up Underground Art Show is BACK on January 29th, 2026 at Crybaby.Oakland's Pop-Up Unde...",
+      "description_detail": "Oakland's Pop-Up Underground Art Show is BACK on January 29th, 2026 at Crybaby.Oakland's Pop-Up Underground Art Show is BACK on Thursday, January 29th, 2026 at Crybaby.Come experience one of the largest pop-up art movements to hit North America over the past decade. Celebrating over 15 years of serving FREE PANCAKES and introducing you to some of the nation's leading emerging artists.• Over 75+ local artists exhibiting over 500+ pieces of work• All-U-Can Eat Pancakes• 21+ EVENT• Live Audio Performances from local DJs and Music Producers• Live Body Painting & Art• 7pm to Midnight• $15 General Admission• $20 GA (Day of Show)Follow us on Instagram, Facebook, or Tik Tok @pancakesandbooze #pancakesandboozeAre you looking to exhibit your artwork? Please visit our website (www.pancakesandbooze.com/submit) to submit an application, or email us at info@pancakesandbooze.com for further information.ABOUT The Pancakes & Booze Art Show:The LA based event originated in 2009 and has since popped up more than 500 times in 35+ cities around Europe & North America.Batter sizzles, beer foams, and canvas lines the walls from ceiling to floor as hundreds, sometimes thousands, of revelers indulge in endless pancakes.This is no stuffy wine-and-cheese, pretentious, someone-gag-me art event. It’s an innovative reimagining of the art show concept. A welcoming vibe for up-and-coming artists to sell and strut their stuff in a free verse, anything goes environment.Instagram: @pancakesandboozeArt Submissions: www.pancakesandbooze.com/submitEmail: info@pancakesandbooze.comNO REFUNDS. ALL SALES ARE FINAL.Under NO circumstance will refunds or credits for future events be issued.This ticket does NOT guarantee immediate entry. Entry is based on the capacity of the venue when you arrive. Entry is first come first serve, regardless if you've bought a ticket online or at the door. It's a popular event, so arrive early to avoid waiting in line!The art is on exhibit until Midnight, but the bar typically stays open later. The event has the right to end earlier or extend later depending on the size of the crowd.Read moreCategory: Arts, Painting",
+      "source": "eventbrite",
+      "scraped_at": "2026-01-19T16:43:07.871Z"
+    },
+    {
+      "id": 21,
+      "selected": false,
+      "title": "The World According to Sound at UC Berkeley",
+      "time_display": "Thursday 01/29 6:00 PM",
+      "location": "37°52'15.1\"N 122°15'23.2\"W, Berkeley, CA 94720",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/the-world-according-to-sound-at-uc-berkeley-tickets-1978635625419?aff=ebdssbcitybrowse",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "An immersive sonic experience about the power of sound and the spirit of academic inquiry. Surrounde...",
+      "description_detail": "An immersive sonic experience about the power of sound and the spirit of academic inquiry.\nSurrounded by an octophonic ring of powerful loudspeakers, you are going to sit in the dark for 70 minutes, wear an eye mask, and be taken on a sonic trip with fellow members of your academic community.\nYou’ll hear the vibrations of the Golden Gate Bridge, footsteps of ants, recordings made a century ago, and silence turned into music. You’ll be transported to 1930s Berlin, up to the ionosphere, under a sand dune, and into the middle of a choir singing in a church built in the 6th century.\nYou’ll hear ideas, essays, books, theories, and contemporary research all translated into soundscapes that challenge you to rethink the world through your ears instead of your eyes...and ultimately to reconnect with what makes academic inquiry so meaningful.\nThe performance will be followed by a Q&A with co-producers Chris Hoff and Sam Harnett.\nWu Performance Hall in Morison Hall.\nChris Hoff and Sam Harnett are co-producers of Ways of Knowing, a podcast series made in partnership with academic institutions like Johns Hopkins, University of Chicago, and The University of Washington. They have published academic papers; spent a semester at Cornell University as practitioners-in-residence; and performed their octophonic audio compositions at more than 75 universities, theaters, and art spaces. They previously worked in public radio, where their reporting won two Edward R. Murrow Awards for excellence in sound design and was featured regularly on All Things Considered, Morning Edition, The World, Science Friday, and other nationally-syndicated radio programs.\nAn immersive sonic experience about the power of sound and the spirit of academic inquiry.\nSurrounded by an octophonic ring of powerful loudspeakers, you are going to sit in the dark for 70 minutes, wear an eye mask, and be taken on a sonic trip with fellow members of your academic community.",
+      "source": "eventbrite",
+      "scraped_at": "2026-01-19T16:43:07.871Z"
+    },
+    {
+      "id": 22,
+      "selected": false,
+      "title": "Lily King with Jemimah Wei",
+      "time_display": "Tuesday 01/27 7:00 PM",
+      "location": "Kepler's Books, 1010 El Camino Real, #100 Menlo Park, CA 94025",
+      "price": "From $11.49",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/lily-king-with-jemimah-wei-tickets-1976623677629?aff=ebdssbneighborhoodbrowse",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Lily King, New York Times bestselling author of WRITERS & LOVERS and EUPHORIA, joins us with her new...",
+      "description_detail": "Lily King, New York Times bestselling author of WRITERS & LOVERS and EUPHORIA, joins us with her new novel, HEART THE LOVER.Kepler’s welcomes New York Times bestselling author Lily King with her intimate new novel of desire, friendship, loss, and the lasting impact of first love.About the BookYou knew I’d write a book about you someday.Our narrator understands good love stories—their secrets and subtext, their highs and their free falls. But her greatest love story, the one she lived, never followed the simple rules.In the fall of her senior year of college, she meets two star students from her 17th-Century Lit class: Sam and Yash. Best friends living off-campus in the elegant house of a professor on sabbatical, the boys invite her into their intoxicating world of academic fervor, rapid-fire banter, and raucous card games. They nickname her Jordan, and she quickly discovers the pleasures of friendship, love and her own intellectual ambition. Youthful passion is unpredictable though, and she soon finds herself at the center of a charged and intricate triangle. As graduation comes and goes, choices made will alter these three lives forever.Decades later, Jordan is living the life she dreamed of, and the vulnerable days of her youth seem comfortably behind her. But when a surprise visit and unexpected news bring the past crashing into the present, Jordan returns to a world she left behind and is forced to confront the decisions and deceptions of her younger self.Written with the superb wit and emotional sensitivity fans and critics of Lily King have come to adore, Heart the Lover is a deeply moving story that celebrates love, friendship, and the transformative nature of forgiveness. Wise, unforgettable, and with a delightful connective thread to Writers & Lovers, this is King at her very best, affirming her as a masterful chronicler of the human experience and one of the finest novelists at work today.Lily King will be in conversation with Jemimah Wei.About the SpeakersLily King is the New York Times bestselling author of six novels, including Euphoria and Writers & Lovers, and the story collection Five Tuesdays in Winter. Her work has won numerous prizes and awards, including the Kirkus Prize, the New England Book Award for Fiction, the Maine Book Award for Fiction, and a Whiting Award. She lives in Portland, Maine. Photo: Eloise King ClementsJemimah Wei was born and raised in Singapore; she is now based between Singapore and the United States. She was a Wallace Stegner Fellow at Stanford University and a Felipe P. De Alba Fellow at Columbia University, where she earned her MFA. A recipient of awards and fellowships from Singapore’s National Arts Council, Sewanee Writers’ Conference, Bread Loaf Writers’ Conference, and Writers in Paradise, she was named one of Narrative’s “30 Below 30” writers and is a Francine Ringold Award forNew Writers honoree. Her fiction has won the William Van Dyke Short Story Prize and appears in Guernica, Narrative, and Nimrod, among other publications. For close to a decade, Wei was a host for various broadcast and digital channels, and she has written and produced short films and travel guides for Laneige, Airbnb, and Nikon. Her first novel, The Original Daughter, was published in 2025. https://jemmawei.com/Lily King will stay to sign and personalize books after the event.COVID SAFETY PROTOCOLS: We strongly encourage attendees to wear masks at our events, although they will NOT be required. We will have masks available for attendees who want them. Do NOT attend the event if you, or any member of your family, have any respiratory symptoms (e.g. cough, runny nose, and/or sore throat), or have had a significant exposure to someone who has tested positive for COVID-19.ACCESSIBILITY: We never want cost to be a barrier to admission for our community. Please email events [at] keplers [dot] org if you would like to attend this event but cannot afford a ticket. To request an accommodation under the Americans with Disabilities Act (ADA) for this event, please email events [at] keplers [dot] org at least one week prior to the event.Read moreCategory: Arts, Literary Arts",
+      "source": "eventbrite",
+      "scraped_at": "2026-01-19T16:43:07.872Z"
+    },
+    {
+      "id": 23,
+      "selected": false,
+      "title": "Sancho tv LIVE",
+      "time_display": "Saturday 01/31 9:00 PM",
+      "location": "211 South 1st Street, San Jose, CA 95113",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/sancho-tv-live-tickets-1980541471857?aff=ebdssbcitybrowsenightlife",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "You’ve seen the videos — now come experience it live. Meet your favorite street reporters in person ...",
+      "description_detail": "You’ve seen the videos — now come experience it live.\nMeet your favorite street reporters in person for a high-energy, interactive live show\nYou’ve seen the videos — now see what really happens live.\nSancho TV Live takes the raw energy of viral street interviews and brings it straight to the stage. This is a no-filters, high-energy live show packed with comedy, real conversations, and unpredictable crowd moments inspired by the content that made Sancho TV blow up online.\nNothing is scripted. The crowd becomes part of the show through bold crowd work, spontaneous interactions, and moments that only happen once — live in the room. The night is professionally recorded, capturing real reactions, real laughs, and real chaos as it unfolds.\nIf you love the clips online, just know — the live version hits different.\nCo-produced by San Jose Comedy Productions,\nat The Mosaic Lounge on Saturday, January 31st.Doors open at 8:00 PM | Show starts at 9:00 PM211 S 1st Street, San Jose, CA\nYou’ve seen the videos — now come experience it live.\nMeet your favorite street reporters in person for a high-energy, interactive live show\nYou’ve seen the videos — now see what really happens live.\nSancho TV Live takes the raw energy of viral street interviews and brings it straight to the stage. This is a no-filters, high-energy live show packed with comedy, real conversations, and unpredictable crowd moments inspired by the content that made Sancho TV blow up online.\nNothing is scripted. The crowd becomes part of the show through bold crowd work, spontaneous interactions, and moments that only happen once — live in the room. The night is professionally recorded, capturing real reactions, real laughs, and real chaos as it unfolds.\nIf you love the clips online, just know — the live version hits different.\nCo-produced by San Jose Comedy Productions,\nat The Mosaic Lounge on Saturday, January 31st.Doors open at 8:00 PM | Show starts at 9:00 PM211 S 1st Street, San Jose, CA",
+      "source": "eventbrite",
+      "scraped_at": "2026-01-19T16:43:07.872Z"
+    },
+    {
+      "id": 24,
+      "selected": false,
+      "title": "INVISIBLE SKIES",
+      "time_display": "Saturday 01/31 5:30 PM",
+      "location": "San Jose City Hall, 200 East Santa Clara Street, San Jose, CA 95113",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/invisible-skies-tickets-1407918806049?aff=ebdssbcitybrowse",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "FLASH ART EVENT - 2,000 PARTICIPANTS TRANSFORM CITY HALL PLAZA INTO GALAXIES -- HOSTED BY: CITY OF S...",
+      "description_detail": "FLASH ART EVENT - 2,000 PARTICIPANTS TRANSFORM CITY HALL PLAZA INTO GALAXIES -- HOSTED BY: CITY OF SAN JOS´´´E, OFFICE OF CULTURAL AFFAIRS.A Free Event-HOSTED BY:THE CITY OF SAN JOSE, OFFICE OF ECONOMIC DEVELOPMENT and CULTURAL AFFAIRSEVERYONE is welcome! JOIN IN the FLASH Art Event. Participants create celestial bodies using illuminated umbrellas- gifted to YOU. Help transform City Hall Plaza into brilliant celestial patterns. Everyone becomes a star.Documented by drones, this footage will pop up as future surprises on digital formats across the city and in media of all forms.REGISTER NOW! Umbrella-Props are limited to the first 2,000 and the ticket/waiver is required for participation. Wear all BLACK!More Information about \"INVISIBLE SKIES\" here!The“Ticket” is the photo release form. All participants (including minors) must sign the form-- by checking the box electronically on Eventbrite you agree to the photo release, this acts as your e-signature. You may bring a printed & signed copy to the the event.-----Sign up is a First come First serve----A CODE is available for participants from the SJ Childrin's Discovery Museum!5:30 pm - 6:30 pm umbrella-prop distribution begins6:30 pm - Invisible Skies Flash Art Event begins when it's darkWear BLACK | NO graphics | NO flash photography (keep the drone footage pristine!)There are many parking options available, please visit: parksj.org for more informationRead moreCategory: Arts, Fine Art",
+      "source": "eventbrite",
+      "scraped_at": "2026-01-19T16:43:07.872Z"
+    },
+    {
+      "id": 25,
+      "selected": false,
+      "title": "2026 Japan AEP Trip by SSCA: January Info Session",
+      "time_display": "Wednesday 01/28 7:00 PM",
+      "location": "Washington Park, 840 West Washington Avenue, Sunnyvale, CA 94086",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/2026-japan-aep-trip-by-ssca-january-info-session-tickets-1979647665458?aff=ebdssbcitybrowse",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Come join us for this in-person information session on the 2026 tour of Japan with Sunnyvale Sister ...",
+      "description_detail": "Come join us for this in-person information session on the 2026 tour of Japan with Sunnyvale Sister City Association!Category: Travel & Outdoor, Travel",
+      "source": "eventbrite",
+      "scraped_at": "2026-01-19T16:43:07.873Z"
+    },
+    {
+      "id": 26,
+      "selected": false,
+      "title": "The World According to Sound at Santa Clara University",
+      "time_display": "Wednesday 01/28 5:30 PM",
+      "location": "Santa Clara University, 500 El Camino Real, Santa Clara, CA 95053",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/the-world-according-to-sound-at-santa-clara-university-tickets-1977945622602?aff=ebdssbcitybrowse",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "An immersive sonic experience about the spirit of academic inquiry.Surrounded by an octophonic ring ...",
+      "description_detail": "An immersive sonic experience about the spirit of academic inquiry.Surrounded by an octophonic ring of powerful loudspeakers, you are going to sit in the dark for 70 minutes, wear an eye mask, and be taken on a sonic trip with fellow members of your academic community.You’ll hear the vibrations of the Golden Gate Bridge, footsteps of ants, recordings made a century ago, and silence turned into music. You’ll be transported to 1930s Berlin, up to the ionosphere, under a sand dune, and into the middle of a choir singing in a church built in the 6th century.You’ll hear ideas, essays, books, theories, and contemporary research all translated into soundscapes that challenge you to rethink the world through your ears instead of your eyes...and ultimately to reconnect with what makes academic inquiry so meaningful.The performance will be followed by a Q&A with co-producers Chris Hoff and Sam Harnett.LOCATIONSt. Clare Room on the Santa Clara University CampusCREATORSChris Hoff and Sam Harnett are co-producers of Ways of Knowing, a podcast series made in partnership with academic institutions like Johns Hopkins, University of Chicago, and The University of Washington. They have published academic papers; spent a semester at Cornell University as practitioners-in-residence; and performed their octophonic audio compositions at more than 75 universities, theaters, and art spaces. They previously worked in public radio, where their reporting won two Edward R. Murrow Awards for excellence in sound design and was featured regularly on All Things Considered, Morning Edition, The World, Science Friday, and other nationally-syndicated radio programs.Read moreCategory: Arts, Other",
+      "source": "eventbrite",
+      "scraped_at": "2026-01-19T16:43:07.873Z"
+    },
+    {
+      "id": 27,
+      "selected": false,
+      "title": "2026 Silicon Valley Lunar New Year Together",
+      "time_display": "Saturday 01/31 12:00 PM",
+      "location": "900 Lafayette St, 900 Lafayette Street, Santa Clara, CA 95050",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/2026-silicon-valley-lunar-new-year-together-tickets-1968252059895?aff=ebdssbcitybrowse",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "One Valley, Many Cultures, Together We Celebrate！2026 First Lunar New Year celebration in the Bay Ar...",
+      "description_detail": "One Valley, Many Cultures, Together We Celebrate！2026 First Lunar New Year celebration in the Bay Area, and kicks off Super Bowl celebration week`Largest Multicultural Lunar New Year Festival & Street Fair in Silicon ValleyCelebrate Diversity – One festival, many Asian cultures united.Enjoy Live Performances – Music, dance, and traditions on one stage.Taste & Explore – 300+ food, art, and cultural vendors.Connect & Belong – Join 30,000+ celebrating together in Silicon ValleyThe first 3,000 registers will receive the special Lunar New Year gift. First come, first get!2026 marks the 5th annual Silicon Valley Lunar New Year Together, created by Ding Ding TV and co-organized with OMG Entertainment. Partnered with City of Santa Clara, Vietnamese in San Jose As the first Lunar New Year event in the Bay Area and the largest multicultural Lunar New Year Festival & Street Fair in Silicon Valley, it kicks off Super Bowl celebration week and draws 30,000+ attendees, offering a major platform to support diversity and community pride.Watching Last Year's Highlights: http://www.dingdingtv.com/?p=96781Read moreCategory: Community, City & Town",
+      "source": "eventbrite",
+      "scraped_at": "2026-01-19T16:43:07.873Z"
+    },
+    {
+      "id": 28,
+      "selected": false,
+      "title": "Santa Clara Lunar New Year Celebration",
+      "time_display": "Saturday 01/31 12:00 PM",
+      "location": "900 Lafayette Street, Santa Clara, CA 95050",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/santa-clara-lunar-new-year-celebration-tickets-1980327152823?aff=ebdssbcitybrowse",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Celebrate LNY with food, performances, cultural experiences, and family fun—bringing Silicon Valley ...",
+      "description_detail": "Celebrate LNY with food, performances, cultural experiences, and family fun—bringing Silicon Valley together in one vibrant festival.\nThe Santa Clara Lunar New Year Celebration is a vibrant, family-friendly community festival that brings together culture, tradition, and celebration to welcome the Lunar New Year. Designed for all ages, the event offers a dynamic mix of food, performances, and interactive experiences that reflect the rich diversity of Silicon Valley.\nAttendees can expect a full day of festive programming, colorful décor, and engaging activities that highlight Lunar New Year traditions while celebrating the multicultural spirit of the region. Whether visiting with family, friends, or the community, guests will enjoy an immersive cultural experience in a lively and welcoming atmosphere.\nCelebrate LNY with food, performances, cultural experiences, and family fun—bringing Silicon Valley together in one vibrant festival.\nThe Santa Clara Lunar New Year Celebration is a vibrant, family-friendly community festival that brings together culture, tradition, and celebration to welcome the Lunar New Year. Designed for all ages, the event offers a dynamic mix of food, performances, and interactive experiences that reflect the rich diversity of Silicon Valley.\nAttendees can expect a full day of festive programming, colorful décor, and engaging activities that highlight Lunar New Year traditions while celebrating the multicultural spirit of the region. Whether visiting with family, friends, or the community, guests will enjoy an immersive cultural experience in a lively and welcoming atmosphere.\nSanta Clara, CA 95050",
+      "source": "eventbrite",
+      "scraped_at": "2026-01-19T16:43:07.873Z"
+    },
+    {
+      "id": 29,
+      "selected": false,
+      "title": "AI & New Product Insights with Central Computers, ASUS, and NVIDIA",
+      "time_display": "Saturday 01/31 11:00 AM",
+      "location": "Central Computers, Conference Room, 3777 Stevens Creek Boulevard, Santa Clara, CA 95051",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/ai-new-product-insights-with-central-computers-asus-and-nvidia-tickets-1980044946737?aff=ebdssbcitybrowse",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Join Central Computers, in collaboration with ASUS and NVIDIA, for an exclusive tech event at our Sa...",
+      "description_detail": "Join Central Computers, in collaboration with ASUS and NVIDIA, for an exclusive tech event at our Santa Clara store!Discover cutting-edge solutions for AI, high-performance computing, and next-gen hardware.📅 Date & Time: January 31, 2026 | 11:00 AM (PST)📍 Location: 2nd Floor Conference Room, 3777 Stevens Creek Boulevard, Santa Clara, CA 95051🚗 Parking: Free parkingWhy Attend?Central Computers is your trusted partner, whether you are looking to purchase Blackwell GPUs, or building AI servers/workstations.At this event, you’ll gain insights from ASUS and NVIDIA experts on the latest innovations, including:ASUS GX10 Ascent SupercomputerGB10 Grace Blackwell SuperchipASUS Servers with NVIDIA GPUASUS ROG NUCActivities:👋 Expert Presentations from ASUS and NVIDIA🖥️ Live Product demos☕ Food catering and refreshments🎟️ Raffle giveaway at the endDon’t Miss Out!This is your chance to explore the newest ASUS products, understand NVIDIA’s latest GPU technology, and connect with industry professionals.Register now to reserve your spot, and you'll be automatically entered into our raffle!Read moreCategory: Science & Tech, High Tech",
+      "source": "eventbrite",
+      "scraped_at": "2026-01-19T16:43:07.873Z"
+    },
+    {
+      "id": 30,
+      "selected": false,
+      "title": "Caring For Fruit Trees, From the Experts - Cupertino",
+      "time_display": "Saturday 01/31 10:30 AM",
+      "location": "SummerWinds Nursery, 1491 South De Anza Boulevard, Cupertino, CA 95014",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/caring-for-fruit-trees-from-the-experts-cupertino-tickets-1979899235912?aff=ebdssbcitybrowse",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Hear expert advice from Orchard Keepers on pruning and caring for fruit trees year-round.Guest Speak...",
+      "description_detail": "Hear expert advice from Orchard Keepers on pruning and caring for fruit trees year-round.Guest Speaker, Arborist and Founder of Orchard Keepers: Matthew Sutton will lead this informative session on fruit tree care, covering pruning techniques, seasonal maintenance, and tips for long-term success.Registration requested.Read moreCategory: Home & Lifestyle, Home & Garden",
+      "source": "eventbrite",
+      "scraped_at": "2026-01-19T16:43:07.873Z"
+    },
+    {
+      "id": 31,
+      "selected": false,
+      "title": "Is 2026 a good time to sell your home?",
+      "time_display": "Saturday 01/31 10:00 AM",
+      "location": "10080 North Wolfe Road, #Suite SW3 Cupertino, CA 95014",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/is-2026-a-good-time-to-sell-your-home-tickets-1979865739724?aff=ebdssbcitybrowse",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "The Official Bay Area Home Seller Workshop Thinking about selling your home, but not sure where to s...",
+      "description_detail": "The Official Bay Area Home Seller Workshop\nThinking about selling your home, but not sure where to start?\nJoin us for the Official Bay Area Home Selling Workshop and learn how to sell your home quickly, confidently, and for top dollar — even in today’s market. Led by top-producing local real estate expert Keith Walker, this workshop is designed to give you insider strategies and real-world insights that help sellers maximize value and avoid costly mistakes.\nDate & Time: January 31, 2026 at10:00 AM – 11:30 AM\nLocation:10080 N Wolfe Road, Suite SW3 S100Cupertino, CA\n☕ Coffee and pastries provided\nWhether you're thinking of selling in the next 30 days or sometime next year, this free workshop will give you clarity, confidence, and a proven plan for success.\nSeats are limited — reserve yours today!\nThe Official Bay Area Home Seller Workshop\nThinking about selling your home, but not sure where to start?\nJoin us for the Official Bay Area Home Selling Workshop and learn how to sell your home quickly, confidently, and for top dollar — even in today’s market. Led by top-producing local real estate expert Keith Walker, this workshop is designed to give you insider strategies and real-world insights that help sellers maximize value and avoid costly mistakes.\nDate & Time: January 31, 2026 at10:00 AM – 11:30 AM\nLocation:10080 N Wolfe Road, Suite SW3 S100Cupertino, CA\n☕ Coffee and pastries provided\nWhether you're thinking of selling in the next 30 days or sometime next year, this free workshop will give you clarity, confidence, and a proven plan for success.\nSeats are limited — reserve yours today!\n10080 North Wolfe Road\n#Suite SW3 Cupertino, CA 95014",
+      "source": "eventbrite",
+      "scraped_at": "2026-01-19T16:43:07.873Z"
+    },
+    {
+      "id": 32,
+      "selected": false,
+      "title": "ICode Cupertino Grand Opening - Kids Coding & STEM Classes (Ages 5-13)",
+      "time_display": "Saturday 01/31 9:00 AM",
+      "location": "iCode Cupertino, 19600 Vallco Parkway, #suite 150 Cupertino, CA 95014",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/icode-cupertino-grand-opening-kids-coding-stem-classes-ages-5-13-tickets-1979634298477?aff=ebdssbcitybrowse",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Join iCode Cupertino Grand Opening! Kids play escape games & STEM adventures+win prizes while parent...",
+      "description_detail": "Join iCode Cupertino Grand Opening! Kids play escape games & STEM adventures+win prizes while parents explore our programs.iCode Cupertino Grand Opening | Coding & STEM Classes for Kids in the Bay AreaHey parents!iCode Cupertino is excited to welcome the community to our Grand Opening on Saturday, January 31, 2026, from 9:00 AM – 6:00 PM! Bring your kids for a fun-filled day of hands-on STEM activities, including escape-room–style games, robotics, and interactive puzzles where kids learn, explore, and have a blast while building creativity and problem-solving skills.👨‍💻🤖🧩While kids have a blast with puzzles and games, parents can meet the new owner and instructors, explore all our exciting coding and STEM programs, and sign up for afterschool classes or pre-register for Summer 2026 Camp!🎁 Exclusive Grand Opening Special Giveaway:🎁All atendees who come by will have a chance to win a FREE 1-Month iCode Class ($400 value) We rarely offer discounts—but to celebrate our Grand Opening, all attendees who sign up will receive $100 credit class enrollment plus Early Bird Summer Camp pricing.Experience why iCode is the Bay Area’s top choice for kids 5–13. Hands-on coding, robotics, and STEM fun help your child gain confidence, creativity, and real-world skills!Read moreCategory: Family & Education",
+      "source": "eventbrite",
+      "scraped_at": "2026-01-19T16:43:07.873Z"
+    },
+    {
+      "id": 33,
+      "selected": false,
+      "title": "Family Paint Party",
+      "time_display": "Sunday 02/01 5:30 PM",
+      "location": "10310 S. De Anza Blvd, Cupertino, CA 95014",
+      "price": "$42.23",
+      "event_type": "food",
+      "priority": 6,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/family-paint-party-tickets-1980532132924?aff=ebdssbcitybrowse",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Paint Nite -- Families and All Ages (10363965) Get ready for a fun night out with our Artist Paint Z...",
+      "description_detail": "Paint Nite -- Families and All Ages (10363965)\nGet ready for a fun night out with our Artist Paint Zenyful. This is a party like environment where you will learn to paint and beautiful masterpiece. Kids ages 7 and up are welcomed to join with a purchased ticket and accompanied by an adult. It is courtesy to purchase at least one food or beverage item from venue. No outside food or beverages are allowed. No water flasks. We are so excited to have you as guest. Let’s paint.\nPaint Nite -- Families and All Ages (10363965)\nGet ready for a fun night out with our Artist Paint Zenyful. This is a party like environment where you will learn to paint and beautiful masterpiece. Kids ages 7 and up are welcomed to join with a purchased ticket and accompanied by an adult. It is courtesy to purchase at least one food or beverage item from venue. No outside food or beverages are allowed. No water flasks. We are so excited to have you as guest. Let’s paint.\nRefunds up to 7 days before event\n10310 S. De Anza Blvd",
+      "source": "eventbrite",
+      "scraped_at": "2026-01-19T16:43:07.873Z"
+    },
+    {
+      "id": 34,
+      "selected": false,
+      "title": "2026 Crab Feed - Hosted by Alpha Rho and Pi Chi Chapter of Omega Psi Phi",
+      "time_display": "Saturday 01/31 5:30 PM",
+      "location": "1399 McAllister Street, San Francisco, CA 94115",
+      "price": "From $97.88",
+      "event_type": "food",
+      "priority": 6,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/2026-crab-feed-hosted-by-alpha-rho-and-pi-chi-chapter-of-omega-psi-phi-tickets-1976530506953?aff=ebdssbdestsearch",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Join Alpha Rho & Pi Chi for a fun crab feast and good vibes at the 2026 Crab Feed! Get ready for a f...",
+      "description_detail": "Join Alpha Rho & Pi Chi for a fun crab feast and good vibes at the 2026 Crab Feed!\nGet ready for a fantastic evening at our annual Crab Feed, hosted by the Alpha Rho and Pi Chi, unincorporated chapters of Omega Psi Phi! This event promises great food, good vibes, and an awesome chance to hang out with friends old and new. Don't miss out on the fun—come enjoy delicious crab and make some unforgettable memories with da bruz!\n3rd Baptist Banquet Room\nSan Francisco CA 94115\nDoors open at 5:30, and we start serving promptly at 6pm... so don't come late if you are hungry!\nWe will have a cash bar, DJ, and raffles... tons of fun.\nFor more info, contact Chris Thomas 510-852-4687 or ct1562@iclould.com\nJoin Alpha Rho & Pi Chi for a fun crab feast and good vibes at the 2026 Crab Feed!\nGet ready for a fantastic evening at our annual Crab Feed, hosted by the Alpha Rho and Pi Chi, unincorporated chapters of Omega Psi Phi! This event promises great food, good vibes, and an awesome chance to hang out with friends old and new. Don't miss out on the fun—come enjoy delicious crab and make some unforgettable memories with da bruz!\n3rd Baptist Banquet Room\nSan Francisco CA 94115\nDoors open at 5:30, and we start serving promptly at 6pm... so don't come late if you are hungry!\nWe will have a cash bar, DJ, and raffles... tons of fun.\nFor more info, contact Chris Thomas 510-852-4687 or ct1562@iclould.com\nRefunds up to 7 days before event\n1399 McAllister Street\nSan Francisco, CA 94115",
+      "source": "eventbrite",
+      "scraped_at": "2026-01-19T16:43:07.878Z"
+    },
+    {
+      "id": 35,
+      "selected": false,
+      "title": "New Year/New Me Speed Dating - Speed Meeting - Mini Networking",
+      "time_display": "Wednesday 01/28 6:00 PM",
+      "location": "Great Notion Brewing - Berkeley, 2031 Fourth Street, Berkeley, CA 94710",
+      "price": "From $13.05",
+      "event_type": "food",
+      "priority": 6,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/new-yearnew-me-speed-dating-speed-meeting-mini-networking-tickets-1978940699905?aff=ebdssbdestsearch",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Celebrate the End of Dry January or Mix & Mingle @ Great Notion Beer for Happy Hour, Games, Prizes, ...",
+      "description_detail": "Celebrate the End of Dry January or Mix & Mingle @ Great Notion Beer for Happy Hour, Games, Prizes, Speed Dating, & Meeting New People!Read moreCategory: Holiday, Fall events",
+      "source": "eventbrite",
+      "scraped_at": "2026-01-19T16:43:07.879Z"
+    },
+    {
+      "id": 36,
+      "selected": false,
+      "title": "Five Course Wine Pairing Dinner",
+      "time_display": "Thursday 01/29 5:30 PM",
+      "location": "Berkeley Boathouse, 200 Marina Boulevard, Berkeley, CA 94710",
+      "price": "$99",
+      "event_type": "food",
+      "priority": 6,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/five-course-wine-pairing-dinner-tickets-1980416375691?aff=ebdssbdestsearch",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Join us for a cozy night of yummy food and perfect wines paired just for you!Five Course Wine Pairin...",
+      "description_detail": "Join us for a cozy night of yummy food and perfect wines paired just for you!Five Course Wine Pairing Dinner Get ready for an amazing evening where flavor meets fun! Join us in person for a five-course meal perfectly paired with wines that elevate every bite. It's the perfect chance to taste new wines, enjoy great company, and indulge in delicious dishes. Don’t miss out on this tasty adventure – your taste buds will thank you!Read moreCategory: Food & Drink, Wine",
+      "source": "eventbrite",
+      "scraped_at": "2026-01-19T16:43:07.880Z"
+    },
+    {
+      "id": 37,
+      "selected": false,
+      "title": "Skates on the Bay - Caymus Wine Dinner",
+      "time_display": "Thursday 01/29 7:00 PM",
+      "location": "100 Seawall Drive, Berkeley, CA 94710",
+      "price": "$140",
+      "event_type": "food",
+      "priority": 6,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/skates-on-the-bay-caymus-wine-dinner-tickets-1873397545489?aff=ebdssbdestsearch",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "This elegant five-course dinner is perfectly paired with Caymus Vineyards. Reserve your spot now — s...",
+      "description_detail": "This elegant five-course dinner is perfectly paired with Caymus Vineyards. Reserve your spot now — space is limited!\n5-COURSE CHEF CURATED DINNER WITH WINE PAIRINGS FROM CAYMUS.\nbaby arugula, prosciutto, pickled red onions, five herb purée\nEmmolo Sauvignon Blanc, Napa Valley\nwinter green mesclun greens, cranberries, pepitas\nConundrum White Blend, California\ndark cherry beurre rouge, vanilla parsnip & potato purée\nMer Soleil Reserve Chardonnay, Santa Lucia Highlands\nbeurre rouge, mushroom, asparagus, crispy smashed fingerlings\nCaymus Cabernet Sauvignon, Napa Valley\nFlourless Chocolate Torte\nThe Walking Fool Red Blend, Suisun Valley\nLimited seating available. No refunds unless event is cancelled by organizer. Must be 21+ to attend. Not valid with any other promotions or discounts. Dine-in only. Tax & gratuity included in ticket price. Sales are Final.\nThis elegant five-course dinner is perfectly paired with Caymus Vineyards. Reserve your spot now — space is limited!\n5-COURSE CHEF CURATED DINNER WITH WINE PAIRINGS FROM CAYMUS.\nbaby arugula, prosciutto, pickled red onions, five herb purée\nEmmolo Sauvignon Blanc, Napa Valley\nwinter green mesclun greens, cranberries, pepitas\nConundrum White Blend, California\ndark cherry beurre rouge, vanilla parsnip & potato purée\nMer Soleil Reserve Chardonnay, Santa Lucia Highlands\nbeurre rouge, mushroom, asparagus, crispy smashed fingerlings\nCaymus Cabernet Sauvignon, Napa Valley\nFlourless Chocolate Torte\nThe Walking Fool Red Blend, Suisun Valley\nLimited seating available. No refunds unless event is cancelled by organizer. Must be 21+ to attend. Not valid with any other promotions or discounts. Dine-in only. Tax & gratuity included in ticket price. Sales are Final.",
+      "source": "eventbrite",
+      "scraped_at": "2026-01-19T16:43:07.880Z"
+    },
+    {
+      "id": 38,
+      "selected": false,
+      "title": "Water Tasting, Education, and Appreciation!",
+      "time_display": "Saturday 01/31 11:30 AM",
+      "location": "Alcademics, 57 Post Street, Suite 608 San Francisco, CA 94104",
+      "price": "$44.52",
+      "event_type": "food",
+      "priority": 6,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/water-tasting-education-and-appreciation-tickets-1978453344211?aff=ebdssbdestsearch",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Learn to taste and rate tap and bottled still and sparkling waters like a pro and understand the dif...",
+      "description_detail": "Learn to taste and rate tap and bottled still and sparkling waters like a pro and understand the difference between brands!We’ll taste test 12-16 different waters and students will leave the class with an appreciation for the variety of water to drink, a way to describe how they taste, and a new thirst for this category.Does water have flavor? Is there a difference between tap and bottled water, or from one bottled water to another? Can water express terroir?The answer to all these questions is YES!Come learn about- and taste- lots of water in this class by cocktail writer and educator Camper English. We'll keep your whistle wet this Dry January in this nonalcoholic tasting class.Tasting TapFirst we’ll learn about tap water, including the local stuff in San Francisco and bottled tap waters like Dasani and Aquafina. We’ll briefly discuss home water filters and measure the dissolved solids (TDS) in water with a TDS meter.Is Bottled Water Better?For the majority of the class we'll talk about and taste regionally-sourced bottled waters, learning how to categorize them, how to read their labels, and where to look for highly-rated brands. We’ll learn how waters differ according to type of source, mineral makeup, TDS, pH and more.We’ll taste both bottled still waters and sparkling waters to see the great variation in brands. We’ll look at award-winning waters, waters designed for whiskey pairings, and other novelty water options. We'll taste some brands you've heard of, and several you probably haven't.Location and InstructorClasses are limited to 8 people. Class takes place in an office on the 6th floor of the Mechanics Institute Library building at Post and Market Street in the Financial District, just steps away from the Montgomery BART/MUNI station.Your instructor is Camper English of Alcademics.com. Camper has been writing and teaching about cocktails and spirits in San Francisco for nearly 20 years, and has taught classes on water to more than 200 bartenders and consumers.He is the author of Doctors and Distillers: The Remarkable Medicinal History of Beer, Wine, Spirits, and Cocktails, and The Ice Book: Cool Cubes, Clear Spheres, and Other Chill Cocktail Crafts. Camper has given dozens of talks and classes about cocktails and spirits science and history to audiences of bartenders and consumers. To stay informed about all of Camper's classes, please join the Alcademics Newsletter, which goes out monthly.Want to book a private class? Reach out any time!Read moreCategory: Food & Drink, Other",
+      "source": "eventbrite",
+      "scraped_at": "2026-01-19T16:43:07.880Z"
+    },
+    {
+      "id": 39,
+      "selected": false,
+      "title": "28th Annual Pancretan All You Can Eat Crab Feed",
+      "time_display": "Friday 01/30 6:30 PM",
+      "location": "Saint Nicholas Greek Orthodox Church, Davis Street, San Jose, CA, USA, 1260 Davis Street, San Jose, CA 95126",
+      "price": "$50 – $900",
+      "event_type": "food",
+      "priority": 6,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/28th-annual-pancretan-all-you-can-eat-crab-feed-registration-1967817854174?aff=ebdssbdestsearch",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Get ready for a mouthwatering feast at the Ikaros Pancretan Annual All You Can Eat Crab Feed, where ...",
+      "description_detail": "Get ready for a mouthwatering feast at the Ikaros Pancretan Annual All You Can Eat Crab Feed, where you can indulge in unlimited crab!Ikaros Pancretan Annual All You Can Eat Crab Feed IS BACK!FULL TABLE SALES NOW AVAILABLEINDIVIDUAL SALES WILL BE RELEASED IN MID DECEMBER Indulge in a seafood extravaganza at our Crab Feed! Join us for a night of exquisite flavors, featuring succulent crab paired with an open bar offering a selection of beverages to enhance your dining experience. Immerse yourself in the excitement of live and silent auctions, where unique treasures await. Delight in delicious cuisine, spirited conversations, and the thrill of bidding, all against the backdrop of a memorable evening. Secure your spot for an unforgettable crab feast with fantastic company!Read moreCategory: Food & Drink, Food",
+      "source": "eventbrite",
+      "scraped_at": "2026-01-19T16:43:07.882Z"
+    },
+    {
+      "id": 40,
+      "selected": false,
+      "title": "Los Gatos Lions Cioppino Dinner and Auction Fundraiser",
+      "time_display": "Saturday 01/31 6:00 PM",
+      "location": "St. Mary of the Immaculate Conception Catholic Church, 219 Bean Avenue, Los Gatos, CA 95030",
+      "price": "$108.55",
+      "event_type": "food",
+      "priority": 6,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/los-gatos-lions-cioppino-dinner-and-auction-fundraiser-tickets-1978656624227?aff=ebdssbdestsearch",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "The Los Gatos Lions Club Cioppino Dinner & Fundraiser is a long-running community eventCategory: Foo...",
+      "description_detail": "The Los Gatos Lions Club Cioppino Dinner & Fundraiser is a long-running community eventCategory: Food & Drink, Food",
+      "source": "eventbrite",
+      "scraped_at": "2026-01-19T16:43:07.883Z"
+    }
+  ]
+}
