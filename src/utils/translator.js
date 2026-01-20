@@ -13,6 +13,22 @@ class Translator {
     this.provider = provider;
     this.clients = {};
 
+    // 定义统一的翻译系统提示词
+    this.systemPrompt = `你是专业的湾区活动翻译专家，精通英译中和本地化表达。
+
+翻译要求：
+1. 自然流畅的中文表达，符合小红书用户阅读习惯
+2. 保留活动的吸引力和特色，使用生动的词汇
+3. 本地化处理：Bay Area → 湾区，San Francisco → 旧金山，Oakland → 奥克兰等
+4. 对于专有名词（品牌、艺术家名字、场馆名）保留英文
+5. 只返回翻译结果，不要解释、引号或多余标点
+
+示例：
+"Halloween Farmers Market" → "万圣节农夫市集"
+"Jazz Night at The Fillmore" → "The Fillmore 爵士之夜"
+"Bay Area Food Festival" → "湾区美食节"
+"Tech Talk: AI & Machine Learning" → "科技讲座：AI与机器学习"`;
+
     // 初始化所有可用的翻译客户端
     this.initializeClients();
 
@@ -106,15 +122,15 @@ class Translator {
         messages: [
           {
             role: 'system',
-            content: '你是一个专业的英译中翻译助手。请将英文活动标题翻译成自然流畅的中文，保持活动的吸引力和准确性。只返回翻译后的文本，不要添加任何解释、引号或标点符号。',
+            content: this.systemPrompt,
           },
           {
             role: 'user',
             content: text,
           },
         ],
-        temperature: 0.3,
-        max_tokens: 100,
+        temperature: 0.5,
+        max_tokens: 150,
       });
 
       return response.choices[0].message.content.trim();
@@ -134,20 +150,25 @@ class Translator {
       // 注意：gemini-1.5-* 模型已于2024年9月退役
       const model = this.clients.gemini.getGenerativeModel({
         model: 'gemini-2.5-flash',
+        generationConfig: {
+          temperature: 0.5,
+          maxOutputTokens: 150,
+        },
       });
 
-      const prompt = `请将以下英文活动标题翻译成自然流畅的中文，保持活动的吸引力和准确性。只返回翻译后的文本，不要添加任何解释、引号或标点符号。
+      const prompt = `${this.systemPrompt}
 
-英文标题: ${text}
+请翻译以下英文活动标题：
+${text}
 
-中文翻译:`;
+中文翻译：`;
 
       const result = await model.generateContent(prompt);
       const response = await result.response;
       const translated = response.text().trim();
 
-      // 去除可能的引号
-      return translated.replace(/^["']|["']$/g, '');
+      // 去除可能的引号和多余标点
+      return translated.replace(/^["'「『]|["'」』]$/g, '').replace(/^中文翻译[:：]\s*/, '');
     } catch (error) {
       // 检查是否是速率限制错误
       if (error.message.includes('429') || error.message.includes('quota')) {
@@ -169,15 +190,15 @@ class Translator {
         messages: [
           {
             role: 'system',
-            content: '你是一个专业的英译中翻译助手。请将英文活动标题翻译成自然流畅的中文，保持活动的吸引力和准确性。只返回翻译后的文本，不要添加任何解释、引号或标点符号。',
+            content: this.systemPrompt,
           },
           {
             role: 'user',
             content: text,
           },
         ],
-        temperature: 0.3,
-        max_tokens: 100,
+        temperature: 0.5,
+        max_tokens: 150,
       });
 
       return response.choices[0].message.content.trim();
@@ -197,15 +218,15 @@ class Translator {
         messages: [
           {
             role: 'system',
-            content: '你是一个专业的英译中翻译助手。请将英文活动标题翻译成自然流畅的中文，保持活动的吸引力和准确性。只返回翻译后的文本，不要添加任何解释、引号或标点符号。',
+            content: this.systemPrompt,
           },
           {
             role: 'user',
             content: text,
           },
         ],
-        temperature: 0.3,
-        max_tokens: 100,
+        temperature: 0.5,
+        max_tokens: 150,
       });
 
       return response.choices[0].message.content.trim();
@@ -292,10 +313,17 @@ class Translator {
       return false;
     }
 
-    // 检查2: 包含AI思考过程的关键词
+    // 检查2: 长度异常短（翻译结果不应该为空或只有几个字符）
+    if (translated.length < 2) {
+      console.warn(`⚠️  翻译结果过短 (${translated.length} 字符)`);
+      return false;
+    }
+
+    // 检查3: 包含AI思考过程的关键词
     const thinkingKeywords = [
       'THOUGHT', 'THINKING', 'ANALYSIS', 'CONSIDER',
-      '思考：', '分析：', '考虑：', 'Let me', 'I need to'
+      '思考：', '分析：', '考虑：', 'Let me', 'I need to',
+      '中文翻译：', '翻译结果：', '翻译为：'
     ];
     for (const keyword of thinkingKeywords) {
       if (translated.includes(keyword)) {
@@ -304,16 +332,39 @@ class Translator {
       }
     }
 
-    // 检查3: 包含多余的解释性文字（例如带引号的解释）
+    // 检查4: 包含多余的解释性文字（例如带引号的解释）
     if (translated.match(/["'"].*?["'"]\s*[-:：]\s*/)) {
       console.warn(`⚠️  翻译结果可能包含解释性文字`);
       return false;
     }
 
-    // 检查4: 不应该包含换行符（活动标题应该是单行）
+    // 检查5: 不应该包含换行符（活动标题应该是单行）
     if (translated.includes('\n')) {
       console.warn(`⚠️  翻译结果包含换行符`);
       return false;
+    }
+
+    // 检查6: 翻译结果应该包含中文字符
+    const hasChinese = /[\u4e00-\u9fa5]/.test(translated);
+    if (!hasChinese) {
+      console.warn(`⚠️  翻译结果不包含中文字符: "${translated}"`);
+      return false;
+    }
+
+    // 检查7: 翻译结果不应该和原文完全相同（除非原文已包含中文）
+    const originalHasChinese = /[\u4e00-\u9fa5]/.test(original);
+    if (!originalHasChinese && translated === original) {
+      console.warn(`⚠️  翻译结果与原文相同（未翻译）`);
+      return false;
+    }
+
+    // 检查8: 检查是否包含常见的翻译错误标记
+    const errorMarkers = ['[翻译]', '[Translation]', '(翻译)', '(Translation)', '无法翻译', 'Cannot translate'];
+    for (const marker of errorMarkers) {
+      if (translated.includes(marker)) {
+        console.warn(`⚠️  翻译结果包含错误标记: "${marker}"`);
+        return false;
+      }
     }
 
     return true;
