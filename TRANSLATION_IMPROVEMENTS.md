@@ -239,6 +239,8 @@ npm run test-full-workflow
 - ✅ 优化小红书内容生成提示词
 - ✅ 增强本地化表达支持
 - ✅ 创建翻译改进文档
+- ✅ **优化Summary提示词**：改进AI摘要生成质量，避免重复标题/时间/地点信息
+- ✅ **修复GitHub Actions配置**：添加Summary生成所需的API密钥环境变量
 
 ## 相关文件
 
