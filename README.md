@@ -627,7 +627,9 @@ sqlite3 data/events.db "SELECT * FROM user_feedback ORDER BY created_at DESC LIM
 ## 📚 重要文档
 
 - **[翻译质量改进指南](./TRANSLATION_IMPROVEMENTS.md)** - 翻译系统优化说明、配置建议和质量提升技巧
+- **[Summary 问题排查报告](./SUMMARY_ISSUE_REPORT.md)** - 一句话摘要功能问题分析和解决方案
 - **[翻译使用指南](./docs/TRANSLATION_GUIDE.md)** - 翻译功能的基础使用方法
+- **[AI Summary 功能文档](./docs/features/AI_SUMMARY_FEATURE.md)** - AI 摘要生成功能使用指南
 - **[架构文档](./ARCHITECTURE.md)** - 系统架构设计和技术选型
 - **[命令参考](./COMMANDS.md)** - 所有可用命令的详细说明
 

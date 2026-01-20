@@ -65,6 +65,11 @@ jobs:
         OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
         GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
         CLAUDE_API_KEY: ${{ secrets.CLAUDE_API_KEY }}
+        # Summary生成所需的API密钥（优先级：NewAPI → Gemini → Mistral）
+        NEWAPI_API_KEY: ${{ secrets.NEWAPI_API_KEY }}
+        NEWAPI_BASE_URL: ${{ secrets.NEWAPI_BASE_URL }}
+        NEWAPI_MODEL: ${{ secrets.NEWAPI_MODEL }}
+        MISTRAL_API_KEY: ${{ secrets.MISTRAL_API_KEY }}
         NODE_ENV: production
       run: |
         if [ "${{ github.event.inputs.debug_mode }}" == "true" ]; then

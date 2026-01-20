@@ -66,23 +66,51 @@ class Summarizer {
    * 构建摘要生成的 prompt
    */
   buildPrompt(title, description, eventType) {
-    return `你是一个活动推广文案专家，擅长用活泼有趣的语言吸引人参加活动。
+    return `你是湾区活动推广专家，擅长从活动描述中提炼核心亮点，用简洁有力的语言吸引读者。
 
-请将以下活动描述总结成一句简短的宣传语。
+【核心任务】
+从详细描述（description）中提取活动的**独特亮点**，创作一句话摘要。
 
-要求：
-1. 提炼关键亮点：
-   - 数字类亮点：如"200个摊位"、"30+品牌"、"数十位歌手"
-   - 特色元素：如乐队现场、餐车美食、圣诞老人、无限畅饮、手工市集等
-2. 语气活泼有趣，让人想点击了解更多
-3. 不要包含具体日期、地址、门票价格（这些会单独展示）
-4. 中文：15-25个汉字
-5. 英文：20-30个单词
-6. 只返回 JSON 格式，不要有其他内容：{"en": "...", "zh": "..."}
+【提取重点】
+从description中寻找以下信息（优先级从高到低）：
+1. **数字亮点**：摊位数量、艺术家人数、参展商规模等
+   - 示例：200+摊位、50位艺术家、100+本地商家
+2. **特色内容**：具体的表演、美食、活动形式
+   - 示例：印度舞蹈表演、BBQ烧烤、手工艺品展售、服装比赛
+3. **独特元素**：与众不同的亮点
+   - 示例：获奖艺术家、现场DJ、拍照打卡区、免费试吃
+4. **活动氛围**：家庭友好、宠物友好、适合约会等
+
+【严格禁止】
+❌ 重复标题中已有的信息（标题会单独显示）
+❌ 包含日期、时间、地点、价格（这些会单独展示）
+❌ 使用空泛词汇："社区活动"、"本地活动"、"各种"、"众多"
+❌ 只说活动类型不说具体内容："艺术展"❌ → "20+艺术家绘画雕塑展售"✅
+
+【输出要求】
+- 中文：15-25个汉字，简洁有力，突出核心亮点
+- 英文：20-30个单词，地道表达，吸引眼球
+- 语气：热情、生动、让人想立刻参加
+- 格式：纯JSON，不要markdown code block
+
+【示例】
+
+输入：
+标题: "Oakland Diwali Festival"
+描述: "Traditional lighting ceremony at sunset, featuring over 30 Indian classical dancers, live sitar and tabla performances, South Asian food vendors offering samosas and chai, henna art station, and family-friendly fireworks display."
+
+输出：
+{"en": "30+ classical Indian dancers, live sitar music, South Asian food vendors, henna art & fireworks", "zh": "30+印度古典舞者表演、现场西塔琴音乐、南亚美食摊位、海娜彩绘和烟花秀"}
+
+---
+
+现在请处理：
 
 活动标题：${title}
-活动描述：${description || '无'}
-活动类型：${eventType || 'other'}`;
+活动描述：${description || '无详细描述'}
+活动类型：${eventType || 'other'}
+
+只返回JSON格式：{"en": "...", "zh": "..."}`;
   }
 
   /**
