@@ -1,0 +1,867 @@
+{
+  "review_id": "review_2026-01-26_1642_kjk",
+  "generated_at": "2026-01-26T16:42:55.934Z",
+  "scrape_date": "2026-01-26",
+  "target_week": "2026-02-02_to_2026-02-08",
+  "target_week_readable": "下周 (02/02 - 02/08)",
+  "scraping_report": {
+    "total_scraped": 61,
+    "after_deduplication": 50,
+    "after_classification": 50,
+    "classification_report": {
+      "totalEvents": 50,
+      "eventTypes": {
+        "free": 19,
+        "art": 11,
+        "festival": 3,
+        "food": 3,
+        "market": 8,
+        "other": 1,
+        "music": 5
+      },
+      "priorityLevels": {
+        "3": 1,
+        "4": 5,
+        "5": 11,
+        "6": 3,
+        "9": 19,
+        "10": 11
+      },
+      "chineseRelevant": 0,
+      "topPriorityEvents": 30
+    }
+  },
+  "instructions": {
+    "how_to_review": "将你想要发布的活动的 'selected' 字段改为 true",
+    "next_step": "保存文件后运行: npm run generate-post [此文件路径]",
+    "fields_explanation": {
+      "title": "活动标题",
+      "time_display": "显示用的时间格式",
+      "location": "活动地点",
+      "price": "票价信息",
+      "event_type": "AI识别的活动类型",
+      "priority": "优先级分数 (越高越重要)",
+      "chinese_relevant": "是否与中文社区相关",
+      "original_url": "原始活动链接"
+    }
+  },
+  "stats": {
+    "total_candidates": 40,
+    "by_type": {
+      "festival": 3,
+      "market": 8,
+      "free": 19,
+      "food": 3,
+      "art": 7
+    },
+    "by_priority": {
+      "5": 7,
+      "6": 3,
+      "9": 19,
+      "10": 11
+    },
+    "chinese_relevant": 0
+  },
+  "events": [
+    {
+      "id": 1,
+      "selected": false,
+      "title": "Big Game Opening Night",
+      "time_display": "Monday 02/02 3:00 PM - 9:00 PM",
+      "location": "San Jose McEnery Convention Center, 150 W San Carlos St, San Jose, CA",
+      "price": "Check event page",
+      "event_type": "festival",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://sjdowntown.com/event/big-game-opening-night/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "San Jose get ready! The San Jose McEnery Convention Center is hosting Opening Night, setting the sta...",
+      "description_detail": null,
+      "source": "sjdowntown",
+      "scraped_at": "2026-01-26T16:37:27.867Z"
+    },
+    {
+      "id": 2,
+      "selected": false,
+      "title": "Live Music",
+      "time_display": "Monday 02/02 6:00 PM - 9:00 PM",
+      "location": "San Pedro Square Market, 87 N San Pedro St, San Jose, CA",
+      "price": "Check event page",
+      "event_type": "market",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://sjdowntown.com/event/live-music/2026-02-02/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Experience live music at San Pedro Square Market six days a week! Explore our calendar for the full ...",
+      "description_detail": null,
+      "source": "sjdowntown",
+      "scraped_at": "2026-01-26T16:37:27.868Z"
+    },
+    {
+      "id": 3,
+      "selected": false,
+      "title": "Live Music",
+      "time_display": "Tuesday 02/03 6:00 PM - 9:00 PM",
+      "location": "San Pedro Square Market, 87 N San Pedro St, San Jose, CA",
+      "price": "Check event page",
+      "event_type": "market",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://sjdowntown.com/event/live-music/2026-02-03/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Experience live music at San Pedro Square Market six days a week! Explore our calendar for the full ...",
+      "description_detail": null,
+      "source": "sjdowntown",
+      "scraped_at": "2026-01-26T16:37:27.869Z"
+    },
+    {
+      "id": 4,
+      "selected": false,
+      "title": "Jeopardy Bar League",
+      "time_display": "Tuesday 02/03 7:00 PM - 8:00 PM",
+      "location": "Three Sisters Whiskey Bar, 170 W. Saint John St., San Jose, CA",
+      "price": "Check event page",
+      "event_type": "market",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://sjdowntown.com/event/jeopardy-bar-league/2026-02-03/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "ATTENTION TRIVIA LOVERS! San Pedro Square Market is hosting Jeopardy Bar League – the official bar t...",
+      "description_detail": null,
+      "source": "sjdowntown",
+      "scraped_at": "2026-01-26T16:37:27.869Z"
+    },
+    {
+      "id": 5,
+      "selected": false,
+      "title": "Live Music",
+      "time_display": "Wednesday 02/04 6:00 PM - 9:00 PM",
+      "location": "San Pedro Square Market, 87 N San Pedro St, San Jose, CA",
+      "price": "Check event page",
+      "event_type": "market",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://sjdowntown.com/event/live-music/2026-02-04/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Experience live music at San Pedro Square Market six days a week! Explore our calendar for the full ...",
+      "description_detail": null,
+      "source": "sjdowntown",
+      "scraped_at": "2026-01-26T16:37:27.870Z"
+    },
+    {
+      "id": 6,
+      "selected": false,
+      "title": "Live Music",
+      "time_display": "Thursday 02/05 6:00 PM - 9:00 PM",
+      "location": "San Pedro Square Market, 87 N San Pedro St, San Jose, CA",
+      "price": "Check event page",
+      "event_type": "market",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://sjdowntown.com/event/live-music/2026-02-05/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Experience live music at San Pedro Square Market six days a week! Explore our calendar for the full ...",
+      "description_detail": null,
+      "source": "sjdowntown",
+      "scraped_at": "2026-01-26T16:37:27.870Z"
+    },
+    {
+      "id": 7,
+      "selected": false,
+      "title": "Live Music",
+      "time_display": "Friday 02/06 6:00 PM - 9:00 PM",
+      "location": "San Pedro Square Market, 87 N San Pedro St, San Jose, CA",
+      "price": "Check event page",
+      "event_type": "market",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://sjdowntown.com/event/live-music/2026-02-06/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Experience live music at San Pedro Square Market six days a week! Explore our calendar for the full ...",
+      "description_detail": null,
+      "source": "sjdowntown",
+      "scraped_at": "2026-01-26T16:37:27.870Z"
+    },
+    {
+      "id": 8,
+      "selected": false,
+      "title": "Hobee&#8217;s Pancake Market",
+      "time_display": "Saturday 02/07 9:00 AM - 2:00 PM",
+      "location": "Hobee&#8217;s, 261 N 2nd street, San Jose, CA",
+      "price": "Check event page",
+      "event_type": "market",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://sjdowntown.com/event/hobees-pancake-market/2026-02-07/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Brunch and Browse LOCAL vendors and artisans Saturdays from 9:00-2:00pm at Hobee&#8217;s Downtown Sa...",
+      "description_detail": null,
+      "source": "sjdowntown",
+      "scraped_at": "2026-01-26T16:37:27.870Z"
+    },
+    {
+      "id": 9,
+      "selected": false,
+      "title": "San José State of the City 2026",
+      "time_display": "Saturday 02/07 9:00 AM - 5:00 PM",
+      "location": "194 Post St, 194 Post Street, San Jose, CA",
+      "price": "Check event page",
+      "event_type": "festival",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://sjdowntown.com/event/san-jose-state-of-the-city-2026/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Show your civic pride alongside your neighbors at our annual event focused on service and celebratio...",
+      "description_detail": null,
+      "source": "sjdowntown",
+      "scraped_at": "2026-01-26T16:37:27.870Z"
+    },
+    {
+      "id": 10,
+      "selected": false,
+      "title": "Live Music",
+      "time_display": "Saturday 02/07 6:00 PM - 9:00 PM",
+      "location": "San Pedro Square Market, 87 N San Pedro St, San Jose, CA",
+      "price": "Check event page",
+      "event_type": "market",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://sjdowntown.com/event/live-music/2026-02-07/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Experience live music at San Pedro Square Market six days a week! Explore our calendar for the full ...",
+      "description_detail": null,
+      "source": "sjdowntown",
+      "scraped_at": "2026-01-26T16:37:27.871Z"
+    },
+    {
+      "id": 11,
+      "selected": false,
+      "title": "Bingo Loco",
+      "time_display": "Saturday 02/07 6:45 PM - 9:45 PM",
+      "location": "San Jose Improv, 62 S Second St, San Jose, CA",
+      "price": "Check event page",
+      "event_type": "festival",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://sjdowntown.com/event/bingo-loco/2026-02-07/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Get ready as Bingo Loco is crashing into Oxnard nightlife with a wild mix of bingo, rave, and comedy...",
+      "description_detail": null,
+      "source": "sjdowntown",
+      "scraped_at": "2026-01-26T16:37:27.871Z"
+    },
+    {
+      "id": 12,
+      "selected": false,
+      "title": "Night of ChampionsOrpheum Theatre",
+      "time_display": "Tuesday 02/03 7:30 PM",
+      "location": "1192 Market Street, San Francisco, CA",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.broadwaysf.com/events/night-of-champions/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "sfstation",
+      "scraped_at": "2026-01-26T16:38:08.267Z"
+    },
+    {
+      "id": 13,
+      "selected": false,
+      "title": "Golden State Warriors 2025/2026 SeasonChase Center",
+      "time_display": "Tuesday 02/03 7:00 PM",
+      "location": "1 Warriors Way, San Francisco, CA",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://ticketmaster.evyy.net/c/253558/264167/4272?u=https%3A%2F%2Fwww.ticketmaster.com%2Fartist%2F805946",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "sfstation",
+      "scraped_at": "2026-01-26T16:38:08.267Z"
+    },
+    {
+      "id": 14,
+      "selected": false,
+      "title": "Art of WhiskeyForeign Lens Independant Cinema",
+      "time_display": "Thursday 02/05 5:00 PM",
+      "location": "460 9th St, San Francisco, CA",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://Artofwhiskey2026.eventbrite.com",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "sfstation",
+      "scraped_at": "2026-01-26T16:38:08.268Z"
+    },
+    {
+      "id": 15,
+      "selected": false,
+      "title": "BAHC Live! - Benson Boone - American Heart World TourBill Graham Civic Auditorium",
+      "time_display": "Thursday 02/05 8:00 PM",
+      "location": "99 Grove Street, San Francisco, CA",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://ticketmaster.evyy.net/c/253558/264167/4272?u=https%3A%2F%2Fwww.ticketmaster.com%2Fbenson-boone-tickets%2Fartist%2F2892837",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "sfstation",
+      "scraped_at": "2026-01-26T16:38:08.268Z"
+    },
+    {
+      "id": 16,
+      "selected": false,
+      "title": "DJ SusanAudio SF",
+      "time_display": "Thursday 02/05 9:30 PM",
+      "location": "316 11th Street, San Francisco, CA",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventim.us/event/dj-susan/677451",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "sfstation",
+      "scraped_at": "2026-01-26T16:38:08.268Z"
+    },
+    {
+      "id": 17,
+      "selected": false,
+      "title": "Samantha Bee: How to Survive MenopauseBrava Theater Center",
+      "time_display": "Thursday 02/05 7:30 PM",
+      "location": "2781 24th Street, San Francisco, CA",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://ticketmaster.evyy.net/c/253558/264167/4272?u=https%3A%2F%2Fwww.ticketmaster.com%2Fsamantha-bee-tickets%2Fartist%2F1582487",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "sfstation",
+      "scraped_at": "2026-01-26T16:38:08.268Z"
+    },
+    {
+      "id": 18,
+      "selected": false,
+      "title": "Prime-Time Flavors of the BayLa Mar Cocina Peruana",
+      "time_display": "Thursday 02/05 6:00 PM",
+      "location": "Pier 1 1/2, San Francisco, CA",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.opentable.com/booking/experiences-availability?rid=25198&restref=25198&experienceId=610350&utm_source=external&utm_medium=referral&utm_campaign=shared",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "sfstation",
+      "scraped_at": "2026-01-26T16:38:08.268Z"
+    },
+    {
+      "id": 19,
+      "selected": false,
+      "title": "Liz Tran - AQ: A New Kind of Intelligence for a World That's Always ChangingBook Passage - San Francisco",
+      "time_display": "Thursday 02/05 5:30 PM",
+      "location": "1 Ferry Bulding, San Francisco, CA",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.bookpassage.com/event/liz-tran-aq-new-kind-intelligence-world-thats-always-changing-ferry-building-event",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "sfstation",
+      "scraped_at": "2026-01-26T16:38:08.269Z"
+    },
+    {
+      "id": 20,
+      "selected": false,
+      "title": "SF’s Free DFT Monthly Block Party: “Downtown First Thursdays” (2026)",
+      "time_display": "Thursday 02/05 5:00 PM - 10:00 PM",
+      "location": "2nd Street between Market and Howard Streets, San Francisco Bay Area",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/sfs-free-dft-monthly-block-party-downtown-first-thursdays-2026/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Downtown First Thursdays is back for a full year of street parties in 2026: Starting Jan 1, 2026 wit...",
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2026-01-26T16:37:39.356Z"
+    },
+    {
+      "id": 21,
+      "selected": false,
+      "title": "SF’s Vietnamese New Year Tet Festival (2026)",
+      "time_display": "Saturday 02/07 10:00 AM - 4:00 PM",
+      "location": "Larkin St (between Eliis & Eddy), San Francisco Bay Area",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/sfs-vietnamese-new-year-tet-festival-2025/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2026-01-26T16:37:39.356Z"
+    },
+    {
+      "id": 22,
+      "selected": false,
+      "title": "Big Game Block Party",
+      "time_display": "Wednesday 02/04 12:00 AM - Thursday 02/05 11:59 PM",
+      "location": "Hapa’s Brewing Company &#8211; Creekside, 59 Barack Obama Blvd, San Jose, CA",
+      "price": "Check event page",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sjdowntown.com/event/big-game-block-party/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Celebrate football&#8217;s biggest week at The Big Game Block Party hosted by Hapa’s Brewing Company...",
+      "description_detail": null,
+      "source": "sjdowntown",
+      "scraped_at": "2026-01-26T16:37:27.870Z"
+    },
+    {
+      "id": 23,
+      "selected": false,
+      "title": "Downtown Farmers’ Market",
+      "time_display": "Wednesday 02/04 9:00 AM - 1:30 PM",
+      "location": "Hammer Theatre Center, 101 Paseo De San Antonio, San Jose, CA",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sjdowntown.com/event/downtown-farmers-market-2/2026-02-04/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Enjoy fresh produce, baked goods, local artisans, and delicious prepared foods from your favorite lo...",
+      "description_detail": null,
+      "source": "sjdowntown",
+      "scraped_at": "2026-01-26T16:37:27.870Z"
+    },
+    {
+      "id": 24,
+      "selected": false,
+      "title": "Comedians and Empanadas",
+      "time_display": "Wednesday 02/04 6:00 PM - 8:00 PM",
+      "location": "Casa Guzmania, 350 South Market Street, San Jose, CA",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sjdowntown.com/event/comedian-and-empanadas/2026-02-04/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Join us for a FREE hilarious night of laughter and delicious empanadas at Casa Guzmania &#8211; Rest...",
+      "description_detail": null,
+      "source": "sjdowntown",
+      "scraped_at": "2026-01-26T16:37:27.870Z"
+    },
+    {
+      "id": 25,
+      "selected": false,
+      "title": "San Pedro Superfest",
+      "time_display": "Friday 02/06 12:00 AM - Sunday 02/08 11:59 PM",
+      "location": "San Pedro Square Market, 87 N San Pedro St, San Jose, CA",
+      "price": "Check event page",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sjdowntown.com/event/san-pedro-superfest/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Get in on the Big Game Weekend excitement at San Pedro Superfest! This free, block-party-style celeb...",
+      "description_detail": null,
+      "source": "sjdowntown",
+      "scraped_at": "2026-01-26T16:37:27.870Z"
+    },
+    {
+      "id": 26,
+      "selected": false,
+      "title": "South FIRST FRIDAYS #ArtwalkSJ",
+      "time_display": "Friday 02/06 5:00 PM - 9:00 PM",
+      "location": "South First Street, 450 S 1st St, San Jose, CA",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sjdowntown.com/event/south-first-fridays-artwalksj-2/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Join us for an inspired evening filled with exciting new exhibitions, live performances and the amaz...",
+      "description_detail": null,
+      "source": "sjdowntown",
+      "scraped_at": "2026-01-26T16:37:27.870Z"
+    },
+    {
+      "id": 27,
+      "selected": false,
+      "title": "Bầu Cua Cá Cọp &#8211; Gourd Crab Fish Tiger Opening Reception",
+      "time_display": "Friday 02/06 6:00 PM - 9:00 PM",
+      "location": "Chopsticks Alley Art Gallery at Open San Jose, 38 S. 2nd Street, San Jose, CA",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sjdowntown.com/event/bau-cua-ca-cop-gourd-crab-fish-tiger-opening-reception/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "You are cordially invited to the Opening Reception of Chopsticks Alley Art&#8217;s &#8220;Bầu Cua Cá...",
+      "description_detail": null,
+      "source": "sjdowntown",
+      "scraped_at": "2026-01-26T16:37:27.870Z"
+    },
+    {
+      "id": 28,
+      "selected": false,
+      "title": "$9 Before 9 pm Happy Hour",
+      "time_display": "Friday 02/06 6:30 PM - 9:00 PM",
+      "location": "Nomikai, 48 South 1st Street, San Jose, CA",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sjdowntown.com/event/9-before-9-pm-happy-hour/2026-02-06/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "All Signature Cocktails · All Draft Beers · All Mocktails — just $9 before 9 p.m. Plus: 20% off all ...",
+      "description_detail": null,
+      "source": "sjdowntown",
+      "scraped_at": "2026-01-26T16:37:27.870Z"
+    },
+    {
+      "id": 29,
+      "selected": false,
+      "title": "RuPaul’s Drag Race Viewing Party",
+      "time_display": "Friday 02/06 8:00 PM - 11:00 PM",
+      "location": "Splash Bar San Jose, 65 Post St,, San Jose, CA",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sjdowntown.com/event/rupauls-drag-race-viewing-party/2026-02-06/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Excited to announce we will be having our favorite passed-out -in-the-passenger-seat… passenger prin...",
+      "description_detail": null,
+      "source": "sjdowntown",
+      "scraped_at": "2026-01-26T16:37:27.870Z"
+    },
+    {
+      "id": 30,
+      "selected": false,
+      "title": "First Fridays ArtWalk",
+      "time_display": "Friday 02/06 5:00 PM - 9:00 PM",
+      "location": "Downtown San Jose SoFA District, 5th Street between Taylor and Jackson",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sjdowntown.com/first-fridays",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Monthly art walk featuring local galleries, street performers, food trucks, and live music in downto...",
+      "description_detail": null,
+      "source": "first-fridays",
+      "scraped_at": "2026-01-26T16:39:44.933Z"
+    },
+    {
+      "id": 31,
+      "selected": false,
+      "title": "Half Off Wine Monday Happy Hour",
+      "time_display": "Monday 02/02 4:00 PM - 5:30 PM",
+      "location": "Rollati Risotrante, 181 E. Santa Clara St., San Jose, CA",
+      "price": "See event page",
+      "event_type": "food",
+      "priority": 6,
+      "chinese_relevant": false,
+      "original_url": "https://sjdowntown.com/event/half-off-wine-monday-happy-hour/2026-02-02/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Monday afternoon Happy Hour at Rollati Ristorante is now the place to be for wine lovers in the Sout...",
+      "description_detail": null,
+      "source": "sjdowntown",
+      "scraped_at": "2026-01-26T16:37:27.868Z"
+    },
+    {
+      "id": 32,
+      "selected": false,
+      "title": "Running After Shadows",
+      "time_display": "Thursday 02/05 12:00 AM - Saturday 02/07 11:59 PM",
+      "location": "City Lights Theater Company, 529 S 2nd St, San Jose, CA",
+      "price": "$25 – $68",
+      "event_type": "food",
+      "priority": 6,
+      "chinese_relevant": false,
+      "original_url": "https://sjdowntown.com/event/running-after-shadows/2026-02-05/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Please check the venue’s website for show times; performances typically run Thursday through Sunday....",
+      "description_detail": null,
+      "source": "sjdowntown",
+      "scraped_at": "2026-01-26T16:37:27.870Z"
+    },
+    {
+      "id": 33,
+      "selected": false,
+      "title": "Running After Shadows",
+      "time_display": "Friday 02/06 12:00 AM - Sunday 02/08 11:59 PM",
+      "location": "City Lights Theater Company, 529 S 2nd St, San Jose, CA",
+      "price": "$25 – $68",
+      "event_type": "food",
+      "priority": 6,
+      "chinese_relevant": false,
+      "original_url": "https://sjdowntown.com/event/running-after-shadows/2026-02-06/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Please check the venue’s website for show times; performances typically run Thursday through Sunday....",
+      "description_detail": null,
+      "source": "sjdowntown",
+      "scraped_at": "2026-01-26T16:37:27.870Z"
+    },
+    {
+      "id": 34,
+      "selected": false,
+      "title": "BAHC Live! - Martin Garrix with special guest Lost FrequenciesBill Graham Civic Auditorium",
+      "time_display": "Friday 02/06 8:30 PM",
+      "location": "99 Grove Street, San Francisco, CA",
+      "price": "$49.50",
+      "event_type": "art",
+      "priority": 5,
+      "chinese_relevant": false,
+      "original_url": "https://ticketmaster.evyy.net/c/253558/264167/4272?u=https%3A%2F%2Fwww.ticketmaster.com%2Fmartin-garrix-tickets%2Fartist%2F1923024",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "sfstation",
+      "scraped_at": "2026-01-26T16:38:08.269Z"
+    },
+    {
+      "id": 35,
+      "selected": false,
+      "title": "Rich Mafia – Alemán &#038; Gera Mx",
+      "time_display": "Tuesday 02/03 8:00 PM - 10:00 PM",
+      "location": "San Jose Civic, 135 W San Carlos St, San Jose, CA",
+      "price": "Check event page",
+      "event_type": "art",
+      "priority": 5,
+      "chinese_relevant": false,
+      "original_url": "https://sjdowntown.com/event/rich-mafia-aleman-gera-mx/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Erick Raúl Alemán Ramírez (born February 20, 1990), known professionally as Alemán, is a Mexican rap...",
+      "description_detail": null,
+      "source": "sjdowntown",
+      "scraped_at": "2026-01-26T16:37:27.869Z"
+    },
+    {
+      "id": 36,
+      "selected": false,
+      "title": "Live Music Wednesdays at Coastal Manor",
+      "time_display": "Wednesday 02/04 7:30 PM - 9:30 PM",
+      "location": "Downtown San Jose Marriott Hotel, 301 S. Market Street, San Jose, CA",
+      "price": "Check event page",
+      "event_type": "art",
+      "priority": 5,
+      "chinese_relevant": false,
+      "original_url": "https://sjdowntown.com/event/live-music-wednesdays-at-coastal-manor/2026-02-04/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Ease into the week with live music every Wednesday night at Coastal Manor, inside the San Jose Marri...",
+      "description_detail": null,
+      "source": "sjdowntown",
+      "scraped_at": "2026-01-26T16:37:27.870Z"
+    },
+    {
+      "id": 37,
+      "selected": false,
+      "title": "The Big Game Block Party with Kehlani",
+      "time_display": "Friday 02/06 4:00 PM - 7:00 PM",
+      "location": "City Hall, 200 E Santa Clara St, San Jose, CA",
+      "price": "Check event page",
+      "event_type": "art",
+      "priority": 5,
+      "chinese_relevant": false,
+      "original_url": "https://sjdowntown.com/event/the-big-game-block-party-with-kehlani/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "***SOLD OUT*** Celebrate The Big Game weekend in San José with a can&#8217;t-miss block party in the...",
+      "description_detail": null,
+      "source": "sjdowntown",
+      "scraped_at": "2026-01-26T16:37:27.870Z"
+    },
+    {
+      "id": 38,
+      "selected": false,
+      "title": "2Chainz &#038; DaBaby",
+      "time_display": "Friday 02/06 9:00 PM - Saturday 02/07 2:00 AM",
+      "location": "PETE BE Center, 439 First Street, San Jose, CA",
+      "price": "$65",
+      "event_type": "art",
+      "priority": 5,
+      "chinese_relevant": false,
+      "original_url": "https://sjdowntown.com/event/2chainz-dababy/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "San Jose, get ready. Hip-hop heavyweights 2 Chainz and DaBaby are taking over PETE BE CENTER for an ...",
+      "description_detail": null,
+      "source": "sjdowntown",
+      "scraped_at": "2026-01-26T16:37:27.870Z"
+    },
+    {
+      "id": 39,
+      "selected": false,
+      "title": "Tackle San Jose: Clean-Up with the Mayor",
+      "time_display": "Saturday 02/07 12:00 AM - 11:59 PM",
+      "location": "San Jose, CA",
+      "price": "Check event page",
+      "event_type": "art",
+      "priority": 5,
+      "chinese_relevant": false,
+      "original_url": "https://sjdowntown.com/event/tackle-san-jose-clean-up-with-the-mayor/2026-02-07/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Let&#8217;s Tackle a Cleaner San Jose For Super Bowl 60, we&#8217;re putting our best face forward. ...",
+      "description_detail": null,
+      "source": "sjdowntown",
+      "scraped_at": "2026-01-26T16:37:27.870Z"
+    },
+    {
+      "id": 40,
+      "selected": false,
+      "title": "Natalie Nunn",
+      "time_display": "Saturday 02/07 1:00 PM - Sunday 02/08 6:00 PM",
+      "location": "PETE BE Center, 439 First Street, San Jose, CA",
+      "price": "$45",
+      "event_type": "art",
+      "priority": 5,
+      "chinese_relevant": false,
+      "original_url": "https://sjdowntown.com/event/natalie-nunn/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "🎤 Natalie Nunn Live! @ PETE BE CENTER 📅 Saturday, February 7th ⏰ 1PM – 6PM 📍 PETE BE CENTER | Dow...",
+      "description_detail": null,
+      "source": "sjdowntown",
+      "scraped_at": "2026-01-26T16:37:27.871Z"
+    }
+  ]
+}
