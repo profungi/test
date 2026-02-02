@@ -1,0 +1,865 @@
+{
+  "review_id": "review_2026-02-02_1657_bqr",
+  "generated_at": "2026-02-02T16:57:53.170Z",
+  "scrape_date": "2026-02-02",
+  "target_week": "2026-02-09_to_2026-02-15",
+  "target_week_readable": "下周 (02/09 - 02/15)",
+  "scraping_report": {
+    "total_scraped": 101,
+    "after_deduplication": 87,
+    "after_classification": 87,
+    "classification_report": {
+      "totalEvents": 87,
+      "eventTypes": {
+        "free": 32,
+        "festival": 12,
+        "music": 11,
+        "food": 7,
+        "market": 13,
+        "art": 8,
+        "other": 4
+      },
+      "priorityLevels": {
+        "3": 4,
+        "4": 11,
+        "5": 8,
+        "6": 7,
+        "9": 32,
+        "10": 25
+      },
+      "chineseRelevant": 0,
+      "topPriorityEvents": 57
+    }
+  },
+  "instructions": {
+    "how_to_review": "将你想要发布的活动的 'selected' 字段改为 true",
+    "next_step": "保存文件后运行: npm run generate-post [此文件路径]",
+    "fields_explanation": {
+      "title": "活动标题",
+      "time_display": "显示用的时间格式",
+      "location": "活动地点",
+      "price": "票价信息",
+      "event_type": "AI识别的活动类型",
+      "priority": "优先级分数 (越高越重要)",
+      "chinese_relevant": "是否与中文社区相关",
+      "original_url": "原始活动链接"
+    }
+  },
+  "stats": {
+    "total_candidates": 40,
+    "by_type": {
+      "festival": 12,
+      "market": 13,
+      "free": 10,
+      "food": 5
+    },
+    "by_priority": {
+      "6": 5,
+      "9": 10,
+      "10": 25
+    },
+    "chinese_relevant": 0
+  },
+  "events": [
+    {
+      "id": 1,
+      "selected": false,
+      "title": "San Valentine's Cruise Party • Singles & Couples @ City Cruises SF",
+      "time_display": "Saturday 02/14 8:00 PM",
+      "location": "Pier 3 Hornblower Landing, San Francisco, CA 94111",
+      "price": "$65.87",
+      "event_type": "festival",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/san-valentines-cruise-party-singles-couples-city-cruises-sf-tickets-1980235735391?aff=ebdssbcitybrowsenightlife",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "San Valentines Cruise Party is the perfect ship to start Valentine's celebration Switch up your Vale...",
+      "description_detail": "San Valentines Cruise Party  is the perfect ship to start Valentine's celebration  \nSwitch up your Valentines' routine and join us\nSan Valentines Cruise Party is the perfect ship to celebrate love, friendship and future relationships. For your Valentine's festivities in San Francisco.\nSwitch up your Valentines' routine and join us on one of the most fun love cruises of the year. Dance with your love, friends to top hits mixed by our live band and DJ'S on this cruise around the Bay.\nEnjoy refreshments and cocktails at our 7 bars, and sightsee our amazing cities on this exciting and magical night!\n• 3 hours cruise w/ breathtaking views of San Francisco Bay by night\n• 4 Floors of Music/ 4 Live bands ( Live music from Colombia with the spectacular Sonora Dinamita -  live Salsa with Orquesta Rafa y los ejecutivos - La Nueva Herrencia and Live Mariachi with Mariachi Juarez, one more room with the best Top 40/ 70'/ 80's/ 90's plus 8 of the best Bay Area djs )\n* First Floor with La Sonora Dinamita\n* Second floor with Banda La Nueva Herencia\n* Third Floor with Orquesta Rafa y los ejecutivos\n* Fourth Floor Top 40/ 70'/ 80's/ 90's\n* Live Mariachi with Mariachi San Francisco\n* Cruise San Francisco Bell\n• Guests enjoy spectacular views of Golden Gate, Bay Bridge,Treasure Island, Alcatraz & more!\n• Classic river boat built in 1994 in Louisiana with the inspiration from the elegant riverboats of the 1800’s\n• The biggest boat in San Francisco - 1,500 guest capacity (Cruise San Francisco Bell)\n• 7 fully stocked Bars and food stations\n• Multiple enclosed outdoor decks\n• Bottle service available\n• The ticket give you access to all the rooms (4 rooms with live music)\nCity Cruises & Events - Pier 3 Hornblower Landing / San Francisco ca 94111\nInfo: (650) 281-5391 / (408) 250-3694\nCheck in time begins at 7:30pm - Boarding begin 8.00pm and boat depart at 9.15pm sharp.",
+      "source": "eventbrite",
+      "scraped_at": "2026-02-02T16:52:33.288Z"
+    },
+    {
+      "id": 2,
+      "selected": false,
+      "title": "LOVE BY THE GLASS",
+      "time_display": "Wednesday 02/11 5:30 PM",
+      "location": "Silicon Valley, Santa Clara, CA 95054",
+      "price": "$55",
+      "event_type": "market",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/love-by-the-glass-tickets-1981459290076?aff=ebdssbcitybrowse",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Aphrodisiac Micro Wine Pairings A Celebration of What We Adore This Valentine’s season, slow down an...",
+      "description_detail": "Aphrodisiac Micro Wine Pairings\nA Celebration of What We Adore\nThis Valentine’s season, slow down and savor the pleasures worth loving, exceptional wine, thoughtful cuisine, and the art of pairing them beautifully.\nJoin us for an intimate, sommelier-led, micro Aphrodisiac Wine Pairing designed to awaken the senses and celebrate love in its most refined forms, taste, craftsmanship, and shared experience.\nFebruary 11, 2026 | 5:30 PM | $55+ per person\nAn evening celebrating the love of fine food, expressive wines, and the art of savoring life.\nAphrodisiac Micro Wine Pairings\nA Celebration of What We Adore\nThis Valentine’s season, slow down and savor the pleasures worth loving, exceptional wine, thoughtful cuisine, and the art of pairing them beautifully.\nJoin us for an intimate, sommelier-led, micro Aphrodisiac Wine Pairing designed to awaken the senses and celebrate love in its most refined forms, taste, craftsmanship, and shared experience.\nFebruary 11, 2026 | 5:30 PM | $55+ per person\nAn evening celebrating the love of fine food, expressive wines, and the art of savoring life.\nRefunds up to 7 days before event\nSanta Clara, CA 95054",
+      "source": "eventbrite",
+      "scraped_at": "2026-02-02T16:52:33.291Z"
+    },
+    {
+      "id": 3,
+      "selected": false,
+      "title": "Valentine’s Day Celebration Dinner & Dance at The Cats",
+      "time_display": "Saturday 02/14 5:00 PM",
+      "location": "17533 Santa Cruz Highway, Los Gatos, CA 95033",
+      "price": "$136",
+      "event_type": "festival",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/valentines-day-celebration-dinner-dance-at-the-cats-tickets-1980698086295?aff=ebdssbcitybrowse",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "A Valentine’s Celebration Dinner & Dance with a 4-course menu, individual entrées, music, dancing, a...",
+      "description_detail": "A Valentine’s Celebration Dinner & Dance with a 4-course menu, individual entrées, music, dancing, and reserved seating. Limited seating.\n4-Course Dinner • Dancing • Music📍 The Cats — Celebration HQ🗓️ Saturday Night Only\nValentine’s Day is a celebration — not just a dinner.\nJoin us for a ticketed Valentine’s Celebration Dinner & Dance featuring a 4-course plated dinner, individual entrées, and a high-energy dance floor powered by guest DJ Joe Carnnizzaro, one of the area’s favorite local DJs.\nPerfect for couples and double dates who want great food, great vibes, and time to celebrate together.\n🎟️ Advance tickets required | Limited seating🎉 What’s Included\n✔️ 4-course Valentine’s Celebration Dinner✔️ Individual entrée selection (per guest)✔️ Dessert included✔️ Dance floor with live DJ Joe Carnnizzaro✔️ Curated Valentine’s playlist + couple song requests✔️ Full bar available\nFirst CourseArugula, Avocado Salad with Champagne Vinaigrette\nSecond CourseMiso-Glazed Salmon with Jasmine Rice\nMain Course – Choose One\nDessertUbe Cake with Chocolate Sauce & Strawberry Ice Cream\nCelebrate all night with ongoing champagne pours served tableside during your dinner seating.Limited availability.\nDance before dinner, after dinner, or whenever the vibe hits.\n⏰ Early Celebration Dinner: 5:00 – 7:00 PM⏰ Late Celebration Dinner: 7:30 – 9:30 PM\nPlease arrive within 15 minutes of your selected time.\nOrder by Jan. 31st and get $10 off. (Promo Code \"EarlyValentine\")\nThe Cats Restaurant & BarLos Gatos | Historic venue | Full bar | Music\nA Valentine’s Celebration Dinner & Dance with a 4-course menu, individual entrées, music, dancing, and reserved seating. Limited seating.\n4-Course Dinner • Dancing • Music📍 The Cats — Celebration HQ🗓️ Saturday Night Only\nValentine’s Day is a celebration — not just a dinner.",
+      "source": "eventbrite",
+      "scraped_at": "2026-02-02T16:52:33.292Z"
+    },
+    {
+      "id": 4,
+      "selected": false,
+      "title": "Valentines Day 7:00 PM | Grapes & Giggles",
+      "time_display": "Saturday 02/14 7:00 PM",
+      "location": "1697 Industrial Rd., San Carlos, CA 94070",
+      "price": "Check ticket price on event",
+      "event_type": "festival",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/valentines-day-700-pm-grapes-giggles-tickets-1980781576015?aff=ebdssbcitybrowse",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Stand-up comedy at the iconic Domenico Winery! You no longer have to travel to San Jose or San Franc...",
+      "description_detail": "Stand-up comedy at the iconic Domenico Winery! You no longer have to travel to San Jose or San Francisco for comedy! Stay in the Peninsula.\nStand-up comedy at the iconic Domenico Winery! You no longer have to travel to San Jose or San Francisco for comedy! Stay in the Peninsula.\nComedy and wine in a beautiful venue on the Peninsula every month!\nSee comedians featured on late-night TV, Comedy Central, SF Sketchfest, Bay Area Festivals, and more!\nBefore the show, come early and dine in the Osteria. Give yourself an hour to enjoy dinner at this playful eatery and wine bar, drawing inspiration from an aspiring post-war Italy. Dinner reservations before the show are strongly encouraged! Click here to book a table. Food and beverages from the Osteria may not be brought into the event.\nDuring the show, you can order wine, beer, cocktails, bar bites, and dessert from your server or a QR code, and we will deliver it to your table! This helps reduce talking during the show so you don't miss a joke.\nShow Starts at 7:00 pm (ends around 8:15 pm) | Doors Open at 6:30 pm\nComing with a group? Plan ahead and purchase your tickets in one order, or we cannot guarantee your party will be seated at the same table. For large groups, we have round tables of 6 - 10 guests. You can purchase a table with at least 6 tickets, then add single tickets a la carte, and your friends can sit at your table.\nCheck out the event at 9:00 PM if that fits your plans better!\n21+ Event. 24-hour notice is required for refunds (less Eventbrite fees), or credits for a future show.\nCheck out Grapes & Giggles for more shows. If you live in the Peninsula, this is the show for you. Are you looking for things to do? This is the #1 fun night out. We've had attendees from Redwood City, San Mateo, Belmont, Pacifica, Foster City, Palo Alto, Burlingame, South San Francisco, Menlo Park, Daly City, Mountain View, Los Altos, Sunnyvale, Millbrae, and, of course, San Carlos!\nRefunds up to 7 days before event",
+      "source": "eventbrite",
+      "scraped_at": "2026-02-02T16:52:33.295Z"
+    },
+    {
+      "id": 5,
+      "selected": false,
+      "title": "Galentine's Dinner Celebration",
+      "time_display": "Friday 02/13 5:00 PM",
+      "location": "3000 Sand Hill Road, Menlo Park, CA 94025",
+      "price": "$68",
+      "event_type": "festival",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/galentines-dinner-celebration-tickets-1981902855793?aff=ebdssbcitybrowse",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Join us at Sand Hill Sundeck for a Galentine’s dinner filled with great food, bottomless prosecco, a...",
+      "description_detail": "Join us  at Sand Hill Sundeck for a Galentine’s dinner filled with great food, bottomless prosecco, and toast to great friendships!\nLimited seating. Reserve you spot today!\nFriday, February 135:00–7:00 PM$68 per person21 and over only\nCocktails and additional wines available for purchase.\nPlease advise us of any allergies and/or dietary restrictions when making your reservation.\nJoin us  at Sand Hill Sundeck for a Galentine’s dinner filled with great food, bottomless prosecco, and toast to great friendships!\nLimited seating. Reserve you spot today!\nFriday, February 135:00–7:00 PM$68 per person21 and over only\nCocktails and additional wines available for purchase.\nPlease advise us of any allergies and/or dietary restrictions when making your reservation.\nRefunds up to 3 days before event",
+      "source": "eventbrite",
+      "scraped_at": "2026-02-02T16:52:33.296Z"
+    },
+    {
+      "id": 6,
+      "selected": false,
+      "title": "LOVE BITES!",
+      "time_display": "Thursday 02/12 5:00 PM",
+      "location": "1 Ferry Building, San Francisco, CA 94111",
+      "price": "$33.85",
+      "event_type": "market",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/love-bites-tickets-1972845387662?aff=ebdssbdestsearch",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Food and wine tasting at the San Francisco Ferry Building. Food and wine tasting at the San Francisc...",
+      "description_detail": "Food and wine tasting at the San Francisco Ferry Building.\nFood and wine tasting at the San Francisco Ferry Building.\nEat and drink your way around the marketplace with small bites and wine tastings.\nThis event proceeds benefit Foodwise, the nonprofit operator of the Ferry Plaza Farmers Market and education programs for eaters of all ages.\nAnthem Winery And Vineyards, Bjorn Vineyards, Brandlin Estate, Cuvaison, Gen 7 Wines, Gibbs Vineyards, Goosecross Cellars, Grgich Hills Estate, Hossfeld Vineyards, JAX Vineyards, Markham Vineyards, Oakville Ranch Vineyards, Parallel Napa Valley, Priest Ranch, Prime Solum, Round Pond Estate, Rudd Estate, STEREOGRAPH, Trinitas Cellars, Merryvale Vineyards\nA16 La Pala, Acme Bread Company, EPIC Steak, Epicurean Trader, Far West Fungi, Fatted Calf, Ferry Plaza Wine Merchant, Fort Point Beer Company, Gott's Roadside, Heath Ceramics, Hog Island Oyster Co., Juice House Co., Lunette Cambodia, Mariposa Baking Co., Miette Patisserie, Nash Bakes, NOPA Fish, Obour Foods, One Hotel Terrene, Ozumo, Recchiuti Confections, Tsar Nicoulai Caviar, Village Market.\nWhile there is no entrance fee, attendees must purchase 'tasting tickets' to exchange for bites and sips at the event. Eventbrite registrations include 10 Tasting Tickets and a signature wine glass. Additional Tasting Tickets may be purchased at the event. Walkups welcome while supplies last! Wineries and merchant bite stations will be located throughout the marketplace on the first floor of the Ferry Building.\nSupport local San Francisco businesses and join the fun IRL at the Ferry Building!\nThe Ferry Building Marketplace is located along the Embarcadero at the foot of Market Street. It is the center of a transit hub that connects all of San Francisco’s neighborhoods and the surrounding bay area communities. The Ferry Building Marketplace is accessible by MUNI, BART, and ferry. The historic trolley cars (F Line Market) stop directly in front of the Ferry Building.",
+      "source": "eventbrite",
+      "scraped_at": "2026-02-02T16:52:33.296Z"
+    },
+    {
+      "id": 7,
+      "selected": false,
+      "title": "Bites, Brushes & Bottles",
+      "time_display": "Thursday 02/12 6:00 PM",
+      "location": "1825 San Pablo Avenue, Oakland, CA 94612",
+      "price": "$75",
+      "event_type": "festival",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/bites-brushes-bottles-tickets-1981015779524?aff=ebdssbdestsearch",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Y’s Choice Presents…Bites, Brushes & Bottles 💖 Bites, Brushes & Bottles: A Galentine’s Day Celebrat...",
+      "description_detail": "Y’s Choice Presents…Bites, Brushes & Bottles\n💖 Bites, Brushes & Bottles: A Galentine’s Day Celebration 🎨🥂\nGrab your girls and join us for a night of creativity, culture, and connection at Bites, Brushes & Bottles, a Galentine’s Day experience you won’t want to miss!\nHosted by Y’s Choice in collaboration with Pursuit of Peace Painting, this vibrant Paint & Sip-style event blends art, soulful bites, bubbly bottles, and good vibes, all in one unforgettable evening.\nWhether you’re celebrating friendship, self-love, or just need a fun night out, this Galentine’s gathering is all about joy, laughter, and creating something beautiful together.\n🎟️ Tickets: $75Includes food, drinks, paint & supplies, music, and gift\n📍 Location:1825 San Pablo AveOakland, CA 94612\n📅 Date & Time:Thursday, February 126:00 PM – 9:00 PM\n💡 Come ready to sip, paint, eat, and vibe. Seats are limited, so secure your spot early!\nNo refunds. All sales are final.\nY’s Choice Presents…Bites, Brushes & Bottles\n💖 Bites, Brushes & Bottles: A Galentine’s Day Celebration 🎨🥂\nGrab your girls and join us for a night of creativity, culture, and connection at Bites, Brushes & Bottles, a Galentine’s Day experience you won’t want to miss!\nHosted by Y’s Choice in collaboration with Pursuit of Peace Painting, this vibrant Paint & Sip-style event blends art, soulful bites, bubbly bottles, and good vibes, all in one unforgettable evening.\nWhether you’re celebrating friendship, self-love, or just need a fun night out, this Galentine’s gathering is all about joy, laughter, and creating something beautiful together.\n🎟️ Tickets: $75Includes food, drinks, paint & supplies, music, and gift\n📍 Location:1825 San Pablo AveOakland, CA 94612\n📅 Date & Time:Thursday, February 126:00 PM – 9:00 PM\n💡 Come ready to sip, paint, eat, and vibe. Seats are limited, so secure your spot early!\nNo refunds. All sales are final.\n1825 San Pablo Avenue",
+      "source": "eventbrite",
+      "scraped_at": "2026-02-02T16:52:33.297Z"
+    },
+    {
+      "id": 8,
+      "selected": false,
+      "title": "Noite de Carnaval: A Celebration of Joy",
+      "time_display": "Friday 02/13 6:00 PM",
+      "location": "1100 California Street, San Francisco, CA 94108",
+      "price": "From $108.55",
+      "event_type": "festival",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/noite-de-carnaval-a-celebration-of-joy-tickets-1981245684175?aff=ebdssbdestsearch",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "You're invited to Grace Cathedral’s annual fundraising gala, Noite de Carnaval: A Celebration of Joy...",
+      "description_detail": "You're invited to Grace Cathedral’s annual fundraising gala, Noite de Carnaval: A Celebration of Joy, on February 13, 2026!\nBrazilian Carnaval is a dazzling expression of connection, community, and creativity-a collective celebration that transcends individuality and honors our shared humanity. Through music, dance, and spectacle, it reflects beauty and resilience, hope and possibility, reminding us that joy endures and anything is possible.\nAt Grace Cathedral, our celebration is fueled by the same aspirations. Like Carnaval in Brazil, this evening encourages us to step beyond ourselves, to celebrate together, and to imagine a world shaped by compassion, courage, and shared delight.\nJoin us for an extraordinary night where joy becomes a collective act, creativity shines, and our community gathers in jubilation.\nThe night doesn’t end with dinner! After the gala, the celebration turns up at The Late Night Revelry—a high-energy dance party inside our festively transformed chapel. Bring your friends and experience this party in the chapel!\nWant to skip dinner and get straight to the after-party? Separate tickets are available for attendance at The Late Night Revelry, which unlocks access to the DJ, bites, and open bar!\nLearn more about our mission, the event, or get tickets directly through our site at gracecathedral.org/carnivale.\nYou're invited to Grace Cathedral’s annual fundraising gala, Noite de Carnaval: A Celebration of Joy, on February 13, 2026!\nBrazilian Carnaval is a dazzling expression of connection, community, and creativity-a collective celebration that transcends individuality and honors our shared humanity. Through music, dance, and spectacle, it reflects beauty and resilience, hope and possibility, reminding us that joy endures and anything is possible.\nAt Grace Cathedral, our celebration is fueled by the same aspirations.",
+      "source": "eventbrite",
+      "scraped_at": "2026-02-02T16:52:33.298Z"
+    },
+    {
+      "id": 9,
+      "selected": false,
+      "title": "Valentine's Day Swing Dance on the historic USS Hornet",
+      "time_display": "Saturday 02/14 7:00 PM",
+      "location": "707 West Hornet Avenue, Alameda, CA 94501",
+      "price": "$30",
+      "event_type": "market",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/valentines-day-swing-dance-on-the-historic-uss-hornet-tickets-1395066544589?aff=ebdssbdestsearch",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "The USS Hornet is opening up its bulkheads and hatches for the second annual 1940’s Valentine's swin...",
+      "description_detail": "The USS Hornet is opening up its bulkheads and hatches for the second annual 1940’s Valentine's swing dance on February 14, 2026.\nPicture the romance of a WWII sailor returning from war to his sweetheart…and now come recreate this feeling aboard the USS Hornet aircraft carrier on Valentines Day.\nThe USS Hornet is opening up its bulkheads and hatches for a 1940’s swing dance on February 14. This evening will feature drinks, dancing and a whole lot of nostalgia and romance. The Bay Area’s unavoidably swingin’ big band, the Death and Taxes Swing Band will provide an evening of great music for dancing or listening. Come as a couple or come to meet someone!\nAt 6:30 doors will open for drinks and appetizers, and then at 6:45 there will be a short introduction about the history of the ship. At 7:00 there will be a short dance lesson and then the Death and Taxes Swing Band will take you back to the 1940’s until around 9:00.\nTickets are $30 in advance, $35 at the door.\nThis is an 18+ age event. No children allowed.\nThe USS Hornet is opening up its bulkheads and hatches for the second annual 1940’s Valentine's swing dance on February 14, 2026.\nPicture the romance of a WWII sailor returning from war to his sweetheart…and now come recreate this feeling aboard the USS Hornet aircraft carrier on Valentines Day.\nThe USS Hornet is opening up its bulkheads and hatches for a 1940’s swing dance on February 14. This evening will feature drinks, dancing and a whole lot of nostalgia and romance. The Bay Area’s unavoidably swingin’ big band, the Death and Taxes Swing Band will provide an evening of great music for dancing or listening. Come as a couple or come to meet someone!\nAt 6:30 doors will open for drinks and appetizers, and then at 6:45 there will be a short introduction about the history of the ship. At 7:00 there will be a short dance lesson and then the Death and Taxes Swing Band will take you back to the 1940’s until around 9:00.\nTickets are $30 in advance, $35 at the door.",
+      "source": "eventbrite",
+      "scraped_at": "2026-02-02T16:52:33.298Z"
+    },
+    {
+      "id": 10,
+      "selected": false,
+      "title": "Palentine's Day Party",
+      "time_display": "Sunday 02/15 12:00 PM",
+      "location": "416 13th Street, Oakland, CA 94612",
+      "price": "$17.85",
+      "event_type": "festival",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/palentines-day-party-tickets-1981465201758?aff=ebdssbdestsearch",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Palentine's Day Party & Chill! You're invited to our Palentine's Day Party & Chill! Grab your pals a...",
+      "description_detail": "Palentine's Day Party & Chill!\nYou're invited to our Palentine's Day Party & Chill! Grab your pals and join us for drinks, games, a live DJ and feel-good vibes--all wrapped up in the sweetest Palentine's Day celebration. Come celebrate, connect, and make fun memories while meeting the ladies of Black Women Lawyers Association of Northern California.\nBrunch food options available for purchase.\nPalentine's Day Party & Chill!\nYou're invited to our Palentine's Day Party & Chill! Grab your pals and join us for drinks, games, a live DJ and feel-good vibes--all wrapped up in the sweetest Palentine's Day celebration. Come celebrate, connect, and make fun memories while meeting the ladies of Black Women Lawyers Association of Northern California.\nBrunch food options available for purchase.",
+      "source": "eventbrite",
+      "scraped_at": "2026-02-02T16:52:33.299Z"
+    },
+    {
+      "id": 11,
+      "selected": false,
+      "title": "4th Annual Shrimp and Grits Taste Off",
+      "time_display": "Friday 02/13 6:00 PM",
+      "location": "1000 Oak Street, Oakland, CA 94607",
+      "price": "From $60.54",
+      "event_type": "festival",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/4th-annual-shrimp-and-grits-taste-off-tickets-1981760239223?aff=ebdssbdestsearch",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "The 4th Annual Shrimp and Grits Taste Off is back and bigger than ever, bringing together bold flavo...",
+      "description_detail": "The 4th Annual Shrimp and Grits Taste Off is back and bigger than ever, bringing together bold flavors, local talent, and great vibes.\nGet ready for a really good time. The Shrimp and Grits Taste Off at Town Fare is a high-energy, flavor-packed celebration of one iconic dish—Bay Area style. This beloved culinary showdown invites some of the region’s most creative chefs to put their own spin on the classic Southern dish—think rich, buttery grits, perfectly seasoned shrimp, and unexpected twists that keep every bite exciting. Guests will sample a wide range of interpretations, vote for their favorites, and enjoy the vibrant atmosphere that makes Town Fare a true community gathering space.\nLocal chefs bring their A-game, serving up soulful, inventive, and downright crave-worthy shrimp and grits that showcase their unique culinary voices. Add great drinks, a buzzing crowd, and the unbeatable setting of Town Fare, and you’ve got an event that feels equal parts food festival and party. Whether you’re a shrimp and grits purist or love a creative twist, this is the place to eat, sip, vibe, and cheer on your favorite chef. Come for the food, stay for the fun, and leave full and happy.\nThe 4th Annual Shrimp and Grits Taste Off is back and bigger than ever, bringing together bold flavors, local talent, and great vibes.\nGet ready for a really good time. The Shrimp and Grits Taste Off at Town Fare is a high-energy, flavor-packed celebration of one iconic dish—Bay Area style. This beloved culinary showdown invites some of the region’s most creative chefs to put their own spin on the classic Southern dish—think rich, buttery grits, perfectly seasoned shrimp, and unexpected twists that keep every bite exciting. Guests will sample a wide range of interpretations, vote for their favorites, and enjoy the vibrant atmosphere that makes Town Fare a true community gathering space.",
+      "source": "eventbrite",
+      "scraped_at": "2026-02-02T16:52:33.300Z"
+    },
+    {
+      "id": 12,
+      "selected": false,
+      "title": "Valentines Wine Around",
+      "time_display": "Wednesday 02/11 6:00 PM",
+      "location": "2855 Stevens Creek Boulevard, San Jose, CA 95128",
+      "price": "$33.15",
+      "event_type": "festival",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/valentines-wine-around-tickets-1981039255742?aff=ebdssbdestsearch",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Get ready for the Valentines Day with more than 15 wine tastings, bites, AND SAVE on all wine and sp...",
+      "description_detail": "Get ready for the Valentines Day with more than 15 wine tastings, bites, AND SAVE on all wine and spirit purchases\nCelebrate the best of Italian Vino during this walk-around tasting event. Enjoy tastings of more than 15 wines, curated to pair perfectly with your galentines or valentines celebration; learn from our experts about the wines’ production methods and unique notes; and taste pairing of light bites.\nGet ready for the Valentines Day with more than 15 wine tastings, bites, AND SAVE on all wine and spirit purchases\nCelebrate the best of Italian Vino during this walk-around tasting event. Enjoy tastings of more than 15 wines, curated to pair perfectly with your galentines or valentines celebration; learn from our experts about the wines’ production methods and unique notes; and taste pairing of light bites.\n2855 Stevens Creek Boulevard",
+      "source": "eventbrite",
+      "scraped_at": "2026-02-02T16:52:33.302Z"
+    },
+    {
+      "id": 13,
+      "selected": false,
+      "title": "Valentines Mixology Class plus wood-fired pizza. Cocktails and garnishes.",
+      "time_display": "Saturday 02/14 7:00 PM",
+      "location": "1046 Metro Circle, Palo Alto, CA 94303",
+      "price": "$156.57",
+      "event_type": "festival",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/valentines-mixology-class-plus-wood-fired-pizza-cocktails-and-garnishes-tickets-1251675307539?aff=ebdssbdestsearch",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "You and yours will each make FOUR festive cocktails using real bar tools. Per person price includes ...",
+      "description_detail": "You and yours will each make FOUR festive cocktails using real bar tools.  Per person price includes gratuity and sales tax.  Unique, fun!\nReal glassware provides a level of elegance for your Valentines selfies. You'll learn 4 special cocktails, along with garnishes. Lots of entertaining bartending tips and stories, too.\nReal cocktail shakers, strainers, muddlers, and spirits bottles. You will not find this much fun by going to a restaurant... nor will you find 2.5 hours of fun at this price with tax and gratuity included!\nOn this one night only per year, our renown make-your-own pizza experience will be included in the price of your Valentines Mixology admission. Prices are per person. NO REFUNDS, No Drop-ins. Space is limited, so please register early. Valentines is on a Saturday night in 2026.\nCity of Cocktail is run by a former schoolteacher and a professional bartender. Immense materials preparation and the Bay Area's most unique team building event site: a hand-built concrete countertop event space and wood-fired pizza oven.\nYou and yours will each make FOUR festive cocktails using real bar tools.  Per person price includes gratuity and sales tax.  Unique, fun!\nReal glassware provides a level of elegance for your Valentines selfies. You'll learn 4 special cocktails, along with garnishes. Lots of entertaining bartending tips and stories, too.\nReal cocktail shakers, strainers, muddlers, and spirits bottles. You will not find this much fun by going to a restaurant... nor will you find 2.5 hours of fun at this price with tax and gratuity included!\nOn this one night only per year, our renown make-your-own pizza experience will be included in the price of your Valentines Mixology admission. Prices are per person. NO REFUNDS, No Drop-ins. Space is limited, so please register early. Valentines is on a Saturday night in 2026.\nCity of Cocktail is run by a former schoolteacher and a professional bartender.",
+      "source": "eventbrite",
+      "scraped_at": "2026-02-02T16:52:33.302Z"
+    },
+    {
+      "id": 14,
+      "selected": false,
+      "title": "Gelato Class | Gelato Tiramisu",
+      "time_display": "Tuesday 02/10 6:30 PM",
+      "location": "2855 Stevens Creek Boulevard, San Jose, CA 95128",
+      "price": "See event page",
+      "event_type": "market",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/gelato-class-gelato-tiramisu-tickets-1981492455274?aff=ebdssbdestsearch",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Celebrate the season of love (and dessert) with your partner for Valentine’s Day with a hand-on gela...",
+      "description_detail": "Celebrate the season of love (and dessert) with your partner for Valentine’s Day with a hand-on gelato tiramisu experience.\nCelebrate the season of love (and dessert) with your partner for Valentine’s Day with a hand-on gelato tiramisu experience. In this class you will create a gelato tiramisu with classic Valentine’s Day flavors and colors. Perfect for enjoying with your sweetheart. Learn all about the traditions of gelato making and work to craft a unique holiday treat to enjoy!\nAbout Patrizia Pasqualetti:\nGelato Chef Patrizia Pasqualetti shares the art of authentic Italian gelato made with natural and local ingredients. Originally from the Umbria region of Italy, Patrizia's artisanal creations are some of our favorites at Eataly. Patrizia showcases her passion, love, and generational gelato expertise with options for every lifestyle: gluten-free, dairy-free, and vegan.\nIn this Class You Will:\nThis class will take place on the 2nd floor in the la Scuola classroom\nPayment in full is required at the time of registration and all sales are final. No refunds are offered on classes and events. For groups of 5-10 guests, a minimum of 7 days' notice (class day not included) is required to receive a credit in the form of a coupon for a future class or event. For groups of up to 4 guests, a minimum of 4 days' notice (class day not included) is required to receive a credit in the form of a coupon code for a future class or event at La Scuola. We reserve the right to reschedule or cancel a class or event due to unforeseen circumstances, inclement weather or otherwise. In the event of a class or event cancellation, we will contact you directly at the phone number or email address you have provided to offer a full refund or credit to transfer to a future class or event.",
+      "source": "eventbrite",
+      "scraped_at": "2026-02-02T16:52:33.303Z"
+    },
+    {
+      "id": 15,
+      "selected": false,
+      "title": "Valentines Day party at AC by Marriott Hotel, Sunnyvale, CA",
+      "time_display": "Saturday 02/14 7:00 PM",
+      "location": "597 East El Camino Real, Sunnyvale, CA 94087",
+      "price": "From $32.64",
+      "event_type": "festival",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/valentines-day-party-at-ac-by-marriott-hotel-sunnyvale-ca-tickets-1980493774192?aff=ebdssbdestsearch",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "**A Night to Mingle, Dance, and Fall in Love with the Moment** Valentine’s Day is too good to waste ...",
+      "description_detail": "**A Night to Mingle, Dance, and Fall in Love with the Moment**\nValentine’s Day is too good to waste on the couch—so we’re throwing a **giant celebration for you.** Join us **Saturday, February 14, from 7–10pm** for an unforgettable evening at an **upscale hotel**, filled with laughter, connection, and great music.\n* **Early Bird Tickets:** $30 through **January 31**\n* **Advance Discount Tickets:** $45 after January 31\n• A **fun, guided mixer game** that makes meeting people easy (yes, really!)\n• **Prizes** for the winners\n• **Complimentary appetizers** at 7pm—while they last\n• Hit the dance floor and move to your favorite songs with **DJ TJ** spinning all night\n**AC by Marriott Hotel**\n597 E El Camino Real, Sunnyvale, CA\nBayAreaFun.org, The Society of Single Professionals, Singles Bay Area, Bay Singles Events & Travel, Your Asian Connection—and dozens of local organizations and meetups.\n**A Night to Mingle, Dance, and Fall in Love with the Moment**\nValentine’s Day is too good to waste on the couch—so we’re throwing a **giant celebration for you.** Join us **Saturday, February 14, from 7–10pm** for an unforgettable evening at an **upscale hotel**, filled with laughter, connection, and great music.\n* **Early Bird Tickets:** $30 through **January 31**\n* **Advance Discount Tickets:** $45 after January 31\n• A **fun, guided mixer game** that makes meeting people easy (yes, really!)\n• **Prizes** for the winners\n• **Complimentary appetizers** at 7pm—while they last\n• Hit the dance floor and move to your favorite songs with **DJ TJ** spinning all night\n**AC by Marriott Hotel**\n597 E El Camino Real, Sunnyvale, CA\nBayAreaFun.org, The Society of Single Professionals, Singles Bay Area, Bay Singles Events & Travel, Your Asian Connection—and dozens of local organizations and meetups.\nRefunds up to 7 days before event\n597 East El Camino Real",
+      "source": "eventbrite",
+      "scraped_at": "2026-02-02T16:52:33.304Z"
+    },
+    {
+      "id": 16,
+      "selected": false,
+      "title": "Hands-On Wine & Crafts: Succulent Planter (Galentines Edition)",
+      "time_display": "Tuesday 02/10 6:00 PM",
+      "location": "2855 Stevens Creek Boulevard, San Jose, CA 95128",
+      "price": "Check event page",
+      "event_type": "market",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/hands-on-wine-crafts-succulent-planter-galentines-edition-tickets-1981026321054?aff=ebdssbdestsearch",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Join us in La Scuola to make an Orchid Succulent Terrarium with Villa Succulents and enjoy Italian W...",
+      "description_detail": "Join us in La Scuola to make an Orchid Succulent Terrarium with Villa Succulents and enjoy Italian Wines.\nVilla Succulents is a local, women-owned business led by Ana Villa. During this class we will be designing your own orchid & succulent planter. We are excited to celebrate the season, and help you create a one-of a kind succulent terrarium perfect for gifting or displaying. Come and learn from our talented host while you sip on some of our favorite Italian wines and enjoy a light bite.\nJoin us in La Scuola to make an Orchid Succulent Terrarium with Villa Succulents and enjoy Italian Wines.\nVilla Succulents is a local, women-owned business led by Ana Villa. During this class we will be designing your own orchid & succulent planter. We are excited to celebrate the season, and help you create a one-of a kind succulent terrarium perfect for gifting or displaying. Come and learn from our talented host while you sip on some of our favorite Italian wines and enjoy a light bite.\nVilla Succulents Owner & Founder\n2855 Stevens Creek Boulevard\nVilla Succulents will teach you step by step in creating your succulent planter.",
+      "source": "eventbrite",
+      "scraped_at": "2026-02-02T16:52:33.304Z"
+    },
+    {
+      "id": 17,
+      "selected": false,
+      "title": "Live Music",
+      "time_display": "Monday 02/09 6:00 PM - 9:00 PM",
+      "location": "San Pedro Square Market, 87 N San Pedro St, San Jose, CA",
+      "price": "Check event page",
+      "event_type": "market",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://sjdowntown.com/event/live-music/2026-02-09/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Experience live music at San Pedro Square Market six days a week! Explore our calendar for the full ...",
+      "description_detail": null,
+      "source": "sjdowntown",
+      "scraped_at": "2026-02-02T16:43:05.559Z"
+    },
+    {
+      "id": 18,
+      "selected": false,
+      "title": "Live Music",
+      "time_display": "Tuesday 02/10 6:00 PM - 9:00 PM",
+      "location": "San Pedro Square Market, 87 N San Pedro St, San Jose, CA",
+      "price": "Check event page",
+      "event_type": "market",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://sjdowntown.com/event/live-music/2026-02-10/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Experience live music at San Pedro Square Market six days a week! Explore our calendar for the full ...",
+      "description_detail": null,
+      "source": "sjdowntown",
+      "scraped_at": "2026-02-02T16:43:05.563Z"
+    },
+    {
+      "id": 19,
+      "selected": false,
+      "title": "Jeopardy Bar League",
+      "time_display": "Tuesday 02/10 7:00 PM - 8:00 PM",
+      "location": "Three Sisters Whiskey Bar, 170 W. Saint John St., San Jose, CA",
+      "price": "Check event page",
+      "event_type": "market",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://sjdowntown.com/event/jeopardy-bar-league/2026-02-10/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "ATTENTION TRIVIA LOVERS! San Pedro Square Market is hosting Jeopardy Bar League – the official bar t...",
+      "description_detail": null,
+      "source": "sjdowntown",
+      "scraped_at": "2026-02-02T16:43:05.563Z"
+    },
+    {
+      "id": 20,
+      "selected": false,
+      "title": "Live Music",
+      "time_display": "Wednesday 02/11 6:00 PM - 9:00 PM",
+      "location": "San Pedro Square Market, 87 N San Pedro St, San Jose, CA",
+      "price": "Check event page",
+      "event_type": "market",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://sjdowntown.com/event/live-music/2026-02-11/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Experience live music at San Pedro Square Market six days a week! Explore our calendar for the full ...",
+      "description_detail": null,
+      "source": "sjdowntown",
+      "scraped_at": "2026-02-02T16:43:05.564Z"
+    },
+    {
+      "id": 21,
+      "selected": false,
+      "title": "Live Music",
+      "time_display": "Thursday 02/12 6:00 PM - 9:00 PM",
+      "location": "San Pedro Square Market, 87 N San Pedro St, San Jose, CA",
+      "price": "Check event page",
+      "event_type": "market",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://sjdowntown.com/event/live-music/2026-02-12/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Experience live music at San Pedro Square Market six days a week! Explore our calendar for the full ...",
+      "description_detail": null,
+      "source": "sjdowntown",
+      "scraped_at": "2026-02-02T16:43:05.564Z"
+    },
+    {
+      "id": 22,
+      "selected": false,
+      "title": "Live Music",
+      "time_display": "Friday 02/13 6:00 PM - 9:00 PM",
+      "location": "San Pedro Square Market, 87 N San Pedro St, San Jose, CA",
+      "price": "Check event page",
+      "event_type": "market",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://sjdowntown.com/event/live-music/2026-02-13/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Experience live music at San Pedro Square Market six days a week! Explore our calendar for the full ...",
+      "description_detail": null,
+      "source": "sjdowntown",
+      "scraped_at": "2026-02-02T16:43:05.564Z"
+    },
+    {
+      "id": 23,
+      "selected": false,
+      "title": "Air Supply – 50th Anniversary Celebration",
+      "time_display": "Friday 02/13 8:00 PM - 10:00 PM",
+      "location": "San Jose Civic, 135 W San Carlos St, San Jose, CA",
+      "price": "Check event page",
+      "event_type": "festival",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://sjdowntown.com/event/air-supply-50th-anniversary-celebration/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "If it’s true that practice makes perfect, then Graham Russell and Russell Hitchcock – beloved by the...",
+      "description_detail": null,
+      "source": "sjdowntown",
+      "scraped_at": "2026-02-02T16:43:05.565Z"
+    },
+    {
+      "id": 24,
+      "selected": false,
+      "title": "Hobee&#8217;s Pancake Market",
+      "time_display": "Saturday 02/14 9:00 AM - 2:00 PM",
+      "location": "Hobee&#8217;s, 261 N 2nd street, San Jose, CA",
+      "price": "Check event page",
+      "event_type": "market",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://sjdowntown.com/event/hobees-pancake-market/2026-02-14/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Brunch and Browse LOCAL vendors and artisans Saturdays from 9:00-2:00pm at Hobee&#8217;s Downtown Sa...",
+      "description_detail": null,
+      "source": "sjdowntown",
+      "scraped_at": "2026-02-02T16:43:05.565Z"
+    },
+    {
+      "id": 25,
+      "selected": false,
+      "title": "Live Music",
+      "time_display": "Saturday 02/14 6:00 PM - 9:00 PM",
+      "location": "San Pedro Square Market, 87 N San Pedro St, San Jose, CA",
+      "price": "Check event page",
+      "event_type": "market",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://sjdowntown.com/event/live-music/2026-02-14/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Experience live music at San Pedro Square Market six days a week! Explore our calendar for the full ...",
+      "description_detail": null,
+      "source": "sjdowntown",
+      "scraped_at": "2026-02-02T16:43:05.565Z"
+    },
+    {
+      "id": 26,
+      "selected": false,
+      "title": "UCSF Center for Community Engagement (CCE) 20th Anniversary Celebration",
+      "time_display": "Thursday 02/12 4:00 PM",
+      "location": "500 Parnassus Avenue, San Francisco, CA 94143",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/ucsf-center-for-community-engagement-cce-20th-anniversary-celebration-tickets-1978305220168?aff=ebdssbneighborhoodbrowse",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "The UCSF Center for Community Engagement (CCE) warmly invites you to join us in celebrating 20 years...",
+      "description_detail": "The UCSF Center for Community Engagement (CCE) warmly invites you to join us in celebrating 20 years of community, partnership, relationship building, & promoting community health!\nUCSF welcomes everyone. To request a reasonable accommodation, please contact the UCSF Office of Community and Government Relations by emailing Community.CGR@ucsf.edu as soon as possible.\nThe UCSF Center for Community Engagement (CCE) warmly invites you to join us in celebrating 20 years of community, partnership, relationship building, & promoting community health!\nUCSF welcomes everyone. To request a reasonable accommodation, please contact the UCSF Office of Community and Government Relations by emailing Community.CGR@ucsf.edu as soon as possible.\nSan Francisco, CA 94143",
+      "source": "eventbrite",
+      "scraped_at": "2026-02-02T16:52:33.286Z"
+    },
+    {
+      "id": 27,
+      "selected": false,
+      "title": "Innovating for Massively Better Healthcare!",
+      "time_display": "Monday 02/09 4:30 PM",
+      "location": "Byers Auditorium in UCSF's Genentech Hall 600 16th StreetSan Francisco, California 94158",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/innovating-for-massively-better-healthcare-tickets-1981430826942?aff=ebdssbcitybrowse",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "UCSF Innovation Ventures hosts visionary health transformers Halle Tecco, Sean Duffy, Jeff Tangney, ...",
+      "description_detail": "UCSF Innovation Ventures hosts visionary health transformers Halle Tecco, Sean Duffy, Jeff Tangney, and Adam Gazzaley!Meet legendary 'Digital Health trailblazers' - Halle Tecco, Author of Massively Better Healthcare, Sean Duffy, CEO of Omada Health, Jeff Tangney, CEO of Doximity, and Adam Gazzaley, Founder of Neuroscape Lab and Co-Founder/CSA of Akili Interactive.Learn about the evolution of the Digital Health field from the co-Founder of Rock Health, Halle Tecco. Hear first-hand accounts from Sean and Jeff on how local digital health innovations became industry leaders and publicly traded companies. Understand the essential role of UCSF frontline Innovators as Adam Gazzaley recounts the journey of Akili to become the first FDA approved Digital Therapeutic.UCSF Innovation Ventures is honored to host these distinguished pioneers in healthcare transformation for an in-person exploration of how to strategically innovate, intentionally navigate healthcare's complexity, build sustainable solutions, and create lasting change in one of society's most vital systems. Whether you're an aspiring entrepreneur, healthcare professional, or changemaker, this conversation offers actionable insights for anyone passionate about improving healthcare outcomes.Also gain a sneak preview of Halle's new book, Massively Better Healthcare. Drawing from her 15+ years as a healthcare entrepreneur, investor, and educator, Tecco will share her insider's guide to transforming our broken healthcare system through strategic innovation.Join us in envisioning a new landscape of \"Healthcare for Each and for All!\"Special Thanks to Rock Health, JHU Bloomberg School of Public Health, and Women in Bio for collaborating on this exciting event!Read moreCategory: Science & Tech, Medicine",
+      "source": "eventbrite",
+      "scraped_at": "2026-02-02T16:52:33.288Z"
+    },
+    {
+      "id": 28,
+      "selected": false,
+      "title": "The Alabama Solution: A Special Film Screening & Conversation",
+      "time_display": "Wednesday 02/11 5:00 PM",
+      "location": "3200 Grand Avenue, Oakland, CA 94610",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/the-alabama-solution-a-special-film-screening-conversation-tickets-1980488837426?aff=ebdssbcitybrowse",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Join us for a thought-provoking screening and dynamic discussion on The Alabama Solution, featuring ...",
+      "description_detail": "Join us for a thought-provoking screening and dynamic discussion on The Alabama Solution, featuring leaders across criminal justice.\nThe program opens with a special screening of HBO’s acclaimed documentary The Alabama Solution, a gripping inside look at how incarcerated men risk everything to expose injustice—using footage filmed behind prison walls.\nIn the spirit of the film’s title, the evening continues with a post-screening discussion focused on solutions. Leaders from prosecution, corrections, reentry, and reform will explore what real, tangible change can look like—and how it can be achieved.\nDoors open at 5pm. Screening begins at 5:30pm. Panel ends at 8pm.\nContent Warning: The film contains graphic depictions of violence and death and is not appropriate for children.\nSafety Reminder: Please do not attend if you are experiencing cold or flu symptoms. Masks will be available at the registration desk.\nJoin us for a thought-provoking screening and dynamic discussion on The Alabama Solution, featuring leaders across criminal justice.\nThe program opens with a special screening of HBO’s acclaimed documentary The Alabama Solution, a gripping inside look at how incarcerated men risk everything to expose injustice—using footage filmed behind prison walls.\nIn the spirit of the film’s title, the evening continues with a post-screening discussion focused on solutions. Leaders from prosecution, corrections, reentry, and reform will explore what real, tangible change can look like—and how it can be achieved.\nDoors open at 5pm. Screening begins at 5:30pm. Panel ends at 8pm.\nContent Warning: The film contains graphic depictions of violence and death and is not appropriate for children.\nSafety Reminder: Please do not attend if you are experiencing cold or flu symptoms. Masks will be available at the registration desk.\nContra Costa Chief Assistant DA\nReentry Specialist, For The People",
+      "source": "eventbrite",
+      "scraped_at": "2026-02-02T16:52:33.289Z"
+    },
+    {
+      "id": 29,
+      "selected": false,
+      "title": "2026 Chinese Spring Festival Culture Fair - Free Event",
+      "time_display": "Saturday 02/14 1:00 PM",
+      "location": "255 South Almaden Boulevard, San Jose, CA 95113",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/2026-chinese-spring-festival-culture-fair-free-event-tickets-1981278146270?aff=ebdssbcitybrowse",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "2026年春节文化集市，免费嗨翻天，带你感受最地道的年味儿！ Free entry for all! 2026 Chinese Spring Festival Culture Fair is your...",
+      "description_detail": "2026年春节文化集市，免费嗨翻天，带你感受最地道的年味儿！\nFree entry for all! 2026 Chinese Spring Festival Culture Fair is your Year of the Horse celebration—fast, fearless, and full of festive energy. Join us in person to experience the Spring Festival up close, where tradition meets hands-on fun: create a Year of the Horse lantern, sculpt a colorful clay pony, and bring horse-themed blessings to life through crafts you can take home.\nDive into the maker zone with family-friendly favorites: build a spinning Zoetrope animation tube, craft a dazzling kaleidoscope, fold a bright pinwheel, and try classic New Year print / tile rubbing with ink on red paper—instant “new year vibes,” guaranteed.\nFor culture lovers, we’ve got a full tradition lineup: dress up for Hanfu photo moments, write your own Fu (福) with calligraphy, solve lantern riddles, and watch live sugar painting turn syrup into art in seconds.\nAnd don’t miss the Intangible Cultural Heritage (ICH) highlights—made for the Year of the Horse spotlight: create a one-of-a-kind lacquer fan (漆扇) with flowing marbled textures, and craft an elegant Song Brocade wind chime (宋锦风铃) where heritage fabric meets the sound of spring.\nWant action? Jump into classic games like diabolo, pitch-pot, kick shuttlecock, and ring toss, plus a high-energy kids’ whack-a-mole challenge—along with face painting, balloon art, and close-up magic surprises. Bring your friends and family, celebrate the Year of the Horse together, and leave with handmade treasures, new skills, and unforgettable Spring Festival joy.\n白天来逛免费集市，和家人朋友一起把年味儿“亲手做出来”：做马年灯笼、捏彩色小马粘土，再到手作区体验 Zoetrope 动画纸筒、万花筒、折纸风车、年画/瓦当拓印；喜欢非遗的一定别错过 漆扇与宋锦风铃——把传统工艺的质感和新年的灵气带回家。现场还有汉服拍照、书法写福、灯谜互动、糖画、以及抖空竹、投壶、踢毽子、套圈等传统游戏，热闹到停不下来。\n更重要的是：晚上同一地点的剧场，还有一场真正的“过年大团圆”——传统春节联欢晚会。这不仅是一场演出，更是一场万人同频的线下大团圆：熟悉的乡音、惊艳的才艺、不绝的掌声与笑声，都将在这里真实发生。节目形式丰富：传统舞蹈、现代舞蹈、歌曲、脱口秀、小品、舞台剧、大提琴、民乐等多种表演一晚看过瘾。晚会时间：7:00–9:30 PM（6:00 PM 开始入场）\nzgzg.li/2026-ticket-eb\n2026年春节文化集市，免费嗨翻天，带你感受最地道的年味儿！\nFree entry for all!",
+      "source": "eventbrite",
+      "scraped_at": "2026-02-02T16:52:33.290Z"
+    },
+    {
+      "id": 30,
+      "selected": false,
+      "title": "Volunteer Farm Chores",
+      "time_display": "Sunday 02/15 9:00 AM",
+      "location": "14320 Arnerich Road, Los Gatos, CA 95020",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/volunteer-farm-chores-tickets-1981389687894?aff=ebdssbcitybrowse",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Come join us at Ma'alot Farms in Los Gatos! We will get our hands dirty, have fun, enjoy farm snacks...",
+      "description_detail": "Come join us at Ma'alot Farms in Los Gatos! We will get our hands dirty, have fun, enjoy farm snacks and help our community\nCome join us at Ma'alot Farms in Los Gatos! We will get our hands dirty, have fun, enjoy farm snacks and help our community!\nVolunteer Farm Chores\nLife on a farm is constantly changing with the seasons, and our volunteer days reflect that. Come join us as we work the land in order to produce bountiful harvests that we can share with the larger community.\nEach volunteer session will consist of at least two different tasks, based on the needs of the farm that day. This might include planting seeds in the greenhouse, transplanting seedlings into the garden, thinning the plant starts in the garden, weeding, mulching, and harvesting.\nPlease come ready to get dirty. We recommend clothes that you're okay with getting dirty/muddy, sturdy closed-toe shoes or boots, a sun hat, and a water bottle. Snacks will be provided.\nWe are happy to validate volunteer hours for schools and community organzations.\nWe look forward to seeing you on the farm!\nNurturing the Earth, Nourishing Communities, Growing a Sustainable Future\nMa’alot Farms is cultivating a healthier world through sustainable farming, regenerative practices and community-centered food systems.\nOne of the ways we foster community here at Ma’alot Farms is through our Volunteer Farm Activities. Working at the farm provides volunteers an opportunity to experience life at the farm, get to know one another in smaller groups, gain skills to grow their own food, and assist in the desperately needed hunger relief work in Silicon Valley.\nAt Ma’alot Farms, we donate the vast majority of the produce we grow. The work of our volunteers contributes mightily in our ability to help feed a growing food-insecure community in Silicon Valley with high-quality, nutritious food produced in sustainable and regenerative ways.",
+      "source": "eventbrite",
+      "scraped_at": "2026-02-02T16:52:33.291Z"
+    },
+    {
+      "id": 31,
+      "selected": false,
+      "title": "Fall in LOVE With Your Skin",
+      "time_display": "Thursday 02/12 4:00 PM",
+      "location": "12945 Saratoga Avenue, Saratoga, CA 95070",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/fall-in-love-with-your-skin-tickets-1981651815926?aff=ebdssbcitybrowse",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Join us for an evening dedicated to helping you achieve your healthiest, glowiest skin! Our partners...",
+      "description_detail": "Join us for an evening dedicated to helping you achieve your healthiest, glowiest skin!\nOur partners from Galderma, Hydrafacial, and Jan Marini will be here to help you achieve your brightest glow to help you Fall in LOVE With Your Skin! 🩷\nOne-day-only deals on our most popular treatments and skincare\nExclusive event-only savings & promotions\nEvening bites & drinks\nRSVP at (408) 255-3223\nJoin us for an evening dedicated to helping you achieve your healthiest, glowiest skin!\nOur partners from Galderma, Hydrafacial, and Jan Marini will be here to help you achieve your brightest glow to help you Fall in LOVE With Your Skin! 🩷\nOne-day-only deals on our most popular treatments and skincare\nExclusive event-only savings & promotions\nEvening bites & drinks\nRSVP at (408) 255-3223\n12945 Saratoga Avenue",
+      "source": "eventbrite",
+      "scraped_at": "2026-02-02T16:52:33.291Z"
+    },
+    {
+      "id": 32,
+      "selected": false,
+      "title": "Love’s Greeting: An Intimate Valentine’s Evening with Harp & Violin",
+      "time_display": "Thursday 02/12 7:30 PM",
+      "location": "230 San Antonio Circle, Mountain View, CA 94040",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/loves-greeting-an-intimate-valentines-evening-with-harp-violin-tickets-1980762503970?aff=ebdssbcitybrowse",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Celebrate Valentine’s Day with Love’s Greeting, an intimate concert designed for shared listening an...",
+      "description_detail": "Celebrate Valentine’s Day with Love’s Greeting, an intimate concert designed for shared listening and quiet connection.\nFeaturing live harp and violin, the evening pairs warm, romantic music with subtle multimedia visuals to create a gentle, atmospheric experience. Rather than a traditional recital, the concert invites you to slow down and enjoy music together—in a space shaped by sound, light, and presence.Without revealing too much, the concert incorporates new approaches to the interplay of sound and visuals, offering a listening experience that unfolds differently each time.\nPerfect for couples seeking a meaningful Valentine’s outing, while also welcoming anyone who wishes to spend the evening immersed in beautiful live music.\nSeating is general admission. Attendees are encouraged to RSVP to reserve the space.\nPerformances and screenings in Tateuchi Hall are suitable for ages 7 and up. To ensure the best experience for all guests, children should be able to sit quietly for the duration of the performance (approximately one hour).\nCelebrate Valentine’s Day with Love’s Greeting, an intimate concert designed for shared listening and quiet connection.\nFeaturing live harp and violin, the evening pairs warm, romantic music with subtle multimedia visuals to create a gentle, atmospheric experience. Rather than a traditional recital, the concert invites you to slow down and enjoy music together—in a space shaped by sound, light, and presence.Without revealing too much, the concert incorporates new approaches to the interplay of sound and visuals, offering a listening experience that unfolds differently each time.\nPerfect for couples seeking a meaningful Valentine’s outing, while also welcoming anyone who wishes to spend the evening immersed in beautiful live music.\nSeating is general admission. Attendees are encouraged to RSVP to reserve the space.\nPerformances and screenings in Tateuchi Hall are suitable for ages 7 and up.",
+      "source": "eventbrite",
+      "scraped_at": "2026-02-02T16:52:33.294Z"
+    },
+    {
+      "id": 33,
+      "selected": false,
+      "title": "Friday the 13th Whimsy Market at Devil's Canyon",
+      "time_display": "Friday 02/13 4:00 PM",
+      "location": "935 Washington Street, San Carlos, CA 94070",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/friday-the-13th-whimsy-market-at-devils-canyon-tickets-1978305654467?aff=ebdssbcitybrowse",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Join us for an evening of witchy artisan shopping, tarot readings, henna, crystal hunting, and On Fr...",
+      "description_detail": "Join us for an evening of witchy artisan shopping, tarot readings, henna, crystal hunting, and\nOn Friday, February 13th, come prepared to indulge in local, handmade artisan goods of a metaphysical and witchy nature.\nPlan to spend a couple of hours:\nThis will be the perfect evening to get together with your friends. There will be food trucks, music, wine, beer, and 40 vendors to shop from. Devil's Canyon Brewing will have their heating lamps on in the beer garden, and there will be indoor seating. Vendors will be both inside and outside, so make sure to check them all out.\nShopping will be from 4-9 p.m. at Devil's Canyon Brewing. Plan to park a couple of blocks away and walk.\nPlease reserve your ticket(s) so we can get an idea of how many people are coming. Invite your friends and family to join in on the fun! Hope to see you there.\nFollow us on Instagram or Facebook @thewhimsymarket for updates and product posts. We will have an event discussion dedicated to vendor product posts on Facebook.\nJoin us for an evening of witchy artisan shopping, tarot readings, henna, crystal hunting, and\nOn Friday, February 13th, come prepared to indulge in local, handmade artisan goods of a metaphysical and witchy nature.\nPlan to spend a couple of hours:\nThis will be the perfect evening to get together with your friends. There will be food trucks, music, wine, beer, and 40 vendors to shop from. Devil's Canyon Brewing will have their heating lamps on in the beer garden, and there will be indoor seating. Vendors will be both inside and outside, so make sure to check them all out.\nShopping will be from 4-9 p.m. at Devil's Canyon Brewing. Plan to park a couple of blocks away and walk.\nPlease reserve your ticket(s) so we can get an idea of how many people are coming. Invite your friends and family to join in on the fun! Hope to see you there.\nFollow us on Instagram or Facebook @thewhimsymarket for updates and product posts.",
+      "source": "eventbrite",
+      "scraped_at": "2026-02-02T16:52:33.295Z"
+    },
+    {
+      "id": 34,
+      "selected": false,
+      "title": "Script Off Live: Star Power Stars vs AI",
+      "time_display": "Monday 02/09 1:30 PM",
+      "location": "850 Woodside Way, San Mateo, CA 94401",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/script-off-live-star-power-stars-vs-ai-tickets-1980666688383?aff=ebdssbcitybrowse",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "SAMCAR Professional Development live Script Off challenge with Alexis Bolin, Gregg Neuman, moderated...",
+      "description_detail": "SAMCAR Professional Development live Script Off challenge with Alexis Bolin, Gregg Neuman, moderated by Samia Morgan with AI.\nThe SAMCAR Professional Development Committee invites you to a dynamic \"Script Off\" event where real estate legends Alexis Bolin, \"The Queen of Scripts,\" and Gregg Neuman, \"The King of Closings,\" will go head-to-head against AI in a live, in-person challenge. Moderated by Samia Morgan, this unique session pits veteran expertise against artificial intelligence to tackle real-world scripts, complex scenarios, and industry questions in real-time. While attendance is free, this special presentation is held in proud support of the Kilimanjaro Kidz fundraising effort through Star Power, featuring these \"Star Power Stars\" whose time was generously secured through a charity auction.\nPlease submit your questions for the script off before February 2 to samcar@samcar.org\n[Disclaimer: By attending, you acknowledge that the presentation is being recorded. Camera angles are intended to capture the presenter only; however, your voice or likeness may be captured if you participate in Q&A or are in view of the camera.]\nSAMCAR Professional Development live Script Off challenge with Alexis Bolin, Gregg Neuman, moderated by Samia Morgan with AI.\nThe SAMCAR Professional Development Committee invites you to a dynamic \"Script Off\" event where real estate legends Alexis Bolin, \"The Queen of Scripts,\" and Gregg Neuman, \"The King of Closings,\" will go head-to-head against AI in a live, in-person challenge. Moderated by Samia Morgan, this unique session pits veteran expertise against artificial intelligence to tackle real-world scripts, complex scenarios, and industry questions in real-time. While attendance is free, this special presentation is held in proud support of the Kilimanjaro Kidz fundraising effort through Star Power, featuring these \"Star Power Stars\" whose time was generously secured through a charity auction.",
+      "source": "eventbrite",
+      "scraped_at": "2026-02-02T16:52:33.295Z"
+    },
+    {
+      "id": 35,
+      "selected": false,
+      "title": "Inside the Mind of an Angel Investor",
+      "time_display": "Wednesday 02/11 7:00 PM",
+      "location": "2000 Alameda de las Pulgas, San Mateo, CA 94403",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/inside-the-mind-of-an-angel-investor-tickets-1981916792478?aff=ebdssbcitybrowse",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Cracking the Funding Code Hybrid in-person and video presentation by István Szanda What really happe...",
+      "description_detail": "Cracking the Funding Code\nHybrid in-person and video presentation by István Szanda\nWhat really happens behind closed doors when investors evaluate a pitch? Why do some promising startups get funded while others—equally brilliant—walk away empty-handed?\nThe Hungarian Innovators Club cordially invites you to a high-impact evening designed to demystify the world of Angel Investing. This is not just a networking event; it is a rare opportunity to gain direct access to the decision-making criteria of Silicon Valley investors.\nFor Founders and Startups:For entrepreneurs planning to raise capital, understanding the investor’s perspective is not optional—it is a survival skill. This event will equip you with the \"insider\" knowledge needed to navigate the fundraising landscape with confidence and position your team to survive the scrutiny of professional investors.\nFor Aspiring Angel Investors:This event is equally indispensable for those considering the transition from operator to investor. If you are thinking of sitting on the other side of the table, you need to know how to look past the hype and assess the true potential of a team. This is your chance to learn the rigorous framework used by seasoned Angels to conduct due diligence, assess risk versus reward, and identify the subtle signals that distinguish a high-growth opportunity from a risky bet.\nCracking the Funding Code\nHybrid in-person and video presentation by István Szanda\nWhat really happens behind closed doors when investors evaluate a pitch? Why do some promising startups get funded while others—equally brilliant—walk away empty-handed?\nThe Hungarian Innovators Club cordially invites you to a high-impact evening designed to demystify the world of Angel Investing. This is not just a networking event; it is a rare opportunity to gain direct access to the decision-making criteria of Silicon Valley investors.",
+      "source": "eventbrite",
+      "scraped_at": "2026-02-02T16:52:33.296Z"
+    },
+    {
+      "id": 36,
+      "selected": false,
+      "title": "Next Stop Comedy at Tessier Winery! - Berkeley, CA",
+      "time_display": "Saturday 02/14 8:00 PM",
+      "location": "Tessier Winery, 1335 Fourth Street, Berkeley, CA 94710",
+      "price": "From $27.86",
+      "event_type": "food",
+      "priority": 6,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/next-stop-comedy-at-tessier-winery-berkeley-ca-tickets-1422708953779?aff=ebdssbcitybrowsenightlife",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Next Stop! - A Comedy Show Near You! Join us at Tessier Winery for a brand new line-up of comedians ...",
+      "description_detail": "Next Stop! - A Comedy Show Near You! Join us at Tessier Winery for a brand new line-up of comedians every time!**This Event is 21+**Next Stop Comedy brings top stand-up comedians to your favorite local venues! Each show features a novel line-up with acts seen on TV and heard on your favorite podcasts.Join us at Tessier Winery in Berkeley, CA! - 1335 4th Street, Berkeley, CA 94710For more info, check out our website! - nextstopcomedy.com*Formerly Boston Comedy ClubRead moreCategory: Film & Media, Comedy",
+      "source": "eventbrite",
+      "scraped_at": "2026-02-02T16:52:33.289Z"
+    },
+    {
+      "id": 37,
+      "selected": false,
+      "title": "Valentine's Day Dinner Cruise on San Francisco Bay",
+      "time_display": "Saturday 02/14 7:00 PM",
+      "location": "2394 Mariner Square Drive, Alameda, CA 94501",
+      "price": "$10",
+      "event_type": "food",
+      "priority": 6,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/valentines-day-dinner-cruise-on-san-francisco-bay-tickets-1542973127159?aff=ebdssbdestsearch",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Celebrate love with an unforgettable evening of fine dining, dancing, and breathtaking views of the ...",
+      "description_detail": "Celebrate love with an unforgettable evening of fine dining, dancing, and breathtaking views of the Golden Gate Bridge and city skyline.\nShow that special someone how much you care and appreciate them, and join us for the sweet Valentine's Day Dinner Cruise on San Francisco Bay.\nCelebrate your friendship and romance with a champagne toast while dancing the night away, and soaking up San Francisco's perfect skyline.\nEnhance your Valentine’s Day experience! Explore our exclusive VIP dinner package options that will add that little extra touch to your special night.\nBOARDING LOCATION: LUXE Cruises, 2394 Mariner Square Dr, Alameda CA // FREE PARKING\nDATE: Saturday, February 14, 2026 | CHECK IN BEGINS: 6:30pm | BOARDING: 6:45pm | CRUISING: 7:00pm – 10:00pm\nFEATURING: 3HR Cruise with Buffet Dinner with unlimited standard Wine, Beer and Champagne | DJ with Dancing | VIP Private Table Option Available\nQuestions? Email us directly at hello@luxecruises.com\nCelebrate love with an unforgettable evening of fine dining, dancing, and breathtaking views of the Golden Gate Bridge and city skyline.\nShow that special someone how much you care and appreciate them, and join us for the sweet Valentine's Day Dinner Cruise on San Francisco Bay.\nCelebrate your friendship and romance with a champagne toast while dancing the night away, and soaking up San Francisco's perfect skyline.\nEnhance your Valentine’s Day experience! Explore our exclusive VIP dinner package options that will add that little extra touch to your special night.\nBOARDING LOCATION: LUXE Cruises, 2394 Mariner Square Dr, Alameda CA // FREE PARKING\nDATE: Saturday, February 14, 2026 | CHECK IN BEGINS: 6:30pm | BOARDING: 6:45pm | CRUISING: 7:00pm – 10:00pm\nFEATURING: 3HR Cruise with Buffet Dinner with unlimited standard Wine, Beer and Champagne | DJ with Dancing | VIP Private Table Option Available\nQuestions?",
+      "source": "eventbrite",
+      "scraped_at": "2026-02-02T16:52:33.297Z"
+    },
+    {
+      "id": 38,
+      "selected": false,
+      "title": "Water Tasting, Education, and Appreciation!",
+      "time_display": "Tuesday 02/10 6:00 PM",
+      "location": "Alcademics, 57 Post Street, Suite 608 San Francisco, CA 94104",
+      "price": "$44.52",
+      "event_type": "food",
+      "priority": 6,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/water-tasting-education-and-appreciation-tickets-1978791836651?aff=ebdssbdestsearch",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Learn to taste and rate tap and bottled still and sparkling waters like a pro and understand the dif...",
+      "description_detail": "Learn to taste and rate tap and bottled still and sparkling waters like a pro and understand the difference between brands!We’ll taste test 12-16 different waters and students will leave the class with an appreciation for the variety of water to drink, a way to describe how they taste, and a new thirst for this category.Does water have flavor? Is there a difference between tap and bottled water, or from one bottled water to another? Can water express terroir?The answer to all these questions is YES!Come learn about- and taste- lots of water in this class by cocktail writer and educator Camper English. We'll keep your whistle wet this Dry January in this nonalcoholic tasting class.Tasting TapFirst we’ll learn about tap water, including the local stuff in San Francisco and bottled tap waters like Dasani and Aquafina. We’ll briefly discuss home water filters and measure the dissolved solids (TDS) in water with a TDS meter.Is Bottled Water Better?For the majority of the class we'll talk about and taste regionally-sourced bottled waters, learning how to categorize them, how to read their labels, and where to look for highly-rated brands. We’ll learn how waters differ according to type of source, mineral makeup, TDS, pH and more.We’ll taste both bottled still waters and sparkling waters to see the great variation in brands. We’ll look at award-winning waters, waters designed for whiskey pairings, and other novelty water options. We'll taste some brands you've heard of, and several you probably haven't.Location and InstructorClasses are limited to 8 people. Class takes place in an office on the 6th floor of the Mechanics Institute Library building at Post and Market Street in the Financial District, just steps away from the Montgomery BART/MUNI station.Your instructor is Camper English of Alcademics.com. Camper has been writing and teaching about cocktails and spirits in San Francisco for nearly 20 years, and has taught classes on water to more than 200 bartenders and consumers.He is the author of Doctors and Distillers: The Remarkable Medicinal History of Beer, Wine, Spirits, and Cocktails, and The Ice Book: Cool Cubes, Clear Spheres, and Other Chill Cocktail Crafts. Camper has given dozens of talks and classes about cocktails and spirits science and history to audiences of bartenders and consumers. To stay informed about all of Camper's classes, please join the Alcademics Newsletter, which goes out monthly.Want to book a private class? Reach out any time!Read moreCategory: Food & Drink, Other",
+      "source": "eventbrite",
+      "scraped_at": "2026-02-02T16:52:33.300Z"
+    },
+    {
+      "id": 39,
+      "selected": false,
+      "title": "IN HER SEASON: WINE CRAWL",
+      "time_display": "Sunday 02/15 2:00 PM",
+      "location": "Jackson Street, Oakland, CA 94607",
+      "price": "$75",
+      "event_type": "food",
+      "priority": 6,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/in-her-season-wine-crawl-tickets-1980708329934?aff=ebdssbdestsearch",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "An elevated wine crawl for women choosing alignment over urgency. Wine, chocolate, brunch & intentio...",
+      "description_detail": "An elevated wine crawl for women choosing alignment over urgency. Wine, chocolate, brunch & intentional conversation.\nJoin Girlfriends Tribe for In Her Season: valentine's Day Wine Crawl\nIn Her Season is an elevated walking wine crawl created for women who are choosing alignment over urgency, presence over pressure, and becoming over comparison.\nThis experience is for the woman who is learning to slow down, enjoy her life, and focus on herself before rushing into the next chapter.\nWe will be walking together to two nearby wineries, creating space to connect, laugh, and enjoy the journey , not just the destination.\nOur first stop will be light, fun, and social. Our final stop will be where we land ,enjoying brunch, wine, and more intentional conversation around identity, alignment, and honoring the season we are in.\nThis is a chic, paced, intentional experience for women who are learning to enjoy their becoming.\nBecause some seasons aren’t about being chosen.\nThey’re about becoming.\nAnd right now… you’re in your season.\nAn elevated wine crawl for women choosing alignment over urgency. Wine, chocolate, brunch & intentional conversation.\nJoin Girlfriends Tribe for In Her Season: valentine's Day Wine Crawl\nIn Her Season is an elevated walking wine crawl created for women who are choosing alignment over urgency, presence over pressure, and becoming over comparison.\nThis experience is for the woman who is learning to slow down, enjoy her life, and focus on herself before rushing into the next chapter.\nWe will be walking together to two nearby wineries, creating space to connect, laugh, and enjoy the journey , not just the destination.\nOur first stop will be light, fun, and social. Our final stop will be where we land ,enjoying brunch, wine, and more intentional conversation around identity, alignment, and honoring the season we are in.\nThis is a chic, paced, intentional experience for women who are learning to enjoy their becoming.",
+      "source": "eventbrite",
+      "scraped_at": "2026-02-02T16:52:33.300Z"
+    },
+    {
+      "id": 40,
+      "selected": false,
+      "title": "Poor House Bistro Afternoon Beer Tasting w/ Russian River Brewery",
+      "time_display": "Saturday 02/14 12:00 PM",
+      "location": "317 W St John St, San Jose, CA, USA, San Jose, CA 95110",
+      "price": "$49",
+      "event_type": "food",
+      "priority": 6,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/poor-house-bistro-afternoon-beer-tasting-w-russian-river-brewery-tickets-1981461665180?aff=ebdssbdestsearch",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "“Taste over 50 oz of Russian River Beer” (including 10oz Special Release) Poor House Bistro Patio Af...",
+      "description_detail": "“Taste over 50 oz of Russian River Beer” (including 10oz Special Release)\nPoor House Bistro Patio\nAfternoon Beer Russian River Beer Tasting\nTaste over 50 oz of Russian River Beer”\nSaturday Feb 14th 12pm-3pm\nPliny the Younger 10oz draft\nPliny the Elder Dbl IPA 10oz draft\nDbl Dry Hop Pliny 10oz draft\n110 Pilsner 10oz draft\nIntiction Belgian \"Petite Sirah\" Sour Ale 10oz draft\nPurchase soon as this event will sell out quickly!\n“Taste over 50 oz of Russian River Beer” (including 10oz Special Release)\nPoor House Bistro Patio\nAfternoon Beer Russian River Beer Tasting\nTaste over 50 oz of Russian River Beer”\nSaturday Feb 14th 12pm-3pm\nPliny the Younger 10oz draft\nPliny the Elder Dbl IPA 10oz draft\nDbl Dry Hop Pliny 10oz draft\n110 Pilsner 10oz draft\nIntiction Belgian \"Petite Sirah\" Sour Ale 10oz draft\nPurchase soon as this event will sell out quickly!\n317 W St John St, San Jose, CA, USA",
+      "source": "eventbrite",
+      "scraped_at": "2026-02-02T16:52:33.302Z"
+    }
+  ]
+}
