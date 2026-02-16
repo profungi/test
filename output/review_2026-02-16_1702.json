@@ -1,0 +1,865 @@
+{
+  "review_id": "review_2026-02-16_1702_y7a",
+  "generated_at": "2026-02-16T17:02:18.308Z",
+  "scrape_date": "2026-02-16",
+  "target_week": "2026-02-23_to_2026-03-01",
+  "target_week_readable": "下周 (02/23 - 03/01)",
+  "scraping_report": {
+    "total_scraped": 107,
+    "after_deduplication": 94,
+    "after_classification": 94,
+    "classification_report": {
+      "totalEvents": 94,
+      "eventTypes": {
+        "art": 15,
+        "free": 43,
+        "fair": 3,
+        "market": 11,
+        "other": 5,
+        "food": 9,
+        "music": 8
+      },
+      "priorityLevels": {
+        "3": 5,
+        "4": 8,
+        "5": 15,
+        "6": 9,
+        "9": 43,
+        "10": 14
+      },
+      "chineseRelevant": 0,
+      "topPriorityEvents": 57
+    }
+  },
+  "instructions": {
+    "how_to_review": "将你想要发布的活动的 'selected' 字段改为 true",
+    "next_step": "保存文件后运行: npm run generate-post [此文件路径]",
+    "fields_explanation": {
+      "title": "活动标题",
+      "time_display": "显示用的时间格式",
+      "location": "活动地点",
+      "price": "票价信息",
+      "event_type": "AI识别的活动类型",
+      "priority": "优先级分数 (越高越重要)",
+      "chinese_relevant": "是否与中文社区相关",
+      "original_url": "原始活动链接"
+    }
+  },
+  "stats": {
+    "total_candidates": 40,
+    "by_type": {
+      "fair": 3,
+      "market": 11,
+      "free": 18,
+      "food": 8
+    },
+    "by_priority": {
+      "6": 8,
+      "9": 18,
+      "10": 14
+    },
+    "chinese_relevant": 0
+  },
+  "events": [
+    {
+      "id": 1,
+      "selected": false,
+      "title": "57th California International Antiquarian Book Fair",
+      "time_display": "Friday 02/27 4:00 PM",
+      "location": "The Embarcadero, San Francisco, CA 94111",
+      "price": "$10",
+      "event_type": "fair",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/57th-california-international-antiquarian-book-fair-tickets-1748615158009?aff=ebdssbcitybrowse",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "This three-day event features the collections and rare treasures of booksellers from around the glob...",
+      "description_detail": "This three-day event features the collections and rare treasures of booksellers from around the globe.\nDetails: abaa.org/cabookfair -This three-day event features the collections and rare treasures of booksellers from around the globe, including manuscripts, modern first editions, children’s books, ephemera, maps, and autographs, as well as antiquarian books on a vast array of topics.\nFriday, February 27, 4pm-8pm\nSaturday, February 28, 11am-7pm\nSunday, March 1, 11am-4pm\nThis three-day event features the collections and rare treasures of booksellers from around the globe.\nDetails: abaa.org/cabookfair -This three-day event features the collections and rare treasures of booksellers from around the globe, including manuscripts, modern first editions, children’s books, ephemera, maps, and autographs, as well as antiquarian books on a vast array of topics.\nFriday, February 27, 4pm-8pm\nSaturday, February 28, 11am-7pm\nSunday, March 1, 11am-4pm\nSan Francisco, CA 94111",
+      "source": "eventbrite",
+      "scraped_at": "2026-02-16T16:56:20.378Z"
+    },
+    {
+      "id": 2,
+      "selected": false,
+      "title": "Linfinity 'Fest 2026 by Linfinity Campus",
+      "time_display": "Saturday 02/28 9:00 AM",
+      "location": "4949 Great America Parkway, Santa Clara, CA 95054",
+      "price": "$62.50",
+      "event_type": "market",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/linfinity-fest-2026-by-linfinity-campus-tickets-1979145112308?aff=ebdssbcitybrowse",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Join us for Linfinity ‘Fest 2026, a two-day event designed for scaling up your investments! Join us ...",
+      "description_detail": "Join us for Linfinity ‘Fest 2026, a two-day event designed for scaling up your investments!\nJoin us for Linfinity ‘Fest 2026, a two-day event designed for scaling up your investments! It's a great opportunity for real estate investors, professionals, and Linfinity cohorts to connect, learn, and collaborate!\nThis exciting weekend brings together members of the Linfinity community to explore new opportunities, discuss market trends, and share success stories, all while fostering meaningful connections with like-minded individuals.\nDay 1 (Open Conference): 8am to 4pm8:00am - Registration, Coffee, Meet-and-Greet socializing9:00am - Opening Remarks, welcome to Linfinity `Fest 2026!\nDay 2 (For existing and future Linfinity Students):\nThis is the perfect opportunity to expand your network, gain valuable insights, and solidify your skills in the multifamily investment space.\nEvent Location:Hilton Santa Clara (Next to the Levi's Stadium)4949 Great America Pkwy, Santa Clara, CA 95054We recommend flying into San Jose International Airport (SJC) for convenient access to the event location.\nRSVP now to secure your spot at this one-of-a-kind event! Stay tuned for updates on the venue and additional details.\nJoin us for Linfinity ‘Fest 2026, a two-day event designed for scaling up your investments!\nJoin us for Linfinity ‘Fest 2026, a two-day event designed for scaling up your investments! It's a great opportunity for real estate investors, professionals, and Linfinity cohorts to connect, learn, and collaborate!\nThis exciting weekend brings together members of the Linfinity community to explore new opportunities, discuss market trends, and share success stories, all while fostering meaningful connections with like-minded individuals.\nDay 1 (Open Conference): 8am to 4pm8:00am - Registration, Coffee, Meet-and-Greet socializing9:00am - Opening Remarks, welcome to Linfinity `Fest 2026!",
+      "source": "eventbrite",
+      "scraped_at": "2026-02-16T16:56:20.382Z"
+    },
+    {
+      "id": 3,
+      "selected": false,
+      "title": "SoulSearch SF-Redwood City Enlightenment Expo - Psychic & Healing Fair",
+      "time_display": "Saturday 02/28 10:00 AM",
+      "location": "223 Twin Dolphin Drive, Redwood City, CA 94065",
+      "price": "$15",
+      "event_type": "fair",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/soulsearch-sf-redwood-city-enlightenment-expo-psychic-healing-fair-tickets-1978776236992?aff=ebdssbcitybrowse",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Join our Enlightenment Expo! Experience psychic & tarot readings. Receive energy healings, chakra ba...",
+      "description_detail": "Join our Enlightenment Expo! Experience psychic & tarot readings. Receive energy healings, chakra balancing, massage  & more\n✨ SoulSearch San Francisco-Redwood City ✨Psychic & Healing Fair • Enlightenment Expo\nA weekend of metaphysical exploration, transformation, empowerment, and healing awaits!\nStep into a high-vibration space designed to awaken, align, and inspire. Connect with gifted psychics, mediums, energy healers, spiritual guides, astrologers, holistic practitioners, and intuitive artists—all in one transformative experience.\n📅 February 28 – March 1, 2026⏰ 10:00 AM – 6:00 PM📍 Grand Bay Hotel San Francisco223 Twin Dolphin Drive, Redwood City, CA 94065\n🌿 What You’ll Experience:\n🎟 Tickets:✨ Early Bird: FREE🎫 $15 at the Door👶 Ages 12 & under: FREE\nTickets include full access to the exhibit hall and all speaker events for both days.\n🌟 Special Events & Speaker Lineup Coming Soon!View the full schedule and meet our practitioners here:👉 https://www.soulsearch.io/sanfranciscoexpo\n📺 Watch Original Content on SoulSearch.TVSoulSearch.TV brings you conscious shows that ignite, inspire, and empower. Stream on Roku, Amazon, Apple TV, Android TV, and more. Stay tuned for LIVE TV events and exclusive content.\n💫 About SoulSearch:SoulSearch is your global guide to spirituality & consciousness—connecting you with healers, courses, events, and community. Discover practitioners, take courses, watch videos, join groups, and more at www.SoulSearch.io.\n✨ Join our community for FREE!\n🛍 Vendors & Speakers:Reserve your booth or speaking slot: soulsearchexpos.comQuestions? Email: info@soulsearch.io\n🌐 Connect With Us:Facebook | Instagram | YouTube | TikTok | Meetup\n✨ Come as you are. Leave aligned, inspired, and transformed! ✨\nJoin our Enlightenment Expo! Experience psychic & tarot readings.",
+      "source": "eventbrite",
+      "scraped_at": "2026-02-16T16:56:20.390Z"
+    },
+    {
+      "id": 4,
+      "selected": false,
+      "title": "NMUNC VI",
+      "time_display": "Saturday 02/28 8:00 AM",
+      "location": "131 East 28th Avenue, San Mateo, CA 94403",
+      "price": "From $23.18",
+      "event_type": "fair",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/nmunc-vi-tickets-1859825350689?aff=ebdssbcitybrowse",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Get ready for the sixth edition of the National Model United Nations Conference, where we discuss gl...",
+      "description_detail": "Get ready for the sixth edition of the National Model United Nations Conference, where we discuss global issues and practice diplomacy like\nNMUNC VI is back for its sixth edition! Join us at The Nueva School | San Mateo for an exciting in-person event filled with engaging discussions, networking opportunities, and insightful sessions. Whether you're a seasoned delegate or new to Model United Nations, this event is perfect for anyone interested in global affairs and diplomacy. Don't miss out on this unique chance to hone your negotiation skills and make new friends from different backgrounds. Get ready for a weekend of learning, debating, and fun at NMUNC VI!\nGet ready for the sixth edition of the National Model United Nations Conference, where we discuss global issues and practice diplomacy like\nNMUNC VI is back for its sixth edition! Join us at The Nueva School | San Mateo for an exciting in-person event filled with engaging discussions, networking opportunities, and insightful sessions. Whether you're a seasoned delegate or new to Model United Nations, this event is perfect for anyone interested in global affairs and diplomacy. Don't miss out on this unique chance to hone your negotiation skills and make new friends from different backgrounds. Get ready for a weekend of learning, debating, and fun at NMUNC VI!",
+      "source": "eventbrite",
+      "scraped_at": "2026-02-16T16:56:20.391Z"
+    },
+    {
+      "id": 5,
+      "selected": false,
+      "title": "Brix Factory & Ollie's Cheese Shop - Beer and Cheese Pairing Flight",
+      "time_display": "Wednesday 02/25 6:00 PM",
+      "location": "2400 Mandela Parkway, Oakland, CA 94607",
+      "price": "$33.85",
+      "event_type": "market",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/brix-factory-ollies-cheese-shop-beer-and-cheese-pairing-flight-tickets-1980491266692?aff=ebdssbdestsearch",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Join us mid SF Beer Week for a tasty in-person night of craft beers and artisan cheeses perfectly pa...",
+      "description_detail": "Join us mid SF Beer Week for a tasty in-person night of craft beers and artisan cheeses perfectly paired by Brix Factory & Ollie's!\nYour buds at Brix Factory are working with the Cheese experts of Ollie's Cheese Shop for our first ever pairing night here at the taproom. Brix's resident knucklehead Eric Ortega will be hosting Ollie's Alyssa Gilbert for a walkthrough of four different beer and cheese pairings. We will be testing your palate with complimentary and contrasting pairings that highlight the innumerable qualities both beer and cheese possess.\nJoin us mid SF Beer Week for a tasty in-person night of craft beers and artisan cheeses perfectly paired by Brix Factory & Ollie's!\nYour buds at Brix Factory are working with the Cheese experts of Ollie's Cheese Shop for our first ever pairing night here at the taproom. Brix's resident knucklehead Eric Ortega will be hosting Ollie's Alyssa Gilbert for a walkthrough of four different beer and cheese pairings. We will be testing your palate with complimentary and contrasting pairings that highlight the innumerable qualities both beer and cheese possess.\nPAIRINGS TBD: Gonna have to trust that we know what we're doing.\nRefunds up to 3 days before event",
+      "source": "eventbrite",
+      "scraped_at": "2026-02-16T16:56:20.392Z"
+    },
+    {
+      "id": 6,
+      "selected": false,
+      "title": "The Box SF “Eat Me!” Artisan Food Fair (2026)",
+      "time_display": "Saturday 02/28 11:00 AM - 5:00 PM",
+      "location": "The Box SF",
+      "price": "*",
+      "event_type": "market",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/the-box-sf-eat-me-artisan-food-fair-2026-3/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "The Box SF presents EAT ME!, a monthly artisanal food fair, kicking off on January 10-11, 2026! Enjo...",
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2026-02-16T16:47:22.166Z"
+    },
+    {
+      "id": 7,
+      "selected": false,
+      "title": "Live Music",
+      "time_display": "Monday 02/23 6:00 PM - 9:00 PM",
+      "location": "San Pedro Square Market, 87 N San Pedro St, San Jose, CA",
+      "price": "Check event page",
+      "event_type": "market",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://sjdowntown.com/event/live-music/2026-02-23/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Experience live music at San Pedro Square Market six days a week! Explore our calendar for the full ...",
+      "description_detail": null,
+      "source": "sjdowntown",
+      "scraped_at": "2026-02-16T16:47:11.540Z"
+    },
+    {
+      "id": 8,
+      "selected": false,
+      "title": "Live Music",
+      "time_display": "Tuesday 02/24 6:00 PM - 9:00 PM",
+      "location": "San Pedro Square Market, 87 N San Pedro St, San Jose, CA",
+      "price": "Check event page",
+      "event_type": "market",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://sjdowntown.com/event/live-music/2026-02-24/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Experience live music at San Pedro Square Market six days a week! Explore our calendar for the full ...",
+      "description_detail": null,
+      "source": "sjdowntown",
+      "scraped_at": "2026-02-16T16:47:11.541Z"
+    },
+    {
+      "id": 9,
+      "selected": false,
+      "title": "Jeopardy Bar League",
+      "time_display": "Tuesday 02/24 7:00 PM - 8:00 PM",
+      "location": "Three Sisters Whiskey Bar, 170 W. Saint John St., San Jose, CA",
+      "price": "Check event page",
+      "event_type": "market",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://sjdowntown.com/event/jeopardy-bar-league/2026-02-24/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "ATTENTION TRIVIA LOVERS! San Pedro Square Market is hosting Jeopardy Bar League – the official bar t...",
+      "description_detail": null,
+      "source": "sjdowntown",
+      "scraped_at": "2026-02-16T16:47:11.541Z"
+    },
+    {
+      "id": 10,
+      "selected": false,
+      "title": "Live Music",
+      "time_display": "Wednesday 02/25 6:00 PM - 9:00 PM",
+      "location": "San Pedro Square Market, 87 N San Pedro St, San Jose, CA",
+      "price": "Check event page",
+      "event_type": "market",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://sjdowntown.com/event/live-music/2026-02-25/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Experience live music at San Pedro Square Market six days a week! Explore our calendar for the full ...",
+      "description_detail": null,
+      "source": "sjdowntown",
+      "scraped_at": "2026-02-16T16:47:11.542Z"
+    },
+    {
+      "id": 11,
+      "selected": false,
+      "title": "Live Music",
+      "time_display": "Thursday 02/26 6:00 PM - 9:00 PM",
+      "location": "San Pedro Square Market, 87 N San Pedro St, San Jose, CA",
+      "price": "Check event page",
+      "event_type": "market",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://sjdowntown.com/event/live-music/2026-02-26/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Experience live music at San Pedro Square Market six days a week! Explore our calendar for the full ...",
+      "description_detail": null,
+      "source": "sjdowntown",
+      "scraped_at": "2026-02-16T16:47:11.542Z"
+    },
+    {
+      "id": 12,
+      "selected": false,
+      "title": "Live Music",
+      "time_display": "Friday 02/27 6:00 PM - 9:00 PM",
+      "location": "San Pedro Square Market, 87 N San Pedro St, San Jose, CA",
+      "price": "Check event page",
+      "event_type": "market",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://sjdowntown.com/event/live-music/2026-02-27/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Experience live music at San Pedro Square Market six days a week! Explore our calendar for the full ...",
+      "description_detail": null,
+      "source": "sjdowntown",
+      "scraped_at": "2026-02-16T16:47:11.543Z"
+    },
+    {
+      "id": 13,
+      "selected": false,
+      "title": "Hobee&#8217;s Pancake Market",
+      "time_display": "Saturday 02/28 9:00 AM - 2:00 PM",
+      "location": "Hobee&#8217;s, 261 N 2nd street, San Jose, CA",
+      "price": "Check event page",
+      "event_type": "market",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://sjdowntown.com/event/hobees-pancake-market/2026-02-28/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Brunch and Browse LOCAL vendors and artisans Saturdays from 9:00-2:00pm at Hobee&#8217;s Downtown Sa...",
+      "description_detail": null,
+      "source": "sjdowntown",
+      "scraped_at": "2026-02-16T16:47:11.543Z"
+    },
+    {
+      "id": 14,
+      "selected": false,
+      "title": "Live Music",
+      "time_display": "Saturday 02/28 6:00 PM - 9:00 PM",
+      "location": "San Pedro Square Market, 87 N San Pedro St, San Jose, CA",
+      "price": "Check event page",
+      "event_type": "market",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://sjdowntown.com/event/live-music/2026-02-28/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Experience live music at San Pedro Square Market six days a week! Explore our calendar for the full ...",
+      "description_detail": null,
+      "source": "sjdowntown",
+      "scraped_at": "2026-02-16T16:47:11.543Z"
+    },
+    {
+      "id": 15,
+      "selected": false,
+      "title": "Bay Area Real Estate Investor Networking & Happy Hour with Quotr.io",
+      "time_display": "Thursday 02/26 6:00 PM",
+      "location": "1785 Fulton Street, San Francisco, CA 94117",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/bay-area-real-estate-investor-networking-happy-hour-with-quotrio-tickets-1982897005321?aff=ebdssbcitybrowse",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Exclusive Bay Area Real Estate Investor Networking & Happy Hour @ Laughing Monk NOPA Please join us ...",
+      "description_detail": "Exclusive Bay Area Real Estate Investor Networking & Happy Hour @ Laughing Monk NOPA\nPlease join us for the second Real Estate Investor Networking Party of 2026.\nThis is a private evening to connect, talk deals, and build relationships with other pre-vetted real estate investors and industry professionals.\n📅 Date: Thursday, February 26, 2026🕕 Time: 6:00–9:00 PM📍 Location: Laughing Monk Brewery (NOPA), San Francisco\nThis event is designed for real estate investors and professionals who want to networking and have a drink with other real estate investos in the Bay Area.\nThere will be no sales pitches, just real conversations. If you’ve heard stories of investors using AI to save tons of time on money on their projects this is a great event to come to because of our featured sponsor.\nYou’ll also learn how you can save serious money on upcoming development projects with Quotr.io.\n“Quotr combines detailed cost estimation reports with lower-cost finish material procurement, so you build smarter and cheaper.”\nWebsite:  https://quotr.io\nSpecial thanks to www.quotr.io for sponsoring.\nSpecial thanks to Laughing Monk Brewery (NOPA) for the space as well.\nExclusive Bay Area Real Estate Investor Networking & Happy Hour @ Laughing Monk NOPA\nPlease join us for the second Real Estate Investor Networking Party of 2026.\nThis is a private evening to connect, talk deals, and build relationships with other pre-vetted real estate investors and industry professionals.\n📅 Date: Thursday, February 26, 2026🕕 Time: 6:00–9:00 PM📍 Location: Laughing Monk Brewery (NOPA), San Francisco\nThis event is designed for real estate investors and professionals who want to networking and have a drink with other real estate investos in the Bay Area.\nThere will be no sales pitches, just real conversations. If you’ve heard stories of investors using AI to save tons of time on money on their projects this is a great event to come to because of our featured sponsor.",
+      "source": "eventbrite",
+      "scraped_at": "2026-02-16T16:56:20.378Z"
+    },
+    {
+      "id": 16,
+      "selected": false,
+      "title": "San Francisco Black History Month Closing Ceremony 2026",
+      "time_display": "Wednesday 02/25 5:30 PM",
+      "location": "1 Dr Carlton B Goodlett Place, San Francisco, CA 94102",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/san-francisco-black-history-month-closing-ceremony-2026-tickets-1981883399599?aff=ebdssbcitybrowse",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "MUSIC • ENTERTAINMENT • ART • CUISINE ... FREE celebration • RSVP required for EACH attendee MUSIC •...",
+      "description_detail": "MUSIC • ENTERTAINMENT • ART • CUISINE ... FREE celebration • RSVP required for EACH attendee\nMUSIC • ENTERTAINMENT • ART • CUISINE\nCulture LoungeEnjoy music and delicious food and wine from African American owned businesses. Please join us in celebrating them and Black history-makers!\nRSVP required for FREE admission\nFOR MORE INFORMATION contact D.R. Roberts Event Management - droberts@robertsevents.com\nMUSIC • ENTERTAINMENT • ART • CUISINE ... FREE celebration • RSVP required for EACH attendee\nMUSIC • ENTERTAINMENT • ART • CUISINE\nCulture LoungeEnjoy music and delicious food and wine from African American owned businesses. Please join us in celebrating them and Black history-makers!\nRSVP required for FREE admission\nFOR MORE INFORMATION contact D.R. Roberts Event Management - droberts@robertsevents.com\n1 Dr Carlton B Goodlett Place\nSan Francisco, CA 94102",
+      "source": "eventbrite",
+      "scraped_at": "2026-02-16T16:56:20.378Z"
+    },
+    {
+      "id": 17,
+      "selected": false,
+      "title": "2026 Clark Kerr Lectures",
+      "time_display": "Tuesday 02/24 2:00 PM",
+      "location": "2763-2719 Bancroft Way, Berkeley, CA 94704",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/2026-clark-kerr-lectures-tickets-1978984963298?aff=ebdssbcitybrowse",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "The American University in Crisis About the Clark Kerr Lecture Series: A biennial series sponsored b...",
+      "description_detail": "The American University in Crisis\nAbout the Clark Kerr Lecture Series: A biennial series sponsored by the Center for Studies in Higher Education at UC Berkeley. The series honors Clark Kerr, President of the University of California from 1958 to 1967. Funding for the Clark Kerr Lecture series is provided by the Carnegie Corporation and the University of California Office of the President.\n2026 Clark Kerr Lectures: The American University in Crisis\nIn his 1963 Godkin Lectures, Clark Kerr declared that American universities were “at a hinge in history.” We are now at an equally pivotal moment: recent attacks on research funding and academic freedom imperil the model that Kerr described and that enabled American universities to become world-leading institutions. President Eisgruber’s lectures will examine developments that have rendered American universities more vulnerable to political attack and consider how universities and their presidents should define the civic mission of universities in the years ahead.\nTuesday, February 24 at 2:00 p.m. | Evolving ConditionsIn the first lecture, President Eisgruber will focus on major trends that have affected the American model of the research university, including rising student debt, intense national competition, and battles over affirmative action, diversity, and merit.\nThursday, February 26 at 2:00 p.m. | Contested MissionsIn the second lecture, President Eisgruber will examine the role of university presidents, the civic mission of American research universities, and how university communities should respond to the challenges they now face.\nThe American University in Crisis\nAbout the Clark Kerr Lecture Series: A biennial series sponsored by the Center for Studies in Higher Education at UC Berkeley. The series honors Clark Kerr, President of the University of California from 1958 to 1967.",
+      "source": "eventbrite",
+      "scraped_at": "2026-02-16T16:56:20.380Z"
+    },
+    {
+      "id": 18,
+      "selected": false,
+      "title": "Interfaith Iftar Dinner",
+      "time_display": "Sunday 03/01 4:30 PM",
+      "location": "600 Colorado Avenue, Palo Alto, CA 94306",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/interfaith-iftar-dinner-tickets-1980507909471?aff=ebdssbneighborhoodbrowse",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Join us for a cozy Interfaith Iftar Dinner to share food, stories, and friendship in person! Come to...",
+      "description_detail": "Join us for a cozy Interfaith Iftar Dinner to share food, stories, and friendship in person!\nCome together in person to celebrate and share the spirit of Ramadan at our Interfaith Iftar Dinner. It’s a perfect chance to enjoy delicious food, great company, and meaningful conversations with people from all walks of life. Whether you're fasting or just curious, everyone is welcome to experience this warm and welcoming gathering. Let’s break the fast and build friendships!\nJoin us for a cozy Interfaith Iftar Dinner to share food, stories, and friendship in person!\nCome together in person to celebrate and share the spirit of Ramadan at our Interfaith Iftar Dinner. It’s a perfect chance to enjoy delicious food, great company, and meaningful conversations with people from all walks of life. Whether you're fasting or just curious, everyone is welcome to experience this warm and welcoming gathering. Let’s break the fast and build friendships!",
+      "source": "eventbrite",
+      "scraped_at": "2026-02-16T16:56:20.380Z"
+    },
+    {
+      "id": 19,
+      "selected": false,
+      "title": "Bay Area ADU Expo",
+      "time_display": "Saturday 02/28 10:00 AM",
+      "location": "200 Edenvale Avenue, San Jose, CA 95136",
+      "price": "$81.88",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/bay-area-adu-expo-tickets-1542424155169?aff=ebdssbcitybrowse",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Explore ADU builders, designers and experts at the Bay Area ADU Expo 2026. Learn about design, const...",
+      "description_detail": "Explore ADU builders, designers and experts at the Bay Area ADU Expo 2026. Learn about design, construction and financing solutions.\nDiscover the Bay Area ADU Expo 2026A free three day event for homeowners, ADU buyers, builders, contractors and professionals exploring accessory dwelling units for family living, rental use or property improvement.\nSee a range of ADU options including prefab units and tiny homes on wheels. Meet local builders, architects, designers and permitting experts who can guide you through the ADU process.\nFor industry professionalsBuilders, developers and contractors may request access to the Friday evening networking reception.\nFebruary 27 to March 1, 2026Hayes Mansion, San Jose CAAdmission is free with RSVPinfo@bayareaaduexpo.combayareaaduexpo.com\nExplore ADU builders, designers and experts at the Bay Area ADU Expo 2026. Learn about design, construction and financing solutions.\nDiscover the Bay Area ADU Expo 2026A free three day event for homeowners, ADU buyers, builders, contractors and professionals exploring accessory dwelling units for family living, rental use or property improvement.\nSee a range of ADU options including prefab units and tiny homes on wheels. Meet local builders, architects, designers and permitting experts who can guide you through the ADU process.\nFor industry professionalsBuilders, developers and contractors may request access to the Friday evening networking reception.\nFebruary 27 to March 1, 2026Hayes Mansion, San Jose CAAdmission is free with RSVPinfo@bayareaaduexpo.combayareaaduexpo.com\nRefunds up to 7 days before event\nSneak peek on the exhibit floor and Industry professionals networking reception at 4 to 6.",
+      "source": "eventbrite",
+      "scraped_at": "2026-02-16T16:56:20.381Z"
+    },
+    {
+      "id": 20,
+      "selected": false,
+      "title": "JOIN SMPTE FOR A DISCUSSION ON FILM SCANNING & RESTORATION",
+      "time_display": "Thursday 02/26 5:30 PM",
+      "location": "433 North Mathilda Avenue, Sunnyvale, CA 94085",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/join-smpte-for-a-discussion-on-film-scanning-restoration-tickets-1982723126244?aff=ebdssbcitybrowse",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Dr. Barbara Flueckiger, Founder and CEO of Scan2Screen US, will present the science behind Scan2Scre...",
+      "description_detail": "Dr. Barbara Flueckiger, Founder and CEO of Scan2Screen US, will present the science behind Scan2Screen film scanning technology.\nDr. Barbara Flueckiger, Founder and CEO of Scan2Screen US, will present the science behind Scan2Screen technology, including examples of film restoration. The system delivers authentic film color through the multispectral scanning process and color-accurate workflow that reduce grading time while producing preservation-ready, future-proof digital files. PRE-REGISTRATION IS REQUIRED FOR THIS EVENT.\nDr. Barbara Flueckiger, Founder and CEO of Scan2Screen US, will present the science behind Scan2Screen film scanning technology.\nDr. Barbara Flueckiger, Founder and CEO of Scan2Screen US, will present the science behind Scan2Screen technology, including examples of film restoration. The system delivers authentic film color through the multispectral scanning process and color-accurate workflow that reduce grading time while producing preservation-ready, future-proof digital files. PRE-REGISTRATION IS REQUIRED FOR THIS EVENT.\n433 North Mathilda Avenue",
+      "source": "eventbrite",
+      "scraped_at": "2026-02-16T16:56:20.382Z"
+    },
+    {
+      "id": 21,
+      "selected": false,
+      "title": "Hack 4 Humanity",
+      "time_display": "Saturday 02/28 10:00 AM",
+      "location": "500 El Camino Real, Santa Clara, CA 95053",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/hack-4-humanity-tickets-1982410093956?aff=ebdssbcitybrowse",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "H4H is a hackathon with tracks ranging from beginner to advanced with over $20k in prizes with huge ...",
+      "description_detail": "H4H is a hackathon with tracks ranging from beginner to advanced with over $20k in prizes with huge sponsors, great food, and opportunities.\nFill out form to register: https://forms.gle/Sg6sxUF76W2Zm1hm6\nH4H is a hackathon with tracks ranging from beginner to advanced with over $20k in prizes with huge sponsors, great food, and opportunities.\nFill out form to register: https://forms.gle/Sg6sxUF76W2Zm1hm6\nSanta Clara, CA 95053",
+      "source": "eventbrite",
+      "scraped_at": "2026-02-16T16:56:20.382Z"
+    },
+    {
+      "id": 22,
+      "selected": false,
+      "title": "Cupertino State of the City 2026",
+      "time_display": "Thursday 02/26 6:30 PM",
+      "location": "10185 North Stelling Road, Cupertino, CA 95014",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/cupertino-state-of-the-city-2026-tickets-1981797867771?aff=ebdssbcitybrowse",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "City of Cupertino State of the City Address featuring Mayor Kitty Moore You're invited to the 2026 S...",
+      "description_detail": "City of Cupertino State of the City Address featuring Mayor Kitty Moore\nYou're invited to the 2026 State of the City, where Mayor Kitty Moore will deliver a special address. The event takes place on Thursday, February 26 at the Quinlan Community Center, 10185 N Stelling Road.\nDoors open at 6 p.m., program begins at 6:30 p.m.\nLight refreshments will be served.\nAdditional parking will be available for attendees across the street at the Abundant Life Assembly of God Church (10100 N Stelling Road) while construction at the Quinlan Center parking lot takes place. Please be considerate of traffic and pedestrians around nearby facilities while parking.\nFor more information, visit cupertino.gov/sotc2026.\nCity of Cupertino State of the City Address featuring Mayor Kitty Moore\nYou're invited to the 2026 State of the City, where Mayor Kitty Moore will deliver a special address. The event takes place on Thursday, February 26 at the Quinlan Community Center, 10185 N Stelling Road.\nDoors open at 6 p.m., program begins at 6:30 p.m.\nLight refreshments will be served.\nAdditional parking will be available for attendees across the street at the Abundant Life Assembly of God Church (10100 N Stelling Road) while construction at the Quinlan Center parking lot takes place. Please be considerate of traffic and pedestrians around nearby facilities while parking.\nFor more information, visit cupertino.gov/sotc2026.\n10185 North Stelling Road",
+      "source": "eventbrite",
+      "scraped_at": "2026-02-16T16:56:20.383Z"
+    },
+    {
+      "id": 23,
+      "selected": false,
+      "title": "Carillon and Choir",
+      "time_display": "Saturday 02/28 7:00 PM",
+      "location": "20920 McClellan Road, Cupertino, CA 95014",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/carillon-and-choir-tickets-1983052065109?aff=ebdssbcitybrowse",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Concert for carillon and choir Works for carillon and choir Concert for carillon and choir Works for...",
+      "description_detail": "Concert for carillon and choir\nWorks for carillon and choir\nConcert for carillon and choir\nWorks for carillon and choir",
+      "source": "eventbrite",
+      "scraped_at": "2026-02-16T16:56:20.383Z"
+    },
+    {
+      "id": 24,
+      "selected": false,
+      "title": "Exploremore with Girl Scouts! | At The Saratoga Library",
+      "time_display": "Thursday 02/26 4:00 PM",
+      "location": "13650 Saratoga Avenue, Saratoga, CA 95070",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/exploremore-with-girl-scouts-at-the-saratoga-library-tickets-1982213305356?aff=ebdssbcitybrowse",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Exploremore with Girl Scouts! Join us for this fun and informative event to learn how you can join G...",
+      "description_detail": "Exploremore with Girl Scouts! Join us for this fun and informative event to learn how you can join Girl Scouts :)\nCelebrate the launch of our newest cookie, Exploremores, and do some exploring of your own! Girls and their families are invited to join us for hands on activities and fun games to learn what it means to be a Girl Scout. Families will also get a chance to taste the new Girl Scout Cookie!\nGrown-ups, please plan to stay and enjoy the event with your child!\nThis free event is for families who have TK-5 grade girls , who are not yet Girl Scouts and reside in or attend school in the Saratoga, Cupertino and Mountain View area.\nPlease register your family with the name of the adult who will be our main contact.\nPlease register in advance so we can ensure that we have enough materials on hand for all of the girls attending and can inform you of any possible changes.\nCan’t make it? Please RSVP and select 'can't attend' so that we can keep you in the loop.\nPlease email ateixeira@gsnorcal.org with questions or if you're ready to get started today!\nExploremore with Girl Scouts! Join us for this fun and informative event to learn how you can join Girl Scouts :)\nCelebrate the launch of our newest cookie, Exploremores, and do some exploring of your own! Girls and their families are invited to join us for hands on activities and fun games to learn what it means to be a Girl Scout. Families will also get a chance to taste the new Girl Scout Cookie!\nGrown-ups, please plan to stay and enjoy the event with your child!\nThis free event is for families who have TK-5 grade girls , who are not yet Girl Scouts and reside in or attend school in the Saratoga, Cupertino and Mountain View area.\nPlease register your family with the name of the adult who will be our main contact.\nPlease register in advance so we can ensure that we have enough materials on hand for all of the girls attending and can inform you of any possible changes.\nCan’t make it?",
+      "source": "eventbrite",
+      "scraped_at": "2026-02-16T16:56:20.383Z"
+    },
+    {
+      "id": 25,
+      "selected": false,
+      "title": "Before Your Eyes: A Multimedia Performance",
+      "time_display": "Saturday 02/28 2:00 PM",
+      "location": "13650 Saratoga Avenue, Saratoga, CA 95070",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/before-your-eyes-a-multimedia-performance-tickets-1980666086583?aff=ebdssbcitybrowse",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Before Your Eyes is a multimedia performance created and performed by harpist and composer Renée Qin...",
+      "description_detail": "Before Your Eyes is a multimedia performance created and performed by harpist and composer Renée Qin, with collaborating artists.\nThis is a participatory multimedia performance created and performed by harpist and composer Renée Qin, with artists from Sound Palette.\nBlending harp, electroacoustics, creative coding, and real-time visuals, the performance creates a shared audiovisual setting with moments of audience participation.\nThis event is hosted by the Santa Clara County Library District and is part of a multi-branch library series.\nEveryone is welcome. No registration required. Suitable for families, students, and adults interested in music, technology, and interdisciplinary art.\nBefore Your Eyes is a multimedia performance created and performed by harpist and composer Renée Qin, with collaborating artists.\nThis is a participatory multimedia performance created and performed by harpist and composer Renée Qin, with artists from Sound Palette.\nBlending harp, electroacoustics, creative coding, and real-time visuals, the performance creates a shared audiovisual setting with moments of audience participation.\nThis event is hosted by the Santa Clara County Library District and is part of a multi-branch library series.\nEveryone is welcome. No registration required. Suitable for families, students, and adults interested in music, technology, and interdisciplinary art.\nLink to event details:https://sccl.bibliocommons.com/events/692dcc8de80c50300039859e\n13650 Saratoga Avenue",
+      "source": "eventbrite",
+      "scraped_at": "2026-02-16T16:56:20.384Z"
+    },
+    {
+      "id": 26,
+      "selected": false,
+      "title": "Conquering 2026: Organized Homes and Organized Finances",
+      "time_display": "Wednesday 02/25 6:15 PM",
+      "location": "59 North Santa Cruz Avenue, #Suite H Los Gatos, CA 95030",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/conquering-2026-organized-homes-and-organized-finances-tickets-1982445967254?aff=ebdssbcitybrowse",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Get ready to crush 2026 with a killer plan to organize your home and finances all in one spot! Ready...",
+      "description_detail": "Get ready to crush 2026 with a killer plan to organize your home and finances all in one spot!\nReady to take charge of 2026? Join us in person for a fun and practical session all about creating organized homes and organized finances. We'll share cool tips and tricks to help you simplify your space and get your money matters in check. You’ll also have time to connect with fellow attendees, so be sure to bring your business cards for some light networking. It’s the perfect chance to start the year feeling fresh, focused, and totally on top of things!\nGet ready to crush 2026 with a killer plan to organize your home and finances all in one spot!\nReady to take charge of 2026? Join us in person for a fun and practical session all about creating organized homes and organized finances. We'll share cool tips and tricks to help you simplify your space and get your money matters in check. You’ll also have time to connect with fellow attendees, so be sure to bring your business cards for some light networking. It’s the perfect chance to start the year feeling fresh, focused, and totally on top of things!\n59 North Santa Cruz Avenue\n#Suite H Los Gatos, CA 95030",
+      "source": "eventbrite",
+      "scraped_at": "2026-02-16T16:56:20.384Z"
+    },
+    {
+      "id": 27,
+      "selected": false,
+      "title": "Silicon Valley Speed Dating for 30s/40s",
+      "time_display": "Wednesday 02/25 7:00 PM",
+      "location": "15 North Santa Cruz Avenue, Los Gatos, CA 95030",
+      "price": "From $33.85",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/silicon-valley-speed-dating-for-30s40s-tickets-1982097452838?aff=ebdssbcitybrowse",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Meet new friends, 5 minutes at a time, at a fun venue! Ages 30s and 40s. Dress to impress! Wednesday...",
+      "description_detail": "Meet new friends, 5 minutes at a time, at a fun venue! Ages 30s and 40s. Dress to impress! Wednesday, Feb 25, 2026, 7-9pm.\nDISCOUNT TICKETS: $30/early birds; $45/advance; $55/door, if space permits. Please purchase at least one drink, so this venue has us back again!\nLOCATION: Heritage Pub and Chop House, 15 N Santa Cruz Avenue, Los Gatos CA. Free parking in back and also on the street.\n6:45-7:00pm Registration.\n7:00 – 7:15 Speed Dating Introduction\n7:15 – 9:00 Speed Dating\nWe often sell out, and strongly suggest securing a spot online. Your spot will be given away if you have not checked in by 7:15 PM\nCO-SPONSORED by The Society of Single Professionals, Singles Bay Area, BayAreaFun.org, and dozens of singles organizations and meetups. All events benefit The Seva Foundation, to restore sight to the blind.\nMORE PARTIES at www.thepartyhotline.com.\n· Meet Your Valentine Mixer & Disco Party, Feb 7, San Francisco\n· Valentines Day Celebration, adults of all ages, Feb 14, Sunnyvale\n· Presidents Weekend Speed Dating, 25-45, Feb 15, San Jose\n· Silicon Valley Speed Dating, 45-65, Feb 18, Campbell\n· Marin Speed Dating, 30s/40s, Feb 22, Tiburon\n· Silicon Valley Speed Dating, 30s/40s, Feb 25, Los Gatos\n· East Bay Speed Dating, 30s/40s, March 1, Lafayette\n· Yoga for Singles, all ages, March 8, San Rafael\n· St Patrick’s Day Celebration, March 14, Sausalito\n· 50 & Fabulous, 50+, March 15, Tiburon\n· Silicon Valley Speed Dating, 30s/40s, March 25, Campbell\nFOLLOW US ON INSTAGRAM.\nVIDEO from our New Years Eve Bash.\nMeet new friends, 5 minutes at a time, at a fun venue! Ages 30s and 40s. Dress to impress! Wednesday, Feb 25, 2026, 7-9pm.\nDISCOUNT TICKETS: $30/early birds; $45/advance; $55/door, if space permits. Please purchase at least one drink, so this venue has us back again!\nLOCATION: Heritage Pub and Chop House, 15 N Santa Cruz Avenue, Los Gatos CA. Free parking in back and also on the street.\n6:45-7:00pm Registration.",
+      "source": "eventbrite",
+      "scraped_at": "2026-02-16T16:56:20.387Z"
+    },
+    {
+      "id": 28,
+      "selected": false,
+      "title": "The ADU Event You Can’t Afford to Miss",
+      "time_display": "Saturday 02/28 10:00 AM",
+      "location": "180 East Sunnyoaks Avenue, #bldg 2 Campbell, CA 95008",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/the-adu-event-you-cant-afford-to-miss-tickets-1981909447509?aff=ebdssbcitybrowse",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Four Experts. One Showroom. Come visit us at our open house, and learn about the process of building...",
+      "description_detail": "Four Experts. One Showroom.\nCome visit us at our open house, and learn about the process of building an ADU in your backyard. You'll have an opportunity to tour the showroom, see some of our best products, and meet our team members.\nWe're excited to show you what we have to offer, and we hope you'll join us!\nFour Experts. One Showroom.\nCome visit us at our open house, and learn about the process of building an ADU in your backyard. You'll have an opportunity to tour the showroom, see some of our best products, and meet our team members.\nWe're excited to show you what we have to offer, and we hope you'll join us!\n180 East Sunnyoaks Avenue\n#bldg 2 Campbell, CA 95008",
+      "source": "eventbrite",
+      "scraped_at": "2026-02-16T16:56:20.387Z"
+    },
+    {
+      "id": 29,
+      "selected": false,
+      "title": "Kindergarten Readiness Class at DaVinci Academy",
+      "time_display": "Saturday 02/28 10:15 AM",
+      "location": "1 West Campbell Avenue, Building A Campbell, CA 95008",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/kindergarten-readiness-class-at-davinci-academy-tickets-1981595973901?aff=ebdssbcitybrowse",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Experience the Kindergarten classroom with DaVinci Academy teachers on a Saturday morning. Join us F...",
+      "description_detail": "Experience the Kindergarten classroom with DaVinci Academy teachers on a Saturday morning. \nJoin us February 28th, 2026\nFor one hour, children participate in short lessons in reading, math, and handwriting, providing a gentle introduction to the DaVinci Program.\nChildren participate in activities and lessons while one parent is present in the classroom to observe the child's engagement and interaction with the teacher and activities.\nKindergarten is a step up from preschool and pre-K, requiring a bit more focus with distinct time periods for academic progress. Participation, following directions and a child's interest and willingness are important aspects of readiness.\nDoors open at 10:15 a.m. and close at 10:30 a.m. when the lesson begins. Afterward, teachers and admissions staff are on hand to answer questions and to schedule personal tours for parents during school hours.\nExperience the Kindergarten classroom with DaVinci Academy teachers on a Saturday morning. \nJoin us February 28th, 2026\nFor one hour, children participate in short lessons in reading, math, and handwriting, providing a gentle introduction to the DaVinci Program.\nChildren participate in activities and lessons while one parent is present in the classroom to observe the child's engagement and interaction with the teacher and activities.\nKindergarten is a step up from preschool and pre-K, requiring a bit more focus with distinct time periods for academic progress. Participation, following directions and a child's interest and willingness are important aspects of readiness.\nDoors open at 10:15 a.m. and close at 10:30 a.m. when the lesson begins. Afterward, teachers and admissions staff are on hand to answer questions and to schedule personal tours for parents during school hours.\nPlease order your ticket under the name of the parent who will attend with the child. Only one ticket is needed for each parent with child.\nWe're looking forward to meeting you and your child!",
+      "source": "eventbrite",
+      "scraped_at": "2026-02-16T16:56:20.388Z"
+    },
+    {
+      "id": 30,
+      "selected": false,
+      "title": "FREE Craft Days at Pennyland Toys",
+      "time_display": "Saturday 02/28 11:00 AM",
+      "location": "1875 S. Bascom Avenue #530, The Pruneyard Shopping Center Campbell, CA 95008",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/free-craft-days-at-pennyland-toys-tickets-1977432421604?aff=ebdssbcitybrowse",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Bring the whole family for free monthly themed crafts for kids at Pennyland Toys in the Pruneyard Ca...",
+      "description_detail": "Bring the whole family for free monthly themed crafts for kids at Pennyland Toys in the Pruneyard Campbell.\nJoin us each month for a fun craft day featuring a different themed craft, perfect for sparking your little ones' creativity.\nBring your kiddos anytime between 11am and 2pm, and all supplies will be provided for them to create their very own masterpieces. These events are ideal for hands-on creativity and making wonderful family memories together.\nDon't miss out on the fun – we can't wait to see you there.\nPennyland Toys is conveniently located across from Pete's Coffee in the Pruneyard Public Square.\nBring the whole family for free monthly themed crafts for kids at Pennyland Toys in the Pruneyard Campbell.\nJoin us each month for a fun craft day featuring a different themed craft, perfect for sparking your little ones' creativity.\nBring your kiddos anytime between 11am and 2pm, and all supplies will be provided for them to create their very own masterpieces. These events are ideal for hands-on creativity and making wonderful family memories together.\nDon't miss out on the fun – we can't wait to see you there.\nPennyland Toys is conveniently located across from Pete's Coffee in the Pruneyard Public Square.\n1875 S. Bascom Avenue #530\nThe Pruneyard Shopping Center Campbell, CA 95008",
+      "source": "eventbrite",
+      "scraped_at": "2026-02-16T16:56:20.388Z"
+    },
+    {
+      "id": 31,
+      "selected": false,
+      "title": "2026 Palo Alto Lantern Festival & Family Fair ｜ 2026 年 Palo Alto 硅谷元宵亲子游园会",
+      "time_display": "Sunday 03/01 11:00 AM",
+      "location": "3700 Middlefield Road, Palo Alto, CA 94303",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/2026-palo-alto-lantern-festival-family-fair-2026-palo-alto-tickets-1980237497662?aff=ebdssbcitybrowse",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Palo Alto 硅谷元宵游园会精彩开启：非遗手工体验、舞狮武术表演、传统文化演出、特色美食集市与儿童趣味游戏轮番登场。适合全家参与，在轻松欢乐的白日时光中感受浓浓的中国元宵节氛围，一起欢聚硅谷！ ...",
+      "description_detail": "Palo Alto 硅谷元宵游园会精彩开启：非遗手工体验、舞狮武术表演、传统文化演出、特色美食集市与儿童趣味游戏轮番登场。适合全家参与，在轻松欢乐的白日时光中感受浓浓的中国元宵节氛围，一起欢聚硅谷！\n🏮 Palo Alto 硅谷元宵游园会 🏮\n👨‍👩‍👧‍👦 适合全家参与，🌕 吃、玩、看、学一次满足，一起在 Palo Alto 感受浓浓的元宵节日氛围，共度一个热闹、温馨、难忘的中国年！\n📣 名额有限，欢迎呼朋唤友，一起来闹元宵！\n---------------------------------------------\nExperience the joy of the Lunar Lantern Festival in the heart of Silicon Valley!The Palo Alto Lantern Festival Fair brings together vibrant traditions and family-friendly fun with hands-on cultural crafts, lion dance and martial arts performances, traditional cultural showcases, a festive food market, and engaging children’s activities.\nDesigned for all ages, this daytime community celebration invites families to relax, explore, and celebrate together—immersing themselves in the warmth, color, and spirit of the Chinese Lantern Festival.\n🎨 Traditional Handicraft ExperiencesDiscover the beauty of Chinese intangible cultural heritage through hands-on craft activities.\n🦁 Lion Dance & Martial Arts PerformancesFeel the energy of rhythmic drums, powerful movements, and dynamic performances.\n🍡 Festive Food MarketEnjoy classic Lantern Festival treats and a variety of popular Asian flavors.\n🎭 Traditional Cultural PerformancesImmerse yourself in the elegance and artistry of time-honored traditions.\n🎈 Children’s Fun & Family GamesInteractive games and activities designed for kids and parents to enjoy together.\n👨‍👩‍👧‍👦 A celebration for the whole family🌕 Eat, play, watch, learn—all in one placeCome together in Palo Alto to celebrate a joyful, lively, and unforgettable Lunar New Year experience in Silicon Valley!\n📣 Spots are limited—invite your friends and family and join us for a festive Lantern Festival celebration!\nPalo Alto 硅谷元宵游园会精彩开启：非遗手工体验、舞狮武术表演、传统文化演出、特色美食集市与儿童趣味游戏轮番登场。适合全家参与，在轻松欢乐的白日时光中感受浓浓的中国元宵节氛围，一起欢聚硅谷！\n🏮 Palo Alto 硅谷元宵游园会 🏮\n👨‍👩‍👧‍👦 适合全家参与，🌕 吃、玩、看、学一次满足，一起在 Palo Alto 感受浓浓的元宵节日氛围，共度一个热闹、温馨、难忘的中国年！\n📣 名额有限，欢迎呼朋唤友，一起来闹元宵！",
+      "source": "eventbrite",
+      "scraped_at": "2026-02-16T16:56:20.388Z"
+    },
+    {
+      "id": 32,
+      "selected": false,
+      "title": "Oakland Ballers \"Lil Ballers\" Youth Program",
+      "time_display": "Sunday 03/01 8:30 AM",
+      "location": "1689 20th Street, Oakland, CA 94607",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/oakland-ballers-lil-ballers-youth-program-tickets-1978900738379?aff=ebdssbcitybrowse",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Come learn baseball from the ground up with the Oakland Ballers! Program is 1-2 Saturdays per month....",
+      "description_detail": "Come learn baseball from the ground up with the Oakland Ballers! Program is 1-2  Saturdays per month.\nJoin the \"Lil Ballers\" program for a FREE fun series of baseball camps. This program of camps will occur once a month for the rest of the year. Our camp introduces baseball to kids ages 4-7. This program will feature fun drills and exercises to develop baseball skills, in addition to social and emotional learning techniques taught by our amazing coaching staff. New for 2026- once you have signed up, you are welcome to come to any of our sessions.\n1/10, 1/24, 2/7, 3/1, 3/14, 4/11, 5/23\nBrought to you by Rubenstein Supply and McGuire& Hester\nIn partnership with Loyal to My Soil, 2CoachU, and Oakland Parks, Recreation, and Youth Development (OPRYD).\nCome learn baseball from the ground up with the Oakland Ballers! Program is 1-2  Saturdays per month.\nJoin the \"Lil Ballers\" program for a FREE fun series of baseball camps. This program of camps will occur once a month for the rest of the year. Our camp introduces baseball to kids ages 4-7. This program will feature fun drills and exercises to develop baseball skills, in addition to social and emotional learning techniques taught by our amazing coaching staff. New for 2026- once you have signed up, you are welcome to come to any of our sessions.\n1/10, 1/24, 2/7, 3/1, 3/14, 4/11, 5/23\nBrought to you by Rubenstein Supply and McGuire& Hester\nIn partnership with Loyal to My Soil, 2CoachU, and Oakland Parks, Recreation, and Youth Development (OPRYD).",
+      "source": "eventbrite",
+      "scraped_at": "2026-02-16T16:56:20.390Z"
+    },
+    {
+      "id": 33,
+      "selected": false,
+      "title": "2nd Annual East Bay All Stars @ Jupiter",
+      "time_display": "Sunday 03/01 1:00 PM",
+      "location": "2181 Shattuck Avenue, Berkeley, CA 94704",
+      "price": "From $39.19",
+      "event_type": "food",
+      "priority": 6,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/2nd-annual-east-bay-all-stars-jupiter-tickets-1981538346536?aff=ebdssbdestsearch",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Try an array of 16 of the best local beers and vote for your favorite in a blind taste test. Join us...",
+      "description_detail": "Try an array of 16 of the best local beers and vote for your favorite in a blind taste test. Join us for  East Bay All Stars on March 1st!\nCome join us for a beer showdown at Jupiter on Shattuck Avenue in Berkeley, CA, USA! Don't miss out on this epic battle of the East Bay's finest! The East Bay is home to some of the best small breweries in the nation, producing world-class beers of all styles. Whether you like hoppy IPAs, biscuit-y Czech-style pilsners, bold imperial stouts, or fruit-forward sours, the Bay has the best of the best.Yet, on March 1st, there can only be one.\nThe competition will be split into 4 brackets over two rounds of blind tastes. The four brackets will include beer categories as follows:\nRound 1, each division will host four beers within their respective category, leaving you to vote for your favorite in each division.\nAfter tallying the votes, we will reveal the beers knocked out of the competition. The winners of each division will be kept a secret and announced only by tap number (the mystery is all part of the fun~!). In Round 2 these 4 drastically different division favorites will compete through a second round of tasting to determine the East Bay's favorite!\nOf course, this is a blind taste test! While the true beer connoisseurs might be able to recognize some of the beers, please don't spoil the fun!\nParticipating breweries will be:\nRound 1: Try a taster pour of all16 beers available. Tasting will happen from 1pm - 2:45pm .\nOnce you've tried all the beers in Round 1, please select ONE BEER PER DIVISION that you feel truly embodies the best of what the bay has to offer then turn in your voting card under the redwood tree. Last call for voting will be 3 PM, although we'll walk around and make sure everyone gets a chance to vote.\nAround 3:15pm, the winner of Round 1 will be announced, only revealing the beers knocked out of the competition.\nRound 2: Enjoy additional taster pours of the 4 division winners.",
+      "source": "eventbrite",
+      "scraped_at": "2026-02-16T16:56:20.391Z"
+    },
+    {
+      "id": 34,
+      "selected": false,
+      "title": "Cask & Queso - A Cask and Cheese Pairing Event",
+      "time_display": "Friday 02/27 6:00 PM",
+      "location": "651A West Tower Avenue, Alameda, CA 94501",
+      "price": "$76.49",
+      "event_type": "food",
+      "priority": 6,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/cask-queso-a-cask-and-cheese-pairing-event-tickets-1982240153660?aff=ebdssbdestsearch",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "An unforgettable evening of English-style cask ales paired with an incredible selection of cheeses. ...",
+      "description_detail": "An unforgettable evening of English-style cask ales paired with an incredible selection of cheeses.\nCask & Queso – A Cask & Cheese Pairing Event\n📍 The Rake at Admiral Maltings\n📅 Friday, February 27, 2025\nWe’re bringing back Cask & Queso for SF Beer Week with a fresh twist! Join us at The Rake at Admiral Maltings for an unforgettable evening of English-style cask ales paired with an incredible selection of cheeses from Farmstead Cheese & Wine, plus the addition of German-style Stichfass kegs pouring alongside the cask beers.\n🍺 12 local cask beers, all brewed with Admiral’s premium malt\n🧀 Cheese pairings carefully chosen to complement our cask brews\n🍻 A special selection of Stichfass kegs, offering another layer of unique flavors\n🎉 A fun and lively atmosphere to sip, savor, and celebrate craft beer\nCask beer offers a one-of-a-kind tasting experience with its natural carbonation and evolving flavors. It’s a style of beer that lets the brewer’s craftsmanship shine, and we’re thrilled to share it with you in a whole new way this year.\nWhether you’re a longtime fan or new to cask beer, don’t miss this special event. Get your tickets now before they sell out!\nGeneral Admission ticket includes unlimited beer tasting (limited to featured casks) and cheese plate featuring (five cheeses). Additional beverages, cheeses, and other menu items available for purchase.\nAn unforgettable evening of English-style cask ales paired with an incredible selection of cheeses.\nCask & Queso – A Cask & Cheese Pairing Event\n📍 The Rake at Admiral Maltings\n📅 Friday, February 27, 2025\nWe’re bringing back Cask & Queso for SF Beer Week with a fresh twist! Join us at The Rake at Admiral Maltings for an unforgettable evening of English-style cask ales paired with an incredible selection of cheeses from Farmstead Cheese & Wine, plus the addition of German-style Stichfass kegs pouring alongside the cask beers.",
+      "source": "eventbrite",
+      "scraped_at": "2026-02-16T16:56:20.392Z"
+    },
+    {
+      "id": 35,
+      "selected": false,
+      "title": "A Freakin' DeyLicious Valentine's Event!",
+      "time_display": "Friday 02/27 6:00 PM",
+      "location": "160 Ellis St, San Francisco, CA 94102",
+      "price": "$99",
+      "event_type": "food",
+      "priority": 6,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/a-freakin-deylicious-valentines-event-tickets-1977424868011?aff=ebdssbdestsearch",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Join us for an evening of dinner and love stories! Join Chef Ranjan Dey and Dr. Nandita Dinesh for a...",
+      "description_detail": "Join us for an evening of dinner and love stories!\nJoin Chef Ranjan Dey and Dr. Nandita Dinesh for an intimate evening exploring the connections between food and love! Tickets limited!\nJoin us for an evening where cuisine, culture, and conversation intertwine.\nEach month, Chef Ranjan Dey — owner of San Francisco’s beloved New Delhi Restaurant — and Dr. Nandita Dinesh invite you to gather around their table for a dining experience that transcends the plate. In honor of Valentine's Day, February's theme will be about love! From cooking for your loved ones to falling in love over a plate of something delicious, we'll share about all the ways food and love are intertwined.\nEach intimate gathering brings to life a story and recipe from Ranjan’s forthcoming memoir, Freakin’ DEYlicious — paired with the cultural celebrations and milestones of the month. Over two immersive hours, expect an evening of flavors, stories, and heartfelt exchange.\nA Thoughtfully Curated MealEnjoy a three-course menu centered around one signature dish from Freakin’ Deylicious, crafted to honor the cultural theme of the evening.\nStories & Conversations That NourishDr. Dinesh will guide an open-table dialogue inspired by February's featured story, while Chef Dey shares the personal and cultural roots behind each recipe.\nA Truly Human Dining ExperienceCome curious. Leave connected — with a full belly, a featured recipe to recreate at home, and a new perspective on how food preserves and communicates culture.\nDate: Friday, February 27, 2026Time: 6:00 PM – 8:00 PMSchedule: Last Friday of each monthCost: $99 per person plus feesIncludes:\nRefund Policy:We’re unable to offer refunds, but you may transfer your ticket to someone else or reschedule for another month. Please email nanditadinesh@gmail.com for any changes.\nParking:Validated valet parking is available next door at Hotel Nikko — exclusively for New Delhi Restaurant guests.$35 for the first 3 hours.",
+      "source": "eventbrite",
+      "scraped_at": "2026-02-16T16:56:20.392Z"
+    },
+    {
+      "id": 36,
+      "selected": false,
+      "title": "Dim Sum Beer Brunch 2026",
+      "time_display": "Saturday 02/28 1:30 PM",
+      "location": "5322 Geary Boulevard, San Francisco, CA 94121",
+      "price": "$80",
+      "event_type": "food",
+      "priority": 6,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/dim-sum-beer-brunch-2026-tickets-1980409099929?aff=ebdssbdestsearch",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Dim Sum Beer Brunch is back! Join us at Hong Kong Lounge for an afternoon of flowing dumplings, peki...",
+      "description_detail": "Dim Sum Beer Brunch is back! Join us at Hong Kong Lounge for an afternoon of flowing dumplings, peking duck, and cold fizzy beer!\nJoin us at Hong Kong Lounge for our longest standing and most beloved event: Dim Sum Beer Brunch! Bring your crew and enjoy lazy susans teeming with soup dumplings, platters of Peking duck, pork buns, and other dim sum classics served alongside all the cold, fizzy Fort Point beer & cider your heart desires.\nTo reserve a table for your whole group, be sure to purchase 8-10 tickets in one transaction. For purchases of 7 tickets or fewer, seating is communal. Tax and gratuity are included in your ticket price. Please note, we are not able to accommodate dietary restrictions.\n*Note: this is a +21 event, however, attendees may bring babies and toddlers under 3 years old. High chairs are available.\nPurchase tickets, but can't make it? Email us at shop@fortpointbeer.com. Our cancellation policy allows for refunds if requested at least 4 days prior to the event.\nDim Sum Beer Brunch is back! Join us at Hong Kong Lounge for an afternoon of flowing dumplings, peking duck, and cold fizzy beer!\nJoin us at Hong Kong Lounge for our longest standing and most beloved event: Dim Sum Beer Brunch! Bring your crew and enjoy lazy susans teeming with soup dumplings, platters of Peking duck, pork buns, and other dim sum classics served alongside all the cold, fizzy Fort Point beer & cider your heart desires.\nTo reserve a table for your whole group, be sure to purchase 8-10 tickets in one transaction. For purchases of 7 tickets or fewer, seating is communal. Tax and gratuity are included in your ticket price. Please note, we are not able to accommodate dietary restrictions.\n*Note: this is a +21 event, however, attendees may bring babies and toddlers under 3 years old. High chairs are available.\nPurchase tickets, but can't make it? Email us at shop@fortpointbeer.com. Our cancellation policy allows for refunds if requested at least 4 days prior to the event.",
+      "source": "eventbrite",
+      "scraped_at": "2026-02-16T16:56:20.394Z"
+    },
+    {
+      "id": 37,
+      "selected": false,
+      "title": "Castro Wine Walk",
+      "time_display": "Thursday 02/26 6:00 PM",
+      "location": "2166 Market Street, San Francisco, CA 94114",
+      "price": "$40",
+      "event_type": "food",
+      "priority": 6,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/castro-wine-walk-tickets-1979106711450?aff=ebdssbdestsearch",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Join us for the Castro Wine Walk! Sip seasonal pours, sip and stroll through local businesses, and c...",
+      "description_detail": "Join us for the Castro Wine Walk! Sip seasonal pours, sip and stroll through  local businesses, and celebrate in the gayborhood. ✨\n🍷✨ Castro Wine Walk ✨🍷\nRaise a glass- it's time to Wine Walk in the Castro! On February 26, the Castro Merchants Association is uncorking the Castro Wine Walk, where you can sip, swirl, and stroll through local participating businesses.\nEnjoy seasonal pours- from bold reds to sparkling sips, while soaking in the vibes and neighborhood spirit. Each stop will feature a unique wine and a warm welcome, making it the perfect evening to connect with friends, neighbors, and fellow wine lovers, all while supporting local businesses.\n🍷  Countless Wines. One Festive Night.Whether you’re here for the pinot, the people-watching, or just an excuse to say cheers, queers, the Castro Wine Walk is the perfect way to celebrate the season.\nTickets are limited—grab yours today and toast to fall in the Castro! 🌈🍁\nParticipating Businesses:\nJoin us for the Castro Wine Walk! Sip seasonal pours, sip and stroll through  local businesses, and celebrate in the gayborhood. ✨\n🍷✨ Castro Wine Walk ✨🍷\nRaise a glass- it's time to Wine Walk in the Castro! On February 26, the Castro Merchants Association is uncorking the Castro Wine Walk, where you can sip, swirl, and stroll through local participating businesses.\nEnjoy seasonal pours- from bold reds to sparkling sips, while soaking in the vibes and neighborhood spirit. Each stop will feature a unique wine and a warm welcome, making it the perfect evening to connect with friends, neighbors, and fellow wine lovers, all while supporting local businesses.\n🍷  Countless Wines. One Festive Night.Whether you’re here for the pinot, the people-watching, or just an excuse to say cheers, queers, the Castro Wine Walk is the perfect way to celebrate the season.\nTickets are limited—grab yours today and toast to fall in the Castro! 🌈🍁\nParticipating Businesses:\nRefunds up to 7 days before event\nSan Francisco, CA 94114",
+      "source": "eventbrite",
+      "scraped_at": "2026-02-16T16:56:20.394Z"
+    },
+    {
+      "id": 38,
+      "selected": false,
+      "title": "Hands-On Pizza Making: Pizza Napoletana with Rossopomodoro",
+      "time_display": "Tuesday 02/24 6:00 PM",
+      "location": "2855 Stevens Creek Boulevard, San Jose, CA 95128",
+      "price": "$124.40",
+      "event_type": "food",
+      "priority": 6,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/hands-on-pizza-making-pizza-napoletana-with-rossopomodoro-tickets-1981397668765?aff=ebdssbdestsearch",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "It’s time to get your hands messy! In our hands-on format, our Scuola Chef will guide you through ho...",
+      "description_detail": "It’s time to get your hands messy! In our hands-on format, our Scuola Chef will guide you through how to prepare Pizza Napoletana.\nIt’s time to get your hands messy! In our hands-on format, our Scuola Chef will prepare the signature dish for you to taste in class. You’ll then dive right in to making the recipe yourself from scratch. Take your culinary creation with you at the end of class and enjoy your own hard work at home!\nAbout this Dish: Welcome to the world of pizza! There are many different types of pizza across Italy. One of the most famous styles of pizza, Pizza Napoletana is a round dough that is baked for only 90 seconds in a blisteringly hot wood-fired oven. The crust is tall and fluffy with a soft and chewy center. In this class, you’ll make your own pizza dough from scratch.\nIn this Class You Will:\nPayment in full is required at the time of registration and all sales are final. No refunds are offered on classes and events. For groups of 5-10 guests, a minimum of 7 days' notice (class day not included) is required to receive a credit in the form of a coupon for a future class or event. For groups of up to 4 guests, a minimum of 4 days' notice (class day not included) is required to receive a credit in the form of a coupon code for a future class or event at La Scuola. We reserve the right to reschedule or cancel a class or event due to unforeseen circumstances, inclement weather or otherwise. In the event of a class or event cancellation, we will contact you directly at the phone number or email address you have provided to offer a full refund or credit to transfer to a future class or event. While we are not able to offer credit, transfers or refunds for last-minute illnesses, work-related conflicts, personal emergencies or events beyond our control, you are always welcome to send someone in your place, as we understand that these things do happen.",
+      "source": "eventbrite",
+      "scraped_at": "2026-02-16T16:56:20.397Z"
+    },
+    {
+      "id": 39,
+      "selected": false,
+      "title": "An Iconic Napa Valley Evening: Grgich Hills Wine Dinner at Quattro",
+      "time_display": "Thursday 02/26 5:00 PM",
+      "location": "2050 University Avenue, East Palo Alto, CA 94303",
+      "price": "$248.25",
+      "event_type": "food",
+      "priority": 6,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/an-iconic-napa-valley-evening-grgich-hills-wine-dinner-at-quattro-tickets-1979788885852?aff=ebdssbdestsearch",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Get ready to indulge in a culinary journey with Grgich Hills wines at Quattro - an evening to rememb...",
+      "description_detail": "Get ready to indulge in a culinary journey with Grgich Hills wines at Quattro - an evening to remember!\nDate: Thursday, February 26, 2026Time: 5:00 PM – 8:30 PMLocation: Quattro Restaurant, Four Seasons Hotel Silicon Valley, Palo Alto, CA\nJoin us for an exclusive Grgich Hills Wine Dinner at Quattro Restaurant, celebrating the legendary Napa Valley winery known for its rich history and award-winning varietals. Attending this event will be Ms. Violet Grgich\nThis one-night-only event features a multi-course gourmet menu thoughtfully paired with Grgich Hills’ exceptional wines, creating a dining experience that highlights balance, depth, and flavor.\nGuests will have the rare opportunity to meet Violet Grgich, President of Grgich Hills Estate and daughter of legendary winemaker Miljenko “Mike” Grgich. Violet brings decades of expertise and a passion for sustainability, leading one of Napa Valley’s most iconic wineries with a commitment to crafting world-class wines. Don’t miss this chance to celebrate exceptional wine, exquisite cuisine, and inspiring conversation with one of the industry’s most influential figures.\nThe evening begins with complimentary canapés and a welcome pour, followed by a relaxed, seated dinner designed to unfold at an elegant pace.\nGet ready to indulge in a culinary journey with Grgich Hills wines at Quattro - an evening to remember!\nDate: Thursday, February 26, 2026Time: 5:00 PM – 8:30 PMLocation: Quattro Restaurant, Four Seasons Hotel Silicon Valley, Palo Alto, CA\nJoin us for an exclusive Grgich Hills Wine Dinner at Quattro Restaurant, celebrating the legendary Napa Valley winery known for its rich history and award-winning varietals. Attending this event will be Ms. Violet Grgich\nThis one-night-only event features a multi-course gourmet menu thoughtfully paired with Grgich Hills’ exceptional wines, creating a dining experience that highlights balance, depth, and flavor.",
+      "source": "eventbrite",
+      "scraped_at": "2026-02-16T16:56:20.397Z"
+    },
+    {
+      "id": 40,
+      "selected": false,
+      "title": "SF’s “Castro Wine Walk” (2026)",
+      "time_display": "Thursday 02/26 6:00 PM - 9:00 PM",
+      "location": "The Academy, San Francisco",
+      "price": "$40*",
+      "event_type": "food",
+      "priority": 6,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/sfs-castro-wine-walk-2026/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2026-02-16T16:47:22.166Z"
+    }
+  ]
+}
