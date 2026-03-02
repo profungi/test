@@ -1,0 +1,869 @@
+{
+  "review_id": "review_2026-03-02_1707_l6a",
+  "generated_at": "2026-03-02T17:07:10.613Z",
+  "scrape_date": "2026-03-02",
+  "target_week": "2026-03-09_to_2026-03-15",
+  "target_week_readable": "下周 (03/09 - 03/15)",
+  "scraping_report": {
+    "total_scraped": 105,
+    "after_deduplication": 92,
+    "after_classification": 92,
+    "classification_report": {
+      "totalEvents": 92,
+      "eventTypes": {
+        "free": 31,
+        "other": 7,
+        "art": 22,
+        "music": 8,
+        "food": 5,
+        "festival": 7,
+        "market": 9,
+        "fair": 3
+      },
+      "priorityLevels": {
+        "3": 7,
+        "4": 8,
+        "5": 22,
+        "6": 5,
+        "9": 31,
+        "10": 19
+      },
+      "chineseRelevant": 0,
+      "topPriorityEvents": 50
+    }
+  },
+  "instructions": {
+    "how_to_review": "将你想要发布的活动的 'selected' 字段改为 true",
+    "next_step": "保存文件后运行: npm run generate-post [此文件路径]",
+    "fields_explanation": {
+      "title": "活动标题",
+      "time_display": "显示用的时间格式",
+      "location": "活动地点",
+      "price": "票价信息",
+      "event_type": "AI识别的活动类型",
+      "priority": "优先级分数 (越高越重要)",
+      "chinese_relevant": "是否与中文社区相关",
+      "original_url": "原始活动链接"
+    }
+  },
+  "stats": {
+    "total_candidates": 40,
+    "by_type": {
+      "festival": 7,
+      "market": 9,
+      "fair": 3,
+      "free": 13,
+      "food": 5,
+      "art": 3
+    },
+    "by_priority": {
+      "5": 3,
+      "6": 5,
+      "9": 13,
+      "10": 19
+    },
+    "chinese_relevant": 0
+  },
+  "events": [
+    {
+      "id": 1,
+      "selected": false,
+      "title": "2026 California Hong Kong Cantonese Opera Festival",
+      "time_display": "Saturday 03/14 12:30 PM",
+      "location": "701 Mission Street, San Francisco, CA 94103",
+      "price": "$95.75",
+      "event_type": "festival",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/2026-california-hong-kong-cantonese-opera-festival-tickets-1984091560267?aff=ebdssbdestsearch",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Get ready to dive into the vibrant world of Cantonese opera with amazing performances and cultural v...",
+      "description_detail": "Get ready to dive into the vibrant world of Cantonese opera with amazing performances and cultural vibes!\nGet ready to dive into the vibrant world of Cantonese opera with amazing performances and cultural vibes!\nSan Francisco, CA 94103",
+      "source": "eventbrite",
+      "scraped_at": "2026-03-02T17:00:48.813Z"
+    },
+    {
+      "id": 2,
+      "selected": false,
+      "title": "San Francisco St. Patrick's Day Pub Crawl: LepraCon",
+      "time_display": "Saturday 03/14 2:00 PM",
+      "location": "1233 Polk Street, San Francisco, CA 94109",
+      "price": "From $7.18",
+      "event_type": "festival",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/san-francisco-st-patricks-day-pub-crawl-lepracon-tickets-1981461681228?aff=ebdssbdestsearch",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "San Francisco's Biggest St. Patrick's Day Party Every March, San Francisco turns a little greener, a...",
+      "description_detail": "San Francisco's Biggest St. Patrick's Day Party\nEvery March, San Francisco turns a little greener, a little louder & a lot more fun. November and December are filled with friends, family, presents and usually a little time off of work, but the beginning of the year is always a little slow as you get back into your routine. However, as March gets closer, you can feel the excitement brewing as all the upcoming concerts, festival lineups and special events get announced. St. Patrick's Day is the day that kickstarts the fun stuff for the year.\nFor more than a decade, the city’s St. Patrick’s Day Pub Crawl has been the official start to the fun of the new year, bringing thousands of people into the streets, bars and neighborhoods that know how to throw a proper party. For 2026, Saturday, March 14 is the day it all comes together.\nProduced by CrawlSF, San Francisco’s original pub crawl company, the San Francisco St. Patrick’s Day Pub Crawl is the biggest St. Patrick’s Day party in the city. Over 10,000 people will flood The Marina, Nob Hill, Russian Hill, Polk Gulch and more for a full day of bar hopping, music and cheap drinks. It’s the kind of event that feels less like a bar crawl and more like a moving festival that heads to one neighborhood at a time.\nSaturday is the heart of the weekend. Starting in the afternoon and rolling well into the night, the crawl brings together party people who treat this event as a yearly tradition. Bars open their doors early, DJs turn things up and the streets fill with green outfits, Irish cheer and that rare San Francisco energy where everyone feels like they’re part of the same plan.\nWhat makes this crawl special isn’t just the size (although it’s massive). It’s the drinks, djs bars and, most importantly, all the awesome and fun people who attend CrawlSf events. Participants check in, grab their wristbands and maps & then move freely between some of the city’s best neighborhoods.",
+      "source": "eventbrite",
+      "scraped_at": "2026-03-02T17:00:48.813Z"
+    },
+    {
+      "id": 3,
+      "selected": false,
+      "title": "Official St. Patrick's Day San Francisco Bar Crawl 2026",
+      "time_display": "Saturday 03/14 12:00 PM",
+      "location": "3192 16th Street, San Francisco, CA 94103",
+      "price": "From $7.18",
+      "event_type": "festival",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/official-st-patricks-day-san-francisco-bar-crawl-2026-tickets-1981513952573?aff=ebdssbdestsearch",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Official St. Patrick's Day San Francisco Bar Crawl 2026 Welcome to St. Patrick’s Day SF 2026, the ul...",
+      "description_detail": "Official St. Patrick's Day San Francisco Bar Crawl 2026\nWelcome to St. Patrick’s Day SF 2026, the ultimate celebration! ☘️ This year, thousands of party-goers, leprechauns, and lucky bar crawlers from all over the city will gather for an unforgettable event. Join us in the lively Mission District, where the official St. Patrick’s Day bar crawl will take over San Francisco’s best bars and nightclubs.\nOn Saturday, March 14th, the Mission will be bursting with spirit as the streets fill with green from bar to bar. From classic shamrock fits and leprechaun suits to creative, outrageous, and stylish green looks — everyone is welcome to bring their own flavor to this legendary St. Patrick’s Day party in SF.\nParticipating venues will offer a stacked lineup of craft cocktails, St. Patrick’s Day inspired specials, green drinks, and festive surprises to keep the party going all day and night. Enjoy festive cocktails, green beer, high-energy dance floors, and nonstop music as DJs set the tone for one of the biggest St. Patrick’s Day Pub Crawls in SF.\nAs we celebrate, let’s make safety a priority. Please drink responsibly, stay hydrated, and respect your fellow bar crawlers and the local community. Let’s make this a memorable and spirited event for everyone.\nMark your calendars and get ready to explore the Mission, enjoy incredible drinks, and celebrate with thousands of others dressed in green at the biggest St. Patrick’s Day bar crawl in San Francisco. Let’s get lucky. ☘️\n🚨 FREE ENTRY TO 7+ FESTIVE BARS & NIGHTCLUBS!\n🕺LIVE DJS AND ENTERTAINMENT AT SELECT VENUES!\n☘️ JOIN THE LUCKIEST ST. PATRICK'S DAY BAR CRAWL IN SF!\n🍻 EXCLUSIVE HOLIDAY DRINK SPECIALS!\nParticipating venues include:\nSoundtrack...and more to be announced!\nAccess to all participating bars is limited to those with StPatricksDaySF.com event wristbands, and the list of venues may be updated.\nOfficial St. Patrick's Day San Francisco Bar Crawl 2026\nWelcome to St. Patrick’s Day SF 2026, the ultimate celebration!",
+      "source": "eventbrite",
+      "scraped_at": "2026-03-02T17:00:48.814Z"
+    },
+    {
+      "id": 4,
+      "selected": false,
+      "title": "Agave Girls at Copita hosted by Joanne Weir - Women's History Month Edition",
+      "time_display": "Tuesday 03/10 6:00 PM",
+      "location": "739 Bridgeway, Sausalito, CA 94965",
+      "price": "$125",
+      "event_type": "festival",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/agave-girls-at-copita-hosted-by-joanne-weir-womens-history-month-edition-tickets-1982626863319?aff=ebdssbdestsearch",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Join us in Sausalito as we celebrate women together with great food, fun friends, and tequila from V...",
+      "description_detail": "Join us in Sausalito as we celebrate women together with great food, fun friends, and tequila from Volans on Tuesday, March10!\nJoin us for a very special evening as we gather together to celebrate Women's History Month at Copita in Sausalito on Tuesday, March 10. The festivities will be led by the original Agave Girl herself, Joanne Weir, star of the PBS program \"Joanne Weir's Plates and Places\" and author of Tequila: A Guide to Types, Flights, Cocktails and Bites.\nAgave Girls promises to be another fun, informative and entertaining evening of tequila and cocktail tasting, delicious food and wonderful camaraderie. Enjoy passed appetizers, a tasting flight of tequila, and a three-course sit-down dinner paired with tequila cocktails featuring the wonderful award-winning tequilas of Volans. As in the past, we'll start with a cocktail reception and a chance to mingle with Joanne and other like-minded women. Then we'll enjoy a dinner featuring Copita Sausalito Executive Chef Candy Diaz's culinary wonders paired with Volans' ultra-premium tequilas.\nVolans is a family-owned tequila made at El Pandillo distillery in Los Altos de Jalisco, Mexico. What makes Volans truly unique is the blend of three distinct water sources used in production: deep well water from over 450 feet below ground, spring water from an artesian source high in the mountains, and rainwater collected during summer months. This gentle mix of mineral-rich and soft waters creates Volans' signature flavor profile. Crafted using a traditional 100% mechanical tahona process by master distiller Felipe Camarena, each batch honors centuries-old methods while delivering exceptional quality and taste.\nThe doors open at 6pm and the seated dinner starts at 6:30pm. The cost for this event is $125 per person and includes tax, gratuity and Eventbrite fees. Tickets must be purchased in advance.",
+      "source": "eventbrite",
+      "scraped_at": "2026-03-02T17:00:48.814Z"
+    },
+    {
+      "id": 5,
+      "selected": false,
+      "title": "SF HOLI SUNDOWNER (Rooftop Bollywood Party)",
+      "time_display": "Saturday 03/14 5:00 PM",
+      "location": "50 8th St, San Francisco, CA 94103",
+      "price": "From $23.18",
+      "event_type": "festival",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/sf-holi-sundowner-rooftop-bollywood-party-tickets-1982834160350?aff=ebdssbdestsearch",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Get ready to paint the town on March 14th at our Holi Sundowner Rooftop Party! Get ready to paint th...",
+      "description_detail": "Get ready to paint the town on March 14th at our Holi Sundowner Rooftop Party!\nGet ready to paint the town on March 14th at our Holi Sundowner Rooftop Party!\nCelebrate the festival of colors in true style at the BEI Hotel rooftop in San Francisco from 5:00 PM to 9:30 PM. We’re bringing you DJ Brown Buoy with a vibrant mix of Bollywood, Bhangra, and Indo House beats that’ll keep you dancing as the sun goes down.\nWhy You Can’t Miss This:\n• Rooftop Vibes: Enjoy spectacular city views while you immerse yourself in the spirit of Holi.\n• Free Colors Provided: We’ll supply organic colors so you can splash and play without worry.\n• Dress Code: Trendy White – Come dressed in white and leave drenched in every color of happiness.\n• Music & More: DJ Brown Buoy will spin high-energy tracks, blending traditional and modern tunes. Appetizers available for purchase.\n• 21+ Only: Bring your friends (and ID!) for an unforgettable evening of color, music, and rooftop fun.\nSecure Your Spot Now!\nYou don’t want to miss San Francisco’s most colorful rooftop party. Book your ticket today and experience Holi like never before—up high in the skyline, showered in color, and surrounded by incredible beats. Early bird tickets will sell out fast!\nLet’s paint the sky with color and celebration!\nVENUE: Hotel Bei (Rooftop), 50 8th St, San Francisco, CA 94103\n$20 PARKING AVAILABLE AT THE VENUE (until 11pm)\nOvernight Parking: $40\n** SATURDAY MARCH 14th! **\nTO RESERVE BOTTLE SERVICE - TEXT OR CALL 323-482-7070\nOR FOR ANY OTHER BOTTLE PRICING & QUESTIONS, PLEASE EMAIL US AT desibeatzsf@gmail.com\n*********************************************************************************\nEvent Photography & Videography Disclaimer\nBy attending this event, you acknowledge and agree that Desibeatz and its affiliates may capture photos and videos during the event. These materials may be used for promotional, marketing, and social media purposes without any further consent or compensation.",
+      "source": "eventbrite",
+      "scraped_at": "2026-03-02T17:00:48.815Z"
+    },
+    {
+      "id": 6,
+      "selected": false,
+      "title": "San Jose St. Patrick's Day Weekend Bar Crawl 2026",
+      "time_display": "Saturday 03/14 4:00 PM",
+      "location": "73 North San Pedro Street, San Jose, CA 95110",
+      "price": "$35.78",
+      "event_type": "festival",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/san-jose-st-patricks-day-weekend-bar-crawl-2026-tickets-1295804549289?aff=ebdssbdestsearch",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "The Official St Patrick's Day Bar Crawl of 2026! The Official St Patrick's Day Bar Crawl of 2026! Ge...",
+      "description_detail": "The Official St Patrick's Day Bar Crawl of 2026!\nThe Official St Patrick's Day Bar Crawl of 2026!\nGet ready for the San Jose St. Patrick's Day Weekend Bar Crawl on Saturday, March 14th, 2026! Kick off St. Patrick’s Day weekend in San Jose in style by hitting the city’s top bars! Enjoy St. Paddy's drink specials and soak up the festive energy with your crew. This is the must-attend St. Patrick’s Day event of 2026!\nWhether you're Irish at heart or just love an epic party, this bar crawl is your ticket to an unforgettable celebration.Explore the best nightlife spots, enjoy St. Paddy’s vibes, and join hundreds of partygoers rocking their greenest outfits!\nYour ticket to the San Jose St. Patrick’s Day Bar Crawl includes drinks, free entry, drink specials, and a free after party as you bar hop through the best bars in San Jose.\nThe Official San Jose St. Patrick’s Day Weekend Bar Crawl brings together locals and visitors for a high-energy celebration featuring multiple bars, included drinks, exclusive specials, and a free after party — all in one walkable experience. This San Jose St. Patrick’s Day Bar Crawl is one of the most popular St. Patrick’s Day events in San Jose, CA.\n📍 Location: The Old Wagon Saloon & Grill📆 Date: Saturday, March 14th 2026🕒 Time: 4:00 pm - 10:00 pm\nCheck-in begins at The Old Wagon Saloon & Grill between 4:00pm and 8:00pm, where you will receive a wristband granting access to participating bars and drink specials.\nLooking for more events in the area? Explore all upcoming San Jose bar crawls happening throughout the year.\n📧 Contact us: Our 24/7 support team is here to assist!Email info@pubcrawls.com for ticket questions, event details, or anything else.\n🎟️ Don’t miss this year’s best St. Patrick's Day Bar Crawl! Secure your spot now and make St. Patrick’s Day weekend 2026 unforgettable! 🍀🔥\nDisclaimer: Must be 21 years or older to attend with a valid form of government-issued ID. All participating bars and specials may be subject to change.",
+      "source": "eventbrite",
+      "scraped_at": "2026-03-02T17:00:48.819Z"
+    },
+    {
+      "id": 7,
+      "selected": false,
+      "title": "Live Music",
+      "time_display": "Monday 03/09 6:00 PM - 9:00 PM",
+      "location": "San Pedro Square Market, 87 N San Pedro St, San Jose, CA",
+      "price": "Check event page",
+      "event_type": "market",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://sjdowntown.com/event/live-music/2026-03-09/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Experience live music at San Pedro Square Market six days a week! Explore our calendar for the full ...",
+      "description_detail": null,
+      "source": "sjdowntown",
+      "scraped_at": "2026-03-02T16:52:05.542Z"
+    },
+    {
+      "id": 8,
+      "selected": false,
+      "title": "Cinequest 2026",
+      "time_display": "Tuesday 03/10 12:00 AM - Sunday 03/15 11:59 PM",
+      "location": "San Jose, CA",
+      "price": "Check event page",
+      "event_type": "festival",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://sjdowntown.com/event/cinequest-2026/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Cinequest Film & Creativity Festival 2026 lights up Downtown San Jose with a high-energy celebration...",
+      "description_detail": null,
+      "source": "sjdowntown",
+      "scraped_at": "2026-03-02T16:52:05.545Z"
+    },
+    {
+      "id": 9,
+      "selected": false,
+      "title": "Live Music",
+      "time_display": "Tuesday 03/10 6:00 PM - 9:00 PM",
+      "location": "San Pedro Square Market, 87 N San Pedro St, San Jose, CA",
+      "price": "Check event page",
+      "event_type": "market",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://sjdowntown.com/event/live-music/2026-03-10/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Experience live music at San Pedro Square Market six days a week! Explore our calendar for the full ...",
+      "description_detail": null,
+      "source": "sjdowntown",
+      "scraped_at": "2026-03-02T16:52:05.545Z"
+    },
+    {
+      "id": 10,
+      "selected": false,
+      "title": "Jeopardy Bar League",
+      "time_display": "Tuesday 03/10 7:00 PM - 8:00 PM",
+      "location": "Three Sisters Whiskey Bar, 170 W. Saint John St., San Jose, CA",
+      "price": "Check event page",
+      "event_type": "market",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://sjdowntown.com/event/jeopardy-bar-league/2026-03-10/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "ATTENTION TRIVIA LOVERS! San Pedro Square Market is hosting Jeopardy Bar League – the official bar t...",
+      "description_detail": null,
+      "source": "sjdowntown",
+      "scraped_at": "2026-03-02T16:52:05.546Z"
+    },
+    {
+      "id": 11,
+      "selected": false,
+      "title": "Live Music",
+      "time_display": "Wednesday 03/11 6:00 PM - 9:00 PM",
+      "location": "San Pedro Square Market, 87 N San Pedro St, San Jose, CA",
+      "price": "Check event page",
+      "event_type": "market",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://sjdowntown.com/event/live-music/2026-03-11/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Experience live music at San Pedro Square Market six days a week! Explore our calendar for the full ...",
+      "description_detail": null,
+      "source": "sjdowntown",
+      "scraped_at": "2026-03-02T16:52:05.546Z"
+    },
+    {
+      "id": 12,
+      "selected": false,
+      "title": "King Trivia Night",
+      "time_display": "Wednesday 03/11 7:00 PM - 8:00 PM",
+      "location": "SoFA Market, 387 S 1st Street, San Jose, CA",
+      "price": "Check event page",
+      "event_type": "market",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://sjdowntown.com/event/king-trivia-night/2026-03-11/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Your weekly excuse to eat, drink, and outsmart everyone in the room. 👑🧠 Trivia night at SoFA Marke...",
+      "description_detail": null,
+      "source": "sjdowntown",
+      "scraped_at": "2026-03-02T16:52:05.546Z"
+    },
+    {
+      "id": 13,
+      "selected": false,
+      "title": "Dial M For Murder",
+      "time_display": "Thursday 03/12 12:00 AM - 11:59 PM",
+      "location": "City Lights Theater Company, 529 S 2nd St, San Jose, CA",
+      "price": "Check event page",
+      "event_type": "fair",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://sjdowntown.com/event/dial-m-for-murder-2/2026-03-12/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Playwright Jeffrey Hatcher, who wrote City Lights’ 2015 hit Dr. Jekyll and Mr. Hyde, now brings us a...",
+      "description_detail": null,
+      "source": "sjdowntown",
+      "scraped_at": "2026-03-02T16:52:05.547Z"
+    },
+    {
+      "id": 14,
+      "selected": false,
+      "title": "Live Music",
+      "time_display": "Thursday 03/12 6:00 PM - 9:00 PM",
+      "location": "San Pedro Square Market, 87 N San Pedro St, San Jose, CA",
+      "price": "Check event page",
+      "event_type": "market",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://sjdowntown.com/event/live-music/2026-03-12/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Experience live music at San Pedro Square Market six days a week! Explore our calendar for the full ...",
+      "description_detail": null,
+      "source": "sjdowntown",
+      "scraped_at": "2026-03-02T16:52:05.547Z"
+    },
+    {
+      "id": 15,
+      "selected": false,
+      "title": "Dial M For Murder",
+      "time_display": "Friday 03/13 12:00 AM - 11:59 PM",
+      "location": "City Lights Theater Company, 529 S 2nd St, San Jose, CA",
+      "price": "Check event page",
+      "event_type": "fair",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://sjdowntown.com/event/dial-m-for-murder-2/2026-03-13/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Playwright Jeffrey Hatcher, who wrote City Lights’ 2015 hit Dr. Jekyll and Mr. Hyde, now brings us a...",
+      "description_detail": null,
+      "source": "sjdowntown",
+      "scraped_at": "2026-03-02T16:52:05.547Z"
+    },
+    {
+      "id": 16,
+      "selected": false,
+      "title": "Live Music",
+      "time_display": "Friday 03/13 6:00 PM - 9:00 PM",
+      "location": "San Pedro Square Market, 87 N San Pedro St, San Jose, CA",
+      "price": "Check event page",
+      "event_type": "market",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://sjdowntown.com/event/live-music/2026-03-13/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Experience live music at San Pedro Square Market six days a week! Explore our calendar for the full ...",
+      "description_detail": null,
+      "source": "sjdowntown",
+      "scraped_at": "2026-03-02T16:52:05.547Z"
+    },
+    {
+      "id": 17,
+      "selected": false,
+      "title": "Dial M For Murder",
+      "time_display": "Saturday 03/14 12:00 AM - 11:59 PM",
+      "location": "City Lights Theater Company, 529 S 2nd St, San Jose, CA",
+      "price": "Check event page",
+      "event_type": "fair",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://sjdowntown.com/event/dial-m-for-murder-2/2026-03-14/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Playwright Jeffrey Hatcher, who wrote City Lights’ 2015 hit Dr. Jekyll and Mr. Hyde, now brings us a...",
+      "description_detail": null,
+      "source": "sjdowntown",
+      "scraped_at": "2026-03-02T16:52:05.548Z"
+    },
+    {
+      "id": 18,
+      "selected": false,
+      "title": "Hobee&#8217;s Pancake Market",
+      "time_display": "Saturday 03/14 9:00 AM - 2:00 PM",
+      "location": "Hobee&#8217;s, 261 N 2nd street, San Jose, CA",
+      "price": "Check event page",
+      "event_type": "market",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://sjdowntown.com/event/hobees-pancake-market/2026-03-14/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Brunch and Browse LOCAL vendors and artisans Saturdays from 9:00-2:00pm at Hobee&#8217;s Downtown Sa...",
+      "description_detail": null,
+      "source": "sjdowntown",
+      "scraped_at": "2026-03-02T16:52:05.548Z"
+    },
+    {
+      "id": 19,
+      "selected": false,
+      "title": "Live Music",
+      "time_display": "Saturday 03/14 6:00 PM - 9:00 PM",
+      "location": "San Pedro Square Market, 87 N San Pedro St, San Jose, CA",
+      "price": "Check event page",
+      "event_type": "market",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://sjdowntown.com/event/live-music/2026-03-14/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Experience live music at San Pedro Square Market six days a week! Explore our calendar for the full ...",
+      "description_detail": null,
+      "source": "sjdowntown",
+      "scraped_at": "2026-03-02T16:52:05.548Z"
+    },
+    {
+      "id": 20,
+      "selected": false,
+      "title": "Pocket Gamer 20th Anniversary Party San Francisco 2026",
+      "time_display": "Monday 03/09 8:30 PM",
+      "location": "715 Harrison Street, San Francisco, CA 94107",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.co.uk/e/pocket-gamer-20th-anniversary-party-san-francisco-2026-tickets-1978098881002?aff=ebdssbcitybrowsenightlife",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Join us in San Francisco for a special edition of our PG Party during GDC week! Relax and enjoy a dr...",
+      "description_detail": "Join us in San Francisco for a special edition of our PG Party during GDC week! Relax and enjoy a drink with games industry professionals\nKick off those business connections during the awesome GDC week (when we're in town for our reworked & streamlined mobile games industry event, Pocket Gamer Connects Summit San Francisco 2026 [registered attendees get early access to our party!]) by attending another excellent Pocket Gamer Party.\nAll games industry professionals are welcome at 715 Harrison nightclub on the evening of Monday, March 9, for informal networking, drinks, and fun times.N.B. 1: PG Connects Summit San Francisco ticket holders DO NOT to register (PGC ticket includes PG Party access)\nN.B. 2: Please note that a ticket does not guarantee access to the event and that the free bar is limited – access will be granted on a first-come, first served basis and you may need to queue.\nMarch 9, the first evening of GDC week and the first night of PG Connects Summit San Francisco 2026. The party kicks off for all at 8:30pm.\n715 Harrison is a full-feature nightclub and event space (it's also the venue of PG Connects Summit San Francisco 2026) with varied music and dynamic decor. It's about 7 minutes' walk southeast of Moscone.\nJoin us in San Francisco for a special edition of our PG Party during GDC week! Relax and enjoy a drink with games industry professionals\nKick off those business connections during the awesome GDC week (when we're in town for our reworked & streamlined mobile games industry event, Pocket Gamer Connects Summit San Francisco 2026 [registered attendees get early access to our party!]) by attending another excellent Pocket Gamer Party.\nAll games industry professionals are welcome at 715 Harrison nightclub on the evening of Monday, March 9, for informal networking, drinks, and fun times.N.B. 1: PG Connects Summit San Francisco ticket holders DO NOT to register (PGC ticket includes PG Party access)\nN.B.",
+      "source": "eventbrite",
+      "scraped_at": "2026-03-02T17:00:48.804Z"
+    },
+    {
+      "id": 21,
+      "selected": false,
+      "title": "2026 Indie Arcade Party with: Unity, VIVERSE & Genies",
+      "time_display": "Tuesday 03/10 7:00 PM",
+      "location": "375 11th Street, San Francisco, CA 94103",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/2026-indie-arcade-party-with-unity-viverse-genies-tickets-1982330817839?aff=ebdssbcitybrowse",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Experience the largest Indie Arcade Party during the week of GDC 2026 as an official GDC affiliate e...",
+      "description_detail": "Experience the largest Indie Arcade Party during the week of GDC 2026 as an official GDC affiliate event\nExperience the largest Indie Arcade Party during the week of GDC 2026! As an official GDC Affiliate Event, SF Game Development invites you to our 5th annual night of game industry networking and indie game showcases. Join over a thousand developers at the iconic DNA Lounge in San Francisco on Tuesday, March 10th. Proudly hosted alongside Unity, VIVERSE, and Genies, this is the FREE GDC party you can't miss. RSVP now on Meetup to secure your spot for the ultimate San Francisco game dev celebration! Also, if you want to bring a friend, just send them the event link here and have them register themselves (we need an accurate guest count per GDC guidelines).\n🔥 Four massive rooms packed with game demos, tech-talks and music🎲 35+ indie game demos from members of the SF Game Development community🎤 8 tech talks featuring industry-leading companies & speakers🎵 Video game-themed music in The Lounge for dancing\nWhether you're a developer, publisher, artist, student, indie creator, journalist, or just love games, this is the perfect place to expand your career and learn about new games and solutions coming to market.\n🚀 No GDC pass? No problem! This event is open to the public (18+)🎥 Want a taste of last year’s event? Watch the recap video!🔗 Having trouble registering on Meetup? No worries—sign up on Luma instead.\n🕢 7:30 PM – Unity | Corrie Green, Senior Developer Advocate🎙️Performance Analysis and Solutions in Unity 6 🎙️This session explores common performance pitfalls encountered during development, and shows how to isolate them using Unity 6’s suite of analysis tools—including the Profiler, Memory Profiler, Project Auditor, and build analysis tools—and demos comparisons with best practices to improve scene performance.",
+      "source": "eventbrite",
+      "scraped_at": "2026-03-02T17:00:48.805Z"
+    },
+    {
+      "id": 22,
+      "selected": false,
+      "title": "Silent Book Club Oakland",
+      "time_display": "Tuesday 03/10 6:30 PM",
+      "location": "4115 Telegraph Avenue, Oakland, CA 94609",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/silent-book-club-oakland-tickets-1314199609409?aff=ebdssbcitybrowse",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "It’s Introvert’s Happy Hour, y’all! Bring a book, grab a beverage, and read with us for Silent Readi...",
+      "description_detail": "It’s Introvert’s Happy Hour, y’all! Bring a book, grab a beverage, and read with us for Silent Reading Hour.\nSilent Book Club is a global community of readers with chapters in 54 countries -- welcome to the Oakland chapter of Silent Book Club! We are super excited to host you all -- whether you've been reading for decades or just for a month, bring a book and join us at the reading table. Come with a friend or alone -- you are welcome as you are!\nFor our weekday meet-ups: Pack a book, a book light, and extra layers, and head over to Temescal Brewing for our meet-ups every 2nd Tuesday of the month. We meet at the reserved back tables in the outdoor patio.\nTemescal Brewing serves craft beer with bar snacks and they usually have a food truck parked adjacent to their outdoor patio. Their outdoor patio is ADA accessible.\nFollow us on Instagram for updates or feel free to email us [silentbookcluboakland(at)gmail.com] if you have any questions.\nIt’s Introvert’s Happy Hour, y’all! Bring a book, grab a beverage, and read with us for Silent Reading Hour.\nSilent Book Club is a global community of readers with chapters in 54 countries -- welcome to the Oakland chapter of Silent Book Club! We are super excited to host you all -- whether you've been reading for decades or just for a month, bring a book and join us at the reading table. Come with a friend or alone -- you are welcome as you are!\nFor our weekday meet-ups: Pack a book, a book light, and extra layers, and head over to Temescal Brewing for our meet-ups every 2nd Tuesday of the month. We meet at the reserved back tables in the outdoor patio.\nTemescal Brewing serves craft beer with bar snacks and they usually have a food truck parked adjacent to their outdoor patio. Their outdoor patio is ADA accessible.\nFollow us on Instagram for updates or feel free to email us [silentbookcluboakland(at)gmail.com] if you have any questions.\n4115 Telegraph Avenue",
+      "source": "eventbrite",
+      "scraped_at": "2026-03-02T17:00:48.805Z"
+    },
+    {
+      "id": 23,
+      "selected": false,
+      "title": "Happy Hour at the MADE",
+      "time_display": "Friday 03/13 5:00 PM",
+      "location": "921 Washington Street, Oakland, CA 94607",
+      "price": "Check ticket price on event",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/happy-hour-at-the-made-tickets-1983649033658?aff=ebdssbcitybrowse",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Celebrate the end of GDC Festival of Gaming with a happy hour at the MADE, Oakland's playable video ...",
+      "description_detail": "Celebrate the end of GDC Festival of Gaming with a happy hour at the MADE, Oakland's playable video game history museum.\nJoin us for wine, cheese, and games!\nShow your GDC Festival of Gaming pass to get into the museum for free. Otherwise there is a suggest donation of 15-25 dollars.\nCelebrate the end of GDC Festival of Gaming with a happy hour at the MADE, Oakland's playable video game history museum.\nJoin us for wine, cheese, and games!\nShow your GDC Festival of Gaming pass to get into the museum for free. Otherwise there is a suggest donation of 15-25 dollars.\nRefunds up to 7 days before event\n921 Washington Street",
+      "source": "eventbrite",
+      "scraped_at": "2026-03-02T17:00:48.805Z"
+    },
+    {
+      "id": 24,
+      "selected": false,
+      "title": "Ultherapy Lift Your Luck",
+      "time_display": "Thursday 03/12 4:30 PM",
+      "location": "12945 Saratoga Avenue, Saratoga, CA 95070",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/ultherapy-lift-your-luck-tickets-1983655785854?aff=ebdssbcitybrowse",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Boost your glow and confidence with Ultherapy – a non-invasive collagen building treatment lasting u...",
+      "description_detail": "Boost your glow and confidence with Ultherapy – a non-invasive collagen building treatment lasting up to a year.\nBoost your glow and confidence with Ultherapy – a non-invasive collagen building treatment lasting up to a year.\nThere’s a reason Ultherapy is the go-to treatment for celebrities before major red carpet events. 📸 While the long-term collagen building takes a few months, patients often see an initial tightening of the skin immediately following the procedure.\nWhether you have a gala, a wedding, or just want to stay ahead of the aging curve, Ultherapy provides a lifted look with zero time off work. It’s the perfect non-invasive solution for budiling collagen and skin tightening.\nJoin us at Cheng Plastic Surgery in Saratoga and chat with our offical Ultherapy Prime brand partner and nurse staff at Cheng. We'll be answering all your questions on youth preserving longevity.\nBy RSVP'ing to the event you'll also enjoy exclusive one day promotinal offers on Ultherapy, Botox, and Epicutis skincare.\n12945 Saratoga Avenue",
+      "source": "eventbrite",
+      "scraped_at": "2026-03-02T17:00:48.808Z"
+    },
+    {
+      "id": 25,
+      "selected": false,
+      "title": "YAM 2026 Spring Community Concert",
+      "time_display": "Saturday 03/14 7:00 PM",
+      "location": "20300 Herriman Avenue, Saratoga, CA 95070",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/yam-2026-spring-community-concert-tickets-1981685383327?aff=ebdssbcitybrowse",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "2026 YAM Spring Community Concert brings you unforgettable live music by amazingly talented local si...",
+      "description_detail": "2026 YAM Spring Community Concert brings you unforgettable live music by amazingly talented local singers and dancers, FREE Admission!\n2026 YAM Spring Community Concert brings you unforgettable live music by amazingly talented local singers and dancers, FREE Admission!\n20300 Herriman Avenue",
+      "source": "eventbrite",
+      "scraped_at": "2026-03-02T17:00:48.808Z"
+    },
+    {
+      "id": 26,
+      "selected": false,
+      "title": "APJCC Dance Party 2026",
+      "time_display": "Sunday 03/15 9:00 AM",
+      "location": "14855 Oka Road, Los Gatos, CA 95032",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/apjcc-dance-party-2026-tickets-1981385440189?aff=ebdssbcitybrowse",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Get ready to bust a move at the APJCC Dance Party! Let's dance the day away together! Welcome to the...",
+      "description_detail": "Get ready to bust a move at the APJCC Dance Party! Let's dance the day away together!\nWelcome to the **APJCC Dance Party** at Addison-Penzak JCC in Los Gatos! Get ready to groove and move on **Sun, Mar 15, 2025** starting at **9:00 AM**. Join us for a fun-filled day of dancing, music, and good vibes. Whether you're a seasoned dancer or just looking to have a good time, this event is perfect for everyone. Come and dance the day away with us!\nGet ready to bust a move at the APJCC Dance Party! Let's dance the day away together!\nWelcome to the **APJCC Dance Party** at Addison-Penzak JCC in Los Gatos! Get ready to groove and move on **Sun, Mar 15, 2025** starting at **9:00 AM**. Join us for a fun-filled day of dancing, music, and good vibes. Whether you're a seasoned dancer or just looking to have a good time, this event is perfect for everyone. Come and dance the day away with us!",
+      "source": "eventbrite",
+      "scraped_at": "2026-03-02T17:00:48.809Z"
+    },
+    {
+      "id": 27,
+      "selected": false,
+      "title": "Queen Bingo",
+      "time_display": "Wednesday 03/11 7:00 PM",
+      "location": "1875 South Bascom Avenue, ##100 Campbell, CA 95008",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/queen-bingo-tickets-1982952578542?aff=ebdssbcitybrowse",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Get ready for a night of glitz, laughter, and big wins! Join us at The Cedar Room for Queen Bingo — ...",
+      "description_detail": "Get ready for a night of glitz, laughter, and big wins! Join us at The Cedar Room for Queen Bingo — the ultimate drag-hosted bingo party\n🎉 Queen Bingo @ The Cedar Room 🎉\nGet ready for a night of glitz, laughter, and big wins! Join us at The Cedar Room for Queen Bingo — the ultimate drag-hosted bingo party where classic game fun meets high-energy entertainment.\nHosted by fabulous local drag performers, Queen Bingo is more than just a game — it’s a night out with:✨ Hilarious live hosting🎤 Drag performances and crowd interaction🎶 Great music and vibe🍹 Drink specials all night🎁 Prizes for bingo winners\nWhether you’re coming with friends, celebrating something special, or just looking for a good time, Queen Bingo brings the party energy you want on a night out.\nGet ready for a night of glitz, laughter, and big wins! Join us at The Cedar Room for Queen Bingo — the ultimate drag-hosted bingo party\n🎉 Queen Bingo @ The Cedar Room 🎉\nGet ready for a night of glitz, laughter, and big wins! Join us at The Cedar Room for Queen Bingo — the ultimate drag-hosted bingo party where classic game fun meets high-energy entertainment.\nHosted by fabulous local drag performers, Queen Bingo is more than just a game — it’s a night out with:✨ Hilarious live hosting🎤 Drag performances and crowd interaction🎶 Great music and vibe🍹 Drink specials all night🎁 Prizes for bingo winners\nWhether you’re coming with friends, celebrating something special, or just looking for a good time, Queen Bingo brings the party energy you want on a night out.\n1875 South Bascom Avenue\n##100 Campbell, CA 95008",
+      "source": "eventbrite",
+      "scraped_at": "2026-03-02T17:00:48.809Z"
+    },
+    {
+      "id": 28,
+      "selected": false,
+      "title": "REBECCA ROBINSON at Books Inc. Pruneyard",
+      "time_display": "Friday 03/13 7:00 PM",
+      "location": "1875 South Bascom Avenue, #600 Campbell, CA 95008",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/rebecca-robinson-at-books-inc-pruneyard-tickets-1982394367919?aff=ebdssbcitybrowse",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Join returning author Rebecca Robinson at Books Inc. Pruneyard for the release of her latest book, T...",
+      "description_detail": "Join returning author Rebecca Robinson at Books Inc. Pruneyard for the release of her latest book, The Wicked and the Damned!\nIn the exhilarating second romantasy novel in Rebecca Robinson’s Dark Inheritance Trilogy, a fiery couple forced apart must navigate a deadly maze of politics and power to reunite across a continent at war.\nTorn from her husband Reid’s arms and dragged back to her homeland in chains, Vaasa is no longer a ruler, but a political pawn. Now under the control of Ozik—a cunning Zetyr witch with a stranglehold on her magic—she faces annulment, forced betrothal, and a kingdom that no longer feels like her own. As Ozik’s machinations aim to install himself as the true power behind the Asteryan throne, Vaasa is forced to take part in his game. Meanwhile, across the continent, Reid is done playing politics. But waging war is never simple, and a soldier’s fury cannot stand up against Icruria’s bureaucracy. With allies fading and time slipping away, Reid may have no choice but to infiltrate Asterya on his own to find the woman he loves and bring her home. As Vaasa’s magic begins to flare, she desperately seeks control, even if Ozik is the only one who can offer it. She then finds a cryptic final message from her mother about a precious missing necklace that might just be the answer to finally freeing her magic from Ozik. Yet when a ghost from Vaasa’s past reemerges among the suitors vying for her hand, escape might be within reach—but will it demand a betrayal that real love may not survive?\nBy day, Rebecca Robinson works as a high school administrator. By night, she’s an avid reader, writer, and consumer of all things art. When she’s not writing, Rebecca loves to cook, spend time with her husband and son, and lounge in the garden with her husky.\nJoin returning author Rebecca Robinson at Books Inc. Pruneyard for the release of her latest book, The Wicked and the Damned!",
+      "source": "eventbrite",
+      "scraped_at": "2026-03-02T17:00:48.809Z"
+    },
+    {
+      "id": 29,
+      "selected": false,
+      "title": "All Things Meetings San Francisco- Connection Reception",
+      "time_display": "Wednesday 03/11 5:30 PM",
+      "location": "Pier 3, Hornblower Landing, San Francisco, CA 95111",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/all-things-meetings-san-francisco-connection-reception-tickets-1978697670999?aff=ebdssbcitybrowse",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Ready to mingle and make some new connections at the All Things Meetings San Francisco- Connection R...",
+      "description_detail": "Ready to mingle and make some new connections at the All Things Meetings San Francisco- Connection Reception?\nAll Things Meetings Connection Reception\nWe invite you to join us for an in-person dockside event aboard the City Cruises San Francisco Belle in San Francisco, CA.\nA Bay Area landmark, the San Francisco Belle boasts the title of the largest dining vessel on the West Coast. Her wrap-around decks, paddle wheel and gold detailing recall an old-world elegance. She boasts three spacious interior decks, panoramic views of the city skyline from the 50+ windows and an expansive sundeck. Her presence on the bay will capture your imagination with a style that is uniquely San Francisco.\nThis event is specifically designed for professionals responsible for planning corporate, associations, and social meetings and events. It's a fantastic, one-stop opportunity to network and connect directly with key event industry suppliers and resources.\nRegister now for an evening that promises to be both fun and highly productive!\nReady to mingle and make some new connections at the All Things Meetings San Francisco- Connection Reception?\nAll Things Meetings Connection Reception\nWe invite you to join us for an in-person dockside event aboard the City Cruises San Francisco Belle in San Francisco, CA.\nA Bay Area landmark, the San Francisco Belle boasts the title of the largest dining vessel on the West Coast. Her wrap-around decks, paddle wheel and gold detailing recall an old-world elegance. She boasts three spacious interior decks, panoramic views of the city skyline from the 50+ windows and an expansive sundeck. Her presence on the bay will capture your imagination with a style that is uniquely San Francisco.\nThis event is specifically designed for professionals responsible for planning corporate, associations, and social meetings and events. It's a fantastic, one-stop opportunity to network and connect directly with key event industry suppliers and resources.",
+      "source": "eventbrite",
+      "scraped_at": "2026-03-02T17:00:48.811Z"
+    },
+    {
+      "id": 30,
+      "selected": false,
+      "title": "Alex & Maya Valdivia's Measure the Silence Album Release Concert",
+      "time_display": "Friday 03/13 8:00 PM",
+      "location": "1101 Main Street, Redwood City, CA 94063",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/alex-maya-valdivias-measure-the-silence-album-release-concert-tickets-1981081204211?aff=ebdssbcitybrowse",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Join us for an unforgettable night of music as Alex & Maya Valdivia's Measure the Silence Album Rele...",
+      "description_detail": "Join us for an unforgettable night of music as Alex & Maya Valdivia's Measure the Silence Album Release Concert takes over the stage!\nMeasure The Silence is a full album live performance by Alex & Maya Valdivia, marking the release of a record about the things we don’t say and the weight they carry.\nThe album explores the emotional spaces between people: silence, restraint, resentment, memory, longing, and the fragile ties that hold relationships together or pull them apart. Across 14 songs, it traces what happens when feelings are postponed, when futures are abandoned, when truth hums just under the surface.\n• Acoustic-led folk / trova / rock\n• Layered harmonies, canons, and choral moments\n• Subtle electronic textures alongside organic instruments\n• A quiet intense, immersive listening experience\nThe performance also includes a visual collaboration with Fuse Theatre, using masks, movement, and projections to embody the album’s themes, silence, identity, fracture, and connection. Some of the masks used onstage are created by members of the audience in advance, blurring the line between witness and participant.\nIf you’re drawn to artists like Damien Rice, The Swell Season, Jorge Drexler, or modern folk that values restraint, tension, and emotional honesty, this night is for you.\nJoin us for an unforgettable night of music as Alex & Maya Valdivia's Measure the Silence Album Release Concert takes over the stage!\nMeasure The Silence is a full album live performance by Alex & Maya Valdivia, marking the release of a record about the things we don’t say and the weight they carry.\nThe album explores the emotional spaces between people: silence, restraint, resentment, memory, longing, and the fragile ties that hold relationships together or pull them apart. Across 14 songs, it traces what happens when feelings are postponed, when futures are abandoned, when truth hums just under the surface.",
+      "source": "eventbrite",
+      "scraped_at": "2026-03-02T17:00:48.811Z"
+    },
+    {
+      "id": 31,
+      "selected": false,
+      "title": "San Mateo County Education Employment Fair",
+      "time_display": "Saturday 03/14 9:00 AM",
+      "location": "101 Twin Dolphin Drive, Redwood City, CA 94065",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/san-mateo-county-education-employment-fair-tickets-1977322752581?aff=ebdssbcitybrowse",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "All current, prospective, and substitute PK-12 certificated and classified candidates are invited to...",
+      "description_detail": "All current, prospective, and substitute PK-12 certificated and classified candidates are invited to join us for this event!\nSan Mateo County is an innovative and invigorating place to work and offers many exciting opportunities for both classified and certificated education professionals! We invite you to attend our Education Employment Recruitment Fair to meet with the San Mateo County school districts and their available positions.\nThe Education Employment Recruitment Fair brings together well-qualified candidates seeking employment with our county's twenty-three school districts and county office of education student programs, all eager to hire highly skilled and dedicated individuals to join their teams.\nWhether you are pursuing a classified position, seeking a teaching position, interested in credentialing information, or exploring opportunities in administration, join us at the Education Employment Recruitment Fair to find your next opportunity.\nNote this is for job seekers only.\nPlease register to attend!\nAll current, prospective, and substitute PK-12 certificated and classified candidates are invited to join us for this event!\nSan Mateo County is an innovative and invigorating place to work and offers many exciting opportunities for both classified and certificated education professionals! We invite you to attend our Education Employment Recruitment Fair to meet with the San Mateo County school districts and their available positions.\nThe Education Employment Recruitment Fair brings together well-qualified candidates seeking employment with our county's twenty-three school districts and county office of education student programs, all eager to hire highly skilled and dedicated individuals to join their teams.\nWhether you are pursuing a classified position, seeking a teaching position, interested in credentialing information, or exploring opportunities in administration, join us at the Education Employment Recruitment Fair to find your next opportunity.",
+      "source": "eventbrite",
+      "scraped_at": "2026-03-02T17:00:48.811Z"
+    },
+    {
+      "id": 32,
+      "selected": false,
+      "title": "Toastmasters Open House",
+      "time_display": "Thursday 03/12 7:30 AM",
+      "location": "1700 West Hillsdale Boulevard, San Mateo, CA 94402",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/toastmasters-open-house-tickets-1983579632076?aff=ebdssbcitybrowse",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Join us in person at the Toastmasters Open House to boost your speaking skills and have some fun! Cu...",
+      "description_detail": "Join us in person at the Toastmasters Open House to boost your speaking skills and have some fun!\nCurious about public speaking? Swing by our in-person Toastmasters Open House! It's a casual, fun way to check out what we do, meet friendly faces, and see how you can boost your confidence and communication skills.\nNo pressure, just good vibes and great tips. Don’t miss out!\nCollege of San Mateo Health & Wellness Building 5, Conference Room 339\nFor questions, please reach out directly to Ranger at rangerkielak@gmail.com\nJoin us in person at the Toastmasters Open House to boost your speaking skills and have some fun!\nCurious about public speaking? Swing by our in-person Toastmasters Open House! It's a casual, fun way to check out what we do, meet friendly faces, and see how you can boost your confidence and communication skills.\nNo pressure, just good vibes and great tips. Don’t miss out!\nCollege of San Mateo Health & Wellness Building 5, Conference Room 339\nFor questions, please reach out directly to Ranger at rangerkielak@gmail.com\n1700 West Hillsdale Boulevard",
+      "source": "eventbrite",
+      "scraped_at": "2026-03-02T17:00:48.812Z"
+    },
+    {
+      "id": 33,
+      "selected": false,
+      "title": "MAXINE SHARF — MAXI’S KITCHEN BOOK TOUR",
+      "time_display": "Wednesday 03/11 7:00 PM",
+      "location": "3200 California Street, San Francisco, CA 94118",
+      "price": "$46.19",
+      "event_type": "food",
+      "priority": 6,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/maxine-sharf-maxis-kitchen-book-tour-tickets-1980493952726?aff=ebdssbdestsearch",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "The wildly popular culinary creator brings her viral, confidence-boosting approach from the screen t...",
+      "description_detail": "The wildly popular culinary creator brings her viral, confidence-boosting approach from the screen to the page in her debut cookbook\nJoin us for a conversation and meet and greet with beloved culinary creator Maxine Sharf celebrating the release of her debut cookbook, Maxi’s Kitchen: Easy Go-To Recipes to Make Again and Again. With 4 million+ followers across social platforms, Maxine is known for her unfussy, deeply comforting recipes – and for the joyful, often hilarious cooking moments she shares alongside her mom, Ann Sharf.\nWarm, joyful, and irresistibly practical, Maxi’s Kitchen is built for real life – the kind where dinner needs to happen whether it’s a rushed Monday night or a lingering Sunday morning. Organized by day of the week, the book meets you where you are: quick, no-stress meals early on, playful dishes midweek, and indulgent cooking projects for the weekend. This is food that feels personal, doable, and meant to be made again and again.\nAfter being laid off from a decade-long career in tech sales, Maxine turned to cooking full time, building a global community rooted in confidence and connection in the kitchen. Her food reflects a richly layered heritage – Korean, Chinese, Romanian, Russian, and Polish – paired with a California sensibility that values ease, freshness, and flavor.\nIn this conversation, Maxine will share the story behind Maxi’s Kitchen, from family recipes and cultural memory to designing a cookbook organized by mood and day of the week – with plenty of inspiration for what to cook tonight, tomorrow, and beyond.\nWhether you’re a longtime follower or discovering Maxine for the first time, this is a celebration of food as comfort, connection, and daily joy.Our partner for this program is Omnivore Books\nQuestions?",
+      "source": "eventbrite",
+      "scraped_at": "2026-03-02T17:00:48.813Z"
+    },
+    {
+      "id": 34,
+      "selected": false,
+      "title": "Annual Post-Parade Party—St. Patrick's Day Weekend",
+      "time_display": "Saturday 03/14 2:00 PM",
+      "location": "2700 45th Avenue, San Francisco, CA 94116",
+      "price": "$10",
+      "event_type": "food",
+      "priority": 6,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/annual-post-parade-partyst-patricks-day-weekend-tickets-1982830768204?aff=ebdssbdestsearch",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Head back to the Irish Center after the parade (look for the UICC float) and enjoy hot food and plen...",
+      "description_detail": "Head back to the Irish Center after the parade (look for the UICC float) and enjoy hot food and plenty of Irish entertainment!\nJoin us at the annual Corned Beef and Cabbage meal, featuring San Francisco’s own Robert’s Corned Beef, and know you are coming to the biggest, best, post-parade St. Patrick’s Day party in San Francisco!\nThere will be live bands, Irish Dancing, and the Irish Pipers in three locations (two indoors, one outdoors) throughout our facility. Additional food items such as the popular corned beef sliders and grilled cheese and hot dogs for the kids as well plus plenty of Irish treats and sweets at our Irish Shoppe (2-6 pm), which will also have fresh soda and brown bread.\nThe Dowling Library will be open from 2-5 pm, so check out the latest titles and offerings—and bring the kids for stickers and coloring sheets!\nCurrent UICC members and all youth under 18 are free; $10 cover for adult non-members. You must show proof of age 21+ to purchase alcohol.\nHead back to the Irish Center after the parade (look for the UICC float) and enjoy hot food and plenty of Irish entertainment!\nJoin us at the annual Corned Beef and Cabbage meal, featuring San Francisco’s own Robert’s Corned Beef, and know you are coming to the biggest, best, post-parade St. Patrick’s Day party in San Francisco!\nThere will be live bands, Irish Dancing, and the Irish Pipers in three locations (two indoors, one outdoors) throughout our facility. Additional food items such as the popular corned beef sliders and grilled cheese and hot dogs for the kids as well plus plenty of Irish treats and sweets at our Irish Shoppe (2-6 pm), which will also have fresh soda and brown bread.\nThe Dowling Library will be open from 2-5 pm, so check out the latest titles and offerings—and bring the kids for stickers and coloring sheets!\nCurrent UICC members and all youth under 18 are free; $10 cover for adult non-members. You must show proof of age 21+ to purchase alcohol.",
+      "source": "eventbrite",
+      "scraped_at": "2026-03-02T17:00:48.816Z"
+    },
+    {
+      "id": 35,
+      "selected": false,
+      "title": "Hands-On: Northern Egg Pasta Traditions",
+      "time_display": "Friday 03/13 6:00 PM",
+      "location": "2855 Stevens Creek Boulevard, San Jose, CA 95128",
+      "price": "From $89.11",
+      "event_type": "food",
+      "priority": 6,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/hands-on-northern-egg-pasta-traditions-tickets-1981497614706?aff=ebdssbdestsearch",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "It’s time to get your hands messy! In our hands-on format, our Scuola Chef will guide you through ho...",
+      "description_detail": "It’s time to get your hands messy! In our hands-on format, our Scuola Chef will guide you through how to prepare Northern Egg Pasta.\nIt’s time to get your hands messy! In our hands-on format, our Scuola Chef will prepare the signature dish for you to taste in class. You’ll then dive right in to making the recipe yourself from scratch. Take your culinary creation with you at the end of class and enjoy your own hard work at home!\nFresh Egg Pasta Shaping\nEgg pasta is the prized pasta type that is enjoyed throughout Northern and Central Italy. Similarly to dried pasta, fresh egg pasta comes from two humble ingredients: unbleached all-purpose flour and, instead of water, eggs. Shaping the dough is often done by hand on a wooden surface or with a hand-crank machine. In this class, you’ll make your own egg pasta dough from scratch.\nIn this Class You Will:\nPayment in full is required at the time of registration and all sales are final. No refunds are offered on classes and events. For groups of 5-10 guests, a minimum of 7 days' notice (class day not included) is required to receive a credit in the form of a coupon for a future class or event. For groups of up to 4 guests, a minimum of 4 days' notice (class day not included) is required to receive a credit in the form of a coupon code for a future class or event at La Scuola. We reserve the right to reschedule or cancel a class or event due to unforeseen circumstances, inclement weather or otherwise. In the event of a class or event cancellation, we will contact you directly at the phone number or email address you have provided to offer a full refund or credit to transfer to a future class or event. While we are not able to offer credit, transfers or refunds for last-minute illnesses, work-related conflicts, personal emergencies or events beyond our control, you are always welcome to send someone in your place, as we understand that these things do happen.",
+      "source": "eventbrite",
+      "scraped_at": "2026-03-02T17:00:48.817Z"
+    },
+    {
+      "id": 36,
+      "selected": false,
+      "title": "Monteraponi Wine Dinner",
+      "time_display": "Thursday 03/12 6:30 PM",
+      "location": "377 Santana Row, #1000 San Jose, CA 95128",
+      "price": "$215.26",
+      "event_type": "food",
+      "priority": 6,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/monteraponi-wine-dinner-tickets-1983197868210?aff=ebdssbdestsearch",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "A dinner featuring Monteraponi wines paired with a multi-course menu. The history of Monteraponi dat...",
+      "description_detail": "A dinner featuring Monteraponi wines paired with a multi-course menu.\nThe history of Monteraponi dates back to the 10th century, when the estate served as a fortified settlement for Count Ugo, Governor of Tuscany. After centuries of varied ownership, the property was acquired in 1974 by the Braganti family, who initially devoted their efforts to preserving the historic hamlet before turning their focus to viticulture.\nMonteraponi’s modern reputation was shaped by Michele Braganti, who assumed leadership of the estate in 2003 with a vision to restore the “old school” soul of Radda in Chianti. Under his direction, the winery embraced strictly organic farming and minimalist cellar practices, establishing itself as a benchmark producer of pure, high-altitude Sangiovese. Today, Monteraponi’s wines are celebrated for their elegance, structure, and profound sense of place.\nPlease join us for an intimate evening featuring a curated selection of Monteraponi wines, thoughtfully paired with a seasonal multi-course menu. We look forward to sharing these expressive wines and the story behind them with you.\nPear and Arugula SaladPecorino Romano, Toasted WalnutsTrebbiano, Colli della Toscana Centrale 2023~CampanelleEnglish Peas, Guanciale, Foraged MushroomsChianti Classico 2023~Braised Lamb ShankPearl Onions, Baby Carrots, ParsnipsChianti Classico Riserva, Il Campitello 2021Super-Tuscan Sangiovese, Baron`Ugo, Toscana Rosso 2019~Bittersweet Chocolate TartBurnt Caramel, Cocoa Nibs, Candied HazelnutsChianti Classico Gran Selezione, Bragantino 2019Chianti Classico Gran Selezione, Bragantino 2020\n*Advance notice is required for food allergy-related menu modifications. As soon as you purchase ticket(s), please forward the email confirmation with details to info@augustinerestaurant.com.\n**Cancellation policy: Up to 7 days before the event starts. Any cancellations after that will be issued in the form of a gift certificate. Eventbrite fees are nonrefundable.",
+      "source": "eventbrite",
+      "scraped_at": "2026-03-02T17:00:48.817Z"
+    },
+    {
+      "id": 37,
+      "selected": false,
+      "title": "Demo & Dine: Focaccia Classica",
+      "time_display": "Wednesday 03/11 6:00 PM",
+      "location": "2855 Stevens Creek Boulevard, San Jose, CA 95128",
+      "price": "$77.53",
+      "event_type": "food",
+      "priority": 6,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/demo-dine-focaccia-classica-tickets-1981495008912?aff=ebdssbdestsearch",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Join us at the table and watch our Scuola Chef prepare focaccia right in front of you, step-by-step....",
+      "description_detail": "Join us at the table and watch our Scuola Chef prepare focaccia right in front of you, step-by-step.\nIn this Demo & Dine format, our Scuola Chef will prepare and show the steps it takes to prepare  focaccia dough from scratch. You’ll then dive right in learning how to stretch your own focaccia dough, how to make a salamoia, and top your own focaccia to be enjoyed!  Take your culinary creation with you at the end of class and enjoy your own hard work at home!\nFocaccia is a chewy and flat bread loaded with olive oil and other toppings. Its signature dimpled appearance is because of a technique used to prevent large bubbles on the surface. In this class, you’ll make your own focaccia dough from scratch.\nIn this Class You Will:\nPayment in full is required at the time of registration and all sales are final. No refunds are offered on classes and events. For groups of 5-10 guests, a minimum of 7 days' notice (class day not included) is required to receive a credit in the form of a coupon for a future class or event. For groups of up to 4 guests, a minimum of 4 days' notice (class day not included) is required to receive a credit in the form of a coupon code for a future class or event at La Scuola. We reserve the right to reschedule or cancel a class or event due to unforeseen circumstances, inclement weather or otherwise. In the event of a class or event cancellation, we will contact you directly at the phone number or email address you have provided to offer a full refund or credit to transfer to a future class or event. While we are not able to offer credit, transfers or refunds for last-minute illnesses, work-related conflicts, personal emergencies or events beyond our control, you are always welcome to send someone in your place, as we understand that these things do happen. If you are purchasing this class or event as a gift, please provide this cancellation policy to the recipient, as the policy will still apply.",
+      "source": "eventbrite",
+      "scraped_at": "2026-03-02T17:00:48.817Z"
+    },
+    {
+      "id": 38,
+      "selected": false,
+      "title": "Michael Pollan's A WORLD APPEARS At First Congregational Church of Berkeley",
+      "time_display": "Tuesday 03/10 7:00 PM",
+      "location": "2345 Channing Way, Berkeley, CA 94704",
+      "price": "$39.84",
+      "event_type": "art",
+      "priority": 5,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/michael-pollans-a-world-appears-at-first-congregational-church-of-berkeley-tickets-1980517835159?aff=ebdssbcitybrowse",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "The Bestselling Berkeley Author Presents His Latest Book, An Exploration Of Consciousness And A Medi...",
+      "description_detail": "The Bestselling Berkeley Author Presents His Latest Book, An Exploration Of Consciousness And A Meditation On The Essence Of Our Humanity\nJoin Mrs. Dalloway's Bookstore, in partnership with The Elmwood Business Association, on Tuesday, March 10 at 7:00 PM when we host international bestselling author Michael Pollan. Michael will be at the First Congregational Church of Berkeley to present his brand new book A World Appears: A Journey Into Consciousness.  Journalist and podcaster Maya Shankar will join Michael for the conversation.\nTickets include admission for one and one hardcover copy of A World Appears, pre-signed by Michael Pollan.\nBooks bundled with tickets may only be picked up at the venue the night of the event, and cannot be picked up in-store beforehand. Ticket holders who purchased a book-with-ticket and are unable to attend the event will be able to pick up their book at Mrs. Dalloway's Bookstore up to 30 days following the event.\nFrom the #1 New York Times bestselling author of How to Change Your Mind, a panoptic exploration of consciousness—what it is, who has it, and why—and a meditation on the essence of our humanity.\nWhen it comes to the phenomenon that is consciousness, there is one point on which scientists, philosophers, and artists all agree: it feels like something to be us. Yet the fact that we have subjective experience of the world remains one of nature’s greatest mysteries. How is it that our mental operations are accompanied by feelings, thoughts, and a sense of self? What would a scientific investigation of our inner life look like, when we have as little distance and perspective on it as fish do of the sea? In A World Appears, Michael Pollan traces the unmapped continent that is consciousness, bringing radically different perspectives—scientific, philosophical, literary, spiritual and psychedelic—to see what each can teach us about this central fact of life.",
+      "source": "eventbrite",
+      "scraped_at": "2026-03-02T17:00:48.806Z"
+    },
+    {
+      "id": 39,
+      "selected": false,
+      "title": "Paint Your Pet @ Woofboard",
+      "time_display": "Wednesday 03/11 6:00 PM",
+      "location": "389 East Campbell Avenue, Campbell, CA 95008",
+      "price": "$75",
+      "event_type": "art",
+      "priority": 5,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/paint-your-pet-woofboard-tickets-1982250044243?aff=ebdssbcitybrowse",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Submit a photo of your favorite pet for Paint Your Pet night! (All Skills!)10% off any Woofboard pur...",
+      "description_detail": "Submit a photo of your favorite pet for Paint Your Pet night! (All Skills!)10% off any Woofboard purchase during the event! BYOB welcome!\nHosted by professional pet portrait artist Heather Kinney | Paint Your Pet Events\nJoin us at Woofboard, a female + AAPI-owned dog boutique known for its creative “dog charcuterie boards” and high quality treats and gifts for pet lovers. It’s the perfect cozy spot for a night of art, laughter, and pet-themed fun!\nSubmit your pet’s photo by March 6th📧 Email: email@paintyourpetevents.com🌐 Or upload directly at www.paintyourpetevents.com/upload\nThese events sell out fast, so grab your seat early!💌 Missed the photo deadline? Email us at email@paintyourpetevents.com to check for last-minute availability.\nFollow us on Instagram → @paintyourpeteventsSee examples, get updates, and tag us in your masterpiece!\nSubmit a photo of your favorite pet for Paint Your Pet night! (All Skills!)10% off any Woofboard purchase during the event! BYOB welcome!\nHosted by professional pet portrait artist Heather Kinney | Paint Your Pet Events\nJoin us at Woofboard, a female + AAPI-owned dog boutique known for its creative “dog charcuterie boards” and high quality treats and gifts for pet lovers. It’s the perfect cozy spot for a night of art, laughter, and pet-themed fun!\nSubmit your pet’s photo by March 6th📧 Email: email@paintyourpetevents.com🌐 Or upload directly at www.paintyourpetevents.com/upload\nThese events sell out fast, so grab your seat early!💌 Missed the photo deadline? Email us at email@paintyourpetevents.com to check for last-minute availability.\nFollow us on Instagram → @paintyourpeteventsSee examples, get updates, and tag us in your masterpiece!\n389 East Campbell Avenue",
+      "source": "eventbrite",
+      "scraped_at": "2026-03-02T17:00:48.809Z"
+    },
+    {
+      "id": 40,
+      "selected": false,
+      "title": "Whatever It Takes: Tackling the Housing Affordability Crisis",
+      "time_display": "Thursday 03/12 4:30 PM",
+      "location": "Minor Lane, Berkeley, CA 94720",
+      "price": "Check ticket price on event",
+      "event_type": "art",
+      "priority": 5,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/whatever-it-takes-tackling-the-housing-affordability-crisis-tickets-1980029536645?aff=ebdssbcitybrowse",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Join the Terner Center & Labs on Thursday, March 12 to explore the affordability challenge from a ho...",
+      "description_detail": "Join the Terner Center & Labs on Thursday, March 12 to explore the affordability challenge from a housing perspective.\nPeople across the country are experiencing an affordability crisis. About half of U.S. renters are cost-burdened, spending a third of their income on housing; more than a quarter spend half of their income or more. High housing costs constrain labor mobility, deepen racial and economic inequities, and erode household financial stability.\nJoin the Terner Center and Terner Labs on Thursday, March 12, for \"Whatever it Takes: Tackling the Housing Affordability Crisis.\" Our panel will share innovations and evidence-backed approaches to make housing affordable. We will hear from:\nThe event also marks the 30th anniversary of the passing of our namesake Don Terner, who took a “whatever it takes” approach to the housing crisis. Throughout the conversation, we’ll draw on lessons learned from Don’s work driving California housing policy reform, launching a Bay Area affordable housing nonprofit, and educating future housing leaders at UC Berkeley.\nThe event will take place at the UC Berkeley Faculty Club, with a networking reception at 4:30pm. The program will begin at 5:30pm.\nIf you require an accommodation for effective communication (ASL interpreting/alternative media formats, etc.) or information about campus mobility access features in order to fully participate in this event, please contact Jessie Modlin at jmodlin@berkeley.edu by February 26.\nJoin the Terner Center & Labs on Thursday, March 12 to explore the affordability challenge from a housing perspective.\nPeople across the country are experiencing an affordability crisis. About half of U.S. renters are cost-burdened, spending a third of their income on housing; more than a quarter spend half of their income or more. High housing costs constrain labor mobility, deepen racial and economic inequities, and erode household financial stability.",
+      "source": "eventbrite",
+      "scraped_at": "2026-03-02T17:00:48.811Z"
+    }
+  ]
+}
