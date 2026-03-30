@@ -1,0 +1,867 @@
+{
+  "review_id": "review_2026-03-30_1702_pp8",
+  "generated_at": "2026-03-30T17:02:53.902Z",
+  "scrape_date": "2026-03-30",
+  "target_week": "2026-04-06_to_2026-04-12",
+  "target_week_readable": "下周 (04/06 - 04/12)",
+  "scraping_report": {
+    "total_scraped": 55,
+    "after_deduplication": 43,
+    "after_classification": 43,
+    "classification_report": {
+      "totalEvents": 43,
+      "eventTypes": {
+        "free": 20,
+        "other": 3,
+        "festival": 1,
+        "market": 10,
+        "art": 2,
+        "music": 3,
+        "fair": 4
+      },
+      "priorityLevels": {
+        "3": 3,
+        "4": 3,
+        "5": 2,
+        "9": 20,
+        "10": 15
+      },
+      "chineseRelevant": 0,
+      "topPriorityEvents": 35
+    }
+  },
+  "instructions": {
+    "how_to_review": "将你想要发布的活动的 'selected' 字段改为 true",
+    "next_step": "保存文件后运行: npm run generate-post [此文件路径]",
+    "fields_explanation": {
+      "title": "活动标题",
+      "time_display": "显示用的时间格式",
+      "location": "活动地点",
+      "price": "票价信息",
+      "event_type": "AI识别的活动类型",
+      "priority": "优先级分数 (越高越重要)",
+      "chinese_relevant": "是否与中文社区相关",
+      "original_url": "原始活动链接"
+    }
+  },
+  "stats": {
+    "total_candidates": 40,
+    "by_type": {
+      "festival": 1,
+      "market": 10,
+      "fair": 4,
+      "free": 20,
+      "art": 2,
+      "other": 3
+    },
+    "by_priority": {
+      "3": 3,
+      "5": 2,
+      "9": 20,
+      "10": 15
+    },
+    "chinese_relevant": 0
+  },
+  "events": [
+    {
+      "id": 1,
+      "selected": false,
+      "title": "2026 Holi Festival & Color Fight at City Center Bishop Ranch (San Ramon)",
+      "time_display": "Sunday 04/12 2:00 PM - 4:00 PM",
+      "location": "City Center Bishop Ranch, San Francisco Bay Area",
+      "price": "$10",
+      "event_type": "festival",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/bishop-ranch-holi-festival-san-ramon/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2026-03-30T16:58:41.297Z"
+    },
+    {
+      "id": 2,
+      "selected": false,
+      "title": "Live Music",
+      "time_display": "Monday 04/06 6:00 PM - 9:00 PM",
+      "location": "San Pedro Square Market, 87 N San Pedro St, San Jose, CA",
+      "price": "Check event page",
+      "event_type": "market",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://sjdowntown.com/event/live-music/2026-04-06/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Experience live music at San Pedro Square Market six days a week! Explore our calendar for the full ...",
+      "description_detail": null,
+      "source": "sjdowntown",
+      "scraped_at": "2026-03-30T16:58:30.798Z"
+    },
+    {
+      "id": 3,
+      "selected": false,
+      "title": "Live Music",
+      "time_display": "Tuesday 04/07 6:00 PM - 9:00 PM",
+      "location": "San Pedro Square Market, 87 N San Pedro St, San Jose, CA",
+      "price": "Check event page",
+      "event_type": "market",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://sjdowntown.com/event/live-music/2026-04-07/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Experience live music at San Pedro Square Market six days a week! Explore our calendar for the full ...",
+      "description_detail": null,
+      "source": "sjdowntown",
+      "scraped_at": "2026-03-30T16:58:30.800Z"
+    },
+    {
+      "id": 4,
+      "selected": false,
+      "title": "Jeopardy Bar League",
+      "time_display": "Tuesday 04/07 7:00 PM - 8:00 PM",
+      "location": "Three Sisters Whiskey Bar, 170 W. Saint John St., San Jose, CA",
+      "price": "Check event page",
+      "event_type": "market",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://sjdowntown.com/event/jeopardy-bar-league/2026-04-07/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "ATTENTION TRIVIA LOVERS! San Pedro Square Market is hosting Jeopardy Bar League – the official bar t...",
+      "description_detail": null,
+      "source": "sjdowntown",
+      "scraped_at": "2026-03-30T16:58:30.800Z"
+    },
+    {
+      "id": 5,
+      "selected": false,
+      "title": "Live Music",
+      "time_display": "Wednesday 04/08 6:00 PM - 9:00 PM",
+      "location": "San Pedro Square Market, 87 N San Pedro St, San Jose, CA",
+      "price": "Check event page",
+      "event_type": "market",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://sjdowntown.com/event/live-music/2026-04-08/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Experience live music at San Pedro Square Market six days a week! Explore our calendar for the full ...",
+      "description_detail": null,
+      "source": "sjdowntown",
+      "scraped_at": "2026-03-30T16:58:30.801Z"
+    },
+    {
+      "id": 6,
+      "selected": false,
+      "title": "King Trivia Night",
+      "time_display": "Wednesday 04/08 7:00 PM - 8:00 PM",
+      "location": "SoFA Market, 387 S 1st Street, San Jose, CA",
+      "price": "Check event page",
+      "event_type": "market",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://sjdowntown.com/event/king-trivia-night/2026-04-08/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Your weekly excuse to eat, drink, and outsmart everyone in the room. 👑🧠 Trivia night at SoFA Marke...",
+      "description_detail": null,
+      "source": "sjdowntown",
+      "scraped_at": "2026-03-30T16:58:30.801Z"
+    },
+    {
+      "id": 7,
+      "selected": false,
+      "title": "Dial M For Murder",
+      "time_display": "Thursday 04/09 12:00 AM - 11:59 PM",
+      "location": "City Lights Theater Company, 529 S 2nd St, San Jose, CA",
+      "price": "Check event page",
+      "event_type": "fair",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://sjdowntown.com/event/dial-m-for-murder-2/2026-04-09/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Playwright Jeffrey Hatcher, who wrote City Lights’ 2015 hit Dr. Jekyll and Mr. Hyde, now brings us a...",
+      "description_detail": null,
+      "source": "sjdowntown",
+      "scraped_at": "2026-03-30T16:58:30.802Z"
+    },
+    {
+      "id": 8,
+      "selected": false,
+      "title": "Live Music",
+      "time_display": "Thursday 04/09 6:00 PM - 9:00 PM",
+      "location": "San Pedro Square Market, 87 N San Pedro St, San Jose, CA",
+      "price": "Check event page",
+      "event_type": "market",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://sjdowntown.com/event/live-music/2026-04-09/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Experience live music at San Pedro Square Market six days a week! Explore our calendar for the full ...",
+      "description_detail": null,
+      "source": "sjdowntown",
+      "scraped_at": "2026-03-30T16:58:30.802Z"
+    },
+    {
+      "id": 9,
+      "selected": false,
+      "title": "Dial M For Murder",
+      "time_display": "Friday 04/10 12:00 AM - 11:59 PM",
+      "location": "City Lights Theater Company, 529 S 2nd St, San Jose, CA",
+      "price": "Check event page",
+      "event_type": "fair",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://sjdowntown.com/event/dial-m-for-murder-2/2026-04-10/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Playwright Jeffrey Hatcher, who wrote City Lights’ 2015 hit Dr. Jekyll and Mr. Hyde, now brings us a...",
+      "description_detail": null,
+      "source": "sjdowntown",
+      "scraped_at": "2026-03-30T16:58:30.802Z"
+    },
+    {
+      "id": 10,
+      "selected": false,
+      "title": "FandomCon Silicon Valley",
+      "time_display": "Friday 04/10 12:00 AM - Sunday 04/12 11:59 PM",
+      "location": "San Jose McEnery Convention Center, 150 W San Carlos St, San Jose, CA",
+      "price": "Check event page",
+      "event_type": "market",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://sjdowntown.com/event/fandomcon-silicon-valley/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Get ready for an unforgettable day at FandomCon, where fans of comics, anime, gaming, sci-fi, fantas...",
+      "description_detail": null,
+      "source": "sjdowntown",
+      "scraped_at": "2026-03-30T16:58:30.802Z"
+    },
+    {
+      "id": 11,
+      "selected": false,
+      "title": "Live Music",
+      "time_display": "Friday 04/10 6:00 PM - 9:00 PM",
+      "location": "San Pedro Square Market, 87 N San Pedro St, San Jose, CA",
+      "price": "Check event page",
+      "event_type": "market",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://sjdowntown.com/event/live-music/2026-04-10/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Experience live music at San Pedro Square Market six days a week! Explore our calendar for the full ...",
+      "description_detail": null,
+      "source": "sjdowntown",
+      "scraped_at": "2026-03-30T16:58:30.802Z"
+    },
+    {
+      "id": 12,
+      "selected": false,
+      "title": "Dial M For Murder",
+      "time_display": "Saturday 04/11 12:00 AM - 11:59 PM",
+      "location": "City Lights Theater Company, 529 S 2nd St, San Jose, CA",
+      "price": "Check event page",
+      "event_type": "fair",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://sjdowntown.com/event/dial-m-for-murder-2/2026-04-11/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Playwright Jeffrey Hatcher, who wrote City Lights’ 2015 hit Dr. Jekyll and Mr. Hyde, now brings us a...",
+      "description_detail": null,
+      "source": "sjdowntown",
+      "scraped_at": "2026-03-30T16:58:30.802Z"
+    },
+    {
+      "id": 13,
+      "selected": false,
+      "title": "Hobee&#8217;s Pancake Market",
+      "time_display": "Saturday 04/11 9:00 AM - 2:00 PM",
+      "location": "Hobee&#8217;s, 261 N 2nd street, San Jose, CA",
+      "price": "Check event page",
+      "event_type": "market",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://sjdowntown.com/event/hobees-pancake-market/2026-04-11/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Brunch and Browse LOCAL vendors and artisans Saturdays from 9:00-2:00pm at Hobee&#8217;s Downtown Sa...",
+      "description_detail": null,
+      "source": "sjdowntown",
+      "scraped_at": "2026-03-30T16:58:30.802Z"
+    },
+    {
+      "id": 14,
+      "selected": false,
+      "title": "Live Music",
+      "time_display": "Saturday 04/11 6:00 PM - 9:00 PM",
+      "location": "San Pedro Square Market, 87 N San Pedro St, San Jose, CA",
+      "price": "Check event page",
+      "event_type": "market",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://sjdowntown.com/event/live-music/2026-04-11/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Experience live music at San Pedro Square Market six days a week! Explore our calendar for the full ...",
+      "description_detail": null,
+      "source": "sjdowntown",
+      "scraped_at": "2026-03-30T16:58:30.802Z"
+    },
+    {
+      "id": 15,
+      "selected": false,
+      "title": "Dial M For Murder",
+      "time_display": "Sunday 04/12 2:00 PM - 4:00 PM",
+      "location": "City Lights Theater Company, 529 S 2nd St, San Jose, CA",
+      "price": "Check event page",
+      "event_type": "fair",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://sjdowntown.com/event/dial-m-for-murder-2/2026-04-12/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Playwright Jeffrey Hatcher, who wrote City Lights’ 2015 hit Dr. Jekyll and Mr. Hyde, now brings us a...",
+      "description_detail": null,
+      "source": "sjdowntown",
+      "scraped_at": "2026-03-30T16:58:30.802Z"
+    },
+    {
+      "id": 16,
+      "selected": false,
+      "title": "San Francisco Playhouse presents “Flex”San Francisco Playhouse - SF Playhouse",
+      "time_display": "Tuesday 04/07 7:00 PM",
+      "location": "450 Post Street, 2nd Floor, San Francisco, CA",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.sfplayhouse.org/sfph/2025-2026-season/flex/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "sfstation",
+      "scraped_at": "2026-03-30T16:59:05.158Z"
+    },
+    {
+      "id": 17,
+      "selected": false,
+      "title": "Golden State Warriors 2025/2026 SeasonChase Center",
+      "time_display": "Tuesday 04/07 7:00 PM",
+      "location": "1 Warriors Way, San Francisco, CA",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://ticketmaster.evyy.net/c/253558/264167/4272?u=https%3A%2F%2Fwww.ticketmaster.com%2Fartist%2F805946",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "sfstation",
+      "scraped_at": "2026-03-30T16:59:05.158Z"
+    },
+    {
+      "id": 18,
+      "selected": false,
+      "title": "Jiyoung Han with Soleil Ho - Honey in the Wound: A NovelBook Passage - San Francisco",
+      "time_display": "Tuesday 04/07 5:30 PM",
+      "location": "1 Ferry Bulding, San Francisco, CA",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.bookpassage.com/event/jiyoung-han-soleil-ho-honey-wound-novel-ferry-building-store",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "sfstation",
+      "scraped_at": "2026-03-30T16:59:05.158Z"
+    },
+    {
+      "id": 19,
+      "selected": false,
+      "title": "uru-chan - unOrdinary Volume 4: A Graphic NovelBook Passage - San Francisco",
+      "time_display": "Wednesday 04/08 5:30 PM",
+      "location": "1 Ferry Bulding, San Francisco, CA",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.bookpassage.com/event/uru-chan-unordinary-volume-4",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "sfstation",
+      "scraped_at": "2026-03-30T16:59:05.158Z"
+    },
+    {
+      "id": 20,
+      "selected": false,
+      "title": "Red Curtain Addict's Second Annual Bay’s Stage Arts SoiréeLocal Edition",
+      "time_display": "Wednesday 04/08 5:00 PM",
+      "location": "691 Market Street, San Francisco, CA",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://shop.redcurtainaddict.com/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "sfstation",
+      "scraped_at": "2026-03-30T16:59:05.158Z"
+    },
+    {
+      "id": 21,
+      "selected": false,
+      "title": "NightLife LIVECalifornia Academy of Sciences",
+      "time_display": "Thursday 04/09 6:00 PM",
+      "location": "55 Music Concourse Drive, San Francisco, CA",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.calacademy.org/nightlife",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "sfstation",
+      "scraped_at": "2026-03-30T16:59:05.158Z"
+    },
+    {
+      "id": 22,
+      "selected": false,
+      "title": "oskar med k - Make Me Feel Tour 2026The Great Northern",
+      "time_display": "Thursday 04/09 9:30 PM",
+      "location": "119 Utah Street, San Francisco, CA",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/oskar-med-k-make-me-feel-tour-2026-tickets-1979777236007",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "sfstation",
+      "scraped_at": "2026-03-30T16:59:05.158Z"
+    },
+    {
+      "id": 23,
+      "selected": false,
+      "title": "RETURN TO OZ 40TH ANNIVERSARY IN 35MM W/ SPECIAL GUEST: DIRECTOR WALTER MURCHThe Castro Theatre",
+      "time_display": "Thursday 04/09 7:30 PM",
+      "location": "429 Castro Street, San Francisco, CA",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://ticketmaster.evyy.net/c/253558/264167/4272?u=https%3A%2F%2Fwww.ticketweb.com%2Fevent%2Freturn-to-oz-40th-anniversary-the-castro-theatre-tickets%2F14731523",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "sfstation",
+      "scraped_at": "2026-03-30T16:59:05.158Z"
+    },
+    {
+      "id": 24,
+      "selected": false,
+      "title": "SF’s César Chávez Day Festival 2026",
+      "time_display": "Saturday 04/11 11:00 AM - 6:00 PM",
+      "location": "24th and Folsom, San Francisco Bay Area",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/sfs-cesar-chavez-day-festival-2026/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Be a part of the largest event honoring César Chávez in Northern California, honoring the life and w...",
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2026-03-30T16:58:41.297Z"
+    },
+    {
+      "id": 25,
+      "selected": false,
+      "title": "SF’s César Chávez Day Parade 2026",
+      "time_display": "Saturday 04/11 11:00 AM - 12:00 PM",
+      "location": "Mission Dolores Park, San Francisco Bay Area",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/sfs-cesar-chavez-day-parade-2026/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Be a part of the largest event honoring César Chávez in Northern California, honoring the life and w...",
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2026-03-30T16:58:41.297Z"
+    },
+    {
+      "id": 26,
+      "selected": false,
+      "title": "SF Cherry Blossom Festival 2026: April 11-12 & 18-19",
+      "time_display": "Saturday 04/11 11:00 AM - 5:00 PM",
+      "location": "Japantown Peace Plaza, San Francisco Bay Area",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/sf-cherry-blossom-festival-2026-april-11-12-19-20/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Welcome to the Northern California Cherry Blossom Festival, one of California’s most prominent celeb...",
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2026-03-30T16:58:41.297Z"
+    },
+    {
+      "id": 27,
+      "selected": false,
+      "title": "SF’s “Night of Ideas” Huge Free Day-to-Midnight Festival (2026)",
+      "time_display": "Saturday 04/11 3:00 PM - 12:00 AM",
+      "location": "San Francisco Main Public Library",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/sfs-night-ideas-free-late-night-festival-main-library-2025/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2026-03-30T16:58:41.297Z"
+    },
+    {
+      "id": 28,
+      "selected": false,
+      "title": "SF’s “Inner Sunset Flea Market” 2025 w/ Sunset Mercantile (Season Launch)",
+      "time_display": "Sunday 04/12 10:00 AM - 4:00 PM",
+      "location": "Inner Sunset, San Francisco Bay Area",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/sfs-inner-sunset-flea-market-2025-w-sunset-mercantile-season-launch/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "The Inner Sunset Flea Market is back for its 11th season on April 12th! Launched in collaboration wi...",
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2026-03-30T16:58:41.297Z"
+    },
+    {
+      "id": 29,
+      "selected": false,
+      "title": "“Inner Sunset Flea Market” Returns for 2026 (Every Second Sunday)",
+      "time_display": "Sunday 04/12 10:00 AM - 4:00 PM",
+      "location": "Irving Street, San Francisco",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/sunset-flea-market-returns-2026-sunday/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2026-03-30T16:58:41.297Z"
+    },
+    {
+      "id": 30,
+      "selected": false,
+      "title": "SF’s First Ever “Taste of Thrive City” w/ $6 Tasting Tickets (2026)",
+      "time_display": "Sunday 04/12 11:00 AM - 5:00 PM",
+      "location": "Thrive City Plaza (at Chase Center), San Francisco Bay Area",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/sfs-taste-thrive-city-6-tasting-tickets-2026/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2026-03-30T16:58:41.297Z"
+    },
+    {
+      "id": 31,
+      "selected": false,
+      "title": "“Ploverfest” Free Community Celebration of 1 Year of Sunset Dunes (SF)",
+      "time_display": "Sunday 04/12 12:00 PM - 4:00 PM",
+      "location": "Noriega Sunset Lounge (Sunset Dunes Park), San Francisco",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/ploverfest-free-community-celebration-1-year-sunset-dunes-sf/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2026-03-30T16:58:41.297Z"
+    },
+    {
+      "id": 32,
+      "selected": false,
+      "title": "Downtown Farmers’ Market",
+      "time_display": "Wednesday 04/08 9:00 AM - 1:30 PM",
+      "location": "Hammer Theatre Center, 101 Paseo De San Antonio, San Jose, CA",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sjdowntown.com/event/downtown-farmers-market-2/2026-04-08/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Enjoy fresh produce, baked goods, local artisans, and delicious prepared foods from your favorite lo...",
+      "description_detail": null,
+      "source": "sjdowntown",
+      "scraped_at": "2026-03-30T16:58:30.800Z"
+    },
+    {
+      "id": 33,
+      "selected": false,
+      "title": "Karaoke Night",
+      "time_display": "Monday 04/06 9:00 PM - Tuesday 04/07 1:30 AM",
+      "location": "O&#8217;Flaherty&#8217;s Irish Pub, 25 N San Pedro St., San Jose, CA",
+      "price": "Check event page",
+      "event_type": "art",
+      "priority": 5,
+      "chinese_relevant": false,
+      "original_url": "https://sjdowntown.com/event/karaoke-night-2/2026-04-06/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Come sing your heart out! Join us for Karaoke every Sunday & Monday from 9pm to close.",
+      "description_detail": null,
+      "source": "sjdowntown",
+      "scraped_at": "2026-03-30T16:58:30.800Z"
+    },
+    {
+      "id": 34,
+      "selected": false,
+      "title": "Live Music Wednesdays at Coastal Manor",
+      "time_display": "Wednesday 04/08 7:30 PM - 9:30 PM",
+      "location": "Downtown San Jose Marriott Hotel, 301 S. Market Street, San Jose, CA",
+      "price": "Check event page",
+      "event_type": "art",
+      "priority": 5,
+      "chinese_relevant": false,
+      "original_url": "https://sjdowntown.com/event/live-music-wednesdays-at-coastal-manor/2026-04-08/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Ease into the week with live music every Wednesday night at Coastal Manor, inside the San Jose Marri...",
+      "description_detail": null,
+      "source": "sjdowntown",
+      "scraped_at": "2026-03-30T16:58:30.801Z"
+    },
+    {
+      "id": 35,
+      "selected": false,
+      "title": "FandomCon Silicon Valley 2026 in San Jose (Apr. 10-12)",
+      "time_display": "Friday 04/10 2:00 PM - 8:00 PM",
+      "location": "San Jose McEnery Convention Center",
+      "price": "$34.67*",
+      "event_type": "other",
+      "priority": 3,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/fandomcon-silicon-valley-2026-san-jose-apr-1012/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2026-03-30T16:58:41.297Z"
+    },
+    {
+      "id": 36,
+      "selected": false,
+      "title": "Trivia Mondays",
+      "time_display": "Monday 04/06 7:30 PM - 9:00 PM",
+      "location": "Dr Funk, 29 N San Pedro St,, San Jose, CA",
+      "price": "Check event page",
+      "event_type": "other",
+      "priority": 3,
+      "chinese_relevant": false,
+      "original_url": "https://sjdowntown.com/event/trivia-mondays/2026-04-06/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Join Dr. Funk: Rum House + Kitchen as they host a a trivia night every Monday.",
+      "description_detail": null,
+      "source": "sjdowntown",
+      "scraped_at": "2026-03-30T16:58:30.799Z"
+    },
+    {
+      "id": 37,
+      "selected": false,
+      "title": "Trivia Night",
+      "time_display": "Wednesday 04/08 8:00 PM - 10:00 PM",
+      "location": "O&#8217;Flaherty&#8217;s Irish Pub, 25 N San Pedro St., San Jose, CA",
+      "price": "Check event page",
+      "event_type": "other",
+      "priority": 3,
+      "chinese_relevant": false,
+      "original_url": "https://sjdowntown.com/event/trivia-night/2026-04-08/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Put your thinking caps on… It’s Trivia Night! Join us for Trivia every Wednesday from 8pm to 10pm.",
+      "description_detail": null,
+      "source": "sjdowntown",
+      "scraped_at": "2026-03-30T16:58:30.801Z"
+    },
+    {
+      "id": 38,
+      "selected": false,
+      "title": "Spring into Connection Mixer",
+      "time_display": "Wednesday 04/08 6:00 PM - 8:00 PM",
+      "location": "Rotary Summit Center (Operated by Scott’s Seafood), 88 S. 4th Street, 7th Floor,, San Jose,, CA",
+      "price": "Free – $25",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sjdowntown.com/event/spring-into-connection-mixer/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "New Season. New Synergy. They say April showers bring May flowers, but at Scott’s Social Club, we’re...",
+      "description_detail": null,
+      "source": "sjdowntown",
+      "scraped_at": "2026-03-30T16:58:30.801Z"
+    },
+    {
+      "id": 39,
+      "selected": false,
+      "title": "$9 Before 9 pm Happy Hour",
+      "time_display": "Friday 04/10 6:30 PM - 9:00 PM",
+      "location": "Nomikai, 48 South 1st Street, San Jose, CA",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sjdowntown.com/event/9-before-9-pm-happy-hour/2026-04-10/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "All Signature Cocktails · All Draft Beers · All Mocktails — just $9 before 9 p.m. Plus: 20% off all ...",
+      "description_detail": null,
+      "source": "sjdowntown",
+      "scraped_at": "2026-03-30T16:58:30.802Z"
+    },
+    {
+      "id": 40,
+      "selected": false,
+      "title": "Berryessa Night Market",
+      "time_display": "Friday 04/10 6:00 PM - 10:00 PM",
+      "location": "San Jose Flea Market, 1590 Berryessa Road, San Jose, CA 95133",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://gardenattheflea.com/berryessanightmarket/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Weekly Friday night market inside the iconic San Jose Flea Market featuring Asian street food, desse...",
+      "description_detail": null,
+      "source": "berryessa-night-market",
+      "scraped_at": "2026-03-30T17:00:43.651Z"
+    }
+  ]
+}
