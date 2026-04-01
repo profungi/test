@@ -306,5 +306,16 @@
     "privacyPolicy": "隐私政策",
     "termsOfUse": "使用条款",
     "copyright": "© 2025 Champagne Grape. 保留所有权利。"
+  },
+  "eventDetail": {
+    "backToEvents": "← 返回所有活动",
+    "dateTime": "日期时间",
+    "location": "地点",
+    "price": "价格",
+    "organizer": "主办方",
+    "description": "活动详情",
+    "visitWebsite": "访问官方网站",
+    "shareEvent": "分享活动",
+    "addToCalendar": "添加到日历"
   }
 }

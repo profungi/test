@@ -306,5 +306,16 @@
     "privacyPolicy": "Privacy Policy",
     "termsOfUse": "Terms of Use",
     "copyright": "© 2025 Champagne Grape. All rights reserved."
+  },
+  "eventDetail": {
+    "backToEvents": "← Back to All Events",
+    "dateTime": "Date & Time",
+    "location": "Location",
+    "price": "Price",
+    "organizer": "Organizer",
+    "description": "Description",
+    "visitWebsite": "Visit Official Website",
+    "shareEvent": "Share This Event",
+    "addToCalendar": "Add to Calendar"
   }
 }
