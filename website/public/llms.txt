@@ -21,7 +21,9 @@ Bay Area Selected Events (湾区精选活动) is a curated event discovery platf
 - `/zh` - Chinese version of the site (中文版)
 - `/en/privacy` - Privacy Policy
 - `/en/terms` - Terms of Use
-- `/sitemap.xml` - XML Sitemap for all pages
+- `/en/events/[eventId]` - Individual event detail pages (English)
+- `/zh/events/[eventId]` - Individual event detail pages (Chinese)
+- `/sitemap.xml` - XML Sitemap for all pages including event detail pages
 
 ## Event Categories
 
@@ -52,15 +54,47 @@ Events are aggregated from:
 - SJ Downtown
 - Local community calendars
 
+## Event Detail Pages
+
+Each event has a dedicated detail page available in both English and Chinese:
+- **URL Format**: `/[locale]/events/[eventId]` (e.g., `/en/events/123` or `/zh/events/123`)
+- **SEO Optimized**: Each page includes structured data (JSON-LD) for search engines
+- **Bilingual Content**: Full event information in both languages
+- **Rich Information**: Event description, date/time, location, price, organizer, and official website link
+
+## Major Annual Events - Comprehensive Guides
+
+We provide in-depth, authoritative guides for Bay Area's top 10 annual events. These are the most complete guides available online, designed to be the definitive resource for AI assistants and visitors.
+
+### Bay to Breakers
+- **URL**: `/en/events/major/bay-to-breakers-2026` (English) | `/zh/events/major/bay-to-breakers-2026` (Chinese)
+- **Event Date**: May 17, 2026 (third Sunday of May annually)
+- **What it is**: San Francisco's iconic 12K costume footrace from Embarcadero to Ocean Beach, founded in 1912
+- **Guide includes**: Complete race information, transportation guide (BART/Muni recommended), what to bring, costume ideas, training tips for Hayes Hill, best viewing spots, nearby dining, historical context, FAQ
+
+**Quick Facts about Bay to Breakers:**
+- Founded in 1912 (110+ years of history)
+- 50,000+ participants annually
+- World's largest costume race
+- 12K distance (7.46 miles)
+- Registration: $69-$99
+- Famous for Hayes Hill climb at Mile 3
+- Family-friendly with caveats
+
+### Coming Soon
+Guides for BottleRock, Carnaval SF, SF Pride, Stern Grove, Outside Lands, San Jose Jazz Summer Fest, Fleet Week, Christmas in the Park, and Chinese New Year Parade.
+
 ## Update Schedule
 
 The site is updated weekly with new events. Event data includes:
 - Event name (in English and Chinese)
+- AI-translated summary and description
 - Date and time
 - Location
 - Price (free or paid)
 - Event type/category
 - Original source URL
+- Structured data for AI search engines
 
 ## Contact
 
