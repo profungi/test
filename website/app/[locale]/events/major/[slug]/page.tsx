@@ -219,36 +219,20 @@ export default async function MajorEventPage({ params }: Props) {
           <article className="bg-white/90 backdrop-blur-sm rounded-2xl shadow-2xl border-2 border-[#B37DA2]/30 overflow-hidden">
             {/* 活动主图 */}
             {meta.heroImage && (
-              <div className="relative w-full h-80 sm:h-96 bg-gradient-to-br from-[#B37DA2] to-[#4A2C22]">
+              <div className="relative w-full bg-gradient-to-br from-[#B37DA2] to-[#4A2C22]">
                 <img
                   src={meta.heroImage}
                   alt={`${title} ${meta.year}`}
-                  className="w-full h-full object-cover"
+                  className="w-full h-auto object-contain"
                 />
               </div>
             )}
 
             {/* Markdown 内容 */}
             <div className="p-6 sm:p-10">
-              {/* 文章内容 - 应用样式 */}
+              {/* 文章内容 - 应用自定义样式 */}
               <div
-                className="prose prose-lg max-w-none
-                  prose-headings:text-[#4A2C22]
-                  prose-h1:text-4xl prose-h1:font-bold prose-h1:mb-6 prose-h1:mt-0
-                  prose-h2:text-2xl prose-h2:font-bold prose-h2:mt-10 prose-h2:mb-4 prose-h2:border-b-2 prose-h2:border-[#F0D3B6] prose-h2:pb-2
-                  prose-h3:text-xl prose-h3:font-semibold prose-h3:mt-6 prose-h3:mb-3
-                  prose-p:text-[#4A2C22]/80 prose-p:leading-relaxed prose-p:mb-4
-                  prose-a:text-[#B37DA2] prose-a:font-medium prose-a:no-underline hover:prose-a:underline
-                  prose-strong:text-[#4A2C22] prose-strong:font-semibold
-                  prose-ul:my-4 prose-ul:list-disc prose-ul:pl-6
-                  prose-ol:my-4 prose-ol:list-decimal prose-ol:pl-6
-                  prose-li:text-[#4A2C22]/80 prose-li:mb-2
-                  prose-blockquote:border-l-4 prose-blockquote:border-[#B37DA2] prose-blockquote:pl-4 prose-blockquote:italic prose-blockquote:text-[#4A2C22]/70
-                  prose-code:text-[#B37DA2] prose-code:bg-[#FFF4E6] prose-code:px-1 prose-code:rounded
-                  prose-table:border-collapse prose-table:w-full prose-table:my-6
-                  prose-th:bg-[#B37DA2] prose-th:text-white prose-th:font-semibold prose-th:p-3 prose-th:text-left
-                  prose-td:border prose-td:border-[#F0D3B6] prose-td:p-3 prose-td:text-[#4A2C22]/80
-                  prose-hr:border-[#F0D3B6] prose-hr:my-8"
+                className="event-markdown-content"
                 dangerouslySetInnerHTML={{ __html: htmlContent }}
               />
 
