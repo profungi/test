@@ -1,0 +1,867 @@
+{
+  "review_id": "review_2026-04-20_1710_coo",
+  "generated_at": "2026-04-20T17:10:16.878Z",
+  "scrape_date": "2026-04-20",
+  "target_week": "2026-04-27_to_2026-05-03",
+  "target_week_readable": "下周 (04/27 - 05/03)",
+  "scraping_report": {
+    "total_scraped": 56,
+    "after_deduplication": 49,
+    "after_classification": 49,
+    "classification_report": {
+      "totalEvents": 49,
+      "eventTypes": {
+        "free": 27,
+        "other": 4,
+        "market": 10,
+        "festival": 1,
+        "art": 4,
+        "music": 1,
+        "fair": 2
+      },
+      "priorityLevels": {
+        "3": 4,
+        "4": 1,
+        "5": 4,
+        "9": 27,
+        "10": 13
+      },
+      "chineseRelevant": 0,
+      "topPriorityEvents": 40
+    }
+  },
+  "instructions": {
+    "how_to_review": "将你想要发布的活动的 'selected' 字段改为 true",
+    "next_step": "保存文件后运行: npm run generate-post [此文件路径]",
+    "fields_explanation": {
+      "title": "活动标题",
+      "time_display": "显示用的时间格式",
+      "location": "活动地点",
+      "price": "票价信息",
+      "event_type": "AI识别的活动类型",
+      "priority": "优先级分数 (越高越重要)",
+      "chinese_relevant": "是否与中文社区相关",
+      "original_url": "原始活动链接"
+    }
+  },
+  "stats": {
+    "total_candidates": 40,
+    "by_type": {
+      "market": 10,
+      "festival": 1,
+      "fair": 2,
+      "free": 19,
+      "art": 4,
+      "other": 4
+    },
+    "by_priority": {
+      "3": 4,
+      "5": 4,
+      "9": 19,
+      "10": 13
+    },
+    "chinese_relevant": 0
+  },
+  "events": [
+    {
+      "id": 1,
+      "selected": false,
+      "title": "2026 “SF Tea Festival” at Ferry Building (May 2-3)",
+      "time_display": "Saturday 05/02 10:00 AM - 5:00 PM",
+      "location": "San Francisco Ferry Building",
+      "price": "$21*",
+      "event_type": "market",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/2026-sf-tea-festival-at-ferry-building-may-2-3/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "If you love tea, there’s probably no better event all year to attend. Explore and taste hundreds of ...",
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2026-04-20T17:05:42.210Z"
+    },
+    {
+      "id": 2,
+      "selected": false,
+      "title": "Sheep Shearing & Fiber Arts Festival (Los Altos)",
+      "time_display": "Saturday 05/02 9:30 AM - 3:00 PM",
+      "location": "Hidden Villa, South Bay",
+      "price": "$17.85*",
+      "event_type": "festival",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/sheep-shearing-fiber-arts-festival-los-altos/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2026-04-20T17:05:42.210Z"
+    },
+    {
+      "id": 3,
+      "selected": false,
+      "title": "Live Music",
+      "time_display": "Monday 04/27 6:00 PM - 9:00 PM",
+      "location": "San Pedro Square Market, 87 N San Pedro St, San Jose, CA",
+      "price": "Check event page",
+      "event_type": "market",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://sjdowntown.com/event/live-music/2026-04-27/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Experience live music at San Pedro Square Market six days a week! Explore our calendar for the full ...",
+      "description_detail": null,
+      "source": "sjdowntown",
+      "scraped_at": "2026-04-20T17:05:33.531Z"
+    },
+    {
+      "id": 4,
+      "selected": false,
+      "title": "Live Music",
+      "time_display": "Tuesday 04/28 6:00 PM - 9:00 PM",
+      "location": "San Pedro Square Market, 87 N San Pedro St, San Jose, CA",
+      "price": "Check event page",
+      "event_type": "market",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://sjdowntown.com/event/live-music/2026-04-28/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Experience live music at San Pedro Square Market six days a week! Explore our calendar for the full ...",
+      "description_detail": null,
+      "source": "sjdowntown",
+      "scraped_at": "2026-04-20T17:05:33.533Z"
+    },
+    {
+      "id": 5,
+      "selected": false,
+      "title": "Jeopardy Bar League",
+      "time_display": "Tuesday 04/28 7:00 PM - 8:00 PM",
+      "location": "Three Sisters Whiskey Bar, 170 W. Saint John St., San Jose, CA",
+      "price": "Check event page",
+      "event_type": "market",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://sjdowntown.com/event/jeopardy-bar-league/2026-04-28/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "ATTENTION TRIVIA LOVERS! San Pedro Square Market is hosting Jeopardy Bar League – the official bar t...",
+      "description_detail": null,
+      "source": "sjdowntown",
+      "scraped_at": "2026-04-20T17:05:33.533Z"
+    },
+    {
+      "id": 6,
+      "selected": false,
+      "title": "Live Music",
+      "time_display": "Wednesday 04/29 6:00 PM - 9:00 PM",
+      "location": "San Pedro Square Market, 87 N San Pedro St, San Jose, CA",
+      "price": "Check event page",
+      "event_type": "market",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://sjdowntown.com/event/live-music/2026-04-29/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Experience live music at San Pedro Square Market six days a week! Explore our calendar for the full ...",
+      "description_detail": null,
+      "source": "sjdowntown",
+      "scraped_at": "2026-04-20T17:05:33.534Z"
+    },
+    {
+      "id": 7,
+      "selected": false,
+      "title": "King Trivia Night",
+      "time_display": "Wednesday 04/29 7:00 PM - 8:00 PM",
+      "location": "SoFA Market, 387 S 1st Street, San Jose, CA",
+      "price": "Check event page",
+      "event_type": "market",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://sjdowntown.com/event/king-trivia-night/2026-04-29/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Your weekly excuse to eat, drink, and outsmart everyone in the room. 👑🧠 Trivia night at SoFA Marke...",
+      "description_detail": null,
+      "source": "sjdowntown",
+      "scraped_at": "2026-04-20T17:05:33.534Z"
+    },
+    {
+      "id": 8,
+      "selected": false,
+      "title": "Live Music",
+      "time_display": "Thursday 04/30 6:00 PM - 9:00 PM",
+      "location": "San Pedro Square Market, 87 N San Pedro St, San Jose, CA",
+      "price": "Check event page",
+      "event_type": "market",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://sjdowntown.com/event/live-music/2026-04-30/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Experience live music at San Pedro Square Market six days a week! Explore our calendar for the full ...",
+      "description_detail": null,
+      "source": "sjdowntown",
+      "scraped_at": "2026-04-20T17:05:33.534Z"
+    },
+    {
+      "id": 9,
+      "selected": false,
+      "title": "Live Music",
+      "time_display": "Friday 05/01 6:00 PM - 9:00 PM",
+      "location": "San Pedro Square Market, 87 N San Pedro St, San Jose, CA",
+      "price": "Check event page",
+      "event_type": "market",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://sjdowntown.com/event/live-music/2026-05-01/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Experience live music at San Pedro Square Market six days a week! Explore our calendar for the full ...",
+      "description_detail": null,
+      "source": "sjdowntown",
+      "scraped_at": "2026-04-20T17:05:33.534Z"
+    },
+    {
+      "id": 10,
+      "selected": false,
+      "title": "La Traviata",
+      "time_display": "Friday 05/01 7:30 PM - 9:30 PM",
+      "location": "California Theatre, 345 S 1st St, San Jose, CA",
+      "price": "Check event page",
+      "event_type": "fair",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://sjdowntown.com/event/la-traviata/2026-05-01/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Performances: Sun., April 19, 2026 @ 2pm Fri., April 24, 2026 @ 7:30pm Sun., April 26, 2026 @ 2pm Fr...",
+      "description_detail": null,
+      "source": "sjdowntown",
+      "scraped_at": "2026-04-20T17:05:33.534Z"
+    },
+    {
+      "id": 11,
+      "selected": false,
+      "title": "Hobee&#8217;s Pancake Market",
+      "time_display": "Saturday 05/02 9:00 AM - 2:00 PM",
+      "location": "Hobee&#8217;s, 261 N 2nd street, San Jose, CA",
+      "price": "Check event page",
+      "event_type": "market",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://sjdowntown.com/event/hobees-pancake-market/2026-05-02/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Brunch and Browse LOCAL vendors and artisans Saturdays from 9:00-2:00pm at Hobee&#8217;s Downtown Sa...",
+      "description_detail": null,
+      "source": "sjdowntown",
+      "scraped_at": "2026-04-20T17:05:33.534Z"
+    },
+    {
+      "id": 12,
+      "selected": false,
+      "title": "Live Music",
+      "time_display": "Saturday 05/02 6:00 PM - 9:00 PM",
+      "location": "San Pedro Square Market, 87 N San Pedro St, San Jose, CA",
+      "price": "Check event page",
+      "event_type": "market",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://sjdowntown.com/event/live-music/2026-05-02/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Experience live music at San Pedro Square Market six days a week! Explore our calendar for the full ...",
+      "description_detail": null,
+      "source": "sjdowntown",
+      "scraped_at": "2026-04-20T17:05:33.534Z"
+    },
+    {
+      "id": 13,
+      "selected": false,
+      "title": "La Traviata",
+      "time_display": "Sunday 05/03 2:00 PM - 4:00 PM",
+      "location": "California Theatre, 345 S 1st St, San Jose, CA",
+      "price": "Check event page",
+      "event_type": "fair",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://sjdowntown.com/event/la-traviata/2026-05-03/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Performances: Sun., April 19, 2026 @ 2pm Fri., April 24, 2026 @ 7:30pm Sun., April 26, 2026 @ 2pm Fr...",
+      "description_detail": null,
+      "source": "sjdowntown",
+      "scraped_at": "2026-04-20T17:05:33.535Z"
+    },
+    {
+      "id": 14,
+      "selected": false,
+      "title": "TAP IN TUESDAYS - Hip Hop / Trap / R&BThe Valencia Room",
+      "time_display": "Tuesday 04/28 10:00 PM",
+      "location": "647 Valencia Street, San Francisco, CA",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/1979660881989",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "sfstation",
+      "scraped_at": "2026-04-20T17:06:05.818Z"
+    },
+    {
+      "id": 15,
+      "selected": false,
+      "title": "San Francisco Playhouse presents “Flex”San Francisco Playhouse - SF Playhouse",
+      "time_display": "Tuesday 04/28 7:00 PM",
+      "location": "450 Post Street, 2nd Floor, San Francisco, CA",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.sfplayhouse.org/sfph/2025-2026-season/flex/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "sfstation",
+      "scraped_at": "2026-04-20T17:06:05.819Z"
+    },
+    {
+      "id": 16,
+      "selected": false,
+      "title": "Art BashSFMOMA",
+      "time_display": "Wednesday 04/29 6:00 PM",
+      "location": "151 3rd Street, San Francisco, CA",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://tickets.sfmoma.org/tickets/performance?date=2026-04-29&type=artbash",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "sfstation",
+      "scraped_at": "2026-04-20T17:06:05.819Z"
+    },
+    {
+      "id": 17,
+      "selected": false,
+      "title": "The Muslims are Coming!...with Equally Threatening Friends! A Comedy ShowThe Lost Church - San Francisco",
+      "time_display": "Wednesday 04/29 7:30 PM",
+      "location": "988 Columbus Avenue, San Francisco, CA",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://thelostchurch.my.salesforce-sites.com/ticket#/instances/a0FUh000007ZQ3dMAG",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "sfstation",
+      "scraped_at": "2026-04-20T17:06:05.819Z"
+    },
+    {
+      "id": 18,
+      "selected": false,
+      "title": "SAMBAXÉ DANCE FUNDRAISEREl Rio",
+      "time_display": "Wednesday 04/29 8:00 PM",
+      "location": "3158 Mission Street, San Francisco, CA",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.gofundme.com/f/help-sambaxe-bring-the-spirit-of-brazil-to-sf-carnaval",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "sfstation",
+      "scraped_at": "2026-04-20T17:06:05.819Z"
+    },
+    {
+      "id": 19,
+      "selected": false,
+      "title": "Well-Crafted: Hanging Air Fresheners at SaluhallSaluhall",
+      "time_display": "Wednesday 04/29 5:30 PM",
+      "location": "945 Market Street, San Francisco, CA",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/well-crafted-hanging-air-fresheners-at-saluhall-tickets-1986274201606?aff=odcleoeventsincollection",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "sfstation",
+      "scraped_at": "2026-04-20T17:06:05.819Z"
+    },
+    {
+      "id": 20,
+      "selected": false,
+      "title": "NightLife LIVECalifornia Academy of Sciences",
+      "time_display": "Thursday 04/30 6:00 PM",
+      "location": "55 Music Concourse Drive, San Francisco, CA",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.calacademy.org/nightlife",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "sfstation",
+      "scraped_at": "2026-04-20T17:06:05.819Z"
+    },
+    {
+      "id": 21,
+      "selected": false,
+      "title": "Shades and ShadowsMagic Theatre",
+      "time_display": "Thursday 04/30 8:00 PM",
+      "location": "Fort Mason Center, Building D, San Francisco, CA",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/shades-and-shadows-a-world-premiere-play-tickets-1982925960928",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "sfstation",
+      "scraped_at": "2026-04-20T17:06:05.819Z"
+    },
+    {
+      "id": 22,
+      "selected": false,
+      "title": "The Red Pears & Together PangeaGreat American Music Hall (GAMH)",
+      "time_display": "Thursday 04/30 8:00 PM",
+      "location": "859 O'Farrell Street, San Francisco, CA",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventim.us/event/the-red-pears-and-together-pangea/675103",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "sfstation",
+      "scraped_at": "2026-04-20T17:06:05.819Z"
+    },
+    {
+      "id": 23,
+      "selected": false,
+      "title": "GOOD VIBEZZ ThursdaysThe Valencia Room",
+      "time_display": "Thursday 04/30 10:00 PM",
+      "location": "647 Valencia Street, San Francisco, CA",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/1979206764712",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "sfstation",
+      "scraped_at": "2026-04-20T17:06:05.819Z"
+    },
+    {
+      "id": 24,
+      "selected": false,
+      "title": "PoolsideThe Castro Theatre",
+      "time_display": "Friday 05/01 8:00 PM",
+      "location": "429 Castro Street, San Francisco, CA",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://ticketmaster.evyy.net/c/253558/264167/4272?u=https%3A%2F%2Fwww.ticketmaster.com%2Fpoolside-tickets%2Fartist%2F1725729",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "sfstation",
+      "scraped_at": "2026-04-20T17:06:05.819Z"
+    },
+    {
+      "id": 25,
+      "selected": false,
+      "title": "SF Commerce & Artisan Assembly w/ Local Makers (Union Square)",
+      "time_display": "Friday 05/01 10:00 AM - 11:00 AM",
+      "location": "Union Square Park, San Francisco Bay Area",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/sf-commerce-artisan-assembly-local-makers-union-square/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2026-04-20T17:05:42.210Z"
+    },
+    {
+      "id": 26,
+      "selected": false,
+      "title": "Pleasant Hill’s New Night Market",
+      "time_display": "Friday 05/01 5:00 PM - 9:00 PM",
+      "location": "Chilpancingo Park, San Francisco Bay Area",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/pleasant-hills-new-night-market/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Pleasant Hill Night Market Will Return in May 2026 After a successful first season, the Night Market...",
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2026-04-20T17:05:42.210Z"
+    },
+    {
+      "id": 27,
+      "selected": false,
+      "title": "41st Annual Cinco de Mayo Festival (Hayward)",
+      "time_display": "Saturday 05/02 10:00 AM - 5:00 PM",
+      "location": "Downtown Hayward",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/39th-annual-cinco-de-mayo-festival-hayward/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2026-04-20T17:05:42.210Z"
+    },
+    {
+      "id": 28,
+      "selected": false,
+      "title": "Free AAPI Heritage Market: Art + Aerial Show at Yank Sing (SF)",
+      "time_display": "Saturday 05/02 11:00 AM - 3:00 PM",
+      "location": "Yank Sing, San Francisco",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/free-aapi-heritage-market-art-aerial-show-yank-sing-sf/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2026-04-20T17:05:42.210Z"
+    },
+    {
+      "id": 29,
+      "selected": false,
+      "title": "2026 Japantown Kodomo no Hi Children’s Day Festival (SF)",
+      "time_display": "Saturday 05/02 11:00 AM - 4:00 PM",
+      "location": "Japanese Cultural and Community Center of Northern California, San Francisco Bay Area",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/apantown-kodomo-childrens-day-festival-sf/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2026-04-20T17:05:42.210Z"
+    },
+    {
+      "id": 30,
+      "selected": false,
+      "title": "Berkeley Bay Festival 2026: Free Boat Rides, Live Music & Activities",
+      "time_display": "Saturday 05/02 11:00 AM - 4:00 PM",
+      "location": "Shorebird Park Nature Center, East Bay",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/berkeley-bay-festival-free-boat-rides-2025/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2026-04-20T17:05:42.210Z"
+    },
+    {
+      "id": 31,
+      "selected": false,
+      "title": "Annual Spring Vibes Market",
+      "time_display": "Saturday 05/02 11:00 AM - 4:00 PM",
+      "location": "Crockett Scout Hall, North Bay",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/annual-spring-vibes-market/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2026-04-20T17:05:42.210Z"
+    },
+    {
+      "id": 32,
+      "selected": false,
+      "title": "Free Oakland “Beltane Magical Marketplace” May Day Festival (2026)",
+      "time_display": "Sunday 05/03 11:00 AM - 5:00 PM",
+      "location": "The Sunshine Prophecy, East Bay",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/free-oakland-beltane-magical-marketplace-day-festival-2026/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2026-04-20T17:05:42.210Z"
+    },
+    {
+      "id": 33,
+      "selected": false,
+      "title": "Karaoke Night",
+      "time_display": "Monday 04/27 9:00 PM - Tuesday 04/28 1:30 AM",
+      "location": "O&#8217;Flaherty&#8217;s Irish Pub, 25 N San Pedro St., San Jose, CA",
+      "price": "Check event page",
+      "event_type": "art",
+      "priority": 5,
+      "chinese_relevant": false,
+      "original_url": "https://sjdowntown.com/event/karaoke-night-2/2026-04-27/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Come sing your heart out! Join us for Karaoke every Sunday & Monday from 9pm to close.",
+      "description_detail": null,
+      "source": "sjdowntown",
+      "scraped_at": "2026-04-20T17:05:33.533Z"
+    },
+    {
+      "id": 34,
+      "selected": false,
+      "title": "Live Music Wednesdays at Coastal Manor",
+      "time_display": "Wednesday 04/29 7:30 PM - 9:30 PM",
+      "location": "Downtown San Jose Marriott Hotel, 301 S. Market Street, San Jose, CA",
+      "price": "Check event page",
+      "event_type": "art",
+      "priority": 5,
+      "chinese_relevant": false,
+      "original_url": "https://sjdowntown.com/event/live-music-wednesdays-at-coastal-manor/2026-04-29/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Ease into the week with live music every Wednesday night at Coastal Manor, inside the San Jose Marri...",
+      "description_detail": null,
+      "source": "sjdowntown",
+      "scraped_at": "2026-04-20T17:05:33.534Z"
+    },
+    {
+      "id": 35,
+      "selected": false,
+      "title": "K-Pop Rave",
+      "time_display": "Friday 05/01 9:00 PM - 11:30 PM",
+      "location": "The Ritz, 400 S 1st St,, San Jose, CA",
+      "price": "Check event page",
+      "event_type": "art",
+      "priority": 5,
+      "chinese_relevant": false,
+      "original_url": "https://sjdowntown.com/event/k-pop-rave/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "San Jose, get ready to light up your weekend—K-Pop Rave is taking over The Ritz &#8211; San Jose, on...",
+      "description_detail": null,
+      "source": "sjdowntown",
+      "scraped_at": "2026-04-20T17:05:33.534Z"
+    },
+    {
+      "id": 36,
+      "selected": false,
+      "title": "The Hang Ft. Martín Perna",
+      "time_display": "Saturday 05/02 8:00 PM - 10:00 PM",
+      "location": "SJZ Break Room, 310 S 1st St,, San Jose, CA",
+      "price": "$21.80",
+      "event_type": "art",
+      "priority": 5,
+      "chinese_relevant": false,
+      "original_url": "https://sjdowntown.com/event/the-hang-ft-martin-perna/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Don’t miss SJZ’s newest program exploring the music of exciting artists and the music that inspires ...",
+      "description_detail": null,
+      "source": "sjdowntown",
+      "scraped_at": "2026-04-20T17:05:33.534Z"
+    },
+    {
+      "id": 37,
+      "selected": false,
+      "title": "Lily Allen Performs West End GirlThe Masonic",
+      "time_display": "Tuesday 04/28 8:00 PM",
+      "location": "1111 California Street, San Francisco, CA",
+      "price": "$35",
+      "event_type": "other",
+      "priority": 3,
+      "chinese_relevant": false,
+      "original_url": "https://ticketmaster.evyy.net/c/253558/264167/4272?u=https%3A%2F%2Fwww.ticketmaster.com%2Flily-allen-tickets%2Fartist%2F1053214",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "sfstation",
+      "scraped_at": "2026-04-20T17:06:05.818Z"
+    },
+    {
+      "id": 38,
+      "selected": false,
+      "title": "Connie HanSFJAZZ Center - SF Jazz",
+      "time_display": "Thursday 04/30 8:30 PM",
+      "location": "201 Franklin Street, San Francisco, CA",
+      "price": "$15",
+      "event_type": "other",
+      "priority": 3,
+      "chinese_relevant": false,
+      "original_url": "https://www.sfjazz.org/tickets/productions/25-26/connie-han/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "sfstation",
+      "scraped_at": "2026-04-20T17:06:05.819Z"
+    },
+    {
+      "id": 39,
+      "selected": false,
+      "title": "Trivia Mondays",
+      "time_display": "Monday 04/27 7:30 PM - 9:00 PM",
+      "location": "Dr Funk, 29 N San Pedro St,, San Jose, CA",
+      "price": "Check event page",
+      "event_type": "other",
+      "priority": 3,
+      "chinese_relevant": false,
+      "original_url": "https://sjdowntown.com/event/trivia-mondays/2026-04-27/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Join Dr. Funk: Rum House + Kitchen as they host a a trivia night every Monday.",
+      "description_detail": null,
+      "source": "sjdowntown",
+      "scraped_at": "2026-04-20T17:05:33.532Z"
+    },
+    {
+      "id": 40,
+      "selected": false,
+      "title": "Trivia Night",
+      "time_display": "Wednesday 04/29 8:00 PM - 10:00 PM",
+      "location": "O&#8217;Flaherty&#8217;s Irish Pub, 25 N San Pedro St., San Jose, CA",
+      "price": "Check event page",
+      "event_type": "other",
+      "priority": 3,
+      "chinese_relevant": false,
+      "original_url": "https://sjdowntown.com/event/trivia-night/2026-04-29/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Put your thinking caps on… It’s Trivia Night! Join us for Trivia every Wednesday from 8pm to 10pm.",
+      "description_detail": null,
+      "source": "sjdowntown",
+      "scraped_at": "2026-04-20T17:05:33.534Z"
+    }
+  ]
+}
