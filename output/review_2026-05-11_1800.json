@@ -1,0 +1,807 @@
+{
+  "review_id": "review_2026-05-11_1800_u79",
+  "generated_at": "2026-05-11T18:00:15.284Z",
+  "scrape_date": "2026-05-11",
+  "target_week": "2026-05-18_to_2026-05-24",
+  "target_week_readable": "下周 (05/18 - 05/24)",
+  "scraping_report": {
+    "total_scraped": 56,
+    "after_deduplication": 39,
+    "after_classification": 39,
+    "classification_report": {
+      "totalEvents": 39,
+      "eventTypes": {
+        "free": 17,
+        "festival": 2,
+        "fair": 1,
+        "market": 9,
+        "other": 3,
+        "art": 5,
+        "music": 2
+      },
+      "priorityLevels": {
+        "3": 3,
+        "4": 2,
+        "5": 5,
+        "9": 17,
+        "10": 12
+      },
+      "chineseRelevant": 0,
+      "topPriorityEvents": 29
+    }
+  },
+  "instructions": {
+    "how_to_review": "将你想要发布的活动的 'selected' 字段改为 true",
+    "next_step": "保存文件后运行: npm run generate-post [此文件路径]",
+    "fields_explanation": {
+      "title": "活动标题",
+      "time_display": "显示用的时间格式",
+      "location": "活动地点",
+      "price": "票价信息",
+      "event_type": "AI识别的活动类型",
+      "priority": "优先级分数 (越高越重要)",
+      "chinese_relevant": "是否与中文社区相关",
+      "original_url": "原始活动链接"
+    }
+  },
+  "stats": {
+    "total_candidates": 37,
+    "by_type": {
+      "festival": 2,
+      "fair": 1,
+      "market": 9,
+      "free": 17,
+      "art": 5,
+      "other": 3
+    },
+    "by_priority": {
+      "3": 3,
+      "5": 5,
+      "9": 17,
+      "10": 12
+    },
+    "chinese_relevant": 0
+  },
+  "events": [
+    {
+      "id": 1,
+      "selected": false,
+      "title": "1st Annual Cole Valley Nights “Short Film Fest” (SF)",
+      "time_display": "Thursday 05/21 4:00 PM - 9:00 PM",
+      "location": "Cole & Parnassus, San Francisco Bay Area",
+      "price": "Check event page",
+      "event_type": "festival",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/cole-valley-nights-short-film-fest-sf/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2026-05-11T17:55:41.581Z"
+    },
+    {
+      "id": 2,
+      "selected": false,
+      "title": "Data Center Expo North America",
+      "time_display": "Monday 05/18 12:00 AM - Tuesday 05/19 11:59 PM",
+      "location": "San Jose McEnery Convention Center, 150 W San Carlos St, San Jose, CA",
+      "price": "Check event page",
+      "event_type": "fair",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://sjdowntown.com/event/data-center-expo-north-america/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Explore Data Center trends: AI’s Impact, Energy Efficiency, Future-Proofing, Infrastructure, Operati...",
+      "description_detail": null,
+      "source": "sjdowntown",
+      "scraped_at": "2026-05-11T17:55:30.451Z"
+    },
+    {
+      "id": 3,
+      "selected": false,
+      "title": "Live Music",
+      "time_display": "Monday 05/18 6:00 PM - 9:00 PM",
+      "location": "San Pedro Square Market, 87 N San Pedro St, San Jose, CA",
+      "price": "Check event page",
+      "event_type": "market",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://sjdowntown.com/event/live-music/2026-05-18/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Experience live music at San Pedro Square Market six days a week! Explore our calendar for the full ...",
+      "description_detail": null,
+      "source": "sjdowntown",
+      "scraped_at": "2026-05-11T17:55:30.453Z"
+    },
+    {
+      "id": 4,
+      "selected": false,
+      "title": "Live Music",
+      "time_display": "Tuesday 05/19 6:00 PM - 9:00 PM",
+      "location": "San Pedro Square Market, 87 N San Pedro St, San Jose, CA",
+      "price": "Check event page",
+      "event_type": "market",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://sjdowntown.com/event/live-music/2026-05-19/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Experience live music at San Pedro Square Market six days a week! Explore our calendar for the full ...",
+      "description_detail": null,
+      "source": "sjdowntown",
+      "scraped_at": "2026-05-11T17:55:30.454Z"
+    },
+    {
+      "id": 5,
+      "selected": false,
+      "title": "Jeopardy Bar League",
+      "time_display": "Tuesday 05/19 7:00 PM - 8:00 PM",
+      "location": "Three Sisters Whiskey Bar, 170 W. Saint John St., San Jose, CA",
+      "price": "Check event page",
+      "event_type": "market",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://sjdowntown.com/event/jeopardy-bar-league/2026-05-19/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "ATTENTION TRIVIA LOVERS! San Pedro Square Market is hosting Jeopardy Bar League – the official bar t...",
+      "description_detail": null,
+      "source": "sjdowntown",
+      "scraped_at": "2026-05-11T17:55:30.454Z"
+    },
+    {
+      "id": 6,
+      "selected": false,
+      "title": "Live Music",
+      "time_display": "Wednesday 05/20 6:00 PM - 9:00 PM",
+      "location": "San Pedro Square Market, 87 N San Pedro St, San Jose, CA",
+      "price": "Check event page",
+      "event_type": "market",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://sjdowntown.com/event/live-music/2026-05-20/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Experience live music at San Pedro Square Market six days a week! Explore our calendar for the full ...",
+      "description_detail": null,
+      "source": "sjdowntown",
+      "scraped_at": "2026-05-11T17:55:30.454Z"
+    },
+    {
+      "id": 7,
+      "selected": false,
+      "title": "King Trivia Night",
+      "time_display": "Wednesday 05/20 7:00 PM - 8:00 PM",
+      "location": "SoFA Market, 387 S 1st Street, San Jose, CA",
+      "price": "Check event page",
+      "event_type": "market",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://sjdowntown.com/event/king-trivia-night/2026-05-20/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Your weekly excuse to eat, drink, and outsmart everyone in the room. 👑🧠 Trivia night at SoFA Marke...",
+      "description_detail": null,
+      "source": "sjdowntown",
+      "scraped_at": "2026-05-11T17:55:30.454Z"
+    },
+    {
+      "id": 8,
+      "selected": false,
+      "title": "Live Music",
+      "time_display": "Thursday 05/21 6:00 PM - 9:00 PM",
+      "location": "San Pedro Square Market, 87 N San Pedro St, San Jose, CA",
+      "price": "Check event page",
+      "event_type": "market",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://sjdowntown.com/event/live-music/2026-05-21/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Experience live music at San Pedro Square Market six days a week! Explore our calendar for the full ...",
+      "description_detail": null,
+      "source": "sjdowntown",
+      "scraped_at": "2026-05-11T17:55:30.455Z"
+    },
+    {
+      "id": 9,
+      "selected": false,
+      "title": "Live Music",
+      "time_display": "Friday 05/22 6:00 PM - 9:00 PM",
+      "location": "San Pedro Square Market, 87 N San Pedro St, San Jose, CA",
+      "price": "Check event page",
+      "event_type": "market",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://sjdowntown.com/event/live-music/2026-05-22/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Experience live music at San Pedro Square Market six days a week! Explore our calendar for the full ...",
+      "description_detail": null,
+      "source": "sjdowntown",
+      "scraped_at": "2026-05-11T17:55:30.455Z"
+    },
+    {
+      "id": 10,
+      "selected": false,
+      "title": "Pete’s Soundhouse is officially LIVE!!",
+      "time_display": "Friday 05/22 6:00 PM - 11:30 PM",
+      "location": "PETE BE Center, 439 First Street, San Jose, CA",
+      "price": "$45",
+      "event_type": "festival",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://sjdowntown.com/event/petes-soundhouse-is-officially-live/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Get ready to the party with the Bay&#8217;s BEST, Friday May 22, 2026, for a massive party and unfor...",
+      "description_detail": null,
+      "source": "sjdowntown",
+      "scraped_at": "2026-05-11T17:55:30.455Z"
+    },
+    {
+      "id": 11,
+      "selected": false,
+      "title": "Hobee&#8217;s Pancake Market",
+      "time_display": "Saturday 05/23 9:00 AM - 2:00 PM",
+      "location": "Hobee&#8217;s, 261 N 2nd street, San Jose, CA",
+      "price": "Check event page",
+      "event_type": "market",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://sjdowntown.com/event/hobees-pancake-market/2026-05-23/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Brunch and Browse LOCAL vendors and artisans Saturdays from 9:00-2:00pm at Hobee&#8217;s Downtown Sa...",
+      "description_detail": null,
+      "source": "sjdowntown",
+      "scraped_at": "2026-05-11T17:55:30.455Z"
+    },
+    {
+      "id": 12,
+      "selected": false,
+      "title": "Live Music",
+      "time_display": "Saturday 05/23 6:00 PM - 9:00 PM",
+      "location": "San Pedro Square Market, 87 N San Pedro St, San Jose, CA",
+      "price": "Check event page",
+      "event_type": "market",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://sjdowntown.com/event/live-music/2026-05-23/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Experience live music at San Pedro Square Market six days a week! Explore our calendar for the full ...",
+      "description_detail": null,
+      "source": "sjdowntown",
+      "scraped_at": "2026-05-11T17:55:30.455Z"
+    },
+    {
+      "id": 13,
+      "selected": false,
+      "title": "In-Person Book Launch: To Be (a Woman) by Rachel TurneyHoney Art Studio",
+      "time_display": "Tuesday 05/19 5:30 PM",
+      "location": "1981 Sutter Street, San Francisco, CA",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.redrosethorns.com/event-details/in-person-book-launch-to-be-a-woman-by-rachel-turney",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "sfstation",
+      "scraped_at": "2026-05-11T17:56:18.829Z"
+    },
+    {
+      "id": 14,
+      "selected": false,
+      "title": "San Francisco Decorator Showcase 2026San Francisco Decorator Showcase",
+      "time_display": "Tuesday 05/19 10:00 AM",
+      "location": "2315 Broadway, San Francisco, CA",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.decoratorshowcase.org/tickets",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "sfstation",
+      "scraped_at": "2026-05-11T17:56:18.829Z"
+    },
+    {
+      "id": 15,
+      "selected": false,
+      "title": "Izzy Escobar - BottleRock After DarkCafe du Nord",
+      "time_display": "Thursday 05/21 8:00 PM",
+      "location": "2174 Market Street, San Francisco, CA",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://ticketmaster.evyy.net/c/253558/264167/4272?u=https%3A%2F%2Fwww.ticketweb.com%2Fevent%2Fizzy-escobar-cafe-du-nord-tickets%2F14142774",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "sfstation",
+      "scraped_at": "2026-05-11T17:56:18.830Z"
+    },
+    {
+      "id": 16,
+      "selected": false,
+      "title": "Mietze ConteMonarch",
+      "time_display": "Friday 05/22 9:00 PM",
+      "location": "101 6th Street, San Francisco, CA",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/mietze-conte-tickets-1983990866088",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "sfstation",
+      "scraped_at": "2026-05-11T17:56:18.830Z"
+    },
+    {
+      "id": 17,
+      "selected": false,
+      "title": "Free “Dance Outdoors w/ Rhythm & Motion” at Yerba Buena Gardens Festival",
+      "time_display": "Wednesday 05/20 12:00 PM - 1:00 PM",
+      "location": "Yerba Buena Gardens (Esplanade), San Francisco Bay Area",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/free-dance-outdoors-w-rhythm-motion-at-yerba-buena-gardens-festival/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2026-05-11T17:55:41.581Z"
+    },
+    {
+      "id": 18,
+      "selected": false,
+      "title": "Lunchtime Concert w/ Larry & Joe (Yerba Buena Gardens Festival 2026)",
+      "time_display": "Thursday 05/21 12:30 PM - 1:30 PM",
+      "location": "Great Lawn, Yerba Buena Gardens, San Francisco Bay Area",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/lunchtime-concert-w-larry-joe-yerba-buena-gardens-festival-2026/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2026-05-11T17:55:41.581Z"
+    },
+    {
+      "id": 19,
+      "selected": false,
+      "title": "“Off the Grid” Fort Mason: Friday Night Market w/ 110+ Vendors (2026)",
+      "time_display": "Friday 05/22 5:00 PM - 10:00 PM",
+      "location": "Fort Mason Center, San Francisco Bay Area",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/off-the-grid-fort-mason-friday-night-market-w-110-vendors-2026/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Fort Mason Night Market returns for 2026 with food trucks, craft vendors & live music on the waterfr...",
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2026-05-11T17:55:41.581Z"
+    },
+    {
+      "id": 20,
+      "selected": false,
+      "title": "Weekend Sessions w/ Las Cafeteras (Yerba Buena Gardens Festival 2026)",
+      "time_display": "Saturday 05/23 2:00 PM - 4:30 PM",
+      "location": "Great Lawn, Yerba Buena Gardens, San Francisco Bay Area",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/weekend-sessions-w-las-cafeteras-yerba-buena-gardens-festival-2026/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2026-05-11T17:55:41.581Z"
+    },
+    {
+      "id": 21,
+      "selected": false,
+      "title": "2026 San Francisco Carnaval Festival (May 23-24)",
+      "time_display": "Saturday 05/23 11:00 AM - 6:00 PM",
+      "location": "Harrison Street, San Francisco Bay Area",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/san-francisco-carnaval-festival-mission/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Carnaval San Francisco is back for 2026 with their 48th annual celebration. The free, two-day festiv...",
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2026-05-11T17:55:41.581Z"
+    },
+    {
+      "id": 22,
+      "selected": false,
+      "title": "2026 San Francisco Carnaval Grand Parade",
+      "time_display": "Sunday 05/24 10:00 AM - 2:00 PM",
+      "location": "24th & Bryant, San Francisco Bay Area",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/san-francisco-mission-carnaval-grand-parade/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Carnaval San Francisco is back for 2026 with their 48th annual celebration. The free, two-day festiv...",
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2026-05-11T17:55:41.581Z"
+    },
+    {
+      "id": 23,
+      "selected": false,
+      "title": "TechEx North America 2026",
+      "time_display": "Monday 05/18 12:00 AM - Tuesday 05/19 11:59 PM",
+      "location": "San Jose McEnery Convention Center, 150 W San Carlos St, San Jose, CA",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sjdowntown.com/event/techex-north-america-2026/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "TechEx North America 2026 takes place on May 18–19 at the McEnery Convention Center, San Jose, bring...",
+      "description_detail": null,
+      "source": "sjdowntown",
+      "scraped_at": "2026-05-11T17:55:30.453Z"
+    },
+    {
+      "id": 24,
+      "selected": false,
+      "title": "Jazz Up Your Monday Night",
+      "time_display": "Monday 05/18 9:00 PM - 11:59 PM",
+      "location": "Five Points Cocktail Bar, 169 W Santa Clara St, San Jose, CA",
+      "price": "Check event page",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sjdowntown.com/event/jazz-up-your-monday-night/2026-05-18/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Join us for JAZZ performances EVERY MONDAY NIGHT in the Penny Room at Five Points, in partnership wi...",
+      "description_detail": null,
+      "source": "sjdowntown",
+      "scraped_at": "2026-05-11T17:55:30.454Z"
+    },
+    {
+      "id": 25,
+      "selected": false,
+      "title": "Downtown Farmers’ Market",
+      "time_display": "Wednesday 05/20 9:00 AM - 1:30 PM",
+      "location": "Hammer Theatre Center, 101 Paseo De San Antonio, San Jose, CA",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sjdowntown.com/event/downtown-farmers-market-2/2026-05-20/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Enjoy fresh produce, baked goods, local artisans, and delicious prepared foods from your favorite lo...",
+      "description_detail": null,
+      "source": "sjdowntown",
+      "scraped_at": "2026-05-11T17:55:30.454Z"
+    },
+    {
+      "id": 26,
+      "selected": false,
+      "title": "Free Sound Meditation",
+      "time_display": "Thursday 05/21 5:30 PM - 6:30 PM",
+      "location": "ICA San José, 560 South First Street, San Jose, CA",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sjdowntown.com/event/free-sound-meditation-at-the-ica-san-jose/2026-05-21/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Join the ICA for a free sound mediation session with Parul Makharia of Connect & Awaken. Instead of ...",
+      "description_detail": null,
+      "source": "sjdowntown",
+      "scraped_at": "2026-05-11T17:55:30.455Z"
+    },
+    {
+      "id": 27,
+      "selected": false,
+      "title": "Free Yoga",
+      "time_display": "Thursday 05/21 5:30 PM - 6:30 PM",
+      "location": "ICA San José, 560 South First Street, San Jose, CA",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sjdowntown.com/event/free-yoga-at-the-ica-san-jose/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "The ICA San José is thrilled to partner with Downtown Yoga Shala for another series of free yoga cla...",
+      "description_detail": null,
+      "source": "sjdowntown",
+      "scraped_at": "2026-05-11T17:55:30.455Z"
+    },
+    {
+      "id": 28,
+      "selected": false,
+      "title": "$9 Before 9 pm Happy Hour",
+      "time_display": "Friday 05/22 6:30 PM - 9:00 PM",
+      "location": "Nomikai, 48 South 1st Street, San Jose, CA",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sjdowntown.com/event/9-before-9-pm-happy-hour/2026-05-22/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "All Signature Cocktails · All Draft Beers · All Mocktails — just $9 before 9 p.m. Plus: 20% off all ...",
+      "description_detail": null,
+      "source": "sjdowntown",
+      "scraped_at": "2026-05-11T17:55:30.455Z"
+    },
+    {
+      "id": 29,
+      "selected": false,
+      "title": "Berryessa Night Market",
+      "time_display": "Friday 05/22 6:00 PM - 10:00 PM",
+      "location": "San Jose Flea Market, 1590 Berryessa Road, San Jose, CA 95133",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://gardenattheflea.com/berryessanightmarket/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Weekly Friday night market inside the iconic San Jose Flea Market featuring Asian street food, desse...",
+      "description_detail": null,
+      "source": "berryessa-night-market",
+      "scraped_at": "2026-05-11T17:57:44.258Z"
+    },
+    {
+      "id": 30,
+      "selected": false,
+      "title": "Karaoke Night",
+      "time_display": "Monday 05/18 9:00 PM - Tuesday 05/19 1:30 AM",
+      "location": "O&#8217;Flaherty&#8217;s Irish Pub, 25 N San Pedro St., San Jose, CA",
+      "price": "Check event page",
+      "event_type": "art",
+      "priority": 5,
+      "chinese_relevant": false,
+      "original_url": "https://sjdowntown.com/event/karaoke-night-2/2026-05-18/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Come sing your heart out! Join us for Karaoke every Sunday & Monday from 9pm to close.",
+      "description_detail": null,
+      "source": "sjdowntown",
+      "scraped_at": "2026-05-11T17:55:30.453Z"
+    },
+    {
+      "id": 31,
+      "selected": false,
+      "title": "Live Music Wednesdays at Coastal Manor",
+      "time_display": "Wednesday 05/20 7:30 PM - 9:30 PM",
+      "location": "Downtown San Jose Marriott Hotel, 301 S. Market Street, San Jose, CA",
+      "price": "Check event page",
+      "event_type": "art",
+      "priority": 5,
+      "chinese_relevant": false,
+      "original_url": "https://sjdowntown.com/event/live-music-wednesdays-at-coastal-manor/2026-05-20/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Ease into the week with live music every Wednesday night at Coastal Manor, inside the San Jose Marri...",
+      "description_detail": null,
+      "source": "sjdowntown",
+      "scraped_at": "2026-05-11T17:55:30.454Z"
+    },
+    {
+      "id": 32,
+      "selected": false,
+      "title": "Dolphin Hyperspace",
+      "time_display": "Saturday 05/23 8:00 PM - 10:00 PM",
+      "location": "SJZ Break Room, 310 S 1st St,, San Jose, CA",
+      "price": "$27.00",
+      "event_type": "art",
+      "priority": 5,
+      "chinese_relevant": false,
+      "original_url": "https://sjdowntown.com/event/dolphin-hyperspace/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Dolphin Hyperspace is a Los Angeles-based electro-jazz duo led by saxophonist Nicole McCabe and bass...",
+      "description_detail": null,
+      "source": "sjdowntown",
+      "scraped_at": "2026-05-11T17:55:30.455Z"
+    },
+    {
+      "id": 33,
+      "selected": false,
+      "title": "Spaced Out: Standup Comedy",
+      "time_display": "Saturday 05/23 8:00 PM - 9:30 PM",
+      "location": "Mystérieux, Address: 28 N Almaden Ave #30, San Jose, CA",
+      "price": "$14",
+      "event_type": "art",
+      "priority": 5,
+      "chinese_relevant": false,
+      "original_url": "https://sjdowntown.com/event/spaced-out-standup-comedy/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Here&#8217;s why you should check out Spaced Out, San Jose&#8217;s #1 comedy show: Prime Location: E...",
+      "description_detail": null,
+      "source": "sjdowntown",
+      "scraped_at": "2026-05-11T17:55:30.455Z"
+    },
+    {
+      "id": 34,
+      "selected": false,
+      "title": "Spaced Out: Standup Comedy",
+      "time_display": "Saturday 05/23 8:15 PM - 9:30 PM",
+      "location": "Mystérieux Brand, 28 North Almaden Avenue #30, San Jose, CA",
+      "price": "See event page",
+      "event_type": "art",
+      "priority": 5,
+      "chinese_relevant": false,
+      "original_url": "https://sjdowntown.com/event/spaced-out-standup-comedy-in-downtown-san-jose/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Here&#8217;s why you should check out Spaced Out, San Jose&#8217;s #1 comedy show: Prime Location: E...",
+      "description_detail": null,
+      "source": "sjdowntown",
+      "scraped_at": "2026-05-11T17:55:30.455Z"
+    },
+    {
+      "id": 35,
+      "selected": false,
+      "title": "Trivia Mondays",
+      "time_display": "Monday 05/18 7:30 PM - 9:00 PM",
+      "location": "Dr Funk, 29 N San Pedro St,, San Jose, CA",
+      "price": "Check event page",
+      "event_type": "other",
+      "priority": 3,
+      "chinese_relevant": false,
+      "original_url": "https://sjdowntown.com/event/trivia-mondays/2026-05-18/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Join Dr. Funk: Rum House + Kitchen as they host a a trivia night every Monday.",
+      "description_detail": null,
+      "source": "sjdowntown",
+      "scraped_at": "2026-05-11T17:55:30.453Z"
+    },
+    {
+      "id": 36,
+      "selected": false,
+      "title": "Trivia Night",
+      "time_display": "Wednesday 05/20 8:00 PM - 10:00 PM",
+      "location": "O&#8217;Flaherty&#8217;s Irish Pub, 25 N San Pedro St., San Jose, CA",
+      "price": "Check event page",
+      "event_type": "other",
+      "priority": 3,
+      "chinese_relevant": false,
+      "original_url": "https://sjdowntown.com/event/trivia-night/2026-05-20/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Put your thinking caps on… It’s Trivia Night! Join us for Trivia every Wednesday from 8pm to 10pm.",
+      "description_detail": null,
+      "source": "sjdowntown",
+      "scraped_at": "2026-05-11T17:55:30.455Z"
+    },
+    {
+      "id": 37,
+      "selected": false,
+      "title": "San Jose Downtown Happy Hour",
+      "time_display": "Thursday 05/21 5:00 PM - 7:00 PM",
+      "location": "Five Points Cocktail Bar, 169 W Santa Clara St, San Jose, CA",
+      "price": "Check event page",
+      "event_type": "other",
+      "priority": 3,
+      "chinese_relevant": false,
+      "original_url": "https://sjdowntown.com/event/san-jose-downtown-happy-hour/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Join us for the May San Jose Downtown Happy Hour at Five Points Cocktail Bar! This event is a collab...",
+      "description_detail": null,
+      "source": "sjdowntown",
+      "scraped_at": "2026-05-11T17:55:30.455Z"
+    }
+  ]
+}
