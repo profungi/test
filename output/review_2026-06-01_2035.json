@@ -1,0 +1,870 @@
+{
+  "review_id": "review_2026-06-01_2035_nys",
+  "generated_at": "2026-06-01T20:35:20.195Z",
+  "scrape_date": "2026-06-01",
+  "target_week": "2026-06-08_to_2026-06-14",
+  "target_week_readable": "下周 (06/08 - 06/14)",
+  "scraping_report": {
+    "total_scraped": 96,
+    "after_deduplication": 84,
+    "after_classification": 84,
+    "classification_report": {
+      "totalEvents": 84,
+      "eventTypes": {
+        "other": 8,
+        "free": 43,
+        "music": 6,
+        "festival": 4,
+        "food": 7,
+        "tech": 1,
+        "art": 4,
+        "market": 10,
+        "fair": 1
+      },
+      "priorityLevels": {
+        "3": 8,
+        "4": 6,
+        "5": 5,
+        "6": 7,
+        "9": 43,
+        "10": 15
+      },
+      "chineseRelevant": 0,
+      "topPriorityEvents": 58
+    }
+  },
+  "instructions": {
+    "how_to_review": "将你想要发布的活动的 'selected' 字段改为 true",
+    "next_step": "保存文件后运行: npm run generate-post [此文件路径]",
+    "fields_explanation": {
+      "title": "活动标题",
+      "time_display": "显示用的时间格式",
+      "location": "活动地点",
+      "price": "票价信息",
+      "event_type": "AI识别的活动类型",
+      "priority": "优先级分数 (越高越重要)",
+      "chinese_relevant": "是否与中文社区相关",
+      "original_url": "原始活动链接"
+    }
+  },
+  "stats": {
+    "total_candidates": 40,
+    "by_type": {
+      "festival": 4,
+      "market": 10,
+      "fair": 1,
+      "free": 17,
+      "food": 7,
+      "tech": 1
+    },
+    "by_priority": {
+      "5": 1,
+      "6": 7,
+      "9": 17,
+      "10": 15
+    },
+    "chinese_relevant": 0
+  },
+  "events": [
+    {
+      "id": 1,
+      "selected": false,
+      "title": "The Jazz Mafia Celebrate the Music of Prince",
+      "time_display": "Saturday 06/13 4:00 AM",
+      "location": "3022 Broadway, Oakland, CA 94611",
+      "price": "Starts at $31.72",
+      "event_type": "festival",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/the-jazz-mafia-celebrate-the-music-of-prince-tickets-1986834586733?aff=ebdssbcitybrowsenightlife",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Prince Birthday Celebration Oakland’s powerhouse collective Jazz Mafia dives deep into the purple ca...",
+      "description_detail": "Prince Birthday Celebration\nOakland’s powerhouse collective Jazz Mafia dives deep into the purple catalog for a special tribute to the music of PRINCE. From slow-burning ballads to high-octane funk anthems, this show reimagines Prince’s iconic songs through the lens of jazz, soul, and hip-hop. Led by composer/trombonist Adam Theis and featuring the electrifying vocals of Kate Lamont, the ensemble brings fresh arrangements and deep grooves to this timeless repertoire.\nRefunds up to 1 day before event",
+      "source": "eventbrite",
+      "scraped_at": "2026-06-01T20:26:52.236Z"
+    },
+    {
+      "id": 2,
+      "selected": false,
+      "title": "Rock & Roll Beer Stroll 2026 - Downtown Alameda",
+      "time_display": "Saturday 06/13 8:00 PM",
+      "location": "2324 Alameda Ave, Alameda, CA 94501",
+      "price": "From $33.85",
+      "event_type": "market",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/rock-roll-beer-stroll-2026-downtown-alameda-tickets-1988495709195?aff=ebdssbdestsearch",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Taste craft beers at unique locations in Downtown Alameda. Downtown Alameda Rock & Roll Beer Stroll ...",
+      "description_detail": "Taste craft beers at unique locations in Downtown Alameda.\nDowntown Alameda Rock & Roll Beer Stroll - Saturday, June 13, 2026 (1-5pm)\nSip and stroll your way through our historic downtown district tasting local craft beers. Enjoy an afternoon filled with beer and entertainment while learning about the unique styles of Northern California breweries and local chefs.\nTickets include a collectible tasting glass, premium beer tastings at unique downtown locations, small bites at some locations and a commemorative guide.\nDon’t wait! Ticket prices are as follows:\nRocker: Early Bird General Admission Ticket $50 limited available (then tickets $60 after early bird sells out, and $70 after June 7th - plus Eventbrite fees)\nRoadie: Designated Driver Ticket $35 includes Non-Alcoholic Beers (plus Eventbrite fees)\nVIP Tickets can be purchased HERE. Tickets include: VIP check in location at Dragon Rouge starting at 12pm, plenty of free parking, a seated VIP tasting experience and all items included with general tickets. More details and participating breweries to be announced!Sample beers from these local Bay Area craft breweries:\nAlameda BrewingAlmanacBarebottle Brewing CoBrewBilt BrewingDrake's Brewing CompanyDTSJ BrewingEast Brother BeerFaction Brewing CompanyFathers BrewingHumble Sea Brewing Co.Temescal Brewing\nAnd more to be announced soon!Learn more about the brewers and our fantastic hosts: www.AlamedaStrolls.com\nRefunds up to 1 day before event",
+      "source": "eventbrite",
+      "scraped_at": "2026-06-01T20:26:52.247Z"
+    },
+    {
+      "id": 3,
+      "selected": false,
+      "title": "Margarita Fest",
+      "time_display": "Saturday 06/13 10:00 PM",
+      "location": "1630 San Pablo Avenue, Oakland, CA 94612",
+      "price": "From $33.85",
+      "event_type": "festival",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/margarita-fest-tickets-1989349798800?aff=ebdssbdestsearch",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Get ready to sip, chill, and enjoy the ultimate margarita and all the different flavors. Get ready f...",
+      "description_detail": "Get ready to sip, chill, and enjoy the ultimate margarita and all the different flavors.\nGet ready for a fun afternoon at 1630 San Pablo Ave! Join us on June 13, 2026 at 3:00 PM (Pacific Time) for a chill celebration filled with tasty margaritas and good vibes. Whether you’re a tequila or hennessy margarita person or just looking to hang out, this is the spot to be. Bring your friends and enjoy great drinks, music, and a laid-back atmosphere. Don’t miss out on the fun!\n1630 San Pablo Avenue",
+      "source": "eventbrite",
+      "scraped_at": "2026-06-01T20:26:52.247Z"
+    },
+    {
+      "id": 4,
+      "selected": false,
+      "title": "OAL Uncorked: Rhythm & Wine",
+      "time_display": "Sunday 06/14 7:00 PM",
+      "location": "1340 Fifth Street, Berkeley, CA 94710",
+      "price": "$20",
+      "event_type": "festival",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/oal-uncorked-rhythm-wine-tickets-1986159405247?aff=ebdssbdestsearch",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Get ready to vibe to fresh beats and sip on fine wines at OAL Uncooked: Rhythm & Wine! Join us as we...",
+      "description_detail": "Get ready to vibe to fresh beats and sip on fine wines at OAL Uncooked: Rhythm & Wine!\nJoin us as we kick off the festivities on Sunday, June 14 with the Donkey & Goat Fundraiser Event. This evening will bring together our community for a vibrant experience featuring live music, curated charcuterie, refreshing beverages, and an engaging auction—all in support of meaningful programs that uplift our students and schools. It’s more than a fundraiser—it’s a celebration of who we are and what we can accomplish together.",
+      "source": "eventbrite",
+      "scraped_at": "2026-06-01T20:26:52.249Z"
+    },
+    {
+      "id": 5,
+      "selected": false,
+      "title": "San Francisco Crystal Fair",
+      "time_display": "Saturday 06/13 10:00 AM",
+      "location": "1199 9th Avenue, San Francisco, CA 94122",
+      "price": "$11",
+      "event_type": "fair",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/san-francisco-crystal-fair-tickets-1988511511460?aff=ebdssbdestsearch",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Crystals, minerals, beads, jewelry, metaphysical healing tools. Something for everyone. The Great Sa...",
+      "description_detail": "Crystals, minerals, beads, jewelry, metaphysical healing tools. Something for everyone.\nThe Great San Francisco Crystal Fair is taking place on June 13-14 at the San Francisco County Fair Building in Golden Gate Park. It will host the largest collection of crystals, beads, minerals jewelry and metaphysical healing tools that you’ve ever seen in our fair city. Thousands of items will be available at excellent prices, plus you can meet practitioners of the healing arts.\nOver 50 exhibiters will dazzle you with their vast storehouse of brilliant gemstones and shamanic wisdom. They include vendors from around the country and exotic places like Bali, Nepal, Afghanistan and China. Come explore the vast delights and many splendors of the Great San Francisco Crystal Fair\nRefunds up to 7 days before event\nSan Francisco, CA 94122",
+      "source": "eventbrite",
+      "scraped_at": "2026-06-01T20:26:52.251Z"
+    },
+    {
+      "id": 6,
+      "selected": false,
+      "title": "Live Music",
+      "time_display": "Monday 06/08 6:00 PM - 9:00 PM",
+      "location": "San Pedro Square Market, 87 N San Pedro St, San Jose, CA",
+      "price": "Check event page",
+      "event_type": "market",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://sjdowntown.com/event/live-music/2026-06-08/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Experience live music at San Pedro Square Market six days a week! Explore our calendar for the full ...",
+      "description_detail": null,
+      "source": "sjdowntown",
+      "scraped_at": "2026-06-01T20:18:11.337Z"
+    },
+    {
+      "id": 7,
+      "selected": false,
+      "title": "Live Music",
+      "time_display": "Tuesday 06/09 6:00 PM - 9:00 PM",
+      "location": "San Pedro Square Market, 87 N San Pedro St, San Jose, CA",
+      "price": "Check event page",
+      "event_type": "market",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://sjdowntown.com/event/live-music/2026-06-09/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Experience live music at San Pedro Square Market six days a week! Explore our calendar for the full ...",
+      "description_detail": null,
+      "source": "sjdowntown",
+      "scraped_at": "2026-06-01T20:18:11.345Z"
+    },
+    {
+      "id": 8,
+      "selected": false,
+      "title": "Jeopardy Bar League",
+      "time_display": "Tuesday 06/09 7:00 PM - 8:00 PM",
+      "location": "Three Sisters Whiskey Bar, 170 W. Saint John St., San Jose, CA",
+      "price": "Check event page",
+      "event_type": "market",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://sjdowntown.com/event/jeopardy-bar-league/2026-06-09/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "ATTENTION TRIVIA LOVERS! San Pedro Square Market is hosting Jeopardy Bar League – the official bar t...",
+      "description_detail": null,
+      "source": "sjdowntown",
+      "scraped_at": "2026-06-01T20:18:11.346Z"
+    },
+    {
+      "id": 9,
+      "selected": false,
+      "title": "El Mercadito",
+      "time_display": "Wednesday 06/10 4:00 PM - 11:00 PM",
+      "location": "San Jose, CA",
+      "price": "Check event page",
+      "event_type": "market",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://sjdowntown.com/event/el-mercadito/2026-06-10/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Your new midweek tradition has arrived! Check out El Mercadito &#8211; a curated weekly night market...",
+      "description_detail": null,
+      "source": "sjdowntown",
+      "scraped_at": "2026-06-01T20:18:11.351Z"
+    },
+    {
+      "id": 10,
+      "selected": false,
+      "title": "Live Music",
+      "time_display": "Wednesday 06/10 6:00 PM - 9:00 PM",
+      "location": "San Pedro Square Market, 87 N San Pedro St, San Jose, CA",
+      "price": "Check event page",
+      "event_type": "market",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://sjdowntown.com/event/live-music/2026-06-10/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Experience live music at San Pedro Square Market six days a week! Explore our calendar for the full ...",
+      "description_detail": null,
+      "source": "sjdowntown",
+      "scraped_at": "2026-06-01T20:18:11.351Z"
+    },
+    {
+      "id": 11,
+      "selected": false,
+      "title": "King Trivia Night",
+      "time_display": "Wednesday 06/10 7:00 PM - 8:00 PM",
+      "location": "SoFA Market, 387 S 1st Street, San Jose, CA",
+      "price": "Check event page",
+      "event_type": "market",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://sjdowntown.com/event/king-trivia-night/2026-06-10/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Your weekly excuse to eat, drink, and outsmart everyone in the room. 👑🧠 Trivia night at SoFA Marke...",
+      "description_detail": null,
+      "source": "sjdowntown",
+      "scraped_at": "2026-06-01T20:18:11.351Z"
+    },
+    {
+      "id": 12,
+      "selected": false,
+      "title": "Live Music",
+      "time_display": "Thursday 06/11 6:00 PM - 9:00 PM",
+      "location": "San Pedro Square Market, 87 N San Pedro St, San Jose, CA",
+      "price": "Check event page",
+      "event_type": "market",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://sjdowntown.com/event/live-music/2026-06-11/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Experience live music at San Pedro Square Market six days a week! Explore our calendar for the full ...",
+      "description_detail": null,
+      "source": "sjdowntown",
+      "scraped_at": "2026-06-01T20:18:11.351Z"
+    },
+    {
+      "id": 13,
+      "selected": false,
+      "title": "Live Music",
+      "time_display": "Friday 06/12 6:00 PM - 9:00 PM",
+      "location": "San Pedro Square Market, 87 N San Pedro St, San Jose, CA",
+      "price": "Check event page",
+      "event_type": "market",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://sjdowntown.com/event/live-music/2026-06-12/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Experience live music at San Pedro Square Market six days a week! Explore our calendar for the full ...",
+      "description_detail": null,
+      "source": "sjdowntown",
+      "scraped_at": "2026-06-01T20:18:11.351Z"
+    },
+    {
+      "id": 14,
+      "selected": false,
+      "title": "Live Music",
+      "time_display": "Saturday 06/13 6:00 PM - 9:00 PM",
+      "location": "San Pedro Square Market, 87 N San Pedro St, San Jose, CA",
+      "price": "Check event page",
+      "event_type": "market",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://sjdowntown.com/event/live-music/2026-06-13/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Experience live music at San Pedro Square Market six days a week! Explore our calendar for the full ...",
+      "description_detail": null,
+      "source": "sjdowntown",
+      "scraped_at": "2026-06-01T20:18:11.352Z"
+    },
+    {
+      "id": 15,
+      "selected": false,
+      "title": "Lights Up! 2026",
+      "time_display": "Sunday 06/14 1:00 PM - 8:00 PM",
+      "location": "City Lights Theater Company, 529 S 2nd St, San Jose, CA",
+      "price": "$10 – $20",
+      "event_type": "festival",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://sjdowntown.com/event/lights-up/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "New plays. Unforgettable stories. And your feedback. City Lights Theater Company&#8217;s annual “Lig...",
+      "description_detail": null,
+      "source": "sjdowntown",
+      "scraped_at": "2026-06-01T20:18:11.354Z"
+    },
+    {
+      "id": 16,
+      "selected": false,
+      "title": "2026 San Francisco Affordable Housing Expo",
+      "time_display": "Saturday 06/13 5:00 PM",
+      "location": "2130 Fulton Street, San Francisco, CA 94117",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/2026-san-francisco-affordable-housing-expo-tickets-1982930457377?aff=ebdssbneighborhoodbrowse",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Annual Housing Resource Fair for renters, homebuyers, and homeowners! Join us for the 2026 San Franc...",
+      "description_detail": "Annual Housing Resource Fair for renters, homebuyers, and homeowners!\nJoin us for the 2026 San Francisco Affordable Housing Fair & Help Center!\nLearn about affordable housing resources and education in San Francisco presented by HUD-approved housing counseling agencies, the San Francisco Mayor's Office of Housing and Community Development (MOHCD) and industry professionals.\nCONNECT WITH EXPERTS - Non-profit organizations, City housing services, and local real estate professionals available, in-person, to answer your housing questions and provide valuable information.\nAnd visit the HELP CENTER for individual assistance and support with your personal housing challenges, including:To apply for SF affordable housing programs, eligibility review, credit and debt issues, eviction defense, financial planning, estate planning, foreclosure prevention and more.\nSupport for unhoused individuals and families is available.\nAnd check out our FREE workshops at the Expo (see schedule below)\nWe also have FREE ONLINE WORKSHOPS June 2 thru June 11th:\nCLICK HERE FOR ONLINE WORKSHOP SCHEDULE\nGo to www.homesanfrancisco.org for more information.\n-----------------------------------------------------------------------------\nPara obtener información en otros idiomas, consulte este enlace\nPara sa impormasyon sa karagdagang wika, pakibisita ang link na ito\ntps://drive.google.com/drive/folders/112bx5MxaINpWTItMnbGzNxzC3CmrfE0S?usp=sharing\nSchedule of ONSITE Workshops at the Housing Expo:\nSan Francisco, CA 94117",
+      "source": "eventbrite",
+      "scraped_at": "2026-06-01T20:26:52.235Z"
+    },
+    {
+      "id": 17,
+      "selected": false,
+      "title": "MEMBA at Public Works",
+      "time_display": "Sunday 06/14 4:00 AM",
+      "location": "161 Erie Street, San Francisco, CA 94103",
+      "price": "Starts at $32.36",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/memba-at-public-works-tickets-1985145040254?aff=ebdssbcitybrowsenightlife",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Saturday, June 13, 9:30pm - 2am Main Room / 21+ / Limited Capacity Want free entry? Check out the PW...",
+      "description_detail": "Saturday, June 13, 9:30pm - 2am\nMain Room / 21+ / Limited Capacity\nWant free entry? Check out the PW Union where members get event access, drinks, skip the line, and more: www.publicsf.com/membership\nCurious about more ticket options, deals, and ways to party? Check out our website at www.publicsf.com\nBrooklyn duo MEMBA bring their world-bending electronic sound to Public Works. Known for fusing ancient global rhythms with future bass and trap, they've graced stages from Coachella to Glastonbury and released on ODESZA's Foreign Family Collective. Expect a journey.\nday astro b2b pxlwlkr\nMEMBA is the Brooklyn-based electronic duo of Ishaan Chaudhary and Will Curry. The two met on an archaeological dig in India and started making music together in 2014, drawing from Chaudhary's Bollywood and Sufi roots and Curry's background in percussion. The result is a cinematic sound that weaves ancient world textures into heavy, melodic bass music. They've released on ODESZA's Foreign Family Collective, Monstercat, and 88rising, and their track \"For Aisha\" charted globally after being featured in a Bollywood film that premiered at TIFF. Their latest album ABOVEGROUND* dropped in late 2025. Festival appearances include Coachella, EDC, Glastonbury, Electric Forest, Shambhala, and Bonnaroo.\nSan Francisco, CA 94103",
+      "source": "eventbrite",
+      "scraped_at": "2026-06-01T20:26:52.235Z"
+    },
+    {
+      "id": 18,
+      "selected": false,
+      "title": "Comrade Sisters: Women of the Black Panther Party Opening Reception",
+      "time_display": "Sunday 06/14 1:00 AM",
+      "location": "1427 Broadway, Oakland, CA 94612",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/comrade-sisters-women-of-the-black-panther-party-opening-reception-tickets-1989842395169?aff=ebdssbcitybrowse",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Join us for the opening of the Black Panther Party Museum's latest exhibition, Comrade Sisters: Wome...",
+      "description_detail": "Join us for the opening of the Black Panther Party Museum's latest exhibition, Comrade Sisters: Women of the Black Panther Party.",
+      "source": "eventbrite",
+      "scraped_at": "2026-06-01T20:26:52.237Z"
+    },
+    {
+      "id": 19,
+      "selected": false,
+      "title": "Paint&Sip w MagDre",
+      "time_display": "Saturday 06/13 1:30 AM",
+      "location": "1314 Wood Street, Oakland, CA 94607",
+      "price": "$44.52",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/paintsip-w-magdre-tickets-1990657848211?aff=ebdssbcitybrowse",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "we’ll create a step by step beach landscape scenery on canvases while enjoying a complimentary glass...",
+      "description_detail": "we’ll create a step by step beach landscape scenery on canvases while enjoying a complimentary glass of wine\nRefunds up to 7 days before event",
+      "source": "eventbrite",
+      "scraped_at": "2026-06-01T20:26:52.237Z"
+    },
+    {
+      "id": 20,
+      "selected": false,
+      "title": "BCCO Concert, Friday June 12 @ 7:30 pm",
+      "time_display": "Saturday 06/13 2:30 AM",
+      "location": "2407 Dana Street, Berkeley, CA 94704",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/bcco-concert-friday-june-12-730-pm-tickets-1989146050383?aff=ebdssbcitybrowse",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Join us for the premiere of Michael Schachter's Terezin Requiem and Joseph Haydn's Theresienmesse BC...",
+      "description_detail": "Join us for  the premiere of Michael Schachter's Terezin Requiem and Joseph Haydn's Theresienmesse\nBCCO Concert, Friday, June `12 @ 7:30 pm NEW VENUE: First Presbyterian Church Berkeley, corner of Dana and Channing. Doors open at 6:45 pm. There will be one intermission; the concert will end ~ 9:45 pm.\nYour ticket entitles you to general admission: pick your own seat.Please bring a printed or digital copy of your ticket.\nMany events in downtown Berkeley this weekend.Take public transit or arrive early to allow for parking.\nPlease enter the hall by 7:20 pm.Any tickets not used by 7:20 pm will be released to walk-up patrons.\nUpdated information about our concerts can be found here.",
+      "source": "eventbrite",
+      "scraped_at": "2026-06-01T20:26:52.237Z"
+    },
+    {
+      "id": 21,
+      "selected": false,
+      "title": "Eva zu Beck's THE WILDER WAY Off-Site Event And Book Signing",
+      "time_display": "Saturday 06/13 2:00 AM",
+      "location": "2150 Allston Way, Berkeley, CA 94704",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/eva-zu-becks-the-wilder-way-off-site-event-and-book-signing-tickets-1986538677661?aff=ebdssbcitybrowse",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Famed adventurer zu Beck shares her fearless new travel memoir packed with inspiration for leading a...",
+      "description_detail": "Famed adventurer zu Beck shares her fearless new travel memoir packed with inspiration for leading a more vibrant, wild, and authentic life\nJoin us at Mrs. Dalloway's Bookstore on Friday, June 12 at 7:00 PM when we host internationally beloved YouTube adventurer and National Geographic TV host Eva zu Beck at The David Brower Center in downtown Berkeley. Eva willto share her new memoir The Wilder Way: A Memoir of Adventure, Freedom, and an Uncharted Life. She will be joined in conversation by Caroline Paul and will sign copies of her book after the presentation.\nClick here to preorder a copy of The Wilder Way.\nAre you living with a capital “L”? When was the last time you truly felt you were your wildest, most free, most alive self? Eva zu Beck, professional storyteller and avid adventurer believes our best life is available to each of us, in every moment. But we have to seize it. The comfort we crave can also be “a silent killer of dreams.” Whether your dream is to scale a foreign mountain, hike a local trail, or pick up a paint brush, Eva’s message is clear: The world belongs to the brave.\nThrough heart-pounding adventures and raw, intimate storytelling, Eva reveals how stepping off life’s conventional highway—what she calls the path of “mortgage, marriage, lineage”—opened her world to experiences she never imagined possible: learning to trek solo with horses across Mongolia, surviving three months alone on a desert island in Yemen during COVID, driving an eighteen-year-old truck from Mexico to Alaska, and attempting a 300-mile ultramarathon in the Arctic Circle. But this isn’t just a collection of daring feats. Each chapter not only details a life-altering experience but reveals the hidden lessons Eva learned along the way. It’s a blueprint for anyone who feels trapped by society’s expectations and longs to create a life of genuine adventure, connection, and meaning.",
+      "source": "eventbrite",
+      "scraped_at": "2026-06-01T20:26:52.237Z"
+    },
+    {
+      "id": 22,
+      "selected": false,
+      "title": "Yoga and Pilates on the Row 2026",
+      "time_display": "Saturday 06/13 9:00 AM",
+      "location": "377 Santana Row, San Jose, CA 95128",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/yoga-and-pilates-on-the-row-2026-tickets-1986567913105?aff=ebdssbcitybrowse",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Join us at Santana Row in San Jose, California for our spring/summer Yoga Series - Yoga & Pilates on...",
+      "description_detail": "Join us at Santana Row in San Jose, California for our spring/summer Yoga Series - Yoga & Pilates on the Row by lululemon and Santana Row",
+      "source": "eventbrite",
+      "scraped_at": "2026-06-01T20:26:52.238Z"
+    },
+    {
+      "id": 23,
+      "selected": false,
+      "title": "Match Day Watch Party at Hyatt Regency Santa Clara",
+      "time_display": "Saturday 06/13 2:00 PM",
+      "location": "5101 Great America Parkway, Santa Clara, CA 95054",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/match-day-watch-party-at-hyatt-regency-santa-clara-tickets-1989102591396?aff=ebdssbcitybrowse",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Catch all the World Cup action live with friends at Hyatt Regency Santa Clara—good vibes and great g...",
+      "description_detail": "Catch all the World Cup action live with friends at Hyatt Regency Santa Clara—good vibes and great games!\nGet ready to cheer on your favorite teams at the Hyatt Regency Santa Clara! This is the perfect spot for fans to catch all the thrilling moments live, surrounded by fellow soccer lovers. Enjoy great company, exciting matches, and an awesome atmosphere – all in person. Don't miss out on the fun and unforgettable energy of the Match Day Watch Party!\n5101 Great America Parkway\nSanta Clara, CA 95054",
+      "source": "eventbrite",
+      "scraped_at": "2026-06-01T20:26:52.239Z"
+    },
+    {
+      "id": 24,
+      "selected": false,
+      "title": "Junior Lego Robotics Summer Camp | STEM4Kids Cupertino",
+      "time_display": "Monday 06/08 8:30 AM",
+      "location": "20900 Stevens Creek Boulevard, Cupertino, CA 95014",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/junior-lego-robotics-summer-camp-stem4kids-cupertino-tickets-1987757092974?aff=ebdssbcitybrowse",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Build your first robot! Hands-on Lego robotics for ages 5½–9 in Cupertino. Weekly sessions Jun 8–Aug...",
+      "description_detail": "Build your first robot! Hands-on Lego robotics for ages 5½–9 in Cupertino. Weekly sessions Jun 8–Aug 12. No experience needed!\nIs your young learner curious about how robots work? Junior Lego Robotics at STEM4Kids is the perfect introduction!\nKids ages 5½–9 use the Lego Spike Essential system to build real working robots, then learn to program them — no prior experience needed. Our small class sizes mean every child gets personal attention from our experienced instructors.\nWhat your child will do:\n📍 20900 Stevens Creek Blvd, Cupertino, CA 95014 🕘 Monday–Friday, 9:00 AM – 3:30 PM 📅 Choose any week: June 8 – August 12, 2026 👦 Ages 5½–9 | Grades K–3 | No experience needed\n💰 Pricing: $325–$499/week 🎉 Multi-week savings available: 2 weeks save $50 | 4 weeks save $120 | 7 weeks save $250 🐣 Early bird: $25 off — register now to lock in your spot!\nQuestions? Email info@stem4kids.co Register: stem4kids.co/oncampus-cupertino\n20900 Stevens Creek Boulevard",
+      "source": "eventbrite",
+      "scraped_at": "2026-06-01T20:26:52.239Z"
+    },
+    {
+      "id": 25,
+      "selected": false,
+      "title": "Glow & Go: The Summer Skin Soirée",
+      "time_display": "Saturday 06/13 7:00 PM",
+      "location": "236 North Santa Cruz Avenue, #100 Los Gatos, CA 95030",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/glow-go-the-summer-skin-soiree-tickets-1989338049658?aff=ebdssbcitybrowse",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Summer skincare event in Los Gatos June 13th, 12–2pm. Glow treatments, rosé & free Jan Marini Skinca...",
+      "description_detail": "Summer skincare event in Los Gatos June 13th, 12–2pm. Glow treatments, rosé & free Jan Marini Skincare samples.\nJoin us on Saturday, June 13th from 12–2 PM in Los Gatos for a fresh, fun, and flirty summer skincare event designed to help you glow all season long. Enjoy quick glow treatments including lip flips, skin boosters, and express consults while discovering the best ways to protect and refresh your skin for summer.\nSip rosé, socialize, and explore our SPF Styling Bar with expert guidance to find your perfect summer protection. Snap photos at our garden glam photo wall with fun summer accessories, and take advantage of exclusive event-day savings with 50% off select skincare products.\nWe’ll also be featuring Jan Marini Skincare with complimentary samples and product information available throughout the event.\nEnjoy personalized recommendations, summer beauty inspiration, and exclusive one-day-only offers.\n236 North Santa Cruz Avenue\n#100 Los Gatos, CA 95030",
+      "source": "eventbrite",
+      "scraped_at": "2026-06-01T20:26:52.241Z"
+    },
+    {
+      "id": 26,
+      "selected": false,
+      "title": "Connect with Clay! Monthly Artist-led Air-Dry Clay Workshops",
+      "time_display": "Saturday 06/13 1:00 AM",
+      "location": "1313 Newell Rd, Palo Alto, CA 94303",
+      "price": "Check ticket price on event",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/connect-with-clay-monthly-artist-led-air-dry-clay-workshops-tickets-1782483228319?aff=ebdssbcitybrowse",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Connect with Clay! Monthly Artist-led Air-Dry Clay Workshops at the Palo Alto Art Center FREE Connec...",
+      "description_detail": "Connect with Clay!  Monthly Artist-led Air-Dry Clay Workshops at the Palo Alto Art Center\nFREE\nConnect with Clay! Monthly Artist-led Air-Dry Clay Workshops at the Palo Alto Art Center FREE Connect with Clay! Monthly Artist-led Air-Dry Clay Workshops at the Palo Alto Art Center FREE – Made Possible by Palo Alto Art Center Foundation Every second Friday of the month (November 14, December 12, January 9, February 13, March 13, April 10, May 8, June 12, July 17*) 6- 8 p.m.\nAll materials provided\nAll ages; children under 12 must be accompanied by an adult. Each child will require their own ticket.\nSpace is limited, advance registration required for each individual session.\nPlease RSVP for each guest attending!\nCome together around clay in community at a series of creative workshops led by Centering exhibiting artists Timna Naim and Larisa Usich. Each workshop will feature different projects inspired by themes in the current exhibitions at the Art Center. Visit the exhibition after hours with an exclusive tour by the teaching artists, sketch out your ideas, and then make your own creation in clay that you can take home, and contribute to a collective artwork creation for the Center.\nThroughout the series, Timna and Larisa will explore how small-scale decorations can hold powerful meaning, exploring the history of trinkets, miniatures and other forms of adornment as important tools of self-expression.\nBring your friends, and come ready to learn, explore, and create!\nTimna Naim, a San Jose-based artist, explores identity, play, and community through interdisciplinary work integrating ceramic sculpture, installation, and performance that centers on tactility, storytelling, and participation, using vibrant colors, abstract forms, and interactive elements to spark the imagination. Timna Naim holds an MFA in Spatial Art and an MA in Teaching from SJSU.",
+      "source": "eventbrite",
+      "scraped_at": "2026-06-01T20:26:52.246Z"
+    },
+    {
+      "id": 27,
+      "selected": false,
+      "title": "Hifi & DIY Audio Meetup of Silicon Valley - June '26",
+      "time_display": "Saturday 06/13 1:00 AM",
+      "location": "303 Parkside Drive, Palo Alto, CA 94306",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/hifi-diy-audio-meetup-of-silicon-valley-june-26-tickets-1990669778896?aff=ebdssbcitybrowse",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Social gathering featuring HIFI systems and DIY audio project. Free and open to all. Food/drinks pro...",
+      "description_detail": "Social gathering featuring HIFI systems and DIY audio project. Free and open to all. Food/drinks provided with $15 suggested donation.\nCalling all audiophiles, Hifi lovers & DIY Audio enthusiasts. We are hosting our second meetup on the SF Bay Area Peninsula.\nThe event will take place at the Greenmeadow clubhouse. You can park at the Greenmeadow pool and follow signs to the event.\nWe are a group of audiophiles, hifi lovers and DIY audio enthusiasts, meeting a few times per year on the SF Bay Area Peninsula. Meetings are free* and open to the public - come join us!\n*We suggest a donation of $15 to cover food and other meetup expenses. Donations can be made at the event with cash, check or venmo.\nPlease register if you plan to attend so that we can plan the amount of food and drinks.",
+      "source": "eventbrite",
+      "scraped_at": "2026-06-01T20:26:52.246Z"
+    },
+    {
+      "id": 28,
+      "selected": false,
+      "title": "Volunteer Outdoors in Palo Alto at Pearson-Arastradero Preserve",
+      "time_display": "Saturday 06/13 3:30 PM",
+      "location": "1530 Arastradero Road, Palo Alto, CA 94304",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/volunteer-outdoors-in-palo-alto-at-pearson-arastradero-preserve-registration-1989432192241?aff=ebdssbcitybrowse",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Volunteer your time with Grassroots Ecology to help increase biodiversity in Palo Alto! Volunteer wi...",
+      "description_detail": "Volunteer your time with Grassroots Ecology to help increase biodiversity in Palo Alto!\nVolunteer with Grassroots Ecology to support the expansive oak woodlands and grasslands at Pearson-Arastradero Preserve. These ecosystems are home to an abundance of wildlife, including deer, bobcats, coyotes, many species of birds and insects, and more! During our time together, volunteers will remove invasive plants from restoration areas using hand tools, bucket water native plants, and sheet mulch areas to suppress weeds. Activities may involve lifting, bending, and walking on flat and uneven terrain.\nVisit Grassroots Ecology’s Pearson-Arastradero Preserve webpage to learn more about the ecosystem and accessibility considerations.\nWaivers/Registration: All volunteers attending the workday must be registered individually and have approved the online waiver through this Eventbrite page. Youth under 18 must have their legal guardian approve the waiver on their behalf. Volunteers age 12 and under require an accompanying adult.\nParking: 1530 Arastradero Road, Palo Alto. Please arrive early and carpool if possible. There will be some parking spaces reserved for the event at the back of the lot. There is no street parking available along Arastradero Road or Page Mill Road.\nAlternate Transportation: Bike racks are available near the parking lot. The 280/Page Mill Rd Park and Ride lot is a 10-minute walk from the preserve.\nMeeting Space: We will meet by the buildings down the path from the parking lot. Water fountains and all-gender, single stall restrooms are accessible at the meeting spot and within a 10 minute walk during the event.\nPrepare for Working Outdoors:\nWe will provide gloves, tools, and snacks.\nWe are committed to the safety of our staff and volunteers. If we must cancel a workday due to extreme weather conditions or poor air quality, a Grassroots Ecology staff person will reach out via email no later than 5:00 PM the day before this event.",
+      "source": "eventbrite",
+      "scraped_at": "2026-06-01T20:26:52.246Z"
+    },
+    {
+      "id": 29,
+      "selected": false,
+      "title": "Free jazz concert - Rive Gauche Live!",
+      "time_display": "Saturday 06/13 12:00 AM",
+      "location": "351 Homer Avenue, Palo Alto, CA 94301",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/free-jazz-concert-rive-gauche-live-tickets-1989765826149?aff=ebdssbcitybrowse",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Let Rive Gauche transport you to the 1920s – 40s! Come listen to a trio of musicians play French caf...",
+      "description_detail": "Let Rive Gauche transport you to the 1920s – 40s!\nCome listen to a trio of musicians play French cafe-style music and Jazz Manouche on the accordion, violin, guitar, and bass!\nThis free concert will take place at the Museum of American Heritage, in the historic garden first planted in 1907 by Thomas and Dora Williams. No RSVP is required — just stop by.\nWe hope to see you there!",
+      "source": "eventbrite",
+      "scraped_at": "2026-06-01T20:26:52.246Z"
+    },
+    {
+      "id": 30,
+      "selected": false,
+      "title": "Dragon Boat Festival - Chinese Medicine Wellness Fair",
+      "time_display": "Sunday 06/14 7:00 PM",
+      "location": "1885 Lundy Avenue, San Jose, CA 95131",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/dragon-boat-festival-chinese-medicine-wellness-fair-tickets-1989748078064?aff=ebdssbdestsearch",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Dragon Boat Festival 2026 | Free TCM Fair: Acupuncture, Herbal Food, Zongzi DIY & Summer Wellness Ac...",
+      "description_detail": "Dragon Boat Festival 2026 | Free TCM Fair: Acupuncture, Herbal Food, Zongzi DIY & Summer Wellness Activities. Free Entry!\n🐉 Celebrate the Dragon Boat Festival — the 5th day of the 5th lunar month — with an afternoon of Traditional Chinese Medicine, culture, and summer wellness.\nWelcome summer by awakening your energy, strengthening immunity, and learning practical wellness tools rooted in 2,000 years of TCM wisdom.\n🎁 Complete the 5-Station Wellness Journey and receive a Dragon Boat Festival Gift Bag!\nFree entry. Some workshops and food items available for purchase.\nBring your family and friends — let's ride the waves of health together! 🐉🌿",
+      "source": "eventbrite",
+      "scraped_at": "2026-06-01T20:26:52.253Z"
+    },
+    {
+      "id": 31,
+      "selected": false,
+      "title": "Summer Kickoff Activity Fair at The Plex",
+      "time_display": "Saturday 06/13 6:00 PM",
+      "location": "800 Embedded Way, San Jose, CA 95138",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/summer-kickoff-activity-fair-at-the-plex-tickets-1989344333453?aff=ebdssbdestsearch",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Free family activity fair with sports demos, fitness experiences, youth programs, vendors & interact...",
+      "description_detail": "Free family activity fair with sports demos, fitness experiences, youth programs, vendors & interactive activities at The Plex!\nCelebrate summer at The Plex with a free community event designed for new and prospective members to explore everything our facility has to offer.\nThe Plex is a one-of-a-kind destination for sports, fitness, family activities, dining, events, and entertainment, featuring 240,000 square feet of experiences all under one roof. From youth sports and fitness programs to birthday parties, camps, recovery services, dining, and more, there’s something for everyone to discover.\nThe Plex Activity Fair: Summer Kickoff brings together interactive sports demos, fitness experiences, youth programs, vendor booths, and hands-on activities for all ages. Explore hockey, soccer, aquatics, group fitness, personal training, recovery services, summer camps, birthday parties, and more while meeting the teams behind each department.\nGuests can enjoy skill challenges, mini class demos, music, interactive experiences, and opportunities to learn more about programs throughout the facility. Participants will also have the opportunity to take part in an interactive Event Passport Challenge by visiting activities and booths throughout the event.\nThis event is the perfect opportunity to experience what The Plex community is all about while taking advantage of exclusive new member incentives and event-day promotions available only during the Summer Kickoff Activity Fair.\nRegistration is free but encouraged for easier event check-in.",
+      "source": "eventbrite",
+      "scraped_at": "2026-06-01T20:26:52.253Z"
+    },
+    {
+      "id": 32,
+      "selected": false,
+      "title": "The West Coast Blues RevueBiscuits & Blues",
+      "time_display": "Tuesday 06/09 6:30 PM",
+      "location": "401 Mason Street, San Francisco, CA",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.biscuitsandblues.com/find-a-show/20260609thewestcoastbluesrevue",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "sfstation",
+      "scraped_at": "2026-06-01T20:18:41.067Z"
+    },
+    {
+      "id": 33,
+      "selected": false,
+      "title": "World Cup Weekend with Noodles",
+      "time_display": "Saturday 06/13 4:00 AM",
+      "location": "72 N Almaden Ave, San Jose, CA 95110",
+      "price": "From $12.51",
+      "event_type": "food",
+      "priority": 6,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/world-cup-weekend-with-noodles-tickets-1989931162675?aff=ebdssbcitybrowsenightlife",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Kicking off World Cup weekend under the stars with Noodles. Patio energy, community, and sound all c...",
+      "description_detail": "Kicking off World Cup weekend under the stars with Noodles. Patio energy, community, and sound all collide at SP2.\nHeavy Arsenal + SP2 Communal Bar & Restaurant Present\nUnder the stars, on the patio, where music and community collide.\nBorn in San Francisco and raised in Hayward, Micah, aka NOODLES grew up in a Filipino American household where success was expected, but it was the local club scene that sparked her passion. Taught by her father, a former resident DJ, she mastered analog skills and translated them into the digital world, quickly making a name for herself across California. With viral SoundCloud edits and sets at major festivals like Camp Flog Gnaw, Wireless, and Soulection Experience, NOODLES has become a standout solo act with a style all her own.\nBottle Service (415)737.5772\nTicketed Event. NO REFUNDS.",
+      "source": "eventbrite",
+      "scraped_at": "2026-06-01T20:26:52.238Z"
+    },
+    {
+      "id": 34,
+      "selected": false,
+      "title": "VIP Tickets Rock & Roll Beer Stroll 2026 - Downtown Alameda",
+      "time_display": "Saturday 06/13 7:00 PM",
+      "location": "2337 Blanding Avenue, Alameda, CA 94501",
+      "price": "$75",
+      "event_type": "food",
+      "priority": 6,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/vip-tickets-rock-roll-beer-stroll-2026-downtown-alameda-tickets-1988499108362?aff=ebdssbdestsearch",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "The VIP session will highlight the incredible connection between Alameda's very own Admiral Maltings...",
+      "description_detail": "The VIP session will highlight the incredible connection between Alameda's very own Admiral Maltings and the brewing process.\nVIP Beer Tasting Experience - Saturday, June 13, 2026\nSelect this VIP experience before the main stroll, from 12-1pm at Dragon Rouge.​Limited to just 50 attendees, this exclusive session offers a fascinating look into Alameda’s unique role in the beer world. The VIP session will highlight the incredible connection between Alameda’s very own Admiral Maltings and the brewing process. Discover how Admiral Maltings contributes to the creation of many of the beers you’ll savor throughout the evening. In addition to insights into the artistry behind the beer-making process, you’ll also have the opportunity to sample unique beers from their brewery partners. This is your chance to dive deeper into Alameda’s rich beer connections while enjoying an intimate, educational, and flavorful start to the afternoon.This $75 ticket will include a seated VIP program (from 12:15 - 1pm), a collectible tasting glass, premium beer tastings at unique downtown locations, delicious bites at some host locations prepared by local chefs and a commemorative guide. Tickets are limited, price increases to $85 on June 8th, if not sold out.After the VIP session join the Rock & Roll Beer Stroll (1:00-5:00pm) and walk around downtown Alameda and sample beers from local breweries.\nFor general admission tickets please visit Downtown Alameda Rock & Roll Stroll.",
+      "source": "eventbrite",
+      "scraped_at": "2026-06-01T20:26:52.247Z"
+    },
+    {
+      "id": 35,
+      "selected": false,
+      "title": "Summer Kickoff Party at Cavallo Point",
+      "time_display": "Sunday 06/14 10:00 PM",
+      "location": "601 Murray Circle, Sausalito, CA 94965",
+      "price": "$55.20",
+      "event_type": "food",
+      "priority": 6,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/summer-kickoff-party-at-cavallo-point-tickets-1987568085648?aff=ebdssbdestsearch",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Cavallo Point and Marin Magazine invite you to kickoff the summer in style at the Golden Gate! Pleas...",
+      "description_detail": "Cavallo Point and Marin Magazine invite you to kickoff the summer in style at the Golden Gate!\nPlease Note - In observance of the annual Dipsea Race that morning, our Summer Kick-Off Party will now be held from 3–6 p.m. We'll see you on the other side of the finish line.\nCavallo Point & Marin Magazine invite the Marin community to join us for a sun-soaked afternoon featuring live music and dancing with the incomparable David Martin’s House Party, delectable bites from our culinary team, and a full bar with beer, wine, cocktails, and more... with your first specialty cocktail on us... all set in front of one of the world’s most iconic backdrops.\nThis summer season also marks the return of two classically timeless and beloved local favorites — Farley Bar and Murray Circle restaurant. The reimagined spaces are coming later this summer, so join us in June for a sneak peek at what’s to come!\nRefunds up to 7 days before event",
+      "source": "eventbrite",
+      "scraped_at": "2026-06-01T20:26:52.248Z"
+    },
+    {
+      "id": 36,
+      "selected": false,
+      "title": "Scopo Divino: Winemaker Dinner with St. Francis Winery",
+      "time_display": "Wednesday 06/10 12:30 AM",
+      "location": "2800 California Street, ##101 San Francisco, CA 94115",
+      "price": "$83",
+      "event_type": "food",
+      "priority": 6,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/scopo-divino-winemaker-dinner-with-st-francis-winery-tickets-1988281569698?aff=ebdssbdestsearch",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Tickets Available Now for Scopo Divino's 3-Course Winemaker Dinner featuring St. Francis Winery, Tue...",
+      "description_detail": "Tickets Available Now for Scopo Divino's 3-Course Winemaker Dinner featuring St. Francis Winery, Tuesday, June 9th at 5:30 & 8:00pm\nTuesday, June 9th with Two Seatings: 5:30pm & 8:00pm\nSt. Francis & Katie Madigan\nIt's hard to describe how excited we are to have St. Francis Winery here at Scopo Divino.  I personally have a handful of remarkable experiences from my visits there. Some that shifted how I approach wine. One that helps define how we do our wine club here. To give full weight to their importance to us here:  they have been featured on our mural since our opening. It was so fun to taste for this event with their President & Ceo, Rick Bonitati and see the excitement on his face when we he saw the mural. Let's just say this one is a long time coming, and a true culmination of our relationship to wine here at Scopo Divino.\nThis June, Scopo Divino is proud to present \"Best Woman Winemaker\" award winner, Katie Madigan and St. Francis Winery. We will be experiencing four of their exceptional wines, paired with an amazing three-course meal crafted by celebrity guest Chef and legend, Erik Hopfinger.\nThis will be a Three Course Tasting Meal with Wines Paired for each course, and will include the opportunity to meet and engage with Katie Madigan herself. As guests at the dinner you will have access to special reserve one-night-only pricing on bottles of the wines to go.\nPairing wine & food is an art, and these dinners are built in reverse. As in we taste and select the wine first, THEN craft the meal around them. In this way you'll come away with an excellent understanding of the wines - how you might drink, serve, share, and cook with them. (Full menu details including vegetarian options will be featured in the weeks to come).\nThe first seating will be at 5:30pm, the second at 8:00pm. We show guests to their tables 15 minutes prior to each seating and start promptly at the times listed.",
+      "source": "eventbrite",
+      "scraped_at": "2026-06-01T20:26:52.249Z"
+    },
+    {
+      "id": 37,
+      "selected": false,
+      "title": "ArteNOM Tequila Dinner",
+      "time_display": "Wednesday 06/10 1:30 AM",
+      "location": "2020 Shattuck Avenue, Berkeley, CA 94704",
+      "price": "See event page",
+      "event_type": "food",
+      "priority": 6,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/artenom-tequila-dinner-tickets-1989162445421?aff=ebdssbdestsearch",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Comal welcomes ArteNOM for a multi-course meal featuring their tequilas paired with dishes by Comal ...",
+      "description_detail": "Comal welcomes ArteNOM for a multi-course meal featuring their tequilas paired with dishes by Comal chef Matt Gandin.\nJoin us in the next installment of our Abajo Dinner Series, where we offer a chef-led paired dinner in our downstairs private dining room.\nButter lettuce apricots & almonds, lemon-tarragon vinaigrette, queso fresco\nFuenteseca Cosecha 2020\nPotato-pea empanada mint yogurt\nArteNOM Seleccion de 1579 Blanco Classico\nAl pastor taco pineapple-morita chile salsa\nArteNOM Seleccion de 1123 Blanco Classico\nDuck tamale mole coloradito\nArteNOM Seleccion de 1414 Reposado Classico\nFlan tradicional fresh raspberries\nArteNOM Seleccion de 1146 Anejo Classico\n* final menu subject to change\n*Refunds approved if ticket can be resold*",
+      "source": "eventbrite",
+      "scraped_at": "2026-06-01T20:26:52.250Z"
+    },
+    {
+      "id": 38,
+      "selected": false,
+      "title": "A Taste of Willow Glen",
+      "time_display": "Thursday 06/11 12:30 AM",
+      "location": "1399 Lincoln Avenue, San Jose, CA 95125",
+      "price": "Check event page",
+      "event_type": "food",
+      "priority": 6,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/a-taste-of-willow-glen-tickets-1987660674584?aff=ebdssbdestsearch",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Taste your way through Willow Glen's best spots on Lincoln Ave! Every dollar collected helps the Wil...",
+      "description_detail": "Taste your way through Willow Glen's best spots on Lincoln Ave! Every dollar collected helps the Willow Glen Lions Club serve the community!\nGet ready for a fantastic evening along Lincoln Avenue in Willow Glen! Munch on delicious samplers from popular eateries, compare notes with your friends, and plan a meal together at your favorites from the day.",
+      "source": "eventbrite",
+      "scraped_at": "2026-06-01T20:26:52.252Z"
+    },
+    {
+      "id": 39,
+      "selected": false,
+      "title": "Family Fun: Roman Style Pizza Making Class (Parent + Child)",
+      "time_display": "Saturday 06/13 7:00 PM",
+      "location": "2855 Stevens Creek Boulevard, San Jose, CA 95128",
+      "price": "From $77.53",
+      "event_type": "food",
+      "priority": 6,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/family-fun-roman-style-pizza-making-class-parent-child-tickets-1988251233963?aff=ebdssbdestsearch",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Bring your bambini and get ready to cook! In our hands-on format, our Scuola Chef will guide you thr...",
+      "description_detail": "Bring your bambini and get ready to cook! In our hands-on format, our Scuola Chef will guide you through how to prepare Pizza alla Pala.\nAbout this Class: Bring your bambini and get ready to cook! In our hands-on format, you’ll be diving right in and making our signature recipe with your child from scratch. Take your culinary creation with you at the end of class and enjoy your own hard work at home! Our Scuola Chef will then prepare the dish for you to taste in class.\nAbout this Dish: Welcome to the world of pizza! There are many different types of pizza across Italy. Coming from Rome, Pizza alla Pala is an oval-shaped pizza served on a wooden pala, or paddle. Thick and crispy on the outside, but still fluffy in the center, the toppings are added after the pizza is baked. In this class, you’ll make your own pizza dough from scratch with your bambino.\nIn this Class You Will:\nPayment in full is required at the time of registration and all sales are final. No refunds are offered on classes and events. For groups of 5-10 guests, a minimum of 7 days' notice (class day not included) is required to receive a credit in the form of a coupon for a future class or event. For groups of up to 4 guests, a minimum of 4 days' notice (class day not included) is required to receive a credit in the form of a coupon code for a future class or event at La Scuola. We reserve the right to reschedule or cancel a class or event due to unforeseen circumstances, inclement weather or otherwise. In the event of a class or event cancellation, we will contact you directly at the phone number or email address you have provided to offer a full refund or credit to transfer to a future class or event. While we are not able to offer credit, transfers or refunds for last-minute illnesses, work-related conflicts, personal emergencies or events beyond our control, you are always welcome to send someone in your place, as we understand that these things do happen.",
+      "source": "eventbrite",
+      "scraped_at": "2026-06-01T20:26:52.252Z"
+    },
+    {
+      "id": 40,
+      "selected": false,
+      "title": "Cyb3r South Bay 6.13 // Industrial, EBM, Darkwave, & Dark Techno",
+      "time_display": "Sunday 06/14 3:00 AM",
+      "location": "20990 Homestead Road, Cupertino, CA 95014",
+      "price": "Starts at $17.85",
+      "event_type": "tech",
+      "priority": 5,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/cyb3r-south-bay-613-industrial-ebm-darkwave-dark-techno-tickets-1990209204305?aff=ebdssbcitybrowsenightlife",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Cyb3r South Bay hits X-Bar Cupertino June 13 with industrial, EBM, darkwave & dark techno DJs. 18+ |...",
+      "description_detail": "Cyb3r South Bay hits X-Bar Cupertino June 13 with industrial, EBM, darkwave & dark techno DJs. 18+ | 8PM–12AM | Dark vibes await.\nStep into the underground at CYB3R South Bay, a night dedicated to the darker side of electronic music featuring Industrial, EBM, Darkwave, and Dark Techno sounds at X-Bar in Cupertino. Taking place on Saturday, June 13, 2026, this 18+ event brings together heavy beats, dark aesthetics, and immersive club energy for fans of alternative electronic culture.\nHeadlining the night is Plastic Disease, known for delivering aggressive industrial rhythms, distorted synth textures, and high-energy sets that blend classic EBM influences with modern dark techno sounds. Their performances create a raw, hypnotic atmosphere built for the dance floor.\nAlso performing is C_Death, whose sets fuse darkwave melodies, cyber-industrial soundscapes, and driving basslines into a moody and cinematic experience. Expect deep cuts, underground favorites, and relentless energy throughout the night.\nJoining the lineup is Hopeless (OAK), bringing a darker and more atmospheric approach with haunting synths, post-industrial beats, and emotionally charged selections that pull from goth, dark electronic, and techno influences.\nThe event takes place at X-Bar Cupertino, located at 20990 Homestead Rd, from 8PM–12AM. Tickets are $10 in advance and $13 at the door. Whether you’re into industrial dance music, goth club culture, or underground techno scenes, CYB3R South Bay promises a night of dark sounds and late-night energy.\nRefunds up to 7 days before event",
+      "source": "eventbrite",
+      "scraped_at": "2026-06-01T20:26:52.238Z"
+    }
+  ]
+}
