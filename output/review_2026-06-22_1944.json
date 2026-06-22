@@ -1,0 +1,869 @@
+{
+  "review_id": "review_2026-06-22_1944_akx",
+  "generated_at": "2026-06-22T19:44:39.237Z",
+  "scrape_date": "2026-06-22",
+  "target_week": "2026-06-29_to_2026-07-05",
+  "target_week_readable": "下周 (06/29 - 07/05)",
+  "scraping_report": {
+    "total_scraped": 81,
+    "after_deduplication": 69,
+    "after_classification": 69,
+    "classification_report": {
+      "totalEvents": 69,
+      "eventTypes": {
+        "free": 48,
+        "market": 4,
+        "other": 6,
+        "fair": 1,
+        "art": 4,
+        "food": 2,
+        "festival": 4
+      },
+      "priorityLevels": {
+        "3": 6,
+        "5": 4,
+        "6": 2,
+        "9": 48,
+        "10": 9
+      },
+      "chineseRelevant": 0,
+      "topPriorityEvents": 57
+    }
+  },
+  "instructions": {
+    "how_to_review": "将你想要发布的活动的 'selected' 字段改为 true",
+    "next_step": "保存文件后运行: npm run generate-post [此文件路径]",
+    "fields_explanation": {
+      "title": "活动标题",
+      "time_display": "显示用的时间格式",
+      "location": "活动地点",
+      "price": "票价信息",
+      "event_type": "AI识别的活动类型",
+      "priority": "优先级分数 (越高越重要)",
+      "chinese_relevant": "是否与中文社区相关",
+      "original_url": "原始活动链接"
+    }
+  },
+  "stats": {
+    "total_candidates": 40,
+    "by_type": {
+      "market": 4,
+      "fair": 1,
+      "festival": 4,
+      "free": 23,
+      "food": 2,
+      "art": 4,
+      "other": 2
+    },
+    "by_priority": {
+      "3": 2,
+      "5": 4,
+      "6": 2,
+      "9": 23,
+      "10": 9
+    },
+    "chinese_relevant": 0
+  },
+  "events": [
+    {
+      "id": 1,
+      "selected": false,
+      "title": "Voyage to Paradiso – The Divine Light Party",
+      "time_display": "Sunday 07/05 12:00 AM",
+      "location": "Pier 3, San Francisco, CA 94105",
+      "price": "$100",
+      "event_type": "market",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/voyage-to-paradiso-the-divine-light-party-tickets-1988417732966?aff=ebdssbneighborhoodbrowse",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Shine Bright. Float Higher. Welcome to Paradiso—a radiant, immersive escape at sea inspired by Dante...",
+      "description_detail": "Shine Bright. Float Higher.\nWelcome to Paradiso—a radiant, immersive escape at sea inspired by Dante’s Sphere of the Sun, where light, warmth, and collective energy converge.\nThis Independence Day, step aboard the San Francisco Belle for a first look at Paradiso, the highly anticipated rooftop concept from Dante’s Inferno, debuting ahead of its 2027 Mid-Market opening.\nThis one-night-only celebration serves as an exclusive first look at Paradiso, the highly anticipated rooftop concept from Dante’s Inferno. Envisioned as the lighter, heavenly counterpart to Inferno (the ground-level supper club), Paradiso channels an elevated, escapist energy, blending the feel of an island getaway, a rooftop party, and a private members’ club.\nWhile Paradiso will eventually live above Inferno, Voyage to Paradiso brings that world to life on the water, transforming The Belle, a multi-level vessel cruising the San Francisco Bay, into a floating preview of the concept.\nFrom golden hour to evening fireworks, experience a sunset cruise across the Bay surrounded by flowing linen, sunlit reflections on the water, tropical cocktails, Jamaican-inspired bites, and music carrying you from deck to deck as day turns to night.\nAs the sun sets and fireworks light the sky in honor of America’s 250th birthday, the energy builds into a lively, Caribbean inspired event, blending rhythm, elegance, and movement across a multi-level vessel.\nThis isn’t just a party – it’s a preview of what’s to come.",
+      "source": "eventbrite",
+      "scraped_at": "2026-06-22T19:38:43.090Z"
+    },
+    {
+      "id": 2,
+      "selected": false,
+      "title": "Our Magic",
+      "time_display": "Thursday 07/02 7:30 PM",
+      "location": "3264 Mission Street, San Francisco, CA 94110",
+      "price": "$65.28",
+      "event_type": "market",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/our-magic-tickets-444865694267?aff=ebdssbcitybrowse",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Join Andrew Evans, the creator of The Magic Patio, for an inexplicable evening of magic and mentalis...",
+      "description_detail": "Join Andrew Evans, the creator of The Magic Patio, for an inexplicable evening of magic and mentalism.\nIn this intimate and interactive show, Andrew Evans presents an evening of magic and mentalism  featuring never-before-seen illusions with favorite moments from The Magic Patio's 10 year journey. Join us to experience unbelievable magic and mystery in a hand-crafted hidden magic speakeasy.\nSan Francisco, CA 94110",
+      "source": "eventbrite",
+      "scraped_at": "2026-06-22T19:38:43.091Z"
+    },
+    {
+      "id": 3,
+      "selected": false,
+      "title": "WALSHY FIRE from Major Lazer Live in Oakland! July 4th Afro Rave",
+      "time_display": "Sunday 07/05 5:00 AM",
+      "location": "2236 Martin Luther King Junior Way, Oakland, CA 94612",
+      "price": "From $11.79",
+      "event_type": "fair",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/walshy-fire-from-major-lazer-live-in-oakland-july-4th-afro-rave-tickets-1990450082779?aff=ebdssbcitybrowsenightlife",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "This 4th of July, Afrobeats Oakland present JA's biggest DJ export, Walshy Fire, for an exclusive da...",
+      "description_detail": "This 4th of July, Afrobeats Oakland present JA's biggest DJ export, Walshy Fire, for an exclusive dancehall-infused late night rave\nWALSHY FIRE (Major Lazer) Live in Oakland! 🇯🇲🔥\nThis 4th of July holiday weekend, we’re bringing one of the most influential DJs in global music to Oakland for a special late-night caribbean-style rave experience.\nStraight from Jamaica, WALSHY FIRE of Major Lazer touches down in the Bay for an exclusive dancehall-infused celebration powered by Dancehall, Soca, Afrobeats and global sounds all night long.\nAs a member of the world-renowned Major Lazer, Walshy Fire has helped shape the sound of modern dance music across every continent. From massive festival stages to Caribbean carnivals and underground dance floors, his sets are known for unmatched energy, deep musical knowledge, and nonstop vibes.\nAs always, we'll have 3 rooms of music, going til 4am, featuring our resident Djs - KOKO, Juan G, Goma and Momo plus a special Carribean-themed room hosted by FMLY BZNS and featuring guests DJs Big Rich, Smoke-1, Andreas One and One Lovell.\nRefunds up to 3 days before event\n2236 Martin Luther King Junior Way",
+      "source": "eventbrite",
+      "scraped_at": "2026-06-22T19:38:43.092Z"
+    },
+    {
+      "id": 4,
+      "selected": false,
+      "title": "USS Hornet 4th of July/250th Birthday of USA Celebration!",
+      "time_display": "Saturday 07/04 5:00 PM",
+      "location": "707 W Hornet Ave, Alameda, CA 94501",
+      "price": "$12",
+      "event_type": "market",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/uss-hornet-4th-of-july250th-birthday-of-usa-celebration-tickets-1989114763804?aff=ebdssbdestsearch",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Come join us for a fun-filled Steel Beach Party & BBQ aboard the USS Hornet on July 4th with food & ...",
+      "description_detail": "Come join us for a fun-filled Steel Beach Party & BBQ aboard the USS Hornet on July 4th with food & drink, games, tours, arts & crafts fair.\nSpend your 4th of July (10AM to 5PM) in the Bay's best location for the day with music, food & drinks, tours, arts & crafts and more!\nPlease join the USS Hornet as we celebrate Independence Day with a big Steel Beach BBQ with music, food and beverages!\nThe ship will be converted into a Steel Beach BBQ Party! We will have music playing (Swingin' Blue Stars, King Tide Players), food and drinks to purchase, tables and chairs, free tours of the Island (normally a $12 charge!), some games for you to play and an arts and crafts fair next to the ship on the pier!\nIn the Hangar Bay, all the normally accessible areas of the ship will be available for self-touring. You can see the rest of our aircraft and Apollo program artifacts (including our Apollo Block 1 capsule, the Mobile Quarantine Facility and the SeaKing helicopter used in the filming of Apollo 13), and our newest acquisition: An F/A-18C!\nOn the 2nd Deck you can visit the Torpedo Workshop, Sick Bay, Officer’s Wardroom, exhibits such as African-Americans in the Military, Women in the Military, Air Group 11 and many more!\nWe also will be closing early enough that you will have time to go to your favorite spot to watch the fireworks. Note: There will be NO Fireworks at the USS Hornet.\nRefunds up to 3 days before event",
+      "source": "eventbrite",
+      "scraped_at": "2026-06-22T19:38:43.105Z"
+    },
+    {
+      "id": 5,
+      "selected": false,
+      "title": "Fourth of July Pub Crawl & Hot Dog Eating Contest",
+      "time_display": "Saturday 07/04 9:00 PM",
+      "location": "2131 Lombard Street, San Francisco, CA 94123",
+      "price": "From $7.18",
+      "event_type": "festival",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/fourth-of-july-pub-crawl-hot-dog-eating-contest-tickets-1983146875690?aff=ebdssbdestsearch",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "San Francisco's Biggest Fourth of July Party. Enjoy Drink Specials, Djs, a Hot Dog Eating Contest, a...",
+      "description_detail": "San Francisco's Biggest Fourth of July Party. Enjoy Drink Specials, Djs, a Hot Dog Eating Contest, a Pie Eating Contest and more.\nThe CrawlSF crew is renowned for hosting epic celebrations, and this July 4th promises to be bigger and better than ever. Before heading out to your favorite spot to watch the San Francisco Independence Day Fireworks, start things off early at the best 4th of July Pre-party in the city. The event will include drink specials, Djs, a hot dog eating contest, a pie eating contest, party favors, free admission to all bars and, of course, the infamous Find the Gnome Contest.\nOn Saturday, July 4, 2026, dive into the patriotic spirit from 2PM to 10PM as the Marina District comes alive with a big dose of patriotic fun. Whether you're gearing up for the spectacular San Francisco fireworks show later that evening, craving a full day of holiday fun or simply want the perfect excuse to rock your stars & stripes outfit around town, this is the best place to celebrate.\nYour adventure begins at Rick & Roxy’s (2125 Lombard Street). Check in and grab your wristbands, pub crawl maps and some fun party swag to get the celebration started right. After you are checked in, cruise around The Marina to bars like Westwood, Union Street Ale House, Silver Cloud, White Rabbit, Palm House, The Blue Light, Jaxson and many more. Each stop brings new drink deals, great music and that classic Fourth of July energy. After throwing back a few drinks, head back to Jaxson for the Annual Hot Dog Eating Contest and Pie Eating Contest.\nDate & Time: Saturday, July 4 from 2PM to 10PM\nParticipating Bars: Campus, Jaxson, Westwood, Wizards & Wands, Comet Club, Palm House, White Rabbit, Rockwell, Silver Cloud, Sacred Taco, Union Street Ale House, The Blue Light, Rick & Roxy's & more!\nFor updated San Francisco Fourth of July Pub Crawl Details, go to july4sf.com.\nCan you eat hot dogs like a champ?",
+      "source": "eventbrite",
+      "scraped_at": "2026-06-22T19:38:43.105Z"
+    },
+    {
+      "id": 6,
+      "selected": false,
+      "title": "4th of July at Cavallo Point - In Celebration of America's 250th",
+      "time_display": "Saturday 07/04 10:00 PM",
+      "location": "601 Murray Circle, Sausalito, CA 94965",
+      "price": "From $33.85",
+      "event_type": "festival",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/4th-of-july-at-cavallo-point-in-celebration-of-americas-250th-tickets-1991653978664?aff=ebdssbdestsearch",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Celebrate at Cavallo Point, offering a BBQ, drinks, live music, and the perfect vantage points for t...",
+      "description_detail": "Celebrate at Cavallo Point, offering a BBQ, drinks, live music, and the perfect vantage points for the Golden Gate Bridge fireworks!\nFew places are better positioned to mark America's 250th birthday than Cavallo Point. In our National Park setting, perched at the foot of the Golden Gate Bridge on the grounds of a former U.S. Army post, this setting has witnessed more than a century of American history. This Fourth of July, history comes alive as fireworks will be launched directly from the Golden Gate Bridge, lighting up the sky above one of the world's most iconic landmarks. There's truly no better place to watch it happen than Cavallo Point.\nJoin Us for a Full Day of Celebration\nThe festivities begin in the late afternoon and carry well into the evening. Our Fourth of July BBQ brings together culinary favorites alongside beer, wine, and cocktails (available for purchase until 8pm), all set to a jazz band bringing the party to the Callippe Terrace. On the Parade Ground, where soldiers once drilled and marched, kids are invited to fly kites (included with the purchase of a BBQ ticket) and get their faces painted with HappyCake Face Painting (additional fee). A handful of local artisans will also be set up, including Orchid & Pine and Dolly's Collective, Point Reyes Lavender, Woodbine Bakery, and more.\nThroughout the day, historic tours of the property will give guests a deeper look at Cavallo Point's military past, and costumed storytellers will be strolling the grounds to bring the history to life in a way that's as entertaining as it is memorable.\nNeed a break? Grab a seat inside at Farley, serving its full menu all evening, and enjoy acoustic guitarist and long-time Farley favorite John Vicino performing throughout the evening.\nAdditional parking is available at the Discovery Museum next door on a first-come, first-served basis. Arrive early.\nRefunds up to 7 days before event",
+      "source": "eventbrite",
+      "scraped_at": "2026-06-22T19:38:43.107Z"
+    },
+    {
+      "id": 7,
+      "selected": false,
+      "title": "White Party Celebrating America's 250th Birthday",
+      "time_display": "Sunday 07/05 3:00 AM",
+      "location": "1801 Barber Lane, Milpitas, CA 95035",
+      "price": "From $23.18",
+      "event_type": "festival",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/white-party-celebrating-americas-250th-birthday-tickets-1990576447740?aff=ebdssbdestsearch",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Celebrate America’s historic Semiquincentennial (250th Birthday!) at the ultimate dance celebration....",
+      "description_detail": "Celebrate America’s historic Semiquincentennial (250th Birthday!) at the ultimate dance celebration.\nCelebrate America’s 250th Birthday at this fun dance party, featuring your favorite Top 40 Hits with one of our top DJs! This is also a White Party, where guests are encouraged to wear white. Adults of all ages welcome. Saturday, July 4, 2026, 8pm-Midnight.\nDISCOUNT TICKETS: $30/advance. $45/door, if space permits. These events usually sell out, so we recommend purchasing an advanced ticket online.\nLOCATION: : Sheraton Hotel San Jose Silicon Valley, 1801 Barber Lane, Milpitas CA, at the intersection of Hwy 880 and Montague Expressway. Especially convenient for our single professionals in both the Silicon Valley and Alameda County. Free parking! We request that everyone purchase at least one drink so that this fine venue invites us back!\nCO-SPONSORED by The Society of Single Professionals, Singles Bay Area, Your Asian Connection, and dozens of singles organizations and meetups. All events benefit The Seva Foundation, to restore sight to the blind.\nMORE PARTIES at www.thepartyhotline.com.\n· SF Art Gallery Mixer, 50+, June 25, San Francisco\n· Upscale Wine Tasting/Speed Dating/Social, 30-60, June 28, Los Gatos\n· North Bay Speed Dating, 30s/40s, June 28, Novato\n· Advanced Degrees Mixer, adults of all ages, July 2, Sunnyvale\n· America’s 250th Birthday Party, adults of all ages, July 4, Silicon Valley\n· Christian Singles Mixer, adults of all ages, July 9, San Francisco\n· Paddle Boarding, adults of all ages, July 11, San Rafael\n· East Bay Speed Dating, 30s/40s, July 12, Walnut Creek\n· Single and Ready to Mingle, 50+, July 19, Dublin\n· Silicon Valley Speed Dating, 30s/40s, July 25, Sunnyvale\n· Hayward Speed Dating, 40s/50s, July 29\n· SF Speed Dating & Happy Hour, 30s/40s, Aug 9, San Francisco\n· Marin SingleMingle for 50+, August 16, Tiburon\n· SF Speed Dating in The Marina, 40s/50s, Aug 19, San Francisco\n· Marin Speed Dating for 30s/40s, Sep 13, Tiburon",
+      "source": "eventbrite",
+      "scraped_at": "2026-06-22T19:38:43.110Z"
+    },
+    {
+      "id": 8,
+      "selected": false,
+      "title": "Independence Day Dance Celebration",
+      "time_display": "Sunday 07/05 3:00 AM",
+      "location": "1801 Barber Lane, , Milpitas, CA 95113",
+      "price": "From $22.09",
+      "event_type": "festival",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/independence-day-dance-celebration-tickets-1991839002074?aff=ebdssbdestsearch",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Celebrate 250 years of American spirit in unforgettable style at the ultimate Independence Day dance...",
+      "description_detail": "Celebrate 250 years of American spirit in unforgettable style at the ultimate Independence Day dance celebration.\nCelebrate 250 years of American spirit in unforgettable style at the ultimate Independence Day dance celebration. This isn’t just a party—it’s a once-in-a-generation Semiquincentennial (250th Birthday!) experience, reimagined as a dazzling, high-energy White Party. Think elegance, excitement, and a sea of stunning white attire lighting up the night.\nStep onto the dance floor wearing white. Move to the pulse of your favorite Top 40 hits, expertly mixed by our top DJ. Whether you come to mingle, dance, or simply soak in the atmosphere, this is your invitation to be part of something historic, vibrant, and fun.\nSaturday, July 4, 2026\nSheraton Hotel San Jose Silicon Valley\n1801 Barber Lane, Milpitas, CA\nPerfectly located at Hwy 880 and Montague Expressway, making it easy for you to join the celebration. Free parking included.\nOur holiday events are known to sell out, so securing your spot early is highly recommended.\nEarly Bird: $20 (last day June 20)\nAdvance: $30 (until 11:45 July 4)\nAt the Door: $45 (if space allows)\nA Quick Note About the Venue\nWe’re proud to host this event in such a beautiful setting. To help us continue bringing you celebrations like this, please buy at least one drink during the evening.\nDress in white. Bring your energy. Bring your friends. And get ready to celebrate America’s 250th birthday in a way you’ll never forget.\nCo-sponsored by BayAreaFun.org, The Society of Single Professionals, Singles Bay Area, Your Asian Connection, and dozens of singles organizations and meetups. All events support The Seva Foundation in restoring sight to those in need.\nRefunds up to 7 days before event",
+      "source": "eventbrite",
+      "scraped_at": "2026-06-22T19:38:43.110Z"
+    },
+    {
+      "id": 9,
+      "selected": false,
+      "title": "Alameda | 4th of July Bash on USS Hornet’s Aircraft Carrier Flight Deck | 2026",
+      "time_display": "Saturday 07/04 10:00 AM - 5:00 PM",
+      "location": "USS Hornet, San Francisco Bay Area",
+      "price": "$38.77*",
+      "event_type": "market",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/4th-july-aircraft-carrier/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2026-06-22T19:30:10.944Z"
+    },
+    {
+      "id": 10,
+      "selected": false,
+      "title": "Downtown First Thursdays w/ Peaches Christ's Variety Show | Jul. 2, 2026",
+      "time_display": "Friday 07/03 12:00 AM",
+      "location": "90 Natoma Street, San Francisco, CA 94105",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/downtown-first-thursdays-w-peaches-christs-variety-show-jul-2-2026-tickets-1980042444252?aff=ebdssbneighborhoodbrowse",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Downtown SF's FREE massive monthly street party! DJs, dancing, drag, and all ages fun every first Th...",
+      "description_detail": "Downtown SF's FREE massive monthly street party! DJs, dancing, drag, and all ages fun every first Thursday of the month.\n🪩 DOWNTOWN FIRST THURSDAYS\n______________________________________________________________________________\nDFT is back for a full year of street parties in 2026!\nDJs - Live Performances - Dancing - Drag - Food Trucks - Shopping - Fashion, and new surprises every month.JULY 2 SPECIAL GUEST PERFORMER: Peaches Christ’s Great American Variety Show takes over the DFT main stage, featuring the return of the infamous Hot Dog Eating contest (now in its third year!).Kick off the 4th of July holiday weekend, and celebrate all the weird, wacky, and wonderful things that make this country great. Featuring DJ Bobby Friday, Mario B’s Fashion Show, the return of the infamous Hot Dog Eating Contest, Carnie Asada’s Lips & Lashes drag spectacular, Roryography’s interactive dance-along, Kat Robichaud’s acclaimed Misfit Cabaret with an all-star cast of underground performers, and a massive grand finale drag showcase from the notorious Haus of Cream. Check out the full roster of performers here.Expect drag, burlesque, live music, comedy, audience participation, twisted glamour, anarchic camp, and nonstop spectacle as Peaches Christ brings her signature brand of theatrical mayhem to the streets.__On Ellis Downtown Block Party ft. Adi OasisOn Ellis returns for a special summer edition in collaboration with Downtown First Thursdays, bringing an evening of live music, community, and celebration to the heart of Downtown San Francisco, featuring Adi Oasis, headlining a night of soul, funk, disco, and groove-filled performances on the zero block of Ellis Street🎟️ Get Tix Here\n⭐ Check out neighborhood afterparties, free museums and more here!",
+      "source": "eventbrite",
+      "scraped_at": "2026-06-22T19:38:43.090Z"
+    },
+    {
+      "id": 11,
+      "selected": false,
+      "title": "The Ride Ahead Screening at Ed Roberts Campus",
+      "time_display": "Tuesday 06/30 8:00 PM",
+      "location": "3075 Adeline Street, Berkeley, CA 94703",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/the-ride-ahead-screening-at-ed-roberts-campus-tickets-1989248580052?aff=ebdssbcitybrowse",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Join us for a special hybrid screening of Emmy-nominated documentary The Ride Ahead, followed by a y...",
+      "description_detail": "Join us for a special hybrid screening of Emmy-nominated documentary The Ride Ahead, followed by a youth-led panel and discussion.\nThe Center for Independent Living (CIL) and Mitsubishi Electric America Foundation (MEAF) invite you to a special hybrid screening event of The Ride Ahead, an Emmy-nominated documentary exploring disability, identity, independence, and adulthood.\nThe film follows Samuel Habib, a young adult with a disability, as he navigates questions about the future, relationships, community, and what it means to live independently. Through conversations with disability advocates and leaders across the country, The Ride Ahead offers an honest and powerful perspective on disability culture, access, and belonging.\nCo-Directors Samuel Habib and Dan Habib will be attending the event. Following the screening, both in-person and virtual attendees will have the opportunity to engage in a youth-led panel discussion and community conversation. Samuel will be on the panel, which will focus on employment issues and be facilitated by Jim LeBrecht, an Executive Producer of The Ride Ahead and one of the filmmakers behind the acclaimed documentary Crip Camp.\nThe Ride Ahead aired nationally as part of POV on PBS, the acclaimed documentary series showcasing powerful independent stories and diverse perspectives.\nDate: Tuesday, June 30, 2026Time: 1:00 PM – 4:00 PM PSTFormat: Hybrid (In-person + Virtual Option)\nEd Roberts Campus3075 Adeline StreetBerkeley, CA 94703\nVirtual attendees will receive the Zoom link after registering.\nThe Center for Independent Living is committed to making this event accessible and inclusive for all participants.\nASL interpretation, live captioning and audio description of the film are available. Access is sponsored by Mitsubishi Electric America Foundation through The Ride Ahead film.\nMasks are required for in-person attendees at the Ed Roberts Campus and will be provided at the venue.",
+      "source": "eventbrite",
+      "scraped_at": "2026-06-22T19:38:43.092Z"
+    },
+    {
+      "id": 12,
+      "selected": false,
+      "title": "Elijah Peel Advanced Screening-San Jose, CA",
+      "time_display": "Wednesday 07/01 2:00 AM",
+      "location": "925 Blossom Hill Road, #2000 San Jose, CA 95123",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/elijah-peel-advanced-screening-san-jose-ca-tickets-1992079615756?aff=ebdssbcitybrowse",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Join us for the Elijah Peel Exclusive Early Screening just for pastors, church leaders, and people o...",
+      "description_detail": "Join us for the Elijah Peel Exclusive Early Screening just for pastors, church leaders, and people of faith—don’t miss out!\n925 Blossom Hill Road\n#2000 San Jose, CA 95123",
+      "source": "eventbrite",
+      "scraped_at": "2026-06-22T19:38:43.093Z"
+    },
+    {
+      "id": 13,
+      "selected": false,
+      "title": "The Altons @ Levitt Pavilion San Jose (FREE)",
+      "time_display": "Sunday 07/05 11:30 PM",
+      "location": "East Saint James Street, San Jose, CA 95112",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/the-altons-levitt-pavilion-san-jose-free-tickets-1988208446986?aff=ebdssbcitybrowse",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Levitt San Jose presents: The Altons w/ support from Andre Cruz and the Black Diamond Rhythm Band. 4...",
+      "description_detail": "Levitt San Jose presents: The Altons w/ support from Andre Cruz and the Black Diamond Rhythm Band. 4:30-8pm. Free. All Ages. Downtown SJ.\nJoin us Sunday, July 5 for a free concert in St. James Park: The Altons w/ support from Andre Cruz and the Black Diamond Rhythm Band.\nPresented in partnership with Universal Grammar and District 4 San Jose Councilmember David Cohen. Food trucks on site: Vero's Little Kitchen and La Marquesita. Beer and wine available.\n-------------------------\nIs this event ticketed?\nThis event is 100% free. No tickets required. RSVP on Eventbrite to be notified on updates and news.\nIs this show for all ages?All ages welcome.\nWhat do I bring?Blankets and low chairs encouraged. Picnics welcome.\nHow do I get to the concert?\nSt. James Park is steps from VTA light rail. Street parking and garages available in downtown San Jose. Check the City of San Jose parking map for options near St. James Street.\nWill food be available for purchase?Food and beverages available on site. Food trucks rotate every show. Follow our Instagram @levittsanjose for updates.\nRain or shine, the music stays on! In the event of severe weather, updates will be posted at levittsanjose.org and on our Instagram @levittsanjose.\nWhat is Levitt Pavilion San Jose?\nLevitt Pavilion San Jose is a free outdoor concert series bringing world-class artists to St. James Park in downtown San Jose. Every show is free. Every show is all ages.\nThe 2026 season runs May 24 through September 6, with ten concerts spanning Afrobeat, soul, jazz, Latin music, indie pop, and more. The Altons on July 5 is show six of ten.\nMore at levittsanjose.org.\nEast Saint James Street",
+      "source": "eventbrite",
+      "scraped_at": "2026-06-22T19:38:43.093Z"
+    },
+    {
+      "id": 14,
+      "selected": false,
+      "title": "Bachata Knockout : 1st Friday Bachata Party in South Bay, CA",
+      "time_display": "Friday 07/03 8:30 PM",
+      "location": "510 Lawrence Expressway, ##102 Sunnyvale, CA 94085",
+      "price": "$17.85",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/bachata-knockout-1st-friday-bachata-party-in-south-bay-ca-tickets-1985745175274?aff=ebdssbcitybrowsenightlife",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Kickstart your weekend off by dancing the night away at our Bachata Knockout event filled with purel...",
+      "description_detail": "Kickstart your weekend off by dancing the night away at our Bachata Knockout event  filled with purely Bachata music, fun, dance class!\nBachata Knockout: Every 1st Friday! 💃🕺\nLock these in your calendar!\n📅 1st Friday | The Weekend Kickoff (Apr 3)\n✔️ Huge free parking | ✔️ Great floors | ✔️ Food/Boba nearby\n⚠️ Note: Bring your own water bottle (Free 5-gal refills or $1 bottles for sale).\nTurn on notifications, stay tuned, and get ready to dance into what’s next 💃🏽🕺🏽\nRefunds up to 2 days before event\n510 Lawrence Expressway\n##102 Sunnyvale, CA 94085",
+      "source": "eventbrite",
+      "scraped_at": "2026-06-22T19:38:43.093Z"
+    },
+    {
+      "id": 15,
+      "selected": false,
+      "title": "Vex IQ Advanced Robotics Summer Camp | STEM4Kids Cupertino",
+      "time_display": "Monday 06/29 8:30 AM",
+      "location": "20900 Stevens Creek Boulevard, Cupertino, CA 95014",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/vex-iq-advanced-robotics-summer-camp-stem4kids-cupertino-tickets-1987762682693?aff=ebdssbcitybrowse",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Competitive-level robotics for serious young engineers! Vex IQ for ages 9–13 in Cupertino. Weekly Ju...",
+      "description_detail": "Competitive-level robotics for serious young engineers! Vex IQ for ages 9–13 in Cupertino. Weekly Jun 8–Aug 12, 2026.\nVex IQ is the robotics platform used in competitive tournaments worldwide — and your child can master it this summer at STEM4Kids!\nThis camp is perfect for older kids with some robotics or STEM experience who want a real engineering challenge. Campers design, build, and program sophisticated Vex IQ robots capable of completing complex competitive tasks.\nWhat your child will do:\n📍 20900 Stevens Creek Blvd, Cupertino, CA 95014 🕘 Monday–Friday, 9:00 AM – 3:30 PM 📅 Choose any week: June 8 – August 12, 2026 👦 Ages 8 yrs 10 mo.–13 yrs | Grades 3–8 | Some STEM experience helpful\n💰 Pricing: $325–$499/week 🎉 Multi-week savings available: 2 weeks save $50 | 4 weeks save $120 | 7 weeks save $250 🐣 Early bird: $25 off — register now to lock in your spot!\nQuestions? Email info@stem4kids.co Register: stem4kids.co/oncampus-cupertino\n20900 Stevens Creek Boulevard",
+      "source": "eventbrite",
+      "scraped_at": "2026-06-22T19:38:43.094Z"
+    },
+    {
+      "id": 16,
+      "selected": false,
+      "title": "Free First Sunday at NUMU (July 2026)",
+      "time_display": "Sunday 07/05 5:00 PM",
+      "location": "106 East Main Street, Los Gatos, CA 95030",
+      "price": "$50",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/free-first-sunday-at-numu-july-2026-tickets-1507745169389?aff=ebdssbcitybrowse",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Enjoy free general admission and a guided tour on the first Sunday of the month @ NUMU! Enjoy free g...",
+      "description_detail": "Enjoy free general admission and a guided tour on the first Sunday of the month @ NUMU!\nEnjoy free general admission on the first Sunday of the month @ NUMU! The museum is open from 10-4, and we can't wait to see you there!\nJoin us for a free guided art tour from 11:30 AM-12 PM and a history tour from 2-2:30 PM. (Limited to 25, first come, first serve.)\nSee our current exhibitions at numulosgatos.org/exhibitions\nAdmission to NUMU is free year-round for youth under 18, NUMU Members, Los Gatos residents, EBT holders, and active-duty military. Our hours are Thu-Sun, 10 AM-4 PM. Learn more at numulosgatos.org/visit.\nRefunds up to 7 days before event",
+      "source": "eventbrite",
+      "scraped_at": "2026-06-22T19:38:43.095Z"
+    },
+    {
+      "id": 17,
+      "selected": false,
+      "title": "How to Become a Real Estate Agent",
+      "time_display": "Wednesday 07/01 1:00 AM",
+      "location": "2825 El Camino Real, #STE 200 Palo Alto, CA 94306",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/how-to-become-a-real-estate-agent-tickets-1991480247028?aff=ebdssbcitybrowse",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Curious about what it takes to become a real estate agent? Join us for an inside look at the real es...",
+      "description_detail": "Curious about what it takes to become a real estate agent?\nJoin us for an inside look at the real estate industry and discover how you can turn your goals into a rewarding career. We'll cover the licensing process, career opportunities, earning potential, and the support available to help new agents get started.\nBring your questions and learn what a career in real estate really looks like—from the classroom to your first transaction.\nHosted by: Sabrina Weidner, REALTOR | DRE #02213258KW Advisors Palo Alto\n#STE 200 Palo Alto, CA 94306",
+      "source": "eventbrite",
+      "scraped_at": "2026-06-22T19:38:43.101Z"
+    },
+    {
+      "id": 18,
+      "selected": false,
+      "title": "Come Party at the Pardee: 4th of July BBQ",
+      "time_display": "Saturday 07/04 7:00 PM",
+      "location": "672 11th Street, Oakland, CA 94607",
+      "price": "$25",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/come-party-at-the-pardee-4th-of-july-bbq-tickets-1991079840401?aff=ebdssbdestsearch",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Saturday, JULY 4th 2026 ~ Noon - 3:30 Pardee Home Museum ~ The Perfect Place to Celebrate! The 250th...",
+      "description_detail": "Saturday, JULY 4th 2026 ~ Noon - 3:30  Pardee Home Museum ~ The Perfect Place to Celebrate!\nThe 250th anniversary, also called the Semi-quincentennial, commemorates the adoption of the Declaration of Independence in 1776, when the thirteen American colonies declared their freedom from British rule. This historic milestone reflects the founding ideals of liberty, equality, and self-governance, and honors the efforts of the Founding Fathers and early Americans who fought for independence and established the United States as a republic . Governor George Pardee's family home is a fabulous destination for a safe and enjoyable way to celebrate this important holiday.\nMusic by Frederick Hodges\nVintage Clothing Encouraged\nAdmission includes BBQ (burgers, hot dogs side dishes, etc.) & Live Music\nAdult and Youth (12 and older) : $25;\nReservations: book your ticket on Eventbrite or call Richelle Lieberman: 510-381-1973\nPlease enter through the gate on Castro Street!\nRefunds up to 7 days before event",
+      "source": "eventbrite",
+      "scraped_at": "2026-06-22T19:38:43.105Z"
+    },
+    {
+      "id": 19,
+      "selected": false,
+      "title": "4th of July at Historic Pier 45",
+      "time_display": "Sunday 07/05 3:00 AM",
+      "location": "Pier 45, San Francisco, CA 94133",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/4th-of-july-at-historic-pier-45-tickets-1991019764713?aff=ebdssbdestsearch",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Come join us at Historic Pier 45 for a spectacular 4th of July Dockside Fireworks Viewing and Celebr...",
+      "description_detail": "Come join us at Historic Pier 45 for a spectacular 4th of July Dockside Fireworks Viewing and Celebration!\nPier 45 Dockside 4th of July Fireworks Viewing and Celebration!\nCome join us for a spectacular dockside 4th of July fireworks viewing and celebration at Historic Pier 45! Enjoy a front row seat to the dazzling fireworks display and laser light show from Alcatraz while surrounded by the historic charm of the pier and San Francisco waterfront. Bring your friends and family to this event and make unforgettable memories together.\nGeneral Admission Tickets: $75\nChildren Ages 6-12: $50\nChildren 5 and under are FREE!\nFamily (2 adults & 2 children): $225\nIncluded with event tickets:\nPlease visit https://maritime.org/securedonation/ if you would like to make an additional donation to the San Francisco Maritime National Park Association. We are grateful for your support!\nSan Francisco, CA 94133",
+      "source": "eventbrite",
+      "scraped_at": "2026-06-22T19:38:43.107Z"
+    },
+    {
+      "id": 20,
+      "selected": false,
+      "title": "FIFA WORLD CUP 26 Fan Zone at Thrive CityThrive City - Chase Center",
+      "time_display": "Tuesday 06/30 10:00 AM",
+      "location": "1 Warriors Way, San Francisco, CA",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/o/36308481623",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "sfstation",
+      "scraped_at": "2026-06-22T19:30:29.564Z"
+    },
+    {
+      "id": 21,
+      "selected": false,
+      "title": "Outdoor Escape Room in SOMASOMA",
+      "time_display": "Tuesday 06/30 6:00 AM",
+      "location": "Market St & 5th St, San Francisco, CA",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://escapely.com/escape-the-city/san-francisco-soma-escape-room/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "sfstation",
+      "scraped_at": "2026-06-22T19:30:29.564Z"
+    },
+    {
+      "id": 22,
+      "selected": false,
+      "title": "Outdoor Escape Room in The CastroThe Castro",
+      "time_display": "Tuesday 06/30 10:00 AM",
+      "location": "Market St between Noe St and Castro St, San Francisco, CA",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://escapely.com/escape-the-city/san-francisco-castro/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "sfstation",
+      "scraped_at": "2026-06-22T19:30:29.564Z"
+    },
+    {
+      "id": 23,
+      "selected": false,
+      "title": "The West Coast Blues RevueBiscuits & Blues",
+      "time_display": "Tuesday 06/30 6:30 PM",
+      "location": "401 Mason Street, San Francisco, CA",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.biscuitsandblues.com/find-a-show/20260630thewestcoastbluesrevue",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "sfstation",
+      "scraped_at": "2026-06-22T19:30:29.564Z"
+    },
+    {
+      "id": 24,
+      "selected": false,
+      "title": "MachismosaRoot Division",
+      "time_display": "Wednesday 07/01 6:00 PM",
+      "location": "1131 Mission Street, San Francisco, CA",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://rootdivision.org/civicrm/event/register/?reset=1&id=2068",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "sfstation",
+      "scraped_at": "2026-06-22T19:30:29.564Z"
+    },
+    {
+      "id": 25,
+      "selected": false,
+      "title": "Downtown First Thursdays (DFT)2nd Street between Market and Folsom",
+      "time_display": "Thursday 07/02 5:00 PM",
+      "location": "2nd Street at Minna, San Francisco, CA",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/downtown-first-thursdays-w-janelle-monae-dj-set-jun-4-2026-tickets-1980042040043",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "sfstation",
+      "scraped_at": "2026-06-22T19:30:29.565Z"
+    },
+    {
+      "id": 26,
+      "selected": false,
+      "title": "4NEYMonarch",
+      "time_display": "Thursday 07/02 8:00 PM",
+      "location": "101 6th Street, San Francisco, CA",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/4ney-bump-1-year-party-tickets-1990908253179",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "sfstation",
+      "scraped_at": "2026-06-22T19:30:29.565Z"
+    },
+    {
+      "id": 27,
+      "selected": false,
+      "title": "ENCANTO SING-ALONGThe Castro Theatre",
+      "time_display": "Thursday 07/02 2:00 PM",
+      "location": "429 Castro Street, San Francisco, CA",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://ticketmaster.evyy.net/c/253558/264167/4272?u=https%3A%2F%2Fwww.ticketweb.com%2Fevent%2Fencanto-sing-along-the-castro-theatre-tickets%2F14988283",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "sfstation",
+      "scraped_at": "2026-06-22T19:30:29.565Z"
+    },
+    {
+      "id": 28,
+      "selected": false,
+      "title": "Los Angeles Children's Chorus in concert with San Francisco Boys ChorusCalvary Presbyterian Church",
+      "time_display": "Friday 07/03 7:30 PM",
+      "location": "2515 Fillmore Street, San Francisco, CA",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/los-angeles-childrens-chorus-in-concert-tickets-1990659296543",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "sfstation",
+      "scraped_at": "2026-06-22T19:30:29.565Z"
+    },
+    {
+      "id": 29,
+      "selected": false,
+      "title": "California Classic 2026Chase Center",
+      "time_display": "Friday 07/03 5:00 PM",
+      "location": "1 Warriors Way, San Francisco, CA",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://ticketmaster.evyy.net/c/253558/264167/4272?u=https%3A%2F%2Fwww.ticketmaster.com%2Fsearch%3Fq%3Dcalifornia%2Bclassic",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "sfstation",
+      "scraped_at": "2026-06-22T19:30:29.565Z"
+    },
+    {
+      "id": 30,
+      "selected": false,
+      "title": "SF’s Noe Valley Night Market 2026",
+      "time_display": "Tuesday 06/30 5:00 PM - 8:00 PM",
+      "location": "Noe Valley Town Square, San Francisco Bay Area",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/sfs-noe-valley-night-market-2026/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Come out for the Noe Valley Night Market from 5–8pm at the Noe Valley Town Square for a cozy evening...",
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2026-06-22T19:30:10.944Z"
+    },
+    {
+      "id": 31,
+      "selected": false,
+      "title": "Lunchtime Concert w/ Destiny Muhammad Trio (Yerba Buena Gardens Festival 2026)",
+      "time_display": "Thursday 07/02 12:30 PM - 1:30 PM",
+      "location": "Great Lawn, Yerba Buena Gardens, San Francisco Bay Area",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/lunchtime-concert-w-destiny-muhammad-trio-yerba-buena-gardens-festival-2026/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2026-06-22T19:30:10.944Z"
+    },
+    {
+      "id": 32,
+      "selected": false,
+      "title": "Ricardo Lemvo & Makina Loca at Yerba Buena Gardens Festival 2026",
+      "time_display": "Thursday 07/02 6:00 PM - 7:30 PM",
+      "location": "Great Lawn, Yerba Buena Gardens, San Francisco Bay Area",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/ricardo-lemvo-makina-loca-at-yerba-buena-gardens-festival-2026/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2026-06-22T19:30:10.944Z"
+    },
+    {
+      "id": 33,
+      "selected": false,
+      "title": "YACHT CLUB FIREWORKS CRUISE (Open Bar & Food Included)",
+      "time_display": "Sunday 07/05 2:30 AM",
+      "location": "Pier 3Pier 3#Pier 3 San Francisco, CA 94105",
+      "price": "From $97.88",
+      "event_type": "food",
+      "priority": 6,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/yacht-club-fireworks-cruise-open-bar-food-included-tickets-1990935995156?aff=ebdssbdestsearch",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "San Francisco’s Premier All-Inclusive Fireworks Yacht Experience with Premium OPEN BAR , 3COURSE DIN...",
+      "description_detail": "San Francisco’s Premier All-Inclusive Fireworks Yacht Experience with Premium OPEN BAR , 3COURSE DINNER INCLUDED, 5 Genres of Music\n#Pier 3 San Francisco, CA 94105",
+      "source": "eventbrite",
+      "scraped_at": "2026-06-22T19:38:43.105Z"
+    },
+    {
+      "id": 34,
+      "selected": false,
+      "title": "250th 4th of July San Francisco Dinner and Fireworks in Ghirardelli Square",
+      "time_display": "Sunday 07/05 2:30 AM",
+      "location": "900 North Point Street, San Francisco, CA 94109",
+      "price": "From $188.58",
+      "event_type": "food",
+      "priority": 6,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/250th-4th-of-july-san-francisco-dinner-and-fireworks-in-ghirardelli-square-tickets-1985041872677?aff=ebdssbdestsearch",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Join San Francisco Foodies for a Feast in a private dinning room overlooking Alcatraz from Ghirardel...",
+      "description_detail": "Join San Francisco Foodies for a Feast in a private dinning room overlooking Alcatraz from Ghirardelli Square\nIndependence Day, not the movie, is here.\nA Historic 250 year anniversary of The United States of America. (echoing fanfare) is upon us, come celebrate with a fantastic four course meal and fireworks. Meet San Francisco Foodies, a small group of 3,700 people dedicated to appreciating San Francisco's Food culture and supporting our restaurants, groceries and other bringers of great meals and experiences.\nFireworks in San Francisco are a humors joke, a promise, a once a year local government Sysphian project, or as I like to say, Hope.\nIn 2025 the Fireworks were seen, they were wonderful, perhaps perfect. We have video evidence.\nWhen I first moved here, in 2001, my first United States Independence Day (July 4th) in San Francisco; I took my son and boyfriend to Fisherman's Grotto No. 9. There we had an amazing dinner, they sat us at a window overlooking the bay and eventually the fireworks were filling the sky clear and perfectly framed, it was a perfect ending to our touristy exploration of Fisherman's Wharf and the surrounding establishments. Sadly, Fisherman's Grotto No 9 is no longer in San Francisco, we are missing that beloved destination.\nSadder still is that it is rare to see actual July 4th fireworks in San Francisco, fog, smoke, wind. Nature's Mother conjures new tortures for those locals who want to see the night sky light up. Even San Francisco's Symphony seek refuge fifty miles south in Mountain View.\nBarring rain, there should be a great fireworks display and we'll have the best seat.\nDinner is a four courses with seafood towers, appetizers, your choice of entree and dessert, a cash bar, huge windows to view the fireworks from indoors and a private patio if you want to stand outside.\nA toast at the close of the fireworks, at least one.",
+      "source": "eventbrite",
+      "scraped_at": "2026-06-22T19:38:43.107Z"
+    },
+    {
+      "id": 35,
+      "selected": false,
+      "title": "THE LOUNGE",
+      "time_display": "Sunday 07/05 3:00 AM",
+      "location": "416 13th Street, Oakland, CA 94612",
+      "price": "$12.51",
+      "event_type": "art",
+      "priority": 5,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/the-lounge-tickets-1990535124140?aff=ebdssbcitybrowsenightlife",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Kick back and chill with good vibes and cool people at THE LOUNGE—your favorite party for all your R...",
+      "description_detail": "Kick back and chill with good vibes and cool people at THE LOUNGE—your favorite party for all your R&B vibes!\nGet ready for an epic R&B party in the Bay Area with the best music, drinks, and people! Join us at Mushin 2.0 on July 4th, 2026 at 8:00 PM (PDT) for a night you won’t forget.\nWe are bringing you the best selections of R&B music brought to you by Big Von, DaBoyDame, and Lexx Jonez. Come vibe, dance, and chill inside.....THE LOUNGE!",
+      "source": "eventbrite",
+      "scraped_at": "2026-06-22T19:38:43.092Z"
+    },
+    {
+      "id": 36,
+      "selected": false,
+      "title": "COLORES - ROOFTOP DAY PARTY @ HOTEL VIA 12PM - SAN FRANCISCO",
+      "time_display": "Sunday 07/05 7:00 PM",
+      "location": "138 King Street, San Francisco, CA 94107",
+      "price": "$28.52",
+      "event_type": "art",
+      "priority": 5,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/colores-rooftop-day-party-hotel-via-12pm-san-francisco-tickets-1989417511330?aff=ebdssbcitybrowse",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Calling all Latinos! 🔊 🩷❤️🧡💛💚🩵💙💜🖤🩶🤍🤎 Step into the world of COLORES — a tribute to regga...",
+      "description_detail": "Calling all Latinos! 🔊\n🩷❤️🧡💛💚🩵💙💜🖤🩶🤍🤎\nStep into the world of COLORES — a tribute to reggaeton royalty J Balvin, the global icon redefining urban music with color, energy, and culture.\nGet ready for this rooftop day party, where Latin hits meet high-energy vibes, blending reggaeton, Latin EDM, and urban heat inspired by one of the biggest names in the game. From “Mi Gente” to club-shaking anthems, this is for the culture.\nNon-stop Latin hits all day💥\nVibrant visuals & immersive energy⚡️\nA crowd that loves to perrear💃🏻\nColorful themed decor✨\nPerreo. Cultura. Vibra.🫶🏾\nThis isn’t just a party…🤭\nIt’s a Reggaeton Rooftop Experience💥\nBay Area Legend & World Champion\nReggaeton / J Balvin Hits / Latin Rhythms\nAll types of neon colors\nStreetwear / Crop tops / Sunglasses\nReggaeton sing-along moments\nPhoto booths with themed props\n⏰ Doors Open 12pm-6pm\n📍Hotel Via: 138 King St SF CA\n21+ | ALL SALES FINAL | NO REFUNDS\nSan Francisco, CA 94107",
+      "source": "eventbrite",
+      "scraped_at": "2026-06-22T19:38:43.102Z"
+    },
+    {
+      "id": 37,
+      "selected": false,
+      "title": "July 4th Sausalito Parade Sail on San Francisco Bay 2026",
+      "time_display": "Saturday 07/04 4:00 PM",
+      "location": "Schooner Freda B, -Sausalito Yacht Harbor, Slip 465 Sausalito, CA 94965",
+      "price": "$107.32",
+      "event_type": "art",
+      "priority": 5,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/july-4th-sausalito-parade-sail-on-san-francisco-bay-2026-tickets-1975671528726?aff=ebdssbdestsearch",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "4th of July 2026 on San Francisco Bay- Morning sail and Sausalito's Annual Parade viewing from the d...",
+      "description_detail": "4th of July 2026 on San Francisco Bay- Morning sail and Sausalito's Annual Parade viewing from the deck of Schooner Freda B.\nCelebrate Independence Day with dowtown views of the Annual Sausalito 4th of July Parade from the water!\nOn this holiday morning sail, you'll board in Sausalito and start with a tour along its scenic waterfront. It was the proposed site for Hearst's castle, and later the cradle of some of America's most cherished music, including Fleetwood Mac's Rumors and Otis Redding's \"Sittin' on the Dock of the Bay\" (yes, this Bay!).\n“If you are being run out of town, get in front of the crowd and make it look like a parade.\" Sausalito's Madam, Madam Mayor Sally Stanford\nA safe and appropriate way to enjoy Independence Day on SF Bay!\nReturn to dock to enjoy Sausalito's festivites in Dumphy park and perhaps stay a while to catch the evening fireworks!\nBagels Included in ticket price.\nDECK BAR - Cash and Credit accepted\nMimosa's, French Press Coffee, Napa/Sonoma Wines, California Beers and Non- Alcoholic Beverages available for purchase from the deck bar.\nSchooner Freda B is a sea kind 80' gaff rigged coastal schooner, making her one of the San Francisco Bay's most comfortable and traditional vessels to sail. Experience the romance of yesteryear with a local, licensed Captain and Professional Crew.\nPlease plan on arriving early to find parking and the boat.\n\"Schooner Freda B\" is searchable on Google/Apple Maps. That is the location for boarding in Sausalito, and Uber/Lyft can drop off there.\nFor parking, we recommend the municipal lots surrounding Sausalito Yacht Harbor. Parking cost is per hour, and Parking Lot #3 (searchable on Maps) usually has the most space. \"Sausalito Books by the Bay\" at 100 Bay Street is a central address for parking.\nFor the closest parking, take a right at 100 Bay Street and park in spaces 1113-1159 (within \"Tour Bus Parking Lot\").\nOnce parked, walk north towards The Spinnaker restaurant.",
+      "source": "eventbrite",
+      "scraped_at": "2026-06-22T19:38:43.107Z"
+    },
+    {
+      "id": 38,
+      "selected": false,
+      "title": "Friday Sunset Sail - 4th of July Weekend on San Francisco Bay 2026",
+      "time_display": "Saturday 07/04 2:00 AM",
+      "location": "Schooner Freda B, -Sausalito Yacht Harbor, Slip 465 Sausalito, CA 94965",
+      "price": "$107.32",
+      "event_type": "art",
+      "priority": 5,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/friday-sunset-sail-4th-of-july-weekend-on-san-francisco-bay-2026-tickets-1975360158409?aff=ebdssbdestsearch",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Kick off Independence Day with a sunset cruise on SF Bay. Step aboard the elegant Schooner Freda B a...",
+      "description_detail": "Kick off Independence Day with a sunset cruise on SF Bay. Step aboard the elegant Schooner Freda B and enjoy the Bay Area's iconic sights!\nStep aboard Schooner Freda B in Sausalito for a Friday Sunset Sail on SF Bay, cruising into Independence Day weekend aboard a traditional tall-ship.\nAs the day's end paints the sky with brilliant hues, join us in creating unforgettable memories that will light up your heart for years to come.\nSights often include Alcatraz, Angel Island, the Marin Headlands, the Golden Gate Bridge, the Bay Bridge, and the San Francisco Skyline, all while enjoying the sunset!\nSchooner Freda B is a sea kind 80' gaff rigged coastal schooner, making her one of the San Francisco Bay's most comfortable and traditional vessels to sail. Experience the romance of yesteryear with a local, licensed Captain and Professional Crew.\nPlease plan on arriving early to find parking and the boat.\n\"Schooner Freda B\" is searchable on Google/Apple Maps. That is the location for boarding in Sausalito, and Uber/Lyft can drop off there.\nFor parking, we recommend the municipal lots surrounding Sausalito Yacht Harbor. Parking cost is per hour, and Parking Lot #3 (searchable on Maps) usually has the most space. \"Sausalito Books by the Bay\" at 100 Bay Street is a central address for parking.\nFor the closest parking, take a right at 100 Bay Street and park in spaces 1113-1159 (within \"Tour Bus Parking Lot\").\nOnce parked, walk north towards The Spinnaker restaurant. You'll soon come across a wooden boardwalk that leads to our dock (Slip 465). Look for the two red masts!\nIf you are lost, search \"Schooner Freda B\" on any Maps app. Or, see your ticket confirmation for the \"boat phone\" number to call.\nSailing on the San Francisco Bay offers ever-changing views and exciting microclimates. Weather can change in a minute. Windbreaker, warm base layer, gloves, hat, scarf, sunglasses, and comfortable shoes are strongly encouraged. NO HIGH HEELS!!\nFreda B has a restroom on board.",
+      "source": "eventbrite",
+      "scraped_at": "2026-06-22T19:38:43.107Z"
+    },
+    {
+      "id": 39,
+      "selected": false,
+      "title": "4th of July Fireworks Cruise San Francisco on the SF Spirit Yacht",
+      "time_display": "Sunday 07/05 3:00 AM",
+      "location": "Hornblower Landing, San Francisco, CA 94111",
+      "price": "From $108.55",
+      "event_type": "other",
+      "priority": 3,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/4th-of-july-fireworks-cruise-san-francisco-on-the-sf-spirit-yacht-tickets-1989624547581?aff=ebdssbcitybrowsenightlife",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "San Francisco’s Premier All-Inclusive Fireworks Yacht Experience with Premium OPEN BAR , 3-COURSE DI...",
+      "description_detail": "San Francisco’s Premier All-Inclusive Fireworks Yacht Experience with Premium OPEN BAR , 3-COURSE DINNER INCL FEAT CHUY GOMEZ\nSan Francisco, CA 94111",
+      "source": "eventbrite",
+      "scraped_at": "2026-06-22T19:38:43.090Z"
+    },
+    {
+      "id": 40,
+      "selected": false,
+      "title": "Red, white & Boom- July 3rd addition- Persian Style",
+      "time_display": "Saturday 07/04 4:00 AM",
+      "location": "831 Main Street, Redwood City, CA 94063",
+      "price": "From $23.18",
+      "event_type": "other",
+      "priority": 3,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/red-white-boom-july-3rd-addition-persian-style-tickets-1992070310925?aff=ebdssbcitybrowse",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Red, White & Boom is back! Celebrate July 3rd Persian Style — the hottest way to kick off your 4th o...",
+      "description_detail": "Red, White & Boom is back!  Celebrate July 3rd Persian Style — the hottest way to kick off your 4th of July weekend! ⚪\nRedwood City, CA 94063",
+      "source": "eventbrite",
+      "scraped_at": "2026-06-22T19:38:43.102Z"
+    }
+  ]
+}
