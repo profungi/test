@@ -1,0 +1,213 @@
+{
+  "review_id": "review_2026-06-29_1812_b5o",
+  "generated_at": "2026-06-29T18:12:04.564Z",
+  "scrape_date": "2026-06-29",
+  "target_week": "2026-07-06_to_2026-07-12",
+  "target_week_readable": "下周 (07/06 - 07/12)",
+  "scraping_report": {
+    "total_scraped": 21,
+    "after_deduplication": 8,
+    "after_classification": 8,
+    "classification_report": {
+      "totalEvents": 8,
+      "eventTypes": {
+        "free": 7,
+        "other": 1
+      },
+      "priorityLevels": {
+        "3": 1,
+        "9": 7
+      },
+      "chineseRelevant": 0,
+      "topPriorityEvents": 7
+    }
+  },
+  "instructions": {
+    "how_to_review": "将你想要发布的活动的 'selected' 字段改为 true",
+    "next_step": "保存文件后运行: npm run generate-post [此文件路径]",
+    "fields_explanation": {
+      "title": "活动标题",
+      "time_display": "显示用的时间格式",
+      "location": "活动地点",
+      "price": "票价信息",
+      "event_type": "AI识别的活动类型",
+      "priority": "优先级分数 (越高越重要)",
+      "chinese_relevant": "是否与中文社区相关",
+      "original_url": "原始活动链接"
+    }
+  },
+  "stats": {
+    "total_candidates": 8,
+    "by_type": {
+      "free": 7,
+      "other": 1
+    },
+    "by_priority": {
+      "3": 1,
+      "9": 7
+    },
+    "chinese_relevant": 0
+  },
+  "events": [
+    {
+      "id": 1,
+      "selected": false,
+      "title": "Nengi Omuku: The Gatheringde Young Museum",
+      "time_display": "Tuesday 07/07 9:30 AM",
+      "location": "50 Hagiwara Tea Garden Drive, San Francisco, CA",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.famsf.org/exhibitions/nengi-omuku",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "sfstation",
+      "scraped_at": "2026-06-29T18:09:48.325Z"
+    },
+    {
+      "id": 2,
+      "selected": false,
+      "title": "FIFA WORLD CUP 26 Fan Zone at Thrive CityThrive City - Chase Center",
+      "time_display": "Tuesday 07/07 9:00 AM",
+      "location": "1 Warriors Way, San Francisco, CA",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/o/36308481623",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "sfstation",
+      "scraped_at": "2026-06-29T18:09:48.325Z"
+    },
+    {
+      "id": 3,
+      "selected": false,
+      "title": "Outdoor Escape Room in SOMASan Francisco Centre",
+      "time_display": "Tuesday 07/07 6:00 AM",
+      "location": "845 Market Street, San Francisco, CA",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://escapely.com/escape-the-city/san-francisco-soma-escape-room/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "sfstation",
+      "scraped_at": "2026-06-29T18:09:48.325Z"
+    },
+    {
+      "id": 4,
+      "selected": false,
+      "title": "Outdoor Escape Room in The CastroCastro District",
+      "time_display": "Tuesday 07/07 10:00 AM",
+      "location": "Castro St at Market, San Francisco, CA",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://escapely.com/escape-the-city/san-francisco-castro/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "sfstation",
+      "scraped_at": "2026-06-29T18:09:48.325Z"
+    },
+    {
+      "id": 5,
+      "selected": false,
+      "title": "MachismosaRoot Division",
+      "time_display": "Wednesday 07/08 6:00 PM",
+      "location": "1131 Mission Street, San Francisco, CA",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://rootdivision.org/civicrm/event/register/?reset=1&id=2068",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "sfstation",
+      "scraped_at": "2026-06-29T18:09:48.326Z"
+    },
+    {
+      "id": 6,
+      "selected": false,
+      "title": "Valencia LIVE!Valencia Street",
+      "time_display": "Thursday 07/09 5:00 PM",
+      "location": "Valencia Street at 20th Street, San Francisco, CA",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/valencia-live-2026-tickets-1987552947369",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "sfstation",
+      "scraped_at": "2026-06-29T18:09:48.326Z"
+    },
+    {
+      "id": 7,
+      "selected": false,
+      "title": "Berryessa Night Market",
+      "time_display": "Friday 07/10 6:00 PM - 10:00 PM",
+      "location": "San Jose Flea Market, 1590 Berryessa Road, San Jose, CA 95133",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://gardenattheflea.com/berryessanightmarket/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Weekly Friday night market inside the iconic San Jose Flea Market featuring Asian street food, desse...",
+      "description_detail": null,
+      "source": "berryessa-night-market",
+      "scraped_at": "2026-06-29T18:11:31.028Z"
+    },
+    {
+      "id": 8,
+      "selected": false,
+      "title": "Kurt Vile & the Violators - KV'S BEEN GOOD TO ME TOURThe Castro Theatre",
+      "time_display": "Tuesday 07/07 8:00 PM",
+      "location": "429 Castro Street, San Francisco, CA",
+      "price": "$36",
+      "event_type": "other",
+      "priority": 3,
+      "chinese_relevant": false,
+      "original_url": "https://ticketmaster.evyy.net/c/253558/264167/4272?u=https%3A%2F%2Fwww.ticketmaster.com%2Fkurt-vile-the-violators-tickets%2Fartist%2F1356400",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "sfstation",
+      "scraped_at": "2026-06-29T18:09:48.325Z"
+    }
+  ]
+}
