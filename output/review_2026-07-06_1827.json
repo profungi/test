@@ -1,0 +1,865 @@
+{
+  "review_id": "review_2026-07-06_1827_asc",
+  "generated_at": "2026-07-06T18:27:15.976Z",
+  "scrape_date": "2026-07-06",
+  "target_week": "2026-07-13_to_2026-07-19",
+  "target_week_readable": "下周 (07/13 - 07/19)",
+  "scraping_report": {
+    "total_scraped": 80,
+    "after_deduplication": 66,
+    "after_classification": 66,
+    "classification_report": {
+      "totalEvents": 66,
+      "eventTypes": {
+        "food": 9,
+        "free": 33,
+        "art": 6,
+        "other": 6,
+        "festival": 4,
+        "market": 7,
+        "music": 1
+      },
+      "priorityLevels": {
+        "3": 6,
+        "4": 1,
+        "5": 6,
+        "6": 9,
+        "9": 33,
+        "10": 11
+      },
+      "chineseRelevant": 0,
+      "topPriorityEvents": 44
+    }
+  },
+  "instructions": {
+    "how_to_review": "将你想要发布的活动的 'selected' 字段改为 true",
+    "next_step": "保存文件后运行: npm run generate-post [此文件路径]",
+    "fields_explanation": {
+      "title": "活动标题",
+      "time_display": "显示用的时间格式",
+      "location": "活动地点",
+      "price": "票价信息",
+      "event_type": "AI识别的活动类型",
+      "priority": "优先级分数 (越高越重要)",
+      "chinese_relevant": "是否与中文社区相关",
+      "original_url": "原始活动链接"
+    }
+  },
+  "stats": {
+    "total_candidates": 40,
+    "by_type": {
+      "festival": 4,
+      "market": 7,
+      "free": 21,
+      "food": 8
+    },
+    "by_priority": {
+      "6": 8,
+      "9": 21,
+      "10": 11
+    },
+    "chinese_relevant": 0
+  },
+  "events": [
+    {
+      "id": 1,
+      "selected": false,
+      "title": "BOLLYWOOD SUMMER NEON PARTY | SILVER KEY PARTY @ MYTH - JULY 17",
+      "time_display": "Saturday 07/18 5:00 AM",
+      "location": "152 Post Street, San Jose, CA 95113",
+      "price": "$100",
+      "event_type": "festival",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/bollywood-summer-neon-party-silver-key-party-myth-july-17-tickets-1992765837263?aff=ebdssbcitybrowsenightlife",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "An unforgettable open-air night of Bollywood hits, neon lights, tropical vibes, and dancing under th...",
+      "description_detail": "An unforgettable open-air night of Bollywood hits, neon lights, tropical vibes, and dancing under the stars at Myth Lounge\nJoin Silver Key Events for Bollywood Summer Neon Party - an electrifying open-air celebration where Bollywood energy meets vibrant neon aesthetics.\nDance under the stars as our DJs keep the energy high with the biggest Bollywood hits, commercial favorites, Punjabi anthems, and crowd-favorite dance tracks all night long.\nWhether you're celebrating with friends, planning a night out, or simply looking for the ultimate summer party, this is where unforgettable memories are made.\n🍾 VIP & Hookah Tables Available📞 Call/Text: +1 (415) 770-3324\n📍 VENUE:Myth Lounge152 Post St, San Jose, CA\n🕘 DATE & TIME: Friday, JULY 17 | 10 PM - LATE\n🔞 21+ ONLY : Valid ID Required | Club rules apply | Dress to impress\nBring your squad, bring your attitude, leave the drama at the door.\nCelebrate your birthday in style with our exclusive VIP table package. For $100, reserve a table that covers entry for up to 10 people. Enjoy special perks such as a personalized birthday sign with your name, Birthday Decor, a special DJ announcement, and more. Experience VIP treatment with guaranteed entry, no-line VIP access, a dedicated VIP zone, and free mixers for your drinks. Please call 4157703324 for additional requests and details. (bottle service required: not covered in the ticket)\nFor $60, reserve a VIP table that covers entry for up to 10 people. Enjoy all the benefits of VIP treatment, including guaranteed entry, no-line VIP access, a dedicated VIP zone, and free mixers for your drinks. (bottle service required, min spend $325 excluding hookah)(bottle service required: not covered in the ticket)\nFor $180, reserve a VIP table that covers entry for up to 6 people. Enjoy all the benefits of VIP treatment, including guaranteed entry, no-line VIP access, a dedicated VIP zone, and free mixers for your drinks.",
+      "source": "eventbrite",
+      "scraped_at": "2026-07-06T18:20:40.872Z"
+    },
+    {
+      "id": 2,
+      "selected": false,
+      "title": "Cyb3r South Bay Presents: NINE INCH NAILS & BOYS NOIZE Tribute Night!",
+      "time_display": "Sunday 07/19 4:00 AM",
+      "location": "20990 Homestead Road, Cupertino, CA 95014",
+      "price": "$10",
+      "event_type": "festival",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/cyb3r-south-bay-presents-nine-inch-nails-boys-noize-tribute-night-tickets-1992961400197?aff=ebdssbcitybrowsenightlife",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Nine Inch Nails & Boys Noize Tribute Night at X Bar, July 18th 2026, 9PM-1AM. Industrial/electro/EBM...",
+      "description_detail": "Nine Inch Nails & Boys Noize Tribute Night at X Bar, July 18th 2026, 9PM-1AM. Industrial/electro/EBM/hardships. $10 adv/$13 door. 18+\nNIN & Boys Noize Tribute Night is an industrial/electronic music celebration happening at The X-Bar in Cupertino on July 18th, 2026. This 18+ event runs from 9PM to 1AM and features tribute performances honoring Nine Inch Nails and Boys Noize, with a lineup of DJs spinning industrial, electro, EBM, and hardships music. Tickets are $10 in advance or $13 at the door.\nPlastic DiseaseBased on the industrial/EBM focus of the night, Plastic Disease likely specializes in dark electronic sounds, industrial beats, and the aggressive, mechanical soundscapes that define the Nine Inch Nails aesthetic. They'll be bringing the raw, distorted energy that fans of industrial music crave.\nBasuraBasura (Spanish for \"trash\" or \"garbage\") suggests a DJ who embraces the gritty, underground side of electronic music. Expect hard-hitting beats, possibly incorporating elements of electro-industrial, techno, and the darker corners of dance music that complement the tribute theme.\nBITBit rounds out the lineup, likely focusing on the more electronic and digital aspects of the tribute. Given the Boys Noize influence, expect high-energy electro, possibly with glitchy, bit-crushed sounds and the kind of aggressive electronic music that bridges industrial and modern electro house.\nVenue: The X-Bar, 20990 Homestead Rd, Cupertino, CA\nRefunds up to 7 days before event",
+      "source": "eventbrite",
+      "scraped_at": "2026-07-06T18:20:40.873Z"
+    },
+    {
+      "id": 3,
+      "selected": false,
+      "title": "Craft Haus Presents: Potted Beaded Hanging Plant",
+      "time_display": "Tuesday 07/14 1:30 AM",
+      "location": "1875 South Bascom Avenue, #Ste #560 Campbell, CA 95008",
+      "price": "$40",
+      "event_type": "market",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/craft-haus-presents-potted-beaded-hanging-plant-tickets-1991879424980?aff=ebdssbcitybrowse",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Create a forever-green beaded hanging plant using colorful beads, crystals, and charms—no watering r...",
+      "description_detail": "Create a forever-green beaded hanging plant using colorful beads, crystals, and charms—no watering required!\nNo more killing your string of pearls! In this whimsical beaded hanging plant workshop, you'll create your own forever-green trailing plant using colorful beads, crystals, leaves, and decorative charms.\nGuided by our instructor, you'll learn how to string and shape cascading strands that mimic the look of a real hanging plant, then arrange them into a ceramic pot to create a playful piece of décor. Choose from a variety of bead colors and styles to design a plant that's vibrant, quirky, elegant, or completely unique to you.\nThis workshop is all about slowing down, getting creative, and enjoying the process of making something beautiful by hand. Whether you're a plant lover, craft enthusiast, or someone who can't seem to keep houseplants alive, you'll leave with a one-of-a-kind creation that never needs water or sunlight.\nPerfect for friends, date nights, team-building events, or anyone looking for a fun and relaxing creative experience.\nThis workshop is beginner-friendly and open to all skill levels. No jewelry-making or beading experience is necessary—we'll guide you every step of the way.\nRefunds up to 3 days before event\n1875 South Bascom Avenue\n#Ste #560 Campbell, CA 95008",
+      "source": "eventbrite",
+      "scraped_at": "2026-07-06T18:20:40.875Z"
+    },
+    {
+      "id": 4,
+      "selected": false,
+      "title": "Jollof Festival - Oakland '26",
+      "time_display": "Saturday 07/18 11:00 PM",
+      "location": "811 Washington Street, Oakland, CA 94607",
+      "price": "From $7.18",
+      "event_type": "festival",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/jollof-festival-oakland-26-tickets-1988023963190?aff=ebdssbdestsearch",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "A Celebration of Africa's Beloved Dish! Brief history in the Bay area: - Senegal just wont for the f...",
+      "description_detail": "A Celebration of Africa's Beloved Dish!\nBrief history in the Bay area: - Senegal just wont for the first time in '25, but Nigeria is looking for a triple win in the Bay area while Ghana figures out how to reclaim its second win since the 2018 win.\nMeanwhile, Sierraleone has won once, been 2nd twice and, it may be due for a win.\nAre there Liberians in the Bay area? You never know. Anyone can win at the Jollof festival! Come taste, vote, and have fun.\nThe Jollof Wars: West African countries compete for the title of \"Jollof Rice Champion.\" Sample their unique takes on Jollof rice and cast your vote for the most delicious contender!\nA Feast for the Senses: Explore a diverse range of Jollof rice vendors, each showcasing their regional specialties. Prepare to tantalize your taste buds with an explosion of flavors and aromas.\nA Fun-Filled Day: The Jollof Festival isn't just about food! Participate in family-friendly activities, engage in friendly competition, and create lasting memories at this vibrant community event.\nRefunds up to 7 days before event\n811 Washington Street",
+      "source": "eventbrite",
+      "scraped_at": "2026-07-06T18:20:40.877Z"
+    },
+    {
+      "id": 5,
+      "selected": false,
+      "title": "Craft Fair Celebration - A Fundraiser Benefitting East Bay Innovations",
+      "time_display": "Saturday 07/18 6:00 PM",
+      "location": "3075 Adeline Street, Berkeley, CA 94703",
+      "price": "$9.31",
+      "event_type": "market",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/craft-fair-celebration-a-fundraiser-benefitting-east-bay-innovations-tickets-1989958449290?aff=ebdssbdestsearch",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Join us for a fun Craft Fair Celebration supporting East Bay Innovations—hands, hearts, and creativi...",
+      "description_detail": "Join us for a fun Craft Fair Celebration supporting East Bay Innovations—hands, hearts, and creativity unite!\nJoin us for an awesome day filled with creativity and community spirit! Thisperson event is all about celebrating local artisans and supporting a great cause. Browse unique handmade crafts, connect with talented artists, and celebrate disabilty pride month. Everyone who attends this event will bring us closer to achieving our mission. Together, we can create a brighter, more compassionate world for all.\nKnow a talented maker or artist who would make a great vendor for the event? Contact clopez@eastbayinnovations.org or jdavis@eastbayinnovations.org to learn more.\nDon't miss out on the fun and the chance to make a difference!\nRefunds up to 7 days before event",
+      "source": "eventbrite",
+      "scraped_at": "2026-07-06T18:20:40.882Z"
+    },
+    {
+      "id": 6,
+      "selected": false,
+      "title": "Akari's Bluefin Tuna Cutting & Sake Night — July Edition",
+      "time_display": "Sunday 07/19 1:00 AM",
+      "location": "1155 Folsom Street, San Francisco, CA 94103",
+      "price": "$220",
+      "event_type": "market",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/akaris-bluefin-tuna-cutting-sake-night-july-edition-tickets-1990520948741?aff=ebdssbdestsearch",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "San Francisco’s Premier All-You-Can-Eat Sushi and Sashimi Experience with Japanese Sake Join us for ...",
+      "description_detail": "San Francisco’s Premier All-You-Can-Eat Sushi and Sashimi Experience with Japanese Sake\nJoin us for an unforgettable evening of Japanese culinary craftsmanship at Akari Japanese Bistro on Saturday, July 18th, 2026, beginning at 6:00 PM (PT).\nExperience a Live Bluefin Tuna Cutting Performance, followed by all-you-can-eat tuna sashimi and sushi, prepared fresh before your eyes.\nWatch our master chef expertly break down an entire bluefin tuna using traditional Japanese techniques, while sharing the history, precision, and artistry behind this centuries-old practice. Immediately following the performance, enjoy sashimi and sushi prepared from the very same fish—at the peak of freshness.\nThis is a signature regular event at Akari Japanese Bistro and has become one of San Francisco’s most sought-after Japanese dining experiences.\nOur tuna cutting nights regularly sell out well in advance due to extremely limited seating and the rarity of a live bluefin tuna cutting experience.Early booking is strongly recommended.\nEnhance your evening with a curated flight of premium Japanese sake, thoughtfully selected to pair with the menu.A sake tasting wristband is required.\nExtremely Limited Availability\nAfter selecting your ticket on Eventbrite, a payment link will be emailed to you.Your registration will be complete once payment is received.Due to the limited nature of this event, unpaid reservations may be released.\nAkari Japanese Bistro1155 Folsom St, San Francisco, CA\n📞 415-815-2407🌐 akari-japanese.com\nSan Francisco, CA 94103",
+      "source": "eventbrite",
+      "scraped_at": "2026-07-06T18:20:40.884Z"
+    },
+    {
+      "id": 7,
+      "selected": false,
+      "title": "Sips of Summer - Morton's San Francisco",
+      "time_display": "Saturday 07/18 1:30 AM",
+      "location": "400 Post Street, #Lower Level San Francisco, CA 94102",
+      "price": "$99",
+      "event_type": "market",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/sips-of-summer-mortons-san-francisco-tickets-1990040604017?aff=ebdssbdestsearch",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "The Great American Road Trip: a coast‑to‑coast celebration of flavor, craftsmanship and the iconic s...",
+      "description_detail": "The Great American Road Trip: a coast‑to‑coast celebration of flavor, craftsmanship and the iconic spirits that defined the American palate.\nPack Your Bags for The Great American Road Trip.\nFrom seaside classics to backyard favorites, each course is crafted to honor the spirit of American adventure.\nFriday, July 17 | 6:30PM\n$99 Per Person (inclusive of tax, gratuity & fees)\n-------------------------------\n-VIP PRE-PARTY TASTING-\nJoin us at 6:00PM for an exclusive tasting experience.\nGreat American Cheeseburger SliderCheddar Cheese, Dill Pickles, 'Special Sauce,' Brioche Bun\nPairing | \"The Champagne of Beer\" (Miller High Life)\n+$10 per person (limited tickets available)\n-------------------------------\n-PASSED HORS D'OEUVRES-\nReuben CrostiniShaved Pastrami, Braised Green Cabbage, Melted Swiss Cheese&\"Bacon & Eggs\"Deviled Eggs with Candied Bacon\nLobster RollCold Water Lobster, Brioche, French Fries\nPairing | \"American '76\" (French 75)Wheatley Vodka, Lemon, Schramsberg Blanc de Blancs\nWagyu Beef Hot DogSoft Roll, Whole-Grain Mustard, Pickles\nPairing | \"Forty‑Niner\" (Whiskey Sour)Buffalo Trace Bourbon, Ginger, Lemon, Honey\nBBQ Baby Back RibsTender Sauced Ribs, Homemade Coleslaw\nPairing | \"Tea Party\" (Old Fashioned)Sazerac 90 Proof Rye, Black Tea, Averna, Demerara\n\"Cow Tipping\" (Spirited Root Beer Float)Buffalo Trace Bourbon Cream, Licor 43, Freddy’s Root Beer, Häagen‑Dazs\nMUST BE 21 YEARS OF AGE OR OLDER. NO REFUNDS.\n#Lower Level San Francisco, CA 94102\nBegins promptly at 6:00 PM. Join us before the dinner for a VIP pre-party, and enjoy a Great American Cheeseburger Slider, paired with a Miller High Life.\nFrom seaside classics to backyard favorites, each course is crafted to honor the spirit of American adventure.",
+      "source": "eventbrite",
+      "scraped_at": "2026-07-06T18:20:40.884Z"
+    },
+    {
+      "id": 8,
+      "selected": false,
+      "title": "Sips of Summer - Morton's San Jose",
+      "time_display": "Saturday 07/18 1:30 AM",
+      "location": "184 South Market Street, #Suite 100 San Jose, CA 95113",
+      "price": "$99",
+      "event_type": "market",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/sips-of-summer-mortons-san-jose-tickets-1990041034304?aff=ebdssbdestsearch",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "The Great American Road Trip: a coast‑to‑coast celebration of flavor, craftsmanship and the iconic s...",
+      "description_detail": "The Great American Road Trip: a coast‑to‑coast celebration of flavor, craftsmanship and the iconic spirits that defined the American palate.\nPack Your Bags for The Great American Road Trip.\nFrom seaside classics to backyard favorites, each course is crafted to honor the spirit of American adventure.\nFriday, July 17 | 6:30PM\n$99 Per Person (inclusive of tax, gratuity & fees)\n-------------------------------\n-VIP PRE-PARTY TASTING-\nJoin us at 6:00PM for an exclusive tasting experience.\nGreat American Cheeseburger SliderCheddar Cheese, Dill Pickles, 'Special Sauce,' Brioche Bun\nPairing | \"The Champagne of Beer\" (Miller High Life)\n+$10 per person (limited tickets available)\n-------------------------------\n-PASSED HORS D'OEUVRES-\nReuben CrostiniShaved Pastrami, Braised Green Cabbage, Melted Swiss Cheese&\"Bacon & Eggs\"Deviled Eggs with Candied Bacon\nLobster RollCold Water Lobster, Brioche, French Fries\nPairing | \"American '76\" (French 75)Wheatley Vodka, Lemon, Schramsberg Blanc de Blancs\nWagyu Beef Hot DogSoft Roll, Whole-Grain Mustard, Pickles\nPairing | \"Forty‑Niner\" (Whiskey Sour)Buffalo Trace Bourbon, Ginger, Lemon, Honey\nBBQ Baby Back RibsTender Sauced Ribs, Homemade Coleslaw\nPairing | \"Tea Party\" (Old Fashioned)Sazerac 90 Proof Rye, Black Tea, Averna, Demerara\n\"Cow Tipping\" (Spirited Root Beer Float)Buffalo Trace Bourbon Cream, Licor 43, Freddy’s Root Beer, Häagen‑Dazs\nMUST BE 21 YEARS OF AGE OR OLDER. NO REFUNDS.\n184 South Market Street\n#Suite 100 San Jose, CA 95113\nBegins promptly at 6:00 PM. Join us before the dinner for a VIP pre-party, and enjoy a Great American Cheeseburger Slider, paired with a Miller High Life.\nFrom seaside classics to backyard favorites, each course is crafted to honor the spirit of American adventure.",
+      "source": "eventbrite",
+      "scraped_at": "2026-07-06T18:20:40.886Z"
+    },
+    {
+      "id": 9,
+      "selected": false,
+      "title": "Tartufino @ Tootsie's — A Pop-Up by Chef Shawn Phillips | July 19",
+      "time_display": "Sunday 07/19 8:00 PM",
+      "location": "700 Welch Road, Palo Alto, CA 94305",
+      "price": "$25",
+      "event_type": "market",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/tartufino-tootsies-a-pop-up-by-chef-shawn-phillips-july-19-tickets-1991513190563?aff=ebdssbdestsearch",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Join us for an exclusive in-person dining experience where Chef Shawn Phillips brings his culinary s...",
+      "description_detail": "Join us for an exclusive in-person dining experience where Chef Shawn Phillips brings his culinary skills back at Tootsie’s\nWinner of Eater SF's Best Pop-Up 2025 and selected as a special vendor at the SF Chronicle's Top 100 Restaurants, Chef Shawn Phillips returns to Tootsie's at the Stanford Barn for an afternoon of serious cooking in a relaxed, convivial setting.\nAn à la carte menu built around seasonal ingredients, Michelin-trained technique, and the flavors that have shaped Shawn's culinary life: the coastal kitchens of Spain, the trattorias of Italy, and the soulful traditions he grew up with.\nThe menu changes every week — follow us on Instagram for the latest dishes and updates.\nÀ la carte. No fixed menu, no rush — just great food, music, and good company.\nA $25 deposit per person is required to reserve your seat — fully redeemable as credit toward your bill on the day of the event.\n📍 Tootsie's at the Stanford Barn, Palo Alto\n🕐 Every Sunday · 1–7 PM\n📸 @tartufino_byshawnphillips\nRefunds up to 7 days before event",
+      "source": "eventbrite",
+      "scraped_at": "2026-07-06T18:20:40.886Z"
+    },
+    {
+      "id": 10,
+      "selected": false,
+      "title": "Buffalo Trace Distillery Dinner",
+      "time_display": "Thursday 07/16 1:30 AM",
+      "location": "377 Santana Row, #1000 San Jose, CA 95128",
+      "price": "$202.57",
+      "event_type": "market",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/buffalo-trace-distillery-dinner-tickets-1992654066955?aff=ebdssbdestsearch",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "A dinner featuring Buffalo Trace whiskies paired with a multi-course menu. Buffalo Trace Distillery,...",
+      "description_detail": "A dinner featuring Buffalo Trace whiskies paired with a multi-course menu.\nBuffalo Trace Distillery, nestled along the banks of the Kentucky River in Frankfort, is celebrated for its rich history and exceptional bourbon craftsmanship. Established in 1773, it stands as one of the oldest continually operating distilleries in the United States. Today, it remains a benchmark in American whiskey, producing a remarkable portfolio that includes its flagship Buffalo Trace Kentucky Straight Bourbon Whiskey, Colonel E.H. Taylor Jr. Bourbons, and the legendary Van Winkle whiskeys.\nWe are delighted to welcome Andrew Marks, Sazerac Portfolio Manager, who will guide guests through the history of this storied distillery while presenting an extraordinary tasting, featuring rare bottlings such as Van Winkle 12 Year and George T. Stagg Barrel Proof Bourbon from the coveted Buffalo Trace Antique Collection.\nMenuHushpuppiesSweet Brentwood Corn, Honey ButterEagle Rare 10 Year Old Fashioned~Ricotta TortelinniBrown Butter, Pecan, Crispy SageElmer T. Lee Single Barrel BourbonWeller 12 Year Wheated Bourbon~Herb-Roasted Chicken PanzanellaCountry Levain, Heirloom Tomatoes, Stonefruit, Citrus VinaigretteOld Rip Van Winkle 10 Year BourbonOld Rip Van Winkle Lot-B 12 Year Bourbon~Summer Peach CobblerVanilla Ice CreamStagg Kentucky Straight BourbonGeorge T. Stagg Barrel Proof Bourbon\n*Advance notice is required for food allergy-related menu modifications. As soon as you purchase ticket(s), please forward the email confirmation with details to info@augustinerestaurant.com.\n**Cancellation policy: Up to 7 days before the event starts. Any cancellations after that will be issued in the form of a gift certificate. Eventbrite fees are nonrefundable. Email info@augustinerestaurant.com for help. Do not contact Eventbrite!\nRefunds up to 7 days before event\n#1000 San Jose, CA 95128",
+      "source": "eventbrite",
+      "scraped_at": "2026-07-06T18:20:40.886Z"
+    },
+    {
+      "id": 11,
+      "selected": false,
+      "title": "Walnut Creek’s 2026 Int’l Choral Festival (Golden Gate Choral Fest)",
+      "time_display": "Monday 07/13 4:00 PM - 5:00 PM",
+      "location": "Walnut Creek Presbyterian Church, East Bay",
+      "price": "$15*",
+      "event_type": "festival",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/walnut-creeks-2026-intl-choral-festival-golden-gate-choral-fest/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2026-07-06T18:11:59.095Z"
+    },
+    {
+      "id": 12,
+      "selected": false,
+      "title": "BOLLYWOOD TAKEOVER at BUDDA SF ft. BASSPATCH",
+      "time_display": "Sunday 07/19 5:00 AM",
+      "location": "333 11th Street, San Francisco, CA 94103",
+      "price": "$350",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/bollywood-takeover-at-budda-sf-ft-basspatch-tickets-1992895945420?aff=ebdssbcitybrowsenightlife",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "BOLLYWOOD TAKEOVER hits San Francisco's newest nightclub with international guest DJ BASSPATCH and B...",
+      "description_detail": "BOLLYWOOD TAKEOVER hits San Francisco's newest nightclub with international guest DJ BASSPATCH and Brown Buoy. Free RSVP before 11PM.\nSan Francisco, CA 94103",
+      "source": "eventbrite",
+      "scraped_at": "2026-07-06T18:20:40.869Z"
+    },
+    {
+      "id": 13,
+      "selected": false,
+      "title": "¡BAILA! Community. Dance. Party. - Live Salsa ft. Orquesta Bembé",
+      "time_display": "Saturday 07/18 3:00 AM",
+      "location": "3105 Shattuck Avenue, Berkeley, CA 94705",
+      "price": "$15",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/baila-community-dance-party-live-salsa-ft-orquesta-bembe-tickets-1991730172562?aff=ebdssbcitybrowsenightlife",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Join us in Berkeley for a monthly Latine Community Dance Party with live salsa, bachata, and more, c...",
+      "description_detail": "Join us in Berkeley for a monthly Latine Community Dance Party with live salsa, bachata, and more, centering consent and inclusivity!\nGet your tickets now to save or Sign up to volunteer and get in for free!\nDoors 7:30 PM / Class 8 PM / Baile until 1 AM\nBAILA is like a spontaneous dance party that broke out in your kitchen, only if your kitchen had big wood floors, a live Salsa band, a powerful sound system, an upgraded lighting system and 200 of your friends, chosen family, and new faces ready to join the community.\nAt La Peña, we believe that joy and dance are forms of liberation. Movement, like dancing, is essential to our well-being, and gathering in community keeps our spirit alive.\nThat's why every 3rd Friday of the month, La Peña becomes the Bay Area's most joyful and inclusive Salsa & Bachata dance floor.\nEach edition of BAILA features:\nEveryone is welcome! All ages! BAILA is intentionally created as a safe, gender-inclusive, LGBTQ+ affirming space.\nTickets will be available for purchase at the door until we reach capacity.\nVolunteer at BAILA to help create a safer, inclusive space for all! Enjoy free entry, complimentary food and refreshments, and connect with our community.\nBAILA is part of La Pe˜ña's commitment as a Safer Dance Space Member: we are building an empowering dance space rooted in consent culture.\nWe value your safety and the safety of our community. Violations of these agreements may result in removal from the event.\nIf you need support during the event seek out a La Peña staff member.\nIf you wish to make a report after the event please use our Contact Us form.\nContact us: programs@Lapena.org or use our Contact Us form\nWe strive to make La Peña a welcoming, accessible space for everyone. If you have any specific needs or questions about accessibility, please contact us at least one week in advance, and we’ll do our best to accommodate.",
+      "source": "eventbrite",
+      "scraped_at": "2026-07-06T18:20:40.871Z"
+    },
+    {
+      "id": 14,
+      "selected": false,
+      "title": "Leonardo Art Science Evening Rendezvous (LASER) at The Hub",
+      "time_display": "Thursday 07/16 12:30 AM",
+      "location": "3215 Porter Drive, Palo Alto, CA 94304",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/leonardo-art-science-evening-rendezvous-laser-at-the-hub-tickets-1991654376855?aff=ebdssbneighborhoodbrowse",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "A special LASER to celebrate Stanford Research Park's 75th anniversary. Join us at The Hub at Stanfo...",
+      "description_detail": "A special LASER to celebrate Stanford Research Park's 75th anniversary. Join us at The Hub at Stanford Research Park. #SRP\nThe LASERs (Leonardo Art Science Evening Rendezvous) are an international program of evening gatherings that bring artists and scientists together for informal presentations and conversation with an audience. This evening, chaired by cultural historian Piero Scaruffi, will be a special LASER to celebrate the Stanford Research Park, that was founded 75 years ago.\nThe evening will open with a brief video interview with a Silicon Valley engineer of the 1960s: John Minck.\nIt will be followed by four talks:\n- Mihai Codreanu (Google) on \"The Impact of University Research Parks\"\n- Piero Scaruffi (Stanford) on \"A History of Silicon Valley\"\n- Elise DeMarzo (City of Palo Alto) on \"Digital Art, Real Community\"\n- Ge Wang (Stanford) on \"What Do We (Really) Want from AI?\"\nMihai Codreanu is an economist working on tracking innovation and technology development over the very long-run. His Stanford dissertation focused on university research parks, and Stanford Research Park in particular.\nPiero Scaruffi has worked on Internet and Artificial Intelligence technologies since the early 1980s and has written \"A History of Silicon Valley\" (2011), which has also been translated in China.\nElise DeMarzo is the Director of Public Art for the City of Palo Alto and oversees all aspects of both temporary and permanent public art installations. She implemented a new media public art festival called Code:ART in 2017.\nGe Wang is an Associate Professor at Stanford University's Center for Computer Research in Music and Acoustics (CCRMA), director of the Stanford Laptop Orchestra, and the author of \"Artful Design: Technology in Search of the Sublime\".\nDetailed bios at: http://www.lasertalks.com/\nAttendance is open to all. Please register to help us plan seating and refreshments.",
+      "source": "eventbrite",
+      "scraped_at": "2026-07-06T18:20:40.872Z"
+    },
+    {
+      "id": 15,
+      "selected": false,
+      "title": "Be Seen",
+      "time_display": "Sunday 07/19 6:30 AM",
+      "location": "Marina Playa, Santa Clara, CA CA 95051",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/be-seen-tickets-1991751101160?aff=ebdssbcitybrowsenightlife",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Be Seen is your chance to shine, connect, and make unforgettable vibes in person! Join us for an int...",
+      "description_detail": "Be Seen is your chance to shine, connect, and make unforgettable vibes in person!\nJoin us for an interactive workshop designed for women in tech, consulting, engineering, and other male-dominated industries. Led by an experienced communication coach, you'll learn how to represent yourself with confidence, communicate your value, and build presence in meetings, presentations, networking events, and leadership conversations.\nThis isn't a talk or a panel—it's a hands-on session with practical exercises, real-world application, and takeaways you can use immediately.\nCome ready to practice, connect, and be seen.\nSanta Clara, CA CA  95051",
+      "source": "eventbrite",
+      "scraped_at": "2026-07-06T18:20:40.873Z"
+    },
+    {
+      "id": 16,
+      "selected": false,
+      "title": "CASPA × IEEE 2026 Summer Symposium",
+      "time_display": "Saturday 07/18 8:00 PM",
+      "location": "3600 Juliette Ln., Santa Clara, CA 95054",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/caspa-ieee-2026-summer-symposium-tickets-1991029039454?aff=ebdssbcitybrowse",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Paving the AI Superhighway: Where Power Meets Intelligence 📅 Date: Saturday, July 18th, 2026 ⏰ Time...",
+      "description_detail": "Paving the AI Superhighway: Where Power Meets Intelligence\n📅 Date: Saturday, July 18th, 2026\n⏰ Time: 1:00 PM – 5:00 PM\n📍 Venue: Intel SC-12 Auditorium, 3600 Juliette Ln, Santa Clara, CA 95054\nAs we enter the era of superintelligence, advanced power delivery and energy efficiency have transcended foundational infrastructure to become the ultimate drivers for scaling artificial intelligence. Addressing this critical paradigm shift requires comprehensive innovation across the entire semiconductor power ecosystem, spanning advanced materials, high-density power electronics, and rack-scale hyperscale infrastructure optimization.\nCo-hosted by CASPA and IEEE (Santa Clara Valley Section & San Francisco Bay Area Power Electronics Society), the 2026 Summer Symposium will examine the advanced power and connectivity technologies essential for the AI era. Presenting a distinguished panel of technology executives, esteemed researchers, and industry pioneers from top-tier semiconductor, power electronics, and cloud computing organizations, this premier event aims to foster critical dialogues on how the rapid expansion of AI is fundamentally reshaping the global power and semiconductor landscape.\nWe warmly invite you to join us to:\nExplore cutting-edge innovations in high-density power architectures, advanced power electronics, and efficient thermal management systems.\nEngage with leading visionaries on the structural power challenges facing next-generation hyperscale AI computing.\nConnect with a vibrant community of over 9,000 CASPA and 10,400 IEEE Santa Clara Valley Section members to expand your professional network across the semiconductor and AI ecosystems.\nWe look forward to welcoming you for an inspiring afternoon of technical insight, strategic discussion, and high-value networking. Let’s collaborate to build the foundation of the AI era!\nSanta Clara, CA 95054",
+      "source": "eventbrite",
+      "scraped_at": "2026-07-06T18:20:40.873Z"
+    },
+    {
+      "id": 17,
+      "selected": false,
+      "title": "Porsche Cars & Coffee Event hosted by PCA GGR & Dynamic Detailing",
+      "time_display": "Saturday 07/18 5:00 PM",
+      "location": "1725 De La Cruz Blvd Ste 5, Santa Clara, CA 95050",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/porsche-cars-coffee-event-hosted-by-pca-ggr-dynamic-detailing-tickets-1991212944519?aff=ebdssbcitybrowse",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Join us at Dynamic Detailing for a Porsche Cars & Coffee Event, hosted by PCA GGR featuring all of t...",
+      "description_detail": "Join us at Dynamic Detailing for a Porsche Cars & Coffee Event, hosted by PCA GGR featuring all of the generations of the iconic 911.\nJoin us for our annual Porsche Cars & Coffee Event with Porsche Club of America (GGR) where we display a large variety of cars from the Porsche brand.\n** We are looking for Silver Colored 911's to display from all different generations. If you are interested in displaying your Porsche inside the building for the event, please email info@dynamicdetailing.com as soon as possible as we have limited slots available and first come first serve! We also have dedicated Porsche Parking in the front of the building as well.\n1725 De La Cruz Blvd Ste 5\nSanta Clara, CA 95050",
+      "source": "eventbrite",
+      "scraped_at": "2026-07-06T18:20:40.873Z"
+    },
+    {
+      "id": 18,
+      "selected": false,
+      "title": "Silicon Valley SBDC x EMUMBA - Amazon Web Services GEN AI Pitch Competition",
+      "time_display": "Friday 07/17 12:00 AM",
+      "location": "10350 Torre Avenue, Cupertino, CA 95014",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/silicon-valley-sbdc-x-emumba-amazon-web-services-gen-ai-pitch-competition-tickets-1990143821744?aff=ebdssbcitybrowse",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "In partnership with AWS and EMUMBA , this competition will spotlight the most promising AI ideas and...",
+      "description_detail": "In partnership with AWS and EMUMBA , this competition will spotlight the most promising AI ideas and projects across the Bay Area.\nSilicon Valley's biggest AI event is here! In partnership with AWS and EMUMBA, this competition will spotlight the most promising AI ideas and projects from across the community.\n​💡 For Innovators & Entrepreneurs:Do you have an AI-driven idea, prototype, or project? This is your chance to showcase it in front of judges, peers, and industry leaders — with up to $25,000 in AWS partner funding to explore and implement AI and cloud solutions built on AWS, and to help bring your idea to life.👉 Apply to pitch here: https://forms.gle/SDhQaVinRiMWwuUJ9\n[Application to pitch deadline: July 7th, 2026]\nThe GenAI Pitch Competition is a live innovation pitch competition focused on generative AI use cases.\n​Presented in partnership with AWS  and EMUMBA.Who should apply?This competition is ideal for organizations (startups, SMBs, enterprise teams, nonprofits, researchers) that:\n​​How does funding work?\nThis is not a cash prize or AWS Credits. Funding is AWS Partner funding allocated toward technical resources, architecture support, and solution development services delivered by EMUMBA in collaboration with AWS (subject to program eligibility and scope).\nEmumba is an AWS Advanced Tier Services Partner helping SMBs build, modernize, and scale their technology, operations, and customer experiences with AI, cloud, and emerging technologies on AWS.\nFrom building secure AWS foundations to solving complex AI challenges, Emumba operates as a product engineering partner, combining hands-on engineering depth with the speed, adaptability, and ownership needed to turn ambitious ideas into real-world systems.",
+      "source": "eventbrite",
+      "scraped_at": "2026-07-06T18:20:40.873Z"
+    },
+    {
+      "id": 19,
+      "selected": false,
+      "title": "A Taste of Cupertino An Art and Wine Experience",
+      "time_display": "Saturday 07/18 5:00 PM",
+      "location": "19401 Stevens Creek Boulevard, Cupertino, CA 95014",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/a-taste-of-cupertino-an-art-and-wine-experience-tickets-1992674626449?aff=ebdssbcitybrowse",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Looking for a perfect local outing where you can sip wine, enjoy live music, and soak up art vibes w...",
+      "description_detail": "Looking for a perfect local outing where you can sip wine, enjoy live music, and soak up art vibes with plenty restaurants to choose from.\n19401 Stevens Creek Boulevard",
+      "source": "eventbrite",
+      "scraped_at": "2026-07-06T18:20:40.873Z"
+    },
+    {
+      "id": 20,
+      "selected": false,
+      "title": "\"Remember the Time\" Dance Challenge with Video Dancer, Jossie Harris",
+      "time_display": "Tuesday 07/14 7:00 PM",
+      "location": "1000 Oak Street, Oakland, CA 94607",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/remember-the-time-dance-challenge-with-video-dancer-jossie-harris-tickets-1991097111058?aff=ebdssbcitybrowse",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Get ready to groove and have fun at the \"Remember the Time\" Dance Challenge with Jossie Harris – let...",
+      "description_detail": "Get ready to groove and have fun at the \"Remember the Time\" Dance Challenge with Jossie Harris – let’s dance!\nJossie Harris, one of the highlighted dancers in Michael Jackson's Remember the Time video is joining BMO + Debbie Allen Dance Academy (DADA) at the BMO Juneteenth \"Let Freedom Ring\" community event, as the host Emcee for a special film screening and community conversation of the legacy and life of Debbie Allen, moderated by Kev Choice. Jossie is also here to meet & talk with attendees at the event, an opportunity for dancers and actors to meet one of the Officially Fly Girls!\nDance Groups! Get ready to move and groove in person with the amazing Jossie Harris! Join us for the \"Remember the Time\" Dance Challenge, where you can show off your best moves, learn some fresh steps, and have a blast. Whether you're a dance pro or just love to have fun, this event is the perfect way to shake it up and connect with fellow dance lovers. Don't miss out on this exciting, high-energy experience!\nRegister your dance team/group to accept the challenge frestyle in the museum garden and/or talk with Jossie and photo ops!\nSchedule of times for the featured events TBA.",
+      "source": "eventbrite",
+      "scraped_at": "2026-07-06T18:20:40.874Z"
+    },
+    {
+      "id": 21,
+      "selected": false,
+      "title": "WVC Community Native Garden Workday",
+      "time_display": "Saturday 07/18 10:00 AM",
+      "location": "14000 Fruitvale Avenue, Saratoga, CA 95070",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/wvc-community-native-garden-workday-tickets-1968897733121?aff=ebdssbcitybrowse",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Get your hands dirty working in the West Valley College Biology Department's campus native plant gar...",
+      "description_detail": "Get your hands dirty working in the West Valley College Biology Department's campus native plant gardens!\nJoin West Valley's Biology Department for a native garden workday! These events are open to all community members and are an inclusive and safe space for all. Build community on campus while learning how native plant gardens support biodiversity. Gain hands-on experience planting and maintaining native plants,  identifying invasive species, and bring home sustainable practices for your own garden!\nMeet us on the North side of campus in the front of the school of Science and Math. There is free event parking in Lot 2. Activities vary depending on the season but may include: invasive plant removal, planting, and general maintenance of the gardens.\nAlways bring long pants that can get dirty, layers, a hat, sunscreen, water, and a snack! Tools and gloves are provided.\nThere are restrooms and water filling stations on site.\nAttatched picture marks where to meet at red star.\n14000 Fruitvale Avenue",
+      "source": "eventbrite",
+      "scraped_at": "2026-07-06T18:20:40.874Z"
+    },
+    {
+      "id": 22,
+      "selected": false,
+      "title": "FREE Day at the Campbell Museums!",
+      "time_display": "Saturday 07/18 6:00 PM",
+      "location": "300 Grant Street, Campbell, CA 95008",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/free-day-at-the-campbell-museums-tickets-1986915311182?aff=ebdssbcitybrowse",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Explore History for Free at the Campbell Historical Museum & the Ainsley House",
+      "description_detail": "Explore History for Free at the Campbell Historical Museum & the Ainsley House",
+      "source": "eventbrite",
+      "scraped_at": "2026-07-06T18:20:40.875Z"
+    },
+    {
+      "id": 23,
+      "selected": false,
+      "title": "Smart Cycling Part 2 - South San Francisco (Commute.org + TA + C/CAG)",
+      "time_display": "Saturday 07/18 5:30 PM",
+      "location": "1320 Mission Road, South San Francisco, CA 94080",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/smart-cycling-part-2-south-san-francisco-commuteorg-ta-ccag-tickets-1983831336932?aff=ebdssbcitybrowse",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "An in-depth, on-bike outdoor bicycle class covering essential skills for everyday riding! Join our f...",
+      "description_detail": "An  in-depth, on-bike outdoor bicycle class covering essential skills for everyday riding!\nJoin our free Smart Cycling Part 2 on-bike workshop, where you'll get to sharpen your bike handling, boost your street safety and confidence, and learn crash-avoidance maneuvers in small groups under the guidance of a Certified League Cycling Instructor (LCI) By taking this class and passing the optional evaluation , you can also meet the prerequisite for becoming an LCI yourself. Learn more here!\nWhat the class covers:\nAll class participants will get to take home a reflective safety vest and a Smart Cycling Manual from the League of American Bicyclists. Participants who complete our post-class survey also have the option to enter a monthly raffle for a $25 Sports Basement gift card.\nThis class is provided to the public for at no cost for attendees courtesy of funding from Measures A & W by the TA, C/CAG, and Commute.org.\nJoin fellow bicyclists in paving the way for safer streets and a sustainable and healthier future by donating today! All donations are tax-deductible and any donation gives you an annual SVBC membership. EIN: 77-0338658\nSouth San Francisco, CA 94080",
+      "source": "eventbrite",
+      "scraped_at": "2026-07-06T18:20:40.876Z"
+    },
+    {
+      "id": 24,
+      "selected": false,
+      "title": "Sunday Worship Service",
+      "time_display": "Sunday 07/19 5:00 PM",
+      "location": "1475 Edgewood Road, Redwood City, CA 94062-3214",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/sunday-worship-service-tickets-1533467034179?aff=ebdssbcitybrowse",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "<p><strong>Sacrament Meeting</strong></p><p>You're invited to our weekly worship service. This is a ...",
+      "description_detail": "<p><strong>Sacrament Meeting</strong></p><p>You're invited to our weekly worship service. This is a time when our whole congregation comes together to pray, sing hymns, hear uplifting messages from fellow members, and most importantly, to remember Jesus Christ through the sacrament (similar to Communion in other Christian churches).</p><p>During the sacrament, we quietly reflect on His life and sacrifice as we take a small piece of bread and a cup of water, symbolizing His body and blood. It’s a peaceful moment to reset and think about how we can follow Him more closely in the coming week.</p><p>As a visitor, you’re welcome to simply observe and participate however you feel comfortable—no pressure at all.</p><p><strong>Second Hour of Learning</strong></p><p>After the main worship service, we offer a second hour of small-group classes for all ages:</p><ul><li value=\"1\"><strong>Children</strong> (ages 3–11) go to <strong>Primary</strong> to learn about Jesus through songs, stories, and fun lessons.</li><li value=\"2\"><strong>Teens</strong> join age-based classes to talk about the gospel in ways that relate to them.</li><li value=\"3\"><strong>Adults</strong> rotate between <strong>Sunday School</strong> (scripture study together) and classes for <strong>men (Elders Quorum)</strong> and <strong>women (Relief Society)</strong> on alternating weeks.</li></ul><p>Not sure where to go? Just ask anyone—we’d be happy to help you!</p>\nhttps://local.churchofjesuschrist.org/en/units/us/ca/redwood-city-1st-ward/events/sunday-worship-service-20260719\nRedwood City, CA 94062-3214",
+      "source": "eventbrite",
+      "scraped_at": "2026-07-06T18:20:40.877Z"
+    },
+    {
+      "id": 25,
+      "selected": false,
+      "title": "Heart of the Richmond Night Market",
+      "time_display": "Saturday 07/18 11:00 PM",
+      "location": "2221 Clement St., San Francisco, CA 94121",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/heart-of-the-richmond-night-market-tickets-1989267031240?aff=ebdssbdestsearch",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Join us for a lively evening filled with delicious food, live performances, local vendors, and famil...",
+      "description_detail": "Join us for a lively evening filled with delicious food, live performances, local vendors, and family-friendly fun.\nThe Heart of the Richmond District Night Market is more than a street fair — it’s a celebration of community, neighborhood pride, and the small businesses that make the Richmond District so special. Throughout the summer series, Clement Street transforms into a vibrant gathering place where neighbors, families, and visitors come together to connect, explore, and enjoy the unique culture of the neighborhood.\nCome experience one of San Francisco’s most vibrant neighborhood events, where food, culture, and community come together.\nThank you to our partners Agape Community Center, Asian Family Support Center, Civic Joy Fund, Community Youth Center of San Francisco (CYC), Clement Street Merchants Association, Geary Merchant Association, Gum Moon, Office of Supervisor Connie Chan, Richmond District YMCA, Richmond Neighborhood Center, Richmond Review, San Francisco Department of Early Child Development, Self Help for the Elderly, and SF SDA Chinese Church for making this event possible.\nSan Francisco, CA 94121",
+      "source": "eventbrite",
+      "scraped_at": "2026-07-06T18:20:40.884Z"
+    },
+    {
+      "id": 26,
+      "selected": false,
+      "title": "Nengi Omuku: The Gatheringde Young Museum",
+      "time_display": "Tuesday 07/14 9:30 AM",
+      "location": "50 Hagiwara Tea Garden Drive, San Francisco, CA",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.famsf.org/exhibitions/nengi-omuku",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "sfstation",
+      "scraped_at": "2026-07-06T18:12:27.157Z"
+    },
+    {
+      "id": 27,
+      "selected": false,
+      "title": "Outdoor Escape Room in SOMASan Francisco Centre",
+      "time_display": "Tuesday 07/14 6:00 AM",
+      "location": "845 Market Street, San Francisco, CA",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://escapely.com/escape-the-city/san-francisco-soma-escape-room/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "sfstation",
+      "scraped_at": "2026-07-06T18:12:27.157Z"
+    },
+    {
+      "id": 28,
+      "selected": false,
+      "title": "When Sculptures Come Alive: Living Botanical Sculpture with Peter SunBayfront Theatre",
+      "time_display": "Wednesday 07/15 6:30 PM",
+      "location": "Fort Mason Center, Building B, San Francisco, CA",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/when-sculptures-come-alive-living-botanical-sculpture-with-peter-sun-tickets-1991514084236",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "sfstation",
+      "scraped_at": "2026-07-06T18:12:27.157Z"
+    },
+    {
+      "id": 29,
+      "selected": false,
+      "title": "Bohémienne - Encore!The Palace Theater",
+      "time_display": "Thursday 07/16 6:00 PM",
+      "location": "644 Broadway, San Francisco, CA",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.thepalacetheatersf.com/tptbohemienne",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "sfstation",
+      "scraped_at": "2026-07-06T18:12:27.158Z"
+    },
+    {
+      "id": 30,
+      "selected": false,
+      "title": "Josh Kornbluth’s What Is To Be Done?: Fighting Fascism and DepressionThe Marsh San Francisco",
+      "time_display": "Friday 07/17 7:30 PM",
+      "location": "1062 Valencia Street, San Francisco, CA",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://themarsh.org/shows_and_events/josh-kornbluths-what-is-to-be-done/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "sfstation",
+      "scraped_at": "2026-07-06T18:12:27.158Z"
+    },
+    {
+      "id": 31,
+      "selected": false,
+      "title": "San Francisco Comedy UndergroundNoe Valley Farm",
+      "time_display": "Saturday 07/18 7:45 PM",
+      "location": "1828 Castro Street, San Francisco, CA",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/san-francisco-comedy-underground-tickets-128685037411?aff=SFStation",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "sfstation",
+      "scraped_at": "2026-07-06T18:12:27.158Z"
+    },
+    {
+      "id": 32,
+      "selected": false,
+      "title": "Soccer Watch Parties at PIER 39’s Outdoor Screen (June 12 – July 19)",
+      "time_display": "Tuesday 07/14 12:00 PM - 2:00 PM",
+      "location": "Pier 39, San Francisco Bay Area",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/soccer-watch-parties-at-pier-39s-outdoor-screen-june-12-july-19/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "The world is bringing the energy — and PIER 39 is bringing the party! Get ready to catch Soccer with...",
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2026-07-06T18:11:59.096Z"
+    },
+    {
+      "id": 33,
+      "selected": false,
+      "title": "AI Supply Chain Hackathon 2026: Food Banks + AI",
+      "time_display": "Thursday 07/16 12:00 AM",
+      "location": "1417 15th Street, San Francisco, CA 94103",
+      "price": "$2500",
+      "event_type": "food",
+      "priority": 6,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/ai-supply-chain-hackathon-2026-food-banks-ai-tickets-1264432213789?aff=ebdssbneighborhoodbrowse",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Join our AI Supply Chain Hackathon and help to brainstorm and build solutions for adapting to the im...",
+      "description_detail": "Join our AI Supply Chain Hackathon and help to brainstorm and build solutions for adapting to the impact of supply chain disruption events!\nJoin us for the 3rd Annual AI Supply Chain Hackathon! This exciting event is happening in San Francisco with the option to join online, so you can participate from the comfort of your own home or workplace. For 2026, all judges will be in person and all team must have one representative onsite at Pebblebed, located at 1417 15th Street.\nSupply chain disruptions can both create and amplify human suffering and degrades the fabric of collective life. Last year this Hackathon focused on weather, and the year before we focused on the supply chain for cancer drugs. In 2026, our Hackathon will focus on the impact of supply chains on Food Banks as an essential collective response layer to extreme disaster events, as well as the topic of chronic hunger across the US.\nThis Hackathon brings together stakeholders from the tech, policymaking, AI, and public sector communities to build solutions. Teams may create and demo their own AI/software OR propose a novel policy/cooperation solution.\nYou do not need to be technical or have a background in AI to participate, and we love teams that bring together cross-functional backgrounds spanning supply chain and procurement, policy, academia, and tech industry experience.\nAudience Award - $1500\nThis unique event gives AI practitioners and early stage startup teams the chance to work side by side with supply chain and procurement professionals to help develop AI agents for supply chain operations at Food Banks.\nWith a panel of expert judges from industry, policymakers and nonprofits, the AI Supply Chain Hackathon is a terrific opportunity for people excited and concerned about the impact of AI on accelerating both supply chain decisions and supply chain disruptions.",
+      "source": "eventbrite",
+      "scraped_at": "2026-07-06T18:20:40.869Z"
+    },
+    {
+      "id": 34,
+      "selected": false,
+      "title": "Sushi Making Class: Tuesday & Saturday Dinner, San Francisco",
+      "time_display": "Tuesday 07/14 5:30 PM",
+      "location": "1625 Post Street, San Francisco, CA 94115",
+      "price": "$127.88",
+      "event_type": "food",
+      "priority": 6,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/sushi-making-class-tuesday-saturday-dinner-san-francisco-tickets-494236162667?aff=ebdssbcitybrowse",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "You can make mouth-watering, deliciously beautiful Sushi using fresh, sustainable seafood Refunds up...",
+      "description_detail": "You can make mouth-watering, deliciously beautiful Sushi using fresh, sustainable seafood\nRefunds up to 7 days before event\nSan Francisco, CA 94115",
+      "source": "eventbrite",
+      "scraped_at": "2026-07-06T18:20:40.869Z"
+    },
+    {
+      "id": 35,
+      "selected": false,
+      "title": "Mina, Miles Medina & Esentrik",
+      "time_display": "Saturday 07/18 3:00 AM",
+      "location": "72 N Almaden Ave, San Jose, CA 95110",
+      "price": "From $12.51",
+      "event_type": "food",
+      "priority": 6,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/mina-miles-medina-esentrik-tickets-1992014737704?aff=ebdssbcitybrowsenightlife",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Three of the Biggest DJs in the Game Take Over SP2: Mina, Miles Medina & Esentrik SP2 Communal Bar &...",
+      "description_detail": "Three of the Biggest DJs in the Game Take Over SP2: Mina, Miles Medina & Esentrik\nSP2 Communal Bar & Restaurant + Heavy Arsenal Present\nPlus Miles Medina & Esentrik\nBorn and raised in the Philippines and now based in Los Angeles, DJ Mina is a fast-rising international DJ known for her smooth, well-blended transitions and infectious energy. She’s built a growing fanbase thanks to her viral DJ sets and moments that blew up across social media, making her one of the most exciting up-and-coming talents today.\nMina’s mixes cover a wide range of sounds—Afrobeats, Amapiano, R&B, Baile Funk, Miami Bass, and Hip Hop—bringing fresh, dynamic vibes to every set.\nIn addition to DJing, Mina runs Mina’s Radio, a platform dedicated to sharing underground music, global rhythms, and the stories behind the sounds. It’s a space where Mina curates unique mixes, highlights emerging artists, and builds community through music and culture.\nFor DJ Mina, it’s all about creating moments that connect people through music—whether it’s a packed room or a virtual crowd tuning in from around the world.\nBottle reservations 415.737.5772",
+      "source": "eventbrite",
+      "scraped_at": "2026-07-06T18:20:40.872Z"
+    },
+    {
+      "id": 36,
+      "selected": false,
+      "title": "Award-Winning Independent LOST LANTERN tasting",
+      "time_display": "Tuesday 07/14 1:00 AM",
+      "location": "2115 San Pablo Avenue, Berkeley, CA 94702",
+      "price": "$50.93",
+      "event_type": "food",
+      "priority": 6,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/award-winning-independent-lost-lantern-tasting-tickets-1992717502693?aff=ebdssbdestsearch",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Taste the award-winning Lost Lantern Whiskeys from Independent Bottlers nationwide Join Women Who Wh...",
+      "description_detail": "Taste the award-winning Lost Lantern Whiskeys from Independent Bottlers nationwide\nJoin Women Who Whiskey's own ANA HINZ, Private Barrel Manager & West Coast Brand Ambassador, us for an awesome in-person tasting experience featuring the award-winning LOST LANTERN spirits! Discover unique flavors and savor every sip in a relaxed, friendly vibe. Perfect for spirit lovers looking to explore something special and independent. Don’t miss out on this chance to taste greatness up close and personal!\nSpace is limited to 30 wWw members and their guests. SORRY, NO REFUNDS, NO EXCEPTIONS.\n2115 San Pablo Avenue",
+      "source": "eventbrite",
+      "scraped_at": "2026-07-06T18:20:40.877Z"
+    },
+    {
+      "id": 37,
+      "selected": false,
+      "title": "Wineluv Wednesdays: The July Edition ft. Rams Gate, Dakota Shy & More!",
+      "time_display": "Thursday 07/16 12:00 AM",
+      "location": "550 Montgomery Street, #10th Floor San Francisco, CA 94111",
+      "price": "From $108.55",
+      "event_type": "food",
+      "priority": 6,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/wineluv-wednesdays-the-july-edition-ft-rams-gate-dakota-shy-more-tickets-1992659433005?aff=ebdssbdestsearch",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "San Francisco’s most social wine tasting returns for one unforgettable night of 40+ wines, beautiful...",
+      "description_detail": "San Francisco’s most social wine tasting returns for one unforgettable night of 40+ wines, beautiful people, and penthouse views.\nSan Francisco’s most exclusive wine tasting is back!\nStep into an evening of luxury wine, seductive energy, and unforgettable connectionshigh above the city. Wineluv Wednesdays brings together beautiful people, world-class wines, and a penthouse atmosphere for a tasting experience that feels more like a private party than a typical wine event.\nThe July Edition takes place on July 15th in the penthouse at the beautiful Amador Club and will feature 40+ exceptional wines poured by top wineries in an intimate, social setting designed for discovery, conversation, and a little indulgence.\nWhether you're a serious collector, casual wine lover, or just looking for a different kind of night out in San Francisco, this is where the city’s Wineluvrs gather.\nPARTICIPATING WINERIES\n🍷Domaine Alice Hartmann\n🍷and more to be announced!\n🍷 Unlimited tasting of 40+ premium wines, poured by the winemakers and proprietors themselves🍇 6-10 premium wineries🥂 A stylish crowd of wineluvrs & professionals🧀 Delicious gourmet bites🌆 Luxury penthouse venue with stunning city views🛍 Opportunity to purchase your new wine luvs and wine experiences\nThink wine tasting meets cocktail party.\nNo snobbery.No lectures.Just great wine, great people, and great energy.\nOur guests are typically:\n🍷 Wineluvrs & collectors💼 Young professionals💋 Singles & couples looking for a fun night out🥂 People who prefer cocktail-party energy over formal tastings\nMany guests arrive solo and leave with new friends.\nThe atmosphere is stylish, social, and relaxed.\n❤️ Date night🥂 Girls night out🍷 Meeting fellow Wineluvrs🎉 Celebrating birthdays\nINSTAGRAM WORTHY MOMENTS\n📸 Stunning city views🍷 Beautiful wine displays🥂 Golden hour tastings💫 Stylish crowd\nTag us and get featured.\n🍷 Bring a date, bring friends, or come solo and meet people who luv wine as much as you do.",
+      "source": "eventbrite",
+      "scraped_at": "2026-07-06T18:20:40.884Z"
+    },
+    {
+      "id": 38,
+      "selected": false,
+      "title": "Hands-On: Spaghetti alla Chitarra",
+      "time_display": "Saturday 07/18 11:00 PM",
+      "location": "2855 Stevens Creek Boulevard, San Jose, CA 95128",
+      "price": "$76.51",
+      "event_type": "food",
+      "priority": 6,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/hands-on-spaghetti-alla-chitarra-tickets-1990678756749?aff=ebdssbdestsearch",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "It’s time to get your hands messy! In our hands-on format, our Scuola Chef will guide you through ho...",
+      "description_detail": "It’s time to get your hands messy! In our hands-on format, our Scuola Chef will guide you through how to make Spaghetti alla Chitarra.\nAbout this Class: It’s time to get your hands messy! In our hands-on format, you'll dive right in to making pasta yourself from scratch. Our Scuola Chef will then then prepare the signature dish for you to taste in class. Take your culinary creation with you at the end of class and enjoy your own hard work at home!\nAbout this Dish: Spaghetti alla chittara is a unique pasta shape made from cutting an egg-based pasta dough with a wire-strung, wood-frame tool called a chittara, or guitar. Pair this fun pasta with a delicious pomodoro (tomato) sauce. In this class, you will make your own dough.\nIn this Class You Will:\nPayment in full is required at the time of registration and all sales are final. No refunds are offered on classes and events. For groups of 5-10 guests, a minimum of 7 days' notice (class day not included) is required to receive a credit in the form of a coupon for a future class or event. For groups of up to 4 guests, a minimum of 4 days' notice (class day not included) is required to receive a credit in the form of a coupon code for a future class or event at La Scuola. We reserve the right to reschedule or cancel a class or event due to unforeseen circumstances, inclement weather or otherwise. In the event of a class or event cancellation, we will contact you directly at the phone number or email address you have provided to offer a full refund or credit to transfer to a future class or event. While we are not able to offer credit, transfers or refunds for last-minute illnesses, work-related conflicts, personal emergencies or events beyond our control, you are always welcome to send someone in your place, as we understand that these things do happen. If you are purchasing this class or event as a gift, please provide this cancellation policy to the recipient, as the policy will still apply.",
+      "source": "eventbrite",
+      "scraped_at": "2026-07-06T18:20:40.886Z"
+    },
+    {
+      "id": 39,
+      "selected": false,
+      "title": "Hands-On: Pasta Cacio e Pepe",
+      "time_display": "Thursday 07/16 1:00 AM",
+      "location": "2855 Stevens Creek Boulevard, San Jose, CA 95128",
+      "price": "$113.51",
+      "event_type": "food",
+      "priority": 6,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/hands-on-pasta-cacio-e-pepe-tickets-1990678005502?aff=ebdssbdestsearch",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "It’s time to get your hands messy! In our hands-on format, our Scuola Chef will guide you through ho...",
+      "description_detail": "It’s time to get your hands messy! In our hands-on format, our Scuola Chef will guide you through how to prepare Pasta Cacio e Pepe\nAbout this Class: It’s time to get your hands messy! In our hands-on format, our Scuola Chef will prepare the signature dish for you to taste in class. You’ll then dive right in to making the recipe yourself from scratch. Take your culinary creation with you at the end of class and enjoy your own hard work at home!\nAbout this Dish: Rich cheese, bronze-extruded pasta, and freshly-ground pepper — the ultimate comfort food, Pasta Cacio e Pepe is a simple Roman dish that depends on the quality of just a few ingredients. In this class, you’ll make your own pasta dough from scratch.\nIn this Class You Will:\nPayment in full is required at the time of registration and all sales are final. No refunds are offered on classes and events. For groups of 5-10 guests, a minimum of 7 days' notice (class day not included) is required to receive a credit in the form of a coupon for a future class or event. For groups of up to 4 guests, a minimum of 4 days' notice (class day not included) is required to receive a credit in the form of a coupon code for a future class or event at La Scuola. We reserve the right to reschedule or cancel a class or event due to unforeseen circumstances, inclement weather or otherwise. In the event of a class or event cancellation, we will contact you directly at the phone number or email address you have provided to offer a full refund or credit to transfer to a future class or event. While we are not able to offer credit, transfers or refunds for last-minute illnesses, work-related conflicts, personal emergencies or events beyond our control, you are always welcome to send someone in your place, as we understand that these things do happen. If you are purchasing this class or event as a gift, please provide this cancellation policy to the recipient, as the policy will still apply.",
+      "source": "eventbrite",
+      "scraped_at": "2026-07-06T18:20:40.886Z"
+    },
+    {
+      "id": 40,
+      "selected": false,
+      "title": "Hands-On: Pistachio Tiramisù",
+      "time_display": "Saturday 07/18 1:00 AM",
+      "location": "2855 Stevens Creek Boulevard, San Jose, CA 95128",
+      "price": "$81.47",
+      "event_type": "food",
+      "priority": 6,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/hands-on-pistachio-tiramisu-tickets-1990678121850?aff=ebdssbdestsearch",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "It’s time to get your hands messy! In our hands-on format, our Scuola Chef will guide you through ho...",
+      "description_detail": "It’s time to get your hands messy! In our hands-on format, our Scuola Chef will guide you through how to prepare  Pistachio Tiramisù.\nAbout this Class: It’s time to get your hands messy! If you love Pistachio you will love our Pistachio Tiramisu class! Observe as our Scuola Chef prepares Pistachio Tiramisu for you to taste in class. You’ll then dive right in to making the recipe yourself from scratch. Take your culinary creation with you at the end of class and enjoy your own hard work at home!\nAbout this Dish: While thought to be a classic Italian dessert, Tiramisù only dates back to the 1960’s. Espresso-soaked ladyfingers are layered with sweet mascarpone cream and then dusted with cocoa powder. In this class, you’ll assemble the Tiramisù from prepared ingredients.\nIn this Class You Will:\nThis event takes place in our La Scuola Classroom on the 2nd Floor.\nPayment in full is required at the time of registration and all sales are final. No refunds are offered on classes and events. For groups of 5-10 guests, a minimum of 7 days' notice (class day not included) is required to receive a credit in the form of a coupon for a future class or event. For groups of up to 4 guests, a minimum of 4 days' notice (class day not included) is required to receive a credit in the form of a coupon code for a future class or event at La Scuola. We reserve the right to reschedule or cancel a class or event due to unforeseen circumstances, inclement weather or otherwise. In the event of a class or event cancellation, we will contact you directly at the phone number or email address you have provided to offer a full refund or credit to transfer to a future class or event. While we are not able to offer credit, transfers or refunds for last-minute illnesses, work-related conflicts, personal emergencies or events beyond our control, you are always welcome to send someone in your place, as we understand that these things do happen.",
+      "source": "eventbrite",
+      "scraped_at": "2026-07-06T18:20:40.886Z"
+    }
+  ]
+}
