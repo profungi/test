@@ -1,0 +1,773 @@
+{
+  "review_id": "review_2026-07-13_1800_1fk",
+  "generated_at": "2026-07-13T18:00:47.800Z",
+  "scrape_date": "2026-07-13",
+  "target_week": "2026-07-20_to_2026-07-26",
+  "target_week_readable": "下周 (07/20 - 07/26)",
+  "scraping_report": {
+    "total_scraped": 78,
+    "after_deduplication": 36,
+    "after_classification": 36,
+    "classification_report": {
+      "totalEvents": 36,
+      "eventTypes": {
+        "free": 35,
+        "art": 1
+      },
+      "priorityLevels": {
+        "5": 1,
+        "9": 35
+      },
+      "chineseRelevant": 0,
+      "topPriorityEvents": 35
+    }
+  },
+  "instructions": {
+    "how_to_review": "将你想要发布的活动的 'selected' 字段改为 true",
+    "next_step": "保存文件后运行: npm run generate-post [此文件路径]",
+    "fields_explanation": {
+      "title": "活动标题",
+      "time_display": "显示用的时间格式",
+      "location": "活动地点",
+      "price": "票价信息",
+      "event_type": "AI识别的活动类型",
+      "priority": "优先级分数 (越高越重要)",
+      "chinese_relevant": "是否与中文社区相关",
+      "original_url": "原始活动链接"
+    }
+  },
+  "stats": {
+    "total_candidates": 36,
+    "by_type": {
+      "free": 35,
+      "art": 1
+    },
+    "by_priority": {
+      "5": 1,
+      "9": 35
+    },
+    "chinese_relevant": 0
+  },
+  "events": [
+    {
+      "id": 1,
+      "selected": false,
+      "title": "Nengi Omuku: The Gatheringde Young Museum",
+      "time_display": "Tuesday 07/21 9:30 AM",
+      "location": "50 Hagiwara Tea Garden Drive, San Francisco, CA",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.famsf.org/exhibitions/nengi-omuku",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "sfstation",
+      "scraped_at": "2026-07-13T17:57:21.469Z"
+    },
+    {
+      "id": 2,
+      "selected": false,
+      "title": "Graciela Iturbide: Between Two Worlds, a Major Retrospective",
+      "time_display": "Tuesday 07/21 10:00 AM",
+      "location": "151 3rd Street, San Francisco, CA, 94103",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.sfstation.com/graciela-iturbide-between-two-worlds-a-major-retrospective-e15771186",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "\"The camera is an excuse to share the life of the people, the rhythm and sympathy of festivals, to d...",
+      "description_detail": "\"The camera is an excuse to share the life of the people, the rhythm and sympathy of festivals, to discover my country.\" -- Graciela Iturbide Grac...",
+      "source": "sfstation",
+      "scraped_at": "2026-07-13T17:57:21.469Z"
+    },
+    {
+      "id": 3,
+      "selected": false,
+      "title": "Brooke Nevils with Jennifer Massoni Pardini - Unspeakable Things",
+      "time_display": "Tuesday 07/21 5:30 PM",
+      "location": "1 Ferry Bulding, San Francisco, CA, 94111",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.sfstation.com/brooke-nevils-with-jennifer-massoni-pardini-unspeakable-things-e15772175",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "In 2017, Brooke Nevils made a confidential HR complaint about one of the most powerful and familiar ...",
+      "description_detail": "In 2017, Brooke Nevils made a confidential HR complaint about one of the most powerful and familiar faces in media. Twenty-four hours later, the highe...",
+      "source": "sfstation",
+      "scraped_at": "2026-07-13T17:57:21.469Z"
+    },
+    {
+      "id": 4,
+      "selected": false,
+      "title": "Åsa Schick: Echoes of Elsewhere",
+      "time_display": "Tuesday 07/21 10:00 AM",
+      "location": "645 Chestnut St., San Francisco, CA, 94133",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.sfstation.com/sa-schick-echoes-of-elsewhere-e15772089",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Åsa Schick: Echoes of Elsewhere July 11 - September 12, 2026 Opening reception: Saturday, July 11th ...",
+      "description_detail": "Åsa Schick: Echoes of Elsewhere July 11 - September 12, 2026 Opening reception: Saturday, July 11th from 2 to 5 pm Paul Thiebaud Gallery is pl...",
+      "source": "sfstation",
+      "scraped_at": "2026-07-13T17:57:21.469Z"
+    },
+    {
+      "id": 5,
+      "selected": false,
+      "title": "Contemporary Women of Abstraction",
+      "time_display": "Tuesday 07/21 10:00 AM",
+      "location": "645 Chestnut St., San Francisco, CA, 94133",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.sfstation.com/contemporary-women-of-abstraction-e15772088",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Contemporary Women of Abstraction July 11 - September 12, 2026 Opening reception: Saturday, July 11t...",
+      "description_detail": "Contemporary Women of Abstraction July 11 - September 12, 2026 Opening reception: Saturday, July 11th from 2 to 5 pm Remarks: 2:30pm Paul Thi...",
+      "source": "sfstation",
+      "scraped_at": "2026-07-13T17:57:21.469Z"
+    },
+    {
+      "id": 6,
+      "selected": false,
+      "title": "Loteria Game Night (Mexican Bingo) at TacoliciousTacolicious Marina",
+      "time_display": "Wednesday 07/22 6:00 PM",
+      "location": "2250 Chestnut Street, San Francisco, CA",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/cc/game-nights-3964323",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "sfstation",
+      "scraped_at": "2026-07-13T17:57:21.469Z"
+    },
+    {
+      "id": 7,
+      "selected": false,
+      "title": "Kristina Denton - You Don’t Know Dick",
+      "time_display": "Wednesday 07/22 5:30 PM",
+      "location": "1 Ferry Bulding, San Francisco, CA, 94111",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.sfstation.com/kristina-denton-you-don-t-know-dick-e15772176",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "In the wake of a family tragedy and a stagnant, sexless relationship, struggling actress Kristina un...",
+      "description_detail": "In the wake of a family tragedy and a stagnant, sexless relationship, struggling actress Kristina unexpectedly finds herself in a bizarre new career p...",
+      "source": "sfstation",
+      "scraped_at": "2026-07-13T17:57:21.469Z"
+    },
+    {
+      "id": 8,
+      "selected": false,
+      "title": "Dear San FranciscoClub Fugazi",
+      "time_display": "Wednesday 07/22 7:30 PM",
+      "location": "678 Green Street, San Francisco, CA",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://boxoffice.clubfugazisf.com/clubfugazisf/events/46365?sessionView=CALENDAR",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "sfstation",
+      "scraped_at": "2026-07-13T17:57:21.469Z"
+    },
+    {
+      "id": 9,
+      "selected": false,
+      "title": "Yerba Buena Gardens Festival 2026",
+      "time_display": "Thursday 07/23 12:30 PM",
+      "location": "Yerba Buena Gardens, San Francisco, CA, 94109",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.sfstation.com/yerba-buena-gardens-festival-2026-e1024101",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "For over two decades, the Yerba Buena Gardens Festival has presented free outdoor music, theater, ci...",
+      "description_detail": "For over two decades, the Yerba Buena Gardens Festival has presented free outdoor music, theater, circus, dance, poetry, and children's programs with...",
+      "source": "sfstation",
+      "scraped_at": "2026-07-13T17:57:21.469Z"
+    },
+    {
+      "id": 10,
+      "selected": false,
+      "title": "James Bond Forever with San Francisco SymphonyFrost Amphitheater",
+      "time_display": "Thursday 07/23 7:30 PM",
+      "location": "351 Lasuen Street, Palo Alto, CA",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://live.stanford.edu/s/event?EventID=26201",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "sfstation",
+      "scraped_at": "2026-07-13T17:57:21.469Z"
+    },
+    {
+      "id": 11,
+      "selected": false,
+      "title": "Minnesota Street Project Foundation presents The San Francisco Art Book Fair",
+      "time_display": "Thursday 07/23 6:00 PM",
+      "location": "1275 Minnesota Street, San Francisco, CA, 94107",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.sfstation.com/minnesota-street-project-foundation-presents-the-san-francisco-art-book-fair-e2480740",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "One of the most anticipated, free, large-scale annual Bay Area arts events, SFABF celebrates art pub...",
+      "description_detail": "One of the most anticipated, free, large-scale annual Bay Area arts events, SFABF celebrates art publishing and print culture, bringing together indep...",
+      "source": "sfstation",
+      "scraped_at": "2026-07-13T17:57:21.469Z"
+    },
+    {
+      "id": 12,
+      "selected": false,
+      "title": "Scopo Divino's 10th Anniversary PartyScopo Divino",
+      "time_display": "Friday 07/24 4:00 PM",
+      "location": "2800 California Street, San Francisco, CA",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/scopo-divinos-10th-anniversary-party-tickets-1991502354151",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "sfstation",
+      "scraped_at": "2026-07-13T17:57:21.490Z"
+    },
+    {
+      "id": 13,
+      "selected": false,
+      "title": "Planet Synth 4th Anniversary ft. FacetsMonarch SF",
+      "time_display": "Friday 07/24 9:00 PM",
+      "location": "101 6th Street, San Francisco, CA",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/planet-synth-4th-anniversary-ft-facets-tickets-1993462304415",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "sfstation",
+      "scraped_at": "2026-07-13T17:57:21.490Z"
+    },
+    {
+      "id": 14,
+      "selected": false,
+      "title": "Bon Odori Street Dance Festival",
+      "time_display": "Saturday 07/25 11:00 AM",
+      "location": "1881 Pine Street, San Francisco, CA, 94109",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.sfstation.com/bon-odori-street-dance-festival-e2297261",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "The Buddhist Church of San Francisco presents its 95th street dance festival, celebrating the return...",
+      "description_detail": "The Buddhist Church of San Francisco presents its 95th street dance festival, celebrating the return of the spirits of their ancestors. The public is...",
+      "source": "sfstation",
+      "scraped_at": "2026-07-13T17:57:21.490Z"
+    },
+    {
+      "id": 15,
+      "selected": false,
+      "title": "Ballet22: Summer Season 2026Cowell Theater",
+      "time_display": "Saturday 07/25 8:00 PM",
+      "location": "Fort Mason Center, San Francisco, CA",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/o/ballet22-42226781743",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "sfstation",
+      "scraped_at": "2026-07-13T17:57:21.490Z"
+    },
+    {
+      "id": 16,
+      "selected": false,
+      "title": "The Whale's Tail",
+      "time_display": "Saturday 07/25 6:00 PM",
+      "location": "John F. Kennedy Drive, San Francisco, CA, 94122",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.sfstation.com/the-whales-tail-e15771107",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "The Whale's Tail returns for it's 2026 season on May 23rd. The family- and dog-friendly space transf...",
+      "description_detail": "The Whale's Tail returns for it's 2026 season on May 23rd. The family- and dog-friendly space transforms JFK Promenade's Golden Mile into a vibrant...",
+      "source": "sfstation",
+      "scraped_at": "2026-07-13T17:57:21.490Z"
+    },
+    {
+      "id": 17,
+      "selected": false,
+      "title": "Found in the Fog - SF Antique and Collectibles MarketMarina Middle School",
+      "time_display": "Sunday 07/26 8:00 AM",
+      "location": "3500 Fillmore Street, San Francisco, CA",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://buytickets.at/foundinthefog?ref=sfs",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "sfstation",
+      "scraped_at": "2026-07-13T17:57:21.490Z"
+    },
+    {
+      "id": 18,
+      "selected": false,
+      "title": "2026 Stern Grove FestivalSigmund Stern Grove",
+      "time_display": "Sunday 07/26 2:00 PM",
+      "location": "Sigmund Stern Grove, San Francisco, CA",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.sterngrove.org/lineup2026",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "sfstation",
+      "scraped_at": "2026-07-13T17:57:21.490Z"
+    },
+    {
+      "id": 19,
+      "selected": false,
+      "title": "Lunchtime Concert w/ Iwa Daiko (Yerba Buena Gardens Festival 2026)",
+      "time_display": "Thursday 07/23 12:30 PM - 1:30 PM",
+      "location": "Great Lawn, Yerba Buena Gardens, San Francisco Bay Area",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/lunchtime-concert-w-iwa-daiko-yerba-buena-gardens-festival-2026/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2026-07-13T17:55:50.832Z"
+    },
+    {
+      "id": 20,
+      "selected": false,
+      "title": "“SOMA Nights” Neighborhood Block Party + Night Market (SF)",
+      "time_display": "Thursday 07/23 5:00 PM - 9:00 PM",
+      "location": "Folsom St. (between 6th-12th), San Francisco Bay Area",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/soma-nights-neighborhood-block-party-night-market-sf-12/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "SOMA Nights returns in 2026, bringing a monthly street party to San Francisco’s Folsom Street (6th–1...",
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2026-07-13T17:55:50.832Z"
+    },
+    {
+      "id": 21,
+      "selected": false,
+      "title": "René y Familia (Kids’ Show) at Yerba Buena Gardens Festival 2026",
+      "time_display": "Friday 07/24 11:00 AM - 12:30 PM",
+      "location": "Yerba Buena Gardens, Children’s Garden, San Francisco Bay Area",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/rene-y-familia-kids-show-at-yerba-buena-gardens-festival-2026/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2026-07-13T17:55:50.832Z"
+    },
+    {
+      "id": 22,
+      "selected": false,
+      "title": "Marin Roller “Disco Daze”: Free Neon Outdoor Summer Roller Disco (July 24-26)",
+      "time_display": "Friday 07/24 12:00 PM - 10:00 PM",
+      "location": "Lagoon Park, San Francisco Bay Area",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/marin-roller-disco-daze-free-neon-outdoor-summer-roller-disco-july-24-26/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "“Rolligion” is coming to Marin County – Roller Disco Daze Spreading the joy of rolligion is the miss...",
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2026-07-13T17:55:50.832Z"
+    },
+    {
+      "id": 23,
+      "selected": false,
+      "title": "“Off the Grid” Fort Mason: Friday Night Market w/ 110+ Vendors (2026)",
+      "time_display": "Friday 07/24 5:00 PM - 10:00 PM",
+      "location": "Fort Mason Center, San Francisco Bay Area",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/off-the-grid-fort-mason-friday-night-market-w-110-vendors-2026-3/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Fort Mason Night Market returns for 2026 with food trucks, craft vendors & live music on the waterfr...",
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2026-07-13T17:55:50.832Z"
+    },
+    {
+      "id": 24,
+      "selected": false,
+      "title": "Free North Shattuck Block Party 2026 (Berkeley)",
+      "time_display": "Saturday 07/25 11:00 AM - 6:00 PM",
+      "location": "North Shattuck District, East Bay",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/free-north-shattuck-block-party-2026-berkeley/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2026-07-13T17:55:50.832Z"
+    },
+    {
+      "id": 25,
+      "selected": false,
+      "title": "SF’s “ChoreoFest” Outdoor Dance Festival: Day One (Yerba Buena Gardens Festival 2026)",
+      "time_display": "Saturday 07/25 2:00 PM - 4:00 PM",
+      "location": "Yerba Buena Gardens (Esplanade), San Francisco Bay Area",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/sfs-choreofest-outdoor-dance-festival-day-one-yerba-buena-gardens-festival-2025/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2026-07-13T17:55:50.832Z"
+    },
+    {
+      "id": 26,
+      "selected": false,
+      "title": "Sausalito Art & Harbor Days",
+      "time_display": "Saturday 07/25 10:00 AM - 3:00 PM",
+      "location": "Sausalito Ferry Landing",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/sausalito-art-harbor-days-5/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2026-07-13T17:55:50.832Z"
+    },
+    {
+      "id": 27,
+      "selected": false,
+      "title": "2026 Italian Family Festa: 44th Annual Celebration (San Jose)",
+      "time_display": "Saturday 07/25 10:00 AM - 11:00 AM",
+      "location": "History Park, South Bay",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/2026-italian-family-festa-44th-annual-celebration-san-jose/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2026-07-13T17:55:50.832Z"
+    },
+    {
+      "id": 28,
+      "selected": false,
+      "title": "Art Show & Market",
+      "time_display": "Saturday 07/25 12:00 PM - 4:00 PM",
+      "location": "Full Moon Studio, East Bay",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/art-show-market/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2026-07-13T17:55:50.832Z"
+    },
+    {
+      "id": 29,
+      "selected": false,
+      "title": "Free Family Vendor Fair: Food, Bounce House + Raffles (Antioch)",
+      "time_display": "Saturday 07/25 1:00 PM - 5:00 PM",
+      "location": "Grace Bible Fellowship, East Bay",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/free-family-vendor-fair-food-bounce-house-raffles-antioch/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2026-07-13T17:55:50.832Z"
+    },
+    {
+      "id": 30,
+      "selected": false,
+      "title": "SF’s “Bhangra & Beats” Night Market 2026",
+      "time_display": "Saturday 07/25 4:00 PM - 9:00 PM",
+      "location": "Yerba Buena Gardens, San Francisco Bay Area",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/sfs-bhangra-beats-night-market-2026/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "San Francisco’s beloved Bhangra & Beats Night Market returns in 2026 for two massive celebrations, i...",
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2026-07-13T17:55:50.832Z"
+    },
+    {
+      "id": 31,
+      "selected": false,
+      "title": "San Francisco Marathon 2026",
+      "time_display": "Sunday 07/26 5:15 AM - 11:15 AM",
+      "location": "All Over San Francisco",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/san-francisco-marathon/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2026-07-13T17:55:50.832Z"
+    },
+    {
+      "id": 32,
+      "selected": false,
+      "title": "SF’s 2026 “Bon Odori” Street Dance Festival (Japantown)",
+      "time_display": "Sunday 07/26 11:00 AM - 4:00 PM",
+      "location": "Buddhist Church of San Francisco",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/sfs-bon-odori-traditional-dance-performance-japantown/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2026-07-13T17:55:50.832Z"
+    },
+    {
+      "id": 33,
+      "selected": false,
+      "title": "Milpitas’s 4th of July Pool Party + “Finding Nemo” Outdoor Movie Night 2026",
+      "time_display": "Sunday 07/26 7:00 PM - 10:00 PM",
+      "location": "Milpitas Sports Center",
+      "price": "$9*",
+      "event_type": "art",
+      "priority": 5,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/4th-july-pool-party-milpitas/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2026-07-13T17:55:50.832Z"
+    },
+    {
+      "id": 34,
+      "selected": false,
+      "title": "2026 “Up Your Alley / Dore Alley” Street Fair & Fetish Festival (SF)",
+      "time_display": "Sunday 07/26 11:00 AM - 6:00 PM",
+      "location": "Dore Alley, San Francisco Bay Area",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/alley-fair-soma/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2026-07-13T17:55:50.832Z"
+    },
+    {
+      "id": 35,
+      "selected": false,
+      "title": "6th Annual “Handmade Pacifica” Artisan Fair",
+      "time_display": "Sunday 07/26 1:00 PM - 5:00 PM",
+      "location": "Sanchez Art Center, Peninsula",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/6th-annual-handmade-pacifica-artisan-fair/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2026-07-13T17:55:50.832Z"
+    },
+    {
+      "id": 36,
+      "selected": false,
+      "title": "Berryessa Night Market",
+      "time_display": "Friday 07/24 6:00 PM - 10:00 PM",
+      "location": "San Jose Flea Market, 1590 Berryessa Road, San Jose, CA 95133",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://gardenattheflea.com/berryessanightmarket/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Weekly Friday night market inside the iconic San Jose Flea Market featuring Asian street food, desse...",
+      "description_detail": null,
+      "source": "berryessa-night-market",
+      "scraped_at": "2026-07-13T17:57:57.180Z"
+    }
+  ]
+}
