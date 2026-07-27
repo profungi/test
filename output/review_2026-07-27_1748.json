@@ -1,0 +1,865 @@
+{
+  "review_id": "review_2026-07-27_1748_7op",
+  "generated_at": "2026-07-27T17:48:48.849Z",
+  "scrape_date": "2026-07-27",
+  "target_week": "2026-08-03_to_2026-08-09",
+  "target_week_readable": "下周 (08/03 - 08/09)",
+  "scraping_report": {
+    "total_scraped": 53,
+    "after_deduplication": 44,
+    "after_classification": 44,
+    "classification_report": {
+      "totalEvents": 44,
+      "eventTypes": {
+        "free": 31,
+        "festival": 2,
+        "market": 7,
+        "art": 2,
+        "music": 1,
+        "other": 1
+      },
+      "priorityLevels": {
+        "3": 1,
+        "4": 1,
+        "5": 2,
+        "9": 31,
+        "10": 9
+      },
+      "chineseRelevant": 0,
+      "topPriorityEvents": 40
+    }
+  },
+  "instructions": {
+    "how_to_review": "将你想要发布的活动的 'selected' 字段改为 true",
+    "next_step": "保存文件后运行: npm run generate-post [此文件路径]",
+    "fields_explanation": {
+      "title": "活动标题",
+      "time_display": "显示用的时间格式",
+      "location": "活动地点",
+      "price": "票价信息",
+      "event_type": "AI识别的活动类型",
+      "priority": "优先级分数 (越高越重要)",
+      "chinese_relevant": "是否与中文社区相关",
+      "original_url": "原始活动链接"
+    }
+  },
+  "stats": {
+    "total_candidates": 40,
+    "by_type": {
+      "festival": 2,
+      "market": 7,
+      "free": 28,
+      "art": 2,
+      "other": 1
+    },
+    "by_priority": {
+      "3": 1,
+      "5": 2,
+      "9": 28,
+      "10": 9
+    },
+    "chinese_relevant": 0
+  },
+  "events": [
+    {
+      "id": 1,
+      "selected": false,
+      "title": "San Francisco Aerial Arts Festival 2026 (Fort Mason)",
+      "time_display": "Friday 08/07 7:30 PM - 8:30 PM",
+      "location": "Fort Mason Center for Arts & Culture, San Francisco",
+      "price": "$15*",
+      "event_type": "festival",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/san-francisco-aerial-arts-festival-2026-fort-mason/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2026-07-27T17:43:08.152Z"
+    },
+    {
+      "id": 2,
+      "selected": false,
+      "title": "Circus Æternus: 15+ DJs, Carnival Games, Silent Disco + Live Art Party (The Midway)",
+      "time_display": "Friday 08/07 9:00 PM - 3:00 AM",
+      "location": "The Midway, San Francisco",
+      "price": "$29*",
+      "event_type": "festival",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/circus-ternus-15-djs-carnival-games-silent-disco-live-art-party-midway/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2026-07-27T17:43:08.152Z"
+    },
+    {
+      "id": 3,
+      "selected": false,
+      "title": "Live Music",
+      "time_display": "Monday 08/03 6:00 PM - 9:00 PM",
+      "location": "San Pedro Square Market, 87 N San Pedro St, San Jose, CA",
+      "price": "Check event page",
+      "event_type": "market",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://sjdowntown.com/event/live-music/2026-08-03/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Experience live music at San Pedro Square Market six days a week! Explore our calendar for the full ...",
+      "description_detail": null,
+      "source": "sjdowntown",
+      "scraped_at": "2026-07-27T17:43:00.944Z"
+    },
+    {
+      "id": 4,
+      "selected": false,
+      "title": "Live Music",
+      "time_display": "Tuesday 08/04 6:00 PM - 9:00 PM",
+      "location": "San Pedro Square Market, 87 N San Pedro St, San Jose, CA",
+      "price": "Check event page",
+      "event_type": "market",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://sjdowntown.com/event/live-music/2026-08-04/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Experience live music at San Pedro Square Market six days a week! Explore our calendar for the full ...",
+      "description_detail": null,
+      "source": "sjdowntown",
+      "scraped_at": "2026-07-27T17:43:00.948Z"
+    },
+    {
+      "id": 5,
+      "selected": false,
+      "title": "Live Music",
+      "time_display": "Wednesday 08/05 6:00 PM - 9:00 PM",
+      "location": "San Pedro Square Market, 87 N San Pedro St, San Jose, CA",
+      "price": "Check event page",
+      "event_type": "market",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://sjdowntown.com/event/live-music/2026-08-05/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Experience live music at San Pedro Square Market six days a week! Explore our calendar for the full ...",
+      "description_detail": null,
+      "source": "sjdowntown",
+      "scraped_at": "2026-07-27T17:43:00.949Z"
+    },
+    {
+      "id": 6,
+      "selected": false,
+      "title": "King Trivia Night",
+      "time_display": "Wednesday 08/05 7:00 PM - 8:00 PM",
+      "location": "SoFA Market, 387 S 1st Street, San Jose, CA",
+      "price": "Check event page",
+      "event_type": "market",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://sjdowntown.com/event/king-trivia-night/2026-08-05/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Your weekly excuse to eat, drink, and outsmart everyone in the room. 👑🧠 Trivia night at SoFA Marke...",
+      "description_detail": null,
+      "source": "sjdowntown",
+      "scraped_at": "2026-07-27T17:43:00.949Z"
+    },
+    {
+      "id": 7,
+      "selected": false,
+      "title": "Live Music",
+      "time_display": "Thursday 08/06 6:00 PM - 9:00 PM",
+      "location": "San Pedro Square Market, 87 N San Pedro St, San Jose, CA",
+      "price": "Check event page",
+      "event_type": "market",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://sjdowntown.com/event/live-music/2026-08-06/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Experience live music at San Pedro Square Market six days a week! Explore our calendar for the full ...",
+      "description_detail": null,
+      "source": "sjdowntown",
+      "scraped_at": "2026-07-27T17:43:00.950Z"
+    },
+    {
+      "id": 8,
+      "selected": false,
+      "title": "Live Music",
+      "time_display": "Friday 08/07 6:00 PM - 9:00 PM",
+      "location": "San Pedro Square Market, 87 N San Pedro St, San Jose, CA",
+      "price": "Check event page",
+      "event_type": "market",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://sjdowntown.com/event/live-music/2026-08-07/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Experience live music at San Pedro Square Market six days a week! Explore our calendar for the full ...",
+      "description_detail": null,
+      "source": "sjdowntown",
+      "scraped_at": "2026-07-27T17:43:00.950Z"
+    },
+    {
+      "id": 9,
+      "selected": false,
+      "title": "Live Music",
+      "time_display": "Saturday 08/08 6:00 PM - 9:00 PM",
+      "location": "San Pedro Square Market, 87 N San Pedro St, San Jose, CA",
+      "price": "Check event page",
+      "event_type": "market",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://sjdowntown.com/event/live-music/2026-08-08/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Experience live music at San Pedro Square Market six days a week! Explore our calendar for the full ...",
+      "description_detail": null,
+      "source": "sjdowntown",
+      "scraped_at": "2026-07-27T17:43:00.950Z"
+    },
+    {
+      "id": 10,
+      "selected": false,
+      "title": "Matcha ShowdownThe Commons - KQED Headquarters",
+      "time_display": "Tuesday 08/04 7:00 PM",
+      "location": "2601 Mariposa Street, San Francisco, CA",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.tixr.com/groups/kqed/events/matcha-showdown-192697",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "sfstation",
+      "scraped_at": "2026-07-27T17:43:31.673Z"
+    },
+    {
+      "id": 11,
+      "selected": false,
+      "title": "Nengi Omuku: The Gatheringde Young Museum",
+      "time_display": "Tuesday 08/04 9:30 AM",
+      "location": "50 Hagiwara Tea Garden Drive, San Francisco, CA",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.famsf.org/exhibitions/nengi-omuku",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "sfstation",
+      "scraped_at": "2026-07-27T17:43:31.673Z"
+    },
+    {
+      "id": 12,
+      "selected": false,
+      "title": "Perfect Pairing | Wine & Watch: \"The Lion King\" (1994) with Frank Family VineyardsThe Walt Disney Family Museum",
+      "time_display": "Wednesday 08/05 6:00 PM",
+      "location": "104 Montgomery Street, San Francisco, CA",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.waltdisney.org/education/films/perfect-pairing-wine-watch-lion-king-1994-frank-family-vineyards",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "sfstation",
+      "scraped_at": "2026-07-27T17:43:31.673Z"
+    },
+    {
+      "id": 13,
+      "selected": false,
+      "title": "Introductions 2026: A Showcase of Emerging Bay Area ArtistsRoot Division",
+      "time_display": "Wednesday 08/05 6:00 PM",
+      "location": "1131 Mission Street, San Francisco, CA",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://rootdivision.org/civicrm/event/register/?reset=1&id=2073",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "sfstation",
+      "scraped_at": "2026-07-27T17:43:31.673Z"
+    },
+    {
+      "id": 14,
+      "selected": false,
+      "title": "AUSTIN TVRickshaw Stop",
+      "time_display": "Wednesday 08/05 8:00 PM",
+      "location": "155 Fell Street, San Francisco, CA",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventim.us/event/austin-tv/692765",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "sfstation",
+      "scraped_at": "2026-07-27T17:43:31.673Z"
+    },
+    {
+      "id": 15,
+      "selected": false,
+      "title": "Hidden CurrentsAudium Theater of Sound",
+      "time_display": "Thursday 08/06 8:00 PM",
+      "location": "1616 Bush Street, San Francisco, CA",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.cityboxoffice.com/eventperformances.asp?evt=1760",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "sfstation",
+      "scraped_at": "2026-07-27T17:43:31.673Z"
+    },
+    {
+      "id": 16,
+      "selected": false,
+      "title": "Downtown First Thursdays (DFT)2nd Street between Market and Folsom",
+      "time_display": "Thursday 08/06 5:00 PM",
+      "location": "2nd Street at Minna, San Francisco, CA",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/downtown-first-thursdays-w-peaches-christs-variety-show-jul-2-2026-tickets-1980042444252",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "sfstation",
+      "scraped_at": "2026-07-27T17:43:31.673Z"
+    },
+    {
+      "id": 17,
+      "selected": false,
+      "title": "¥ØU$UK€ ¥UK1MAT$U - Outside Lands Night Show1015 Folsom",
+      "time_display": "Thursday 08/06 9:00 PM",
+      "location": "1015 Folsom Street, San Francisco, CA",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventim.us/event/yenoudollarukeuro-yenuk1matdollaru/696335",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "sfstation",
+      "scraped_at": "2026-07-27T17:43:31.673Z"
+    },
+    {
+      "id": 18,
+      "selected": false,
+      "title": "Lionel Richie with Earth, Wind & Fire - Sing A Song All Night Long TourChase Center",
+      "time_display": "Thursday 08/06 7:30 PM",
+      "location": "1 Warriors Way, San Francisco, CA",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://ticketmaster.evyy.net/c/253558/264167/4272?u=https%3A%2F%2Fwww.ticketmaster.com%2Flionel-richie-tickets%2Fartist%2F735972",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "sfstation",
+      "scraped_at": "2026-07-27T17:43:31.673Z"
+    },
+    {
+      "id": 19,
+      "selected": false,
+      "title": "Circus ÆternusThe Midway",
+      "time_display": "Friday 08/07 9:00 PM",
+      "location": "900 Marin Street, San Francisco, CA",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.lu.ma/circus",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "sfstation",
+      "scraped_at": "2026-07-27T17:43:31.673Z"
+    },
+    {
+      "id": 20,
+      "selected": false,
+      "title": "Opening Night Celebration for “GaHee Park: Behind the Curtain”Yerba Buena Center for the Arts (YBCA)",
+      "time_display": "Friday 08/07 6:00 PM",
+      "location": "701 Mission Street, San Francisco, CA",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://bit.ly/3SNlaFP",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "sfstation",
+      "scraped_at": "2026-07-27T17:43:31.673Z"
+    },
+    {
+      "id": 21,
+      "selected": false,
+      "title": "National Night Out Martinez",
+      "time_display": "Tuesday 08/04 5:30 PM - 9:00 PM",
+      "location": "Martinez Waterfront Park, East Bay",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/national-night-martinez-2/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2026-07-27T17:43:08.152Z"
+    },
+    {
+      "id": 22,
+      "selected": false,
+      "title": "Walnut Creek’s Locust Street Festival 2026",
+      "time_display": "Wednesday 08/05 5:00 PM - 8:30 PM",
+      "location": "Walnut Creek Downtown, San Francisco Bay Area",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/walnut-creeks-locust-street-festival-2026-2/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Mark your calendars for an epic street festival series, once a month on Wednesday evenings in July a...",
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2026-07-27T17:43:08.152Z"
+    },
+    {
+      "id": 23,
+      "selected": false,
+      "title": "Lunchtime Concert w/ Fely Tchaco (Yerba Buena Gardens Festival 2026)",
+      "time_display": "Thursday 08/06 12:30 PM - 1:30 PM",
+      "location": "Great Lawn, Yerba Buena Gardens, San Francisco Bay Area",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/lunchtime-concert-w-fely-tchaco-yerba-buena-gardens-festival-2026/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2026-07-27T17:43:08.152Z"
+    },
+    {
+      "id": 24,
+      "selected": false,
+      "title": "Edgardo Cambón’s 40th Anniversary at Yerba Buena Gardens Festival 2026",
+      "time_display": "Thursday 08/06 6:00 PM - 7:30 PM",
+      "location": "Great Lawn, Yerba Buena Gardens, San Francisco Bay Area",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/edgardo-cambons-40th-anniversary-at-yerba-buena-gardens-festival-2026/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2026-07-27T17:43:08.152Z"
+    },
+    {
+      "id": 25,
+      "selected": false,
+      "title": "SF’s Free DFT Monthly Block Party: “Downtown First Thursdays” (2026)",
+      "time_display": "Thursday 08/06 5:00 PM - 10:00 PM",
+      "location": "2nd Street between Market and Howard Streets, San Francisco Bay Area",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/sfs-free-dft-monthly-block-party-downtown-first-thursdays-2026-7/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Downtown First Thursdays is back in 2026 for a full year of street parties in 2026, starting Jan 1, ...",
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2026-07-27T17:43:08.152Z"
+    },
+    {
+      "id": 26,
+      "selected": false,
+      "title": "Eddie Madril (Kids’ Show) at Yerba Buena Gardens Festival 2026",
+      "time_display": "Friday 08/07 11:00 AM - 12:30 PM",
+      "location": "Yerba Buena Gardens, Children’s Garden, San Francisco Bay Area",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/eddie-madril-kids-show-at-yerba-buena-gardens-festival-2026/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2026-07-27T17:43:08.152Z"
+    },
+    {
+      "id": 27,
+      "selected": false,
+      "title": "Pleasant Hill Night Market: Food, Music & Performances",
+      "time_display": "Friday 08/07 5:00 PM - 9:00 PM",
+      "location": "Chilpancingo Park, San Francisco Bay Area",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/pleasant-hills-new-night-market-7/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Pleasant Hill Night Market Will Return in May 2026 After a successful first season, the Night Market...",
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2026-07-27T17:43:08.152Z"
+    },
+    {
+      "id": 28,
+      "selected": false,
+      "title": "3rd Annual Dancing Under the Lights: Free Street Party + Neon Velvet (San Rafael)",
+      "time_display": "Friday 08/07 5:00 PM - 9:00 PM",
+      "location": "Downtown San Rafael",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/3rd-annual-dancing-lights-free-street-party-neon-velvet-san-rafael/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2026-07-27T17:43:08.152Z"
+    },
+    {
+      "id": 29,
+      "selected": false,
+      "title": "SF’s “Pistahan” 2026 (Yerba Buena Gardens Festival)",
+      "time_display": "Saturday 08/08 11:00 AM - 5:00 PM",
+      "location": "Yerba Buena Gardens (Esplanade), San Francisco Bay Area",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/sfs-pistahan-2025-yerba-buena-gardens-festival/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2026-07-27T17:43:08.152Z"
+    },
+    {
+      "id": 30,
+      "selected": false,
+      "title": "Live on Larkin: Free Street Fest 2026 (Tenderloin)",
+      "time_display": "Saturday 08/08 12:00 PM - 5:00 PM",
+      "location": "Larkin St (between Eliis & Eddy), San Francisco Bay Area",
+      "price": "Check event page",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/live-on-larkin-free-street-fest-2026-tenderloin/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Live on Larkin – a new series of free street events on Larkin Street. Check out live music, performa...",
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2026-07-27T17:43:08.170Z"
+    },
+    {
+      "id": 31,
+      "selected": false,
+      "title": "“STEM Play and Bubble Day” Free Festival at The Village at San Antonio Center",
+      "time_display": "Saturday 08/08 4:00 PM - 6:00 PM",
+      "location": "The Village at San Antonio Center, San Francisco Bay Area",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/stem-play-and-bubble-day-free-festival-at-the-village-at-san-antonio-center/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2026-07-27T17:43:08.170Z"
+    },
+    {
+      "id": 32,
+      "selected": false,
+      "title": "Bay Area Aloha Festival (San Mateo)",
+      "time_display": "Saturday 08/08 10:00 AM - 5:00 PM",
+      "location": "San Mateo County Event Center",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/bay-area-aloha-festival-san-mateo/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2026-07-27T17:43:08.170Z"
+    },
+    {
+      "id": 33,
+      "selected": false,
+      "title": "Karaoke Night",
+      "time_display": "Monday 08/03 9:00 PM - Tuesday 08/04 1:30 AM",
+      "location": "O&#8217;Flaherty&#8217;s Irish Pub, 25 N San Pedro St., San Jose, CA",
+      "price": "Check event page",
+      "event_type": "art",
+      "priority": 5,
+      "chinese_relevant": false,
+      "original_url": "https://sjdowntown.com/event/karaoke-night-2/2026-08-03/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Come sing your heart out! Join us for Karaoke every Sunday & Monday from 9pm to close.",
+      "description_detail": null,
+      "source": "sjdowntown",
+      "scraped_at": "2026-07-27T17:43:00.947Z"
+    },
+    {
+      "id": 34,
+      "selected": false,
+      "title": "Live Music Wednesdays at Coastal Manor",
+      "time_display": "Wednesday 08/05 7:30 PM - 9:30 PM",
+      "location": "Downtown San Jose Marriott Hotel, 301 S. Market Street, San Jose, CA",
+      "price": "Check event page",
+      "event_type": "art",
+      "priority": 5,
+      "chinese_relevant": false,
+      "original_url": "https://sjdowntown.com/event/live-music-wednesdays-at-coastal-manor/2026-08-05/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Ease into the week with live music every Wednesday night at Coastal Manor, inside the San Jose Marri...",
+      "description_detail": null,
+      "source": "sjdowntown",
+      "scraped_at": "2026-07-27T17:43:00.949Z"
+    },
+    {
+      "id": 35,
+      "selected": false,
+      "title": "Trivia Night",
+      "time_display": "Wednesday 08/05 8:00 PM - 10:00 PM",
+      "location": "O&#8217;Flaherty&#8217;s Irish Pub, 25 N San Pedro St., San Jose, CA",
+      "price": "Check event page",
+      "event_type": "other",
+      "priority": 3,
+      "chinese_relevant": false,
+      "original_url": "https://sjdowntown.com/event/trivia-night/2026-08-05/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Put your thinking caps on… It’s Trivia Night! Join us for Trivia every Wednesday from 8pm to 10pm.",
+      "description_detail": null,
+      "source": "sjdowntown",
+      "scraped_at": "2026-07-27T17:43:00.950Z"
+    },
+    {
+      "id": 36,
+      "selected": false,
+      "title": "Pistahan 2026: SF’s Filipino Cultural Festival & Parade (Aug. 8-9)",
+      "time_display": "Saturday 08/08 11:00 AM - 5:00 PM",
+      "location": "Yerba Buena Gardens (Esplanade), San Francisco Bay Area",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/pistahan-2026-sfs-filipino-cultural-festival-parade-aug-8-9/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "The Bay Area’s biggest Filipino celebration returns to San Francisco this August with two days of cu...",
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2026-07-27T17:43:08.170Z"
+    },
+    {
+      "id": 37,
+      "selected": false,
+      "title": "SF’s “Inner Sunset Flea Market” 2026 w/ Sunset Mercantile (Every 2nd Sunday)",
+      "time_display": "Sunday 08/09 10:00 AM - 4:00 PM",
+      "location": "Inner Sunset, San Francisco Bay Area",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/sfs-inner-sunset-flea-market-2026-w-sunset-mercantile-every-2nd-sunday-4/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "The Inner Sunset Flea Market is back for its 11th season on April 12th! Launched in collaboration wi...",
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2026-07-27T17:43:08.170Z"
+    },
+    {
+      "id": 38,
+      "selected": false,
+      "title": "Second Day of Pistahan (Yerba Buena Gardens Festival 2026)",
+      "time_display": "Sunday 08/09 11:00 AM - 5:00 PM",
+      "location": "Yerba Buena Gardens (Esplanade), San Francisco Bay Area",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/second-day-of-pistahan-yerba-buena-gardens-festival-2025/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2026-07-27T17:43:08.170Z"
+    },
+    {
+      "id": 39,
+      "selected": false,
+      "title": "Contra Costa Vintage Market in Lafayette",
+      "time_display": "Sunday 08/09 10:00 AM - 3:00 PM",
+      "location": "Vintage Vida, East Bay",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/contra-costa-vintage-market-lafayette/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2026-07-27T17:43:08.170Z"
+    },
+    {
+      "id": 40,
+      "selected": false,
+      "title": "Downtown Farmers’ Market",
+      "time_display": "Wednesday 08/05 9:00 AM - 1:30 PM",
+      "location": "Hammer Theatre Center, 101 Paseo De San Antonio, San Jose, CA",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sjdowntown.com/event/downtown-farmers-market-2/2026-08-05/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Enjoy fresh produce, baked goods, local artisans, and delicious prepared foods from your favorite lo...",
+      "description_detail": null,
+      "source": "sjdowntown",
+      "scraped_at": "2026-07-27T17:43:00.948Z"
+    }
+  ]
+}
