@@ -1,0 +1,885 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>关系体检报告 · 本地运行</title>
+<meta name="description" content="上传双人聊天记录，本地解析对话结构——发起、延迟、节奏与对称性，全程在浏览器内运行，不上传任何内容。">
+<style>
+:root{
+  --paper:#EDEFF2;
+  --card:#FFFFFF;
+  --ink:#15171D;
+  --ink-2:#454B57;
+  --muted:#7C838F;
+  --rule:#D8DCE3;
+  --rule-soft:#E7EAEF;
+  --a:#2F4FA2;        /* riso indigo  */
+  --a-soft:#DDE3F3;
+  --b:#BE3E6B;        /* riso magenta */
+  --b-soft:#F6DEE6;
+  --mono:ui-monospace,"SF Mono",Menlo,Consolas,"Liberation Mono",monospace;
+  --cjk:"PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans SC",system-ui,sans-serif;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{
+  background:var(--paper);
+  color:var(--ink);
+  font-family:var(--cjk);
+  font-size:14px;
+  line-height:1.75;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:900px;margin:0 auto;padding:40px 20px 96px}
+
+/* ---------- type roles ---------- */
+.eyebrow{
+  font-family:var(--mono);
+  font-size:10.5px;
+  letter-spacing:.2em;
+  text-transform:uppercase;
+  color:var(--muted);
+  display:block;
+  margin:0 0 10px;
+}
+h1{
+  font-size:clamp(28px,5.4vw,40px);
+  font-weight:800;
+  letter-spacing:-.02em;
+  line-height:1.2;
+  margin:0 0 12px;
+}
+h2{
+  font-size:17px;
+  font-weight:700;
+  letter-spacing:-.01em;
+  margin:0 0 4px;
+}
+.lede{color:var(--ink-2);max-width:56ch;margin:0}
+.note{font-size:12.5px;color:var(--muted);line-height:1.7}
+.num{
+  font-variant-numeric:tabular-nums;
+  font-feature-settings:"tnum";
+}
+
+/* ---------- intake ---------- */
+header.intake{margin-bottom:32px}
+.drop{
+  margin-top:26px;
+  background:var(--card);
+  border:1px dashed var(--rule);
+  border-radius:3px;
+  padding:34px 24px;
+  text-align:center;
+  transition:border-color .15s, background .15s;
+}
+.drop.hot{border-color:var(--a);background:var(--a-soft)}
+.btn{
+  font-family:var(--cjk);
+  font-size:13.5px;
+  font-weight:600;
+  color:var(--card);
+  background:var(--ink);
+  border:0;
+  border-radius:2px;
+  padding:10px 20px;
+  cursor:pointer;
+}
+.btn:hover{background:var(--a)}
+.btn.ghost{background:transparent;color:var(--ink-2);border:1px solid var(--rule)}
+.btn.ghost:hover{background:var(--card);color:var(--ink);border-color:var(--ink)}
+.btn:focus-visible,.drop:focus-visible,select:focus-visible,input:focus-visible{outline:2px solid var(--a);outline-offset:2px}
+.drop .hint{margin-top:14px}
+.row{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+
+.privacy{
+  margin-top:18px;
+  display:flex;gap:9px;align-items:flex-start;
+  font-size:12.5px;color:var(--ink-2);
+  border-left:2px solid var(--a);
+  padding-left:12px;
+}
+
+/* ---------- report shell ---------- */
+#report{display:none}
+#report.on{display:block}
+section{
+  background:var(--card);
+  border:1px solid var(--rule-soft);
+  border-radius:3px;
+  padding:26px 24px;
+  margin-bottom:14px;
+}
+.sec-head{margin-bottom:20px}
+
+/* ---------- participants ---------- */
+.who{display:flex;flex-wrap:wrap;gap:22px;align-items:flex-end}
+.who .p{flex:1 1 200px;min-width:180px}
+.tag{
+  display:inline-flex;align-items:center;gap:7px;
+  font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;
+  color:var(--muted);text-transform:uppercase;
+}
+.swatch{width:9px;height:9px;border-radius:50%;display:inline-block}
+.sw-a{background:var(--a)}.sw-b{background:var(--b)}
+.who input{
+  width:100%;margin-top:5px;
+  font-family:var(--cjk);font-size:19px;font-weight:700;
+  color:var(--ink);background:transparent;
+  border:0;border-bottom:1px solid var(--rule);
+  padding:2px 0 5px;
+}
+.span-facts{
+  display:flex;gap:28px;flex-wrap:wrap;
+  margin-top:22px;padding-top:18px;border-top:1px solid var(--rule-soft);
+}
+.fact .k{font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;color:var(--muted);text-transform:uppercase}
+.fact .v{font-size:20px;font-weight:300;letter-spacing:-.02em;line-height:1.3}
+.fact .v b{font-weight:600;font-size:20px}
+
+/* ---------- signature: pulse ---------- */
+.pulse-wrap{margin:0 -6px}
+svg{display:block;width:100%;height:auto;overflow:visible}
+.axis-line{stroke:var(--rule);stroke-width:1}
+.tick-txt{font-family:var(--mono);font-size:9px;fill:var(--muted);letter-spacing:.06em}
+.gap-band{fill:var(--paper)}
+.gap-txt{font-family:var(--mono);font-size:8.5px;fill:var(--muted)}
+
+/* ---------- split ratios ---------- */
+.ratios{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:2px;background:var(--rule-soft)}
+.ratio{background:var(--card);padding:18px 16px}
+.ratio .k{font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;color:var(--muted);text-transform:uppercase;display:block}
+.ratio .pair{display:flex;align-items:baseline;gap:6px;margin:8px 0 10px}
+.ratio .big{font-size:34px;font-weight:300;letter-spacing:-.035em;line-height:1}
+.ratio .sep{color:var(--rule);font-size:20px;font-weight:200}
+.ratio .unit{font-family:var(--mono);font-size:10px;color:var(--muted);margin-left:auto;letter-spacing:.1em}
+.va{color:var(--a)}.vb{color:var(--b)}
+.bar{height:5px;display:flex;background:var(--b);border-radius:0}
+.bar i{display:block;background:var(--a);height:100%}
+.ratio .cap{font-size:12px;color:var(--ink-2);margin-top:9px;line-height:1.6}
+
+/* ---------- controls ---------- */
+.ctl{display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-size:12.5px;color:var(--ink-2)}
+select{
+  font-family:var(--mono);font-size:12px;
+  border:1px solid var(--rule);background:var(--card);color:var(--ink);
+  padding:5px 8px;border-radius:2px;
+}
+
+/* ---------- generic chart caption ---------- */
+.legend{display:flex;gap:16px;flex-wrap:wrap;margin-top:14px}
+.legend span{display:inline-flex;align-items:center;gap:6px;font-size:12px;color:var(--ink-2)}
+
+/* ---------- tables ---------- */
+table{width:100%;border-collapse:collapse;font-size:13px}
+th,td{text-align:left;padding:9px 8px;border-bottom:1px solid var(--rule-soft)}
+th{font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:400}
+td.n{text-align:right;font-variant-numeric:tabular-nums}
+tr:last-child td{border-bottom:0}
+
+/* ---------- keywords ---------- */
+.kw{display:flex;flex-wrap:wrap;gap:7px}
+.kw b{
+  font-weight:500;font-size:13px;
+  border:1px solid var(--rule);border-radius:2px;
+  padding:4px 9px;color:var(--ink-2);
+}
+.kw b em{font-style:normal;font-family:var(--mono);font-size:10px;color:var(--muted);margin-left:5px}
+
+/* ---------- boundary ---------- */
+.boundary{background:transparent;border:1px solid var(--rule);}
+.boundary ul{margin:10px 0 0;padding-left:18px;color:var(--ink-2);font-size:13px}
+.boundary li{margin-bottom:5px}
+
+.err{
+  background:var(--b-soft);border:1px solid var(--b);color:#7A2544;
+  padding:14px 16px;border-radius:3px;margin-top:18px;font-size:13px;display:none;
+}
+.err.on{display:block}
+footer{margin-top:40px;text-align:center}
+
+@media (max-width:560px){
+  .wrap{padding:28px 14px 70px}
+  section{padding:20px 16px}
+  .span-facts{gap:18px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+@media print{
+  body{background:#fff}
+  header.intake,footer,.ctl{display:none}
+  section{break-inside:avoid;border-color:#ccc}
+}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+<header class="intake">
+  <span class="eyebrow">本地运行 · 无网络请求 · 无大模型</span>
+  <h1>关系体检报告</h1>
+  <p class="lede">上传一份双人聊天记录，读出对话里的结构：谁先开口、谁先收尾、谁等得更久、热度在哪个月开始掉。全部是计数和时间差，不做语义判断。</p>
+
+  <div class="drop" id="drop" tabindex="0" role="button" aria-label="选择或拖入聊天记录文件">
+    <div class="row">
+      <button class="btn" id="pick">选择 .txt 文件</button>
+      <button class="btn ghost" id="demo">载入示例数据</button>
+    </div>
+    <p class="note hint">或把文件拖到这里 · 支持 QQ 导出格式，自动识别 UTF-8 / GBK</p>
+    <input type="file" id="file" accept=".txt,.log,text/plain" hidden>
+  </div>
+
+  <p class="privacy"><span>解析全程在你的浏览器里完成。这个页面没有服务器，关掉标签页数据就没了。</span></p>
+  <div class="err" id="err"></div>
+</header>
+
+<main id="report">
+
+  <section>
+    <div class="who">
+      <div class="p">
+        <span class="tag"><i class="swatch sw-a"></i>参与者 A</span>
+        <input id="nameA" aria-label="参与者 A 的显示名">
+      </div>
+      <div class="p">
+        <span class="tag"><i class="swatch sw-b"></i>参与者 B</span>
+        <input id="nameB" aria-label="参与者 B 的显示名">
+      </div>
+    </div>
+    <p class="note" style="margin-top:10px">改成任意代号即可安全截图。</p>
+    <div class="span-facts" id="facts"></div>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <span class="eyebrow">Signature</span>
+      <h2>对话脉搏</h2>
+      <p class="note">每一道竖线是一次发言，长度代表字数。轴上是 A，轴下是 B。灰色带是双方都没说话的时段。</p>
+    </div>
+    <div class="pulse-wrap"><svg id="pulse" viewBox="0 0 1000 210" aria-label="双向对话时间轴"></svg></div>
+    <div class="legend" id="pulseLegend"></div>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <span class="eyebrow">01 · 投入与主动</span>
+      <h2>四个比值</h2>
+      <div class="ctl" style="margin-top:12px">
+        <label for="gap">会话切分阈值</label>
+        <select id="gap">
+          <option value="2">2 小时</option>
+          <option value="4" selected>4 小时</option>
+          <option value="6">6 小时</option>
+          <option value="8">8 小时</option>
+          <option value="12">12 小时</option>
+        </select>
+        <span class="note">静默超过这个时长就算一段新对话。发起与收尾会随它变化，多试几个值。</span>
+      </div>
+    </div>
+    <div class="ratios" id="ratios"></div>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <span class="eyebrow">02 · 响应性</span>
+      <h2>回复延迟分布</h2>
+      <p class="note">对方说完到你接话之间隔了多久。左侧是 A 的等待表现，右侧是 B 的。用中位数看，均值会被几次长尾拖垮。</p>
+    </div>
+    <svg id="latency" viewBox="0 0 1000 300" aria-label="回复延迟分布直方图"></svg>
+    <div id="latStats" class="legend"></div>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <span class="eyebrow">03 · 节奏</span>
+      <h2>作息与热度</h2>
+      <p class="note">上：一天 24 小时里各自的发言密度。下：逐月消息量，关系升温和降温的拐点通常肉眼可见。</p>
+    </div>
+    <svg id="clock" viewBox="0 0 1000 150" aria-label="24 小时发言密度"></svg>
+    <svg id="monthly" viewBox="0 0 1000 230" style="margin-top:26px" aria-label="逐月消息量曲线"></svg>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <span class="eyebrow">04 · 对称性</span>
+      <h2>提问、应答与沉默</h2>
+    </div>
+    <table id="symTable"></table>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <span class="eyebrow">05 · 内容</span>
+      <h2>高频词与消息构成</h2>
+      <p class="note">词是用字符 n-gram 统计出来的，没有分词模型，会有零星噪音。</p>
+    </div>
+    <div id="kwBlock"></div>
+  </section>
+
+  <section class="boundary">
+    <span class="eyebrow">读之前</span>
+    <h2>这份报告不做什么</h2>
+    <ul>
+      <li>不判断谁对谁错，也不给关系下结论。它只呈现结构，解释权在你。</li>
+      <li>识别不了反讽、玩笑、暗示和言外之意——那需要语言模型。</li>
+      <li>比值受聊天平台习惯影响：习惯连发短句的人条数天然更高，所以字数比通常比条数比更可信。</li>
+      <li>跨时区的两个人，作息图会失真。线下见面频繁的时期，聊天量下降不代表关系变冷。</li>
+    </ul>
+    <div class="ctl" style="margin-top:20px">
+      <button class="btn ghost" onclick="window.print()">打印 / 存为 PDF</button>
+      <button class="btn ghost" id="copy">复制数据摘要</button>
+    </div>
+  </section>
+
+</main>
+
+<footer><p class="note">原型 v0.1 · 全部计算在本地完成</p></footer>
+</div>
+
+<script>
+"use strict";
+
+/* ============================ 解析 ============================ */
+
+const PATTERNS = [
+  // 2026-01-01 12:00:00 '昵称'
+  /^(\d{4})-(\d{2})-(\d{2})[ T](\d{1,2}):(\d{2}):(\d{2})\s+'(.*)'\s*$/,
+  // 2026-01-01 12:00:00 昵称(12345)  /  昵称<mail@x>
+  /^(\d{4})-(\d{2})-(\d{2})[ T](\d{1,2}):(\d{2}):(\d{2})\s+(.+?)\s*$/,
+  // 2026/1/1 12:00:00 昵称
+  /^(\d{4})\/(\d{1,2})\/(\d{1,2})\s+(\d{1,2}):(\d{2}):(\d{2})\s+(.+?)\s*$/,
+  // 2026/1/1 12:00 昵称
+  /^(\d{4})\/(\d{1,2})\/(\d{1,2})\s+(\d{1,2}):(\d{2})\s+(.+?)\s*$/
+];
+
+function cleanName(raw){
+  return raw
+    .replace(/\((?:\d{5,}|[^()]*@[^()]*)\)\s*$/, "")
+    .replace(/<[^>]*>\s*$/, "")
+    .trim();
+}
+
+function parse(text){
+  const lines = text.split(/\r?\n/);
+  const msgs = [];
+  let cur = null;
+
+  for (const ln of lines){
+    let hit = null;
+    for (let pi = 0; pi < PATTERNS.length; pi++){
+      const m = PATTERNS[pi].exec(ln);
+      if (!m) continue;
+      const hasSec = pi !== 3;
+      const name = cleanName(hasSec ? m[7] : m[6]);
+      if (!name || name.length > 40) continue;
+      const t = new Date(+m[1], +m[2]-1, +m[3], +m[4], hasSec ? +m[5] : +m[5], hasSec ? +m[6] : 0);
+      if (isNaN(t)) continue;
+      hit = { t, who: name, body: [] };
+      break;
+    }
+    if (hit){ if (cur) msgs.push(cur); cur = hit; }
+    else if (cur) cur.body.push(ln);
+  }
+  if (cur) msgs.push(cur);
+
+  for (const m of msgs) m.text = m.body.join("\n").trim();
+  return msgs.filter(m => m.text !== "" || true).sort((a,b) => a.t - b.t);
+}
+
+/* ============================ 指标 ============================ */
+
+const MEDIA = [
+  ["图片", /\[图片\]|\[表情\]|\[动画表情\]|<img|\[Photo\]/g],
+  ["语音", /\[语音\]|\[Audio\]/g],
+  ["视频", /\[视频\]|\[Video\]/g],
+  ["文件", /\[文件\]|\[链接\]|\[分享\]/g]
+];
+const MEDIA_ANY = /\[(图片|表情|动画表情|语音|视频|文件|链接|分享|位置|转账|红包)\]/g;
+
+function textLen(s){
+  return s.replace(MEDIA_ANY, "").replace(/https?:\/\/\S+/g, "").replace(/\s/g, "").length;
+}
+
+function build(msgs, A, B, gapHours){
+  const GAP = gapHours * 3600e3;
+  const two = msgs.filter(m => m.who === A || m.who === B);
+
+  // 发言轮次：同一人 60 秒内连发合并
+  const turns = [];
+  for (const m of two){
+    const last = turns[turns.length-1];
+    if (last && last.who === m.who && m.t - last.end <= 60e3){
+      last.end = m.t; last.msgs.push(m); last.len += textLen(m.text);
+    } else {
+      turns.push({ who: m.who, start: m.t, end: m.t, msgs: [m], len: textLen(m.text) });
+    }
+  }
+
+  // 会话
+  const sessions = [];
+  for (const tn of turns){
+    const s = sessions[sessions.length-1];
+    if (s && tn.start - s.end <= GAP){ s.turns.push(tn); s.end = tn.end; }
+    else sessions.push({ turns: [tn], start: tn.start, end: tn.end });
+  }
+
+  const z = () => ({ [A]:0, [B]:0 });
+  const st = {
+    msgs: z(), chars: z(), turns: z(), opens: z(), closes: z(),
+    questions: z(), qAnswered: z(), qAsked: z(), media: z(), recalls: z(),
+    hours: { [A]: new Array(24).fill(0), [B]: new Array(24).fill(0) },
+    lat: { [A]: [], [B]: [] },
+    monthly: {}
+  };
+
+  for (const m of two){
+    st.msgs[m.who]++;
+    st.chars[m.who] += textLen(m.text);
+    st.hours[m.who][m.t.getHours()]++;
+    if (MEDIA_ANY.test(m.text)) st.media[m.who]++;
+    MEDIA_ANY.lastIndex = 0;
+    if (/撤回/.test(m.text)) st.recalls[m.who]++;
+    const key = m.t.getFullYear() + "-" + String(m.t.getMonth()+1).padStart(2,"0");
+    if (!st.monthly[key]) st.monthly[key] = z();
+    st.monthly[key][m.who]++;
+  }
+
+  for (const tn of turns) st.turns[tn.who]++;
+  for (const s of sessions){
+    st.opens[s.turns[0].who]++;
+    st.closes[s.turns[s.turns.length-1].who]++;
+  }
+
+  // 回复延迟：换人时，前一轮结束 → 本轮开始
+  for (let i = 1; i < turns.length; i++){
+    const d = turns[i].start - turns[i-1].end;
+    if (d >= 0 && d < GAP) st.lat[turns[i].who].push(d);
+  }
+
+  // 提问与被应答（1 小时内对方接话即算应答）
+  for (let i = 0; i < two.length; i++){
+    const m = two[i];
+    if (!/[？?]/.test(m.text)) continue;
+    st.questions[m.who]++;
+    st.qAsked[m.who]++;
+    const other = m.who === A ? B : A;
+    for (let j = i+1; j < two.length; j++){
+      if (two[j].t - m.t > 3600e3) break;
+      if (two[j].who === other){ st.qAnswered[m.who]++; break; }
+    }
+  }
+
+  // 最长静默
+  let maxGap = 0, maxGapAt = null, maxGapAfter = null;
+  for (let i = 1; i < two.length; i++){
+    const d = two[i].t - two[i-1].t;
+    if (d > maxGap){ maxGap = d; maxGapAt = two[i-1].t; maxGapAfter = two[i-1].who; }
+  }
+
+  return { A, B, two, turns, sessions, st, maxGap, maxGapAt, maxGapAfter, GAP };
+}
+
+const median = a => { if (!a.length) return null; const s=[...a].sort((x,y)=>x-y); const m=s.length>>1;
+  return s.length%2 ? s[m] : (s[m-1]+s[m])/2; };
+const pct = (x,y) => (x+y) ? x/(x+y) : .5;
+
+function dur(ms){
+  if (ms == null) return "—";
+  const s = ms/1000;
+  if (s < 60) return Math.round(s) + " 秒";
+  if (s < 3600) return (s/60).toFixed(s < 600 ? 1 : 0) + " 分钟";
+  if (s < 86400) return (s/3600).toFixed(1) + " 小时";
+  return (s/86400).toFixed(1) + " 天";
+}
+const fmtDate = d => d.getFullYear() + "." + String(d.getMonth()+1).padStart(2,"0") + "." + String(d.getDate()).padStart(2,"0");
+const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+
+/* ============================ 渲染 ============================ */
+
+let MODEL = null, RAW = null;
+const $ = id => document.getElementById(id);
+const SVGNS = "http://www.w3.org/2000/svg";
+function el(tag, attrs, txt){
+  const n = document.createElementNS(SVGNS, tag);
+  for (const k in attrs) n.setAttribute(k, attrs[k]);
+  if (txt != null) n.textContent = txt;
+  return n;
+}
+const NA = () => $("nameA").value || MODEL.A;
+const NB = () => $("nameB").value || MODEL.B;
+
+function renderAll(){
+  renderFacts(); renderPulse(); renderRatios();
+  renderLatency(); renderClock(); renderMonthly();
+  renderSymmetry(); renderKeywords();
+}
+
+function renderFacts(){
+  const { two, sessions, st, A, B } = MODEL;
+  const days = Math.max(1, Math.round((two[two.length-1].t - two[0].t)/86400e3));
+  const items = [
+    ["时间跨度", fmtDate(two[0].t) + " – " + fmtDate(two[two.length-1].t)],
+    ["天数", `<b class="num">${days}</b> 天`],
+    ["消息总数", `<b class="num">${two.length.toLocaleString()}</b> 条`],
+    ["对话段数", `<b class="num">${sessions.length.toLocaleString()}</b> 段`],
+    ["日均", `<b class="num">${(two.length/days).toFixed(1)}</b> 条`]
+  ];
+  $("facts").innerHTML = items.map(([k,v]) =>
+    `<div class="fact"><div class="k">${k}</div><div class="v num">${v}</div></div>`).join("");
+}
+
+function renderPulse(){
+  const svg = $("pulse"); svg.innerHTML = "";
+  const { two, A } = MODEL;
+  const W = 1000, MID = 105, MAXH = 78;
+  const t0 = two[0].t.getTime(), t1 = two[two.length-1].t.getTime(), span = Math.max(1, t1 - t0);
+
+  // 沉默带（>3 天）
+  for (let i = 1; i < two.length; i++){
+    const d = two[i].t - two[i-1].t;
+    if (d < 3*86400e3) continue;
+    const x = (two[i-1].t.getTime()-t0)/span*W;
+    const w = d/span*W;
+    if (w < 1.2) continue;
+    svg.appendChild(el("rect", { x, y:14, width:w, height:182, class:"gap-band" }));
+    if (w > 34) svg.appendChild(el("text", {
+      x: x+w/2, y:12, "text-anchor":"middle", class:"gap-txt"
+    }, Math.round(d/86400e3) + "d"));
+  }
+
+  // 消息竖线
+  const step = two.length > 9000 ? Math.ceil(two.length/9000) : 1;
+  const maxLen = 140;
+  for (let i = 0; i < two.length; i += step){
+    const m = two[i];
+    const x = (m.t.getTime()-t0)/span*W;
+    const L = 5 + Math.min(1, Math.log(1+textLen(m.text))/Math.log(1+maxLen)) * MAXH;
+    const up = m.who === A;
+    svg.appendChild(el("line", {
+      x1:x, x2:x, y1:MID, y2: up ? MID-L : MID+L,
+      stroke: up ? "var(--a)" : "var(--b)",
+      "stroke-width": .7, "stroke-opacity": .5
+    }));
+  }
+
+  svg.appendChild(el("line", { x1:0, x2:W, y1:MID, y2:MID, class:"axis-line" }));
+
+  // 年月刻度
+  const ticks = [];
+  let cy = two[0].t.getFullYear(), cm = two[0].t.getMonth();
+  const stepM = span/86400e3 > 900 ? 6 : span/86400e3 > 400 ? 3 : 1;
+  for (let guard = 0; guard < 200; guard++){
+    const d = new Date(cy, cm, 1);
+    if (d > two[two.length-1].t) break;
+    if (d >= two[0].t) ticks.push(d);
+    cm += stepM; if (cm > 11){ cm -= 12; cy++; }
+  }
+  for (const d of ticks){
+    const x = (d.getTime()-t0)/span*W;
+    svg.appendChild(el("line", { x1:x, x2:x, y1:MID-3, y2:MID+3, class:"axis-line" }));
+    svg.appendChild(el("text", { x, y:MID+16, "text-anchor":"middle", class:"tick-txt" },
+      (d.getMonth() === 0 ? d.getFullYear() + "." : "") + String(d.getMonth()+1).padStart(2,"0")));
+  }
+
+  $("pulseLegend").innerHTML =
+    `<span><i class="swatch sw-a"></i>${esc(NA())}（轴上）</span>
+     <span><i class="swatch sw-b"></i>${esc(NB())}（轴下）</span>
+     <span class="note">竖线越长 = 那条消息越长</span>`;
+}
+
+function splitBar(a, b){
+  const p = pct(a,b)*100;
+  return `<div class="bar"><i style="width:${p.toFixed(1)}%"></i></div>`;
+}
+
+function renderRatios(){
+  const { st, A, B, sessions } = MODEL;
+  const mA = median(st.lat[A]), mB = median(st.lat[B]);
+  const cards = [
+    { k:"消息条数", a:st.msgs[A], b:st.msgs[B], unit:"条",
+      cap:"最表层的量，容易被连发习惯放大。" },
+    { k:"总字数", a:st.chars[A], b:st.chars[B], unit:"字",
+      cap:"比条数更能反映真实投入。" },
+    { k:"会话发起", a:st.opens[A], b:st.opens[B], unit:`${sessions.length} 段`,
+      cap:"谁在打破沉默。长期一边倒，说明维系成本落在一个人身上。" },
+    { k:"会话收尾", a:st.closes[A], b:st.closes[B], unit:`${sessions.length} 段`,
+      cap:"谁的话经常没等到回应。发起高 + 收尾高，是典型的单向追逐。" }
+  ];
+  let html = cards.map(c => `
+    <div class="ratio">
+      <span class="k">${c.k}</span>
+      <div class="pair">
+        <span class="big va num">${Math.round(c.a).toLocaleString()}</span>
+        <span class="sep">/</span>
+        <span class="big vb num">${Math.round(c.b).toLocaleString()}</span>
+        <span class="unit">${c.unit}</span>
+      </div>
+      ${splitBar(c.a, c.b)}
+      <p class="cap">${c.cap}</p>
+    </div>`).join("");
+
+  html += `
+    <div class="ratio">
+      <span class="k">回复延迟中位数</span>
+      <div class="pair">
+        <span class="big va num" style="font-size:26px">${dur(mA)}</span>
+        <span class="sep">/</span>
+        <span class="big vb num" style="font-size:26px">${dur(mB)}</span>
+      </div>
+      ${splitBar(mB || 1, mA || 1)}
+      <p class="cap">条越长表示回得越快。谁在等，一眼可见。</p>
+    </div>`;
+  $("ratios").innerHTML = html;
+}
+
+const BINS = [
+  ["<1分", 0, 60e3], ["1–5分", 60e3, 300e3], ["5–15分", 300e3, 900e3],
+  ["15–60分", 900e3, 3600e3], ["1–4时", 3600e3, 4*3600e3],
+  ["4–12时", 4*3600e3, 12*3600e3], ["12时+", 12*3600e3, Infinity]
+];
+
+function renderLatency(){
+  const svg = $("latency"); svg.innerHTML = "";
+  const { st, A, B } = MODEL;
+  const W = 1000, TOP = 30, ROW = 32, CX = 500, LABEL = 96, MAXW = (W - LABEL)/2 - 12;
+
+  const cnt = w => BINS.map(([,lo,hi]) => st.lat[w].filter(d => d >= lo && d < hi).length);
+  const ca = cnt(A), cb = cnt(B);
+  const tA = st.lat[A].length || 1, tB = st.lat[B].length || 1;
+  const peak = Math.max(...ca.map(v => v/tA), ...cb.map(v => v/tB), .01);
+
+  BINS.forEach(([lbl], i) => {
+    const y = TOP + i*ROW;
+    const wa = ca[i]/tA/peak*MAXW, wb = cb[i]/tB/peak*MAXW;
+    svg.appendChild(el("rect", { x: CX-LABEL/2-wa, y, width: Math.max(wa,0), height:18, fill:"var(--a)", "fill-opacity":.85 }));
+    svg.appendChild(el("rect", { x: CX+LABEL/2, y, width: Math.max(wb,0), height:18, fill:"var(--b)", "fill-opacity":.85 }));
+    svg.appendChild(el("text", { x:CX, y:y+13, "text-anchor":"middle", class:"tick-txt" }, lbl));
+    if (ca[i]) svg.appendChild(el("text", { x:CX-LABEL/2-wa-6, y:y+13, "text-anchor":"end", class:"tick-txt" }, (ca[i]/tA*100).toFixed(0)+"%"));
+    if (cb[i]) svg.appendChild(el("text", { x:CX+LABEL/2+wb+6, y:y+13, class:"tick-txt" }, (cb[i]/tB*100).toFixed(0)+"%"));
+  });
+
+  const over = w => st.lat[w].filter(d => d > 3600e3).length;
+  $("latStats").innerHTML =
+    `<span><i class="swatch sw-a"></i>${esc(NA())} · 中位 ${dur(median(st.lat[A]))} · 超 1 小时 ${over(A)} 次</span>
+     <span><i class="swatch sw-b"></i>${esc(NB())} · 中位 ${dur(median(st.lat[B]))} · 超 1 小时 ${over(B)} 次</span>`;
+}
+
+function renderClock(){
+  const svg = $("clock"); svg.innerHTML = "";
+  const { st, A, B } = MODEL;
+  const W = 1000, CW = W/24, TOP = 22, H = 34;
+  const norm = w => { const mx = Math.max(...st.hours[w], 1); return st.hours[w].map(v => v/mx); };
+  const na = norm(A), nb = norm(B);
+
+  for (let h = 0; h < 24; h++){
+    svg.appendChild(el("rect", { x:h*CW+1, y:TOP, width:CW-2, height:H, fill:"var(--a)", "fill-opacity": .08 + na[h]*.92 }));
+    svg.appendChild(el("rect", { x:h*CW+1, y:TOP+H+6, width:CW-2, height:H, fill:"var(--b)", "fill-opacity": .08 + nb[h]*.92 }));
+    if (h % 3 === 0) svg.appendChild(el("text", { x:h*CW+CW/2, y:TOP+2*H+22, "text-anchor":"middle", class:"tick-txt" }, h + ":00"));
+  }
+  svg.appendChild(el("text", { x:0, y:TOP-7, class:"tick-txt" }, "A"));
+  svg.appendChild(el("text", { x:0, y:TOP+H+1, class:"tick-txt" }, "B"));
+}
+
+function renderMonthly(){
+  const svg = $("monthly"); svg.innerHTML = "";
+  const { st, A, B } = MODEL;
+  const keys = Object.keys(st.monthly).sort();
+  if (keys.length < 2) return;
+  const W = 1000, H = 230, PAD = 30, BOT = H - 34;
+  const mx = Math.max(...keys.map(k => Math.max(st.monthly[k][A], st.monthly[k][B])), 1);
+  const X = i => PAD + i*(W-2*PAD)/Math.max(1, keys.length-1);
+  const Y = v => BOT - v/mx*(BOT-20);
+
+  for (const [w, color] of [[A,"var(--a)"],[B,"var(--b)"]]){
+    const pts = keys.map((k,i) => X(i) + "," + Y(st.monthly[k][w])).join(" ");
+    svg.appendChild(el("polyline", { points:pts, fill:"none", stroke:color, "stroke-width":2,
+      "stroke-linejoin":"round", "stroke-linecap":"round" }));
+    keys.forEach((k,i) => svg.appendChild(el("circle", { cx:X(i), cy:Y(st.monthly[k][w]), r:2.5, fill:color })));
+  }
+  svg.appendChild(el("line", { x1:PAD, x2:W-PAD, y1:BOT, y2:BOT, class:"axis-line" }));
+  const every = Math.ceil(keys.length/12);
+  keys.forEach((k,i) => { if (i % every) return;
+    svg.appendChild(el("text", { x:X(i), y:BOT+18, "text-anchor":"middle", class:"tick-txt" }, k.slice(2)));
+  });
+  svg.appendChild(el("text", { x:PAD, y:16, class:"tick-txt" }, "峰值 " + mx + " 条/月"));
+}
+
+function renderSymmetry(){
+  const { st, A, B, maxGap, maxGapAt, maxGapAfter, sessions, two } = MODEL;
+  const rate = w => st.qAsked[w] ? (st.qAnswered[w]/st.qAsked[w]*100).toFixed(0) + "%" : "—";
+  const qShare = w => (st.questions[w]/Math.max(1, st.msgs[w])*100).toFixed(1) + "%";
+  const rows = [
+    ["提问率（含问号的消息占比）", qShare(A), qShare(B), "谁在维持对话的推进"],
+    ["提问被应答率（1 小时内）", rate(A), rate(B), "问题被认真接住的比例"],
+    ["平均每段对话轮次", (st.turns[A]/sessions.length).toFixed(1), (st.turns[B]/sessions.length).toFixed(1), "单段对话里各自说了几轮"],
+    ["平均单条字数", (st.chars[A]/Math.max(1,st.msgs[A])).toFixed(1), (st.chars[B]/Math.max(1,st.msgs[B])).toFixed(1), "短促 vs 铺陈"],
+    ["含图片 / 表情的消息", st.media[A], st.media[B], "非文字表达的依赖度"]
+  ];
+  let html = `<thead><tr><th>指标</th><th class="n">${esc(NA())}</th><th class="n">${esc(NB())}</th><th>怎么读</th></tr></thead><tbody>`;
+  html += rows.map(r => `<tr><td>${r[0]}</td><td class="n va">${r[1]}</td><td class="n vb">${r[2]}</td><td class="note">${r[3]}</td></tr>`).join("");
+  html += `<tr><td>最长静默</td><td class="n" colspan="2">${dur(maxGap)}</td><td class="note">起于 ${maxGapAt ? fmtDate(maxGapAt) : "—"}，此前最后说话的是 ${esc(maxGapAfter === A ? NA() : NB())}</td></tr>`;
+  html += `</tbody>`;
+  $("symTable").innerHTML = html;
+}
+
+const STOP = new Set(("的了是我你他她我们你们他们在有和就不人都一个上也很到说要去会着没有看好自己这那什么怎么这样那样一下现在时候可以但是因为所以如果还是知道觉得就是这个那个真的其实已经还有然后不过而且只是这些哪里为什么这么那么一直非常特别可能应该需要一起东西事情时间今天明天昨天哈哈嗯嗯谢谢哈哈哈").match(/.{1,2}/g) || []);
+const STOPCH = new Set("的了是我你他她们在有和就不都也很到说要去会着没这那么什怎样个上下能对还又把被让给从向über".split(""));
+
+function renderKeywords(){
+  const { two, A, B, st } = MODEL;
+  const counts = new Map();
+  for (const m of two){
+    const clean = m.text.replace(MEDIA_ANY, " ").replace(/https?:\/\/\S+/g, " ");
+    const runs = clean.match(/[\u4e00-\u9fa5]{2,}/g) || [];
+    for (const run of runs){
+      for (let n = 2; n <= 3; n++){
+        for (let i = 0; i + n <= run.length; i++){
+          const g = run.slice(i, i+n);
+          if (STOP.has(g)) continue;
+          if ([...g].every(c => STOPCH.has(c))) continue;
+          counts.set(g, (counts.get(g)||0) + 1);
+        }
+      }
+    }
+  }
+  let top = [...counts.entries()].filter(([,c]) => c >= 3).sort((a,b) => b[1]-a[1]).slice(0, 120);
+  // 丢掉被更高频三字词包含的二字词
+  const tri = top.filter(([g]) => g.length === 3);
+  top = top.filter(([g,c]) => g.length === 3 || !tri.some(([t,tc]) => t.includes(g) && tc >= c*0.7)).slice(0, 28);
+
+  const kw = top.map(([g,c]) => `<b>${esc(g)}<em>${c}</em></b>`).join("");
+  const mediaShare = ((st.media[A]+st.media[B]) / two.length * 100).toFixed(1);
+  const recalls = st.recalls[A] + st.recalls[B];
+
+  $("kwBlock").innerHTML =
+    `<div class="kw">${kw || '<span class="note">样本太少，没有稳定的高频词。</span>'}</div>
+     <p class="note" style="margin-top:18px">
+       非文字消息占 ${mediaShare}%${recalls ? ` · 记录中出现「撤回」${recalls} 次` : ""}
+     </p>`;
+}
+
+/* ============================ 摘要 ============================ */
+
+function summary(){
+  const { st, A, B, sessions, two } = MODEL;
+  const a = NA(), b = NB();
+  const L = [
+    `关系体检报告（本地生成）`,
+    `${fmtDate(two[0].t)} – ${fmtDate(two[two.length-1].t)} · ${two.length} 条 · ${sessions.length} 段对话`,
+    ``,
+    `消息条数  ${a} ${st.msgs[A]} / ${b} ${st.msgs[B]}`,
+    `总字数    ${a} ${st.chars[A]} / ${b} ${st.chars[B]}`,
+    `会话发起  ${a} ${st.opens[A]} / ${b} ${st.opens[B]}`,
+    `会话收尾  ${a} ${st.closes[A]} / ${b} ${st.closes[B]}`,
+    `回复中位  ${a} ${dur(median(st.lat[A]))} / ${b} ${dur(median(st.lat[B]))}`,
+    `最长静默  ${dur(MODEL.maxGap)}`
+  ];
+  return L.join("\n");
+}
+
+/* ============================ 输入 ============================ */
+
+function fail(msg){ const e = $("err"); e.textContent = msg; e.classList.add("on"); }
+function ok(){ $("err").classList.remove("on"); }
+
+function load(text){
+  ok();
+  RAW = parse(text);
+  if (RAW.length < 20) return fail("只解析出 " + RAW.length + " 条消息。这个格式暂时不支持——目前认得 QQ 导出的「时间 + 昵称」两行式结构。");
+
+  const tally = {};
+  for (const m of RAW) tally[m.who] = (tally[m.who]||0) + 1;
+  const ranked = Object.entries(tally).sort((a,b) => b[1]-a[1]);
+  if (ranked.length < 2) return fail("只识别到一个发言人，无法做双向对比。");
+
+  const [A, B] = [ranked[0][0], ranked[1][0]];
+  const covered = (ranked[0][1] + ranked[1][1]) / RAW.length;
+  if (covered < .9) fail("检测到 " + ranked.length + " 个发言人，像是群聊。已按发言量取前两位分析，结果仅供参考。");
+
+  $("nameA").value = A; $("nameB").value = B;
+  MODEL = build(RAW, A, B, +$("gap").value);
+  $("report").classList.add("on");
+  renderAll();
+  $("report").scrollIntoView({ behavior:"smooth", block:"start" });
+}
+
+function decode(buf){
+  let s = new TextDecoder("utf-8").decode(buf);
+  const bad = (s.match(/\uFFFD/g) || []).length;
+  if (bad > s.length * 0.002){
+    try { s = new TextDecoder("gbk").decode(buf); } catch(e){}
+  }
+  return s;
+}
+
+function readFile(f){
+  if (!f) return;
+  const r = new FileReader();
+  r.onerror = () => fail("文件读取失败，换一个文件试试。");
+  r.onload = () => { try { load(decode(r.result)); } catch(e){ fail("解析出错：" + e.message); } };
+  r.readAsArrayBuffer(f);
+}
+
+$("pick").onclick = e => { e.stopPropagation(); $("file").click(); };
+$("file").onchange = e => readFile(e.target.files[0]);
+$("drop").onclick = () => $("file").click();
+$("drop").onkeydown = e => { if (e.key === "Enter" || e.key === " "){ e.preventDefault(); $("file").click(); } };
+["dragenter","dragover"].forEach(ev => $("drop").addEventListener(ev, e => { e.preventDefault(); $("drop").classList.add("hot"); }));
+["dragleave","drop"].forEach(ev => $("drop").addEventListener(ev, e => { e.preventDefault(); $("drop").classList.remove("hot"); }));
+$("drop").addEventListener("drop", e => readFile(e.dataTransfer.files[0]));
+
+$("gap").onchange = () => { if (!RAW) return; MODEL = build(RAW, MODEL.A, MODEL.B, +$("gap").value); renderAll(); };
+$("nameA").oninput = $("nameB").oninput = () => { if (MODEL) renderAll(); };
+$("copy").onclick = () => {
+  navigator.clipboard.writeText(summary()).then(
+    () => { $("copy").textContent = "已复制"; setTimeout(() => $("copy").textContent = "复制数据摘要", 1600); },
+    () => fail("剪贴板不可用，请手动截图。")
+  );
+};
+
+/* ---------- 示例数据：一段结构失衡的对话 ---------- */
+$("demo").onclick = e => {
+  e.stopPropagation();
+  const A = "阿岸", B = "小柯";
+  const openers = ["在吗","今天好累啊","刚看到一个东西想到你","早","你那边天气怎么样","晚上有空吗","突然想起上次说的那家店","我到家了"];
+  const replies = ["嗯","哦哦","好","在的","还行","刚看到","忙完了","嗯嗯"];
+  const longs = ["今天开会开了三个小时，中间那个人一直在绕，我实在有点撑不住了，就想早点回去躺着",
+    "我一直在想你上次说的那句话，可能你说得对吧，但我还是觉得有点难受，说不太清楚",
+    "周末要不要去看看那个展？听说人不多，我们可以慢慢逛，逛完再吃点东西"];
+  const out = [];
+  let t = new Date(2025, 8, 3, 21, 12);
+  const push = (who, txt) => out.push(
+    `${t.getFullYear()}-${String(t.getMonth()+1).padStart(2,"0")}-${String(t.getDate()).padStart(2,"0")} ` +
+    `${String(t.getHours()).padStart(2,"0")}:${String(t.getMinutes()).padStart(2,"0")}:${String(t.getSeconds()).padStart(2,"0")} '${who}'\n${txt}\n`);
+  const rnd = a => a[Math.floor(Math.random()*a.length)];
+
+  for (let day = 0; day < 300; day++){
+    const heat = Math.max(.08, 1 - day/300 * 1.15);        // 热度衰减
+    if (Math.random() > heat * .95) { t = new Date(t.getTime() + 864e5); continue; }
+    const rounds = 1 + Math.floor(Math.random()*5*heat);
+    t = new Date(t.getFullYear(), t.getMonth(), t.getDate(), 9 + Math.floor(Math.random()*13), Math.floor(Math.random()*60), 0);
+    // 82% 由 A 发起
+    let who = Math.random() < .82 ? A : B;
+    push(who, Math.random() < .3 ? rnd(longs) : rnd(openers));
+    for (let r = 0; r < rounds; r++){
+      const other = who === A ? B : A;
+      // B 回得慢
+      const wait = other === B ? (2 + Math.random()*160)*60e3 : (0.2 + Math.random()*12)*60e3;
+      t = new Date(t.getTime() + wait);
+      push(other, other === B ? rnd(replies) : (Math.random() < .45 ? rnd(longs) : rnd(openers) + "？"));
+      who = other;
+    }
+    // A 常常多说一句，然后没有下文
+    if (who === B && Math.random() < .55){
+      t = new Date(t.getTime() + (3 + Math.random()*40)*60e3);
+      push(A, Math.random() < .5 ? rnd(longs) : rnd(openers) + "？");
+    }
+    t = new Date(t.getFullYear(), t.getMonth(), t.getDate() + 1, 9, 0, 0);
+  }
+  load(out.join(""));
+};
+</script>
+
+</body>
+</html>
