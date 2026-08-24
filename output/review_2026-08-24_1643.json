@@ -1,0 +1,805 @@
+{
+  "review_id": "review_2026-08-24_1643_25y",
+  "generated_at": "2026-08-24T16:43:49.542Z",
+  "scrape_date": "2026-08-24",
+  "target_week": "2026-08-31_to_2026-09-06",
+  "target_week_readable": "下周 (08/31 - 09/06)",
+  "scraping_report": {
+    "total_scraped": 48,
+    "after_deduplication": 38,
+    "after_classification": 38,
+    "classification_report": {
+      "totalEvents": 38,
+      "eventTypes": {
+        "free": 23,
+        "other": 3,
+        "festival": 2,
+        "market": 7,
+        "art": 2,
+        "music": 1
+      },
+      "priorityLevels": {
+        "3": 3,
+        "4": 1,
+        "5": 2,
+        "9": 23,
+        "10": 9
+      },
+      "chineseRelevant": 0,
+      "topPriorityEvents": 32
+    }
+  },
+  "instructions": {
+    "how_to_review": "将你想要发布的活动的 'selected' 字段改为 true",
+    "next_step": "保存文件后运行: npm run generate-post [此文件路径]",
+    "fields_explanation": {
+      "title": "活动标题",
+      "time_display": "显示用的时间格式",
+      "location": "活动地点",
+      "price": "票价信息",
+      "event_type": "AI识别的活动类型",
+      "priority": "优先级分数 (越高越重要)",
+      "chinese_relevant": "是否与中文社区相关",
+      "original_url": "原始活动链接"
+    }
+  },
+  "stats": {
+    "total_candidates": 37,
+    "by_type": {
+      "festival": 2,
+      "market": 7,
+      "free": 23,
+      "art": 2,
+      "other": 3
+    },
+    "by_priority": {
+      "3": 3,
+      "5": 2,
+      "9": 23,
+      "10": 9
+    },
+    "chinese_relevant": 0
+  },
+  "events": [
+    {
+      "id": 1,
+      "selected": false,
+      "title": "54th Annual Belmont Greek Festival 2026 (Sept. 5-6)",
+      "time_display": "Saturday 09/05 12:00 PM - 10:00 PM",
+      "location": "Greek Orthodox Church of the Holy Cross, San Francisco Bay Area",
+      "price": "$5*",
+      "event_type": "festival",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/54th-annual-belmont-greek-festival-2026-sept-5-6/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Join us on Labor Day Weekend 2026 at the 54th Belmont Greek Festival, as the San Francisco Bay Area ...",
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2026-08-24T16:38:19.508Z"
+    },
+    {
+      "id": 2,
+      "selected": false,
+      "title": "Berkeley’s 6th Annual Bizerkeley Vegan Food Festival (2026)",
+      "time_display": "Sunday 09/06 12:00 PM - 6:00 PM",
+      "location": "Martin Luther King Jr. Civic Center Park, San Francisco",
+      "price": "$8.24*",
+      "event_type": "festival",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/berkeley-annual-bizerkeley-food-festival/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2026-08-24T16:38:19.508Z"
+    },
+    {
+      "id": 3,
+      "selected": false,
+      "title": "Live Music",
+      "time_display": "Monday 08/31 6:00 PM - 9:00 PM",
+      "location": "San Pedro Square Market, 87 N San Pedro St, San Jose, CA",
+      "price": "Check event page",
+      "event_type": "market",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://sjdowntown.com/event/live-music/2026-08-31/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Experience live music at San Pedro Square Market six days a week! Explore our calendar for the full ...",
+      "description_detail": null,
+      "source": "sjdowntown",
+      "scraped_at": "2026-08-24T16:38:08.637Z"
+    },
+    {
+      "id": 4,
+      "selected": false,
+      "title": "Live Music",
+      "time_display": "Tuesday 09/01 6:00 PM - 9:00 PM",
+      "location": "San Pedro Square Market, 87 N San Pedro St, San Jose, CA",
+      "price": "Check event page",
+      "event_type": "market",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://sjdowntown.com/event/live-music/2026-09-01/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Experience live music at San Pedro Square Market six days a week! Explore our calendar for the full ...",
+      "description_detail": null,
+      "source": "sjdowntown",
+      "scraped_at": "2026-08-24T16:38:08.639Z"
+    },
+    {
+      "id": 5,
+      "selected": false,
+      "title": "Live Music",
+      "time_display": "Wednesday 09/02 6:00 PM - 9:00 PM",
+      "location": "San Pedro Square Market, 87 N San Pedro St, San Jose, CA",
+      "price": "Check event page",
+      "event_type": "market",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://sjdowntown.com/event/live-music/2026-09-02/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Experience live music at San Pedro Square Market six days a week! Explore our calendar for the full ...",
+      "description_detail": null,
+      "source": "sjdowntown",
+      "scraped_at": "2026-08-24T16:38:08.639Z"
+    },
+    {
+      "id": 6,
+      "selected": false,
+      "title": "King Trivia Night",
+      "time_display": "Wednesday 09/02 7:00 PM - 8:00 PM",
+      "location": "SoFA Market, 387 S 1st Street, San Jose, CA",
+      "price": "Check event page",
+      "event_type": "market",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://sjdowntown.com/event/king-trivia-night/2026-09-02/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Your weekly excuse to eat, drink, and outsmart everyone in the room. 👑🧠 Trivia night at SoFA Marke...",
+      "description_detail": null,
+      "source": "sjdowntown",
+      "scraped_at": "2026-08-24T16:38:08.640Z"
+    },
+    {
+      "id": 7,
+      "selected": false,
+      "title": "Live Music",
+      "time_display": "Thursday 09/03 6:00 PM - 9:00 PM",
+      "location": "San Pedro Square Market, 87 N San Pedro St, San Jose, CA",
+      "price": "Check event page",
+      "event_type": "market",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://sjdowntown.com/event/live-music/2026-09-03/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Experience live music at San Pedro Square Market six days a week! Explore our calendar for the full ...",
+      "description_detail": null,
+      "source": "sjdowntown",
+      "scraped_at": "2026-08-24T16:38:08.640Z"
+    },
+    {
+      "id": 8,
+      "selected": false,
+      "title": "Live Music",
+      "time_display": "Friday 09/04 6:00 PM - 9:00 PM",
+      "location": "San Pedro Square Market, 87 N San Pedro St, San Jose, CA",
+      "price": "Check event page",
+      "event_type": "market",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://sjdowntown.com/event/live-music/2026-09-04/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Experience live music at San Pedro Square Market six days a week! Explore our calendar for the full ...",
+      "description_detail": null,
+      "source": "sjdowntown",
+      "scraped_at": "2026-08-24T16:38:08.640Z"
+    },
+    {
+      "id": 9,
+      "selected": false,
+      "title": "Live Music",
+      "time_display": "Saturday 09/05 6:00 PM - 9:00 PM",
+      "location": "San Pedro Square Market, 87 N San Pedro St, San Jose, CA",
+      "price": "Check event page",
+      "event_type": "market",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://sjdowntown.com/event/live-music/2026-09-05/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Experience live music at San Pedro Square Market six days a week! Explore our calendar for the full ...",
+      "description_detail": null,
+      "source": "sjdowntown",
+      "scraped_at": "2026-08-24T16:38:08.640Z"
+    },
+    {
+      "id": 10,
+      "selected": false,
+      "title": "Eagles of Death Metal - Death By Sexy 20th Anniversary TourThe Fillmore",
+      "time_display": "Tuesday 09/01 8:00 PM",
+      "location": "1805 Geary Blvd, San Francisco, CA",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://ticketmaster.evyy.net/c/253558/264167/4272?u=https%3A%2F%2Fwww.ticketmaster.com%2Feagles-of-death-metal-tickets%2Fartist%2F947268",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "sfstation",
+      "scraped_at": "2026-08-24T16:38:45.279Z"
+    },
+    {
+      "id": 11,
+      "selected": false,
+      "title": "Roxie First Looks #13The Roxie",
+      "time_display": "Tuesday 09/01 4:10 PM",
+      "location": "3117 16th Street, San Francisco, CA",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://roxie.com/film/roxie-first-looks-13/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "sfstation",
+      "scraped_at": "2026-08-24T16:38:45.279Z"
+    },
+    {
+      "id": 12,
+      "selected": false,
+      "title": "Nengi Omuku: The Gatheringde Young Museum",
+      "time_display": "Tuesday 09/01 9:30 AM",
+      "location": "50 Hagiwara Tea Garden Drive, San Francisco, CA",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.famsf.org/exhibitions/nengi-omuku",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "sfstation",
+      "scraped_at": "2026-08-24T16:38:45.279Z"
+    },
+    {
+      "id": 13,
+      "selected": false,
+      "title": "Zayn - The Konnakol Tour - cancelledChase Center",
+      "time_display": "Wednesday 09/02 8:00 PM",
+      "location": "1 Warriors Way, San Francisco, CA",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://ticketmaster.evyy.net/c/253558/264167/4272?u=https%3A%2F%2Fwww.ticketmaster.com%2Fzayn-tickets%2Fartist%2F2225397",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "sfstation",
+      "scraped_at": "2026-08-24T16:38:45.279Z"
+    },
+    {
+      "id": 14,
+      "selected": false,
+      "title": "CindyYerba Buena Center for the Arts (YBCA)",
+      "time_display": "Wednesday 09/02 8:00 PM",
+      "location": "701 Mission Street, San Francisco, CA",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://bit.ly/4gkyU2Y",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "sfstation",
+      "scraped_at": "2026-08-24T16:38:45.280Z"
+    },
+    {
+      "id": 15,
+      "selected": false,
+      "title": "Hayla - The Dark TourThe Regency Ballroom",
+      "time_display": "Thursday 09/03 8:00 PM",
+      "location": "1290 Sutter Street, San Francisco, CA",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.axs.com/events/1423202/hayla-tickets",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "sfstation",
+      "scraped_at": "2026-08-24T16:38:45.280Z"
+    },
+    {
+      "id": 16,
+      "selected": false,
+      "title": "Function 500 with jaag & BROKE LEGPublic Works",
+      "time_display": "Thursday 09/03 9:00 PM",
+      "location": "161 Erie Street, San Francisco, CA",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.tixr.com/groups/publicsf/events/function-500-w-jaag-broke-leg-203301",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "sfstation",
+      "scraped_at": "2026-08-24T16:38:45.280Z"
+    },
+    {
+      "id": 17,
+      "selected": false,
+      "title": "CROSSROADS 2026Gray Area - Grand Theater",
+      "time_display": "Friday 09/04 7:00 PM",
+      "location": "2665 Mission Street, San Francisco, CA",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.sfcinematheque.org/crossroads/crossroads-2026/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "sfstation",
+      "scraped_at": "2026-08-24T16:38:45.280Z"
+    },
+    {
+      "id": 18,
+      "selected": false,
+      "title": "Los Calderones at Yerba Buena Gardens Festival 2026",
+      "time_display": "Thursday 09/03 6:00 PM - 7:30 PM",
+      "location": "Great Lawn, Yerba Buena Gardens, San Francisco Bay Area",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/los-calderones-at-yerba-buena-gardens-festival-2026/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2026-08-24T16:38:19.508Z"
+    },
+    {
+      "id": 19,
+      "selected": false,
+      "title": "SF’s Free DFT Monthly Block Party: “Downtown First Thursdays” (2026)",
+      "time_display": "Thursday 09/03 5:00 PM - 10:00 PM",
+      "location": "2nd Street between Market and Howard Streets, San Francisco Bay Area",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/sfs-free-dft-monthly-block-party-downtown-first-thursdays-2026-8/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Downtown First Thursdays is back in 2026 for a full year of street parties in 2026, starting Jan 1, ...",
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2026-08-24T16:38:19.508Z"
+    },
+    {
+      "id": 20,
+      "selected": false,
+      "title": "Pleasant Hill Night Market: Food, Music & Performances",
+      "time_display": "Friday 09/04 5:00 PM - 9:00 PM",
+      "location": "Chilpancingo Park, San Francisco Bay Area",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/pleasant-hills-new-night-market-9/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Pleasant Hill Night Market Will Return in May 2026 After a successful first season, the Night Market...",
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2026-08-24T16:38:19.508Z"
+    },
+    {
+      "id": 21,
+      "selected": false,
+      "title": "SF’s Free Outdoor Movie Night: Black Panther (Yerba Buena Gardens Festival 2026)",
+      "time_display": "Saturday 09/05 7:00 PM - 9:30 PM",
+      "location": "Yerba Buena Gardens (Esplanade), San Francisco Bay Area",
+      "price": "Check event page",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/sfs-free-outdoor-movie-night-yerba-buena-gardens-festival-2026/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2026-08-24T16:38:19.508Z"
+    },
+    {
+      "id": 22,
+      "selected": false,
+      "title": "Kings Mountain Art Fair 2026: 130+ Artists Under the Redwoods (Woodside)",
+      "time_display": "Saturday 09/05 10:00 AM - 5:00 PM",
+      "location": "Kings Mountain Fire Station, Peninsula",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/kings-mountain-art-fair-2026-130-artists-redwoods-woodside/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2026-08-24T16:38:19.508Z"
+    },
+    {
+      "id": 23,
+      "selected": false,
+      "title": "Millbrae Art & Wine Festival",
+      "time_display": "Saturday 09/05 10:00 AM - 5:00 PM",
+      "location": "Downtown Millbrae on Broadway",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/millbrae-art-wine-festival-3/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2026-08-24T16:38:19.508Z"
+    },
+    {
+      "id": 24,
+      "selected": false,
+      "title": "2026 “Kings Mountain Art Fair” in the Redwoods (Sept. 5-7)",
+      "time_display": "Saturday 09/05 10:00 AM - 5:00 PM",
+      "location": "Kings Mountain Fire Station, San Francisco Bay Area",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/2026-kings-mountain-art-fair-in-the-redwoods-sept-5-7/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Set beneath the ancient coastal redwoods of the Santa Cruz Mountains, the 63rd annual Kings Mountain...",
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2026-08-24T16:38:19.508Z"
+    },
+    {
+      "id": 25,
+      "selected": false,
+      "title": "SF’s 25th Annual SF Zine Fest 2026 w/ 200+ Exhibitors (The Hibernia)",
+      "time_display": "Sunday 09/06 11:00 AM - 5:00 PM",
+      "location": "The Hibernia, San Francisco Bay Area",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/sfs-25th-annual-sf-zine-fest-2026-200-exhibitors-hibernia/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2026-08-24T16:38:19.508Z"
+    },
+    {
+      "id": 26,
+      "selected": false,
+      "title": "SF’s “Head West” Marketplace at the Ferry Building (Every 1st Sunday)",
+      "time_display": "Sunday 09/06 11:00 AM - 5:00 PM",
+      "location": "San Francisco Ferry Building",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/sfs-head-west-marketplace-at-the-ferry-building-every-1st-sunday-6/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Come for the Marketplace, stay for the experience! HEAD WEST is a marketplace for emerging + establi...",
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2026-08-24T16:38:19.508Z"
+    },
+    {
+      "id": 27,
+      "selected": false,
+      "title": "San José “Lowrider Day” Festival + Classic Car Cruise (2026)",
+      "time_display": "Sunday 09/06 12:00 PM - 6:00 PM",
+      "location": "San José City Hall, San Francisco Bay Area",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/san-jos-lowrider-day-festival-classic-car-cruise-2026/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2026-08-24T16:38:19.508Z"
+    },
+    {
+      "id": 28,
+      "selected": false,
+      "title": "2026 World Arts West Dance Festival (Presidio Tunnel Tops)",
+      "time_display": "Sunday 09/06 1:00 PM - 4:00 PM",
+      "location": "Tunnel Tops (Presidio), San Francisco",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/2026-world-arts-west-dance-festival-presidio-tunnel-tops/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2026-08-24T16:38:19.508Z"
+    },
+    {
+      "id": 29,
+      "selected": false,
+      "title": "Downtown Farmers’ Market",
+      "time_display": "Wednesday 09/02 9:00 AM - 1:30 PM",
+      "location": "Hammer Theatre Center, 101 Paseo De San Antonio, San Jose, CA",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sjdowntown.com/event/downtown-farmers-market-2/2026-09-02/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Enjoy fresh produce, baked goods, local artisans, and delicious prepared foods from your favorite lo...",
+      "description_detail": null,
+      "source": "sjdowntown",
+      "scraped_at": "2026-08-24T16:38:08.639Z"
+    },
+    {
+      "id": 30,
+      "selected": false,
+      "title": "$9 Before 9 pm Happy Hour",
+      "time_display": "Friday 09/04 6:30 PM - 9:00 PM",
+      "location": "Nomikai, 48 South 1st Street, San Jose, CA",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sjdowntown.com/event/9-before-9-pm-happy-hour/2026-09-04/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "All Signature Cocktails · All Draft Beers · All Mocktails — just $9 before 9 p.m. Plus: 20% off all ...",
+      "description_detail": null,
+      "source": "sjdowntown",
+      "scraped_at": "2026-08-24T16:38:08.640Z"
+    },
+    {
+      "id": 31,
+      "selected": false,
+      "title": "First Fridays ArtWalk",
+      "time_display": "Friday 09/04 5:00 PM - 9:00 PM",
+      "location": "Downtown San Jose SoFA District, 5th Street between Taylor and Jackson",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sjdowntown.com/first-fridays",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Monthly art walk featuring local galleries, street performers, food trucks, and live music in downto...",
+      "description_detail": null,
+      "source": "first-fridays",
+      "scraped_at": "2026-08-24T16:40:25.119Z"
+    },
+    {
+      "id": 32,
+      "selected": false,
+      "title": "Berryessa Night Market",
+      "time_display": "Friday 09/04 6:00 PM - 10:00 PM",
+      "location": "San Jose Flea Market, 1590 Berryessa Road, San Jose, CA 95133",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://gardenattheflea.com/berryessanightmarket/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Weekly Friday night market inside the iconic San Jose Flea Market featuring Asian street food, desse...",
+      "description_detail": null,
+      "source": "berryessa-night-market",
+      "scraped_at": "2026-08-24T16:40:25.119Z"
+    },
+    {
+      "id": 33,
+      "selected": false,
+      "title": "Karaoke Night",
+      "time_display": "Monday 08/31 9:00 PM - Tuesday 09/01 1:30 AM",
+      "location": "O&#8217;Flaherty&#8217;s Irish Pub, 25 N San Pedro St., San Jose, CA",
+      "price": "Check event page",
+      "event_type": "art",
+      "priority": 5,
+      "chinese_relevant": false,
+      "original_url": "https://sjdowntown.com/event/karaoke-night-2/2026-08-31/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Come sing your heart out! Join us for Karaoke every Sunday & Monday from 9pm to close.",
+      "description_detail": null,
+      "source": "sjdowntown",
+      "scraped_at": "2026-08-24T16:38:08.638Z"
+    },
+    {
+      "id": 34,
+      "selected": false,
+      "title": "Live Music Wednesdays at Coastal Manor",
+      "time_display": "Wednesday 09/02 7:30 PM - 9:30 PM",
+      "location": "Downtown San Jose Marriott Hotel, 301 S. Market Street, San Jose, CA",
+      "price": "Check event page",
+      "event_type": "art",
+      "priority": 5,
+      "chinese_relevant": false,
+      "original_url": "https://sjdowntown.com/event/live-music-wednesdays-at-coastal-manor/2026-09-02/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Ease into the week with live music every Wednesday night at Coastal Manor, inside the San Jose Marri...",
+      "description_detail": null,
+      "source": "sjdowntown",
+      "scraped_at": "2026-08-24T16:38:08.640Z"
+    },
+    {
+      "id": 35,
+      "selected": false,
+      "title": "Noname - Telefone 10 Year AnniversaryThe Regency Ballroom",
+      "time_display": "Wednesday 09/02 8:00 PM",
+      "location": "1290 Sutter Street, San Francisco, CA",
+      "price": "$29.50",
+      "event_type": "other",
+      "priority": 3,
+      "chinese_relevant": false,
+      "original_url": "https://www.axs.com/events/1477932/noname-tickets",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "sfstation",
+      "scraped_at": "2026-08-24T16:38:45.280Z"
+    },
+    {
+      "id": 36,
+      "selected": false,
+      "title": "160th Scottish Highland Gathering & Games (Sept. 5-6)",
+      "time_display": "Saturday 09/05 8:00 AM - 6:00 PM",
+      "location": "Alameda County Fairgrounds",
+      "price": "Paid Tickets*",
+      "event_type": "other",
+      "priority": 3,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/160th-scottish-highland-gathering-games-sept-56/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2026-08-24T16:38:19.508Z"
+    },
+    {
+      "id": 37,
+      "selected": false,
+      "title": "Trivia Night",
+      "time_display": "Wednesday 09/02 8:00 PM - 10:00 PM",
+      "location": "O&#8217;Flaherty&#8217;s Irish Pub, 25 N San Pedro St., San Jose, CA",
+      "price": "Check event page",
+      "event_type": "other",
+      "priority": 3,
+      "chinese_relevant": false,
+      "original_url": "https://sjdowntown.com/event/trivia-night/2026-09-02/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Put your thinking caps on… It’s Trivia Night! Join us for Trivia every Wednesday from 8pm to 10pm.",
+      "description_detail": null,
+      "source": "sjdowntown",
+      "scraped_at": "2026-08-24T16:38:08.640Z"
+    }
+  ]
+}
