@@ -1,0 +1,777 @@
+{
+  "review_id": "review_2026-08-31_2126_0e3",
+  "generated_at": "2026-08-31T21:26:51.402Z",
+  "scrape_date": "2026-08-31",
+  "target_week": "2026-09-07_to_2026-09-13",
+  "target_week_readable": "下周 (09/07 - 09/13)",
+  "scraping_report": {
+    "total_scraped": 49,
+    "after_deduplication": 36,
+    "after_classification": 36,
+    "classification_report": {
+      "totalEvents": 36,
+      "eventTypes": {
+        "free": 32,
+        "other": 2,
+        "festival": 2
+      },
+      "priorityLevels": {
+        "3": 2,
+        "9": 32,
+        "10": 2
+      },
+      "chineseRelevant": 0,
+      "topPriorityEvents": 34
+    }
+  },
+  "instructions": {
+    "how_to_review": "将你想要发布的活动的 'selected' 字段改为 true",
+    "next_step": "保存文件后运行: npm run generate-post [此文件路径]",
+    "fields_explanation": {
+      "title": "活动标题",
+      "time_display": "显示用的时间格式",
+      "location": "活动地点",
+      "price": "票价信息",
+      "event_type": "AI识别的活动类型",
+      "priority": "优先级分数 (越高越重要)",
+      "chinese_relevant": "是否与中文社区相关",
+      "original_url": "原始活动链接"
+    }
+  },
+  "stats": {
+    "total_candidates": 36,
+    "by_type": {
+      "festival": 2,
+      "free": 32,
+      "other": 2
+    },
+    "by_priority": {
+      "3": 2,
+      "9": 32,
+      "10": 2
+    },
+    "chinese_relevant": 0
+  },
+  "events": [
+    {
+      "id": 1,
+      "selected": false,
+      "title": "Fugazi Funny Festival: Comedy in San Francisco’s North Beach",
+      "time_display": "Wednesday 09/09 7:30 PM - 9:00 PM",
+      "location": "Club Fugazi, San Francisco",
+      "price": "$27.50*",
+      "event_type": "festival",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/fugazi-funny-festival-comedy-san-franciscos-north-beach/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2026-08-31T21:20:59.115Z"
+    },
+    {
+      "id": 2,
+      "selected": false,
+      "title": "Flower Piano 2026: Special Opening Night Celebration and Concert (Sept. 10)",
+      "time_display": "Thursday 09/10 4:00 PM - 7:30 PM",
+      "location": "San Francisco Botanical Garden",
+      "price": "$75*",
+      "event_type": "festival",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/flower-piano-2026-12-hidden-pianos-golden-gate-park-sept-1020/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "One of the most unique interactive music festivals in the Bay Area is back! Flower Piano returns for...",
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2026-08-31T21:20:59.115Z"
+    },
+    {
+      "id": 3,
+      "selected": false,
+      "title": "Bikini KillThe Warfield",
+      "time_display": "Tuesday 09/08 8:00 PM",
+      "location": "982 Market Street, San Francisco, CA",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.axs.com/events/1528340/bikini-kill-tickets",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "sfstation",
+      "scraped_at": "2026-08-31T21:21:26.706Z"
+    },
+    {
+      "id": 4,
+      "selected": false,
+      "title": "Conundrum Chronicles StorySlam: Where Stories are Told, Moral Dilemmas Unfold, and Judgments are Bold!The Marsh San Francisco",
+      "time_display": "Tuesday 09/08 7:00 PM",
+      "location": "1062 Valencia Street, San Francisco, CA",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://themarsh.ludus.com/show_page.php?show_id=200512664",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "sfstation",
+      "scraped_at": "2026-08-31T21:21:26.707Z"
+    },
+    {
+      "id": 5,
+      "selected": false,
+      "title": "Introductions 2026: A Showcase of Emerging Bay Area ArtistsRoot Division",
+      "time_display": "Wednesday 09/09 6:00 PM",
+      "location": "1131 Mission Street, San Francisco, CA",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://rootdivision.org/civicrm/event/register/?reset=1&id=2073",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "sfstation",
+      "scraped_at": "2026-08-31T21:21:26.707Z"
+    },
+    {
+      "id": 6,
+      "selected": false,
+      "title": "Weezer - The GatheringChase Center",
+      "time_display": "Wednesday 09/09 7:00 PM",
+      "location": "1 Warriors Way, San Francisco, CA",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://ticketmaster.evyy.net/c/253558/264167/4272?u=https%3A%2F%2Fwww.ticketmaster.com%2Fartist%2F766591",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "sfstation",
+      "scraped_at": "2026-08-31T21:21:26.707Z"
+    },
+    {
+      "id": 7,
+      "selected": false,
+      "title": "Flower PianoSan Francisco Botanical Garden",
+      "time_display": "Thursday 09/10 10:00 AM",
+      "location": "1199 9th Avenue, San Francisco, CA",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://gggp.org/flowerpiano/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "sfstation",
+      "scraped_at": "2026-08-31T21:21:26.707Z"
+    },
+    {
+      "id": 8,
+      "selected": false,
+      "title": "Annual 9/11 Truth Film Festival at Grand Lake Theatre (Oakland)",
+      "time_display": "Tuesday 09/08 3:00 PM - 10:00 PM",
+      "location": "Grand Lake Theatre, East Bay",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/annual-911-truth-film-festival-grand-lake-theatre-oakland/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2026-08-31T21:20:59.114Z"
+    },
+    {
+      "id": 9,
+      "selected": false,
+      "title": "SF’s Free 12th Annual Chinatown Night Out",
+      "time_display": "Wednesday 09/09 4:00 PM - 7:00 PM",
+      "location": "Willie “Woo Woo” Wong Playground Basketball Court, San Francisco",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/sfs-free-12th-annual-chinatown-night/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2026-08-31T21:20:59.115Z"
+    },
+    {
+      "id": 10,
+      "selected": false,
+      "title": "SF’s “Valencia Live” Night Market in The Mission (Every 2nd Thu)",
+      "time_display": "Thursday 09/10 5:00 PM - 10:00 PM",
+      "location": "Valencia Street, San Francisco Bay Area",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/sfs-valencia-live-night-market-in-the-mission-every-2nd-thu-4/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "A free, monthly neighborhood celebration on Valencia Street with live music, dancing, art-making and...",
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2026-08-31T21:20:59.115Z"
+    },
+    {
+      "id": 11,
+      "selected": false,
+      "title": "SF’s FREE “Valencia Live” Monthly Street Party (Sept. 2026)",
+      "time_display": "Thursday 09/10 5:00 PM - 10:00 PM",
+      "location": "Valencia St. between 18th and 21st, San Francisco Bay Area",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/sfs-free-valencia-live-2026-monthly-street-party-every-2nd-thursday-4/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Valencia LIVE! is back for a 2026 season! See you in the streets for a FREE, all-ages monthly neighb...",
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2026-08-31T21:20:59.115Z"
+    },
+    {
+      "id": 12,
+      "selected": false,
+      "title": "Flower Piano 2026: 12 Hidden Pianos in Golden Gate Park (Sept. 10-20)",
+      "time_display": "Friday 09/11 10:00 AM - 6:00 PM",
+      "location": "San Francisco Botanical Garden",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/flower-piano-2026-12-hidden-pianos-in-golden-gate-park-sept-10-20/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "One of the most unique interactive music festivals in the Bay Area is back! Flower Piano returns for...",
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2026-08-31T21:20:59.115Z"
+    },
+    {
+      "id": 13,
+      "selected": false,
+      "title": "SF’s “Chinatown Night Market” 2026 (Every Second Friday)",
+      "time_display": "Friday 09/11 5:00 PM - 9:00 PM",
+      "location": "San Francisco Chinatown (Grant Ave.)",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/sfs-chinatown-night-market-2026-every-second-friday-4/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Chinatown Night Market returns for 2026, bringing monthly street festivals, food vendors, shopping, ...",
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2026-08-31T21:20:59.115Z"
+    },
+    {
+      "id": 14,
+      "selected": false,
+      "title": "SF’s Chinatown Night Market (Sept. 2026)",
+      "time_display": "Friday 09/11 5:00 PM - 9:00 PM",
+      "location": "BeChinatown Night Market on Grant, San Francisco Bay Area",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/sfs-chinatown-night-market-sept-2026/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2026-08-31T21:20:59.115Z"
+    },
+    {
+      "id": 15,
+      "selected": false,
+      "title": "Free Mid-Autumn Festival in San Francisco’s Richmond District (2026)",
+      "time_display": "Saturday 09/12 11:00 AM - 3:00 PM",
+      "location": "Clement Street between 8th and 11th Avenue, San Francisco",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/10th-annual-sf-richmond-autumn-moon-festival/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2026-08-31T21:20:59.115Z"
+    },
+    {
+      "id": 16,
+      "selected": false,
+      "title": "Live on Larkin: Free Street Fest 2026 (Tenderloin)",
+      "time_display": "Saturday 09/12 12:00 PM - 5:00 PM",
+      "location": "Larkin St (between Eliis & Eddy), San Francisco Bay Area",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/live-on-larkin-free-street-fest-2026-tenderloin-2/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Live on Larkin – a new series of free street events on Larkin Street. Check out live music, performa...",
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2026-08-31T21:20:59.115Z"
+    },
+    {
+      "id": 17,
+      "selected": false,
+      "title": "“Creative Play and Foam Fun” Free Festival at The Village at San Antonio Center",
+      "time_display": "Saturday 09/12 4:00 PM - 6:00 PM",
+      "location": "The Village at San Antonio Center, San Francisco Bay Area",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/creative-play-and-foam-fun-free-festival-at-the-village-at-san-antonio-center/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2026-08-31T21:20:59.115Z"
+    },
+    {
+      "id": 18,
+      "selected": false,
+      "title": "54th Annual Castro Valley Fall Festival 2026 (Sept. 12-13)",
+      "time_display": "Saturday 09/12 10:00 AM - 11:00 AM",
+      "location": "Castro Valley Blvd., San Francisco Bay Area",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/54th-annual-castro-valley-fall-festival-2026-sept-1213/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "The 54th Annual Castro Valley Fall Festival returns to Castro Valley Blvd. for a weekend of free, fa...",
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2026-08-31T21:20:59.115Z"
+    },
+    {
+      "id": 19,
+      "selected": false,
+      "title": "2026 Annual Orinda Classic Car Show",
+      "time_display": "Saturday 09/12 10:00 AM - 2:00 PM",
+      "location": "Orinda Village, East Bay",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/21st-annual-orinda-classic-car-show-2025/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2026-08-31T21:20:59.115Z"
+    },
+    {
+      "id": 20,
+      "selected": false,
+      "title": "SF’s “Fiesta de las Américas” Cultural Festival & Block Party 2026",
+      "time_display": "Saturday 09/12 11:00 AM - 6:00 PM",
+      "location": "Calle 24 Latino Cultural District, San Francisco Bay Area",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/sfs-fiesta-de-las-amricas-mission/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2026-08-31T21:20:59.115Z"
+    },
+    {
+      "id": 21,
+      "selected": false,
+      "title": "Free Levi’s Plaza Outdoor “Palooza Festival” w/ Ruby Ibarra (SF)",
+      "time_display": "Saturday 09/12 11:00 AM - 4:00 PM",
+      "location": "Soft Park - Levi's Plaza, San Francisco Bay Area",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/free-levis-plaza-outdoor-palooza-festival-ruby-ibarra-sf/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2026-08-31T21:20:59.115Z"
+    },
+    {
+      "id": 22,
+      "selected": false,
+      "title": "54th Annual Mountain View Art & Wine Festival (Sept. 12-13)",
+      "time_display": "Saturday 09/12 11:00 AM - 7:00 PM",
+      "location": "Castro Street (Downtown Mountain View)",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/54th-annual-mountain-view-art-wine-festival-sept-12-13/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "The Mountain View Art & Wine Festival returns to Downtown Mountain View for its 54th year, bringing ...",
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2026-08-31T21:20:59.115Z"
+    },
+    {
+      "id": 23,
+      "selected": false,
+      "title": "Google’s Free “Endless Summer Festival” w/ DJs, Magic & Giveaways (Mountain View)",
+      "time_display": "Saturday 09/12 11:00 AM - 4:00 PM",
+      "location": "Google Visitor Experience, San Francisco Bay Area",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/googles-free-endless-summer-festival-djs-magic-giveaways-mountain-view/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2026-08-31T21:20:59.115Z"
+    },
+    {
+      "id": 24,
+      "selected": false,
+      "title": "15th Annual Hayward Metalfest w/ 7 Bands",
+      "time_display": "Saturday 09/12 1:00 PM - 6:00 PM",
+      "location": "Memorial Park Amphiteater, East Bay",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/15th-annual-hayward-metalfest-7-bands/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2026-08-31T21:20:59.115Z"
+    },
+    {
+      "id": 25,
+      "selected": false,
+      "title": "SF’s ‘Kite by the Bay’ 2026: Kite Festival in the Park (Candlestick Point)",
+      "time_display": "Saturday 09/12 1:00 PM - 4:00 PM",
+      "location": "Candlestick Point State Recreation Area, San Francisco Bay Area",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/sfs-free-kite-by-the-bay-kite-festival-candlestick-point/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2026-08-31T21:20:59.115Z"
+    },
+    {
+      "id": 26,
+      "selected": false,
+      "title": "Castro Wellness Street Fair w/ DJs + Drag Shows",
+      "time_display": "Saturday 09/12 1:00 PM - 5:00 PM",
+      "location": "Noe St (Between Market and Beaver St), San Francisco",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/castro-wellness-street-fair-djs-drag-shows/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2026-08-31T21:20:59.115Z"
+    },
+    {
+      "id": 27,
+      "selected": false,
+      "title": "43rd Annual Mediterranean Food Festival (Los Altos Hills)",
+      "time_display": "Saturday 09/12 1:00 PM - 8:00 PM",
+      "location": "Antiochian Orthodox Church of the Redeemer, Peninsula",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/43rd-annual-mediterranean-food-festival-los-altos-hills/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2026-08-31T21:20:59.115Z"
+    },
+    {
+      "id": 28,
+      "selected": false,
+      "title": "4th Annual Kite by the Bay at Candlestick Point (SF)",
+      "time_display": "Saturday 09/12 1:00 PM - 4:00 PM",
+      "location": "Candlestick Point State Recreation Area, San Francisco",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/4th-annual-kite-bay-candlestick-point-sf/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2026-08-31T21:20:59.115Z"
+    },
+    {
+      "id": 29,
+      "selected": false,
+      "title": "DJs By The Bay: Waterfront Electronic Music Festival (Sausalito)",
+      "time_display": "Saturday 09/12 2:30 PM - 8:30 PM",
+      "location": "Dunphy Park, North Bay",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/djs-bay-waterfront-electronic-music-festival-sausalito/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2026-08-31T21:20:59.115Z"
+    },
+    {
+      "id": 30,
+      "selected": false,
+      "title": "SF’s “Inner Sunset Flea Market” 2026 w/ Sunset Mercantile (Every 2nd Sunday)",
+      "time_display": "Sunday 09/13 10:00 AM - 4:00 PM",
+      "location": "Inner Sunset, San Francisco Bay Area",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/sfs-inner-sunset-flea-market-2026-w-sunset-mercantile-every-2nd-sunday-5/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "The Inner Sunset Flea Market is back for its 11th season on April 12th! Launched in collaboration wi...",
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2026-08-31T21:20:59.115Z"
+    },
+    {
+      "id": 31,
+      "selected": false,
+      "title": "Contra Costa Vintage Market (Lafayette)",
+      "time_display": "Sunday 09/13 10:00 AM - 11:00 AM",
+      "location": "Vintage Vida, East Bay",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/contra-costa-vintage-market-lafayette-2/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2026-08-31T21:20:59.115Z"
+    },
+    {
+      "id": 32,
+      "selected": false,
+      "title": "5th Annual Noe Valley Art Festival",
+      "time_display": "Sunday 09/13 10:00 AM - 4:00 PM",
+      "location": "Noe Valley Town Square, San Francisco",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/5th-annual-noe-valley-art-festival/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2026-08-31T21:20:59.115Z"
+    },
+    {
+      "id": 33,
+      "selected": false,
+      "title": "Comedy AllstarsPunch Line Comedy Club",
+      "time_display": "Tuesday 09/08 7:30 PM",
+      "location": "444 Battery Street, San Francisco, CA",
+      "price": "$20",
+      "event_type": "other",
+      "priority": 3,
+      "chinese_relevant": false,
+      "original_url": "https://ticketmaster.evyy.net/c/253558/264167/4272?u=https%3A%2F%2Fwww.ticketmaster.com%2Fcomedy-allstars-tickets%2Fartist%2F849344",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "sfstation",
+      "scraped_at": "2026-08-31T21:21:26.707Z"
+    },
+    {
+      "id": 34,
+      "selected": false,
+      "title": "Blood Orange - Honey Essex TourThe Warfield",
+      "time_display": "Wednesday 09/09 8:00 PM",
+      "location": "982 Market Street, San Francisco, CA",
+      "price": "$35",
+      "event_type": "other",
+      "priority": 3,
+      "chinese_relevant": false,
+      "original_url": "https://www.axs.com/artists/1022475/blood-orange-tickets",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "sfstation",
+      "scraped_at": "2026-08-31T21:21:26.707Z"
+    },
+    {
+      "id": 35,
+      "selected": false,
+      "title": "Women’s Wellness Fair",
+      "time_display": "Sunday 09/13 11:00 AM - 4:00 PM",
+      "location": "CRUfit Gym Montclair, East Bay",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/womens-wellness-fair/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2026-08-31T21:20:59.115Z"
+    },
+    {
+      "id": 36,
+      "selected": false,
+      "title": "Berryessa Night Market",
+      "time_display": "Friday 09/11 6:00 PM - 10:00 PM",
+      "location": "San Jose Flea Market, 1590 Berryessa Road, San Jose, CA 95133",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://gardenattheflea.com/berryessanightmarket/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Weekly Friday night market inside the iconic San Jose Flea Market featuring Asian street food, desse...",
+      "description_detail": null,
+      "source": "berryessa-night-market",
+      "scraped_at": "2026-08-31T21:23:01.278Z"
+    }
+  ]
+}
