@@ -1,0 +1,229 @@
+{
+  "review_id": "review_2026-09-14_2013_dxb",
+  "generated_at": "2026-09-14T20:13:48.344Z",
+  "scrape_date": "2026-09-14",
+  "target_week": "2026-09-21_to_2026-09-27",
+  "target_week_readable": "下周 (09/21 - 09/27)",
+  "scraping_report": {
+    "total_scraped": 22,
+    "after_deduplication": 9,
+    "after_classification": 9,
+    "classification_report": {
+      "totalEvents": 9,
+      "eventTypes": {
+        "free": 9
+      },
+      "priorityLevels": {
+        "9": 9
+      },
+      "chineseRelevant": 0,
+      "topPriorityEvents": 9
+    }
+  },
+  "instructions": {
+    "how_to_review": "将你想要发布的活动的 'selected' 字段改为 true",
+    "next_step": "保存文件后运行: npm run generate-post [此文件路径]",
+    "fields_explanation": {
+      "title": "活动标题",
+      "time_display": "显示用的时间格式",
+      "location": "活动地点",
+      "price": "票价信息",
+      "event_type": "AI识别的活动类型",
+      "priority": "优先级分数 (越高越重要)",
+      "chinese_relevant": "是否与中文社区相关",
+      "original_url": "原始活动链接"
+    }
+  },
+  "stats": {
+    "total_candidates": 9,
+    "by_type": {
+      "free": 9
+    },
+    "by_priority": {
+      "9": 9
+    },
+    "chinese_relevant": 0
+  },
+  "events": [
+    {
+      "id": 1,
+      "selected": false,
+      "title": "Matisse's Femme au chapeau: A Modern ScandalSFMOMA",
+      "time_display": "Tuesday 09/22 10:00 AM",
+      "location": "151 3rd Street, San Francisco, CA",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.sfmoma.org/exhibition/matisse-femme-au-chapeau/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "sfstation",
+      "scraped_at": "2026-09-14T20:11:25.525Z"
+    },
+    {
+      "id": 2,
+      "selected": false,
+      "title": "Chance The Rapper - Coloring Book 10 Year Anniversary TourThe Masonic",
+      "time_display": "Tuesday 09/22 8:00 PM",
+      "location": "1111 California Street, San Francisco, CA",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://ticketmaster.evyy.net/c/253558/264167/4272?u=https%3A%2F%2Fwww.ticketmaster.com%2Fchance-the-rapper-tickets%2Fartist%2F1750234",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "sfstation",
+      "scraped_at": "2026-09-14T20:11:25.525Z"
+    },
+    {
+      "id": 3,
+      "selected": false,
+      "title": "West Portal Merchant WalkTri Counties Bank",
+      "time_display": "Wednesday 09/23 3:00 PM",
+      "location": "279 West Portal Avenue, San Francisco, CA",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sfcachamber.chambermaster.com/eventregistration/register/13246",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "sfstation",
+      "scraped_at": "2026-09-14T20:11:25.526Z"
+    },
+    {
+      "id": 4,
+      "selected": false,
+      "title": "Dear San FranciscoClub Fugazi",
+      "time_display": "Wednesday 09/23 7:30 PM",
+      "location": "678 Green Street, San Francisco, CA",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.clubfugazisf.com/dear-san-francisco",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "sfstation",
+      "scraped_at": "2026-09-14T20:11:25.526Z"
+    },
+    {
+      "id": 5,
+      "selected": false,
+      "title": "Portola WeekThe Regency Ballroom",
+      "time_display": "Thursday 09/24 8:00 PM",
+      "location": "1290 Sutter Street, San Francisco, CA",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://portolamusicfestival.com/portola-week/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "sfstation",
+      "scraped_at": "2026-09-14T20:11:25.526Z"
+    },
+    {
+      "id": 6,
+      "selected": false,
+      "title": "San Francisco Electronic Music Festival - SFEMFThe Lab",
+      "time_display": "Thursday 09/24 8:00 PM",
+      "location": "2948 16th Street, San Francisco, CA",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://tickets.grayarea.org/events?category=Multiple-Date%20Event",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "sfstation",
+      "scraped_at": "2026-09-14T20:11:25.526Z"
+    },
+    {
+      "id": 7,
+      "selected": false,
+      "title": "Barbarossa Closing PartyBarbarossa",
+      "time_display": "Friday 09/25 9:00 PM",
+      "location": "714 Montgomery Street, San Francisco, CA",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://luma.com/barbarossa",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "sfstation",
+      "scraped_at": "2026-09-14T20:11:25.526Z"
+    },
+    {
+      "id": 8,
+      "selected": false,
+      "title": "“SOMA Nights” 2026: Neighborhood Block Party + Night Market (SF)",
+      "time_display": "Thursday 09/24 5:00 PM - 9:00 PM",
+      "location": "Folsom St. (between 6th-12th), San Francisco Bay Area",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/soma-nights-2026-neighborhood-block-party-night-market-sf-2/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "SOMA Nights returns in 2026, bringing a monthly street party to San Francisco’s Folsom Street (6th–1...",
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2026-09-14T20:10:54.058Z"
+    },
+    {
+      "id": 9,
+      "selected": false,
+      "title": "Berryessa Night Market",
+      "time_display": "Friday 09/25 6:00 PM - 10:00 PM",
+      "location": "San Jose Flea Market, 1590 Berryessa Road, San Jose, CA 95133",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://gardenattheflea.com/berryessanightmarket/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Weekly Friday night market inside the iconic San Jose Flea Market featuring Asian street food, desse...",
+      "description_detail": null,
+      "source": "berryessa-night-market",
+      "scraped_at": "2026-09-14T20:12:55.909Z"
+    }
+  ]
+}
