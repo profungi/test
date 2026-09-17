@@ -170,9 +170,23 @@ ${text}
       // 去除可能的引号和多余标点
       return translated.replace(/^["'「『]|["'」』]$/g, '').replace(/^中文翻译[:：]\s*/, '');
     } catch (error) {
-      // 检查是否是速率限制错误
-      if (error.message.includes('429') || error.message.includes('quota')) {
-        console.warn('⚠️  Gemini 速率限制，自动回退到其他服务...');
+      // 检查是否是速率限制错误，等待后重试一次
+      if (error.message.includes('429') || error.message.includes('quota') || error.message.includes('RESOURCE_EXHAUSTED')) {
+        console.warn('⚠️  Gemini 速率限制，等待 30 秒后重试...');
+        await new Promise(r => setTimeout(r, 30000));
+        try {
+          const model2 = this.clients.gemini.getGenerativeModel({
+            model: 'gemini-2.5-flash',
+            generationConfig: { maxOutputTokens: 150 },
+          });
+          const prompt2 = `${this.systemPrompt}\n\n请翻译以下英文活动标题：\n${text}\n\n中文翻译：`;
+          const result2 = await model2.generateContent(prompt2);
+          const translated2 = result2.response.text().trim();
+          return translated2.replace(/^[\"'「『]|[\"'」』]$/g, '').replace(/^中文翻译[:：]\s*/, '');
+        } catch (retryError) {
+          console.warn('⚠️  Gemini 重试仍失败，回退到其他服务...');
+          throw retryError;
+        }
       } else {
         console.error('Gemini 翻译错误:', error.message);
       }

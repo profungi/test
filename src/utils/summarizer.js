@@ -142,7 +142,7 @@ class Summarizer {
     const prompt = this.buildPrompt(title, description, eventType);
 
     const model = this.clients.gemini.getGenerativeModel({
-      model: 'gemini-2.0-flash',
+      model: 'gemini-2.5-flash',
     });
 
     const result = await model.generateContent(prompt);

@@ -24,7 +24,7 @@ const config = {
       // Google Gemini配置
       gemini: {
         key: process.env.GEMINI_API_KEY,
-        model: 'gemini-2.0-flash-exp',
+        model: 'gemini-2.5-flash',
         maxTokens: 2048
       },
 
