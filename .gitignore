@@ -57,3 +57,6 @@ build/
 # Backup files
 *.bak
 *~
+
+# Local documentation
+ABOUT.md
