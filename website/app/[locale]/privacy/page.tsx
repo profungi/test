@@ -200,7 +200,7 @@ export default async function PrivacyPage({
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <div className="text-center">
             <p className="text-[#FFF4E6] text-sm font-medium">
-              © 2025 Champagne Grape. All rights reserved.
+              © {new Date().getFullYear()} Champagne Grape. All rights reserved.
             </p>
             <div className="mt-4">
               <Image
