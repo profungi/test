@@ -155,7 +155,7 @@ export default async function HomePage({
                 </Link>
               </div>
               <p className="text-[#F0D3B6]/60 text-xs">
-                © 2025 Champagne Grape
+                © {new Date().getFullYear()} Champagne Grape
               </p>
             </div>
           </div>
