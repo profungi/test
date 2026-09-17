@@ -55,11 +55,19 @@ class Translator {
       }
     }
 
-    // Gemini
-    if (process.env.GEMINI_API_KEY) {
+    // Gemini（支持多 key 轮换，读取 GEMINI_API_KEY, GEMINI_API_KEY_2, GEMINI_API_KEY_3）
+    const geminiKeys = [
+      process.env.GEMINI_API_KEY,
+      process.env.GEMINI_API_KEY_2,
+      process.env.GEMINI_API_KEY_3,
+    ].filter(Boolean);
+
+    if (geminiKeys.length > 0) {
       try {
-        this.clients.gemini = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
-        console.log('✅ Gemini 客户端已初始化');
+        this.geminiClients = geminiKeys.map(key => new GoogleGenerativeAI(key));
+        this.geminiKeyIndex = 0; // 当前使用的 key 索引
+        this.clients.gemini = this.geminiClients[0]; // 兼容旧代码
+        console.log(`✅ Gemini 客户端已初始化（${geminiKeys.length} 个 key 轮换）`);
       } catch (error) {
         console.warn('⚠️  Gemini 客户端初始化失败:', error.message);
       }
@@ -170,22 +178,43 @@ ${text}
       // 去除可能的引号和多余标点
       return translated.replace(/^["'「『]|["'」』]$/g, '').replace(/^中文翻译[:：]\s*/, '');
     } catch (error) {
-      // 检查是否是速率限制错误，等待后重试一次
+      // 遇到限速，尝试切换到下一个 Gemini key
       if (error.message.includes('429') || error.message.includes('quota') || error.message.includes('RESOURCE_EXHAUSTED')) {
-        console.warn('⚠️  Gemini 速率限制，等待 30 秒后重试...');
-        await new Promise(r => setTimeout(r, 30000));
-        try {
-          const model2 = this.clients.gemini.getGenerativeModel({
-            model: 'gemini-2.5-flash',
-            generationConfig: { maxOutputTokens: 150 },
-          });
-          const prompt2 = `${this.systemPrompt}\n\n请翻译以下英文活动标题：\n${text}\n\n中文翻译：`;
-          const result2 = await model2.generateContent(prompt2);
-          const translated2 = result2.response.text().trim();
-          return translated2.replace(/^[\"'「『]|[\"'」』]$/g, '').replace(/^中文翻译[:：]\s*/, '');
-        } catch (retryError) {
-          console.warn('⚠️  Gemini 重试仍失败，回退到其他服务...');
-          throw retryError;
+        const totalKeys = this.geminiClients ? this.geminiClients.length : 1;
+        if (totalKeys > 1) {
+          this.geminiKeyIndex = (this.geminiKeyIndex + 1) % totalKeys;
+          this.clients.gemini = this.geminiClients[this.geminiKeyIndex];
+          console.warn(`⚠️  Gemini key[${this.geminiKeyIndex - 1 < 0 ? totalKeys - 1 : this.geminiKeyIndex - 1}] 限速，切换到 key[${this.geminiKeyIndex}] 重试...`);
+          try {
+            const model2 = this.clients.gemini.getGenerativeModel({
+              model: 'gemini-2.5-flash',
+              generationConfig: { maxOutputTokens: 150 },
+            });
+            const prompt2 = `${this.systemPrompt}\n\n请翻译以下英文活动标题：\n${text}\n\n中文翻译：`;
+            const result2 = await model2.generateContent(prompt2);
+            const translated2 = result2.response.text().trim();
+            return translated2.replace(/^["'「『]|["'」』]$/g, '').replace(/^中文翻译[:：]\s*/, '');
+          } catch (retryError) {
+            console.warn('⚠️  Gemini 备用 key 也失败，回退到其他服务...');
+            throw retryError;
+          }
+        } else {
+          // 只有一个 key，等待 30 秒后重试
+          console.warn('⚠️  Gemini 速率限制，等待 30 秒后重试...');
+          await new Promise(r => setTimeout(r, 30000));
+          try {
+            const model2 = this.clients.gemini.getGenerativeModel({
+              model: 'gemini-2.5-flash',
+              generationConfig: { maxOutputTokens: 150 },
+            });
+            const prompt2 = `${this.systemPrompt}\n\n请翻译以下英文活动标题：\n${text}\n\n中文翻译：`;
+            const result2 = await model2.generateContent(prompt2);
+            const translated2 = result2.response.text().trim();
+            return translated2.replace(/^["'「『]|["'」』]$/g, '').replace(/^中文翻译[:：]\s*/, '');
+          } catch (retryError) {
+            console.warn('⚠️  Gemini 重试仍失败，回退到其他服务...');
+            throw retryError;
+          }
         }
       } else {
         console.error('Gemini 翻译错误:', error.message);
