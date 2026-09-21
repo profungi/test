@@ -1,0 +1,695 @@
+{
+  "review_id": "review_2026-09-21_2029_5gv",
+  "generated_at": "2026-09-21T20:29:19.525Z",
+  "scrape_date": "2026-09-21",
+  "target_week": "2026-09-28_to_2026-10-04",
+  "target_week_readable": "下周 (09/28 - 10/04)",
+  "scraping_report": {
+    "total_scraped": 42,
+    "after_deduplication": 32,
+    "after_classification": 32,
+    "classification_report": {
+      "totalEvents": 32,
+      "eventTypes": {
+        "free": 28,
+        "market": 1,
+        "festival": 3
+      },
+      "priorityLevels": {
+        "9": 28,
+        "10": 4
+      },
+      "chineseRelevant": 0,
+      "topPriorityEvents": 32
+    }
+  },
+  "instructions": {
+    "how_to_review": "将你想要发布的活动的 'selected' 字段改为 true",
+    "next_step": "保存文件后运行: npm run generate-post [此文件路径]",
+    "fields_explanation": {
+      "title": "活动标题",
+      "time_display": "显示用的时间格式",
+      "location": "活动地点",
+      "price": "票价信息",
+      "event_type": "AI识别的活动类型",
+      "priority": "优先级分数 (越高越重要)",
+      "chinese_relevant": "是否与中文社区相关",
+      "original_url": "原始活动链接"
+    }
+  },
+  "stats": {
+    "total_candidates": 32,
+    "by_type": {
+      "market": 1,
+      "festival": 3,
+      "free": 28
+    },
+    "by_priority": {
+      "9": 28,
+      "10": 4
+    },
+    "chinese_relevant": 0
+  },
+  "events": [
+    {
+      "id": 1,
+      "selected": false,
+      "title": "Bon Marché 2nd Hand Market: New Season, New Colors (Albany)",
+      "time_display": "Saturday 10/03 11:00 AM - 4:00 PM",
+      "location": "Abrams Claghorn Gallery, East Bay",
+      "price": "Check event page",
+      "event_type": "market",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/bon-march-2nd-hand-market-nouvelle-saison-nouvelles-couleurs-albany/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2026-09-21T20:17:52.712Z"
+    },
+    {
+      "id": 2,
+      "selected": false,
+      "title": "“Many Moons” Festival 2026: AAPI Culture, Food + Art (Sebastopol)",
+      "time_display": "Saturday 10/03 11:00 AM - 7:00 PM",
+      "location": "Ives Park, North Bay",
+      "price": "$10*",
+      "event_type": "festival",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/moons-festival-2026-aapi-culture-food-art-sebastopol/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2026-09-21T20:17:52.713Z"
+    },
+    {
+      "id": 3,
+      "selected": false,
+      "title": "Filipino Island Fest 2026: Food, Music + Island Vibes (Alameda)",
+      "time_display": "Saturday 10/03 11:00 AM - 8:00 PM",
+      "location": "2151 Ferry Point, San Francisco Bay Area",
+      "price": "5+*",
+      "event_type": "festival",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/filipino-island-fest-2026-food-music-island-vibes-alameda/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2026-09-21T20:17:52.713Z"
+    },
+    {
+      "id": 4,
+      "selected": false,
+      "title": "Filipino Island Fest (Alameda)",
+      "time_display": "Saturday 10/03 11:00 AM - 8:00 PM",
+      "location": "2151 Ferry Point, East Bay",
+      "price": "$5*",
+      "event_type": "festival",
+      "priority": 10,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/filipino-island-fest-alameda/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2026-09-21T20:17:52.713Z"
+    },
+    {
+      "id": 5,
+      "selected": false,
+      "title": "Valkyries Playoff Watch Party at Dirty HabitDirty Habit",
+      "time_display": "Tuesday 09/29 4:00 PM",
+      "location": "12 4th Street, 5th Floor, San Francisco, CA",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.opentable.com/booking/experiences-availability?rid=241&restref=241&experienceId=799059&utm_source=external&utm_medium=referral&utm_campaign=shared",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "sfstation",
+      "scraped_at": "2026-09-21T20:18:14.986Z"
+    },
+    {
+      "id": 6,
+      "selected": false,
+      "title": "KALW's 85th Birthday BenefitThe Warfield",
+      "time_display": "Tuesday 09/29 7:00 PM",
+      "location": "982 Market Street, San Francisco, CA",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.axs.com/events/1515507/kalw-s-85th-birthday-benefit-tickets",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "sfstation",
+      "scraped_at": "2026-09-21T20:18:14.986Z"
+    },
+    {
+      "id": 7,
+      "selected": false,
+      "title": "AURA GRACE CATHEDRALGrace Cathedral",
+      "time_display": "Wednesday 09/30 7:15 PM",
+      "location": "1100 California Street, San Francisco, CA",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://feverup.com/immersive/434520",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "sfstation",
+      "scraped_at": "2026-09-21T20:18:14.987Z"
+    },
+    {
+      "id": 8,
+      "selected": false,
+      "title": "Critic to Critic: A conversation on food criticism and Bay Area RestaurantsGray Area - Grand Theater",
+      "time_display": "Wednesday 09/30 5:30 PM",
+      "location": "2665 Mission Street, San Francisco, CA",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://grayarea.org/event/san-francisco-chronicle-mackenzie-chung-fegan-michael-bauer",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "sfstation",
+      "scraped_at": "2026-09-21T20:18:14.987Z"
+    },
+    {
+      "id": 9,
+      "selected": false,
+      "title": "San Francisco Tango Mentorship - Argentine Tango Classes with Marcelo SolisLa Pista",
+      "time_display": "Wednesday 09/30 8:00 PM",
+      "location": "3450 3rd Street, San Francisco, CA",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/san-francisco-tango-mentorship-tickets-2001398350342",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "sfstation",
+      "scraped_at": "2026-09-21T20:18:14.987Z"
+    },
+    {
+      "id": 10,
+      "selected": false,
+      "title": "Renée Fleming Sings StraussDavies Symphony Hall",
+      "time_display": "Thursday 10/01 2:00 PM",
+      "location": "201 Van Ness Avenue, San Francisco, CA",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.sfsymphony.org/Buy-Tickets/2026-27/Renee-Fleming-Strauss",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "sfstation",
+      "scraped_at": "2026-09-21T20:18:14.987Z"
+    },
+    {
+      "id": 11,
+      "selected": false,
+      "title": "Terror Vault - Smashed Return to HellvilleThe Old San Francisco Mint",
+      "time_display": "Thursday 10/01 6:00 PM",
+      "location": "88 Fifth Street, San Francisco, CA",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.terrorvault.com",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "sfstation",
+      "scraped_at": "2026-09-21T20:18:14.987Z"
+    },
+    {
+      "id": 12,
+      "selected": false,
+      "title": "Nexus Party: Official Party of SF/Bay Area Black Art WeekYerba Buena Center for the Arts (YBCA)",
+      "time_display": "Thursday 10/01 8:00 PM",
+      "location": "701 Mission Street, San Francisco, CA",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.moadsf.org/event/moad-ybca-present-the-nexus-party-the-official-party-of-sf-bay-area-black-art-week",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "sfstation",
+      "scraped_at": "2026-09-21T20:18:14.988Z"
+    },
+    {
+      "id": 13,
+      "selected": false,
+      "title": "Hardly Strictly Out of the ParkThe Fillmore",
+      "time_display": "Friday 10/02 8:00 PM",
+      "location": "1805 Geary Blvd, San Francisco, CA",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://hardlystrictlybluegrass.com/out-of-the-park/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "sfstation",
+      "scraped_at": "2026-09-21T20:18:14.988Z"
+    },
+    {
+      "id": 14,
+      "selected": false,
+      "title": "SF’s Noe Valley Night Market 2026",
+      "time_display": "Tuesday 09/29 5:00 PM - 8:00 PM",
+      "location": "Noe Valley Town Square, San Francisco Bay Area",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/sfs-noe-valley-night-market-2026-5/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Come out for the Noe Valley Night Market from 5–8pm at the Noe Valley Town Square for a cozy evening...",
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2026-09-21T20:17:52.712Z"
+    },
+    {
+      "id": 15,
+      "selected": false,
+      "title": "SF’s Free DFT Monthly Block Party: “Downtown First Thursdays” (2026)",
+      "time_display": "Thursday 10/01 5:00 PM - 10:00 PM",
+      "location": "2nd Street between Market and Howard Streets, San Francisco Bay Area",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/sfs-free-dft-monthly-block-party-downtown-first-thursdays-2026-9/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Downtown First Thursdays is back in 2026 for a full year of street parties in 2026, starting Jan 1, ...",
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2026-09-21T20:17:52.712Z"
+    },
+    {
+      "id": 16,
+      "selected": false,
+      "title": "Hardly Strictly Bluegrass 2026 in Golden Gate Park (Oct. 2-4)",
+      "time_display": "Friday 10/02 1:00 PM - 7:00 PM",
+      "location": "Hellman Hollow, San Francisco Bay Area",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/hardly-strictly-bluegrass-2026-in-golden-gate-park-oct-2-4-3/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Hardly Strictly Bluegrass is one of the largest, free-est and beloved music festivals in the country...",
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2026-09-21T20:17:52.712Z"
+    },
+    {
+      "id": 17,
+      "selected": false,
+      "title": "Pleasant Hill Night Market: Food, Music & Performances",
+      "time_display": "Friday 10/02 5:00 PM - 9:00 PM",
+      "location": "Chilpancingo Park, San Francisco Bay Area",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/pleasant-hills-new-night-market-11/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Pleasant Hill Night Market Will Return in May 2026 After a successful first season, the Night Market...",
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2026-09-21T20:17:52.712Z"
+    },
+    {
+      "id": 18,
+      "selected": false,
+      "title": "100 Years of OLA: Eras Tour Fun Faire w/ Food, Rides (Burlingame)",
+      "time_display": "Friday 10/02 6:00 PM - 10:00 PM",
+      "location": "Our Lady of Angels, Peninsula",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/100-years-ola-eras-tour-fun-faire-food-rides-burlingame/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2026-09-21T20:17:52.712Z"
+    },
+    {
+      "id": 19,
+      "selected": false,
+      "title": "SF’s Free Fall 2026 “Night Garden on Third” Jazz Mafia + Vinyl DJ Concert Series (Bayview)",
+      "time_display": "Friday 10/02 7:00 PM - 9:00 PM",
+      "location": "People's Garden, San Francisco Bay Area",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/sfs-free-fall-2026-night-garden-jazz-mafia-vinyl-dj-concert-series-bayview/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Night Garden on Third is a free three-part evening music series at the People’s Garden in Bayview. T...",
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2026-09-21T20:17:52.712Z"
+    },
+    {
+      "id": 20,
+      "selected": false,
+      "title": "African Arts Festival at Yerba Buena Gardens Festival 2026",
+      "time_display": "Saturday 10/03 11:00 AM - 4:00 PM",
+      "location": "Great Lawn, Yerba Buena Gardens, San Francisco Bay Area",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/african-arts-festival-at-yerba-buena-gardens-festival-2026/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2026-09-21T20:17:52.712Z"
+    },
+    {
+      "id": 21,
+      "selected": false,
+      "title": "Oakland’s Oaktoberfest at The Dimond: 2 Days of Beer, Music + Art (Oct. 3-4)",
+      "time_display": "Saturday 10/03 11:00 AM - 7:00 PM",
+      "location": "Dimond District (Oakland)",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/oaklands-oaktoberfest-dimond-2-days-beer-music-art-oct-34/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2026-09-21T20:17:52.712Z"
+    },
+    {
+      "id": 22,
+      "selected": false,
+      "title": "Free “Science in the Park” Fest: Launch at Water Rocket + Egg Drop Contest (Hayward)",
+      "time_display": "Saturday 10/03 9:00 AM - 3:00 PM",
+      "location": "California State University, East Bay, East Bay",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/free-science-park-fest-water-rockets-live-animals-egg-drop-hayward/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2026-09-21T20:17:52.712Z"
+    },
+    {
+      "id": 23,
+      "selected": false,
+      "title": "52nd Annual Oakland Black Cowboy Parade & Festival 2026 (DeFremery Park)",
+      "time_display": "Saturday 10/03 10:00 AM - 6:00 PM",
+      "location": "deFremery Park, San Francisco Bay Area",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/52nd-annual-oakland-black-cowboy-parade-festival-2026-defremery-park/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2026-09-21T20:17:52.713Z"
+    },
+    {
+      "id": 24,
+      "selected": false,
+      "title": "28th Annual Bay Area Anarchist Book Fair (Oakland)",
+      "time_display": "Saturday 10/03 10:00 AM - 5:00 PM",
+      "location": "The Humanist Hall, East Bay",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/28th-annual-bay-area-anarchist-book-fair-oakland/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2026-09-21T20:17:52.713Z"
+    },
+    {
+      "id": 25,
+      "selected": false,
+      "title": "6th Annual African Arts Festival (Yerba Buena Gardens)",
+      "time_display": "Saturday 10/03 11:00 AM - 4:00 PM",
+      "location": "Great Lawn, Yerba Buena Gardens, San Francisco",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/6th-annual-african-arts-festival-yerba-buena-gardens/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2026-09-21T20:17:52.713Z"
+    },
+    {
+      "id": 26,
+      "selected": false,
+      "title": "SF’s 2026 African Arts Festival: Free Family Day (Yerba Buena Gardens)",
+      "time_display": "Saturday 10/03 11:00 AM - 4:00 PM",
+      "location": "Great Lawn, Yerba Buena Gardens, San Francisco Bay Area",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/sfs-2026-african-arts-festival-free-family-day-yerba-buena-gardens/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2026-09-21T20:17:52.713Z"
+    },
+    {
+      "id": 27,
+      "selected": false,
+      "title": "Santa Cruz’s 1st Ever “Porchfest” Free Downtown Music Crawl (14 Venues / 50+ Concerts)",
+      "time_display": "Saturday 10/03 12:00 PM - 6:00 PM",
+      "location": "Downtown Santa Cruz, San Francisco Bay Area",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/santa-cruz-1st-porchfest-free-downtown-music-crawl-14-venues-50-concerts/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2026-09-21T20:17:52.713Z"
+    },
+    {
+      "id": 28,
+      "selected": false,
+      "title": "30th Annual Middle Eastern Food Festival (SF)",
+      "time_display": "Saturday 10/03 12:00 PM - 1:00 PM",
+      "location": "St. Nicholas Orthodox Church (SF)",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/30th-annual-middle-eastern-food-festival-sf/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2026-09-21T20:17:52.713Z"
+    },
+    {
+      "id": 29,
+      "selected": false,
+      "title": "30th Annual Middle Eastern Food Festival (SF)",
+      "time_display": "Saturday 10/03 12:00 PM - 9:00 PM",
+      "location": "St. Nicholas Antiochian Orthodox Church, San Francisco Bay Area",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/30th-annual-middle-eastern-food-festival-sf-2/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2026-09-21T20:17:52.713Z"
+    },
+    {
+      "id": 30,
+      "selected": false,
+      "title": "SF’s Free Bayview “Night Garden on Third” Jazz Night in the Garden (Fall 2026)",
+      "time_display": "Saturday 10/03 7:00 PM - 9:00 PM",
+      "location": "People's Garden, San Francisco Bay Area",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/sfs-free-bayview-night-garden-on-third-jazz-night-in-the-garden-fall-2026/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Night Garden on Third is a free three-part evening music series at the People’s Garden in Bayview. T...",
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2026-09-21T20:17:52.713Z"
+    },
+    {
+      "id": 31,
+      "selected": false,
+      "title": "First Fridays ArtWalk",
+      "time_display": "Friday 10/02 5:00 PM - 9:00 PM",
+      "location": "Downtown San Jose SoFA District, 5th Street between Taylor and Jackson",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sjdowntown.com/first-fridays",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Monthly art walk featuring local galleries, street performers, food trucks, and live music in downto...",
+      "description_detail": null,
+      "source": "first-fridays",
+      "scraped_at": "2026-09-21T20:19:54.132Z"
+    },
+    {
+      "id": 32,
+      "selected": false,
+      "title": "Berryessa Night Market",
+      "time_display": "Friday 10/02 6:00 PM - 10:00 PM",
+      "location": "San Jose Flea Market, 1590 Berryessa Road, San Jose, CA 95133",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://gardenattheflea.com/berryessanightmarket/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Weekly Friday night market inside the iconic San Jose Flea Market featuring Asian street food, desse...",
+      "description_detail": null,
+      "source": "berryessa-night-market",
+      "scraped_at": "2026-09-21T20:19:54.132Z"
+    }
+  ]
+}
