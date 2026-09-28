@@ -1,0 +1,597 @@
+{
+  "review_id": "review_2026-09-28_2147_22n",
+  "generated_at": "2026-09-28T21:47:32.068Z",
+  "scrape_date": "2026-09-28",
+  "target_week": "2026-10-05_to_2026-10-11",
+  "target_week_readable": "下周 (10/05 - 10/11)",
+  "scraping_report": {
+    "total_scraped": 39,
+    "after_deduplication": 27,
+    "after_classification": 27,
+    "classification_report": {
+      "totalEvents": 27,
+      "eventTypes": {
+        "free": 25,
+        "other": 1,
+        "art": 1
+      },
+      "priorityLevels": {
+        "3": 1,
+        "5": 1,
+        "9": 25
+      },
+      "chineseRelevant": 0,
+      "topPriorityEvents": 25
+    }
+  },
+  "instructions": {
+    "how_to_review": "将你想要发布的活动的 'selected' 字段改为 true",
+    "next_step": "保存文件后运行: npm run generate-post [此文件路径]",
+    "fields_explanation": {
+      "title": "活动标题",
+      "time_display": "显示用的时间格式",
+      "location": "活动地点",
+      "price": "票价信息",
+      "event_type": "AI识别的活动类型",
+      "priority": "优先级分数 (越高越重要)",
+      "chinese_relevant": "是否与中文社区相关",
+      "original_url": "原始活动链接"
+    }
+  },
+  "stats": {
+    "total_candidates": 27,
+    "by_type": {
+      "free": 25,
+      "art": 1,
+      "other": 1
+    },
+    "by_priority": {
+      "3": 1,
+      "5": 1,
+      "9": 25
+    },
+    "chinese_relevant": 0
+  },
+  "events": [
+    {
+      "id": 1,
+      "selected": false,
+      "title": "Nellie Night with Warriors vs LakersChase Center",
+      "time_display": "Tuesday 10/06 7:00 PM",
+      "location": "1 Warriors Way, San Francisco, CA",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.ticketmaster.com/golden-state-warriors-vs-los-angeles-san-francisco-california-10-06-2026/event/1C0064EABC593918",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "sfstation",
+      "scraped_at": "2026-09-28T21:37:58.694Z"
+    },
+    {
+      "id": 2,
+      "selected": false,
+      "title": "Kebab ShowdownThe Commons - KQED Headquarters",
+      "time_display": "Tuesday 10/06 7:00 PM",
+      "location": "2601 Mariposa Street, San Francisco, CA",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.tixr.com/groups/kqed/events/kebab-showdown-204336",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "sfstation",
+      "scraped_at": "2026-09-28T21:37:58.694Z"
+    },
+    {
+      "id": 3,
+      "selected": false,
+      "title": "The Brothers SizeTheatre 33",
+      "time_display": "Wednesday 10/07 7:00 PM",
+      "location": "533 Sutter Street, San Francisco, CA",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.simpletix.com/e/the-brothers-size-tickets-251065",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "sfstation",
+      "scraped_at": "2026-09-28T21:37:58.694Z"
+    },
+    {
+      "id": 4,
+      "selected": false,
+      "title": "Lalo Guerrero Legacy FestivalMedicine for Nightmares Bookstore and Gallery",
+      "time_display": "Thursday 10/08 7:00 PM",
+      "location": "3036 24th Street, San Francisco, CA",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://thefreight.org/lalo/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "sfstation",
+      "scraped_at": "2026-09-28T21:37:58.694Z"
+    },
+    {
+      "id": 5,
+      "selected": false,
+      "title": "Community Game NightSt. Francis Lutheran Church",
+      "time_display": "Friday 10/09 6:00 PM",
+      "location": "152 Church Street, San Francisco, CA",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/community-game-night-tickets-1997619346239?aff=oddtdtcreator",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "sfstation",
+      "scraped_at": "2026-09-28T21:37:58.694Z"
+    },
+    {
+      "id": 6,
+      "selected": false,
+      "title": "Fridays on Front Street Block PartyFront Street",
+      "time_display": "Friday 10/09 4:00 PM",
+      "location": "240 Front Street, San Francisco, CA",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/fridays-on-front-st-free-yacht-rock-block-party-tickets-1999042771743",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "sfstation",
+      "scraped_at": "2026-09-28T21:37:58.694Z"
+    },
+    {
+      "id": 7,
+      "selected": false,
+      "title": "Fleet Fest 2026: Brass Quintet (TJPA Salesforce Park)",
+      "time_display": "Tuesday 10/06 12:30 PM - 1:30 PM",
+      "location": "Salesforce Park",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/fleet-fest-2026-brass-quintet-tjpa-salesforce-park/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Look up in the sky when you hear the roaring of jet engines and head down to SF’s northern waterfron...",
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2026-09-28T21:37:26.795Z"
+    },
+    {
+      "id": 8,
+      "selected": false,
+      "title": "Made in SF: Handcrafted to High-Tech Manufacturing in Dogpatch",
+      "time_display": "Tuesday 10/06 4:00 PM - 5:45 PM",
+      "location": "Woods Yard Park, San Francisco",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/sf-handcrafted-hightech-manufacturing-dogpatch/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2026-09-28T21:37:26.796Z"
+    },
+    {
+      "id": 9,
+      "selected": false,
+      "title": "SF Fire Credit Union 75th Anniversary Celebration",
+      "time_display": "Tuesday 10/06 5:00 PM - 7:00 PM",
+      "location": "SF Fire Credit Union Noe Valley Branch / Noe Valley Town Square",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/sf-fire-credit-union-75th-anniversary-celebration/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2026-09-28T21:37:26.796Z"
+    },
+    {
+      "id": 10,
+      "selected": false,
+      "title": "Fleet Fest 2026: Brass Band Concert (Noe Valley Town Square)",
+      "time_display": "Tuesday 10/06 6:00 PM - 7:00 PM",
+      "location": "Noe Valley Town Square, San Francisco Bay Area",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/fleet-fest-2026-brass-band-concert-noe-valley-town-square/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Look up in the sky when you hear the roaring of jet engines and head down to SF’s northern waterfron...",
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2026-09-28T21:37:26.796Z"
+    },
+    {
+      "id": 11,
+      "selected": false,
+      "title": "SF’s Fleet Fest 2026: Brass Quintet (SF VA Medical Center)",
+      "time_display": "Wednesday 10/07 11:30 AM - 12:30 PM",
+      "location": "San Francisco VA Medical Center",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/sfs-fleet-fest-2026-brass-quintet-sf-va-medical-center/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Look up in the sky when you hear the roaring of jet engines and head down to SF’s northern waterfron...",
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2026-09-28T21:37:26.796Z"
+    },
+    {
+      "id": 12,
+      "selected": false,
+      "title": "SF’s Fleet Fest 2026: USAF Band of Golden West Brass (Ghirardelli Square)",
+      "time_display": "Wednesday 10/07 2:00 PM - 3:00 PM",
+      "location": "Ghirardelli Square, San Francisco Bay Area",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/sfs-fleet-fest-2026-usaf-band-of-golden-west-brass-ghirardelli-square/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Look up in the sky when you hear the roaring of jet engines and head down to SF’s northern waterfron...",
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2026-09-28T21:37:26.796Z"
+    },
+    {
+      "id": 13,
+      "selected": false,
+      "title": "SF’s Fleet Fest 2026: Navy Band SW Woodwind Quintet (Grace Cathedral)",
+      "time_display": "Wednesday 10/07 3:00 PM - 4:00 PM",
+      "location": "Grace Cathedral, San Francisco Bay Area",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/sfs-fleet-fest-2026-navy-band-sw-woodwind-quintet-grace-cathedral/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Look up in the sky when you hear the roaring of jet engines and head down to SF’s northern waterfron...",
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2026-09-28T21:37:26.796Z"
+    },
+    {
+      "id": 14,
+      "selected": false,
+      "title": "SF’s Fleet Fest 2026: USAF Band of Golden West – Mobility (Pier 39)",
+      "time_display": "Wednesday 10/07 5:00 PM - 6:00 PM",
+      "location": "Pier 39, San Francisco Bay Area",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/sfs-fleet-fest-2026-usaf-band-of-golden-west-mobility-pier-39/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Look up in the sky when you hear the roaring of jet engines and head down to SF’s northern waterfron...",
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2026-09-28T21:37:26.796Z"
+    },
+    {
+      "id": 15,
+      "selected": false,
+      "title": "SF’s Fleet Fest 2026: Navy Band SW Brass Band (Japantown)",
+      "time_display": "Wednesday 10/07 5:00 PM - 6:00 PM",
+      "location": "Japantown (Osaka Way), San Francisco Bay Area",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/sfs-fleet-fest-2026-navy-band-sw-brass-band-japantown/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Look up in the sky when you hear the roaring of jet engines and head down to SF’s northern waterfron...",
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2026-09-28T21:37:26.796Z"
+    },
+    {
+      "id": 16,
+      "selected": false,
+      "title": "SF’s Fleet Fest 2026: Brass Band Concert (Grace Cathedral)",
+      "time_display": "Wednesday 10/07 5:00 PM - 6:00 PM",
+      "location": "Huntington Park, San Francisco Bay Area",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/sfs-fleet-fest-2026-brass-band-concert-grace-cathedral/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Look up in the sky when you hear the roaring of jet engines and head down to SF’s northern waterfron...",
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2026-09-28T21:37:26.796Z"
+    },
+    {
+      "id": 17,
+      "selected": false,
+      "title": "Lunchtime Concert w/ Quinteto Latino (Yerba Buena Gardens Festival 2026)",
+      "time_display": "Thursday 10/08 12:30 PM - 1:30 PM",
+      "location": "Great Lawn, Yerba Buena Gardens, San Francisco Bay Area",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/lunchtime-concert-w-quinteto-latino-yerba-buena-gardens-festival-2026/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2026-09-28T21:37:26.796Z"
+    },
+    {
+      "id": 18,
+      "selected": false,
+      "title": "SF’s Fleet Week 2026: Navy Band SW Woodwind Quintet (Ferry Building)",
+      "time_display": "Thursday 10/08 12:00 PM - 1:00 PM",
+      "location": "San Francisco Ferry Building",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/sfs-fleet-week-2026-navy-band-sw-woodwind-quintet-ferry-building/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Look up in the sky when you hear the roaring of jet engines and head down to SF’s northern waterfron...",
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2026-09-28T21:37:26.796Z"
+    },
+    {
+      "id": 19,
+      "selected": false,
+      "title": "SF’s Fleet Week 2026: USAF Band of Golden West Brass (Crab Wheel Plaza)",
+      "time_display": "Thursday 10/08 1:00 PM - 2:00 PM",
+      "location": "Fisherman’s Wharf Crab Wheel Plaza, San Francisco Bay Area",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/sfs-fleet-week-2026-usaf-band-of-golden-west-brass-crab-wheel-plaza/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Look up in the sky when you hear the roaring of jet engines and head down to SF’s northern waterfron...",
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2026-09-28T21:37:26.796Z"
+    },
+    {
+      "id": 20,
+      "selected": false,
+      "title": "SF’s “Valencia Live” Night Market in The Mission (Every 2nd Thu)",
+      "time_display": "Thursday 10/08 5:00 PM - 10:00 PM",
+      "location": "Valencia Street, San Francisco Bay Area",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/sfs-valencia-live-night-market-in-the-mission-every-2nd-thu-5/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "A free, monthly neighborhood celebration on Valencia Street with live music, dancing, art-making and...",
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2026-09-28T21:37:26.796Z"
+    },
+    {
+      "id": 21,
+      "selected": false,
+      "title": "SF’s Fleet Week 2026: Navy Band SW Brass Band (Castro – Jane Warner Plaza)",
+      "time_display": "Thursday 10/08 5:00 PM - 6:00 PM",
+      "location": "Jane Warner Plaza, San Francisco Bay Area",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/sfs-fleet-week-2026-navy-band-sw-brass-band-castro-jane-warner-plaza/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Look up in the sky when you hear the roaring of jet engines and head down to SF’s northern waterfron...",
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2026-09-28T21:37:26.796Z"
+    },
+    {
+      "id": 22,
+      "selected": false,
+      "title": "SF’s Fleet Week 2026: USAF Band of Golden West – Mobility (Pier 39)",
+      "time_display": "Thursday 10/08 5:00 PM - 6:00 PM",
+      "location": "Pier 39, San Francisco Bay Area",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/sfs-fleet-week-2026-usaf-band-of-golden-west-mobility-pier-39/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Look up in the sky when you hear the roaring of jet engines and head down to SF’s northern waterfron...",
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2026-09-28T21:37:26.796Z"
+    },
+    {
+      "id": 23,
+      "selected": false,
+      "title": "SF’s Final FREE “Valencia Live” Street Party of 2026 (October)",
+      "time_display": "Thursday 10/08 5:00 PM - 10:00 PM",
+      "location": "Valencia St. between 18th and 21st, San Francisco Bay Area",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/sfs-free-valencia-live-2026-monthly-street-party-every-2nd-thursday-5/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Valencia LIVE! is back for a 2026 season! See you in the streets for a FREE, all-ages monthly neighb...",
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2026-09-28T21:37:26.796Z"
+    },
+    {
+      "id": 24,
+      "selected": false,
+      "title": "Resort-O-Rama 2026: Mid-Century ’50s Architecture Bash at Santa Rosa’s Flamingo Resort (Oct. 8-11)",
+      "time_display": "Thursday 10/08 6:00 PM - 11:59 PM",
+      "location": "Flamingo Resort and Spa, North Bay",
+      "price": "$27.76*",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/resortorama-2026-midcentury-50s-architecture-bash-santa-rosas-flamingo-resort-oct-811/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Event: Resort-O-Rama When: October 8th -11th Where: Flamingo Resort in Santa Rosa, California. FREE ...",
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2026-09-28T21:37:26.796Z"
+    },
+    {
+      "id": 25,
+      "selected": false,
+      "title": "Berryessa Night Market",
+      "time_display": "Friday 10/09 6:00 PM - 10:00 PM",
+      "location": "San Jose Flea Market, 1590 Berryessa Road, San Jose, CA 95133",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://gardenattheflea.com/berryessanightmarket/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Weekly Friday night market inside the iconic San Jose Flea Market featuring Asian street food, desse...",
+      "description_detail": null,
+      "source": "berryessa-night-market",
+      "scraped_at": "2026-09-28T21:39:31.269Z"
+    },
+    {
+      "id": 26,
+      "selected": false,
+      "title": "Meet “Ulysses” SF Ocean Robotics Startup",
+      "time_display": "Tuesday 10/06 5:30 PM - 8:00 PM",
+      "location": "South Beach Yacht Club, San Francisco",
+      "price": "$15*",
+      "event_type": "art",
+      "priority": 5,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/meet-ulysses-sf-ocean-robotics-startup/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2026-09-28T21:37:26.796Z"
+    },
+    {
+      "id": 27,
+      "selected": false,
+      "title": "My Morning JacketThe Fillmore",
+      "time_display": "Tuesday 10/06 8:00 PM",
+      "location": "1805 Geary Blvd, San Francisco, CA",
+      "price": "$49.50",
+      "event_type": "other",
+      "priority": 3,
+      "chinese_relevant": false,
+      "original_url": "https://ticketmaster.evyy.net/c/253558/264167/4272?u=https%3A%2F%2Fwww.ticketmaster.com%2Fmy-morning-jacket-tickets%2Fartist%2F841284",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "sfstation",
+      "scraped_at": "2026-09-28T21:37:58.694Z"
+    }
+  ]
+}
