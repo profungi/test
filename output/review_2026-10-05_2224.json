@@ -1,0 +1,209 @@
+{
+  "review_id": "review_2026-10-05_2224_o7c",
+  "generated_at": "2026-10-05T22:24:35.053Z",
+  "scrape_date": "2026-10-05",
+  "target_week": "2026-10-12_to_2026-10-18",
+  "target_week_readable": "下周 (10/12 - 10/18)",
+  "scraping_report": {
+    "total_scraped": 21,
+    "after_deduplication": 8,
+    "after_classification": 8,
+    "classification_report": {
+      "totalEvents": 8,
+      "eventTypes": {
+        "free": 8
+      },
+      "priorityLevels": {
+        "9": 8
+      },
+      "chineseRelevant": 0,
+      "topPriorityEvents": 8
+    }
+  },
+  "instructions": {
+    "how_to_review": "将你想要发布的活动的 'selected' 字段改为 true",
+    "next_step": "保存文件后运行: npm run generate-post [此文件路径]",
+    "fields_explanation": {
+      "title": "活动标题",
+      "time_display": "显示用的时间格式",
+      "location": "活动地点",
+      "price": "票价信息",
+      "event_type": "AI识别的活动类型",
+      "priority": "优先级分数 (越高越重要)",
+      "chinese_relevant": "是否与中文社区相关",
+      "original_url": "原始活动链接"
+    }
+  },
+  "stats": {
+    "total_candidates": 8,
+    "by_type": {
+      "free": 8
+    },
+    "by_priority": {
+      "9": 8
+    },
+    "chinese_relevant": 0
+  },
+  "events": [
+    {
+      "id": 1,
+      "selected": false,
+      "title": "Litquake 2026Mechanics' Institute",
+      "time_display": "Tuesday 10/13 6:30 PM",
+      "location": "57 Post Street, San Francisco, CA",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.litquake.org/2026-schedule",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "sfstation",
+      "scraped_at": "2026-10-05T22:21:17.884Z"
+    },
+    {
+      "id": 2,
+      "selected": false,
+      "title": "Points of DepartureCowell Theater",
+      "time_display": "Tuesday 10/13 8:30 PM",
+      "location": "Fort Mason Center, San Francisco, CA",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://fortmason.org/event/fort-mason-art-points-of-departure-fall-2026/2026-09-24/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "sfstation",
+      "scraped_at": "2026-10-05T22:21:17.884Z"
+    },
+    {
+      "id": 3,
+      "selected": false,
+      "title": "Sex Pistols (Steve Jones, Paul Cook, Glen Matlock) featuring Frank CarterThe Warfield",
+      "time_display": "Wednesday 10/14 8:30 PM",
+      "location": "982 Market Street, San Francisco, CA",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.axs.com/events/908696/sex-pistols-steve-jones-paul-cook-glen-matlock-feat-frank-carter-tickets",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "sfstation",
+      "scraped_at": "2026-10-05T22:21:17.885Z"
+    },
+    {
+      "id": 4,
+      "selected": false,
+      "title": "Waterfront Walkabout | Free SF Art StrollSan Francisco Ferry Building",
+      "time_display": "Thursday 10/15 5:00 PM",
+      "location": "One Ferry Building, San Francisco, CA",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/waterfront-walkabout-free-sf-art-stroll-tickets-1998986624806?aff=oddtdtcreator&keep_tld=true",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "sfstation",
+      "scraped_at": "2026-10-05T22:21:17.885Z"
+    },
+    {
+      "id": 5,
+      "selected": false,
+      "title": "The San Francisco Fall ShowFort Mason Center",
+      "time_display": "Thursday 10/15 10:30 AM",
+      "location": "Fort Mason, San Francisco, CA",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/san-francisco-fall-show-2026-show-days-and-lectures-tickets-1996824605147",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "sfstation",
+      "scraped_at": "2026-10-05T22:21:17.885Z"
+    },
+    {
+      "id": 6,
+      "selected": false,
+      "title": "French KissCowell Theater",
+      "time_display": "Thursday 10/15 7:30 PM",
+      "location": "Fort Mason Center, San Francisco, CA",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.smuinballet.org/events/french-kiss/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "sfstation",
+      "scraped_at": "2026-10-05T22:21:17.885Z"
+    },
+    {
+      "id": 7,
+      "selected": false,
+      "title": "Lit Laugh Lyric: Haunted EditionFab Mab - Mabuhay Gardens & On Broadway",
+      "time_display": "Friday 10/16 7:00 PM",
+      "location": "435 Broadway, San Francisco, CA",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.eventbrite.com/e/lit-laugh-lyric-volume-iv-haunted-edition-tickets-1998602202990?aff=ebdssbdestsearch",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "sfstation",
+      "scraped_at": "2026-10-05T22:21:17.885Z"
+    },
+    {
+      "id": 8,
+      "selected": false,
+      "title": "Berryessa Night Market",
+      "time_display": "Friday 10/16 6:00 PM - 10:00 PM",
+      "location": "San Jose Flea Market, 1590 Berryessa Road, San Jose, CA 95133",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://gardenattheflea.com/berryessanightmarket/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Weekly Friday night market inside the iconic San Jose Flea Market featuring Asian street food, desse...",
+      "description_detail": null,
+      "source": "berryessa-night-market",
+      "scraped_at": "2026-10-05T22:23:00.632Z"
+    }
+  ]
+}
