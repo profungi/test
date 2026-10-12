@@ -1,0 +1,393 @@
+{
+  "review_id": "review_2026-10-12_2251_olx",
+  "generated_at": "2026-10-12T22:51:14.463Z",
+  "scrape_date": "2026-10-12",
+  "target_week": "2026-10-19_to_2026-10-25",
+  "target_week_readable": "下周 (10/19 - 10/25)",
+  "scraping_report": {
+    "total_scraped": 32,
+    "after_deduplication": 17,
+    "after_classification": 17,
+    "classification_report": {
+      "totalEvents": 17,
+      "eventTypes": {
+        "free": 16,
+        "other": 1
+      },
+      "priorityLevels": {
+        "3": 1,
+        "9": 16
+      },
+      "chineseRelevant": 0,
+      "topPriorityEvents": 16
+    }
+  },
+  "instructions": {
+    "how_to_review": "将你想要发布的活动的 'selected' 字段改为 true",
+    "next_step": "保存文件后运行: npm run generate-post [此文件路径]",
+    "fields_explanation": {
+      "title": "活动标题",
+      "time_display": "显示用的时间格式",
+      "location": "活动地点",
+      "price": "票价信息",
+      "event_type": "AI识别的活动类型",
+      "priority": "优先级分数 (越高越重要)",
+      "chinese_relevant": "是否与中文社区相关",
+      "original_url": "原始活动链接"
+    }
+  },
+  "stats": {
+    "total_candidates": 17,
+    "by_type": {
+      "free": 16,
+      "other": 1
+    },
+    "by_priority": {
+      "3": 1,
+      "9": 16
+    },
+    "chinese_relevant": 0
+  },
+  "events": [
+    {
+      "id": 1,
+      "selected": false,
+      "title": "Green Film Festival of San FranciscoFour Star Theatre - The 4 Star",
+      "time_display": "Tuesday 10/20 6:00 PM",
+      "location": "2200 Clement Street, San Francisco, CA",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://greenfest2026.eventive.org",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "sfstation",
+      "scraped_at": "2026-10-12T22:46:03.086Z"
+    },
+    {
+      "id": 2,
+      "selected": false,
+      "title": "21st San Francisco Short Film FestivalFour Star Theatre - The 4 Star",
+      "time_display": "Tuesday 10/20 6:00 PM",
+      "location": "2200 Clement Street, San Francisco, CA",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sfshorts2026.eventive.org",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "sfstation",
+      "scraped_at": "2026-10-12T22:46:03.086Z"
+    },
+    {
+      "id": 3,
+      "selected": false,
+      "title": "Litquake 2026San Francisco Main Public Library",
+      "time_display": "Tuesday 10/20 6:00 PM",
+      "location": "100 Larkin Street, San Francisco, CA",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://www.litquake.org/2026-schedule",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "sfstation",
+      "scraped_at": "2026-10-12T22:46:03.086Z"
+    },
+    {
+      "id": 4,
+      "selected": false,
+      "title": "2nd Annual Lower Polk Live! Music, Art & Community Street FestivalLower Polk Street",
+      "time_display": "Friday 10/23 4:00 PM",
+      "location": "1300 Polk Street, San Francisco, CA",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://lowerpolklive.eventbrite.com",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "sfstation",
+      "scraped_at": "2026-10-12T22:46:03.087Z"
+    },
+    {
+      "id": 5,
+      "selected": false,
+      "title": "Roxie at New PeopleNew People",
+      "time_display": "Friday 10/23 6:00 PM",
+      "location": "1746 Post Street, San Francisco, CA",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://roxie.com/series/new-people-cinema/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "sfstation",
+      "scraped_at": "2026-10-12T22:46:03.087Z"
+    },
+    {
+      "id": 6,
+      "selected": false,
+      "title": "“Bay St Sunset” Market Car Show (Emeryville)",
+      "time_display": "Wednesday 10/21 5:00 PM - 8:00 PM",
+      "location": "Bay St Plaza, San Francisco Bay Area",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/bay-st-sunset-market-car-show-emeryville/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2026-10-12T22:45:52.725Z"
+    },
+    {
+      "id": 7,
+      "selected": false,
+      "title": "“Lower Polk Live!” Free Street Festival w/ Art, DJs, Live Music (SF)",
+      "time_display": "Friday 10/23 4:00 PM - 9:00 PM",
+      "location": "Polk Street between Bush and Sutter Street, San Francisco",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/polk-live-free-street-festival-art-djs-live-music-sf/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2026-10-12T22:45:52.725Z"
+    },
+    {
+      "id": 8,
+      "selected": false,
+      "title": "“Lower Polk Live” 2026 Free Music & Art Street Festival (SF)",
+      "time_display": "Friday 10/23 4:00 PM - 9:00 PM",
+      "location": "Polk Street, San Francisco Bay Area",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/polk-live-2026-free-music-art-street-festival-sf/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2026-10-12T22:45:52.725Z"
+    },
+    {
+      "id": 9,
+      "selected": false,
+      "title": "From The E: Fall Festival Night Market (Excelsior)",
+      "time_display": "Friday 10/23 4:30 PM - 8:30 PM",
+      "location": "Ocean Ave & Mission St., San Francisco",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/fall-festival-night-market-excelsior/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2026-10-12T22:45:52.725Z"
+    },
+    {
+      "id": 10,
+      "selected": false,
+      "title": "Halloween Market (Berkeley)",
+      "time_display": "Friday 10/23 5:00 PM - 9:00 PM",
+      "location": "Donkey & Goat Winery, San Francisco Bay Area",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/halloween-market-berkeley/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2026-10-12T22:45:52.725Z"
+    },
+    {
+      "id": 11,
+      "selected": false,
+      "title": "Weekend Sessions w/ Afro-Filipino Jazz Project (Yerba Buena Gardens Festival 2026)",
+      "time_display": "Saturday 10/24 2:00 PM - 3:30 PM",
+      "location": "Great Lawn, Yerba Buena Gardens, San Francisco Bay Area",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/weekend-sessions-w-afro-filipino-jazz-project-yerba-buena-gardens-festival-2026/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "The 2026 Yerba Buena Gardens Festival hosts a full lineup of free outdoor music, theater, circus, da...",
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2026-10-12T22:45:52.725Z"
+    },
+    {
+      "id": 12,
+      "selected": false,
+      "title": "Alemany Farm Harvest Festival 2026: Free BBQ + Farm Tours (SF)",
+      "time_display": "Saturday 10/24 11:00 AM - 3:00 PM",
+      "location": "Alemany Farm, San Francisco Bay Area",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/alemany-farm-harvest-festival-2026-free-bbq-farm-tours-sf/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2026-10-12T22:45:52.725Z"
+    },
+    {
+      "id": 13,
+      "selected": false,
+      "title": "SF’s 44th Annual Sandcastle Classic Contest at Ocean Beach (2026)",
+      "time_display": "Saturday 10/24 11:00 AM - 3:30 PM",
+      "location": "Ocean Beach, San Francisco Bay Area",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/leap-arts-annual-sandcastle-classic/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2026-10-12T22:45:52.725Z"
+    },
+    {
+      "id": 14,
+      "selected": false,
+      "title": "Free Día De Los Muertos Street Fiesta 2026 (Stockton)",
+      "time_display": "Saturday 10/24 11:00 AM - 5:00 PM",
+      "location": "Mexican Heritage Center & Gallery, San Francisco Bay Area",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/free-da-de-los-muertos-street-fiesta-2026-stockton/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2026-10-12T22:45:52.725Z"
+    },
+    {
+      "id": 15,
+      "selected": false,
+      "title": "West Oakland Prescott Craft Market: 50+ Vendors & DJs (2026)",
+      "time_display": "Saturday 10/24 12:00 PM - 5:00 PM",
+      "location": "Prescott Market West Oakland",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/west-oakland-prescott-craft-market-50-vendors-djs-2026-2/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Prescott Market in West Oakland hosts a holiday pop-up craft faire on three dates in 2026, featuring...",
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2026-10-12T22:45:52.725Z"
+    },
+    {
+      "id": 16,
+      "selected": false,
+      "title": "Berryessa Night Market",
+      "time_display": "Friday 10/23 6:00 PM - 10:00 PM",
+      "location": "San Jose Flea Market, 1590 Berryessa Road, San Jose, CA 95133",
+      "price": "Free",
+      "event_type": "free",
+      "priority": 9,
+      "chinese_relevant": false,
+      "original_url": "https://gardenattheflea.com/berryessanightmarket/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": "Weekly Friday night market inside the iconic San Jose Flea Market featuring Asian street food, desse...",
+      "description_detail": null,
+      "source": "berryessa-night-market",
+      "scraped_at": "2026-10-12T22:47:55.222Z"
+    },
+    {
+      "id": 17,
+      "selected": false,
+      "title": "Foster City’s 2026 “Halloween Spooktacular” + Trick-Or-Treat Trail",
+      "time_display": "Saturday 10/24 11:00 AM - 2:00 PM",
+      "location": "Leo J. Ryan Park, San Francisco Bay Area",
+      "price": "$12*",
+      "event_type": "other",
+      "priority": 3,
+      "chinese_relevant": false,
+      "original_url": "https://sf.funcheap.com/halloween-spooktacular-2026-trickortreat-trail-foster-city/",
+      "ai_info": {
+        "confidence": 0.3,
+        "reasoning": "Fallback keyword-based classification"
+      },
+      "description_preview": null,
+      "description_detail": null,
+      "source": "funcheap",
+      "scraped_at": "2026-10-12T22:45:52.725Z"
+    }
+  ]
+}
